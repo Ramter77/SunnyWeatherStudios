@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1207962314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207962315}
+  m_Layer: 9
+  m_Name: damageSphereSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207962315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207962314}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.58, z: 4.43}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1607995312685160327}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1607995312082337744
 GameObject:
   m_ObjectHideFlags: 0
@@ -2284,6 +2314,7 @@ GameObject:
   - component: {fileID: 8767620240517448571}
   - component: {fileID: 1401718522366397182}
   - component: {fileID: 1607995314061019381}
+  - component: {fileID: 542536399}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -2306,6 +2337,7 @@ Transform:
   - {fileID: 1607995312955274368}
   - {fileID: 1607995312694857724}
   - {fileID: 1607995312704156758}
+  - {fileID: 1207962315}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2403,11 +2435,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Prefabs:
-  - {fileID: 1827516718631924487, guid: 3eb95e30febef1944b05895be8e96c20, type: 3}
-  - {fileID: 5132798727554801362, guid: add3cd4764dff4641b4b0599f4f04f65, type: 3}
-  - {fileID: 1291029100837667536, guid: 3533c538965f054419d2d6c96df717f1, type: 3}
-  - {fileID: 1227432644354153697, guid: 1a663428ffddb87479e156e7bf9aef30, type: 3}
+  - {fileID: 3908368510931437923, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a, type: 3}
+  - {fileID: 5722339459401916153, guid: 56b2d12b12611f049a1ac55b35c8b140, type: 3}
   - {fileID: 2457799492005950965, guid: b726ff1851a21fb45a80829a7243023d, type: 3}
+  - {fileID: 8127297961243337994, guid: d8103eb10487a8d43b68dfe018da27f6, type: 3}
+  TestPrefabs:
+  - {fileID: 113481993458745524, guid: 523752e691085914fbfe1fd6d37df56e, type: 3}
   mask:
     serializedVersion: 2
     m_Bits: 3072
@@ -2424,7 +2457,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2684536915321789591}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 07310bf9268b8e74d975bc6de788ccd6, type: 3}
   m_Name: 
@@ -2437,6 +2470,26 @@ MonoBehaviour:
   attackCD: 0.5
   speed: 15
   destroyTime: 3
+--- !u!114 &542536399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2684536915321789591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 078fe62c673120649a90d52ecf481220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAnim: {fileID: 0}
+  sphereSpawnPoint: {fileID: 1207962315}
+  hotkey: 323
+  damageSphereRadius: 1.5
+  damageDelay: 1.5
+  attackDamage: 110
+  attackSpeed: 0
+  attackCD: 2
 --- !u!1001 &1607995312475173895
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2508,18 +2561,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: baec086904791744185aaa07a6cf55c2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 400000, guid: baec086904791744185aaa07a6cf55c2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -4.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 11400002, guid: baec086904791744185aaa07a6cf55c2, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: baec086904791744185aaa07a6cf55c2, type: 3}
       propertyPath: m_Target
       value: 
@@ -2544,6 +2585,18 @@ PrefabInstance:
       propertyPath: m_SpinTurnLimit
       value: 140
       objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: baec086904791744185aaa07a6cf55c2, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: baec086904791744185aaa07a6cf55c2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: baec086904791744185aaa07a6cf55c2, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: baec086904791744185aaa07a6cf55c2, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
@@ -2551,10 +2604,6 @@ PrefabInstance:
     - target: {fileID: 400002, guid: baec086904791744185aaa07a6cf55c2, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2000000, guid: baec086904791744185aaa07a6cf55c2, type: 3}
-      propertyPath: m_NormalizedViewPortRect.x
-      value: -0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baec086904791744185aaa07a6cf55c2, type: 3}
