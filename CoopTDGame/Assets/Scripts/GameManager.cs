@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,7 +10,11 @@ public class GameManager : MonoBehaviour
     [Header("Slow Motion")]
     [Tooltip("HotKey to active slow motion")]
     [SerializeField]
-    private KeyCode hotkey = KeyCode.Space;
+    private KeyCode slowMoHotkey = KeyCode.Space;
+
+    [Tooltip("HotKey to reset current scene")]
+    [SerializeField]
+    private KeyCode resetHotkey = KeyCode.R;
 
     [SerializeField]
     private bool holdHotKey = true;
@@ -25,15 +30,35 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        slowMotion();
+        SlowMotion();
+        ResetScene();
+        QuitGame();
     }
 
+    #region Quit Game
+    private void QuitGame()
+    {
+        if (Input.GetKey(resetHotkey)) {
+            Application.Quit();
+        }
+    }
+    #endregion
+
+    #region Reset Scene
+    private void ResetScene() {
+        if (Input.GetKey(resetHotkey)) 
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+    #endregion
+
     #region SlowMotion
-    private void slowMotion()
+    private void SlowMotion()
     {
         if (holdHotKey) 
         {
-            if (Input.GetKey(hotkey)) 
+            if (Input.GetKey(slowMoHotkey)) 
             {
                 Time.timeScale = slowMotionTimeScale;
             }
@@ -45,7 +70,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            if (Input.GetKeyDown(hotkey)) {
+            if (Input.GetKeyDown(slowMoHotkey)) {
                 if (Time.timeScale == 1.0f)
                     Time.timeScale = slowMotionTimeScale;
                 else
