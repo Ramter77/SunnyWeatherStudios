@@ -82,11 +82,20 @@ void Update()
                 Vector3 fwd = interceptPoint - gameObject.transform.position;
                 if (Physics.Raycast(transform.position, fwd, out hit, distance, turretLayerIgnore))
                 {
-                    Debug.DrawLine(transform.position, hit.point);
-                    //Debug.Log("Terrain in the way");
-                    StartCoroutine(shootCd());
+                    if(hit.collider.tag == "Environment") // list all the tags for objects that should block line of projectile
+                    {
+                        Debug.DrawLine(transform.position, hit.point);
+                        //Debug.Log("Terrain in the way");
+                        StartCoroutine(shootCd());
+                    }
+                    else // when it collides with an object of different tag 
+                    {
+                        bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
+                        Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
+                        StartCoroutine(shootCd());
+                    }
                 }
-                else
+                else // when no collision occurs
                 {
                     bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
                     Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
