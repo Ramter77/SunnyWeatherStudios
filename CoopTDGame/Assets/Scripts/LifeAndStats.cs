@@ -12,6 +12,8 @@ public class LifeAndStats : MonoBehaviour
     private GameObject Soul;
     #endregion
 
+
+    public bool destroyable;
     private FractureObject fractureScript;
 
     void Start()
@@ -25,7 +27,10 @@ public class LifeAndStats : MonoBehaviour
         {
             //Debug.Log("yeah im dead");
             gameObject.tag = "destroyedTarget";
-            fractureScript.Fracture();
+
+            if (destroyable) {
+                fractureScript.Fracture();
+            }
         }
         if (gameObject.CompareTag("Enemy") && health <= 0)
         {

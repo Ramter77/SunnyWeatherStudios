@@ -222,7 +222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3181500200931432534}
   m_LocalRotation: {x: 0, y: 0.3420201, z: 0, w: 0.9396927}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3181500200931656820}
@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 5418639607985436745}
   - component: {fileID: 5990368708299675491}
   - component: {fileID: 5542685769309437334}
+  - component: {fileID: 3529278560104736142}
   m_Layer: 0
   m_Name: Tower_Holder
   m_TagString: possibleTargets
@@ -314,6 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   defense: 20
+  destroyable: 1
 --- !u!114 &5542685769309437334
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,3 +330,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FracturedObject: {fileID: 1809083029347777699, guid: cdfd3c4e00a77094db70199a62df76be,
     type: 3}
+--- !u!114 &3529278560104736142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908368510931437923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98192dea52c7b25459ffb6c7679aa9d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  closestEnemy: {fileID: 0}
+  bulletPrefab: {fileID: 0}
+  shotSpeed: 20
+  attackSpeed: 0
+  attackRange: 20
+  interceptPoint: {x: 0, y: 0, z: 0}
+  targetVelocity: {x: 0, y: 0, z: 0}
