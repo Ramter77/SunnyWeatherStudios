@@ -12,11 +12,11 @@ public class LifeAndStats : MonoBehaviour
     private GameObject Soul;
     #endregion
 
-    
+    private FractureObject fractureScript;
 
     void Start()
     {
-        
+        fractureScript = GetComponent<FractureObject>();
     }
 
     void Update()
@@ -25,6 +25,7 @@ public class LifeAndStats : MonoBehaviour
         {
             //Debug.Log("yeah im dead");
             gameObject.tag = "destroyedTarget";
+            fractureScript.Fracture();
         }
         if (gameObject.CompareTag("Enemy") && health <= 0)
         {

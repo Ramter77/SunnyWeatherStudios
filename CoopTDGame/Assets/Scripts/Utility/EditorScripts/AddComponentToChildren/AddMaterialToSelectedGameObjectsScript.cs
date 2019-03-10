@@ -32,7 +32,7 @@ public class AddMaterialToSelectedGameObjectsScript : MonoBehaviour
             #endregion
 
             //Remove this script
-            DestroyImmediate(GetComponent<AddMaterialToSelectedGameObjectsScript>());
+            DestroyImmediate(go.GetComponent<AddMaterialToSelectedGameObjectsScript>());
         }
     }  
 }

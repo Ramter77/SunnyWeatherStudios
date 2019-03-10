@@ -26,9 +26,9 @@ public class AddColliderToSelectedGameObjectsScript : MonoBehaviour
                 }
             }
             #endregion
-
+            
             //Remove this script
-            DestroyImmediate(GetComponent<AddColliderToSelectedGameObjectsScript>());
+            DestroyImmediate(go.GetComponent<AddColliderToSelectedGameObjectsScript>());
         }
     }  
 }

@@ -311,9 +311,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5418639607985436745}
+  - component: {fileID: 5990368708299675491}
+  - component: {fileID: 5542685769309437334}
   m_Layer: 0
   m_Name: Tower_Holder
-  m_TagString: Untagged
+  m_TagString: possibleTargets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -333,3 +335,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5990368708299675491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908368510931437923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b3f0b9ede1df9438b6c311604cf4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  defense: 20
+--- !u!114 &5542685769309437334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3908368510931437923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c3ba992d95a2446b511f658e5197fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FracturedObject: {fileID: 1809083029347777699, guid: cdfd3c4e00a77094db70199a62df76be,
+    type: 3}

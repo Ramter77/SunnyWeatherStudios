@@ -15,7 +15,7 @@ public class PlacePrefab : MonoBehaviour
 
     [Tooltip("Layer of colliders to place Prefabs on ('Ground')")]
     [SerializeField]
-    private LayerMask mask;
+    private LayerMask mask = 0;
 
     [Tooltip("Material used to color transparent Prefabs. Green if it's allowed to be placed at that location and Red if it's not")]
     //[SerializeField]
@@ -202,11 +202,16 @@ public class PlacePrefab : MonoBehaviour
                 //!Test
                 Debug.Log(currentPrefab.name);
                 if (currentPrefab.name == "TestRangeIndicator(Clone)") {
-                    Destroy(currentPrefab);
+                    
                     Vector3 pos = new Vector3(currentPrefab.transform.position.x, currentPrefab.transform.position.y+5, currentPrefab.transform.position.z);
+                    Destroy(currentPrefab);
                     Instantiate(TestPrefabs[0], pos, transform.rotation);
                     //if target area object prefab
                     //then instantiate fireball above
+                    
+                    //Reset
+                    //currentPrefab = null;
+                    placing = false;
                 }
                 //Normal behaviour
                 else {
