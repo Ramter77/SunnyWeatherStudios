@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5421635244461095719}
+  - component: {fileID: 4788905230943942356}
+  - component: {fileID: 3360429499921808087}
   m_Layer: 0
   m_Name: House_Holder
   m_TagString: Untagged
@@ -31,22 +33,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &8891910118606215009
-Rigidbody:
+--- !u!114 &4788905230943942356
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6166262329567557295}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_GameObject: {fileID: 5722339459401916153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b3f0b9ede1df9438b6c311604cf4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  defense: 20
+  destroyable: 1
+--- !u!114 &3360429499921808087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5722339459401916153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c3ba992d95a2446b511f658e5197fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FracturedObject: {fileID: 8514697294362660828, guid: c93a9a78f436d02418ea05af0cf1dd7a,
+    type: 3}
 --- !u!64 &6944113027368362862
 MeshCollider:
   m_ObjectHideFlags: 0

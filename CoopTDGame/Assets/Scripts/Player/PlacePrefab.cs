@@ -132,15 +132,15 @@ public class PlacePrefab : MonoBehaviour
         if (placing) {
             //Color Prefab green when on base terrain level (0), else color it red
             if (setColorToRed) {
-                currentPrefab.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
+                currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
             }
             else {
-                if (currentPrefab.transform.position.y == halfScale) {
-                    currentPrefab.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
-                }
-                else {
-                    currentPrefab.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
-                }
+                //if (currentPrefab.transform.position.y == halfScale) {
+                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
+                //}
+                //else {
+                  //  currentPrefab.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
+                //}
             }
         }
     }
