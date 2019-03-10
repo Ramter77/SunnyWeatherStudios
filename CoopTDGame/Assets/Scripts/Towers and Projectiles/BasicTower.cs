@@ -7,9 +7,10 @@ public class BasicTower : MonoBehaviour
     [Header("Object References")]
     public GameObject closestEnemy = null;
     private GameObject[] gos; // game object array for enemies
-    private GameObject shooter; // the tower - used for intercept calculation
+    public GameObject shooter; // the tower - used for intercept calculation
     private GameObject target; // the target he picked from the enemy array - used for intercept calculation
     public GameObject bulletPrefab; // prefab he shoots
+    public Transform shootingPoint;
 
     [Header("Attack Settings")]
     [Tooltip("speed of the projectile")] public float shotSpeed = 20f;
@@ -31,8 +32,8 @@ public class BasicTower : MonoBehaviour
     void Start()
     {
         FindClosestTarget();
-        shooter = gameObject;
         target = closestEnemy;
+        attackSpeed = 2;
         shooterPosition = shooter.transform.position;
         targetPosition = target.transform.position;
         shooterVelocity = shooter.GetComponent<Rigidbody>() ? shooter.GetComponent<Rigidbody>().velocity : Vector3.zero;
@@ -72,7 +73,7 @@ void Update()
                 targetPosition,
                 targetVelocity
             );
-            Vector3 spawnPoint = gameObject.transform.position;
+            Vector3 spawnPoint = shootingPoint.position;
             Vector3 targetPoint = interceptPoint;
             Vector3 toTarget = targetPoint - spawnPoint;
             if (Vector3.Distance(spawnPoint, targetPoint) <= attackRange)
