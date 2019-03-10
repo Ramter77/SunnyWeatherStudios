@@ -58,6 +58,10 @@ public class PlacePrefab : MonoBehaviour
     //Todo: Clean these
     private bool placing, setColorToRed;
     private float halfScale;
+
+
+
+    private MeshRenderer[] meshRenderers;
     #endregion
 
     private void Start() {
@@ -107,8 +111,8 @@ public class PlacePrefab : MonoBehaviour
                     placing = true;
 
                     //Save original Material & On Instantiation give the Prefab the RedGreenMaterial
-                    OriginalMaterial1 = currentPrefab.GetComponent<MeshRenderer>().material;    //! 'OriginalMaterial' + i
-                    currentPrefab.GetComponent<MeshRenderer>().material = Resources.Load<Material>("RedGreenMaterial");
+                    OriginalMaterial1 = currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;    //! 'OriginalMaterial' + i
+                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load<Material>("RedGreenMaterial");
                 }
 
                 break;
@@ -128,14 +132,14 @@ public class PlacePrefab : MonoBehaviour
         if (placing) {
             //Color Prefab green when on base terrain level (0), else color it red
             if (setColorToRed) {
-                currentPrefab.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
+                currentPrefab.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
             }
             else {
                 if (currentPrefab.transform.position.y == halfScale) {
-                    currentPrefab.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
+                    currentPrefab.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
                 }
                 else {
-                    currentPrefab.GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
+                    currentPrefab.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
                 }
             }
         }
@@ -215,9 +219,10 @@ public class PlacePrefab : MonoBehaviour
                 }
                 //Normal behaviour
                 else {
-                    currentPrefab.GetComponent<MeshRenderer>().material = OriginalMaterial1;    //Switch back to original Material
-                    currentPrefab.GetComponent<BoxCollider>().isTrigger = false;    //Turn on collision
-                    currentPrefab.GetComponent<PlacePrefabCollisionColor>().enabled = false;     //Disable OnTrigger script
+                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial1;    //Switch back to original Material
+                    //currentPrefab.transform.GetChild(0).GetComponent<BoxCollider>().isTrigger = false;    //Turn on collision
+                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn on collision
+                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().enabled = false;     //Disable OnTrigger script
 
                     currentPrefab.gameObject.layer = 11;    //Put on "Turrets" layer
 
