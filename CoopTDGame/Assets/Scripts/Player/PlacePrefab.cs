@@ -135,12 +135,14 @@ public class PlacePrefab : MonoBehaviour
                 currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
             }
             else {
+                if (currentPrefab.name != "TestRangeIndicator(Clone)") {
                 //if (currentPrefab.transform.position.y == halfScale) {
                     currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
                 //}
                 //else {
                   //  currentPrefab.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
                 //}
+                }
             }
         }
     }
