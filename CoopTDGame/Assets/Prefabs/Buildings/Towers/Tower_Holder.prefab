@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 3181500200931656822}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2914916014302688551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 418137612501096106}
+  m_Layer: 0
+  m_Name: AttackRadiusCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &418137612501096106
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2914916014302688551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.94, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3181500200931656822}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3181500200931432530
 GameObject:
   m_ObjectHideFlags: 0
@@ -258,6 +288,7 @@ Transform:
   - {fileID: 3181500200931656820}
   - {fileID: 3181500200931656818}
   - {fileID: 3574412317428269101}
+  - {fileID: 418137612501096106}
   m_Father: {fileID: 5418639607985436745}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 40, z: 0}
@@ -378,8 +409,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 455592500324762051, guid: 0f07f9cff13c3b3449f56e35a515922b,
     type: 3}
   shootingPoint: {fileID: 3574412317428269101}
-  shotSpeed: 20
-  attackSpeed: 2
-  attackRange: 20
+  centerAttackRadius: {fileID: 418137612501096106}
+  shotSpeed: 30
+  attackSpeed: 4
+  attackRange: 50
   interceptPoint: {x: 0, y: 0, z: 0}
   targetVelocity: {x: 0, y: 0, z: 0}

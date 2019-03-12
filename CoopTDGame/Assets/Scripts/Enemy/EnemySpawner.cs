@@ -7,32 +7,38 @@ public class EnemySpawner : MonoBehaviour
     [Header("Object Ref")]
     public Transform spawnPoint;
     public GameObject[] EnemyPrefabs;
+    public EnemySpawnCycle spawnCycle;
 
     [Header("Spawnrate")]
-    public float spawnrate;
-    private float fallbackSpawnrate;
-    public int amountOfEnemysToSpawn = 10;
+    public bool enableSpawn = false;
+    public float spawnrate = 0;
+    private float fallbackSpawnrate = 0;
+    public int amountOfEnemysToSpawn = 1;
 
     [Header("Spawn position")]
-    public float MinX;
-    public float MaxX;
+    public float MinX = 0;
+    public float MaxX = 0;
 
 
-    public float MinZ;
-    public float MaxZ;
+    public float MinZ = 0;
+    public float MaxZ = 0;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        spawnEnemy();
         fallbackSpawnrate = spawnrate;
+        spawnCycle = FindObjectOfType<EnemySpawnCycle>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        spawnTimer();
+        if(enableSpawn)
+        {
+            spawnTimer();
+        }
+        
         
     }
 
@@ -45,6 +51,8 @@ public class EnemySpawner : MonoBehaviour
             Vector3 spawnPos = centerPos - pos;
             int random = Random.Range(0, EnemyPrefabs.Length);
             Instantiate(EnemyPrefabs[random], spawnPos, Quaternion.identity);
+            //spawnCycle.currentEnemies += 1;
+            //Debug.Log(spawnCycle.currentEnemies);
         }
         
     }

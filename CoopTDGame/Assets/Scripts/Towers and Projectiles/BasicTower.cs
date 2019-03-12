@@ -11,6 +11,7 @@ public class BasicTower : MonoBehaviour
     private GameObject target; // the target he picked from the enemy array - used for intercept calculation
     public GameObject bulletPrefab; // prefab he shoots
     public Transform shootingPoint;
+    public Transform centerAttackRadius; // center for attack range calculation
 
     [Header("Attack Settings")]
     [Tooltip("speed of the projectile")] public float shotSpeed = 20f;
@@ -74,9 +75,10 @@ void Update()
                 targetVelocity
             );
             Vector3 spawnPoint = shootingPoint.position;
+            Vector3 centerOfAttackRadius = centerAttackRadius.position;
             Vector3 targetPoint = interceptPoint;
             Vector3 toTarget = targetPoint - spawnPoint;
-            if (Vector3.Distance(spawnPoint, targetPoint) <= attackRange)
+            if (Vector3.Distance(centerOfAttackRadius, targetPoint) <= attackRange)
             {
                 RaycastHit hit;
                 float distance = Vector3.Distance(gameObject.transform.position, interceptPoint);
@@ -118,7 +120,8 @@ void Update()
 
     }
 
-#endregion
+
+    #endregion
 
 
     IEnumerator shootCd()
@@ -127,6 +130,11 @@ void Update()
         aimAtTarget();
     }
 
+    void OnDrawGizmosSelected()
+    {
+        // Draw a sphere at the transform's position
+        Gizmos.DrawSphere(centerAttackRadius.position, attackRange);
+    }
 
     /// <summary>
     /// find closest enemy
