@@ -39,7 +39,6 @@ public class EnemySpawner : MonoBehaviour
             spawnTimer();
         }
         
-        
     }
 
     public void spawnEnemy()
@@ -51,8 +50,7 @@ public class EnemySpawner : MonoBehaviour
             Vector3 spawnPos = centerPos - pos;
             int random = Random.Range(0, EnemyPrefabs.Length);
             Instantiate(EnemyPrefabs[random], spawnPos, Quaternion.identity);
-            //spawnCycle.currentEnemies += 1;
-            //Debug.Log(spawnCycle.currentEnemies);
+            spawnCycle.spawnedEnemies += 1;
         }
         
     }
@@ -60,9 +58,13 @@ public class EnemySpawner : MonoBehaviour
     void spawnTimer()
     {
         spawnrate -= Time.deltaTime; 
-        if(spawnrate <= 0)
+        if(spawnrate <= 0 && enableSpawn)
         {
             spawnEnemy();
+            spawnrate = fallbackSpawnrate;
+        }
+        if(spawnrate <= 0 && !enableSpawn)
+        {
             spawnrate = fallbackSpawnrate;
         }
     }

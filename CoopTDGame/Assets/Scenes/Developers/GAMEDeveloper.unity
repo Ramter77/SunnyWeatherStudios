@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.058902156, g: 0.07514118, b: 0.12045394, a: 1}
+  m_IndirectSpecularColor: {r: 0.053433243, g: 0.06660183, b: 0.105374984, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -681,7 +681,7 @@ PrefabInstance:
     - target: {fileID: 5418639607985436745, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 15.7
+      value: 12.1
       objectReference: {fileID: 0}
     - target: {fileID: 5418639607985436745, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
         type: 3}
@@ -2868,6 +2868,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1821820326}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1851863697 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4504432682046415401, guid: 5a12124d5a6768244b3b9fd8b6cc6788,
+    type: 3}
+  m_PrefabInstance: {fileID: 3918080237531164895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1851863699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851863697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c893364ab05b6749a51e13077dae191, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Spawners: []
+  Enemies: []
+  maximumEnemies: 0
+  addedEnemiesPerWave: 10
+  spawnedEnemies: 0
+  enemiesInScene: 0
+  Wave: 0
+  waveLive: 0
+  newWavePending: 0
+  timeBetweenWave: 10
+  timeBetweenCheck: 2
 --- !u!4 &1932068804 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5418639607985436745, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
@@ -3473,6 +3502,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000,
         type: 0}
+    - target: {fileID: 1607995312475140772, guid: 8d6c4e73381ca444aacb6171ddda69eb,
+        type: 3}
+      propertyPath: m_TurnSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d6c4e73381ca444aacb6171ddda69eb, type: 3}
 --- !u!1001 &3918080237531164895

@@ -139,7 +139,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 424406671238246484}
-  - component: {fileID: 5075741118525316458}
   m_Layer: 0
   m_Name: Spawning
   m_TagString: Untagged
@@ -161,20 +160,3 @@ Transform:
   m_Father: {fileID: 3918080238086351911}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5075741118525316458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4504432682046415401}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c893364ab05b6749a51e13077dae191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Spawners: []
-  maximumEnemies: 20
-  addedEnemiesPerWave: 10
-  Wave: 0
-  currentEnemies: 0
