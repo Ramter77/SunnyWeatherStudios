@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.053433243, g: 0.06660183, b: 0.105374984, a: 1}
+  m_IndirectSpecularColor: {r: 0.058902156, g: 0.07514118, b: 0.12045394, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -57,7 +57,7 @@ LightmapSettings:
     serializedVersion: 10
     m_Resolution: 2
     m_BakeResolution: 40
-    m_AtlasSize: 1024
+    m_AtlasSize: 512
     m_AO: 0
     m_AOMaxDistance: 1
     m_CompAOExponent: 1
@@ -88,7 +88,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
-  m_LightingDataAsset: {fileID: 112000000, guid: 41071ebbfb0a1c444bbca4a99d8e1ee4,
+  m_LightingDataAsset: {fileID: 112000000, guid: 80ce221db0cae7c47aad7ab99e7b317e,
     type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -348,6 +348,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower_Holder (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 3908368510931437923, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 5418639607985436745, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -661,6 +667,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower_Holder
       objectReference: {fileID: 0}
+    - target: {fileID: 3908368510931437923, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 5418639607985436745, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1149,29 +1161,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &865207377 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3918080238086351912, guid: 5a12124d5a6768244b3b9fd8b6cc6788,
-    type: 3}
-  m_PrefabInstance: {fileID: 3918080237531164895}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &865207378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 865207377}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c893364ab05b6749a51e13077dae191, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Spawners: []
-  maximumEnemies: 20
-  addedEnemiesPerWave: 10
-  Wave: 0
-  currentEnemies: 0
 --- !u!1 &867362491
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,6 +1371,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower_Holder (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 3908368510931437923, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 5418639607985436745, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1867,6 +1862,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tower_Holder (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 3908368510931437923, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 5418639607985436745, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3400,6 +3401,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2684536915321789591, guid: 8d6c4e73381ca444aacb6171ddda69eb,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1607995312685160327, guid: 8d6c4e73381ca444aacb6171ddda69eb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3455,6 +3462,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1207962314, guid: 8d6c4e73381ca444aacb6171ddda69eb, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 1607995312704156753, guid: 8d6c4e73381ca444aacb6171ddda69eb,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000,
+        type: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d6c4e73381ca444aacb6171ddda69eb, type: 3}
 --- !u!1001 &3918080237531164895
