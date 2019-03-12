@@ -242,6 +242,7 @@ MonoBehaviour:
   shotSpeed: 20
   attackSpeed: 1
   attackRange: 40
+  minAttackRange: 5
   interceptPoint: {x: 0, y: 0, z: 0}
   targetVelocity: {x: 0, y: 0, z: 0}
 --- !u!1 &34666225
@@ -719,6 +720,11 @@ PrefabInstance:
         type: 3}
       propertyPath: shotSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529278560104736142, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
+        type: 3}
+      propertyPath: minAttackRange
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a, type: 3}

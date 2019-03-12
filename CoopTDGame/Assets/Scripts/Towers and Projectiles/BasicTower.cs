@@ -17,6 +17,7 @@ public class BasicTower : MonoBehaviour
     [Tooltip("speed of the projectile")] public float shotSpeed = 20f;
     [Tooltip("Attack Speed of the tower")] public float attackSpeed; // the lower the value the faster the turret can shoot
     [Tooltip("Attack Range of th tower")]  public float attackRange = 20f; // the range of the tower
+    [Tooltip("Minimum Attack Range of Tower")] public float minAttackRange = 5f;
     private int turretLayerIgnore = ~11; // ignore this layer (the layer of tower)
 
     //locations
@@ -116,6 +117,10 @@ void Update()
             //Debug.Log(targetVelocity);
             //Debug.Log(interceptPoint);
         }
+        else
+        {
+            StartCoroutine(shootCd());
+        }
 
 
     }
@@ -140,15 +145,15 @@ void Update()
     /// find closest enemy
     /// </summary>
     public void FindClosestTarget()
-    {
-        gos = GameObject.FindGameObjectsWithTag("Enemy");
+    {   
+         gos = GameObject.FindGameObjectsWithTag("Enemy");
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
         foreach (GameObject go in gos)
         {
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
+            float diff = Vector3.Distance(centerAttackRadius.position, go.transform.position);
+            float curDistance = diff;
+            if(curDistance > minAttackRange && curDistance < distance)
             {
                 closestEnemy = go;
                 distance = curDistance;
