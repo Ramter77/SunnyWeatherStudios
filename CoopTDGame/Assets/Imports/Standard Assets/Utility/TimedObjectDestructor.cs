@@ -15,7 +15,7 @@ namespace UnityStandardAssets.Utility
         }
 
 
-        private void DestroyNow()
+        public void DestroyNow()
         {
             if (m_DetachChildren)
             {
