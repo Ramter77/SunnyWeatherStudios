@@ -16,11 +16,15 @@ public class AttackAndDamage : MonoBehaviour
     [Header("Damage Calculation")]
     public float targetDefense = 0f;
 
+    [Header ("Animation")]
+    private Animator enemyAnim;
+
 
     // Start is called before the first frame update
     void Start()
     {
         enableAttack = true;
+        enemyAnim = transform.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,8 +35,10 @@ public class AttackAndDamage : MonoBehaviour
 
     public void performAttack()
     {
+        Debug.Log("Enemy wdasfattacked");
         if (enableAttack)
         {
+            Debug.Log("Enemy attacked");
             targetDefense = Target.GetComponent<LifeAndStats>().defense;
             float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
             Target.GetComponent<LifeAndStats>().health -= applyingDamage;
@@ -41,7 +47,8 @@ public class AttackAndDamage : MonoBehaviour
             StartCoroutine(resetAttackCooldown());
 
             //AttackAnimation
-            //SetTrigger("Attack");
+            //transform.GetChild(0).GetComponent<Animator>().SetTrigger("Attack");
+            enemyAnim.SetTrigger("Attack");
         }
 
     }

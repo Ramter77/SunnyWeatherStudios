@@ -52,6 +52,7 @@ public class BasicEnemy : MonoBehaviour
             {
                 //Debug.Log("AI: queue attack");
                 attackState = 1;
+                Debug.Log("adfgasgag");
                 gameObject.GetComponent<AttackAndDamage>().performAttack();
             }
             if (curDistance <= stoppingRange) // in stopping range prevents ai from bumping into player
