@@ -239,7 +239,7 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3181500200931432532}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
   m_Convex: 1
@@ -413,5 +413,6 @@ MonoBehaviour:
   shotSpeed: 30
   attackSpeed: 4
   attackRange: 50
+  minAttackRange: 5
   interceptPoint: {x: 0, y: 0, z: 0}
   targetVelocity: {x: 0, y: 0, z: 0}
