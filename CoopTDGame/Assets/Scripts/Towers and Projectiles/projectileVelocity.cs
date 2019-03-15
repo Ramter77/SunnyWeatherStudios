@@ -39,9 +39,5 @@ public class projectileVelocity : MonoBehaviour
         }
     }
 
-    IEnumerator resetDamageApply()
-    {
-        yield return new WaitForSeconds(1);
-        appliedDamage = false;
-    }
+    
 }
