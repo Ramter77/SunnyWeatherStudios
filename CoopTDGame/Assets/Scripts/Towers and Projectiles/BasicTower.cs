@@ -6,7 +6,7 @@ public class BasicTower : MonoBehaviour
 {
     [Header("Object References")]
     public GameObject closestEnemy = null;
-    private GameObject[] gos; // game object array for enemies
+    [SerializeField] private GameObject[] gos; // game object array for enemies
     public GameObject shooter; // the tower - used for intercept calculation
     private GameObject target; // the target he picked from the enemy array - used for intercept calculation
     public GameObject bulletPrefab; // prefab he shoots
@@ -30,6 +30,7 @@ public class BasicTower : MonoBehaviour
     [SerializeField] private Vector3 targetVelocity; // target velocity, since we are working with nav mesh, you need to access the agent velocity, not rigidbody
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -47,7 +48,7 @@ public class BasicTower : MonoBehaviour
 // Update is called once per frame
 void Update()
     {
-        
+
     }
 
     #region Aiming and Shooting
@@ -135,6 +136,7 @@ void Update()
         aimAtTarget();
     }
 
+
     void OnDrawGizmosSelected()
     {
         // Draw a sphere at the transform's position
@@ -146,7 +148,7 @@ void Update()
     /// </summary>
     public void FindClosestTarget()
     {   
-         gos = GameObject.FindGameObjectsWithTag("Enemy");
+        gos = GameObject.FindGameObjectsWithTag("Enemy");
         float distance = Mathf.Infinity;
         Vector3 position = transform.position;
         foreach (GameObject go in gos)

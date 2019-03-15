@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.053433243, g: 0.06660183, b: 0.105374984, a: 1}
+  m_IndirectSpecularColor: {r: 0.053433046, g: 0.066601545, b: 0.10537446, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -245,6 +245,7 @@ MonoBehaviour:
   minAttackRange: 5
   interceptPoint: {x: 0, y: 0, z: 0}
   targetVelocity: {x: 0, y: 0, z: 0}
+  maxEnemiesClose: 5
 --- !u!1 &34666225
 GameObject:
   m_ObjectHideFlags: 0
@@ -737,6 +738,11 @@ PrefabInstance:
         type: 3}
       propertyPath: minAttackRange
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529278560104736142, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a, type: 3}
@@ -1933,6 +1939,16 @@ PrefabInstance:
         type: 3}
       propertyPath: shotSpeed
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529278560104736142, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
+        type: 3}
+      propertyPath: minAttackRange
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 3529278560104736142, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
+        type: 3}
+      propertyPath: attackSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a, type: 3}
@@ -3596,6 +3612,7 @@ MonoBehaviour:
   minAttackRange: 5
   interceptPoint: {x: 0, y: 0, z: 0}
   targetVelocity: {x: 0, y: 0, z: 0}
+  maxEnemiesClose: 5
 --- !u!4 &3574412318205929571
 Transform:
   m_ObjectHideFlags: 0
@@ -3927,6 +3944,21 @@ PrefabInstance:
     - target: {fileID: 7601565557191878989, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313418, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313419, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313420, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
