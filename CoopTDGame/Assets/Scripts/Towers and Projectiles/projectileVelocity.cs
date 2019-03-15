@@ -9,6 +9,7 @@ public class projectileVelocity : MonoBehaviour
     public float damage = 20f;
     public float penetrationFactor = 10f;
     private float targetDefense;
+    private bool appliedDamage = false;
     
 
     // Start is called before the first frame update
@@ -27,12 +28,20 @@ public class projectileVelocity : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if(other.gameObject.tag == "Enemy" && appliedDamage == false)
         {
             targetDefense = other.GetComponent<LifeAndStats>().defense;
             float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
             other.GetComponent<LifeAndStats>().health -= applyingDamage;
+            appliedDamage = true;
+
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator resetDamageApply()
+    {
+        yield return new WaitForSeconds(1);
+        appliedDamage = false;
     }
 }
