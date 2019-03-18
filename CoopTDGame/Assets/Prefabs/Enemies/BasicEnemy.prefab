@@ -3409,9 +3409,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  closest: {fileID: 0}
+  Target: {fileID: 0}
   attackState: 0
+  action: 0
+  decisionLimit: 50
   attackRange: 5
+  detectionRadius: 15
+  scanDelay: 3
 --- !u!114 &6595650898717872745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3471,3 +3475,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   defense: 10
+  destroyable: 0

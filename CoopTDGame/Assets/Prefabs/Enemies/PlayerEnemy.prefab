@@ -20,7 +20,7 @@ GameObject:
   - component: {fileID: 7380145975884703569}
   - component: {fileID: 7664256659495710890}
   m_Layer: 12
-  m_Name: BasicEnemy 2 1
+  m_Name: PlayerEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,9 +136,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 0}
-  closest: {fileID: 0}
+  Target: {fileID: 0}
   attackState: 0
-  attackRange: 90
+  action: 0
+  decisionLimit: 50
+  attackRange: 7
+  followRadius: 20.29
+  stoppingRange: 4.52
+  detectionRadius: 20.6
+  scanDelay: 3
 --- !u!114 &7380145975884703574
 MonoBehaviour:
   m_ObjectHideFlags: 0
