@@ -19,7 +19,6 @@ public class AttackAndDamage : MonoBehaviour
     [Header ("Animation")]
     private Animator enemyAnim;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -35,20 +34,27 @@ public class AttackAndDamage : MonoBehaviour
 
     public void performAttack()
     {
-        Debug.Log("Enemy wdasfattacked");
+        //Debug.Log("Enemy wdasfattacked");
         if (enableAttack)
         {
-            Debug.Log("Enemy attacked");
-            targetDefense = Target.GetComponent<LifeAndStats>().defense;
-            float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
-            Target.GetComponent<LifeAndStats>().health -= applyingDamage;
-            //Debug.Log("AI: apply damage amount" + Target.GetComponent<LifeAndStats>().health);
-            enableAttack = false;
-            StartCoroutine(resetAttackCooldown());
+            if(Target != null)
+            {
+                //Debug.Log("Enemy attacked");
+                targetDefense = Target.GetComponent<LifeAndStats>().defense;
+                float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
+                Target.GetComponent<LifeAndStats>().health -= applyingDamage;
+                //Debug.Log("AI: apply damage amount" + Target.GetComponent<LifeAndStats>().health);
+                enableAttack = false;
+                StartCoroutine(resetAttackCooldown());
 
-            //AttackAnimation
-            //transform.GetChild(0).GetComponent<Animator>().SetTrigger("Attack");
-            enemyAnim.SetTrigger("Attack");
+                //AttackAnimation
+                //transform.GetChild(0).GetComponent<Animator>().SetTrigger("Attack");
+                enemyAnim.SetTrigger("Attack");
+            }
+            else
+            {
+                return;
+            }
         }
 
     }

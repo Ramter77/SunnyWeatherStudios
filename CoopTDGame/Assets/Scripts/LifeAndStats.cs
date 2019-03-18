@@ -41,5 +41,10 @@ public class LifeAndStats : MonoBehaviour
             Destroy(gameObject);
             #endregion
         }
+
+        if ((gameObject.CompareTag("Player") || gameObject.CompareTag("Player2")) && health <= 0)
+        {
+            Debug.Log("Player dead");
+        } 
     }
 }
