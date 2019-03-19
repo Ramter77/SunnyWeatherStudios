@@ -15,6 +15,7 @@ public class MeleeAttack : MonoBehaviour
     [Header("Key references for attacking")]
     [Tooltip("HotKey to trigger attack")]
     [SerializeField] private KeyCode hotkey = KeyCode.Mouse0; // key that triggers the attack
+    [SerializeField] private string fire;
 
     [Header("Attack Settings")] 
     [SerializeField] private float damageSphereRadius; // radius to check for collision
@@ -36,7 +37,8 @@ public class MeleeAttack : MonoBehaviour
     void Update()
     {
         #region Input
-        if (Input.GetKeyDown(hotkey))
+        //if (Input.GetKeyDown(hotkey))
+        if (Input.GetButton(fire))
         {
             //If cooldown is low enough: shoot
             if (Time.time > attackSpeed)

@@ -444,7 +444,7 @@ PrefabInstance:
     - target: {fileID: 7188558407505313414, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
       propertyPath: m_Name
-      value: Player (1)
+      value: Player2 (Controller)
       objectReference: {fileID: 0}
     - target: {fileID: 7188558407505313414, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
@@ -516,10 +516,30 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313419, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: horizontal
+      value: Horizontal2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313419, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: vertical
+      value: Vertical2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313419, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: jump
+      value: Jump2
+      objectReference: {fileID: 0}
     - target: {fileID: 7188558407505313420, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313415, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: fire
+      value: Fire12
       objectReference: {fileID: 0}
     - target: {fileID: 1422013116, guid: 113232069af10fc44a3830158c786f7f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -534,6 +554,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343346893, guid: 113232069af10fc44a3830158c786f7f, type: 3}
+      propertyPath: mouseX
+      value: MouseX2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343346893, guid: 113232069af10fc44a3830158c786f7f, type: 3}
+      propertyPath: mouseY
+      value: MouseY2
       objectReference: {fileID: 0}
     - target: {fileID: 7329177626641608960, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
@@ -926,7 +954,7 @@ PrefabInstance:
     - target: {fileID: 7188558407505313414, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
       propertyPath: m_Name
-      value: Player
+      value: Player (Keyboard)
       objectReference: {fileID: 0}
     - target: {fileID: 7188558407505313414, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
@@ -988,10 +1016,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313419, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: horizontal
+      value: Horizontal
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313419, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: vertical
+      value: Vertical
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313419, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: jump
+      value: Jump
+      objectReference: {fileID: 0}
     - target: {fileID: 7188558407505313420, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313415, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: fire
+      value: Fire1
       objectReference: {fileID: 0}
     - target: {fileID: 1422013116, guid: 113232069af10fc44a3830158c786f7f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1006,6 +1054,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343346893, guid: 113232069af10fc44a3830158c786f7f, type: 3}
+      propertyPath: mouseX
+      value: Mouse X
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343346893, guid: 113232069af10fc44a3830158c786f7f, type: 3}
+      propertyPath: mouseY
+      value: Mouse Y
       objectReference: {fileID: 0}
     - target: {fileID: 7329177626641608960, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
@@ -2911,27 +2967,6 @@ MonoBehaviour:
   - {fileID: 1045599875}
   - {fileID: 411087444}
   - {fileID: 118273488}
---- !u!1 &1032637603 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7188558407505313414, guid: 113232069af10fc44a3830158c786f7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 102931465}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1032637604
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1032637603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96b3f0b9ede1df9438b6c311604cf4b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 100
-  defense: 20
-  destroyable: 0
 --- !u!4 &1032637615 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7601565557191878989, guid: 113232069af10fc44a3830158c786f7f,
