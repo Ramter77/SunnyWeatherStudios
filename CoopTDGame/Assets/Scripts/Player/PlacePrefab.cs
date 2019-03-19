@@ -168,7 +168,8 @@ public class PlacePrefab : MonoBehaviour
         if (Physics.Raycast(ray, out hit, maxRayDistance, mask))
         {
             //Move currentPrefab to rayCastHit position + half of its scale
-            currentPrefab.transform.position = new Vector3(hit.point.x, hit.point.y + halfScale, hit.point.z);
+            currentPrefab.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+            //currentPrefab.transform.position = new Vector3(hit.point.x, hit.point.y + halfScale, hit.point.z);
             
             //Make it stand on hit Terrain with 90 degree angle
             if (!fixedAngle)
