@@ -22,7 +22,7 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] private float damageDelay = 1f; // delay till damage gets applied
     [SerializeField] private float attackDamage; // damage to apply
     [SerializeField] private float attackSpeed = 0.0f;
-    [SerializeField] private float attackCD = 1f;
+    [SerializeField] private float attackCD = .5f;
 
     #endregion
 
