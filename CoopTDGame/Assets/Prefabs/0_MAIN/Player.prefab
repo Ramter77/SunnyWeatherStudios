@@ -1638,6 +1638,7 @@ GameObject:
   - component: {fileID: 102554260392997483}
   - component: {fileID: 7188558407505313422}
   - component: {fileID: 7188558407505313421}
+  - component: {fileID: 4055020087843509997}
   - component: {fileID: 7188558407505313415}
   - component: {fileID: 7188558407505313416}
   - component: {fileID: 7188558407505313417}
@@ -1722,6 +1723,31 @@ CapsuleCollider:
   m_Height: 5.567518
   m_Direction: 1
   m_Center: {x: 0, y: 2.7837696, z: 0}
+--- !u!114 &4055020087843509997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7188558407505313414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb976ae8de3040549811d5b6efc64621, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerName: Player 1
+  PlayerXP: 0
+  PlayerLevel: 1
+  PlayerHP: 50
+  Skills:
+  - skill: {fileID: 11400000, guid: b4b168c30635ef241b0d6732ecc8d819, type: 2}
+    amount: 0
+  - skill: {fileID: 11400000, guid: 2d74c2a0b5ad174498b8e0d5248d1712, type: 2}
+    amount: 0
+  - skill: {fileID: 11400000, guid: 0a82e8270cf60d44fad230ed95156bbb, type: 2}
+    amount: 0
+  - skill: {fileID: 11400000, guid: 325d7b0ab5929cb43bdeb4b387974f29, type: 2}
+    amount: 0
 --- !u!114 &7188558407505313415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1737,6 +1763,7 @@ MonoBehaviour:
   playerAnim: {fileID: 0}
   sphereSpawnPoint: {fileID: 73627160}
   hotkey: 323
+  fire: 
   damageSphereRadius: 1.5
   damageDelay: 1.5
   attackDamage: 110
@@ -1822,6 +1849,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 521b611700410be45810047f0a74e899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  horizontal: 
+  vertical: 
+  jump: 
 --- !u!114 &7188558407505313420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1993,6 +2023,8 @@ MonoBehaviour:
   m_Target: {fileID: 1422013116}
   m_AutoTargetPlayer: 0
   m_UpdateType: 0
+  mouseX: 
+  mouseY: 
   m_MoveSpeed: 0.2
   m_TurnSpeed: 2
   m_TurnSmoothing: 0
@@ -2807,6 +2839,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: baec086904791744185aaa07a6cf55c2, type: 3}
+--- !u!1 &7329177626641247520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100002, guid: baec086904791744185aaa07a6cf55c2,
+    type: 3}
+  m_PrefabInstance: {fileID: 7329177626641214338}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7329177626641247526 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100004, guid: baec086904791744185aaa07a6cf55c2,
@@ -2816,12 +2854,6 @@ GameObject:
 --- !u!4 &7329177626641608966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: baec086904791744185aaa07a6cf55c2,
-    type: 3}
-  m_PrefabInstance: {fileID: 7329177626641214338}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &7329177626641247520 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100002, guid: baec086904791744185aaa07a6cf55c2,
     type: 3}
   m_PrefabInstance: {fileID: 7329177626641214338}
   m_PrefabAsset: {fileID: 0}
