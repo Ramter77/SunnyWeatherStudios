@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.053433243, g: 0.06660183, b: 0.105374984, a: 1}
+  m_IndirectSpecularColor: {r: 0.053433232, g: 0.0666018, b: 0.10537498, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -656,35 +656,12 @@ Transform:
   m_Father: {fileID: 791955491}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &386189202 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7188558407505313414, guid: 113232069af10fc44a3830158c786f7f,
-    type: 3}
-  m_PrefabInstance: {fileID: 7329177626756847533}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &386189203 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7601565557191878989, guid: 113232069af10fc44a3830158c786f7f,
     type: 3}
   m_PrefabInstance: {fileID: 7329177626756847533}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &386189204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 386189202}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb976ae8de3040549811d5b6efc64621, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerName: Player1
-  PlayerXP: 0
-  PlayerLevel: 1
-  PlayerHP: 50
-  Skills: []
 --- !u!1001 &427914473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4234,7 +4211,56 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 3.09
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4055020087843509997, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: Attributes.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055020087843509997, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: PlayerSkills.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055020087843509997, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: Attributes.Array.data[0].attribute
+      value: 
+      objectReference: {fileID: 11400000, guid: f4e29607a9c981e4da8248d5d3db3924,
+        type: 2}
+    - target: {fileID: 4055020087843509997, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: Attributes.Array.data[1].attribute
+      value: 
+      objectReference: {fileID: 11400000, guid: 3df19175a626db34ea2769d47ca5a963,
+        type: 2}
+    - target: {fileID: 4055020087843509997, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: Attributes.Array.data[2].attribute
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c7428d9f42746a4b813ade6b054102e,
+        type: 2}
+    - target: {fileID: 4055020087843509997, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: Attributes.Array.data[0].amount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055020087843509997, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: Attributes.Array.data[1].amount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055020087843509997, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: Attributes.Array.data[2].amount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4055020087843509997, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4055020087843509997, guid: 113232069af10fc44a3830158c786f7f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 113232069af10fc44a3830158c786f7f, type: 3}
 --- !u!1001 &8694694675018676377
 PrefabInstance:

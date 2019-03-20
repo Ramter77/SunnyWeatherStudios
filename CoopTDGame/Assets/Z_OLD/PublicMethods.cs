@@ -5,14 +5,14 @@ using UnityEngine;
 namespace SkillSetup
 {
     [System.Serializable]
-    public class PlayerSkillSets
+    public class PlayerAttributes
     {
-        public Skills skill;
+        public Attributes attribute;
         public int amount;
 
-        public PlayerSkillSets(Skills skill, int amount)
+        public PlayerAttributes(Attributes attribute, int amount)
         {
-            this.skill = skill;
+            this.attribute = attribute;
             this.amount = amount;
         }
     }

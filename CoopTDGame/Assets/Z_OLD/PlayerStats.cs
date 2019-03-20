@@ -12,11 +12,11 @@ namespace SkillSetup
         public int PlayerLevel = 1;
         public int PlayerHP = 50; // increase hp per level by x amount?
 
+        [Header("Player Attributes")]
+        public List<PlayerAttributes> Attributes = new List<PlayerAttributes>();
+
         [Header("Player Skills")]
-        public List<PlayerSkillSets> Skills = new List<PlayerSkillSets>();
-
-
-
+        public List<Skills> PlayerSkills = new List<Skills>();
         // Start is called before the first frame update
         void Start()
         {
