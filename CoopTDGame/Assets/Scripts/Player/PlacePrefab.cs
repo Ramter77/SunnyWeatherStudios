@@ -13,6 +13,8 @@ public class PlacePrefab : MonoBehaviour
 
     public GameObject[] TestPrefabs;
 
+    public int soulCost;
+
     [Tooltip("Layer of colliders to place Prefabs on ('Ground')")]
     [SerializeField]
     private LayerMask mask = 0;
@@ -36,7 +38,7 @@ public class PlacePrefab : MonoBehaviour
     [Tooltip("Maximum distance to place Prefabs")]
     [SerializeField]
     private float maxRayDistance = 1000;
-    
+
     [Tooltip("Check to Instantiate Prefabs straight")]
     [SerializeField]
     private Boolean fixedAngle;
@@ -60,11 +62,18 @@ public class PlacePrefab : MonoBehaviour
     private float halfScale;
 
 
+    SoulStorage soulStorage;
+
+
 
     private MeshRenderer[] meshRenderers;
     #endregion
 
-    private void Start() {
+    private void Start()
+    {
+        soulStorage = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoulStorage>();
+        soulStorage.costToBuild = soulCost;
+
         //Todo: save original materials to replace after placing individual Prefabs
         //OriginalMaterial + i = Prefabs[i].GetComponent<MeshRenderer>().material;
     }
@@ -129,19 +138,23 @@ public class PlacePrefab : MonoBehaviour
     #region ChangeMaterialColor
     private void ChangeMaterialColor()
     {
-        if (placing) {
+        if (placing)
+        {
             //Color Prefab green when on base terrain level (0), else color it red
-            if (setColorToRed) {
+            if (setColorToRed)
+            {
                 currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
             }
-            else {
-                if (currentPrefab.name != "TestRangeIndicator(Clone)") {
-                //if (currentPrefab.transform.position.y == halfScale) {
+            else
+            {
+                if (currentPrefab.name != "TestRangeIndicator(Clone)")
+                {
+                    //if (currentPrefab.transform.position.y == halfScale) {
                     currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
-                //}
-                //else {
-                  //  currentPrefab.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
-                //}
+                    //}
+                    //else {
+                    //  currentPrefab.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
+                    //}
                 }
             }
         }
@@ -170,7 +183,7 @@ public class PlacePrefab : MonoBehaviour
             //Move currentPrefab to rayCastHit position + half of its scale
             currentPrefab.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
             //currentPrefab.transform.position = new Vector3(hit.point.x, hit.point.y + halfScale, hit.point.z);
-            
+
             //Make it stand on hit Terrain with 90 degree angle
             if (!fixedAngle)
             {
@@ -183,7 +196,8 @@ public class PlacePrefab : MonoBehaviour
     #region RotatePrefabByScrolling
     private void RotatePrefabByScrolling()
     {
-        if (fixedRotation) {
+        if (fixedRotation)
+        {
             //Rotate the currentPrefab by scrolling the mouseWheel
             mouseWheelRotation = Input.mouseScrollDelta.y;
             currentPrefab.transform.Rotate(Vector3.up, mouseWheelRotation * mouseWheelRotationMultiplier * 10);
@@ -191,13 +205,14 @@ public class PlacePrefab : MonoBehaviour
             //Reset rotation
             mouseWheelRotation = 0;
         }
-        else {
+        else
+        {
             mouseWheelRotation += Input.mouseScrollDelta.y;
             currentPrefab.transform.Rotate(Vector3.up, mouseWheelRotation * mouseWheelRotationMultiplier);
         }
-        
+
     }
-   #endregion
+    #endregion
 
     #region PlaceOnRelease
     private void PlacePrefabOnRelease()
@@ -205,33 +220,40 @@ public class PlacePrefab : MonoBehaviour
         //If hotKey is pressed again then reset currentObject
         if (Input.GetKeyDown(hotkey))
         {
-            if (!setColorToRed) {
+            if (!setColorToRed)
+            {
                 //!Test
                 Debug.Log(currentPrefab.name);
-                if (currentPrefab.name == "TestRangeIndicator(Clone)") {
-                    
-                    Vector3 pos = new Vector3(currentPrefab.transform.position.x, currentPrefab.transform.position.y+5, currentPrefab.transform.position.z);
+                if (currentPrefab.name == "TestRangeIndicator(Clone)")
+                {
+
+                    Vector3 pos = new Vector3(currentPrefab.transform.position.x, currentPrefab.transform.position.y + 5, currentPrefab.transform.position.z);
                     Destroy(currentPrefab);
                     Instantiate(TestPrefabs[0], pos, transform.rotation);
                     //if target area object prefab
                     //then instantiate fireball above
-                    
+
                     //Reset
                     //currentPrefab = null;
                     placing = false;
                 }
                 //Normal behaviour
-                else {
-                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial1;    //Switch back to original Material
-                    //currentPrefab.transform.GetChild(0).GetComponent<BoxCollider>().isTrigger = false;    //Turn on collision
-                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn on collision
-                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().enabled = false;     //Disable OnTrigger script
+                else
+                {
+                    if (GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoulStorage>().soulCount > soulCost)
+                    {
+                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial1;    //Switch back to original Material
+                        //currentPrefab.transform.GetChild(0).GetComponent<BoxCollider>().isTrigger = false;    //Turn on collision
+                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn on collision
+                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().enabled = false;     //Disable OnTrigger script
 
-                    currentPrefab.gameObject.layer = 11;    //Put on "Turrets" layer
+                        currentPrefab.gameObject.layer = 11;    //Put on "Turrets" layer
+                        soulStorage.substractCostsToBuild();
 
-                    //Reset
-                    currentPrefab = null;
-                    placing = false;
+                        //Reset
+                        currentPrefab = null;
+                        placing = false;
+                    }
                 }
             }
         }
@@ -239,11 +261,14 @@ public class PlacePrefab : MonoBehaviour
     #endregion
 
     #region Public SetColorToRed
-    public void SetColorToRed(bool red) {
-        if (red) {
+    public void SetColorToRed(bool red)
+    {
+        if (red)
+        {
             setColorToRed = true;
         }
-        else {
+        else
+        {
             setColorToRed = false;
         }
     }

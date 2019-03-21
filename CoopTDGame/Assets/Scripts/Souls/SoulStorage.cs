@@ -37,6 +37,7 @@ public class SoulStorage : MonoBehaviour
     public void substractCostsToBuild()
     {
         soulCount -= costToBuild;
+        Debug.Log(soulCount);
     }
     
     public void substactCostsToUpgrade()
