@@ -18,8 +18,7 @@ public class BasicEnemy : MonoBehaviour
     public int attackState = 0; // 0 == not attacking // 1 == attacking // 2 == has recently attacked
     [SerializeField] private int action = 0;
     [SerializeField] private int decisionLimit = 0;
-
-
+    [SerializeField] private float preparationTime = 0f;
 
     [Header("Interaction/Vision/Attack Radius")]
     public float attackRange = 5f;
@@ -27,6 +26,8 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private float stoppingRange = 3.5f; // stops the ai from bumping into targets
     [SerializeField] private float detectionRadius = 15f;
     [SerializeField] private float scanDelay = 5f;
+    [SerializeField] private float minPreparationTimeForAttack = 1f;
+    [SerializeField] private float maxPreparationTimeForAttack = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class BasicEnemy : MonoBehaviour
         Sphere = GameObject.FindGameObjectWithTag("Sphere");
         WalkToSphere();
         StartCoroutine(ScanCycle());
+        preparationTime = Random.Range(1, maxPreparationTimeForAttack);
     }
 
     // Update is called once per frame
@@ -52,13 +54,16 @@ public class BasicEnemy : MonoBehaviour
                 agent.isStopped = false;
                 agent.SetDestination(Target.transform.position);
             }
+
             if (distance <= attackRange) // in attack range
             {
                 attackState = 1;
                 FaceTowardsPlayer();
-                gameObject.GetComponent<AttackAndDamage>().Target = Target;
-                gameObject.GetComponent<AttackAndDamage>().performAttack();
+                prepareAttack();
+                Debug.Log("Ai: Preparing Attack now");
             }
+
+
             if (distance <= stoppingRange) // in stopping range prevents ai from bumping into player
             {
                 agent.isStopped = true;
@@ -73,6 +78,7 @@ public class BasicEnemy : MonoBehaviour
                 StartCoroutine(ScanCycle());
                 agent.isStopped = false;
                 gameObject.GetComponent<AttackAndDamage>().Target = null;
+                preparationTime = Random.Range(1, maxPreparationTimeForAttack);
                 attackState = 0;
             }
         }
@@ -82,17 +88,23 @@ public class BasicEnemy : MonoBehaviour
     }
 
 
-
-    #region check destination reached
-    /// <summary>
-    /// Checks if enemy is close to target location
-    /// </summary>
-    public void CheckDestinationReached()
+    public void prepareAttack()
     {
-
+        // set the enemy animation to idle / preparation for attack
+        preparationTime -= Time.deltaTime;  
+        if(preparationTime <= 0)
+        {
+            gameObject.GetComponent<AttackAndDamage>().Target = Target;
+            gameObject.GetComponent<AttackAndDamage>().performAttack();
+            preparationTime = Random.Range(1, maxPreparationTimeForAttack);
+        }
+        if(preparationTime <= 2)
+        {
+            // display attack indication 
+        }
     }
 
-    #endregion
+
 
     void FaceTowardsPlayer()
     {
