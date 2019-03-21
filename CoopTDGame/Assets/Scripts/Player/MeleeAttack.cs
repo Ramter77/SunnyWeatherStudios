@@ -23,6 +23,7 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] public float attackDamage; // damage to apply
     [SerializeField] private float attackSpeed = 0.0f;
     [SerializeField] private float attackCD = .5f;
+    [SerializeField] private bool attacking = false;
 
     #endregion
 
@@ -39,23 +40,44 @@ public class MeleeAttack : MonoBehaviour
     {
         #region Input
         //if (Input.GetKeyDown(hotkey))
-        if (Input.GetButton(fire))
+        if (Input.GetButtonDown(fire))
         {
             //If cooldown is low enough: shoot
             if (Time.time > attackSpeed)
             {
-                WeaponTriggerCollider.enabled = true;
                 attackSpeed = Time.time + attackCD;
+                StartCoroutine(activateDelayWeaponTrigger());
                 //Start animation & delay damage output
                 playerAnim.SetTrigger("Attack");
                 StartCoroutine(deactivateWeaponTrigger());
+                StartCoroutine(resetAttackingBool());
+            }
+
+            if(attacking == true)
+            {
+                // set a Trigger for the second melee attack animation
+                // Debug.Log("Start second anim");
             }
         }
         #endregion
     }
     IEnumerator deactivateWeaponTrigger()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.6f);
         WeaponTriggerCollider.enabled = false;
+    }
+
+
+    IEnumerator resetAttackingBool()
+    {
+        yield return new WaitForSeconds(1f);
+        attacking = false;
+    }
+
+    IEnumerator activateDelayWeaponTrigger()
+    {
+        yield return new WaitForSeconds(.2f);
+        WeaponTriggerCollider.enabled = true;
+        attacking = true;
     }
 }
