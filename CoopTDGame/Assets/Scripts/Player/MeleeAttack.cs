@@ -31,6 +31,7 @@ public class MeleeAttack : MonoBehaviour
     void Start()
     {
         playerAnim = GetComponent<Animator>();
+        WeaponTriggerCollider.enabled = false;
     }
 
     // Update is called once per frame
