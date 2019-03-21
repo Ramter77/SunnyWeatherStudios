@@ -79,6 +79,7 @@ public class BasicEnemy : MonoBehaviour
                 WalkToSphere();
                 StartCoroutine(ScanCycle());
                 agent.isStopped = false;
+                checkedTarget = null;
                 gameObject.GetComponent<AttackAndDamage>().Target = null;
                 preparationTime = Random.Range(1, maxPreparationTimeForAttack);
                 attackState = 0;
@@ -141,19 +142,31 @@ public class BasicEnemy : MonoBehaviour
                 {
                     Target = hit.gameObject;
                     checkedTarget = Target;
-                    return;
+                    continue;
                 }
+            }
+        }
+    }
 
-
-                else if (hit.tag == "possibleTargets") // if hit object has equal tag to possibleTarget tag
+    void ScanForTower()
+    {
+        Collider[] tol = Physics.OverlapSphere(transform.position, detectionRadius);
+        if(tol.Length > 0)
+        {
+            //Debug.Log("Checking for towers");
+            foreach(Collider hit in tol)
+            {
+                if (hit.tag == "possibleTargets") // if hit object has equal tag to possibleTarget tag
                 {
                     action = Random.Range(0, 100);
-                    if(checkedTarget == null)
+                    //Debug.Log("tower found");
+                    if (checkedTarget == null)
                     {
                         if (action <= decisionLimit) // if decisionmaking percentage is lower than the limit, decide to do this
                         {
-                            Debug.Log("I will rather got for a tower");
-                            checkedTarget = hit.gameObject;
+                            Debug.Log(hit.transform.parent.gameObject);          
+                            //Debug.Log("I will rather go for a tower");
+                            checkedTarget = hit.transform.parent.gameObject.transform.parent.gameObject;
                             NavMeshPath path = new NavMeshPath();
                             agent.CalculatePath(checkedTarget.transform.position, path);
                             if (path.status != NavMeshPathStatus.PathPartial) // checks if path is reachable
@@ -184,6 +197,7 @@ public class BasicEnemy : MonoBehaviour
         yield return new WaitForSeconds(scanDelay);
         Debug.Log("check 2");
         ScanScloseAreaForTargets();
+        ScanForTower();
     }
 
     #endregion
