@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class SoulStorage : MonoBehaviour
 {
     [Header("Soul storage")]
     [Tooltip("current ammount of souls")]
     public int soulCount = 0;
+    public Text soulAmountDisplayText;
 
     [Tooltip("Amount that the players receive at the start of the Game")]
     public int amountOfSoulsAtStart = 0;
@@ -29,6 +30,7 @@ public class SoulStorage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        soulAmountDisplayText.text = "Total Souls:" + soulCount;
         //Debug.Log("SoulCount:" + soulCount);
     }
 

@@ -13,6 +13,7 @@ public class BasicEnemy : MonoBehaviour
     private Rigidbody rigid;
     private GameObject Sphere;
     private GameObject checkedTarget = null;
+    public GameObject attackIndication;
 
     [Header("BehaviorStates")]
     public int attackState = 0; // 0 == not attacking // 1 == attacking // 2 == has recently attacked
@@ -38,6 +39,7 @@ public class BasicEnemy : MonoBehaviour
         WalkToSphere();
         StartCoroutine(ScanCycle());
         preparationTime = Random.Range(1, maxPreparationTimeForAttack);
+        attackIndication.SetActive(false);
     }
 
     // Update is called once per frame
@@ -97,10 +99,12 @@ public class BasicEnemy : MonoBehaviour
             gameObject.GetComponent<AttackAndDamage>().Target = Target;
             gameObject.GetComponent<AttackAndDamage>().performAttack();
             preparationTime = Random.Range(1, maxPreparationTimeForAttack);
+            attackIndication.SetActive(false);
         }
         if(preparationTime <= 2)
         {
             // display attack indication 
+            attackIndication.SetActive(true);
         }
     }
 
