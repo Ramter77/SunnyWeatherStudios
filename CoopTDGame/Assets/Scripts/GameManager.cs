@@ -35,17 +35,21 @@ public class GameManager : MonoBehaviour
         QuitGame();
 
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             SceneManager.LoadScene(0);
         }
-        else if (Input.GetKeyDown(KeyCode.K))
+        else if (Input.GetKeyDown(KeyCode.J))
         {
             SceneManager.LoadScene(1);
         }
-        else if (Input.GetKeyDown(KeyCode.L))
+        else if (Input.GetKeyDown(KeyCode.K))
         {
             SceneManager.LoadScene(2);
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene(3);
         }
     }
 
