@@ -106,6 +106,8 @@ public class PlacePrefab : MonoBehaviour
                 {
                     Destroy(currentPrefab);
                     currentPrefabIndex = -1;
+
+                    GetComponent<MeleeAttack>().enabled = true;
                 }
                 else
                 {
@@ -122,6 +124,8 @@ public class PlacePrefab : MonoBehaviour
                     //Save original Material & On Instantiation give the Prefab the RedGreenMaterial
                     OriginalMaterial1 = currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;    //! 'OriginalMaterial' + i
                     currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load<Material>("RedGreenMaterial");
+
+                    GetComponent<MeleeAttack>().enabled = false;
                 }
 
                 break;
