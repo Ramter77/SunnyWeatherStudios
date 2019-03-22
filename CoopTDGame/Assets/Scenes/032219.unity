@@ -489,7 +489,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1536008091}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &129636556
+--- !u!114 &129636557
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1114,7 +1114,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1389937409}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &282522646
+--- !u!114 &282522647
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1808,7 +1808,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1648436916}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &408444426
+--- !u!114 &408444427
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2827,7 +2827,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1455142246}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &775601203
+--- !u!114 &775601204
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3357,7 +3357,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1744542893}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &883503015
+--- !u!114 &883503016
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3376,7 +3376,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 615039514}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &918211318
+--- !u!114 &918211319
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3777,7 +3777,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1846872146}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1164761752
+--- !u!114 &1164761753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3971,6 +3971,7 @@ GameObject:
   - component: {fileID: 1238296649}
   - component: {fileID: 1238296648}
   - component: {fileID: 1238296647}
+  - component: {fileID: 1238296650}
   m_Layer: 10
   m_Name: Terrain
   m_TagString: Untagged
@@ -4039,13 +4040,94 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1238296650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1238296646}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4531ff2a79e8c8c4e9a70e7d5b874e01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  toolModeInt: 2
+  erosionTypeInt: 0
+  generatorTypeInt: 0
+  isBrushOn: 0
+  isBrushHidden: 0
+  isBrushPainting: 0
+  brushPosition: {x: 0, y: 0, z: 0}
+  brushSize: 50
+  brushOpacity: 1
+  brushSoftness: 0.5
+  neighbourhoodInt: 0
+  useDifferenceMaps: 1
+  thermalIterations: 25
+  thermalMinSlope: 1
+  thermalFalloff: 0.5
+  hydraulicTypeInt: 0
+  hydraulicIterations: 25
+  hydraulicMaxSlope: 60
+  hydraulicFalloff: 0.5
+  hydraulicRainfall: 0.01
+  hydraulicEvaporation: 0.5
+  hydraulicSedimentSolubility: 0.01
+  hydraulicSedimentSaturation: 0.1
+  hydraulicVelocityRainfall: 0.01
+  hydraulicVelocityEvaporation: 0.5
+  hydraulicVelocitySedimentSolubility: 0.01
+  hydraulicVelocitySedimentSaturation: 0.1
+  hydraulicVelocity: 20
+  hydraulicMomentum: 1
+  hydraulicEntropy: 0
+  hydraulicDowncutting: 0.1
+  tidalIterations: 25
+  tidalSeaLevel: 50
+  tidalRangeAmount: 5
+  tidalCliffLimit: 60
+  windIterations: 25
+  windDirection: 0
+  windForce: 0.5
+  windLift: 0.01
+  windGravity: 0.5
+  windCapacity: 0.01
+  windEntropy: 0.1
+  windSmoothing: 0.25
+  terrainLayers:
+  - {fileID: 8574412962073106934, guid: 80553621c0d3171468bc782e39b36fa4, type: 2}
+  - {fileID: 8574412962073106934, guid: 50cc6e16da6c00b40b9700e98a84a164, type: 2}
+  - {fileID: 8574412962073106934, guid: 818e5346d6d912949abd648f1b9901b5, type: 2}
+  slopeBlendMinAngle: 20
+  slopeBlendMaxAngle: 60
+  heightBlendPoints:
+  - 0.33
+  - 0.66
+  gradientStyles: []
+  voronoiTypeInt: 0
+  voronoiCells: 16
+  voronoiFeatures: 1
+  voronoiScale: 1
+  voronoiBlend: 1
+  diamondSquareDelta: 0.5
+  diamondSquareBlend: 1
+  perlinFrequency: 4
+  perlinAmplitude: 1
+  perlinOctaves: 8
+  perlinBlend: 1
+  smoothBlend: 1
+  smoothIterations: 0
+  normaliseMin: 0
+  normaliseMax: 1
+  normaliseBlend: 1
 --- !u!1 &1244463494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3181500200931432530, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
     type: 3}
   m_PrefabInstance: {fileID: 815541455}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1244463495
+--- !u!114 &1244463496
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4930,7 +5012,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1347049012}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1465340965
+--- !u!114 &1465340966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6329,7 +6411,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1932400883}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1812221764
+--- !u!114 &1812221765
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
