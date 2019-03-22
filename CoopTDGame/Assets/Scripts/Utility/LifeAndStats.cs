@@ -45,6 +45,8 @@ public class LifeAndStats : MonoBehaviour
         if ((gameObject.CompareTag("Player") || gameObject.CompareTag("Player2")) && health <= 0)
         {
             Debug.Log("Player dead");
+
+            GetComponent<Animator>().SetTrigger("Die");
         } 
     }
 }

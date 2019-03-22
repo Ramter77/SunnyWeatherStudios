@@ -107,7 +107,7 @@ public class PlacePrefab : MonoBehaviour
                     Destroy(currentPrefab);
                     currentPrefabIndex = -1;
 
-                    GetComponent<MeleeAttack>().enabled = true;
+                    GetComponent<MeleeAttack>().enabled = false;
                 }
                 else
                 {
@@ -125,7 +125,10 @@ public class PlacePrefab : MonoBehaviour
                     OriginalMaterial1 = currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;    //! 'OriginalMaterial' + i
                     currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load<Material>("RedGreenMaterial");
 
-                    GetComponent<MeleeAttack>().enabled = false;
+
+                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<BoxCollider>().isTrigger = false;    //Turn off collision
+
+                    //GetComponent<MeleeAttack>().enabled = false;
                 }
 
                 break;
@@ -227,7 +230,7 @@ public class PlacePrefab : MonoBehaviour
             if (!setColorToRed)
             {
                 //!Test
-                Debug.Log(currentPrefab.name);
+                //Debug.Log(currentPrefab.name);
                 if (currentPrefab.name == "TestRangeIndicator(Clone)")
                 {
 
@@ -257,6 +260,8 @@ public class PlacePrefab : MonoBehaviour
                         //Reset
                         currentPrefab = null;
                         placing = false;
+
+                        GetComponent<MeleeAttack>().enabled = true;
                     }
                 }
             }

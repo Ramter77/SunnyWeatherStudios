@@ -15,7 +15,7 @@ public class PlacePrefabCollisionColor : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.name != "Terrain") {
-            Debug.Log("SetColorToRed(): " + other.name);
+            //Debug.Log("SetColorToRed(): " + other.name);
             _PlacePrefabScript.SetColorToRed(true);
         }
     }
@@ -25,7 +25,7 @@ public class PlacePrefabCollisionColor : MonoBehaviour
     void OnTriggerExit(Collider other)
     {
         if (other.name != "Terrain") {
-            Debug.Log("SetColorToRed(): " + other.name);
+            //Debug.Log("SetColorToRed(): " + other.name);
             _PlacePrefabScript.SetColorToRed(false);
         }
     }
