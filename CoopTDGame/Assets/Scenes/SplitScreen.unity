@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.053433243, g: 0.06660183, b: 0.105374984, a: 1}
+  m_IndirectSpecularColor: {r: 0.05802373, g: 0.073765606, b: 0.11809833, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -506,6 +506,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7329177626641247526, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422013116, guid: 113232069af10fc44a3830158c786f7f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313415, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: fire
+      value: Fire12
+      objectReference: {fileID: 0}
     - target: {fileID: 7188558407505313418, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
       propertyPath: m_Enabled
@@ -535,20 +549,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7188558407505313415, guid: 113232069af10fc44a3830158c786f7f,
-        type: 3}
-      propertyPath: fire
-      value: Fire12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1422013116, guid: 113232069af10fc44a3830158c786f7f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7329177626641247526, guid: 113232069af10fc44a3830158c786f7f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7329177626641608962, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
@@ -1016,6 +1016,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7329177626641247526, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1422013116, guid: 113232069af10fc44a3830158c786f7f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7188558407505313415, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: fire
+      value: Fire1
+      objectReference: {fileID: 0}
     - target: {fileID: 7188558407505313419, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
       propertyPath: horizontal
@@ -1036,24 +1050,19 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7188558407505313415, guid: 113232069af10fc44a3830158c786f7f,
-        type: 3}
-      propertyPath: fire
-      value: Fire1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1422013116, guid: 113232069af10fc44a3830158c786f7f, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7329177626641247526, guid: 113232069af10fc44a3830158c786f7f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7329177626641608962, guid: 113232069af10fc44a3830158c786f7f,
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7329177626631559362, guid: 113232069af10fc44a3830158c786f7f,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343346892, guid: 113232069af10fc44a3830158c786f7f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1343346893, guid: 113232069af10fc44a3830158c786f7f, type: 3}
       propertyPath: mouseX
@@ -1244,6 +1253,28 @@ Terrain:
   m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
   m_GroupingID: 0
   m_AllowAutoConnect: 1
+--- !u!1 &276068261 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7188558407505313414, guid: 113232069af10fc44a3830158c786f7f,
+    type: 3}
+  m_PrefabInstance: {fileID: 216798193}
+  m_PrefabAsset: {fileID: 0}
+--- !u!208 &276068262
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 276068261}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!4 &340242668 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5418639607985436745, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
