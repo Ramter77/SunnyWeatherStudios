@@ -33,6 +33,20 @@ public class GameManager : MonoBehaviour
         SlowMotion();
         ResetScene();
         QuitGame();
+
+
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            SceneManager.LoadScene(0);
+        }
+        else if (Input.GetKeyDown(KeyCode.K))
+        {
+            SceneManager.LoadScene(1);
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     #region Quit Game
