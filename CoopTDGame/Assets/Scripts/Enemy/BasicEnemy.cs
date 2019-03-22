@@ -62,7 +62,7 @@ public class BasicEnemy : MonoBehaviour
                 attackState = 1;
                 FaceTowardsPlayer();
                 prepareAttack();
-                Debug.Log("Ai: Preparing Attack now");
+                //Debug.Log("Ai: Preparing Attack now");
             }
 
 
@@ -164,7 +164,7 @@ public class BasicEnemy : MonoBehaviour
                     {
                         if (action <= decisionLimit) // if decisionmaking percentage is lower than the limit, decide to do this
                         {
-                            Debug.Log(hit.transform.parent.gameObject);          
+                            //Debug.Log(hit.transform.parent.gameObject);          
                             //Debug.Log("I will rather go for a tower");
                             checkedTarget = hit.transform.parent.gameObject.transform.parent.gameObject;
                             NavMeshPath path = new NavMeshPath();
@@ -177,7 +177,7 @@ public class BasicEnemy : MonoBehaviour
                             }
                             else
                             {
-                                Debug.Log("AI: Target is unreachable");
+                                //Debug.Log("AI: Target is unreachable");
                                 checkedTarget = null;
                             }
 
@@ -195,7 +195,7 @@ public class BasicEnemy : MonoBehaviour
     IEnumerator ScanCycle()
     {
         yield return new WaitForSeconds(scanDelay);
-        Debug.Log("check 2");
+        //Debug.Log("check 2");
         ScanScloseAreaForTargets();
         ScanForTower();
     }

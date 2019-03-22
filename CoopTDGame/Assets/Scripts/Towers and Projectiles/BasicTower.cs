@@ -109,7 +109,7 @@ void Update()
             }
             else
             {
-                Debug.Log("Turret: Target not in range");
+                //Debug.Log("Turret: Target not in range");
                 StartCoroutine(shootCd());
             }
            

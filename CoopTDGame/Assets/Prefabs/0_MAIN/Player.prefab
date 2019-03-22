@@ -1845,9 +1845,10 @@ MonoBehaviour:
   hotkey: 323
   fire: Fire1
   damageSphereRadius: 2.56
-  attackDamage: 110
+  attackDamage: 40
   attackSpeed: 0
-  attackCD: 2
+  attackCD: 1
+  attacking: 0
 --- !u!114 &7188558407505313416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1887,6 +1888,7 @@ MonoBehaviour:
   - {fileID: 8127297961243337994, guid: d8103eb10487a8d43b68dfe018da27f6, type: 3}
   TestPrefabs:
   - {fileID: 113481993458745524, guid: 523752e691085914fbfe1fd6d37df56e, type: 3}
+  soulCost: 0
   mask:
     serializedVersion: 2
     m_Bits: 3072
