@@ -56,7 +56,7 @@ public class GameManager : MonoBehaviour
     #region Quit Game
     private void QuitGame()
     {
-        if (Input.GetKey(resetHotkey)) {
+        if (Input.GetKey(KeyCode.Escape)) {
             Application.Quit();
         }
     }
