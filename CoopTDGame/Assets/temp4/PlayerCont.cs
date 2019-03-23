@@ -10,12 +10,16 @@ public class PlayerCont : MonoBehaviour
     public class MouseInput {
         public Vector2 Damping;
         public Vector2 Sensitivity;
+
+        //only invisible for now
         public bool LockMouse;
     }
 
+    #region Public Variables
     [SerializeField] float walkSpeed;
     [SerializeField] float runSpeed;
     [SerializeField] MouseInput MouseControl;
+    #endregion
 
     private MovementCont m_MovementCont;
     public MovementCont MovementCont {
@@ -43,11 +47,11 @@ public class PlayerCont : MonoBehaviour
 
         if (MouseControl.LockMouse) {
             Cursor.visible = false;
-            Cursor.lockState = CursorLockMode.Locked;
+            //Cursor.lockState = CursorLockMode.Locked;
         }
         else {
             Cursor.visible = true;
-            Cursor.lockState = CursorLockMode.None;
+            //Cursor.lockState = CursorLockMode.None;
         }
     }
 
