@@ -126,7 +126,7 @@ public class PlacePrefab : MonoBehaviour
                     currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load<Material>("RedGreenMaterial");
 
 
-                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn off collision
+                    //currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn off collision
 
                     //GetComponent<MeleeAttack>().enabled = false;
                 }

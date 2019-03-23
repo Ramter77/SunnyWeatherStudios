@@ -15,12 +15,6 @@ public class PlayerCont : MonoBehaviour
         public bool LockMouse;
     }
 
-    #region Public Variables
-    [SerializeField] float walkSpeed;
-    [SerializeField] float runSpeed;
-    [SerializeField] MouseInput MouseControl;
-    #endregion
-
     private MovementCont m_MovementCont;
     public MovementCont MovementCont {
         get {
@@ -31,12 +25,17 @@ public class PlayerCont : MonoBehaviour
         }
     }
 
-    InputManager playerInput;
+    #region Variables
+    [SerializeField] float walkSpeed;
+    [SerializeField] float runSpeed;
+    [SerializeField] MouseInput MouseControl;
     Vector2 mouseInput;
 
 
+    InputManager playerInput;
     PlayerAnim playerAnim;
     private bool isJumping;
+    #endregion
 
     void Awake()
     {
