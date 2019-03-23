@@ -15,5 +15,11 @@ public class PlayerAnim : MonoBehaviour
     {
         animator.SetFloat("Vertical", GameManagers.Instance.InputManager.Vertical);
         animator.SetFloat("Horizontal", GameManagers.Instance.InputManager.Horizontal);
+    
+        animator.SetBool("isRunning", GameManagers.Instance.InputManager.isRunning);
+    }
+
+    public void Jump() {
+        animator.SetTrigger("Jump");
     }
 }
