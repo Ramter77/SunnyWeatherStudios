@@ -84,12 +84,17 @@ public class PlayerCont : MonoBehaviour
     void Jump()
     {
         if (playerInput.Jump) {
+            playerAnim.animator.SetTrigger("Jump");
+
+            /*
             if (!isJumping) {
                 isJumping = true;
 
-                //TODO: make player change Y
-                playerAnim.Jump();
+                if (playerAnim.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) {
+                    isJumping = false;
+                }
             }
+            */
         }
     }
 }

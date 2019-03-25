@@ -26,6 +26,14 @@ public class ThirdPersonCam : MonoBehaviour
     }
 
     void Update() {
+        if (localPlayer == null) {
+            localPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCont>();
+        }
+
+        if (cameraLookTarget == null) {
+            cameraLookTarget = localPlayer.transform.Find("cameraLookTarget");
+        }
+
         Vector3 targetPos = cameraLookTarget.position + localPlayer.transform.forward * cameraOffset.z + 
                                                         localPlayer.transform.up * cameraOffset.y +
                                                         localPlayer.transform.right * cameraOffset.x;
