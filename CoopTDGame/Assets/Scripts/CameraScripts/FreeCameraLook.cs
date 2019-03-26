@@ -51,7 +51,7 @@ public class FreeCameraLook : Pivot {
     }
 	
 	// Update is called once per frame
-    protected override	void Update ()
+    protected override void Update ()
 	{
 		base.Update();
 
@@ -93,7 +93,15 @@ public class FreeCameraLook : Pivot {
         //target.transform.Rotate(Vector3.up * smoothX * turnSpeed);
 
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        target.transform.LookAt(ray.GetPoint(100));
+        //target.Find("cameraLookTarget").transform.LookAt(ray.GetPoint(100));
+        //target.transform.LookAt(ray.GetPoint(100));
+
+        Vector3 rayB = ray.GetPoint(100);
+
+        Vector3 rayP = new Vector3(rayB.x, transform.position.y, rayB.z);
+        //target.transform.Rotate(rayP.GetPoint(100));
+        target.transform.LookAt(rayP);
+
 
 		tiltAngle -= smoothY * turnSpeed;
 		tiltAngle = Mathf.Clamp (tiltAngle, -tiltMin, tiltMax);

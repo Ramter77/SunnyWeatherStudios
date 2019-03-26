@@ -13,6 +13,7 @@ public class PlacePrefab : MonoBehaviour
 
     public GameObject[] TestPrefabs;
 
+    [Tooltip ("Cost to place currently selected tower")]
     public int soulCost;
 
     [Tooltip("Layer of colliders to place Prefabs on ('Ground')")]
@@ -22,7 +23,7 @@ public class PlacePrefab : MonoBehaviour
     [Tooltip("Material used to color transparent Prefabs. Green if it's allowed to be placed at that location and Red if it's not")]
     //[SerializeField]
     private Material RedGreenMaterial;
-    private Material OriginalMaterial1;
+    private Material OriginalMaterial;
     private Material _Material; //Own material
 
     //Current selected prefab with assigned HotKey
@@ -37,7 +38,7 @@ public class PlacePrefab : MonoBehaviour
 
     [Tooltip("Maximum distance to place Prefabs")]
     [SerializeField]
-    private float maxRayDistance = 1000;
+    private float maxRayDistance = 100;
 
     [Tooltip("Check to Instantiate Prefabs straight")]
     [SerializeField]
@@ -51,22 +52,24 @@ public class PlacePrefab : MonoBehaviour
     [SerializeField]
     private Boolean fixedRotation = true;
 
-    private float mouseWheelRotation;
+    [Tooltip ("Multiplier to multiply mouse wheel rotation speed by")]
     [SerializeField]
-    private float mouseWheelRotationMultiplier = 0.1f;
+    private float mouseWheelRotationMultiplier = 0.5f;
+    private float mouseWheelRotation;
 
 
-
-    //Todo: Clean these
+    #region Booleans
     private bool placing, setColorToRed;
+    #endregion
+
+    #region Internal
     private float halfScale;
-
-
-    SoulStorage soulStorage;
-
-
-
+    private SoulStorage soulStorage;
     private MeshRenderer[] meshRenderers;
+
+
+    private MeleeAttack _meleeAttack;
+    #endregion
     #endregion
 
     private void Start()
@@ -76,6 +79,11 @@ public class PlacePrefab : MonoBehaviour
 
         //Todo: save original materials to replace after placing individual Prefabs
         //OriginalMaterial + i = Prefabs[i].GetComponent<MeshRenderer>().material;
+
+
+        #region References
+        _meleeAttack = GetComponent<MeleeAttack>();
+        #endregion
     }
 
     private void Update()
@@ -98,21 +106,21 @@ public class PlacePrefab : MonoBehaviour
     {
         for (int i = 0; i < Prefabs.Length; i++)
         {
-            //If pressed a number key between 1-9 instantiate corresponding Prefab
+            //If a number key between 1-9 is pressed, instantiate corresponding Prefab
             if (Input.GetKeyDown(KeyCode.Alpha0 + 1 + i))
             {
-//GetComponent<MeleeAttack>().enabled = false;
-
                 //If pressed again: reset
                 if (PressedKeyOfCurrentPrefab(i))
                 {
                     Destroy(currentPrefab);
                     currentPrefabIndex = -1;
 
-                    GetComponent<MeleeAttack>().enabled = true;
+                    _meleeAttack.enabled = true;     //reenable melee combat & ranged combat
                 }
                 else
                 {
+                    placing = true;
+
                     if (currentPrefab != null)
                     {
                         Destroy(currentPrefab);
@@ -121,18 +129,12 @@ public class PlacePrefab : MonoBehaviour
                     currentPrefab = Instantiate(Prefabs[i]);
                     currentPrefabIndex = i;
 
-                    placing = true;
-
                     //Save original Material & On Instantiation give the Prefab the RedGreenMaterial
-                    OriginalMaterial1 = currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;    //! 'OriginalMaterial' + i
+                    OriginalMaterial = currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;
                     currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load<Material>("RedGreenMaterial");
-
-
                     //currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn off collision
 
-                    GetComponent<MeleeAttack>().enabled = false;
-
-                    
+                    _meleeAttack.enabled = false;    //disable melee combat & ranged combat                    
                 }
 
                 break;
@@ -151,7 +153,6 @@ public class PlacePrefab : MonoBehaviour
     {
         if (placing)
         {
-            //Color Prefab green when on base terrain level (0), else color it red
             if (setColorToRed)
             {
                 currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
@@ -160,12 +161,7 @@ public class PlacePrefab : MonoBehaviour
             {
                 if (currentPrefab.name != "TestRangeIndicator(Clone)")
                 {
-                    //if (currentPrefab.transform.position.y == halfScale) {
                     currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
-                    //}
-                    //else {
-                    //  currentPrefab.transform.GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
-                    //}
                 }
             }
         }
@@ -191,13 +187,12 @@ public class PlacePrefab : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, maxRayDistance, mask))
         {
-            //Move currentPrefab to rayCastHit position + half of its scale
+            //Move currentPrefab to rayCastHit position
             currentPrefab.transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-            //currentPrefab.transform.position = new Vector3(hit.point.x, hit.point.y + halfScale, hit.point.z);
 
-            //Make it stand on hit Terrain with 90 degree angle
             if (!fixedAngle)
             {
+                //Change rotation
                 currentPrefab.transform.rotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
             }
         }
@@ -207,33 +202,26 @@ public class PlacePrefab : MonoBehaviour
     #region RotatePrefabByScrolling
     private void RotatePrefabByScrolling()
     {
-        if (fixedRotation)
-        {
-            //Rotate the currentPrefab by scrolling the mouseWheel
-            mouseWheelRotation = Input.mouseScrollDelta.y;
-            currentPrefab.transform.Rotate(Vector3.up, mouseWheelRotation * mouseWheelRotationMultiplier * 10);
+        //Rotate the currentPrefab by scrolling the mouseWheel
+        mouseWheelRotation = Input.mouseScrollDelta.y;
+        currentPrefab.transform.Rotate(Vector3.up, mouseWheelRotation * mouseWheelRotationMultiplier * 10);
 
+        if (fixedRotation) {
             //Reset rotation
             mouseWheelRotation = 0;
         }
-        else
-        {
-            mouseWheelRotation += Input.mouseScrollDelta.y;
-            currentPrefab.transform.Rotate(Vector3.up, mouseWheelRotation * mouseWheelRotationMultiplier);
-        }
-
     }
     #endregion
 
     #region PlaceOnRelease
     private void PlacePrefabOnRelease()
     {
-        //If hotKey is pressed again then reset currentObject
+        //If hotKey is pressed, place prefab if allowed
         if (Input.GetKeyDown(hotkey))
         {
             if (!setColorToRed)
             {
-                //!Test
+                #region TEST
                 //Debug.Log(currentPrefab.name);
                 if (currentPrefab.name == "TestRangeIndicator(Clone)")
                 {
@@ -250,26 +238,27 @@ public class PlacePrefab : MonoBehaviour
                     //currentPrefab = null;
                     placing = false;
                 }
-                //Normal behaviour
+                #endregion
+
+                #region Normal behaviour
                 else
                 {
-                    if (GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoulStorage>().soulCount > soulCost)
+                    if (GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoulStorage>().soulCount > soulCost)           //If enough souls
                     {
-                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial1;    //Switch back to original Material
-                        //currentPrefab.transform.GetChild(0).GetComponent<BoxCollider>().isTrigger = false;    //Turn on collision
-                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn on collision
-                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().enabled = false;     //Disable OnTrigger script
+                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial;   //Switch back to original Material
+                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;             //Turn on collision
+                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().enabled = false;  //Disable OnTrigger script
 
                         currentPrefab.gameObject.layer = 11;    //Put on "Turrets" layer
-                        soulStorage.substractCostsToBuild();
+                        soulStorage.substractCostsToBuild();    //Subtract souls
 
                         //Reset
                         currentPrefab = null;
                         placing = false;
-
-                        GetComponent<MeleeAttack>().enabled = true;
+                        _meleeAttack.enabled = true;
                     }
                 }
+                #endregion
             }
         }
     }

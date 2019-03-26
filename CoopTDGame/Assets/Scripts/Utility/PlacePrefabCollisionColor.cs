@@ -15,7 +15,7 @@ public class PlacePrefabCollisionColor : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.name != "Terrain") {
-            Debug.Log("SetColorToRed() RED: " + other.name);
+            //Debug.Log("SetColorToRed() RED: " + other.name);
             _PlacePrefabScript.SetColorToRed(true);
         }
     }

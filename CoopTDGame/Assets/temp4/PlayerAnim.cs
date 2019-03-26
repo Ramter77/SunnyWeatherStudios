@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class PlayerAnim : MonoBehaviour
 {
+    #region Variables
     public Animator animator;
+
+    [Tooltip ("Damping for axis based animation")]
     public float axisDamping = 0.1f;
+    [Tooltip ("Damping for button based animation")]
     public float buttonDamping = 0.5f;
 
     private Rigidbody rb;
     private float playerSpeed;
+    #endregion
 
     void Awake()
     {
@@ -19,17 +24,18 @@ public class PlayerAnim : MonoBehaviour
 
     void Update()
     {
+        #region Axis based animation
         animator.SetFloat("Vertical", GameManagers.Instance.InputManager.Vertical, axisDamping, Time.deltaTime);
         animator.SetFloat("Horizontal", GameManagers.Instance.InputManager.Horizontal, axisDamping, Time.deltaTime);
-    
-        //animator.SetBool("isRunning", GameManagers.Instance.InputManager.isRunning);
+        #endregion
 
-
+        #region Button based animation
         if (GameManagers.Instance.InputManager.isRunning) {
             animator.SetFloat("isRunning", 1, buttonDamping, Time.deltaTime);
         }
         else {
             animator.SetFloat("isRunning", 0, buttonDamping, Time.deltaTime);
         }
+        #endregion
     }
 }
