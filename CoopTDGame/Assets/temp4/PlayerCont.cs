@@ -46,11 +46,11 @@ public class PlayerCont : MonoBehaviour
 
         if (MouseControl.LockMouse) {
             Cursor.visible = false;
-            //Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
         }
         else {
             Cursor.visible = true;
-            //Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
@@ -77,8 +77,12 @@ public class PlayerCont : MonoBehaviour
     void Look()
     {
         mouseInput.x = Mathf.Lerp(mouseInput.x, playerInput.MouseInput.x, 1f / MouseControl.Damping.x);
+        //mouseInput.y = Mathf.Lerp(mouseInput.y, playerInput.MouseInput.y, 1f / MouseControl.Damping.y);
 
         transform.Rotate(Vector3.up * mouseInput.x * MouseControl.Sensitivity.x);
+        //transform.Rotate(Vector3.up * mouseInput.y * MouseControl.Sensitivity.y);
+
+
     }
 
     void Jump()

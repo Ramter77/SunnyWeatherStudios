@@ -53,7 +53,7 @@ public class ThrowFireball : MonoBehaviour
                 attackSpeed = Time.time + attackCD;
 
                 //Start animation & delay projectile
-                playerAnim.SetTrigger("Attack");
+                playerAnim.SetTrigger("MagicAttack");
                 StartCoroutine(shootProjectile(shootDelay));
             }
         }    

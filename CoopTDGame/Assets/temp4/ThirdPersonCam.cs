@@ -9,6 +9,8 @@ public class ThirdPersonCam : MonoBehaviour
 
     Transform cameraLookTarget;
     PlayerCont localPlayer;
+    private float mouseInputY;
+    private float yDamping = 1;
 
     void Awake()
     {
@@ -34,9 +36,18 @@ public class ThirdPersonCam : MonoBehaviour
             cameraLookTarget = localPlayer.transform.Find("cameraLookTarget");
         }
 
+        //mouseInputY = Mathf.Lerp(mouseInputY, GameManagers.Instance.InputManager.MouseInput.y, 1f / yDamping);
+
+        mouseInputY -= GameManagers.Instance.InputManager.MouseInput.y;
+
+        if (mouseInputY > 1 && mouseInputY < 10) {
+            cameraOffset.y = mouseInputY;
+        }    
+
+
         Vector3 targetPos = cameraLookTarget.position + localPlayer.transform.forward * cameraOffset.z + 
-                                                        localPlayer.transform.up * cameraOffset.y +
-                                                        localPlayer.transform.right * cameraOffset.x;
+                                                        localPlayer.transform.up      * cameraOffset.y +
+                                                        localPlayer.transform.right   * cameraOffset.x;
         Quaternion targetRot = Quaternion.LookRotation(cameraLookTarget.position - targetPos, Vector3.up);
 
 
