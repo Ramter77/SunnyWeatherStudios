@@ -101,13 +101,15 @@ public class PlacePrefab : MonoBehaviour
             //If pressed a number key between 1-9 instantiate corresponding Prefab
             if (Input.GetKeyDown(KeyCode.Alpha0 + 1 + i))
             {
+//GetComponent<MeleeAttack>().enabled = false;
+
                 //If pressed again: reset
                 if (PressedKeyOfCurrentPrefab(i))
                 {
                     Destroy(currentPrefab);
                     currentPrefabIndex = -1;
 
-                    GetComponent<MeleeAttack>().enabled = false;
+                    GetComponent<MeleeAttack>().enabled = true;
                 }
                 else
                 {
@@ -128,7 +130,9 @@ public class PlacePrefab : MonoBehaviour
 
                     //currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn off collision
 
-                    //GetComponent<MeleeAttack>().enabled = false;
+                    GetComponent<MeleeAttack>().enabled = false;
+
+                    
                 }
 
                 break;
@@ -239,6 +243,8 @@ public class PlacePrefab : MonoBehaviour
                     Instantiate(TestPrefabs[0], pos, transform.rotation);
                     //if target area object prefab
                     //then instantiate fireball above
+
+                    GetComponent<Animator>().SetTrigger("MagicAttack");
 
                     //Reset
                     //currentPrefab = null;

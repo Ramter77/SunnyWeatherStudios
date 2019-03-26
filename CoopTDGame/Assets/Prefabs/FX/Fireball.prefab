@@ -13,10 +13,12 @@ GameObject:
   - component: {fileID: 113481993458745525}
   - component: {fileID: 1544899243408029130}
   - component: {fileID: 3617982184758704934}
+  - component: {fileID: 1336314177500059735}
   - component: {fileID: 6411648113827126569}
   - component: {fileID: 2346435194113405527}
   - component: {fileID: 2544546448591885996}
   - component: {fileID: 5750830792990983559}
+  - component: {fileID: 658456508164392532}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -141,6 +143,19 @@ SphereCollider:
   m_GameObject: {fileID: 113481993458745524}
   m_Material: {fileID: 13400000, guid: 31683653fc5794f4198db97c2e4c8c1d, type: 2}
   m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &1336314177500059735
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113481993458745524}
+  m_Material: {fileID: 13400000, guid: 31683653fc5794f4198db97c2e4c8c1d, type: 2}
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.2
@@ -291,6 +306,19 @@ MonoBehaviour:
     format: 0
     data: 
   shadowDatas: []
+--- !u!114 &658456508164392532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113481993458745524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3b164fe50494b46b90c03a8c739400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ParentEnemy: {fileID: 0}
 --- !u!1 &113481994487893157
 GameObject:
   m_ObjectHideFlags: 0

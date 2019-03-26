@@ -10,15 +10,15 @@ public class PlayerWeaponDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        attackDamage = ParentEnemy.GetComponent<MeleeAttack>().attackDamage;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
+        if (ParentEnemy != null) {
+            attackDamage = ParentEnemy.GetComponent<MeleeAttack>().attackDamage;
+        }
+        else {
+            Debug.Log("ParentEnemy is null: " + gameObject.name);
+            attackDamage = 40;
+        }
         
     }
-
 
     private void OnTriggerEnter(Collider other)
     {

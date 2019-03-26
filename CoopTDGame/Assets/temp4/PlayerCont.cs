@@ -11,6 +11,9 @@ public class PlayerCont : MonoBehaviour
         public Vector2 Damping;
         public Vector2 Sensitivity;
 
+        public float minAngle = 1; 
+        public float maxAngle = 15;
+
         //only invisible for now
         public bool LockMouse;
     }
@@ -28,7 +31,7 @@ public class PlayerCont : MonoBehaviour
     #region Variables
     [SerializeField] float walkSpeed;
     [SerializeField] float runSpeed;
-    [SerializeField] MouseInput MouseControl;
+    [SerializeField] public MouseInput MouseControl;
     Vector2 mouseInput;
 
 
@@ -44,6 +47,7 @@ public class PlayerCont : MonoBehaviour
 
         playerAnim = GetComponent<PlayerAnim>();
 
+/* 
         if (MouseControl.LockMouse) {
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
@@ -52,6 +56,7 @@ public class PlayerCont : MonoBehaviour
             Cursor.visible = true;
             Cursor.lockState = CursorLockMode.None;
         }
+        */
     }
 
     void Update() {
@@ -76,12 +81,16 @@ public class PlayerCont : MonoBehaviour
 
     void Look()
     {
-        mouseInput.x = Mathf.Lerp(mouseInput.x, playerInput.MouseInput.x, 1f / MouseControl.Damping.x);
+        //mouseInput.x = Mathf.Lerp(mouseInput.x, playerInput.MouseInput.x, 1f / MouseControl.Damping.x);
         //mouseInput.y = Mathf.Lerp(mouseInput.y, playerInput.MouseInput.y, 1f / MouseControl.Damping.y);
 
-        transform.Rotate(Vector3.up * mouseInput.x * MouseControl.Sensitivity.x);
+        //transform.Rotate(Vector3.up * mouseInput.x * MouseControl.Sensitivity.x);
         //transform.Rotate(Vector3.up * mouseInput.y * MouseControl.Sensitivity.y);
 
+
+        //Camera.main.transform.Rotate(Vector3.left * mouseInput.y * MouseControl.Sensitivity.y);
+        
+        //Camera.main.GetComponent<ThirdPersonCam>().cameraOffset.y += mouseInput.y * MouseControl.Sensitivity.y;
 
     }
 
