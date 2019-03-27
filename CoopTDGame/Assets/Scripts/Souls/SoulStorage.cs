@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class SoulStorage : MonoBehaviour
+//public class SoulStorage : MonoBehaviour
+public class SoulStorage : Singleton<SoulStorage>
 {
     [Header("Soul storage")]
     [Tooltip("current ammount of souls")]

@@ -64,24 +64,21 @@ public class PlacePrefab : MonoBehaviour
 
     #region Internal
     private float halfScale;
-    private SoulStorage soulStorage;
     private MeshRenderer[] meshRenderers;
-
-
     private MeleeAttack _meleeAttack;
+
+    private Camera CameraM;
     #endregion
     #endregion
 
     private void Start()
     {
-        soulStorage = GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoulStorage>();
-        soulStorage.costToBuild = soulCost;
-
-        //Todo: save original materials to replace after placing individual Prefabs
-        //OriginalMaterial + i = Prefabs[i].GetComponent<MeshRenderer>().material;
-
+        //soulStorage = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<SoulStorage>();
+        //! --> this instead:
+        SoulStorage.Instance.costToBuild = soulCost;
 
         #region References
+        CameraM = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         _meleeAttack = GetComponent<MeleeAttack>();
         #endregion
     }
@@ -177,12 +174,12 @@ public class PlacePrefab : MonoBehaviour
         if (fixedCameraPlacement)
         {
             //Cast a ray to the middle of the screen
-            ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            ray = CameraM.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         }
         else
         {
             //Cast a ray to the mouse position
-            ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            ray = CameraM.ScreenPointToRay(Input.mousePosition);
         }
 
         if (Physics.Raycast(ray, out hit, maxRayDistance, mask))
@@ -243,14 +240,14 @@ public class PlacePrefab : MonoBehaviour
                 #region Normal behaviour
                 else
                 {
-                    if (GameObject.FindGameObjectWithTag("GameManager").GetComponent<SoulStorage>().soulCount > soulCost)           //If enough souls
+                    if (SoulStorage.Instance.soulCount > soulCost)           //If enough souls
                     {
                         currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial;   //Switch back to original Material
                         currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;             //Turn on collision
                         currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().enabled = false;  //Disable OnTrigger script
 
                         currentPrefab.gameObject.layer = 11;    //Put on "Turrets" layer
-                        soulStorage.substractCostsToBuild();    //Subtract souls
+                        SoulStorage.Instance.substractCostsToBuild();    //Subtract souls
 
                         //Reset
                         currentPrefab = null;
