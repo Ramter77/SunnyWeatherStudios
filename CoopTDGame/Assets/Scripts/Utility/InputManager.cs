@@ -43,8 +43,8 @@ public class InputManager : Singleton<InputManager>
     void Update()
     {
         #region Player1
-        Vertical = Input.GetAxis("Vertical");
-        Horizontal = Input.GetAxis("Horizontal");
+        Vertical = Input.GetAxisRaw("Vertical");
+        Horizontal = Input.GetAxisRaw("Horizontal");
         Jump = Input.GetButtonDown("Jump");
         MouseInput = new Vector2(Input.GetAxisRaw("Mouse X"), Input.GetAxisRaw("Mouse Y"));
         Fire1 = Input.GetButtonDown("Fire1");

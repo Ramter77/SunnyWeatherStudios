@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SoulPickUp : MonoBehaviour
 {
-    private GameObject manager;
     private bool pickedUp = false;
     [SerializeField] private int soulValue = 0;
     [SerializeField] private int minValue = 0;
@@ -12,7 +11,6 @@ public class SoulPickUp : MonoBehaviour
 
     private void Start()
     {
-        manager = GameObject.FindGameObjectWithTag("GameManager");
         soulValue = Random.Range(minValue, maxValue);
     }
 
@@ -21,7 +19,7 @@ public class SoulPickUp : MonoBehaviour
         if(other.gameObject.tag == "Player" && pickedUp == false)
         {
             pickedUp = true;
-            manager.GetComponent<SoulStorage>().soulCount += soulValue;
+            SoulStorage.Instance.soulCount += soulValue;
             Destroy(gameObject);
         }
     }

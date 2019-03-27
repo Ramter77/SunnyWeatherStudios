@@ -16,7 +16,8 @@ public class ShakeCamera : MonoBehaviour {
 	void Update () 
     {
         if (positionShakeSpeed > 0)
-        {
+        {   
+            Debug.Log("shake");
             transform.localPosition = position + Vector3.Scale(SmoothRandom.GetVector3(positionShakeSpeed), positionShakeRange);
         }
 	}
