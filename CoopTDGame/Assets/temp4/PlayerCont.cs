@@ -36,14 +36,21 @@ public class PlayerCont : MonoBehaviour
 
 
     InputManager playerInput;
+    SceneControl sceneControl;
+    SlowMotionControl slowMotionControl;
     PlayerAnim playerAnim;
     private bool isJumping;
     #endregion
 
     void Awake()
     {
+        #region Initalize
         playerInput = GameManagers.Instance.InputManager;
+        sceneControl = GameManagers.Instance.SceneControl;
+        slowMotionControl = GameManagers.Instance.SlowMotionControl;
+
         GameManagers.Instance.LocalPlayer = this;
+        #endregion
 
         playerAnim = GetComponent<PlayerAnim>();
 

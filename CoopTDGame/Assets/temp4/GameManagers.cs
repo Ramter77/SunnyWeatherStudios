@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class GameManagers
 {
+    public GameObject gm;
+
+
+
     public event System.Action<PlayerCont> OnLocalPlayerJoined;
 
     private GameObject gameObject;
@@ -25,6 +29,26 @@ public class GameManagers
                 m_InputManager = gameObject.AddComponent<InputManager>();
             }
             return m_InputManager;
+        }
+    }
+
+    private SceneControl m_SceneControl;
+    public SceneControl SceneControl {
+        get {
+            if (m_SceneControl == null) {
+                m_SceneControl = gameObject.AddComponent<SceneControl>();
+            }
+            return m_SceneControl;
+        }
+    }
+
+    private SlowMotionControl m_SlowMotionControl;
+    public SlowMotionControl SlowMotionControl {
+        get {
+            if (m_SlowMotionControl == null) {
+                m_SlowMotionControl = gameObject.AddComponent<SlowMotionControl>();
+            }
+            return m_SlowMotionControl;
         }
     }
 

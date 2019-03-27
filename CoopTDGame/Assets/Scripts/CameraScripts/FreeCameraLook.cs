@@ -91,16 +91,9 @@ public class FreeCameraLook : Pivot {
 
         //Rotate player along camera
         //target.transform.Rotate(Vector3.up * smoothX * turnSpeed);
-
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        //target.Find("cameraLookTarget").transform.LookAt(ray.GetPoint(100));
-        //target.transform.LookAt(ray.GetPoint(100));
-
-        Vector3 rayB = ray.GetPoint(100);
-
-        Vector3 rayP = new Vector3(rayB.x, transform.position.y, rayB.z);
-        //target.transform.Rotate(rayP.GetPoint(100));
-        target.transform.LookAt(rayP);
+        Vector3 ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)).GetPoint(100);
+        Vector3 rayXZ = new Vector3(ray.x, transform.position.y, ray.z);
+        target.transform.LookAt(rayXZ);
 
 
 		tiltAngle -= smoothY * turnSpeed;
