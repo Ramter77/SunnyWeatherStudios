@@ -27,36 +27,51 @@ public class MeleeAttack : MonoBehaviour
 
     #endregion
 
-
-    // Start is called before the first frame update
     void Start()
     {
+        attackSpeed = 0;
+        attacking = false;
         playerAnim = GetComponent<Animator>();
         WeaponTriggerCollider.enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         #region Input
-        //if (Input.GetKeyDown(hotkey))
-        if (Input.GetButtonDown(fire))
+        if (InputManager.Instance.Fire1)
         {
-            //If cooldown is low enough: shoot
+            //If cooldown is low enough
             if (Time.time > attackSpeed)
             {
-                attackSpeed = Time.time + attackCD;
-                StartCoroutine(activateDelayWeaponTrigger());
-                //Start animation & delay damage output
-                playerAnim.SetTrigger("Attack");
-                StartCoroutine(deactivateWeaponTrigger());
-                StartCoroutine(resetAttackingBool());
-            }
+                //If not already attacking
+                if (!attacking) {
+                    attacking = true;
 
-            if(attacking == true)
-            {
-                // set a Trigger for the second melee attack animation
-                // Debug.Log("Start second anim");
+
+                    #region Running attack
+                    if (InputManager.Instance.isRunning) {
+                        playerAnim.SetTrigger("RunAttack");
+                    }
+                    #endregion
+
+                    #region Normal melee
+                    else {
+                        playerAnim.SetTrigger("MeleeAttack");
+                    }
+                    #endregion
+
+                    //Enable weaponCollider which gets diabled along the reset of the attackCD
+                    WeaponTriggerCollider.enabled = true;
+
+
+
+
+                    //attackSpeed = Time.time + attackCD;
+                    //StartCoroutine(activateDelayWeaponTrigger());
+                    //Start animation & delay damage output
+                    //StartCoroutine(deactivateWeaponTrigger());
+                    //StartCoroutine(resetAttackingBool());
+                }
             }
         }
         #endregion
@@ -79,5 +94,13 @@ public class MeleeAttack : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         WeaponTriggerCollider.enabled = true;
         attacking = true;
+    }
+
+
+    public void resetMeleeAttackCD() {
+        attacking = false;
+        attackSpeed = 0;
+        //attackCD = 0;
+        WeaponTriggerCollider.enabled = false;
     }
 }

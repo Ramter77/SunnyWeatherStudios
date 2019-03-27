@@ -2,6 +2,9 @@
 
 public class FreeCameraLook : Pivot {
 
+    public string mouseX, mouseY;
+
+
 	[SerializeField] private float moveSpeed = 5f;
 	[SerializeField] private float turnSpeed = 1.5f;
 	[SerializeField] private float turnsmoothing = .1f;
@@ -68,10 +71,13 @@ public class FreeCameraLook : Pivot {
 	void HandleRotationMovement()
 	{
         HandleOffsets();
-		float x = InputManager.Instance.MouseInput.x + offsetX;
+		//float x = InputManager.Instance.MouseInput.x + offsetX;
         //Input.GetAxis("Mouse X") + offsetX;
-		float y = InputManager.Instance.MouseInput.y + offsetY;
+        float x = Input.GetAxis(mouseX) + offsetX;
+
+		//float y = InputManager.Instance.MouseInput.y + offsetY;
         //Input.GetAxis("Mouse Y") + offsetY;
+        float y = Input.GetAxis(mouseY) + offsetY;
 
         if (turnsmoothing > 0)
         {
@@ -89,7 +95,7 @@ public class FreeCameraLook : Pivot {
 		transform.rotation = Quaternion.Euler(0f, lookAngle, 0);
 
         //Rotate player along camera
-        //target.transform.Rotate(Vector3.up * smoothX * turnSpeed);
+        target.transform.Rotate(Vector3.up * smoothX * turnSpeed);
         /*
         Vector3 ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)).GetPoint(100);
         Vector3 rayXZ = new Vector3(ray.x, transform.position.y, ray.z);

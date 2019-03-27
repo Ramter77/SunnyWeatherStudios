@@ -140,7 +140,7 @@ void Update()
     void OnDrawGizmosSelected()
     {
         // Draw a sphere at the transform's position
-        Gizmos.DrawSphere(centerAttackRadius.position, attackRange);
+        Gizmos.DrawWireSphere(centerAttackRadius.position, attackRange);
     }
 
     /// <summary>

@@ -3,6 +3,8 @@
 public class CharacterStateBehaviour : StateMachineBehaviour{
     [HideInInspector]
     public AnimatorStateInfo currentState;
+    private AvatarMask originalAvatarMask;
+    public AvatarMask newAvatarMask;
     
 
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex){
@@ -15,6 +17,8 @@ public class CharacterStateBehaviour : StateMachineBehaviour{
 
 
         //Debug.Log("State Enter");
+
+
     }
 
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex){

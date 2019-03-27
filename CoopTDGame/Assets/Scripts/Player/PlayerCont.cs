@@ -159,7 +159,7 @@ public class PlayerCont : MonoBehaviour
                 moveSpeed = runSpeed;
             }
 
-            Vector2 direction = new Vector2(InputManager.Instance.Vertical * moveSpeed, InputManager.Instance.Horizontal * moveSpeed);
+            //Vector2 direction = new Vector2(InputManager.Instance.Vertical * moveSpeed, InputManager.Instance.Horizontal * moveSpeed);
             //MovementCont.Move(direction);
         }
     }

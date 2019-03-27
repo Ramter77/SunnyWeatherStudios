@@ -21,8 +21,12 @@ public class RangedAttack : MonoBehaviour
 
     [Header ("Parameters")]
     [Tooltip("HotKey to throw Projectile")]
+    
+    /* [SerializeField]
+    private KeyCode hotkey = KeyCode.Mouse0; */
+
     [SerializeField]
-    private KeyCode hotkey = KeyCode.Mouse0;
+    private string button = "Fire1";
 
     [Tooltip("Delay of instantiating projectile")]
     [SerializeField]
@@ -45,7 +49,7 @@ public class RangedAttack : MonoBehaviour
     void Update()
     {
         #region Input
-        if (Input.GetKeyDown(hotkey)) {
+        if (Input.GetButton(button)) {
             //If cooldown is low enough: shoot
             if (Time.time > attackSpeed) {
                 attackSpeed = Time.time + attackCD;
