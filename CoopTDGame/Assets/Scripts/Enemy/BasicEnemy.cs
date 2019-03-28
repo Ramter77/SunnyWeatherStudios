@@ -15,11 +15,14 @@ public class BasicEnemy : MonoBehaviour
     private GameObject checkedTarget = null;
     public GameObject attackIndication;
 
-    [Header("BehaviorStates")]
+    [Header("BehaviorStates / Effect States")]
     public int attackState = 0; // 0 == not attacking // 1 == attacking // 2 == has recently attacked
     [SerializeField] private int action = 0;
     [SerializeField] private int decisionLimit = 0;
     [SerializeField] private float preparationTime = 0f;
+    [SerializeField] private bool knockback = false;
+    [SerializeField] private float knockbackDuration = 2f;
+    public Vector3 knockbackForce;
 
     [Header("Interaction/Vision/Attack Radius")]
     public float attackRange = 5f;
@@ -29,6 +32,9 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private float scanDelay = 5f;
     [SerializeField] private float minPreparationTimeForAttack = 1f;
     [SerializeField] private float maxPreparationTimeForAttack = 5f;
+    
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +57,7 @@ public class BasicEnemy : MonoBehaviour
         {
             float distance = Vector3.Distance(Target.transform.position, transform.position);
 
-            if (distance <= detectionRadius && distance > stoppingRange)
+            if (distance <= detectionRadius && distance > stoppingRange && knockback == false)
             {
                 agent.isStopped = false;
                 agent.SetDestination(Target.transform.position);
@@ -66,7 +72,7 @@ public class BasicEnemy : MonoBehaviour
             }
 
 
-            if (distance <= stoppingRange) // in stopping range prevents ai from bumping into player
+            if (distance <= stoppingRange && knockback == false) // in stopping range prevents ai from bumping into player
             {
                 agent.isStopped = true;
                 rigid.velocity = Vector3.zero;
@@ -108,7 +114,6 @@ public class BasicEnemy : MonoBehaviour
             attackIndication.SetActive(true);
         }
     }
-
 
 
     void FaceTowardsPlayer()
@@ -225,38 +230,5 @@ public class BasicEnemy : MonoBehaviour
     }
 
     #endregion
-    /*
-    #region Find closest target
-    /// <summary>
-    /// Finds the closest target out of all possible targets
-    /// </summary>
-    
-    public void FindClosestTarget()
-    {
-        gos = GameObject.FindGameObjectsWithTag("possibleTargets");
-        float distance = Mathf.Infinity;
-        Vector3 position = transform.position;
-        foreach (GameObject go in gos)
-        { // loops through all objects in the gos array
-            Vector3 diff = go.transform.position - position;
-            float curDistance = diff.sqrMagnitude;
-            if (curDistance < distance)
-            {
-                closest = go;
-                distance = curDistance;
-            }
-        }
-        NavMeshPath path = new NavMeshPath();
-        if(closest != null)
-        { // check if path is reachable, if so then set destination to closest target
-            agent.CalculatePath(closest.transform.position, path);
-            if (path.status != NavMeshPathStatus.PathPartial)
-            {
-                agent.destination = closest.transform.position;
-                gameObject.GetComponent<AttackAndDamage>().Target = closest;
-            }
-        }
-    }
-#endregion
-    */
+
 }

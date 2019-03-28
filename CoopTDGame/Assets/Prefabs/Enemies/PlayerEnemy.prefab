@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 7380145975884703568}
   - component: {fileID: 7380145975884703569}
   - component: {fileID: 7664256659495710890}
+  - component: {fileID: 5859490157912084198}
   m_Layer: 12
   m_Name: PlayerEnemy
   m_TagString: Enemy
@@ -203,7 +204,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.9
-  m_Speed: 3
+  m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -234,6 +235,9 @@ MonoBehaviour:
   action: 0
   decisionLimit: 100
   preparationTime: 0
+  knockback: 0
+  knockbackDuration: 2
+  knockbackForce: {x: 0, y: 0, z: 0}
   attackRange: 7
   followRadius: 20.29
   stoppingRange: 4.52
@@ -320,6 +324,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &5859490157912084198
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7380145975884703583}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.6719208
+  m_Height: 5.5
+  m_Direction: 1
+  m_Center: {x: -0.032608032, y: 2.8000002, z: -0.17252326}
 --- !u!1 &8106689290571509850
 GameObject:
   m_ObjectHideFlags: 0

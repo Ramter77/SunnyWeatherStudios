@@ -6,26 +6,27 @@ public class windProjectile : MonoBehaviour
 {
     public float windDamage = 0f;
     public Vector3 knockbackForce;
+    private float lifetime = 4f;
+    public float speed = 20f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Destroy(gameObject, lifetime);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        transform.position += transform.forward * speed * Time.deltaTime;
     }
 
-
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Enemy")
+        if(other.gameObject.tag == "Enemy")
         {
-            collision.gameObject.GetComponent<LifeAndStats>().health -= windDamage;
-            collision.gameObject.GetComponent<Rigidbody>().velocity = knockbackForce;
+            other.gameObject.GetComponent<LifeAndStats>().health -= windDamage;
+            Destroy(gameObject);
         }
     }
 }
