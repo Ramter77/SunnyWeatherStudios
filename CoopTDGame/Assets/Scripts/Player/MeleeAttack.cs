@@ -16,7 +16,7 @@ public class MeleeAttack : MonoBehaviour
     [Header("Key references for attacking")]
     [Tooltip("HotKey to trigger attack")]
     [SerializeField] private KeyCode hotkey = KeyCode.Mouse0; // key that triggers the attack
-    [SerializeField] private string fire;
+    [SerializeField] private string button;
 
     [Header("Attack Settings")] 
     [SerializeField] private float damageSphereRadius; // radius to check for collision
@@ -24,6 +24,11 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] private float attackSpeed = 0.0f;
     [SerializeField] private float attackCD = .5f;
     [SerializeField] private bool attacking = false;
+
+
+    private PlayerCont playC;
+    bool _input;
+    private bool _runInput;
 
     #endregion
 
@@ -33,13 +38,38 @@ public class MeleeAttack : MonoBehaviour
         attacking = false;
         playerAnim = GetComponent<Animator>();
         WeaponTriggerCollider.enabled = false;
+
+        playC = GetComponent<PlayerCont>();
     }
 
     void Update()
     {
         #region Input
-        if (InputManager.Instance.Fire1)
+        //if (InputManager.Instance.Fire1)
+
+
+        
+        //* Player 1 input */
+        if (playC.Player_ == 1)
         {
+            _input = Input.GetButton(button);
+            _runInput = InputManager.Instance.isRunning;
+        }
+
+        //*Player 2 input */
+        else {
+            float t = Input.GetAxis(button);
+            if (t > 0) {
+                _input = true;
+            }
+            else {
+                _input = false;
+            }
+            
+            _runInput = InputManager.Instance.isRunning2;
+        }
+
+        if (_input) {
             //If cooldown is low enough
             if (Time.time > attackSpeed)
             {
@@ -49,7 +79,7 @@ public class MeleeAttack : MonoBehaviour
 
 
                     #region Running attack
-                    if (InputManager.Instance.isRunning) {
+                    if (_runInput) {
                         playerAnim.SetTrigger("RunAttack");
                     }
                     #endregion
@@ -76,6 +106,7 @@ public class MeleeAttack : MonoBehaviour
         }
         #endregion
     }
+
     IEnumerator deactivateWeaponTrigger()
     {
         yield return new WaitForSeconds(.6f);

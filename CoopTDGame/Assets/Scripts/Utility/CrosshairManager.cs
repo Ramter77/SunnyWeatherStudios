@@ -4,7 +4,9 @@ using System.Collections;
 public class CrosshairManager : MonoBehaviour {
 
     public int index;
-    public Crosshair activeCrosshair;
+    //public Crosshair activeCrosshair;
+
+    public Crosshair activeCrosshair1, activeCrosshair2;
     public Crosshair[] crosshairs;
 
     public static CrosshairManager instace;
@@ -20,18 +22,23 @@ public class CrosshairManager : MonoBehaviour {
 
     void Start()
     {
-        for (int i = 0; i < crosshairs.Length; i++)
+        /* for (int i = 0; i < crosshairs.Length; i++)
         {
             crosshairs[i].gameObject.SetActive(false);
         }
 
         crosshairs[index].gameObject.SetActive(true);
-        activeCrosshair = crosshairs[index];
+        activeCrosshair = crosshairs[index]; */
+
+
+
+        activeCrosshair1 = crosshairs[0];
+        activeCrosshair2 = crosshairs[1];
     }
 
     public void DefineCrosshairByIndex(int findIndex)
     {
-        activeCrosshair = crosshairs[findIndex];
+        //activeCrosshair = crosshairs[findIndex];
     }
 
     public void DefineCrosshairByName(string name)
@@ -40,7 +47,7 @@ public class CrosshairManager : MonoBehaviour {
         {
             if(string.Equals(crosshairs[i].name,name))
             {
-                activeCrosshair = crosshairs[i];
+                //activeCrosshair = crosshairs[i];
                 break;
             }
         }

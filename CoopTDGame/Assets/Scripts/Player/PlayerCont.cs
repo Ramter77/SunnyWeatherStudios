@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class PlayerCont : MonoBehaviour
 {
+
+    public int Player_ = 1;
+
+
     [System.Serializable]
     public class MouseInput {
         public Vector2 Damping;
@@ -132,8 +136,9 @@ public class PlayerCont : MonoBehaviour
         Vector3 smoLok = Camera.main.transform.forward;
         smoLok.y = 0;
 
-
+        if (Player_ == 1) {
         SmoothLook(smoLok);
+        }
 
         //Vector3 fromRotation = transform.rotation.eulerAngles;
         //Vector3 newRotation = fromRotation + Vector3.up * ( rotationAmount * 360 * Time.deltaTime);

@@ -35,7 +35,7 @@ public class SoulStorage : Singleton<SoulStorage>
         //Debug.Log("SoulCount:" + soulCount);
     }
 
-    public void substractCostsToBuild()
+    public void substractCostsToBuild() //give a float and then subtract that?
     {
         soulCount -= costToBuild;
         Debug.Log(soulCount);

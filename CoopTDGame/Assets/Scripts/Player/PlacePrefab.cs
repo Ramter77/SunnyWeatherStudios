@@ -28,6 +28,7 @@ public class PlacePrefab : MonoBehaviour
 
     //Current selected prefab with assigned HotKey
     private GameObject currentPrefab;
+    private Transform currentPrefabChild;
     private int currentPrefabIndex = -1;
 
 
@@ -127,9 +128,18 @@ public class PlacePrefab : MonoBehaviour
                     currentPrefabIndex = i;
 
                     //Save original Material & On Instantiation give the Prefab the RedGreenMaterial
-                    OriginalMaterial = currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;
-                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load<Material>("RedGreenMaterial");
-                    //currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn off collision
+                    //currentPrefabChild = currentPrefab.transform.GetChild(0).GetChild(0);
+                    if (currentPrefab.transform != null) {
+                        if (currentPrefab.transform.childCount > 0) {
+                    if (currentPrefab.transform.GetChild(0) != null) {
+                    if (currentPrefab.transform.GetChild(0).GetChild(0) != null) {
+                        OriginalMaterial = currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;
+                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load<Material>("RedGreenMaterial");
+                        //currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn off collision
+                    }
+                    }
+                    }
+                    }
 
                     _meleeAttack.enabled = false;    //disable melee combat & ranged combat                    
                 }
@@ -158,7 +168,14 @@ public class PlacePrefab : MonoBehaviour
             {
                 if (currentPrefab.name != "TestRangeIndicator(Clone)")
                 {
-                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
+                    //currentPrefabChild = 
+                    if (currentPrefab != null) {
+                        if (currentPrefab.transform.childCount > 0) {
+                    if (currentPrefab.transform.GetChild(0).GetChild(0) != null) {
+                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
+                    }
+                    }
+                    }
                 }
             }
         }
@@ -242,9 +259,11 @@ public class PlacePrefab : MonoBehaviour
                 {
                     if (SoulStorage.Instance.soulCount > soulCost)           //If enough souls
                     {
+                        if (currentPrefab.transform.childCount > 0) {
                         currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial;   //Switch back to original Material
                         currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;             //Turn on collision
                         currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().enabled = false;  //Disable OnTrigger script
+                        }
 
                         currentPrefab.gameObject.layer = 11;    //Put on "Turrets" layer
                         SoulStorage.Instance.substractCostsToBuild();    //Subtract souls
