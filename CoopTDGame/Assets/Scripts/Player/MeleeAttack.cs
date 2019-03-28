@@ -13,11 +13,6 @@ public class MeleeAttack : MonoBehaviour
     public Collider WeaponTriggerCollider;
     //[SerializeField] private int enemyLayer;
 
-    [Header("Key references for attacking")]
-    [Tooltip("HotKey to trigger attack")]
-    [SerializeField] private KeyCode hotkey = KeyCode.Mouse0; // key that triggers the attack
-    [SerializeField] private string button;
-
     [Header("Attack Settings")] 
     [SerializeField] private float damageSphereRadius; // radius to check for collision
     [SerializeField] public float attackDamage; // damage to apply
@@ -27,75 +22,52 @@ public class MeleeAttack : MonoBehaviour
 
 
     private PlayerCont playC;
-    bool _input;
-    private bool _runInput;
-
+    private bool _input, _runInput;
     #endregion
 
     void Start()
     {
+        playC = GetComponent<PlayerCont>();
+        playerAnim = GetComponent<Animator>();
+
         attackSpeed = 0;
         attacking = false;
-        playerAnim = GetComponent<Animator>();
         WeaponTriggerCollider.enabled = false;
-
-        playC = GetComponent<PlayerCont>();
     }
 
     void Update()
     {
-        #region Input
-        //if (InputManager.Instance.Fire1)
-
-
-        
         //* Player 1 input */
         if (playC.Player_ == 1)
         {
-            _input = Input.GetButton(button);
+            _input = InputManager.Instance.Fire2;
             _runInput = InputManager.Instance.isRunning;
         }
 
         //*Player 2 input */
         else {
-            float t = Input.GetAxis(button);
-            if (t > 0) {
+            //Convert fire float to bool
+            if (InputManager.Instance.Fire22 > 0) {
                 _input = true;
             }
             else {
                 _input = false;
             }
-            
             _runInput = InputManager.Instance.isRunning2;
         }
 
+        #region Input
         if (_input) {
-            //If cooldown is low enough
+            //If cooldown is low enough   dont need? cos of anim triggers resetting attacking bool
             if (Time.time > attackSpeed)
             {
                 //If not already attacking
                 if (!attacking) {
                     attacking = true;
+                    _MeleeAttack();
 
 
-                    #region Running attack
-                    if (_runInput) {
-                        playerAnim.SetTrigger("RunAttack");
-                    }
-                    #endregion
-
-                    #region Normal melee
-                    else {
-                        playerAnim.SetTrigger("MeleeAttack");
-                    }
-                    #endregion
-
-                    //Enable weaponCollider which gets diabled along the reset of the attackCD
-                    WeaponTriggerCollider.enabled = true;
-
-
-
-
+                    //! OLD?
                     //attackSpeed = Time.time + attackCD;
                     //StartCoroutine(activateDelayWeaponTrigger());
                     //Start animation & delay damage output
@@ -107,31 +79,44 @@ public class MeleeAttack : MonoBehaviour
         #endregion
     }
 
+    private void _MeleeAttack() {
+        #region Running attack
+        if (_runInput) {
+            playerAnim.SetTrigger("RunAttack");
+        }
+        #endregion
+
+        #region Normal melee
+        else {
+            playerAnim.SetTrigger("MeleeAttack");
+        }
+        #endregion
+
+        //Enable weaponCollider which gets disabled along the reset of the attackCD
+        WeaponTriggerCollider.enabled = true;
+    }
+    
+    public void resetMeleeAttackCD() {
+        attacking = false;
+        attackSpeed = 0;    //??
+        //attackCD = 0;
+        WeaponTriggerCollider.enabled = false;
+    }
+
     IEnumerator deactivateWeaponTrigger()
     {
         yield return new WaitForSeconds(.6f);
         WeaponTriggerCollider.enabled = false;
     }
-
-
     IEnumerator resetAttackingBool()
     {
         yield return new WaitForSeconds(1f);
         attacking = false;
     }
-
     IEnumerator activateDelayWeaponTrigger()
     {
         yield return new WaitForSeconds(.2f);
         WeaponTriggerCollider.enabled = true;
         attacking = true;
-    }
-
-
-    public void resetMeleeAttackCD() {
-        attacking = false;
-        attackSpeed = 0;
-        //attackCD = 0;
-        WeaponTriggerCollider.enabled = false;
     }
 }

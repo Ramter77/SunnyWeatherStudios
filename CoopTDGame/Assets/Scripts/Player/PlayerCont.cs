@@ -196,7 +196,7 @@ public class PlayerCont : MonoBehaviour
     void Jump()
     {
         if (InputManager.Instance.Jump) {
-            playerAnim.animator.SetTrigger("Jump");
+            //playerAnim.animator.SetTrigger("Jump");
 
             /*
             if (!isJumping) {
