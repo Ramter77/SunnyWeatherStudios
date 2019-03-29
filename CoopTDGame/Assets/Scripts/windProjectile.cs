@@ -6,7 +6,7 @@ public class windProjectile : MonoBehaviour
 {
     public float windDamage = 0f;
     public Vector3 knockbackForce;
-    private float lifetime = 4f;
+    public float lifetime = 20f;
     public float speed = 20f;
 
     // Start is called before the first frame update
