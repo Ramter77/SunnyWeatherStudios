@@ -241,6 +241,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 13
       objectReference: {fileID: 0}
+    - target: {fileID: 277825201455149141, guid: 1d527510c64f95a42b5366f7b1ecdc7a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player2
+      objectReference: {fileID: 0}
     - target: {fileID: 6924824582238131688, guid: 1d527510c64f95a42b5366f7b1ecdc7a,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -389,6 +394,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3908368510931437923, guid: f13a5e1f2b3c8ec4d9e677c745573953,
         type: 3}
+    - target: {fileID: 277825201455149146, guid: 1d527510c64f95a42b5366f7b1ecdc7a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 277825201455149143, guid: 1d527510c64f95a42b5366f7b1ecdc7a,
         type: 3}
       propertyPath: m_Speed
@@ -3404,7 +3414,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295284410}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b51b5c64280d8e41b0c039a33b64dd6, type: 3}
   m_Name: 
@@ -10797,6 +10807,11 @@ PrefabInstance:
       propertyPath: soulAmountDisplayText
       value: 
       objectReference: {fileID: 176978098}
+    - target: {fileID: 8419485869700776651, guid: 636e23cfcaaef5948a540490ca0b90ea,
+        type: 3}
+      propertyPath: costToBuild
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1237908194, guid: 636e23cfcaaef5948a540490ca0b90ea, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -450
@@ -10836,6 +10851,14 @@ PrefabInstance:
     - target: {fileID: 1879796854, guid: 636e23cfcaaef5948a540490ca0b90ea, type: 3}
       propertyPath: maximumEnemies
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950278338, guid: 636e23cfcaaef5948a540490ca0b90ea, type: 3}
+      propertyPath: _MouseControl.hideCursor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1950278338, guid: 636e23cfcaaef5948a540490ca0b90ea, type: 3}
+      propertyPath: _MouseControl.LockMouse
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1976189436, guid: 636e23cfcaaef5948a540490ca0b90ea, type: 3}
@@ -10984,14 +11007,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 277825201455149146, guid: 1d527510c64f95a42b5366f7b1ecdc7a,
         type: 3}
+      propertyPath: Prefabs.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 277825201455149146, guid: 1d527510c64f95a42b5366f7b1ecdc7a,
+        type: 3}
       propertyPath: fixedCameraPlacement
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 277825201455149146, guid: 1d527510c64f95a42b5366f7b1ecdc7a,
         type: 3}
       propertyPath: Prefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 3908368510931437923, guid: 7011797568825fa45805f95704245ca1,
+      objectReference: {fileID: 3908368510931437923, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
         type: 3}
     - target: {fileID: 277825201455149146, guid: 1d527510c64f95a42b5366f7b1ecdc7a,
         type: 3}
@@ -11003,7 +11031,13 @@ PrefabInstance:
         type: 3}
       propertyPath: Prefabs.Array.data[2]
       value: 
-      objectReference: {fileID: 3908368510931437923, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
+      objectReference: {fileID: 8127297961243337994, guid: d8103eb10487a8d43b68dfe018da27f6,
+        type: 3}
+    - target: {fileID: 277825201455149146, guid: 1d527510c64f95a42b5366f7b1ecdc7a,
+        type: 3}
+      propertyPath: Prefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 369886348091346307, guid: 5374fda886807824d83b49e4b46ca431,
         type: 3}
     - target: {fileID: 277825201455149143, guid: 1d527510c64f95a42b5366f7b1ecdc7a,
         type: 3}

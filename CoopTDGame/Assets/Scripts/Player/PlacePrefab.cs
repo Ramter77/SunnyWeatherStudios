@@ -33,9 +33,9 @@ public class PlacePrefab : MonoBehaviour
 
 
     [Header("Controls")]
-    [Tooltip("HotKey to place assigned Prefabs")]
+    /* [Tooltip("HotKey to place assigned Prefabs")]
     [SerializeField]
-    private KeyCode hotkey = KeyCode.Mouse0;
+    private KeyCode hotkey = KeyCode.Mouse0; */
 
     [Tooltip("Maximum distance to place Prefabs")]
     [SerializeField]
@@ -265,7 +265,7 @@ public class PlacePrefab : MonoBehaviour
     private void PlacePrefabOnRelease()
     {
         //If hotKey is pressed, place prefab if allowed
-        if (Input.GetKeyDown(hotkey))
+        if (InputManager.Instance.Fire1)
         {
             if (!setColorToRed)
             {

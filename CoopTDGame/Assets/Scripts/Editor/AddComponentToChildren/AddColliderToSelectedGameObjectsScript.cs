@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CanEditMultipleObjects]
+//[CanEditMultipleObjects]
 public class AddColliderToSelectedGameObjectsScript : MonoBehaviour
 {
     //Script gets executed on button press of the AddColliderToSelectedGameObjectsEditor script
