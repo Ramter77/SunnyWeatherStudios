@@ -8,16 +8,16 @@ public class ThirdPersonCam : MonoBehaviour
     [SerializeField] float damping;
 
     Transform cameraLookTarget;
-    PlayerCont localPlayer;
+    //PlayerCont localPlayer;
     private float mouseInputY;
-    private PlayerCont.MouseInput _mouseControl;
+    //private PlayerCont._mouseControl _mouseControl;
     private float _yDamping, _ySensitivity, _minAngle, _maxAngle;
     void Awake()
     {
-        GameManager.Instance.OnLocalPlayerJoined += HandleOnLocalPlayerJoined;
+        //GameManager.Instance.OnLocalPlayerJoined += HandleOnLocalPlayerJoined;
     }
 
-    void HandleOnLocalPlayerJoined(PlayerCont player) {
+    /* void HandleOnLocalPlayerJoined(PlayerCont player) {
         localPlayer = player;
         cameraLookTarget = localPlayer.transform.Find("cameraLookTarget");
 
@@ -26,15 +26,15 @@ public class ThirdPersonCam : MonoBehaviour
             cameraLookTarget = localPlayer.transform;
         }
 
-        _mouseControl = player.MouseControl;
-        _yDamping = _mouseControl.Damping.y;
+        //_mouseControl = player.MouseControl;
+         _yDamping = _mouseControl.Damping.y;
         _ySensitivity = _mouseControl.Sensitivity.y;
         _minAngle = _mouseControl.minAngle;
         _maxAngle = _mouseControl.maxAngle;
-    }
+    } */
 
     void Update() {
-        if (localPlayer == null) {
+        /* if (localPlayer == null) {
             localPlayer = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerCont>();
         }
 
@@ -59,5 +59,5 @@ public class ThirdPersonCam : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, targetPos, damping * Time.deltaTime);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, damping * Time.deltaTime);
-    }
+    */} 
 }

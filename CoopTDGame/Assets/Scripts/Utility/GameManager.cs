@@ -9,18 +9,18 @@ public class GameManager : Singleton<GameManager>
     }
 
     #region OnLocalPlayerJoined
-    public event System.Action<PlayerCont> OnLocalPlayerJoined;
+    //public event System.Action<PlayerCont> OnLocalPlayerJoined;
 
-    private PlayerCont m_LocalPlayer;
-    public PlayerCont LocalPlayer {
+    private PlayerController m_LocalPlayer;
+    public PlayerController LocalPlayer {
         get {
             return m_LocalPlayer;
         }
         set {
             m_LocalPlayer = value;
-            if (OnLocalPlayerJoined != null) {
-                OnLocalPlayerJoined(m_LocalPlayer);
-            }
+            /* if (OnLocalPlayerJoined != null) {
+                //OnLocalPlayerJoined(m_LocalPlayer);
+            } */
         }
     }
     #endregion

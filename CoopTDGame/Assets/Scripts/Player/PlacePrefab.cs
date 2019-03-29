@@ -68,18 +68,34 @@ public class PlacePrefab : MonoBehaviour
     private MeshRenderer[] meshRenderers;
     private MeleeAttack _meleeAttack;
 
-    private Camera CameraM;
+    
+    private PlayerController playC;
+    private bool _input;
+    private Camera MainCamera;
     #endregion
     #endregion
 
     private void Start()
-    {
+    {       
         //soulStorage = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<SoulStorage>();
         //! --> this instead:
         SoulStorage.Instance.costToBuild = soulCost;
 
         #region References
-        CameraM = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+        playC = GetComponent<PlayerController>();
+
+        string tag;
+        if (playC.Player_ == 1) {
+            tag = "MainCamera";
+        }
+        else
+        {
+            tag = "MainCamera2";
+        }
+        Debug.Log("Finding MainCamera tag");
+        MainCamera = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>();
+
+
         _meleeAttack = GetComponent<MeleeAttack>();
         #endregion
     }
@@ -95,7 +111,25 @@ public class PlacePrefab : MonoBehaviour
             MovePrefabToRayHit();
             ChangeMaterialColor();
             RotatePrefabByScrolling();
-            PlacePrefabOnRelease();
+
+            #region Input check for placement
+            if (playC.Player_ == 1) {
+                _input = InputManager.Instance.Fire1;
+            }
+            else {
+                //Convert fire float to bool
+                if (InputManager.Instance.Fire12 > 0) {
+                    _input = true;
+                }
+                else {
+                    _input = false;
+                }
+            }
+
+            if (_input) {
+                PlacePrefabOnRelease();
+            }
+            #endregion
         }
     }
 
@@ -191,12 +225,12 @@ public class PlacePrefab : MonoBehaviour
         if (fixedCameraPlacement)
         {
             //Cast a ray to the middle of the screen
-            ray = CameraM.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+            ray = MainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         }
         else
         {
             //Cast a ray to the mouse position
-            ray = CameraM.ScreenPointToRay(Input.mousePosition);
+            ray = MainCamera.ScreenPointToRay(Input.mousePosition);
         }
 
         if (Physics.Raycast(ray, out hit, maxRayDistance, mask))

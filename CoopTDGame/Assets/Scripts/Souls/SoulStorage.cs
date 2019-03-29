@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-//public class SoulStorage : MonoBehaviour
+
 public class SoulStorage : Singleton<SoulStorage>
 {
     [Header("Soul storage")]
     [Tooltip("current ammount of souls")]
     public int soulCount = 0;
-    public Text soulAmountDisplayText;
+    private Text soulAmountDisplayText;
 
     [Tooltip("Amount that the players receive at the start of the Game")]
     public int amountOfSoulsAtStart = 0;
@@ -22,17 +22,20 @@ public class SoulStorage : Singleton<SoulStorage>
     [Tooltip("Amount that the players pay for reviving a teammate")]
     public int costToRevive = 0;
 
-    // Start is called before the first frame update
     void Start()
     {
+        GameObject SoulSphere = GameObject.FindGameObjectWithTag("Sphere");
+        soulAmountDisplayText = SoulSphere.GetComponentInChildren<Text>();
+
         soulCount = amountOfSoulsAtStart;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        soulAmountDisplayText.text = "Total Souls:" + soulCount;
-        //Debug.Log("SoulCount:" + soulCount);
+        if (soulAmountDisplayText != null) {
+            soulAmountDisplayText.text = "Total Souls:" + soulCount;
+            //Debug.Log("SoulCount:" + soulCount);
+        }
     }
 
     public void substractCostsToBuild() //give a float and then subtract that?
@@ -46,10 +49,8 @@ public class SoulStorage : Singleton<SoulStorage>
         soulCount -= costToUpgrade;
     }
 
-
     public void substractCostToRevive()
     {
         soulCount -= costToRevive;
     }
-
 }

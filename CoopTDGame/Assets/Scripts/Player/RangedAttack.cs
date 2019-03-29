@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class RangedAttack : MonoBehaviour
@@ -30,15 +31,17 @@ public class RangedAttack : MonoBehaviour
     private float attackSpeed;
 
     [Header ("RayCast")]
-    public LayerMask mask;
-    public float maxDistance = 100000;
+    [SerializeField]
+    private LayerMask mask;
+    [SerializeField]
+    private float maxDistance = 99999;
     [SerializeField]
     private float defaultDistance = 100.0f;
-    private Vector3 collisionPoint, direction;
+    private Vector3 intersectionPoint, direction;
 
     #region Internal variables
-    private PlayerCont playC;
-    private Camera CameraM;
+    private PlayerController playC;
+    private Camera MainCamera;
     private Animator playerAnim;
     private bool _input;
     #endregion
@@ -46,13 +49,15 @@ public class RangedAttack : MonoBehaviour
 
     void Start() {        
         playerAnim = GetComponent<Animator>();
-
-        playC = GetComponent<PlayerCont>();
+        playC = GetComponent<PlayerController>();
         if (playC.Player_ == 1) {
-            CameraM = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            Debug.Log("Finding MainCamera tag");
+            MainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         }
-        else {
-            CameraM = GameObject.FindGameObjectWithTag("MainCamera2").GetComponent<Camera>();
+        else
+        {
+            Debug.Log("Finding MainCamera2 tag");
+            MainCamera = GameObject.FindGameObjectWithTag("MainCamera2").GetComponent<Camera>();
         }
     }
 
@@ -67,6 +72,8 @@ public class RangedAttack : MonoBehaviour
         //*Player 2 input */
         else {
             //Convert fire float to bool
+            //Convert.ToBoolean(InputManager.Instance.Fire12);
+
             if (InputManager.Instance.Fire12 > 0) {
                 _input = true;
             }
@@ -96,25 +103,25 @@ public class RangedAttack : MonoBehaviour
     public void ShootProjectile()
     {
         //Raycast from screen center
-        Ray ray = CameraM.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        Ray ray = MainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;
 
-        //if raycast hits then send the projectile to the collision point
+        //If ray hits something direct a projectile to the intersection
         if (Physics.Raycast(ray, out hit, maxDistance, mask))
         {
-            // take the intersection
-            collisionPoint = hit.point;
+            //Get the intersection
+            intersectionPoint = hit.point;
 
             //Create a NORMALIZED vector for the path of the projectile from the projectileOrigin to the intersection
-            direction = (collisionPoint - projectileOrigin.position).normalized;            
+            direction = (intersectionPoint - projectileOrigin.position).normalized;            
         }
 
-        //else send it to the GetPoint(defaultDistance) intersection
+        //else direct the projectile to the GetPoint(defaultDistance) intersection
         else {
             direction = (ray.GetPoint(defaultDistance) - projectileOrigin.position).normalized;
         }
 
-        //SEND PROJECTILE
+        //Create & send PROJECTILE from projectileOrigin
         Rigidbody projectileRB = Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
         projectileRB.AddForce(direction * projectileSpeed, ForceMode.Impulse);
     }

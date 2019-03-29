@@ -2,15 +2,26 @@
 
 public class FreeCameraLook : Pivot {
 
-    public string mouseX, mouseY;
+    [Tooltip ("Makes transform root rotate along camera X movement")]
+    public bool RotateTransformRoot;
 
+    [Header ("Axis setup")]
+    public string mouseX;
+    public string mouseY;
 
+    [Header ("Debug")]
+    [Tooltip ("Debug X axis")]
+    public float _inputX;
+    [Tooltip ("Debug Y axis")]
+    public float _inputY;
+
+    [Header ("Camera Controls")]
 	[SerializeField] private float moveSpeed = 5f;
 	[SerializeField] private float turnSpeed = 1.5f;
+    [SerializeField] float turnSpeedMultiplier = 1;
 	[SerializeField] private float turnsmoothing = .1f;
 	[SerializeField] private float tiltMax = 75f;
 	[SerializeField] private float tiltMin = 45f;
-	[SerializeField] private bool lockCursor = false;
 
 	private float lookAngle;
 	private float tiltAngle;
@@ -21,9 +32,11 @@ public class FreeCameraLook : Pivot {
 	private float smoothY = 0;
 	private float smoothXvelocity = 0;
 	private float smoothYvelocity = 0;
+    private float offsetX;
+    private float offsetY;
 
     public float crosshairOffsetWiggle = 0.2f;
-    CrosshairManager crosshairManager;
+    private CrosshairManager crosshairManager;
 
     //add the singleton
     public static FreeCameraLook instance;
@@ -41,14 +54,21 @@ public class FreeCameraLook : Pivot {
 
 		cam = GetComponentInChildren<Camera>().transform;
 		pivot = cam.parent.parent; //take the correct pivot
+
+
+        if (transform.root.GetComponent<PlayerController>().Player_ == 1) {
+            _inputX = InputManager.Instance.MouseInput.x;
+            _inputY = InputManager.Instance.MouseInput.y;
+        }
+        else {
+            _inputX = InputManager.Instance.MouseInput2.x;
+            _inputY = InputManager.Instance.MouseInput2.y;
+        }
 	}
 
     protected override void Start()
     {
         base.Start();
-
-        if (lockCursor)
-            Cursor.lockState = CursorLockMode.Locked;
 
         crosshairManager = CrosshairManager.GetInstance();
     }
@@ -59,13 +79,11 @@ public class FreeCameraLook : Pivot {
 		base.Update();
 
 		HandleRotationMovement();
-
 	}
 
 	protected override void Follow (float deltaTime)
 	{
 		transform.position = Vector3.Lerp(transform.position, target.position, deltaTime * moveSpeed);
-
 	}
 
 	void HandleRotationMovement()
@@ -94,13 +112,9 @@ public class FreeCameraLook : Pivot {
 
 		transform.rotation = Quaternion.Euler(0f, lookAngle, 0);
 
-        //Rotate player along camera
-        target.transform.Rotate(Vector3.up * smoothX * turnSpeed);
-        /*
-        Vector3 ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0)).GetPoint(100);
-        Vector3 rayXZ = new Vector3(ray.x, transform.position.y, ray.z);
-        target.transform.LookAt(rayXZ);
-*/
+        //* Rotate player along camera */
+        target.transform.Rotate(Vector3.up * smoothX * turnSpeed * turnSpeedMultiplier);
+        //*----------------------------*/
 
 		tiltAngle -= smoothY * turnSpeed;
 		tiltAngle = Mathf.Clamp (tiltAngle, -tiltMin, tiltMax);
@@ -112,11 +126,6 @@ public class FreeCameraLook : Pivot {
             WiggleCrosshairAndCamera(0);
         }
 	}
-
-
-    float offsetX;
-    float offsetY;
-
 
     void HandleOffsets()
     {
@@ -137,6 +146,4 @@ public class FreeCameraLook : Pivot {
 
         offsetY = kickback;
     }
-
-
 }

@@ -15,14 +15,14 @@ public class PlayerAnim : MonoBehaviour
     [SerializeField]
     private float controllerDamping = 0;
 
-    private PlayerCont playC;
+    private PlayerController playC;
     private Animator animator;
     private Rigidbody rb;
     #endregion
 
     void Awake()
     {
-        playC = GetComponent<PlayerCont>();
+        playC = GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
     }
 

@@ -7,7 +7,7 @@ public class MeleeAttack : MonoBehaviour
 
     # region Variables and References
     
-    [Header("References for components and gameObjects")]
+    [Header("References")]
     [SerializeField] private Animator playerAnim; // player animator
     [SerializeField] private Transform sphereSpawnPoint;
     public Collider WeaponTriggerCollider;
@@ -16,18 +16,18 @@ public class MeleeAttack : MonoBehaviour
     [Header("Attack Settings")] 
     [SerializeField] private float damageSphereRadius; // radius to check for collision
     [SerializeField] public float attackDamage; // damage to apply
-    [SerializeField] private float attackSpeed = 0.0f;
+    [SerializeField] private float attackSpeed = 99999;
     [SerializeField] private float attackCD = .5f;
     [SerializeField] private bool attacking = false;
 
 
-    private PlayerCont playC;
+    private PlayerController playC;
     private bool _input, _runInput;
     #endregion
 
     void Start()
     {
-        playC = GetComponent<PlayerCont>();
+        playC = GetComponent<PlayerController>();
         playerAnim = GetComponent<Animator>();
 
         attackSpeed = 0;
@@ -80,13 +80,13 @@ public class MeleeAttack : MonoBehaviour
     }
 
     private void _MeleeAttack() {
-        #region Running attack
+        #region Running melee attack
         if (_runInput) {
             playerAnim.SetTrigger("RunAttack");
         }
         #endregion
 
-        #region Normal melee
+        #region Walking melee attack
         else {
             playerAnim.SetTrigger("MeleeAttack");
         }
