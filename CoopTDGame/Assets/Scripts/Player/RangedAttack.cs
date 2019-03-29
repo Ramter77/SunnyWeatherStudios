@@ -70,16 +70,8 @@ public class RangedAttack : MonoBehaviour
         }
 
         //*Player 2 input */
-        else {
-            //Convert fire float to bool
-            //Convert.ToBoolean(InputManager.Instance.Fire12);
-
-            if (InputManager.Instance.Fire12 > 0) {
-                _input = true;
-            }
-            else {
-                _input = false;
-            }
+        else if (playC.Player_ == 2) {
+            _input = InputManager.Instance.Fire12;
         }
         
         #region Input

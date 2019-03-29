@@ -43,7 +43,7 @@ public class PlacePrefab : MonoBehaviour
 
     [Tooltip("Check to Instantiate Prefabs straight")]
     [SerializeField]
-    private Boolean fixedAngle;
+    private Boolean fixedAngle = false;
 
     [Tooltip("Check to place Prefabs in the middle of the screen")]
     [SerializeField]
@@ -117,13 +117,7 @@ public class PlacePrefab : MonoBehaviour
                 _input = InputManager.Instance.Fire1;
             }
             else {
-                //Convert fire float to bool
-                if (InputManager.Instance.Fire12 > 0) {
-                    _input = true;
-                }
-                else {
-                    _input = false;
-                }
+                _input = InputManager.Instance.Fire12;
             }
 
             if (_input) {

@@ -24,21 +24,18 @@ public class EnemySpawner : MonoBehaviour
     public float MaxZ = 0;
 
 
-    // Start is called before the first frame update
     void Start()
     {
         fallbackSpawnrate = spawnrate;
         spawnCycle = FindObjectOfType<EnemySpawnCycle>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(enableSpawn)
         {
             spawnTimer();
-        }
-        
+        }        
     }
 
     public void spawnEnemy()

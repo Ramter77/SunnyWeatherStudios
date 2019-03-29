@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class MeleeAttack : MonoBehaviour
 {
-
-    # region Variables and References
-    
+    #region Variables and References    
     [Header("References")]
     [SerializeField] private Animator playerAnim; // player animator
     [SerializeField] private Transform sphereSpawnPoint;
@@ -46,13 +44,7 @@ public class MeleeAttack : MonoBehaviour
 
         //*Player 2 input */
         else {
-            //Convert fire float to bool
-            if (InputManager.Instance.Fire22 > 0) {
-                _input = true;
-            }
-            else {
-                _input = false;
-            }
+            _input = InputManager.Instance.Fire22;
             _runInput = InputManager.Instance.isRunning2;
         }
 

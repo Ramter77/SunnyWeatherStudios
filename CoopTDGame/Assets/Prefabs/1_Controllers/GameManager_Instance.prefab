@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &143042503436732395
+--- !u!1 &1950278337
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 143042503436732399}
-  - component: {fileID: 143042503436732392}
-  - component: {fileID: 143042503436732393}
-  - component: {fileID: 143042503436732394}
+  - component: {fileID: 1950278341}
+  - component: {fileID: 3117126349710634136}
+  - component: {fileID: 2813688051287220811}
+  - component: {fileID: 4379854453410124422}
+  - component: {fileID: 8419485869700776651}
   m_Layer: 0
   m_Name: GameManager_Instance
   m_TagString: Untagged
@@ -19,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!4 &143042503436732399
+--- !u!4 &1950278341
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143042503436732395}
+  m_GameObject: {fileID: 1950278337}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,44 +34,75 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &143042503436732392
+--- !u!114 &3117126349710634136
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143042503436732395}
+  m_GameObject: {fileID: 1950278337}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ded7e84adfc72b64ba8a2d77fe257f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _MouseControl:
+    hideCursor: 0
+    LockMouse: 0
+  _ControllerControl:
+    ControllerTriggerAxisLimit: 0.5
+  _Player1:
+    _Vertical: Vertical
+    _Horizontal: Horizontal
+    _Jump: Jump
+    _MouseInputX: Mouse X
+    _MouseInputY: Mouse Y
+    _Fire1: Fire1
+    _Fire2: Fire2
+    _isRunning: Run
+  _Player2:
+    _Vertical2: Vertical2
+    _Horizontal2: Horizontal2
+    _Jump2: Jump2
+    _MouseInputX2: MouseX2
+    _MouseInputY2: MouseY2
+    _Fire12: Fire12
+    _Fire22: Fire22
+    _isRunning2: Run2
   Vertical: 0
   Horizontal: 0
   Jump: 0
   MouseInput: {x: 0, y: 0}
   Fire1: 0
+  Fire2: 0
   isRunning: 0
---- !u!114 &143042503436732393
+  Vertical2: 0
+  Horizontal2: 0
+  Jump2: 0
+  MouseInput2: {x: 0, y: 0}
+  Fire12: 0
+  Fire22: 0
+  isRunning2: 0
+--- !u!114 &2813688051287220811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143042503436732395}
+  m_GameObject: {fileID: 1950278337}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55279486c415f5642ab1bc4f206a07bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resetHotkey: 114
---- !u!114 &143042503436732394
+--- !u!114 &4379854453410124422
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 143042503436732395}
+  m_GameObject: {fileID: 1950278337}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 288a83d0afc184f47a63045585577571, type: 3}
@@ -79,3 +111,20 @@ MonoBehaviour:
   slowMoHotkey: 32
   holdHotKey: 1
   slowMotionTimeScale: 0.4
+--- !u!114 &8419485869700776651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950278337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 322fabc2e9e52994f8bc97e4659ccd03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soulCount: 0
+  amountOfSoulsAtStart: 100
+  costToBuild: 0
+  costToUpgrade: 0
+  costToRevive: 0
