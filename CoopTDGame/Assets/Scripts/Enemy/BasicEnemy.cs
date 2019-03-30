@@ -78,6 +78,11 @@ public class BasicEnemy : MonoBehaviour
                 prepareAttack();
                 //Debug.Log("Ai: Preparing Attack now");
             }
+            else {
+                charging = false;
+                agent.speed *= 1;
+                enemyAnim.SetBool("Charge", false);
+            }
 
 
             if (distance <= stoppingRange && knockback == false) // in stopping range prevents ai from bumping into player
@@ -99,21 +104,18 @@ public class BasicEnemy : MonoBehaviour
                 attackState = 0;
             }
         }
-
-
-        //Move animation here?
     }
 
 
     public void prepareAttack()
     {
+        // set the enemy animation to idle / preparation for attack
         if (!charging) {
             charging = true;
             agent.speed *= 0;
             enemyAnim.SetBool("Charge", true);
         }
 
-        // set the enemy animation to idle / preparation for attack
         preparationTime -= Time.deltaTime;  
         if(preparationTime <= 0)
         {
