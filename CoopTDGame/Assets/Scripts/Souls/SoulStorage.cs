@@ -14,7 +14,7 @@ public class SoulStorage : Singleton<SoulStorage>
     public int amountOfSoulsAtStart = 0;
 
     [Tooltip("Amount that the players pay for a certain building")]
-    public int costToBuild = 0;
+    public int costToBuild = 10;
 
     [Tooltip("Amount that the players pay for a certain upgrade")]
     public int costToUpgrade = 0;
@@ -28,6 +28,7 @@ public class SoulStorage : Singleton<SoulStorage>
         soulAmountDisplayText = SoulSphere.GetComponentInChildren<Text>();
 
         soulCount = amountOfSoulsAtStart;
+        costToBuild = 10;
     }
 
     void Update()
@@ -40,6 +41,7 @@ public class SoulStorage : Singleton<SoulStorage>
 
     public void substractCostsToBuild() //give a float and then subtract that?
     {
+        Debug.Log("COST: "+costToBuild);
         soulCount -= costToBuild;
         Debug.Log(soulCount);
     }

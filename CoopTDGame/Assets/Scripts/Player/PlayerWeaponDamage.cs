@@ -14,8 +14,8 @@ public class PlayerWeaponDamage : MonoBehaviour
             attackDamage = ParentEnemy.GetComponent<MeleeAttack>().attackDamage;
         }
         else {
-            Debug.Log("ParentEnemy is null: " + gameObject.name);
-            attackDamage = 40;
+            //Debug.Log("ParentEnemy is null: " + gameObject.name);
+            attackDamage = 40;  //default to 40 dmg to test
         }
         
     }
@@ -24,7 +24,7 @@ public class PlayerWeaponDamage : MonoBehaviour
     {
         if(other.gameObject.tag == "Enemy" )
         {
-            Debug.Log("Weapon hit enemy");
+            //Debug.Log("Weapon hit enemy");
             other.gameObject.GetComponent<LifeAndStats>().health -= attackDamage;
         }
     }

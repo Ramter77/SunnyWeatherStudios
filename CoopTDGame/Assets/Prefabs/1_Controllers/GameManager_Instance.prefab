@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1950278341}
+  - component: {fileID: 6840288926239595644}
   - component: {fileID: 3117126349710634136}
   - component: {fileID: 2813688051287220811}
   - component: {fileID: 4379854453410124422}
@@ -34,6 +35,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6840288926239595644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950278337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91cbf43102bfc374a93f7b942915d238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3117126349710634136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52,6 +65,7 @@ MonoBehaviour:
   _ControllerControl:
     ControllerTriggerAxisLimit: 0.5
   _Player1:
+    useController: 0
     _Vertical: Vertical
     _Horizontal: Horizontal
     _Jump: Jump
@@ -61,6 +75,7 @@ MonoBehaviour:
     _Fire2: Fire2
     _isRunning: Run
   _Player2:
+    useController: 0
     _Vertical2: Vertical2
     _Horizontal2: Horizontal2
     _Jump2: Jump2

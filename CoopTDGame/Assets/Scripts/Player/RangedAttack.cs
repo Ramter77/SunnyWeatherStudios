@@ -50,15 +50,14 @@ public class RangedAttack : MonoBehaviour
     void Start() {        
         playerAnim = GetComponent<Animator>();
         playC = GetComponent<PlayerController>();
-        if (playC.Player_ == 1) {
-            Debug.Log("Finding MainCamera tag");
-            MainCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
-        }
-        else
+
+        string tag = "MainCamera";
+        if (playC.Player_ == 2)
         {
-            Debug.Log("Finding MainCamera2 tag");
-            MainCamera = GameObject.FindGameObjectWithTag("MainCamera2").GetComponent<Camera>();
+            tag = "MainCamera2";
         }
+        Debug.Log("Finding " + tag + " tag");
+        MainCamera = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>();
     }
 
     void Update()
@@ -82,13 +81,17 @@ public class RangedAttack : MonoBehaviour
     }
 
     private void _RangedAttack() {
-        //If cooldown is low enough: shoot
-        if (Time.time > attackSpeed) {
-            attackSpeed = Time.time + attackCD;
+        //If not ranged attacking
+        if (!playC.isRangedAttacking) {
+            playC.isRangedAttacking = true;
 
-            //Start animation which shoots projectile on event
+            //Start animation which ShootProjectile() on event & resets isRangedAttacking
             playerAnim.SetTrigger("RangedAttack");
         }
+    }
+
+    public void resetRangedAttackCD() {
+        playC.isRangedAttacking = false;
     }
 
     #region Public ShootProjectile

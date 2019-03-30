@@ -39,14 +39,14 @@ public class InputManager : Singleton<InputManager>
     public class Player2 {
         [Tooltip ("Enable if controls are setup for a controller")]
         public bool useController;
-        public string _Vertical2 = "Vertical2";
-        public string _Horizontal2 = "Horizontal2";
-        public string _Jump2 = "Jump2";
-        public string _MouseInputX2 = "MouseX2";
-        public string _MouseInputY2 = "MouseY2";
-        public string _Fire12 = "Fire12";
-        public string _Fire22 = "Fire22";
-        public string _isRunning2 = "Run2";
+        public string _Vertical = "Vertical2";
+        public string _Horizontal = "Horizontal2";
+        public string _Jump = "Jump2";
+        public string _MouseInputX = "MouseX2";
+        public string _MouseInputY = "MouseY2";
+        public string _Fire1 = "Fire12";
+        public string _Fire2 = "Fire22";
+        public string _isRunning = "Run2";
     }
     [SerializeField] public Player2 _Player2;
 
@@ -112,23 +112,23 @@ public class InputManager : Singleton<InputManager>
         #endregion
         
         #region Player2
-        Vertical2 = Input.GetAxis(_Player2._Vertical2);
-        Horizontal2 = Input.GetAxis(_Player2._Horizontal2);
-        Jump2 = Input.GetButtonDown(_Player2._Jump2);
-        MouseInput2 = new Vector2(Input.GetAxisRaw(_Player2._MouseInputX2), Input.GetAxisRaw(_Player2._MouseInputY2));
-        isRunning2 = Input.GetButton(_Player2._isRunning2);
+        Vertical2 = Input.GetAxis(_Player2._Vertical);
+        Horizontal2 = Input.GetAxis(_Player2._Horizontal);
+        Jump2 = Input.GetButtonDown(_Player2._Jump);
+        MouseInput2 = new Vector2(Input.GetAxisRaw(_Player2._MouseInputX), Input.GetAxisRaw(_Player2._MouseInputY));
+        isRunning2 = Input.GetButton(_Player2._isRunning);
 
         if (_Player2.useController) {
             //Convert fire float to bool
-            Fire1 = (Input.GetAxis(_Player1._Fire1) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
-            Fire2 = (Input.GetAxis(_Player1._Fire2) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
+            Fire12 = ((Input.GetAxis(_Player2._Fire1)) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
+            Fire22 = ((Input.GetAxis(_Player2._Fire2)) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
             /* Fire12 = Input.GetAxis(_Player2._Fire12);
-            Fire22 = Input.GetAxis(_Player2._Fire22); */  
+            Fire22 = Input.GetAxis(_Player2._Fire22); */
         }
         else
         {
-            Fire12 = Input.GetButtonDown(_Player2._Fire12);
-            Fire22 = Input.GetButtonDown(_Player2._Fire22);
+            Fire12 = Input.GetButtonDown(_Player2._Fire1);
+            Fire22 = Input.GetButtonDown(_Player2._Fire2);
         } 
         #endregion
     }

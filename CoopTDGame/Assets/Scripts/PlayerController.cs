@@ -8,17 +8,18 @@ public class PlayerController : MonoBehaviour
     //! Handle players states here? attacking, jumping n all that
     public int Player_ = 1;
     public bool TurnPlayerForward;
+    public float turn_Speed;
 
     #region Variables
     private Transform MainCameraTransform;
-    Vector3 CameraMForward;
-    Vector3 moveInput;
-    float rotationAmount;
-
     private PlayerAnim playerAnim;
-    private bool isJumping;
 
-    public float turn_Speed;
+    #region STATES
+    public bool isInBuildMode;
+    public bool isMeleeAttacking;
+    public bool isRangedAttacking;
+    public bool isJumping;
+    #endregion 
     #endregion
 
     void Awake()
@@ -27,18 +28,21 @@ public class PlayerController : MonoBehaviour
         GameManager.Instance.LocalPlayer = this;
         #endregion
 
-        if (Player_ == 1) {
-            Debug.Log("Finding MainCamera tag");
-            MainCameraTransform = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().transform;
-        }
-        else
+        string tag = "MainCamera";
+        if (Player_ == 2)
         {
-            Debug.Log("Finding MainCamera2 tag");
-            MainCameraTransform = GameObject.FindGameObjectWithTag("MainCamera2").GetComponent<Camera>().transform;
+            tag = "MainCamera2";
         }
+        Debug.Log("Finding " + tag + " tag");
+        MainCameraTransform = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>().transform;
         
         playerAnim = GetComponent<PlayerAnim>(); 
-    }   
+    }
+
+    private void Start() {
+        isMeleeAttacking = false;
+        isRangedAttacking = false;
+    }
 
     private void SmoothLookForward(){
         Vector3 forward = MainCameraTransform.forward;

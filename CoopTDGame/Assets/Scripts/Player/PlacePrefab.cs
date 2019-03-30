@@ -13,8 +13,8 @@ public class PlacePrefab : MonoBehaviour
 
     public GameObject[] TestPrefabs;
 
-    [Tooltip ("Cost to place currently selected tower")]
-    public int soulCost;
+    /* [Tooltip ("Cost to place currently selected tower")]
+    public int soulCost; */
 
     [Tooltip("Layer of colliders to place Prefabs on ('Ground')")]
     [SerializeField]
@@ -60,13 +60,14 @@ public class PlacePrefab : MonoBehaviour
 
 
     #region Booleans
-    private bool placing, setColorToRed;
+    private bool setColorToRed;
     #endregion
 
     #region Internal
     private float halfScale;
     private MeshRenderer[] meshRenderers;
     private MeleeAttack _meleeAttack;
+    private RangedAttack _rangedAttack;
 
     
     private PlayerController playC;
@@ -76,27 +77,31 @@ public class PlacePrefab : MonoBehaviour
     #endregion
 
     private void Start()
-    {       
-        //soulStorage = GameObject.FindGameObjectWithTag("GameManager").GetComponentInChildren<SoulStorage>();
-        //! --> this instead:
-        SoulStorage.Instance.costToBuild = soulCost;
-
+    {
         #region References
         playC = GetComponent<PlayerController>();
 
-        string tag;
-        if (playC.Player_ == 1) {
-            tag = "MainCamera";
-        }
-        else
+        string tag = "MainCamera";
+        if (playC.Player_ == 2)
         {
             tag = "MainCamera2";
         }
-        Debug.Log("Finding MainCamera tag");
+        Debug.Log("Finding " + tag + " tag");
         MainCamera = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>();
 
-
         _meleeAttack = GetComponent<MeleeAttack>();
+        _rangedAttack = GetComponent<RangedAttack>();
+        #endregion
+
+        #region Input
+        if (playC.Player_ == 1) {
+            //_enterBuildMode = Input.GetKeyDown(KeyCode.Alpha0 + 1 + i);
+            _input = InputManager.Instance.Fire1;
+        }
+        else if (playC.Player_ == 2) {
+            _input = InputManager.Instance.Fire12;
+        }
+        
         #endregion
     }
 
@@ -142,10 +147,11 @@ public class PlacePrefab : MonoBehaviour
                     currentPrefabIndex = -1;
 
                     _meleeAttack.enabled = true;     //reenable melee combat & ranged combat
+                    _rangedAttack.enabled = true;
                 }
                 else
                 {
-                    placing = true;
+                    playC.isInBuildMode = true;
 
                     if (currentPrefab != null)
                     {
@@ -169,7 +175,8 @@ public class PlacePrefab : MonoBehaviour
                     }
                     }
 
-                    _meleeAttack.enabled = false;    //disable melee combat & ranged combat                    
+                    _meleeAttack.enabled = false;    //disable melee combat & ranged combat   
+                    _rangedAttack.enabled = false;                 
                 }
 
                 break;
@@ -186,7 +193,7 @@ public class PlacePrefab : MonoBehaviour
     #region ChangeMaterialColor
     private void ChangeMaterialColor()
     {
-        if (placing)
+        if (playC.isInBuildMode)
         {
             if (setColorToRed)
             {
@@ -259,12 +266,11 @@ public class PlacePrefab : MonoBehaviour
     private void PlacePrefabOnRelease()
     {
         //If hotKey is pressed, place prefab if allowed
-        if (InputManager.Instance.Fire1)
+        if (_input)
         {
             if (!setColorToRed)
             {
                 #region TEST
-                //Debug.Log(currentPrefab.name);
                 if (currentPrefab.name == "TestRangeIndicator(Clone)")
                 {
 
@@ -278,14 +284,14 @@ public class PlacePrefab : MonoBehaviour
 
                     //Reset
                     //currentPrefab = null;
-                    placing = false;
+                    playC.isInBuildMode = false;
                 }
                 #endregion
 
                 #region Normal behaviour
                 else
                 {
-                    if (SoulStorage.Instance.soulCount > soulCost)           //If enough souls
+                    if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)           //If enough souls
                     {
                         if (currentPrefab.transform.childCount > 0) {
                         currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial;   //Switch back to original Material
@@ -298,8 +304,10 @@ public class PlacePrefab : MonoBehaviour
 
                         //Reset
                         currentPrefab = null;
-                        placing = false;
+                        //placing = false;
+                        playC.isInBuildMode = false;
                         _meleeAttack.enabled = true;
+                        _rangedAttack.enabled = true;
                     }
                 }
                 #endregion

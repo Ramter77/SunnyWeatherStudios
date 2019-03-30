@@ -14,9 +14,7 @@ public class MeleeAttack : MonoBehaviour
     [Header("Attack Settings")] 
     [SerializeField] private float damageSphereRadius; // radius to check for collision
     [SerializeField] public float attackDamage; // damage to apply
-    [SerializeField] private float attackSpeed = 99999;
-    [SerializeField] private float attackCD = .5f;
-    [SerializeField] private bool attacking = false;
+    //[SerializeField] private bool attacking = false;
 
 
     private PlayerController playC;
@@ -28,8 +26,6 @@ public class MeleeAttack : MonoBehaviour
         playC = GetComponent<PlayerController>();
         playerAnim = GetComponent<Animator>();
 
-        attackSpeed = 0;
-        attacking = false;
         WeaponTriggerCollider.enabled = false;
     }
 
@@ -50,22 +46,10 @@ public class MeleeAttack : MonoBehaviour
 
         #region Input
         if (_input) {
-            //If cooldown is low enough   dont need? cos of anim triggers resetting attacking bool
-            if (Time.time > attackSpeed)
-            {
-                //If not already attacking
-                if (!attacking) {
-                    attacking = true;
-                    _MeleeAttack();
-
-
-                    //! OLD?
-                    //attackSpeed = Time.time + attackCD;
-                    //StartCoroutine(activateDelayWeaponTrigger());
-                    //Start animation & delay damage output
-                    //StartCoroutine(deactivateWeaponTrigger());
-                    //StartCoroutine(resetAttackingBool());
-                }
+            //If not already attacking
+            if (!playC.isMeleeAttacking) {
+                playC.isMeleeAttacking = true;
+                _MeleeAttack();
             }
         }
         #endregion
@@ -74,12 +58,14 @@ public class MeleeAttack : MonoBehaviour
     private void _MeleeAttack() {
         #region Running melee attack
         if (_runInput) {
+            //Start animation & resets isMeleeAttacking
             playerAnim.SetTrigger("RunAttack");
         }
         #endregion
 
         #region Walking melee attack
         else {
+            //Start animation & resets isMeleeAttacking
             playerAnim.SetTrigger("MeleeAttack");
         }
         #endregion
@@ -89,26 +75,7 @@ public class MeleeAttack : MonoBehaviour
     }
     
     public void resetMeleeAttackCD() {
-        attacking = false;
-        attackSpeed = 0;    //??
-        //attackCD = 0;
+        playC.isMeleeAttacking = false;
         WeaponTriggerCollider.enabled = false;
-    }
-
-    IEnumerator deactivateWeaponTrigger()
-    {
-        yield return new WaitForSeconds(.6f);
-        WeaponTriggerCollider.enabled = false;
-    }
-    IEnumerator resetAttackingBool()
-    {
-        yield return new WaitForSeconds(1f);
-        attacking = false;
-    }
-    IEnumerator activateDelayWeaponTrigger()
-    {
-        yield return new WaitForSeconds(.2f);
-        WeaponTriggerCollider.enabled = true;
-        attacking = true;
     }
 }
