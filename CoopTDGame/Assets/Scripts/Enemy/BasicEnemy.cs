@@ -109,6 +109,7 @@ public class BasicEnemy : MonoBehaviour
     {
         if (!charging) {
             charging = true;
+            agent.speed *= 0;
             enemyAnim.SetBool("Charge", true);
         }
 
@@ -122,6 +123,7 @@ public class BasicEnemy : MonoBehaviour
             attackIndication.SetActive(false);
 
             charging = false;
+            agent.speed *= 1;
             enemyAnim.SetBool("Charge", false);
         }
         if(preparationTime <= 2)
