@@ -6,6 +6,8 @@ public class LifeAndStats : MonoBehaviour
 {
     public float health = 100f;
     public float defense = 20f;
+    private float healCooldown = 5f;
+    private float fallbackHealCooldown;
 
     #region Soul
     private bool dropSoul = true;   //(Controls if an object drops souls) //Todo: Randomize?
@@ -19,10 +21,13 @@ public class LifeAndStats : MonoBehaviour
     void Start()
     {
         fractureScript = GetComponent<FractureObject>();
+        fallbackHealCooldown = healCooldown;
     }
 
     void Update()
     {
+        reduceHealthCooldown();
+
         if(gameObject.CompareTag("possibleTargets") && health <= 0)
         {
             //Debug.Log("yeah im dead");
@@ -50,4 +55,19 @@ public class LifeAndStats : MonoBehaviour
             GetComponent<Animator>().SetTrigger("Die");
         } 
     }
+
+    public void healHealth(float healAmount)
+    {
+        if(healCooldown <= 0)
+        {
+            health += healAmount;
+            healCooldown = fallbackHealCooldown;
+        }
+    }
+
+    void reduceHealthCooldown()
+    {
+        healCooldown -= Time.deltaTime;
+    }
+
 }
