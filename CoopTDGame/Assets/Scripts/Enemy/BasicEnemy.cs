@@ -32,7 +32,12 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private float scanDelay = 5f;
     [SerializeField] private float minPreparationTimeForAttack = 1f;
     [SerializeField] private float maxPreparationTimeForAttack = 5f;
-    
+
+
+
+    private Animator enemyAnim;
+    private bool charging;
+
 
 
 
@@ -46,6 +51,9 @@ public class BasicEnemy : MonoBehaviour
         StartCoroutine(ScanCycle());
         preparationTime = Random.Range(1, maxPreparationTimeForAttack);
         attackIndication.SetActive(false);
+
+
+        enemyAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -99,6 +107,11 @@ public class BasicEnemy : MonoBehaviour
 
     public void prepareAttack()
     {
+        if (!charging) {
+            charging = true;
+            enemyAnim.SetBool("Charge", true);
+        }
+
         // set the enemy animation to idle / preparation for attack
         preparationTime -= Time.deltaTime;  
         if(preparationTime <= 0)
@@ -107,6 +120,9 @@ public class BasicEnemy : MonoBehaviour
             gameObject.GetComponent<AttackAndDamage>().performAttack();
             preparationTime = Random.Range(1, maxPreparationTimeForAttack);
             attackIndication.SetActive(false);
+
+            charging = false;
+            enemyAnim.SetBool("Charge", false);
         }
         if(preparationTime <= 2)
         {

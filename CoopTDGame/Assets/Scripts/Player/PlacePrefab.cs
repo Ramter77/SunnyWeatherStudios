@@ -66,8 +66,8 @@ public class PlacePrefab : MonoBehaviour
     #region Internal
     private float halfScale;
     private MeshRenderer[] meshRenderers;
-    private MeleeAttack _meleeAttack;
-    private RangedAttack _rangedAttack;
+    //private MeleeAttack _meleeAttack;
+    //private RangedAttack _rangedAttack;
 
     
     private PlayerController playC;
@@ -89,8 +89,8 @@ public class PlacePrefab : MonoBehaviour
         Debug.Log("Finding " + tag + " tag");
         MainCamera = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>();
 
-        _meleeAttack = GetComponent<MeleeAttack>();
-        _rangedAttack = GetComponent<RangedAttack>();
+        /* _meleeAttack = GetComponent<MeleeAttack>();
+        _rangedAttack = GetComponent<RangedAttack>(); */
         #endregion
 
         #region Input
@@ -146,8 +146,8 @@ public class PlacePrefab : MonoBehaviour
                     Destroy(currentPrefab);
                     currentPrefabIndex = -1;
 
-                    _meleeAttack.enabled = true;     //reenable melee combat & ranged combat
-                    _rangedAttack.enabled = true;
+                    /* _meleeAttack.enabled = true;     //reenable melee combat & ranged combat
+                    _rangedAttack.enabled = true; */
                 }
                 else
                 {
@@ -175,8 +175,8 @@ public class PlacePrefab : MonoBehaviour
                     }
                     }
 
-                    _meleeAttack.enabled = false;    //disable melee combat & ranged combat   
-                    _rangedAttack.enabled = false;                 
+                    /* _meleeAttack.enabled = false;    //disable melee combat & ranged combat   
+                    _rangedAttack.enabled = false;   */               
                 }
 
                 break;
@@ -306,8 +306,8 @@ public class PlacePrefab : MonoBehaviour
                         currentPrefab = null;
                         //placing = false;
                         playC.isInBuildMode = false;
-                        _meleeAttack.enabled = true;
-                        _rangedAttack.enabled = true;
+                        /* _meleeAttack.enabled = true;
+                        _rangedAttack.enabled = true; */
                     }
                 }
                 #endregion

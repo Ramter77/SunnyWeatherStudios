@@ -44,6 +44,9 @@ public class RangedAttack : MonoBehaviour
     private Camera MainCamera;
     private Animator playerAnim;
     private bool _input;
+
+
+    private CapsuleCollider myCollider;
     #endregion
     #endregion
 
@@ -58,6 +61,8 @@ public class RangedAttack : MonoBehaviour
         }
         Debug.Log("Finding " + tag + " tag");
         MainCamera = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>();
+
+        myCollider = GetComponent<CapsuleCollider>();
     }
 
     void Update()
@@ -82,7 +87,7 @@ public class RangedAttack : MonoBehaviour
 
     private void _RangedAttack() {
         //If not ranged attacking
-        if (!playC.isRangedAttacking) {
+        if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isInBuildMode) {
             playC.isRangedAttacking = true;
 
             //Start animation which ShootProjectile() on event & resets isRangedAttacking
@@ -119,6 +124,11 @@ public class RangedAttack : MonoBehaviour
         //Create & send PROJECTILE from projectileOrigin
         Rigidbody projectileRB = Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
         projectileRB.AddForce(direction * projectileSpeed, ForceMode.Impulse);
+
+        //Ignore collisions with owner
+        if (projectileRB.GetComponent<SphereCollider>()) {
+            Physics.IgnoreCollision(myCollider, projectileRB.GetComponent<SphereCollider>());
+        }
     }
     #endregion
 }

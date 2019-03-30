@@ -23,7 +23,7 @@ public class AttackAndDamage : MonoBehaviour
     void Start()
     {
         enableAttack = true;
-        enemyAnim = transform.GetComponent<Animator>();
+        enemyAnim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
