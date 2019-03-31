@@ -2866,6 +2866,7 @@ GameObject:
   - component: {fileID: 2030948593}
   - component: {fileID: 2030948591}
   - component: {fileID: 2030948592}
+  - component: {fileID: 4667518461501015014}
   m_Layer: 9
   m_Name: Player 1
   m_TagString: Player
@@ -3064,7 +3065,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2030948590}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b51b5c64280d8e41b0c039a33b64dd6, type: 3}
   m_Name: 
@@ -3078,6 +3079,7 @@ MonoBehaviour:
   ultimateAbilityHotkey: 101
   ultimateAbilityCooldown: 0.1
   ultimateAbilityGameobject: {fileID: 116593094684808658}
+  ultimateAbilityDuration: 10
 --- !u!114 &2030948592
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3097,6 +3099,29 @@ MonoBehaviour:
   isMeleeAttacking: 0
   isRangedAttacking: 0
   isJumping: 0
+--- !u!114 &4667518461501015014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030948590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94ecc9d8dea859d4bbd64bf7e107c7e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  specialAbilityHotkey: 113
+  specialAbilityCooldown: 0.1
+  healRadius: 7
+  selfHeal: 0
+  healAmount: 25
+  maxHealth: 100
+  ultimateAbilityHotkey: 101
+  ultimateAbilityCooldown: 0.1
+  ultimateSlashPrefab: {fileID: 9003700133114425031, guid: c28fea64ccc640946bad586dfb6f2aeb,
+    type: 3}
+  ultimateSpawnPointOffset: {x: 0, y: 4, z: 0}
 --- !u!1 &2050468079
 GameObject:
   m_ObjectHideFlags: 0
