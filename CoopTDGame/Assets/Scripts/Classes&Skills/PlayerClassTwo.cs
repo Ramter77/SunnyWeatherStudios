@@ -4,29 +4,39 @@ using UnityEngine;
 
 public class PlayerClassTwo : MonoBehaviour
 {
-
+    [Header("References")]
     private Animator playerAnim;
+    private GameObject Player;
 
-    [SerializeField]
-    private float specialAbilityCooldown = 0.1f;
+    [Header("Special Ability Settings")]
 
-    public float healRadius = 7f;
+    [SerializeField] private KeyCode specialAbilityHotkey = KeyCode.Q;
+
+    [SerializeField] private float specialAbilityCooldown = 0.1f;
 
     private float abilityRechardgeSpeed; // ability cooldown time
 
-    public bool selfHeal = false;
+    public float healRadius = 7f;
 
-    private float fallbackHealAmount = 25;
+    public bool selfHeal = false;
 
     [SerializeField] private float healAmount = 25f;
 
+    private float fallbackHealAmount = 25;
+
     public float maxHealth = 100f;
 
-    //public Transform Camera;
+    [Header("Ultimate Ability Settings")]
 
-    [SerializeField]private KeyCode specialAbilityHotkey = KeyCode.Q;
+    [SerializeField] private KeyCode ultimateAbilityHotkey = KeyCode.E;
 
-    private GameObject Player;
+    [SerializeField] private float ultimateAbilityCooldown = 0.1f;
+
+    private float ultimateRechargeSpeed;
+
+    public GameObject ultimateAbilityGameobject;
+
+    public float ultimateAbilityDuration = 10f;
 
 
     // Start is called before the first frame update
@@ -35,6 +45,7 @@ public class PlayerClassTwo : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         Player = gameObject;
         fallbackHealAmount = healAmount;
+        ultimateAbilityGameobject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -52,6 +63,19 @@ public class PlayerClassTwo : MonoBehaviour
                 Debug.Log("healing by" + healAmount);
             }
         }
+
+        if (Input.GetKeyDown(ultimateAbilityHotkey))
+        {
+            //If cooldown is low enough: shoot
+            if (Time.time > ultimateRechargeSpeed)
+            {
+                ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
+                ultimateAbility();
+                StartCoroutine(disableUltimate());
+                //Start animation which displays the ultimate
+            }
+        }
+
         #endregion
     }
 
@@ -99,6 +123,20 @@ public class PlayerClassTwo : MonoBehaviour
             }
         }
     }
+
+    void ultimateAbility()
+    {
+        ultimateAbilityGameobject.SetActive(true);
+    }
+
+    IEnumerator disableUltimate()
+    {
+        yield return new WaitForSeconds(ultimateAbilityDuration);
+        ultimateAbilityGameobject.SetActive(false);
+    }
+
+
+
 
 
     #region Gizmos

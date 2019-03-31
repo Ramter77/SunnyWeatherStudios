@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerWeaponDamage : MonoBehaviour
 {
-    private float attackDamage = 0f;
+    public float attackDamage = 0f;
 
     public GameObject ParentEnemy;
     // Start is called before the first frame update
