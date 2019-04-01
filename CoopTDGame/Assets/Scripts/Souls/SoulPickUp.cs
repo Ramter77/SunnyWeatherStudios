@@ -19,7 +19,7 @@ public class SoulPickUp : MonoBehaviour
         if(other.gameObject.tag == "Player" && pickedUp == false)
         {
             pickedUp = true;
-            SoulStorage.Instance.soulCount += soulValue;
+            SoulBackpack.Instance.sharedSoulAmount += soulValue;
             Destroy(gameObject);
         }
     }
