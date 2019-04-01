@@ -2,10 +2,7 @@
 using UnityEditor.ShaderGraph;
 using System.Reflection;
 
-// IMPORTANT:
-// - tested with LWRP and Shader Graph 4.6.0-preview ONLY
-// - likely to break in SG 5.x and beyond
-// - for HDRP, add your own keyword to detect environment
+// Gets the main Light Point in HDRP - converts it to a custom one that I can use
 [Title("Custom", "Main Light Data")]
 public class MainLightDataNode : CodeFunctionNode
 {
@@ -16,14 +13,16 @@ public class MainLightDataNode : CodeFunctionNode
             Light mainLight = GetMainLight();
             Color = mainLight.color;
             Direction = mainLight.direction;
-            Attenuation = mainLight.distanceAttenuation;
+            Attenuation = mainLight.distanceAttenuation; 
+
         #else
             Color = float3(1.0, 1.0, 1.0);
             Direction = float3(0.0, 1.0, 0.0);
             Attenuation = 1.0;
         #endif
     }";
-
+    // I cannot figure out a way for objects to cast shadows onto other objects with the same shader in HDRP
+    // Attenuation is broken
     // disable own preview as no light data in shader graph editor
     public override bool hasPreview
     {
