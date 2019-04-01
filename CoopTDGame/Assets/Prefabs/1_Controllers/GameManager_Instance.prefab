@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 2813688051287220811}
   - component: {fileID: 4379854453410124422}
   - component: {fileID: 8419485869700776651}
+  - component: {fileID: 1763753187685018612}
   m_Layer: 0
   m_Name: GameManager_Instance
   m_TagString: Untagged
@@ -76,14 +77,14 @@ MonoBehaviour:
     _isRunning: Run
   _Player2:
     useController: 0
-    _Vertical2: Vertical2
-    _Horizontal2: Horizontal2
-    _Jump2: Jump2
-    _MouseInputX2: MouseX2
-    _MouseInputY2: MouseY2
-    _Fire12: Fire12
-    _Fire22: Fire22
-    _isRunning2: Run2
+    _Vertical: Vertical2
+    _Horizontal: Horizontal2
+    _Jump: Jump2
+    _MouseInputX: MouseX2
+    _MouseInputY: MouseY2
+    _Fire1: Fire12
+    _Fire2: Fire22
+    _isRunning: Run2
   Vertical: 0
   Horizontal: 0
   Jump: 0
@@ -143,3 +144,15 @@ MonoBehaviour:
   costToBuild: 0
   costToUpgrade: 0
   costToRevive: 0
+--- !u!114 &1763753187685018612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950278337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bef9e165ebdf5a4eae9f3626fd1c226, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

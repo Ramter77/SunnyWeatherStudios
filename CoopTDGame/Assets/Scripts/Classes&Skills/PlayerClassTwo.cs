@@ -16,6 +16,8 @@ public class PlayerClassTwo : MonoBehaviour
 
     private float abilityRechardgeSpeed; // ability cooldown time
 
+    [SerializeField] private int specialAbilityCost = 10;
+
     public float healRadius = 7f;
 
     public bool selfHeal = false;
@@ -31,6 +33,8 @@ public class PlayerClassTwo : MonoBehaviour
     [SerializeField] private KeyCode ultimateAbilityHotkey = KeyCode.E;
 
     [SerializeField] private float ultimateAbilityCooldown = 0.1f;
+
+    [SerializeField] private int ultimateAbilityCost = 20;
 
     private float ultimateRechargeSpeed;
 
@@ -55,7 +59,7 @@ public class PlayerClassTwo : MonoBehaviour
         if (Input.GetKeyDown(specialAbilityHotkey))
         {
             //If cooldown is low enough: shoot
-            if (Time.time > abilityRechardgeSpeed)
+            if (Time.time > abilityRechardgeSpeed && SoulBackpack.Instance.sharedSoulAmount >= specialAbilityCost)
             {
                 abilityRechardgeSpeed = Time.time + specialAbilityCooldown;
                 specialAbility();
@@ -67,7 +71,7 @@ public class PlayerClassTwo : MonoBehaviour
         if (Input.GetKeyDown(ultimateAbilityHotkey))
         {
             //If cooldown is low enough: shoot
-            if (Time.time > ultimateRechargeSpeed)
+            if (Time.time > ultimateRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= ultimateAbilityCost)
             {
                 ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
                 ultimateAbility();
