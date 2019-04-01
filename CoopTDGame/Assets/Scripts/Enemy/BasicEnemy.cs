@@ -20,9 +20,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private int action = 0;
     [SerializeField] private int decisionLimit = 0;
     [SerializeField] private float preparationTime = 0f;
-    [SerializeField] private bool knockback = false;
-    [SerializeField] private float knockbackDuration = 2f;
-    public Vector3 knockbackForce;
+
 
     [Header("Interaction/Vision/Attack Radius")]
     public float attackRange = 5f;
@@ -59,13 +57,12 @@ public class BasicEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //CheckDestinationReached();
 
         if (Target != null)
         {
             float distance = Vector3.Distance(Target.transform.position, transform.position);
 
-            if (distance <= detectionRadius && distance > stoppingRange && knockback == false)
+            if (distance <= detectionRadius && distance > stoppingRange)
             {
                 agent.isStopped = false;
                 agent.SetDestination(Target.transform.position);
@@ -78,14 +75,15 @@ public class BasicEnemy : MonoBehaviour
                 prepareAttack();
                 //Debug.Log("Ai: Preparing Attack now");
             }
-            else {
+            else
+            {
                 charging = false;
                 agent.speed *= 1;
                 enemyAnim.SetBool("Charge", false);
             }
 
 
-            if (distance <= stoppingRange && knockback == false) // in stopping range prevents ai from bumping into player
+            if (distance <= stoppingRange) // in stopping range prevents ai from bumping into player
             {
                 agent.isStopped = true;
                 rigid.velocity = Vector3.zero;
@@ -109,7 +107,7 @@ public class BasicEnemy : MonoBehaviour
 
     public void prepareAttack()
     {
-        // set the enemy animation to idle / preparation for attack
+       // set the enemy animation to idle / preparation for attack
         if (!charging) {
             charging = true;
             agent.speed *= 0;
@@ -123,7 +121,7 @@ public class BasicEnemy : MonoBehaviour
             gameObject.GetComponent<AttackAndDamage>().performAttack();
             preparationTime = Random.Range(1, maxPreparationTimeForAttack);
             attackIndication.SetActive(false);
-
+            
             charging = false;
             agent.speed *= 1;
             enemyAnim.SetBool("Charge", false);
