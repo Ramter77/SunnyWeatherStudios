@@ -14,6 +14,8 @@ public class PlayerClassOne : MonoBehaviour
 
     [SerializeField] private float specialAbilityCooldown = 0.1f;
 
+    [SerializeField] private int specialAbilityCost = 10;
+
     private float abilityRechardgeSpeed; // ability cooldown time
 
     public float healRadius = 7f;
@@ -32,11 +34,11 @@ public class PlayerClassOne : MonoBehaviour
 
     [SerializeField] private float ultimateAbilityCooldown = 0.1f;
 
+    [SerializeField] private int ultimateAbilityCost = 20;
+
     private float ultimateRechargeSpeed;
 
     public GameObject ultimateSlashPrefab;
-
-    public Vector3 ultimateSpawnPointOffset;
 
     public Transform FirePoint;
 
@@ -56,23 +58,24 @@ public class PlayerClassOne : MonoBehaviour
         if (Input.GetKeyDown(specialAbilityHotkey))
         {
             //If cooldown is low enough: shoot
-            if (Time.time > abilityRechardgeSpeed)
+            if (Time.time > abilityRechardgeSpeed && SoulBackpack.Instance.sharedSoulAmount >= specialAbilityCost)
             {
                 abilityRechardgeSpeed = Time.time + specialAbilityCooldown;
                 specialAbility();
                 //Start animation which displays the healing effect and player anim
-                Debug.Log("healing by" + healAmount);
+                SoulBackpack.Instance.reduceSoulsByCost(specialAbilityCost);
             }
         }
 
         if (Input.GetKeyDown(ultimateAbilityHotkey))
         {
             //If cooldown is low enough: shoot
-            if (Time.time > ultimateRechargeSpeed)
+            if (Time.time > ultimateRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= ultimateAbilityCost)
             {
                 ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
                 ultimateAbility();
                 //Start animation which displays the ultimate
+                SoulBackpack.Instance.reduceSoulsByCost(ultimateAbilityCost);
             }
         }
 
