@@ -16,12 +16,23 @@ public class PlayerSound : MonoBehaviour
     void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        terrainDetector = new TerrainDetector();
     }
 
     public void FootstepSound() {
         //Execute this function from the animations when the foot hits the ground (& the character is grounded?)
-        AudioClip clip = GetRandomClip();
-        audioSource.PlayOneShot(clip);
+        //AudioClip clip = GetRandomClip();
+        //audioSource.PlayOneShot(clip);
+
+
+        //if (!audioSource.isPlaying) {
+            
+
+        if (InputManager.Instance.Vertical == 1) {
+            audioSource.PlayOneShot(normalFootsteps[0]);
+            Debug.Log("Play footstep sound from: " + transform.name);
+        }
+        //}
     }
 
     private AudioClip GetRandomClip()
@@ -32,8 +43,8 @@ public class PlayerSound : MonoBehaviour
         //Return a clip from the corresponding clips array
         switch(terrainTextureIndex)
         {
-            case 0:
-                return pathFootsteps[UnityEngine.Random.Range(0, pathFootsteps.Length)];
+            /* case 0:
+                return pathFootsteps[UnityEngine.Random.Range(0, pathFootsteps.Length)]; */
             default:
                 return normalFootsteps[UnityEngine.Random.Range(0, normalFootsteps.Length)];
         }

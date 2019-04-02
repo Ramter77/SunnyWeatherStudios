@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class SoulStorage : Singleton<SoulStorage>
 {
+    public Text tempSoulCounter;
+
+
+
     [Header("Soul storage")]
     [Tooltip("current ammount of souls")]
     public int soulCount = 0;
@@ -35,6 +39,11 @@ public class SoulStorage : Singleton<SoulStorage>
     {
         if (soulAmountDisplayText != null) {
             soulAmountDisplayText.text = "Total Souls:" + soulCount;
+            //Debug.Log("SoulCount:" + soulCount);
+        }
+
+        if (tempSoulCounter != null) {
+            tempSoulCounter.text = "Total Souls:" + soulCount;
             //Debug.Log("SoulCount:" + soulCount);
         }
     }

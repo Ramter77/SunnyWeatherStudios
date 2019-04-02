@@ -42,14 +42,18 @@ public class AttackAndDamage : MonoBehaviour
                 //Debug.Log("Enemy attacked");
                 targetDefense = Target.GetComponent<LifeAndStats>().defense;
                 float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
-                Target.GetComponent<LifeAndStats>().health -= applyingDamage;
+                //Target.GetComponent<LifeAndStats>().health -= applyingDamage;       //!make these public please
+                Target.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
+
+
+                enemyAnim.SetTrigger("Attack");
                 //Debug.Log("AI: apply damage amount" + Target.GetComponent<LifeAndStats>().health);
                 enableAttack = false;
                 StartCoroutine(resetAttackCooldown());
 
                 //AttackAnimation
                 //transform.GetChild(0).GetComponent<Animator>().SetTrigger("Attack");
-                enemyAnim.SetTrigger("Attack");
+                
             }
             else
             {

@@ -25,7 +25,7 @@ public class PlayerWeaponDamage : MonoBehaviour
         if(other.gameObject.tag == "Enemy" )
         {
             //Debug.Log("Weapon hit enemy");
-            other.gameObject.GetComponent<LifeAndStats>().health -= attackDamage;
+            other.gameObject.GetComponent<LifeAndStats>().TakeDamage(attackDamage); //!public functions pls
         }
     }
 }

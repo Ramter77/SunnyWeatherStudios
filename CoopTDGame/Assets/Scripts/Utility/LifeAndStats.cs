@@ -14,12 +14,17 @@ public class LifeAndStats : MonoBehaviour
     private GameObject Soul;
     #endregion
 
-
+    public GameObject particleEffect;
+    public float ParticleOnHitEffectYoffset = 1;
     public bool destroyable;
+
+    private Animator playerAnim;
     private FractureObject fractureScript;
+    
 
     void Start()
     {
+        playerAnim = GetComponent<Animator>();
         fractureScript = GetComponent<FractureObject>();
         fallbackHealCooldown = healCooldown;
     }
@@ -37,23 +42,31 @@ public class LifeAndStats : MonoBehaviour
                 fractureScript.Fracture();
             }
         }
-        if (gameObject.CompareTag("Enemy") && health <= 0)
+        if (gameObject.CompareTag("Enemy"))
         {
-            #region Instantiate Soul & destroy self
-            if (dropSoul) {
-                Vector3 dropPos = new Vector3(transform.position.x, transform.position.y+2, transform.position.z);
-                GameObject _Soul = Instantiate(Resources.Load("Soul", typeof(GameObject)), dropPos, Quaternion.identity) as GameObject;
+            if (health <= 0) {
+                #region Instantiate Soul & destroy self
+                if (dropSoul) {
+                    Vector3 dropPos = new Vector3(transform.position.x, transform.position.y+2, transform.position.z);
+                    GameObject _Soul = Instantiate(Resources.Load("Soul", typeof(GameObject)), dropPos, Quaternion.identity) as GameObject;
+                }
+                Destroy(gameObject);
+                #endregion
             }
-            Destroy(gameObject);
-            #endregion
         }
 
-        if ((gameObject.CompareTag("Player") || gameObject.CompareTag("Player2")) && health <= 0)
+        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
         {
-            Debug.Log("Player dead");
-
-            GetComponent<Animator>().SetTrigger("Die");
+            if (health <= 0) {
+                Debug.Log("Player dead");
+                playerAnim.SetBool("Dead", true);
+            }
         } 
+    }
+
+    public void TakeDamage(float dmg) {
+        health -= dmg;
+        ParticleOnHitEffect(ParticleOnHitEffectYoffset);
     }
 
     public void healHealth(float healAmount)
@@ -62,6 +75,13 @@ public class LifeAndStats : MonoBehaviour
         {
             health += healAmount;
             healCooldown = fallbackHealCooldown;
+        }
+    }
+
+    public void ParticleOnHitEffect(float yOffset) {
+        if (particleEffect != null) {
+            Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
+            Instantiate(particleEffect, spawnPos, Quaternion.identity);
         }
     }
 
