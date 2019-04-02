@@ -30,7 +30,7 @@ public class PlayerSound : MonoBehaviour
 
         if (InputManager.Instance.Vertical == 1) {
             audioSource.PlayOneShot(normalFootsteps[0]);
-            Debug.Log("Play footstep sound from: " + transform.name);
+            //Debug.Log("Play footstep sound from: " + transform.name);
         }
         //}
     }
