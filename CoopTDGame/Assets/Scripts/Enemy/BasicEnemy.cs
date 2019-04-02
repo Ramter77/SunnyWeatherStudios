@@ -39,7 +39,6 @@ public class BasicEnemy : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -54,7 +53,6 @@ public class BasicEnemy : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -75,12 +73,12 @@ public class BasicEnemy : MonoBehaviour
                 prepareAttack();
                 //Debug.Log("Ai: Preparing Attack now");
             }
-            else
+            /* else
             {
                 charging = false;
                 agent.speed *= 1;
                 enemyAnim.SetBool("Charge", false);
-            }
+            } */
 
 
             if (distance <= stoppingRange) // in stopping range prevents ai from bumping into player
@@ -108,11 +106,11 @@ public class BasicEnemy : MonoBehaviour
     public void prepareAttack()
     {
        // set the enemy animation to idle / preparation for attack
-        if (!charging) {
+        /* if (!charging) {
             charging = true;
             agent.speed *= 0;
             enemyAnim.SetBool("Charge", true);
-        }
+        } */
 
         preparationTime -= Time.deltaTime;  
         if(preparationTime <= 0)
@@ -124,7 +122,7 @@ public class BasicEnemy : MonoBehaviour
             
             charging = false;
             agent.speed *= 1;
-            enemyAnim.SetBool("Charge", false);
+            /* enemyAnim.SetBool("Charge", false); */
         }
         if(preparationTime <= 2)
         {
