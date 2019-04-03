@@ -142,6 +142,7 @@ public class PlayerClassOne : MonoBehaviour
                 ultimateAbility();
                 StartCoroutine(disableUltimate());
                 //Start animation which displays the ultimate
+                SoulBackpack.Instance.reduceSoulsByCost(ultimateAbilityCost);
             }
         }
         else
