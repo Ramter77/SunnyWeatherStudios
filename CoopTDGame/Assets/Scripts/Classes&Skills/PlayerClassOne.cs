@@ -212,7 +212,14 @@ public class PlayerClassOne : MonoBehaviour
 
     void slashAbility()
     {
-        Vector3 slashSpawnPoint = FirePoint.position;
-        Instantiate(slashSlashPrefab, slashSpawnPoint, Camera.rotation);
+        //* First set the projectile
+        GetComponent<RangedAttack>().ChangeProjectileTo(slashSlashPrefab);
+        //* Then execute animation which calls public function "ShootActiveProjectile" on "RangedAttack" component
+        playerAnim.SetTrigger("RangedAttack");
+
+
+
+        /* Vector3 slashSpawnPoint = FirePoint.position;
+        Instantiate(slashSlashPrefab, slashSpawnPoint, Camera.rotation); */
     }
 }

@@ -285,7 +285,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295284410}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 944.53, y: 28.33, z: 927.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -307,7 +307,7 @@ Animator:
   m_GameObject: {fileID: 295284410}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9aaf85c5076ef0c489b751d4ab8e26d3, type: 3}
-  m_Controller: {fileID: 9100000, guid: a8adb4f7f18683f478b92094b82feed9, type: 2}
+  m_Controller: {fileID: 9100000, guid: b7579678442415949b1cd848432d4d04, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -376,12 +376,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b506ff54232aa4285a9992e47346ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1544899243408029130, guid: 1145971759cf4554183ec2c4d65d44eb,
+  projectile: {fileID: 113481993458745524, guid: 1145971759cf4554183ec2c4d65d44eb,
     type: 3}
   projectileSpeed: 20
   projectileOrigin: {fileID: 68728125}
-  shootDelay: 0.3
-  attackCD: 0.1
   mask:
     serializedVersion: 2
     m_Bits: 7987
@@ -404,9 +402,6 @@ MonoBehaviour:
   WeaponTriggerCollider: {fileID: 612959914}
   damageSphereRadius: 2.56
   attackDamage: 110
-  attackSpeed: 99999
-  attackCD: 0
-  attacking: 0
 --- !u!114 &295284415
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -425,7 +420,6 @@ MonoBehaviour:
   - {fileID: 3908368510931437923, guid: f13a5e1f2b3c8ec4d9e677c745573953, type: 3}
   TestPrefabs:
   - {fileID: 113481993458745524, guid: 523752e691085914fbfe1fd6d37df56e, type: 3}
-  soulCost: 0
   mask:
     serializedVersion: 2
     m_Bits: 3072
@@ -447,7 +441,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxhealth: 100
   defense: 20
+  particleEffect: {fileID: 2712116678064869091, guid: 09eea307eba35884abc5cb2706e5619f,
+    type: 3}
+  ParticleOnHitEffectYoffset: 4
   destroyable: 0
 --- !u!114 &295284413
 MonoBehaviour:
@@ -464,6 +462,7 @@ MonoBehaviour:
   axisDamping: 0.1
   buttonDamping: 0.5
   controllerDamping: 0.5
+  jumpDamping: 0
 --- !u!114 &295284411
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +478,10 @@ MonoBehaviour:
   Player_: 2
   TurnPlayerForward: 0
   turn_Speed: 2
+  isInBuildMode: 0
+  isMeleeAttacking: 0
+  isRangedAttacking: 0
+  isJumping: 0
 --- !u!114 &295284412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -491,12 +494,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b51b5c64280d8e41b0c039a33b64dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specialAbilityCooldown: 4
-  specialAbilityPrefab: {fileID: 6653063816539534576, guid: 8b8723d6538529449816972dfaca41ff,
-    type: 3}
-  SpellcastPoint: {fileID: 68728125}
   specialAbilityHotkey: 113
-  knockbackForce: {x: 0, y: 2, z: 5}
+  specialAbilityCooldown: 4
+  specialAbilityCost: 10
+  healRadius: 15
+  selfHeal: 0
+  healAmount: 25
+  maxHealth: 100
+  ultimateAbilityHotkey: 101
+  ultimateAbilityCooldown: 0.1
+  ultimateAbilityCost: 20
+  ultimateAbilityGameobject: {fileID: 0}
+  ultimateAbilityDuration: 10
 --- !u!1 &330134074
 GameObject:
   m_ObjectHideFlags: 0
@@ -1013,7 +1022,7 @@ GameObject:
   - component: {fileID: 612959916}
   - component: {fileID: 612959914}
   - component: {fileID: 612959915}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1104,6 +1113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a3b164fe50494b46b90c03a8c739400, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackDamage: 0
   ParentEnemy: {fileID: 295284410}
 --- !u!1 &670255285
 GameObject:
@@ -3055,11 +3065,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 747993909004267157, guid: e66338e7ceb5d0540a64b17d84c2f35c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 747993908728494593, guid: e66338e7ceb5d0540a64b17d84c2f35c,
         type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 72854481}
+    - target: {fileID: 747993908751939226, guid: e66338e7ceb5d0540a64b17d84c2f35c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e66338e7ceb5d0540a64b17d84c2f35c, type: 3}
 --- !u!4 &792733048 stripped

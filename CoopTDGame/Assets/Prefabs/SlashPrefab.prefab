@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 5748804995018780617}
   - component: {fileID: 3525382788916533089}
   - component: {fileID: 5577427060583209512}
+  - component: {fileID: 5189936112615418780}
   m_Layer: 0
   m_Name: SlashPrefab
   m_TagString: Untagged
@@ -125,7 +126,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slashDamage: 25
   lifetime: 5
-  speed: 20
+  speed: 0
 --- !u!64 &5577427060583209512
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -140,6 +141,22 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: b55cd2377bae4f94dada1015b12349da, type: 3}
+--- !u!54 &5189936112615418780
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9003700133114425031}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1495736026207090062
 PrefabInstance:
   m_ObjectHideFlags: 0

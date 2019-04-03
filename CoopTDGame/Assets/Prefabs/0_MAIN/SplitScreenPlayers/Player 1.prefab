@@ -2868,12 +2868,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b506ff54232aa4285a9992e47346ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectile: {fileID: 1544899243408029130, guid: 1145971759cf4554183ec2c4d65d44eb,
+  projectile: {fileID: 113481993458745524, guid: 1145971759cf4554183ec2c4d65d44eb,
     type: 3}
   projectileSpeed: 20
   projectileOrigin: {fileID: 1720663640}
-  shootDelay: 0.3
-  attackCD: 0.1
   mask:
     serializedVersion: 2
     m_Bits: 2147499319
@@ -2936,6 +2934,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 60
+  maxhealth: 100
   defense: 20
   particleEffect: {fileID: 2712116678064869091, guid: 09eea307eba35884abc5cb2706e5619f,
     type: 3}
@@ -3013,6 +3012,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 1976825732089856959}
+  healthbar: {fileID: 0}
+  maxHealth: 100
   healAbilityHotkey: 113
   healAbilityUiImageOn: {fileID: 0}
   healAbilityUiImageOff: {fileID: 0}
@@ -3021,15 +3022,17 @@ MonoBehaviour:
   healRadius: 7
   selfHeal: 0
   healAmount: 25
-  maxHealth: 100
   slashAbilityHotkey: 101
   slashAbilityUiImageOn: {fileID: 0}
   slashAbilityUiImageOff: {fileID: 0}
   slashAbilityCooldown: 5
   slashAbilityCost: 20
-  slashSlashPrefab: {fileID: 0}
+  slashSlashPrefab: {fileID: 9003700133114425031, guid: c28fea64ccc640946bad586dfb6f2aeb,
+    type: 3}
   FirePoint: {fileID: 1720663640}
   ultimateAbilityHotkey: 98
+  ultimateAbilityUiImageOn: {fileID: 0}
+  ultimateAbilityUiImageOff: {fileID: 0}
   ultimateAbilityCooldown: 0.1
   ultimateAbilityCost: 20
   ultimateAbilityGameobject: {fileID: 116593094684808658}
@@ -3387,14 +3390,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2063423256, guid: 120c8c179ccd6ba4699bb881eb5f5051, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 1956035154, guid: 120c8c179ccd6ba4699bb881eb5f5051, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 2030948603}
+    - target: {fileID: 2063423256, guid: 120c8c179ccd6ba4699bb881eb5f5051, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 115421739, guid: 120c8c179ccd6ba4699bb881eb5f5051, type: 3}
       propertyPath: m_Enabled
       value: 1

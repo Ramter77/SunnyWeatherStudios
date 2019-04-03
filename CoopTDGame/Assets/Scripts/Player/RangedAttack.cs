@@ -9,7 +9,8 @@ public class RangedAttack : MonoBehaviour
     [Header ("Projectile")]
     [Tooltip("Projectile to throw")]
     [SerializeField]
-    private Rigidbody projectile;
+    private GameObject projectile;
+    private Rigidbody projectileRB;
 
     [Tooltip("Speed of projectile")]
     [SerializeField]
@@ -20,15 +21,15 @@ public class RangedAttack : MonoBehaviour
     private Transform projectileOrigin;
 
 
-    [Header ("Parameters")]
-    [Tooltip("Delay of instantiating projectile")]
+    /* [Header ("Parameters")] */
+    /* [Tooltip("Delay of instantiating projectile")]
     [SerializeField]
-    private float shootDelay = 0.3f;
+    private float shootDelay = 0.3f; */
 
-    [Tooltip("Attack cooldown")]
+    /* [Tooltip("Attack cooldown")]
     [SerializeField]
-    private float attackCD = 0.1f;
-    private float attackSpeed;
+    private float attackCD = 0.1f; */
+    /* private float attackSpeed; */
 
     [Header ("RayCast")]
     [SerializeField]
@@ -91,6 +92,7 @@ public class RangedAttack : MonoBehaviour
             playC.isRangedAttacking = true;
 
             //Start animation which ShootProjectile() on event & resets isRangedAttacking
+            ChangeProjectileTo(projectile); //change projectile to assigned GameObject
             playerAnim.SetTrigger("RangedAttack");
         }
     }
@@ -106,13 +108,22 @@ public class RangedAttack : MonoBehaviour
         playC.isRangedAttacking = false;
     }
 
+    /// <summary>
+    /// Changes projectile to provided GameObject
+    /// </summary>
+    /// <param name="_projectile">Change projectile to this parameter</param>
+    public void ChangeProjectileTo(GameObject _projectile) {
+        Debug.Log("Changed projectile to: " + _projectile);
+        Rigidbody _projectileRB = _projectile.GetComponent<Rigidbody>();
+
+        projectileRB = _projectileRB;
+    }
+
     #region Public ShootProjectile
     /// <summary>
-    /// Shoots a projetile to the middle of the viewport
+    /// Shoots the current projectile to the middle of the viewport by adding force to it and disabling collision with its owner
     /// </summary>
-    /// <param name="_projectile">Projectile to shoot. Pass null to shoot projectile attached on "RangedAttack" component</param>
-    /// <param name="_projectileSpeedMultiplier">Multiplies base speed by this multiplier.</param>
-    public void ShootProjectile(Rigidbody _projectile, float _projectileSpeedMultiplier)
+    public void ShootActiveProjectile()
     {
         //Raycast from screen center
         Ray ray = MainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -133,18 +144,11 @@ public class RangedAttack : MonoBehaviour
             direction = (ray.GetPoint(defaultDistance) - projectileOrigin.position).normalized;
         }
 
-        Rigidbody projectileRB = null;
-
-        //Create & send PROJECTILE from projectileOrigin
-        if (_projectile == null) {
-            projectileRB = Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
-        }
-        else {
-            projectileRB = Instantiate(_projectile, projectileOrigin.position, projectileOrigin.rotation);
-        }
+        //Create projectile
+        Rigidbody _projectileRB = Instantiate(projectileRB, projectileOrigin.position, projectileOrigin.rotation);
 
         //Add force
-        projectileRB.AddForce(direction * projectileSpeed * _projectileSpeedMultiplier, ForceMode.Impulse);
+        _projectileRB.AddForce(direction * projectileSpeed, ForceMode.Impulse);
 
         //Ignore collisions with owner
         IgnoreCollisionSelf(projectileRB);

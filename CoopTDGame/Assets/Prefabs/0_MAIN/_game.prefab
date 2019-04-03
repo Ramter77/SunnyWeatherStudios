@@ -579,7 +579,7 @@ GameObject:
   - component: {fileID: 4805170314889621837}
   - component: {fileID: 8786849766734567643}
   - component: {fileID: 2398497441337107154}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Soul Counter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -985,7 +985,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a655c84c524ee1045a4e4f308728218f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sharedSoulAmount: 0
+  sharedSoulAmount: 200
   soulBackpackText: {fileID: 7774686985015318264}
 --- !u!1 &4161799500693079709
 GameObject:
@@ -1557,7 +1557,7 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 1
+  m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -3626,7 +3626,7 @@ PrefabInstance:
     - target: {fileID: 9024272294322191078, guid: 7b39e4a9845b2ce4282e4c45d514637e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.7548027
+      value: 8.5
       objectReference: {fileID: 0}
     - target: {fileID: 9024272294322191078, guid: 7b39e4a9845b2ce4282e4c45d514637e,
         type: 3}
@@ -3712,7 +3712,7 @@ PrefabInstance:
     - target: {fileID: 9024272294322191078, guid: 7b39e4a9845b2ce4282e4c45d514637e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.754795
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 9024272294322191078, guid: 7b39e4a9845b2ce4282e4c45d514637e,
         type: 3}
@@ -3764,6 +3764,21 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 5739360170334783339}
+    - target: {fileID: 9024272294396478794, guid: 7b39e4a9845b2ce4282e4c45d514637e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 257
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024272294396478794, guid: 7b39e4a9845b2ce4282e4c45d514637e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -8.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 9024272294396478794, guid: 7b39e4a9845b2ce4282e4c45d514637e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 74
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b39e4a9845b2ce4282e4c45d514637e, type: 3}
 --- !u!4 &5739360170258692295 stripped
@@ -3798,7 +3813,7 @@ PrefabInstance:
     - target: {fileID: 8694694675950791142, guid: 126b1854a7a735b41b321ae2a2af4aab,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 10.5
       objectReference: {fileID: 0}
     - target: {fileID: 8694694675950791142, guid: 126b1854a7a735b41b321ae2a2af4aab,
         type: 3}
@@ -3930,6 +3945,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3117126349710634136, guid: d124f3a1e3bb552478d783a5b8ab120b,
+        type: 3}
+      propertyPath: _Player2.useController
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8419485869700776651, guid: d124f3a1e3bb552478d783a5b8ab120b,
+        type: 3}
+      propertyPath: costToBuild
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d124f3a1e3bb552478d783a5b8ab120b, type: 3}
 --- !u!1 &4052570057371094893 stripped
@@ -3951,11 +3976,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1515932932665781127}
     m_Modifications:
-    - target: {fileID: 6822720591853842938, guid: 9756728654e3cd948b84c4526069c943,
-        type: 3}
-      propertyPath: m_Name
-      value: Spawning
-      objectReference: {fileID: 0}
     - target: {fileID: 6822720591853842939, guid: 9756728654e3cd948b84c4526069c943,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4010,6 +4030,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6822720591853842938, guid: 9756728654e3cd948b84c4526069c943,
+        type: 3}
+      propertyPath: m_Name
+      value: Spawning
       objectReference: {fileID: 0}
     - target: {fileID: 6822720591853842936, guid: 9756728654e3cd948b84c4526069c943,
         type: 3}
