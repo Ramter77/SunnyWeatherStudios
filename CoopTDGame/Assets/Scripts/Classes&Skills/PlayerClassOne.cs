@@ -1,22 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerClassOne : MonoBehaviour
 {
     [Header("References")]
     private Animator playerAnim;
     private GameObject Player;
+    public Transform Camera;
 
-    [Header("Special Ability Settings")]
+    [Header("General UI settings")]
+    public Image healthbar;
+    private float currentHealth = 100f;
+    public float maxHealth = 100f;
 
-    [SerializeField] private KeyCode specialAbilityHotkey = KeyCode.Q;
+    [Header("Heall Ability Settings")]
 
-    [SerializeField] private float specialAbilityCooldown = 0.1f;
+    [SerializeField] private KeyCode healAbilityHotkey = KeyCode.Q;
 
-    [SerializeField] private int specialAbilityCost = 10;
+    public Image healAbilityUiImageOn;
+    public Image healAbilityUiImageOff;
 
-    private float abilityRechardgeSpeed; // ability cooldown time
+    [SerializeField] private float healAbilityCooldown = 0.1f;
+
+    [SerializeField] private int healAbilityCost = 10;
+
+    private float healAbilityRechardgeSpeed; // ability cooldown time
 
     public float healRadius = 7f;
 
@@ -24,13 +34,31 @@ public class PlayerClassOne : MonoBehaviour
 
     [SerializeField] private float healAmount = 25f;
 
-    private float fallbackHealAmount = 25;
+    private float fallbackHealAmount = 25f;
 
-    public float maxHealth = 100f;
+    [Header("Slash Ability Settings")]
+
+    [SerializeField] private KeyCode slashAbilityHotkey = KeyCode.E;
+
+    public Image slashAbilityUiImageOn;
+    public Image slashAbilityUiImageOff;
+
+    [SerializeField] private float slashAbilityCooldown = 0.1f;
+
+    [SerializeField] private int slashAbilityCost = 20;
+
+    private float slashRechargeSpeed;
+
+    public GameObject slashSlashPrefab;
+
+    public Transform FirePoint;
 
     [Header("Ultimate Ability Settings")]
 
-    [SerializeField] private KeyCode ultimateAbilityHotkey = KeyCode.E;
+    [SerializeField] private KeyCode ultimateAbilityHotkey = KeyCode.Tab;
+
+    public Image ultimateAbilityUiImageOn;
+    public Image ultimateAbilityUiImageOff;
 
     [SerializeField] private float ultimateAbilityCooldown = 0.1f;
 
@@ -38,9 +66,9 @@ public class PlayerClassOne : MonoBehaviour
 
     private float ultimateRechargeSpeed;
 
-    public GameObject ultimateSlashPrefab;
+    public GameObject ultimateAbilityGameobject;
 
-    public Transform FirePoint;
+    [Tooltip("Duration has to be smaller than cooldown")] public float ultimateAbilityDuration = 10f;
 
 
     // Start is called before the first frame update
@@ -49,40 +77,83 @@ public class PlayerClassOne : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         Player = gameObject;
         fallbackHealAmount = healAmount;
+        
+        //ability Cooldowns
+        ultimateAbilityGameobject.SetActive(false);
+        slashRechargeSpeed = slashAbilityCooldown;
+        healAbilityRechardgeSpeed = healAbilityCooldown;
+        ultimateRechargeSpeed = ultimateAbilityCooldown;
+       
     }
 
     // Update is called once per frame
     void Update()
     {
-        #region Input
-        if (Input.GetKeyDown(specialAbilityHotkey))
+        currentHealth = GetComponent<LifeAndStats>().health;
+        healthbar.fillAmount = currentHealth / maxHealth;
+
+
+        #region Input / Abilities
+        
+        //If cooldown is low enough: shoot
+        if (Time.time > healAbilityRechardgeSpeed && SoulBackpack.Instance.sharedSoulAmount >= healAbilityCost)
         {
-            //If cooldown is low enough: shoot
-            if (Time.time > abilityRechardgeSpeed && SoulBackpack.Instance.sharedSoulAmount >= specialAbilityCost)
+            healAbilityUiImageOn.enabled = true;
+            healAbilityUiImageOff.enabled = false;
+            if (Input.GetKeyDown(healAbilityHotkey))
             {
-                abilityRechardgeSpeed = Time.time + specialAbilityCooldown;
-                specialAbility();
+                healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;
+                healAbility();
                 //Start animation which displays the healing effect and player anim
-                SoulBackpack.Instance.reduceSoulsByCost(specialAbilityCost);
+                SoulBackpack.Instance.reduceSoulsByCost(healAbilityCost);
             }
         }
-
-        if (Input.GetKeyDown(ultimateAbilityHotkey))
+        else
         {
-            //If cooldown is low enough: shoot
-            if (Time.time > ultimateRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= ultimateAbilityCost)
+            healAbilityUiImageOn.enabled = false;
+            healAbilityUiImageOff.enabled = true;
+        }
+        //If cooldown is low enough: shoot
+        if (Time.time > slashRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= slashAbilityCost)
+        {
+            slashAbilityUiImageOn.enabled = true;
+            slashAbilityUiImageOff.enabled = false;
+            if (Input.GetKeyDown(slashAbilityHotkey))
+            {
+                slashRechargeSpeed = Time.time + slashAbilityCooldown;
+                slashAbility();
+                //Start animation which displays the slash
+                SoulBackpack.Instance.reduceSoulsByCost(slashAbilityCost);
+            }
+        }
+        else
+        {
+            slashAbilityUiImageOn.enabled = false;
+            slashAbilityUiImageOff.enabled = true;
+        }
+        //If cooldown is low enough: shoot
+        if (Time.time > ultimateRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= ultimateAbilityCost)
+        {
+            ultimateAbilityUiImageOn.enabled = true;
+            ultimateAbilityUiImageOff.enabled = false;
+            if (Input.GetKeyDown(ultimateAbilityHotkey))
             {
                 ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
                 ultimateAbility();
+                StartCoroutine(disableUltimate());
                 //Start animation which displays the ultimate
-                SoulBackpack.Instance.reduceSoulsByCost(ultimateAbilityCost);
             }
         }
-
+        else
+        {
+            ultimateAbilityUiImageOn.enabled = false;
+            ultimateAbilityUiImageOff.enabled = true;
+        }
         #endregion
+
     }
 
-    void specialAbility()
+    void healAbility()
     {
         Collider[] col = Physics.OverlapSphere(transform.position, healRadius); // draw a sphere at desire point based on player pos + offset and desired radius of effect
         if (col.Length > 0)
@@ -127,10 +198,20 @@ public class PlayerClassOne : MonoBehaviour
         }
     }
 
-
     void ultimateAbility()
     {
-        Vector3 UltimateSpawnPoint = FirePoint.position;
-        Instantiate(ultimateSlashPrefab, UltimateSpawnPoint, transform.rotation);
+        ultimateAbilityGameobject.SetActive(true);
+    }
+
+    IEnumerator disableUltimate()
+    {
+        yield return new WaitForSeconds(ultimateAbilityDuration);
+        ultimateAbilityGameobject.SetActive(false);
+    }
+
+    void slashAbility()
+    {
+        Vector3 slashSpawnPoint = FirePoint.position;
+        Instantiate(slashSlashPrefab, slashSpawnPoint, Camera.rotation);
     }
 }

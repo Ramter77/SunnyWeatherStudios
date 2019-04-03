@@ -156,7 +156,7 @@ public class BasicEnemy : MonoBehaviour
         {
             foreach (Collider hit in col) // checks each object hit
             {
-                if (hit.tag == "Player" || hit.tag == "Player2")
+                if ((hit.tag == "Player" || hit.tag == "Player2") && hit.GetComponent<LifeAndStats>().health > 0)
                 {
                     Target = hit.gameObject;
                     checkedTarget = Target;
@@ -176,29 +176,31 @@ public class BasicEnemy : MonoBehaviour
             {
                 if (hit.tag == "possibleTargets") // if hit object has equal tag to possibleTarget tag
                 {
-                    action = Random.Range(0, 100);
-                    //Debug.Log("tower found");
-                    if (checkedTarget == null)
+                    if(hit.GetComponent<LifeAndStats>().health > 0)
                     {
-                        if (action <= decisionLimit) // if decisionmaking percentage is lower than the limit, decide to do this
+                        action = Random.Range(0, 100);
+                        //Debug.Log("tower found");
+                        if (checkedTarget == null)
                         {
-                            //Debug.Log(hit.transform.parent.gameObject);          
-                            //Debug.Log("I will rather go for a tower");
-                            checkedTarget = hit.transform.parent.gameObject.transform.parent.gameObject;
-                            NavMeshPath path = new NavMeshPath();
-                            agent.CalculatePath(checkedTarget.transform.position, path);
-                            if (path.status != NavMeshPathStatus.PathPartial) // checks if path is reachable
+                            if (action <= decisionLimit) // if decisionmaking percentage is lower than the limit, decide to do this
                             {
-                                agent.destination = checkedTarget.transform.position;
-                                Target = checkedTarget;
-                                StopCoroutine(ScanCycle());
+                                //Debug.Log(hit.transform.parent.gameObject);          
+                                //Debug.Log("I will rather go for a tower");
+                                checkedTarget = hit.transform.parent.gameObject.transform.parent.gameObject;
+                                NavMeshPath path = new NavMeshPath();
+                                agent.CalculatePath(checkedTarget.transform.position, path);
+                                if (path.status != NavMeshPathStatus.PathPartial) // checks if path is reachable
+                                {
+                                    agent.destination = checkedTarget.transform.position;
+                                    Target = checkedTarget;
+                                    StopCoroutine(ScanCycle());
+                                }
+                                else
+                                {
+                                    //Debug.Log("AI: Target is unreachable");
+                                    checkedTarget = null;
+                                }
                             }
-                            else
-                            {
-                                //Debug.Log("AI: Target is unreachable");
-                                checkedTarget = null;
-                            }
-
                         }
                     }
                 }

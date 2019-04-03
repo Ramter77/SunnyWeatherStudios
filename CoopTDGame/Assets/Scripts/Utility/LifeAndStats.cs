@@ -5,6 +5,7 @@ using UnityEngine;
 public class LifeAndStats : MonoBehaviour
 {
     public float health = 100f;
+    public float maxhealth = 100f;
     public float defense = 20f;
     private float healCooldown = 5f;
     private float fallbackHealCooldown;

@@ -1,10 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SoulBackpack : Singleton<SoulBackpack>
 {
     public int sharedSoulAmount;
+    public Text soulBackpackText; // displays the amount of shared souls in the ui
+
+    private void Update()
+    {
+        soulBackpackText.text = ("" + sharedSoulAmount);
+    }
+
 
     public void reduceSoulsByCost(int cost)
     {
