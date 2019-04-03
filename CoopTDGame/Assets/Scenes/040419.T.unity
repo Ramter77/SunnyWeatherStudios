@@ -5080,18 +5080,6 @@ Transform:
   m_Father: {fileID: 1888434045}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1498667204 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1552482383695012596, guid: 5e5a01643e92c064b898d4ea3fab2124,
-    type: 3}
-  m_PrefabInstance: {fileID: 3646484666851777918}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1531709661
 GameObject:
   m_ObjectHideFlags: 0
@@ -6196,6 +6184,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1806509241}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1819903438 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9000753850452862896, guid: 5e5a01643e92c064b898d4ea3fab2124,
+    type: 3}
+  m_PrefabInstance: {fileID: 3646484666851777918}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1846872146
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7207,8 +7207,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2404812743111671639, guid: 5e5a01643e92c064b898d4ea3fab2124,
+        type: 3}
+      propertyPath: m_Name
+      value: Player1HealthFiller
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e5a01643e92c064b898d4ea3fab2124, type: 3}
+--- !u!114 &3646484666851777919 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2353557001342765207, guid: 5e5a01643e92c064b898d4ea3fab2124,
+    type: 3}
+  m_PrefabInstance: {fileID: 3646484666851777918}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3646484666851777920 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5031778140905491441, guid: 5e5a01643e92c064b898d4ea3fab2124,
+    type: 3}
+  m_PrefabInstance: {fileID: 3646484666851777918}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4929738954267020668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7268,7 +7297,7 @@ PrefabInstance:
         type: 3}
       propertyPath: healthbar
       value: 
-      objectReference: {fileID: 1498667204}
+      objectReference: {fileID: 1819903438}
     - target: {fileID: 4667518461501015014, guid: 3990e8d2b5da9e84d8877fef0d1ff8fd,
         type: 3}
       propertyPath: healAbilityUiImageOn
@@ -7283,12 +7312,12 @@ PrefabInstance:
         type: 3}
       propertyPath: slashAbilityUiImageOn
       value: 
-      objectReference: {fileID: 527661751}
+      objectReference: {fileID: 3646484666851777920}
     - target: {fileID: 4667518461501015014, guid: 3990e8d2b5da9e84d8877fef0d1ff8fd,
         type: 3}
       propertyPath: slashAbilityUiImageOff
       value: 
-      objectReference: {fileID: 918748856}
+      objectReference: {fileID: 3646484666851777919}
     - target: {fileID: 4667518461501015014, guid: 3990e8d2b5da9e84d8877fef0d1ff8fd,
         type: 3}
       propertyPath: ultimateAbilityUiImageOn
@@ -7299,5 +7328,28 @@ PrefabInstance:
       propertyPath: ultimateAbilityUiImageOff
       value: 
       objectReference: {fileID: 1727176691}
+    - target: {fileID: 4667518461501015014, guid: 3990e8d2b5da9e84d8877fef0d1ff8fd,
+        type: 3}
+      propertyPath: slashAbilityCooldown
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4667518461501015014, guid: 3990e8d2b5da9e84d8877fef0d1ff8fd,
+        type: 3}
+      propertyPath: slashAbilityCost
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4667518461501015014, guid: 3990e8d2b5da9e84d8877fef0d1ff8fd,
+        type: 3}
+      propertyPath: healAbilityCooldown
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 711524592, guid: 3990e8d2b5da9e84d8877fef0d1ff8fd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1044571911, guid: 3990e8d2b5da9e84d8877fef0d1ff8fd, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3990e8d2b5da9e84d8877fef0d1ff8fd, type: 3}
