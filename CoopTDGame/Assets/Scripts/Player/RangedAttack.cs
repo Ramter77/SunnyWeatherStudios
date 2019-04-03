@@ -95,12 +95,24 @@ public class RangedAttack : MonoBehaviour
         }
     }
 
+    private void IgnoreCollisionSelf(Rigidbody rb) {
+        //Ignore collisions with owner
+        if (rb.GetComponent<SphereCollider>()) {
+            Physics.IgnoreCollision(myCollider, rb.GetComponent<SphereCollider>());
+        }
+    }
+
     public void resetRangedAttackCD() {
         playC.isRangedAttacking = false;
     }
 
     #region Public ShootProjectile
-    public void ShootProjectile()
+    /// <summary>
+    /// Shoots a projetile to the middle of the viewport
+    /// </summary>
+    /// <param name="_projectile">Projectile to shoot. Pass null to shoot projectile attached on "RangedAttack" component</param>
+    /// <param name="_projectileSpeedMultiplier">Multiplies base speed by this multiplier.</param>
+    public void ShootProjectile(Rigidbody _projectile, float _projectileSpeedMultiplier)
     {
         //Raycast from screen center
         Ray ray = MainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -121,14 +133,21 @@ public class RangedAttack : MonoBehaviour
             direction = (ray.GetPoint(defaultDistance) - projectileOrigin.position).normalized;
         }
 
+        Rigidbody projectileRB = null;
+
         //Create & send PROJECTILE from projectileOrigin
-        Rigidbody projectileRB = Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
-        projectileRB.AddForce(direction * projectileSpeed, ForceMode.Impulse);
+        if (_projectile == null) {
+            projectileRB = Instantiate(projectile, projectileOrigin.position, projectileOrigin.rotation);
+        }
+        else {
+            projectileRB = Instantiate(_projectile, projectileOrigin.position, projectileOrigin.rotation);
+        }
+
+        //Add force
+        projectileRB.AddForce(direction * projectileSpeed * _projectileSpeedMultiplier, ForceMode.Impulse);
 
         //Ignore collisions with owner
-        if (projectileRB.GetComponent<SphereCollider>()) {
-            Physics.IgnoreCollision(myCollider, projectileRB.GetComponent<SphereCollider>());
-        }
+        IgnoreCollisionSelf(projectileRB);
     }
     #endregion
 }
