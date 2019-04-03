@@ -14,6 +14,8 @@ public class BasicEnemy : MonoBehaviour
     private GameObject Sphere;
     private GameObject checkedTarget = null;
     public GameObject attackIndication;
+    private Transform targetPos = null;
+
 
     [Header("BehaviorStates / Effect States")]
     public int attackState = 0; // 0 == not attacking // 1 == attacking // 2 == has recently attacked
@@ -48,39 +50,39 @@ public class BasicEnemy : MonoBehaviour
         StartCoroutine(ScanCycle());
         preparationTime = Random.Range(1, maxPreparationTimeForAttack);
         attackIndication.SetActive(false);
-
-
         enemyAnim = GetComponent<Animator>();
+        
     }
 
     void Update()
     {
+        behaviorManager();
+        
+    }
 
-        if (Target != null)
+    #region enemyBehaviorStates
+
+
+    public void behaviorManager()
+    {
+        if(Target != null)
         {
-            float distance = Vector3.Distance(Target.transform.position, transform.position);
+            targetPos = Target.transform;
+            float distance = Vector3.Distance(targetPos.position, transform.position);
 
-            if (distance <= detectionRadius && distance > stoppingRange)
+            if (distance <= followRadius && distance > stoppingRange)
             {
                 agent.isStopped = false;
-                agent.SetDestination(Target.transform.position);
+                attackState = 1;
+                agent.SetDestination(targetPos.position);
             }
-
             if (distance <= attackRange) // in attack range
             {
-                attackState = 1;
                 FaceTowardsPlayer();
                 prepareAttack();
+                attackState = 1;
                 //Debug.Log("Ai: Preparing Attack now");
             }
-            /* else
-            {
-                charging = false;
-                agent.speed *= 1;
-                enemyAnim.SetBool("Charge", false);
-            } */
-
-
             if (distance <= stoppingRange) // in stopping range prevents ai from bumping into player
             {
                 agent.isStopped = true;
@@ -88,17 +90,15 @@ public class BasicEnemy : MonoBehaviour
                 rigid.angularVelocity = Vector3.zero;
             }
 
-            if ((attackState == 1 && distance >= followRadius) || Target.gameObject.tag == "destroyedTarget") // if target moves away or 
+            if ((attackState == 1 && distance > followRadius || Target.GetComponent<LifeAndStats>().health <= 0) || attackState == 1 && Target == null)
             {
                 Target = null;
-                WalkToSphere();
                 StartCoroutine(ScanCycle());
                 agent.isStopped = false;
-                checkedTarget = null;
-                gameObject.GetComponent<AttackAndDamage>().Target = null;
-                preparationTime = Random.Range(1, maxPreparationTimeForAttack);
                 attackState = 0;
+                WalkToSphere();
             }
+
         }
     }
 
@@ -139,11 +139,8 @@ public class BasicEnemy : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
-    }
+    #endregion 
+
 
 
     #region Detect Targets in close proximity
@@ -246,5 +243,18 @@ public class BasicEnemy : MonoBehaviour
     }
 
     #endregion
+
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, followRadius);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, stoppingRange);
+    }
 
 }
