@@ -15,7 +15,7 @@ public class BasicEnemy : MonoBehaviour
     private GameObject checkedTarget = null;
     public GameObject attackIndication;
     private Transform targetPos = null;
-
+    public List<GameObject> possibleTargets;
 
     [Header("BehaviorStates / Effect States")]
     public int attackState = 0; // 0 == not attacking // 1 == attacking // 2 == has recently attacked
@@ -51,7 +51,7 @@ public class BasicEnemy : MonoBehaviour
         preparationTime = Random.Range(1, maxPreparationTimeForAttack);
         attackIndication.SetActive(false);
         enemyAnim = GetComponent<Animator>();
-        
+        possibleTargets = new List<GameObject>();
     }
 
     void Update()
