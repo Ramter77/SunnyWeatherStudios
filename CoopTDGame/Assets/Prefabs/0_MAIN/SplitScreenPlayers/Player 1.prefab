@@ -733,6 +733,7 @@ GameObject:
   - component: {fileID: 711524594}
   - component: {fileID: 711524593}
   - component: {fileID: 8470122359404542142}
+  - component: {fileID: 5028698250990955171}
   m_Layer: 0
   m_Name: PlayerCharacterModel_Weapon_1
   m_TagString: Untagged
@@ -814,6 +815,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.012686663, y: 0.0099486485, z: 0.009803718}
   m_Center: {x: -0.0014569988, y: 0.0034868754, z: 0.0000046535733}
+--- !u!114 &5028698250990955171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 711524592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a3b164fe50494b46b90c03a8c739400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackDamage: 50
+  ParentEnemy: {fileID: 2030948590}
 --- !u!1 &742135578
 GameObject:
   m_ObjectHideFlags: 0
@@ -2950,6 +2965,7 @@ MonoBehaviour:
   health: 60
   maxhealth: 100
   defense: 20
+  amountOfUnitsAttacking: 0
   particleEffect: {fileID: 2712116678064869091, guid: 09eea307eba35884abc5cb2706e5619f,
     type: 3}
   ParticleOnHitEffectYoffset: 4

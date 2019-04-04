@@ -9,6 +9,7 @@ public class LifeAndStats : MonoBehaviour
     public float defense = 20f;
     private float healCooldown = 5f;
     private float fallbackHealCooldown;
+    public int amountOfUnitsAttacking = 0;
 
     #region Soul
     private bool dropSoul = true;   //(Controls if an object drops souls) //Todo: Randomize?
@@ -28,7 +29,8 @@ public class LifeAndStats : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         fractureScript = GetComponent<FractureObject>();
         fallbackHealCooldown = healCooldown;
-    }
+        amountOfUnitsAttacking = 0;
+}
 
     void Update()
     {

@@ -16,13 +16,14 @@ public class BasicEnemy : MonoBehaviour
     public GameObject attackIndication;
     private Transform targetPos = null;
     public List<GameObject> possibleTargets;
+    public bool checkedForTarget = false;
 
     [Header("BehaviorStates / Effect States")]
     public int attackState = 0; // 0 == not attacking // 1 == attacking // 2 == has recently attacked
     [SerializeField] private int action = 0;
     [SerializeField] private int decisionLimit = 0;
     [SerializeField] private float preparationTime = 0f;
-
+    [SerializeField] private int maxEnemiesSwarmingPlayer;
 
     [Header("Interaction/Vision/Attack Radius")]
     public float attackRange = 5f;
@@ -92,6 +93,7 @@ public class BasicEnemy : MonoBehaviour
 
             if ((attackState == 1 && distance > followRadius || Target.GetComponent<LifeAndStats>().health <= 0) || attackState == 1 && Target == null)
             {
+                Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
                 Target = null;
                 StartCoroutine(ScanCycle());
                 agent.isStopped = false;
@@ -150,17 +152,21 @@ public class BasicEnemy : MonoBehaviour
     /// </summary>
     void ScanScloseAreaForTargets()
     {
-        StartCoroutine(ScanCycle());
-        Collider[] col = Physics.OverlapSphere(transform.position, detectionRadius); // draw a sphere at desire point based on player pos + offset and desired radius of effect
-        if (col.Length > 0)
+        if(Target == null)
         {
-            foreach (Collider hit in col) // checks each object hit
+            Debug.Log("scanning");
+            StartCoroutine(ScanCycle());
+            Collider[] col = Physics.OverlapSphere(transform.position, detectionRadius); // draw a sphere at desire point based on player pos + offset and desired radius of effect
+            if (col.Length > 0)
             {
-                if ((hit.tag == "Player" || hit.tag == "Player2") && hit.GetComponent<LifeAndStats>().health > 0)
+                foreach (Collider hit in col) // checks each object hit
                 {
-                    Target = hit.gameObject;
-                    checkedTarget = Target;
-                    continue;
+                    if ((hit.tag == "Player" || hit.tag == "Player2") && hit.GetComponent<LifeAndStats>().health > 0 && hit.GetComponent<LifeAndStats>().amountOfUnitsAttacking < maxEnemiesSwarmingPlayer)
+                    {
+                        Target = hit.gameObject;
+                        hit.GetComponent<LifeAndStats>().amountOfUnitsAttacking += 1;
+                        continue;
+                    }
                 }
             }
         }
@@ -168,37 +174,39 @@ public class BasicEnemy : MonoBehaviour
 
     void ScanForTower()
     {
-        Collider[] tol = Physics.OverlapSphere(transform.position, detectionRadius);
-        if(tol.Length > 0)
+        if (Target == null)
         {
-            //Debug.Log("Checking for towers");
-            foreach(Collider hit in tol)
+            Collider[] tol = Physics.OverlapSphere(transform.position, detectionRadius);
+            if (tol.Length > 0)
             {
-                if (hit.tag == "possibleTargets") // if hit object has equal tag to possibleTarget tag
+                //Debug.Log("Checking for towers");
+                foreach (Collider hit in tol)
                 {
-                    if(hit.GetComponent<LifeAndStats>().health > 0)
+                    if (hit.tag == "possibleTargets") // if hit object has equal tag to possibleTarget tag
                     {
-                        action = Random.Range(0, 100);
-                        //Debug.Log("tower found");
-                        if (checkedTarget == null)
+                        if (hit.GetComponent<LifeAndStats>().health > 0)
                         {
-                            if (action <= decisionLimit) // if decisionmaking percentage is lower than the limit, decide to do this
+                            action = Random.Range(0, 100);
+                            //Debug.Log("tower found");
+                            if (checkedTarget == null)
                             {
-                                //Debug.Log(hit.transform.parent.gameObject);          
-                                //Debug.Log("I will rather go for a tower");
-                                checkedTarget = hit.transform.parent.gameObject.transform.parent.gameObject;
-                                NavMeshPath path = new NavMeshPath();
-                                agent.CalculatePath(checkedTarget.transform.position, path);
-                                if (path.status != NavMeshPathStatus.PathPartial) // checks if path is reachable
+                                if (action <= decisionLimit) // if decisionmaking percentage is lower than the limit, decide to do this
                                 {
-                                    agent.destination = checkedTarget.transform.position;
-                                    Target = checkedTarget;
-                                    StopCoroutine(ScanCycle());
-                                }
-                                else
-                                {
-                                    //Debug.Log("AI: Target is unreachable");
-                                    checkedTarget = null;
+                                    //Debug.Log(hit.transform.parent.gameObject);          
+                                    //Debug.Log("I will rather go for a tower");
+                                    checkedTarget = hit.transform.parent.gameObject.transform.parent.gameObject;
+                                    NavMeshPath path = new NavMeshPath();
+                                    agent.CalculatePath(checkedTarget.transform.position, path);
+                                    if (path.status != NavMeshPathStatus.PathPartial) // checks if path is reachable
+                                    {
+                                        agent.destination = checkedTarget.transform.position;
+                                        Target = checkedTarget;
+                                    }
+                                    else
+                                    {
+                                        //Debug.Log("AI: Target is unreachable");
+                                        checkedTarget = null;
+                                    }
                                 }
                             }
                         }
@@ -206,6 +214,7 @@ public class BasicEnemy : MonoBehaviour
                 }
             }
         }
+        
     }
     
 
