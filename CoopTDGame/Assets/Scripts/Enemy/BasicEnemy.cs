@@ -26,6 +26,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private int maxEnemiesSwarmingPlayer;
 
     [Header("Interaction/Vision/Attack Radius")]
+    public float enemySpeed = 2f;
     public float attackRange = 5f;
     [SerializeField] private float followRadius = 15f; 
     [SerializeField] private float stoppingRange = 3.5f; // stops the ai from bumping into targets
@@ -53,6 +54,7 @@ public class BasicEnemy : MonoBehaviour
         attackIndication.SetActive(false);
         enemyAnim = GetComponent<Animator>();
         possibleTargets = new List<GameObject>();
+        agent.speed = enemySpeed;
     }
 
     void Update()
