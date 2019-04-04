@@ -53,6 +53,10 @@ public class LifeAndStats : MonoBehaviour
                     Vector3 dropPos = new Vector3(transform.position.x, transform.position.y+2, transform.position.z);
                     GameObject _Soul = Instantiate(Resources.Load("Soul", typeof(GameObject)), dropPos, Quaternion.identity) as GameObject;
                 }
+                if(GetComponent<BasicEnemy>().Target != null && GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking > 0)
+                {
+                    GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
+                }
                 Destroy(gameObject);
                 #endregion
             }

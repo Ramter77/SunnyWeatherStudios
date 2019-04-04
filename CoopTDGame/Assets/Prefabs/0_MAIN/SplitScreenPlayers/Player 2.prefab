@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 295284414}
   - component: {fileID: 295284413}
   - component: {fileID: 295284411}
-  - component: {fileID: 295284412}
+  - component: {fileID: 733175117457677014}
   m_Layer: 13
   m_Name: Player 2
   m_TagString: Player2
@@ -443,6 +443,7 @@ MonoBehaviour:
   health: 100
   maxhealth: 100
   defense: 20
+  amountOfUnitsAttacking: 0
   particleEffect: {fileID: 2712116678064869091, guid: 09eea307eba35884abc5cb2706e5619f,
     type: 3}
   ParticleOnHitEffectYoffset: 4
@@ -482,28 +483,42 @@ MonoBehaviour:
   isMeleeAttacking: 0
   isRangedAttacking: 0
   isJumping: 0
---- !u!114 &295284412
+--- !u!114 &733175117457677014
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 295284410}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b51b5c64280d8e41b0c039a33b64dd6, type: 3}
+  m_Script: {fileID: 11500000, guid: 94ecc9d8dea859d4bbd64bf7e107c7e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specialAbilityHotkey: 113
-  specialAbilityCooldown: 4
-  specialAbilityCost: 10
-  healRadius: 15
+  Camera: {fileID: 0}
+  healthbar: {fileID: 0}
+  maxHealth: 100
+  healAbilityHotkey: 113
+  healAbilityUiImageOn: {fileID: 0}
+  healAbilityUiImageOff: {fileID: 0}
+  healAbilityCooldown: 20
+  healAbilityCost: 25
+  healRadius: 7
   selfHeal: 0
   healAmount: 25
-  maxHealth: 100
-  ultimateAbilityHotkey: 101
-  ultimateAbilityCooldown: 0.1
-  ultimateAbilityCost: 20
+  slashAbilityHotkey: 101
+  slashAbilityUiImageOn: {fileID: 0}
+  slashAbilityUiImageOff: {fileID: 0}
+  slashAbilityCooldown: 2
+  slashAbilityCost: 10
+  slashSlashPrefab: {fileID: 9003700133114425031, guid: c28fea64ccc640946bad586dfb6f2aeb,
+    type: 3}
+  FirePoint: {fileID: 68728125}
+  ultimateAbilityHotkey: 9
+  ultimateAbilityUiImageOn: {fileID: 0}
+  ultimateAbilityUiImageOff: {fileID: 0}
+  ultimateAbilityCooldown: 25
+  ultimateAbilityCost: 50
   ultimateAbilityGameobject: {fileID: 0}
   ultimateAbilityDuration: 10
 --- !u!1 &330134074

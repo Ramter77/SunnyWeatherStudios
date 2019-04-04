@@ -336,7 +336,7 @@ GameObject:
   - component: {fileID: 3529278560104736142}
   - component: {fileID: 801544617176057136}
   m_Layer: 0
-  m_Name: Tower_Holder
+  m_Name: Tower_Holder 2
   m_TagString: possibleTargets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,7 +370,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxhealth: 100
   defense: 20
+  amountOfUnitsAttacking: 0
+  particleEffect: {fileID: 0}
+  ParticleOnHitEffectYoffset: 1
   destroyable: 1
 --- !u!114 &5542685769309437334
 MonoBehaviour:
