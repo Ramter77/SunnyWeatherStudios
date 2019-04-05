@@ -280,7 +280,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3181500200931432532}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.032, y: 0.015000001, z: 0.053000003}
@@ -370,7 +370,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  maxhealth: 100
   defense: 20
+  amountOfUnitsAttacking: 0
+  particleEffect: {fileID: 0}
+  ParticleOnHitEffectYoffset: 1
   destroyable: 1
 --- !u!114 &5542685769309437334
 MonoBehaviour:

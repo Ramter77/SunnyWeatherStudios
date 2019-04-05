@@ -9,6 +9,7 @@ public class LifeAndStats : MonoBehaviour
     public float defense = 20f;
     private float healCooldown = 5f;
     private float fallbackHealCooldown;
+    public int amountOfUnitsAttacking = 0;
 
     #region Soul
     private bool dropSoul = true;   //(Controls if an object drops souls) //Todo: Randomize?
@@ -28,7 +29,8 @@ public class LifeAndStats : MonoBehaviour
         playerAnim = GetComponent<Animator>();
         fractureScript = GetComponent<FractureObject>();
         fallbackHealCooldown = healCooldown;
-    }
+        amountOfUnitsAttacking = 0;
+}
 
     void Update()
     {
@@ -50,6 +52,10 @@ public class LifeAndStats : MonoBehaviour
                 if (dropSoul) {
                     Vector3 dropPos = new Vector3(transform.position.x, transform.position.y+2, transform.position.z);
                     GameObject _Soul = Instantiate(Resources.Load("Soul", typeof(GameObject)), dropPos, Quaternion.identity) as GameObject;
+                }
+                if(GetComponent<BasicEnemy>().Target != null && GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking > 0)
+                {
+                    GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
                 }
                 Destroy(gameObject);
                 #endregion

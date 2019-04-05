@@ -63,14 +63,6 @@ public class AttackAndDamage : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            //Debug.Log("I see the player");
-
-        }
-    }
     IEnumerator resetAttackCooldown()
     {
         yield return new WaitForSeconds(attackSpeed);
