@@ -560,10 +560,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: c7af6341c6613c441af37aaed9aa1bfb, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -709,10 +709,10 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_Sprite: {fileID: 21300000, guid: c7af6341c6613c441af37aaed9aa1bfb, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -869,6 +869,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a570b84976596bb44a4e63429d694e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Enemies: []
+  Targets: []
+  checkArray: []
+  amountOfEnemiesAttackingPlayer: 0
+  scanTime: 2
 --- !u!1 &3804287084931184968
 GameObject:
   m_ObjectHideFlags: 0
