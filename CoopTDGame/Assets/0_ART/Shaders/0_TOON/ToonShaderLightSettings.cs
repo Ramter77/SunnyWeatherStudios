@@ -14,7 +14,7 @@ public class ToonShaderLightSettings : MonoBehaviour
 	
 	void Update ()
 	{
-		Shader.SetGlobalVector("_LightDirection1", -transform.forward);
-		//Shader.SetGlobalColor("_ToonLightColor", light.color);
+		Shader.SetGlobalVector("_LightDirection", -transform.forward);
+		Shader.SetGlobalColor("_LightColor", light.color);
 	}
 }
