@@ -24,45 +24,6 @@ MonoBehaviour:
   - {fileID: 114261410744837796}
   - {fileID: 114438719038558676}
   - {fileID: 114167390549925010}
---- !u!114 &114003624536756060
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 384c4d03a551c44448145f4093304119, type: 3}
-  m_Name: ScreenSpaceReflection
-  m_EditorClassIdentifier: 
-  active: 1
-  depthBufferThickness:
-    m_OverrideState: 0
-    m_Value: 0.01
-    min: 0
-    max: 1
-  screenFadeDistance:
-    m_OverrideState: 0
-    m_Value: 0.1
-    min: 0
-    max: 1
-  minSmoothness:
-    m_OverrideState: 0
-    m_Value: 0.9
-    min: 0
-    max: 1
-  smoothnessFadeStart:
-    m_OverrideState: 0
-    m_Value: 0.9
-    min: 0
-    max: 1
-  reflectSky:
-    m_OverrideState: 0
-    m_Value: 1
-  rayMaxIterations:
-    m_OverrideState: 0
-    m_Value: 32
 --- !u!114 &114167390549925010
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -262,7 +223,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b6af8f7ad32324cb6941c3290e5895, type: 3}
   m_Name: MicroShadowing
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   enable:
     m_OverrideState: 1
     m_Value: 1
