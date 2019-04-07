@@ -112,8 +112,12 @@ public class FreeCameraLook : Pivot {
 
 		transform.rotation = Quaternion.Euler(0f, lookAngle, 0);
 
+        if (RotateTransformRoot) {
+            target.rotation = Quaternion.Euler(0f, lookAngle, 0);
+        }
+
         //* Rotate player along camera */
-        target.transform.Rotate(Vector3.up * smoothX * turnSpeed * turnSpeedMultiplier);
+        //target.transform.Rotate(Vector3.up * smoothX * turnSpeed * turnSpeedMultiplier);
         //*----------------------------*/
 
 		tiltAngle -= smoothY * turnSpeed;

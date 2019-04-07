@@ -1,32 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DebuffTrapSlow : MonoBehaviour
 {
-    public float reducedMovementSpeed = 2f;
+    public float enemyMaxSpeed = 7f;
+    public float moveSpeedMultiplier = 0.9f;
 
-
-
-    //* WORKS NICELY! :)  */
-    //* How about multiplying with a value like a percentage? * 0.5 would be half movespeed? */    
-    //* ensures movespeed is never 0 and we could also use it to speed up */  
-    private float moveSpeedDefault = 5;
-    public float moveSpeedMultiplier = 0.5f;
-
-    /* private void OnTriggerStay(Collider other)
-    {
-        if(other.gameObject.tag == "Enemy")
-        {
-            other.gameObject.GetComponent<BasicEnemy>().agent.speed = reducedMovementSpeed;
-        }
-    } */
+    private float multipliedSpeedPercentage;
+    private NavMeshAgent agent;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<BasicEnemy>().agent.speed *= moveSpeedMultiplier;
+            agent = other.gameObject.GetComponent<NavMeshAgent>();
+
+            multipliedSpeedPercentage = enemyMaxSpeed * moveSpeedMultiplier;
+            agent.speed = multipliedSpeedPercentage;
         }
     }
 
@@ -34,7 +26,10 @@ public class DebuffTrapSlow : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            other.gameObject.GetComponent<BasicEnemy>().agent.speed = moveSpeedDefault;
+            agent = other.gameObject.GetComponent<NavMeshAgent>();
+
+            multipliedSpeedPercentage = enemyMaxSpeed / moveSpeedMultiplier;
+            agent.speed = multipliedSpeedPercentage;
         }
     }
 }

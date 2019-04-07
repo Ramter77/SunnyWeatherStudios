@@ -128,7 +128,7 @@ public class BasicEnemy : MonoBehaviour
             attackIndication.SetActive(false);
             
             charging = false;
-            agent.speed *= 1;
+            //agent.speed *= 1;
             /* enemyAnim.SetBool("Charge", false); */
         }
         if(preparationTime <= 2)

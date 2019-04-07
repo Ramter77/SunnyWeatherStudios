@@ -27,6 +27,12 @@ public class SurfaceManager : MonoBehaviour {
 		else if(singleton != this) Destroy(gameObject);
 	}
 
+	/// <summary>
+	/// Returns a random footstep sound from the corresponding defined surface index
+	/// </summary>
+	/// <param name="groundCollider">Collider of the RayCast hit</param>
+	/// <param name="worldPosition">Position of the RayCast hit</param>
+    /// <returns>Returns a random AudioClip</returns>
 	public AudioClip GetFootstep(Collider groundCollider, Vector3 worldPosition) {
 		int surfaceIndex = GetSurfaceIndex(groundCollider, worldPosition);
 
@@ -54,7 +60,7 @@ public class SurfaceManager : MonoBehaviour {
 		return names;
 	}
 
-	// This is for bullet hit particles
+	/* // This is for bullet hit particles
 	int GetSurfaceIndex(Ray ray, Collider col, Vector3 worldPos) {
 		string textureName = "";
 
@@ -78,10 +84,15 @@ public class SurfaceManager : MonoBehaviour {
 		}
 
 		return -1;
-	}
+	} */
 
-	// This is for footsteps
-	int GetSurfaceIndex(Collider col, Vector3 worldPos) {
+	/// <summary>
+	/// Returns the current surface index of terrain and meshes where the passed RayCast hit a collider
+	/// </summary>
+	/// <param name="col">Collider of the RayCast hit</param>
+	/// <param name="worldPos">Position of the RayCast hit</param>
+    /// <returns>Returns the current surface index as an int</returns>
+	public int GetSurfaceIndex(Collider col, Vector3 worldPos) {
 		string textureName = "";
 
 		// Case when the ground is a terrain.

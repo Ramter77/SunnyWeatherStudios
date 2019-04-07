@@ -182,7 +182,7 @@ GameObject:
   - component: {fileID: 3329165327428139085}
   - component: {fileID: 4988058536931195302}
   m_Layer: 0
-  m_Name: tower
+  m_Name: _tower
   m_TagString: possibleTargets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -274,6 +274,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a7a61810191484da31877229740a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pathLayer: 4
+  debugMode: 1
+  groundCheckHeight: 0
+  groundCheckRadius: 5
+  groundCheckDistance: 8
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!208 &4988058536931195302
 NavMeshObstacle:
   m_ObjectHideFlags: 0
