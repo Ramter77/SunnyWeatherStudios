@@ -47,6 +47,6 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour{
     }
     
     private void OnDestroy(){  // trigger enter destroyed prevention when destroying object singelton is attached to
-        willBeDestroyed = true;
+        //willBeDestroyed = true;
     }
 }

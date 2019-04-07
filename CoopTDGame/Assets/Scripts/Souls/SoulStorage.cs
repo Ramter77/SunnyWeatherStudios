@@ -29,7 +29,7 @@ public class SoulStorage : Singleton<SoulStorage>
     void Start()
     {
         GameObject SoulSphere = GameObject.FindGameObjectWithTag("Sphere");
-        soulAmountDisplayText = SoulSphere.GetComponentInChildren<Text>();
+        soulAmountDisplayText = SoulSphere.transform.parent.GetComponentInChildren<Text>();
 
         soulCount = amountOfSoulsAtStart;
         costToBuild = 10;

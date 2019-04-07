@@ -271,7 +271,7 @@ public class PlacePrefab : MonoBehaviour
                     //if target area object prefab
                     //then instantiate fireball above
 
-                    GetComponent<Animator>().SetTrigger("MagicAttack");
+                    GetComponent<Animator>().SetTrigger("RangedAttack");
 
                     //Reset
                     //currentPrefab = null;
@@ -282,16 +282,19 @@ public class PlacePrefab : MonoBehaviour
                 #region Normal behaviour
                 else
                 {
-                    if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)           //If enough souls
+                    if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)   //If enough souls
                     {
                         if (currentPrefab.transform.childCount > 0) {
-                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial;   //Switch back to original Material
-                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;             //Turn on collision
-                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().enabled = false;  //Disable OnTrigger script
+                            //Switch back to original Material
+                            currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial;
+                            //Turn on collision   
+                            currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;  
+                            //Disable OnTrigger script           
+                            currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().enabled = false; 
                         }
 
-                        currentPrefab.gameObject.layer = 11;    //Put on "Turrets" layer
-                        SoulStorage.Instance.substractCostsToBuild();    //Subtract souls
+                        currentPrefab.gameObject.layer = 11;            //Put on "Turrets" layer to prevent casting ray on itself
+                        SoulStorage.Instance.substractCostsToBuild();   //Subtract souls
 
                         //Reset
                         currentPrefab = null;

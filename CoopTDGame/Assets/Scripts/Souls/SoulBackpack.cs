@@ -8,9 +8,16 @@ public class SoulBackpack : Singleton<SoulBackpack>
     public int sharedSoulAmount;
     public Text soulBackpackText; // displays the amount of shared souls in the ui
 
+    private void Start() {
+        GameObject soulBackpackTextParent = GameObject.FindGameObjectWithTag("SoulCounter");
+        soulBackpackText = soulBackpackTextParent.GetComponentInChildren<Text>();
+    }
+
     private void Update()
     {
-        soulBackpackText.text = ("" + sharedSoulAmount);
+        if (soulBackpackText != null) {
+            soulBackpackText.text = ("" + sharedSoulAmount);
+        }
     }
 
 
