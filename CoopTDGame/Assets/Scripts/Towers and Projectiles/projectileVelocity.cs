@@ -34,7 +34,11 @@ public class projectileVelocity : MonoBehaviour
             float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
             other.GetComponent<LifeAndStats>().health -= applyingDamage;
             appliedDamage = true;
+            Destroy(gameObject);
+        }
 
+        if(other.gameObject.tag == "Environment")
+        {
             Destroy(gameObject);
         }
     }

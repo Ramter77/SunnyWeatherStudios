@@ -76,7 +76,7 @@ public class BasicEnemy : MonoBehaviour
             targetPos = Target.transform;
             float distance = Vector3.Distance(targetPos.position, transform.position);
 
-            if (distance <= followRadius && distance > stoppingRange)
+            if (distance <= detectionRadius && distance > stoppingRange)
             {
                 agent.isStopped = false;
                 attackState = 1;
@@ -168,9 +168,12 @@ public class BasicEnemy : MonoBehaviour
                 {
                     if ((hit.tag == "Player" || hit.tag == "Player2") && hit.GetComponent<LifeAndStats>().health > 0 && hit.GetComponent<LifeAndStats>().amountOfUnitsAttacking < maxEnemiesSwarmingPlayer)
                     {
-                        Target = hit.gameObject;
-                        hit.GetComponent<LifeAndStats>().amountOfUnitsAttacking += 1;
-                        continue;
+                        if(Target == null)
+                        {
+                            Target = hit.gameObject;
+                            hit.GetComponent<LifeAndStats>().amountOfUnitsAttacking += 1;
+                        }
+                        
                     }
                 }
             }
@@ -245,6 +248,13 @@ public class BasicEnemy : MonoBehaviour
             if (path.status != NavMeshPathStatus.PathPartial)
             {
                 agent.destination = Sphere.transform.position;
+            }
+            if(Target != null)
+            {
+                if(Target.GetComponent<LifeAndStats>())
+                {
+                    Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
+                }
             }
         }
         else
