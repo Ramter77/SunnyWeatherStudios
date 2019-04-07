@@ -18,6 +18,9 @@ public class LifeAndStats : MonoBehaviour
 
     public GameObject particleEffect;
     public float ParticleOnHitEffectYoffset = 1;
+    public Transform praticleSpawnLocation;
+    private Vector3 spawnPos;
+
     public bool destroyable;
 
     private Animator playerAnim;
@@ -30,7 +33,7 @@ public class LifeAndStats : MonoBehaviour
         fractureScript = GetComponent<FractureObject>();
         fallbackHealCooldown = healCooldown;
         amountOfUnitsAttacking = 0;
-}
+    }
 
     void Update()
     {
@@ -78,7 +81,16 @@ public class LifeAndStats : MonoBehaviour
 
     public void ParticleOnHitEffect(float yOffset) {
         if (particleEffect != null) {
-            Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
+            //If there us no spawn location then use the Y offset
+            if (praticleSpawnLocation == null) {
+                spawnPos = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
+            }
+
+            //Else use the provided spawn location
+            else {
+                spawnPos = praticleSpawnLocation.position;
+            }
+
             Instantiate(particleEffect, spawnPos, Quaternion.identity);
         }
     }
