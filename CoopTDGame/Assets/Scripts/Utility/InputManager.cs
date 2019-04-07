@@ -21,7 +21,7 @@ public class InputManager : Singleton<InputManager>
 
     //SET
     [System.Serializable]
-    public class Player1 {
+    private class Player1 {
         [Tooltip ("Enable if controls are setup for a controller")]
         public bool useController;
         public string _Vertical = "Vertical";
@@ -33,10 +33,10 @@ public class InputManager : Singleton<InputManager>
         public string _Fire2 = "Fire2";
         public string _isRunning = "Run";
     }
-    [SerializeField] public Player1 _Player1;
+    [SerializeField] private Player1 _Player1;
     
     [System.Serializable]
-    public class Player2 {
+    private class Player2 {
         [Tooltip ("Enable if controls are setup for a controller")]
         public bool useController;
         public string _Vertical = "Vertical2";
@@ -48,7 +48,7 @@ public class InputManager : Singleton<InputManager>
         public string _Fire2 = "Fire22";
         public string _isRunning = "Run2";
     }
-    [SerializeField] public Player2 _Player2;
+    [SerializeField] private Player2 _Player2;
 
     [Header ("Player1")]
     [Header ("GET Values")]

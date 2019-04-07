@@ -26,6 +26,7 @@ public class PlayerWeaponDamage : MonoBehaviour
         {
             //Debug.Log("Weapon hit enemy");
             other.gameObject.GetComponent<LifeAndStats>().TakeDamage(attackDamage); //!public functions pls
+            Destroy(gameObject);
         }
     }
 }

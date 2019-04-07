@@ -76,6 +76,13 @@ public class LifeAndStats : MonoBehaviour
         ParticleOnHitEffect(ParticleOnHitEffectYoffset);
     }
 
+    public void ParticleOnHitEffect(float yOffset) {
+        if (particleEffect != null) {
+            Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
+            Instantiate(particleEffect, spawnPos, Quaternion.identity);
+        }
+    }
+
     public void healHealth(float healAmount)
     {
         if(healCooldown <= 0)
@@ -83,14 +90,7 @@ public class LifeAndStats : MonoBehaviour
             health += healAmount;
             healCooldown = fallbackHealCooldown;
         }
-    }
-
-    public void ParticleOnHitEffect(float yOffset) {
-        if (particleEffect != null) {
-            Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
-            Instantiate(particleEffect, spawnPos, Quaternion.identity);
-        }
-    }
+    }    
 
     void reduceHealthCooldown()
     {

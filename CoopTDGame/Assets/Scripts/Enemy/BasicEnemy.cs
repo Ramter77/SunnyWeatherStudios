@@ -159,7 +159,7 @@ public class BasicEnemy : MonoBehaviour
     {
         if(Target == null)
         {
-            Debug.Log("scanning");
+            //Debug.Log("scanning");
             StartCoroutine(ScanCycle());
             Collider[] col = Physics.OverlapSphere(transform.position, detectionRadius); // draw a sphere at desire point based on player pos + offset and desired radius of effect
             if (col.Length > 0)
