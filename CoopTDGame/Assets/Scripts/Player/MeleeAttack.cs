@@ -6,18 +6,15 @@ public class MeleeAttack : MonoBehaviour
 {
     #region Variables and References    
     [Header("References")]
-    [SerializeField] private Animator playerAnim; // player animator
-    [SerializeField] private Transform sphereSpawnPoint;
-    public Collider WeaponTriggerCollider;
+    [SerializeField] private Collider WeaponTriggerCollider;
     //[SerializeField] private int enemyLayer;
 
     [Header("Attack Settings")] 
-    [SerializeField] private float damageSphereRadius; // radius to check for collision
-    [SerializeField] public float attackDamage; // damage to apply
-    //[SerializeField] private bool attacking = false;
+    [Tooltip("Damage to apply")] public float attackDamage;
 
-
+    
     private PlayerController playC;
+    private Animator playerAnim;
     private bool _input, _runInput;
     #endregion
 
@@ -31,22 +28,29 @@ public class MeleeAttack : MonoBehaviour
 
     void Update()
     {
-        //* Player 1 input */
-        if (playC.Player_ == 1)
+        //* Player 0 input */
+        if (playC.Player_ == 0)
         {
             _input = InputManager.Instance.Fire2;
             _runInput = InputManager.Instance.isRunning;
         }
 
+        //* Player 1 input */
+        else if (playC.Player_ == 1)
+        {
+            _input = InputManager.Instance.Fire21;
+            _runInput = InputManager.Instance.isRunning1;
+        }
+
         //*Player 2 input */
-        else {
+        else if (playC.Player_ == 2) {
             _input = InputManager.Instance.Fire22;
             _runInput = InputManager.Instance.isRunning2;
         }
 
         #region Input
         if (_input) {
-            //If not already attacking
+            //If not already attacking or in build mode
             if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode) {
                 playC.isMeleeAttacking = true;
                 _MeleeAttack();
@@ -58,14 +62,14 @@ public class MeleeAttack : MonoBehaviour
     private void _MeleeAttack() {
         #region Running melee attack
         if (_runInput) {
-            //Start animation & resets isMeleeAttacking
+            //Start animation which resets cooldown
             playerAnim.SetTrigger("RunAttack");
         }
         #endregion
 
         #region Walking melee attack
         else {
-            //Start animation & resets isMeleeAttacking
+            //Start animation which resets cooldown
             playerAnim.SetTrigger("MeleeAttack");
         }
         #endregion
@@ -74,8 +78,10 @@ public class MeleeAttack : MonoBehaviour
         WeaponTriggerCollider.enabled = true;
     }
     
+    #region Reset melee CD from the melee animations
     public void resetMeleeAttackCD() {
         playC.isMeleeAttacking = false;
         WeaponTriggerCollider.enabled = false;
     }
+    #endregion
 }

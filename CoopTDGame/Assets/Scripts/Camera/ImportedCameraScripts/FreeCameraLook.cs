@@ -5,9 +5,9 @@ public class FreeCameraLook : Pivot {
     [Tooltip ("Makes transform root rotate along camera X movement")]
     public bool RotateTransformRoot;
 
-    [Header ("Axis setup")]
+    /* [Header ("Axis setup")]
     public string mouseX;
-    public string mouseY;
+    public string mouseY; */
 
     [Header ("Debug")]
     [Tooltip ("Debug X axis")]
@@ -38,6 +38,8 @@ public class FreeCameraLook : Pivot {
     public float crosshairOffsetWiggle = 0.2f;
     private CrosshairManager crosshairManager;
 
+    private PlayerController playC;
+
     //add the singleton
     public static FreeCameraLook instance;
     
@@ -56,14 +58,7 @@ public class FreeCameraLook : Pivot {
 		pivot = cam.parent.parent; //take the correct pivot
 
 
-        if (transform.root.GetComponent<PlayerController>().Player_ == 1) {
-            _inputX = InputManager.Instance.MouseInput.x;
-            _inputY = InputManager.Instance.MouseInput.y;
-        }
-        else {
-            _inputX = InputManager.Instance.MouseInput2.x;
-            _inputY = InputManager.Instance.MouseInput2.y;
-        }
+        playC = transform.root.GetComponent<PlayerController>();
 	}
 
     protected override void Start()
@@ -73,7 +68,6 @@ public class FreeCameraLook : Pivot {
         crosshairManager = CrosshairManager.GetInstance();
     }
 	
-	// Update is called once per frame
     protected override void Update ()
 	{
 		base.Update();
@@ -89,13 +83,28 @@ public class FreeCameraLook : Pivot {
 	void HandleRotationMovement()
 	{
         HandleOffsets();
-		//float x = InputManager.Instance.MouseInput.x + offsetX;
+
+        if (playC.Player_ == 0)
+        {
+            _inputX = InputManager.Instance.MouseInput.x;
+            _inputY = InputManager.Instance.MouseInput.y;
+        }
+        else if (playC.Player_ == 1) {
+            _inputX = InputManager.Instance.MouseInput1.x;
+            _inputY = InputManager.Instance.MouseInput1.y;
+        }
+        else if (playC.Player_ == 2) {
+            _inputX = InputManager.Instance.MouseInput2.x;
+            _inputY = InputManager.Instance.MouseInput2.y;
+        }
+
+        //float x = InputManager.Instance.MouseInput.x + offsetX;
         //Input.GetAxis("Mouse X") + offsetX;
-        float x = Input.GetAxis(mouseX) + offsetX;
+        float x = _inputX + offsetX;
 
 		//float y = InputManager.Instance.MouseInput.y + offsetY;
         //Input.GetAxis("Mouse Y") + offsetY;
-        float y = Input.GetAxis(mouseY) + offsetY;
+        float y = _inputY + offsetY;
 
         if (turnsmoothing > 0)
         {

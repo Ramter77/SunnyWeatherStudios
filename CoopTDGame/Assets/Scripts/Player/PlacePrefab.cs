@@ -66,9 +66,6 @@ public class PlacePrefab : MonoBehaviour
     #region Internal
     private float halfScale;
     private MeshRenderer[] meshRenderers;
-    //private MeleeAttack _meleeAttack;
-    //private RangedAttack _rangedAttack;
-
     
     private PlayerController playC;
     private bool _input;
@@ -92,17 +89,6 @@ public class PlacePrefab : MonoBehaviour
         /* _meleeAttack = GetComponent<MeleeAttack>();
         _rangedAttack = GetComponent<RangedAttack>(); */
         #endregion
-
-        #region Input
-        if (playC.Player_ == 1) {
-            //_enterBuildMode = Input.GetKeyDown(KeyCode.Alpha0 + 1 + i);
-            _input = InputManager.Instance.Fire1;
-        }
-        else if (playC.Player_ == 2) {
-            _input = InputManager.Instance.Fire12;
-        }
-        
-        #endregion
     }
 
     private void Update()
@@ -118,12 +104,17 @@ public class PlacePrefab : MonoBehaviour
             RotatePrefabByScrolling();
 
             #region Input check for placement
-            if (playC.Player_ == 1) {
+            if (playC.Player_ == 0) {
+                //_enterBuildMode = Input.GetKeyDown(KeyCode.Alpha0 + 1 + i);
                 _input = InputManager.Instance.Fire1;
             }
-            else {
-                _input = InputManager.Instance.Fire12;
+            if (playC.Player_ == 1) {
+                //_enterBuildMode = Input.GetKeyDown(KeyCode.Alpha0 + 1 + i);
+                _input = InputManager.Instance.Fire11;
             }
+            else if (playC.Player_ == 2) {
+                _input = InputManager.Instance.Fire12;
+            }        
 
             if (_input) {
                 PlacePrefabOnRelease();

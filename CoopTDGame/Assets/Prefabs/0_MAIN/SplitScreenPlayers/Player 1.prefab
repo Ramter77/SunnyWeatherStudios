@@ -934,7 +934,7 @@ Transform:
   m_Children:
   - {fileID: 1359725162}
   m_Father: {fileID: 2140898403}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &695301981
 MonoBehaviour:
@@ -951,8 +951,6 @@ MonoBehaviour:
   target: {fileID: 2140898403}
   autoTargetPlayer: 0
   RotateTransformRoot: 1
-  mouseX: Mouse X
-  mouseY: Mouse Y
   _inputX: 0
   _inputY: 0
   moveSpeed: 15
@@ -2025,36 +2023,6 @@ Transform:
   - {fileID: 50427114}
   m_Father: {fileID: 1815596234}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1125953379
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1125953380}
-  m_Layer: 9
-  m_Name: damageSphereSpawnPoint
-  m_TagString: Untagged
-  m_Icon: {fileID: 7148428337604731935, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1125953380
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125953379}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.09, z: 3.02}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2140898403}
-  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1177907220
 GameObject:
@@ -3586,7 +3554,6 @@ Transform:
   - {fileID: 57802934}
   - {fileID: 1888117484}
   - {fileID: 1815516061}
-  - {fileID: 1125953380}
   - {fileID: 695301980}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -3677,7 +3644,7 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 2147499319
-  maxDistance: 99999
+  maxDistance: 9999
   defaultDistance: 100
 --- !u!114 &2140898397
 MonoBehaviour:
@@ -3691,10 +3658,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078fe62c673120649a90d52ecf481220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnim: {fileID: 0}
-  sphereSpawnPoint: {fileID: 1125953380}
   WeaponTriggerCollider: {fileID: 745858425}
-  damageSphereRadius: 2.56
   attackDamage: 110
 --- !u!114 &2140898396
 MonoBehaviour:
@@ -3711,8 +3675,8 @@ MonoBehaviour:
   Prefabs:
   - {fileID: 3908368510931437923, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a, type: 3}
   - {fileID: 3908368510931437923, guid: f13a5e1f2b3c8ec4d9e677c745573953, type: 3}
-  - {fileID: 8127297961243337994, guid: d8103eb10487a8d43b68dfe018da27f6, type: 3}
   - {fileID: 369886348091346307, guid: 5374fda886807824d83b49e4b46ca431, type: 3}
+  - {fileID: 8127297961243337994, guid: d8103eb10487a8d43b68dfe018da27f6, type: 3}
   TestPrefabs:
   - {fileID: 113481993458745524, guid: 523752e691085914fbfe1fd6d37df56e, type: 3}
   mask:
@@ -3758,7 +3722,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axisDamping: 0.1
   buttonDamping: 0.5
-  controllerDamping: 0.5
   jumpDamping: 0
 --- !u!114 &2140898393
 MonoBehaviour:
@@ -3796,7 +3759,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293488f44201be6428c40ebf241459c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_: 1
+  Player_: 0
   TurnPlayerForward: 0
   turn_Speed: 2
   isInBuildMode: 0
@@ -3955,7 +3918,7 @@ MonoBehaviour:
   LeftFoot: {fileID: 2035292676}
   RightFoot: {fileID: 844917186}
   footOffset: 0.4
-  deltaAmplifier: 0
+  deltaAmplifier: 0.1
 --- !u!114 &2140898391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4066,12 +4029,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13530378, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
-      propertyPath: m_Radius
-      value: 0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 13530378, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13530378, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
+      propertyPath: m_Radius
+      value: 0.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
@@ -4092,11 +4055,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: player_ultimate_weapon
-      objectReference: {fileID: 0}
-    - target: {fileID: 1867369545900637362, guid: ee49bcc0c664eed4796bcade4c2edc41,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2842188390273114500, guid: ee49bcc0c664eed4796bcade4c2edc41,
         type: 3}
@@ -4165,15 +4123,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee49bcc0c664eed4796bcade4c2edc41, type: 3}
---- !u!4 &7140607007355599886 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2842188390273114500, guid: ee49bcc0c664eed4796bcade4c2edc41,
-    type: 3}
-  m_PrefabInstance: {fileID: 4929738954475806090}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6738451296617341240 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1867369545900637362, guid: ee49bcc0c664eed4796bcade4c2edc41,
+    type: 3}
+  m_PrefabInstance: {fileID: 4929738954475806090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7140607007355599886 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2842188390273114500, guid: ee49bcc0c664eed4796bcade4c2edc41,
     type: 3}
   m_PrefabInstance: {fileID: 4929738954475806090}
   m_PrefabAsset: {fileID: 0}
@@ -4233,12 +4191,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 13530378, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
-      propertyPath: m_Radius
-      value: 0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 13530378, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 13530378, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
+      propertyPath: m_Radius
+      value: 0.18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}

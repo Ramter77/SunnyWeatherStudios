@@ -35,7 +35,7 @@ public class RangedAttack : MonoBehaviour
     [SerializeField]
     private LayerMask mask;
     [SerializeField]
-    private float maxDistance = 99999;
+    private float maxDistance = 9999;
     [SerializeField]
     private float defaultDistance = 100.0f;
     private Vector3 intersectionPoint, direction;
@@ -68,10 +68,16 @@ public class RangedAttack : MonoBehaviour
 
     void Update()
     {
-        //* Player 1 input */
-        if (playC.Player_ == 1)
+        //* Player 0 input */
+        if (playC.Player_ == 0)
         {
             _input = InputManager.Instance.Fire1;
+        }
+
+        //* Player 1 input */
+        else if (playC.Player_ == 1)
+        {
+            _input = InputManager.Instance.Fire11;
         }
 
         //*Player 2 input */

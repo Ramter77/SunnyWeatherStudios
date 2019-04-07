@@ -504,8 +504,6 @@ MonoBehaviour:
   target: {fileID: 1721866205}
   autoTargetPlayer: 0
   RotateTransformRoot: 1
-  mouseX: MouseX2
-  mouseY: MouseY2
   _inputX: 0
   _inputY: 0
   moveSpeed: 15
@@ -816,7 +814,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331715408}
-  m_LocalRotation: {x: 0.04015514, y: -0.000037066635, z: -0.0016107849, w: 0.99919224}
+  m_LocalRotation: {x: 0.040155135, y: -0.000037066635, z: -0.0016107847, w: 0.99919224}
   m_LocalPosition: {x: 0.000083491206, y: 0.12083721, z: -0.00000018770959}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2670,7 +2668,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1721866193}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 944.53, y: 28.33, z: 927.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2692,7 +2690,7 @@ Animator:
   m_GameObject: {fileID: 1721866193}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9aaf85c5076ef0c489b751d4ab8e26d3, type: 3}
-  m_Controller: {fileID: 9100000, guid: f0e11a34a9d05044b92e54126e9c5ea3, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5ae143f86590bd44ea55fe7452aaa012, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 1
   m_ApplyRootMotion: 1
@@ -2782,10 +2780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 078fe62c673120649a90d52ecf481220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerAnim: {fileID: 0}
-  sphereSpawnPoint: {fileID: 1838060799}
   WeaponTriggerCollider: {fileID: 49638477}
-  damageSphereRadius: 2.56
   attackDamage: 110
 --- !u!114 &1721866198
 MonoBehaviour:
@@ -2848,7 +2843,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axisDamping: 0.1
   buttonDamping: 0.5
-  controllerDamping: 0.5
   jumpDamping: 0
 --- !u!114 &1721866195
 MonoBehaviour:
@@ -2862,7 +2856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293488f44201be6428c40ebf241459c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_: 2
+  Player_: 1
   TurnPlayerForward: 0
   turn_Speed: 2
   isInBuildMode: 0
