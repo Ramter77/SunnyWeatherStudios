@@ -1163,6 +1163,38 @@ PrefabInstance:
       propertyPath: weaponGameobject
       value: 
       objectReference: {fileID: 175584458}
+    - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
+      propertyPath: ultimateAbilityCooldownImage
+      value: 
+      objectReference: {fileID: 176569008}
+    - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
+      propertyPath: healAbilityCooldownImage
+      value: 
+      objectReference: {fileID: 1996851810}
+    - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
+      propertyPath: slashAbilityCooldownImage
+      value: 
+      objectReference: {fileID: 556526308}
+    - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
+      propertyPath: slashAbilityCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
+      propertyPath: slashAbilityCost
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
+      propertyPath: healAbilityCost
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
+      propertyPath: healAbilityCooldown
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
+      propertyPath: ultimateAbilityDuration
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 1598203503, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
       propertyPath: m_AABB.m_Center.y
       value: 0.031280518
@@ -1219,6 +1251,18 @@ BoxCollider:
     type: 3}
   m_PrefabInstance: {fileID: 175584456}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &176569008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2900898439151892532, guid: ee627079683599849a1ae2042eba23fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2914137444569391667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &202725820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2408,6 +2452,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 509868185}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &556526308 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3742895598608121989, guid: ee627079683599849a1ae2042eba23fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2914137444569391667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &564933021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7719,6 +7775,18 @@ Transform:
   m_Father: {fileID: 1860856229}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!114 &1996851810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7409605072712578793, guid: ee627079683599849a1ae2042eba23fd,
+    type: 3}
+  m_PrefabInstance: {fileID: 2914137444569391667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2040013682
 PrefabInstance:
   m_ObjectHideFlags: 0

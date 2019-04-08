@@ -21,7 +21,7 @@ public class PlayerClassOne : MonoBehaviour
 
     public Image healAbilityUiImageOn;
     public Image healAbilityUiImageOff;
-
+    public Image healAbilityCooldownImage;
     [SerializeField] private float healAbilityCooldown = 0.1f;
 
     [SerializeField] private int healAbilityCost = 10;
@@ -44,7 +44,7 @@ public class PlayerClassOne : MonoBehaviour
 
     public Image slashAbilityUiImageOn;
     public Image slashAbilityUiImageOff;
-
+    public Image slashAbilityCooldownImage;
     [SerializeField] private float slashAbilityCooldown = 0.1f;
 
     [SerializeField] private int slashAbilityCost = 20;
@@ -61,7 +61,7 @@ public class PlayerClassOne : MonoBehaviour
 
     public Image ultimateAbilityUiImageOn;
     public Image ultimateAbilityUiImageOff;
-
+    public Image ultimateAbilityCooldownImage;
     [SerializeField] private float ultimateAbilityCooldown = 0.1f;
 
     [SerializeField] private int ultimateAbilityCost = 20;
@@ -103,8 +103,13 @@ public class PlayerClassOne : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // ui displays
         currentHealth = GetComponent<LifeAndStats>().health;
         healthbar.fillAmount = currentHealth / maxHealth;
+
+        ultimateAbilityCooldownImage.fillAmount -=  1 / ultimateRechargeSpeed * Time.deltaTime;
+        slashAbilityCooldownImage.fillAmount -= 1 / slashRechargeSpeed * Time.deltaTime;
+        healAbilityCooldownImage.fillAmount -= 1 / healAbilityRechardgeSpeed * Time.deltaTime;
 
 
         //* Player 0 input */
@@ -158,7 +163,7 @@ public class PlayerClassOne : MonoBehaviour
                     healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;
                     healAbility();
                     playerAnim.SetTrigger("Heal");
-
+                    healAbilityCooldownImage.fillAmount = 1;
                     //Start animation which displays the healing effect and player anim
                     SoulBackpack.Instance.reduceSoulsByCost(healAbilityCost);
                 }
@@ -184,7 +189,7 @@ public class PlayerClassOne : MonoBehaviour
                     slashRechargeSpeed = Time.time + slashAbilityCooldown;
                     slashAbility();
                     playerAnim.SetTrigger("Slash");
-
+                    slashAbilityCooldownImage.fillAmount = 1;
                     //Start animation which displays the slash
                     SoulBackpack.Instance.reduceSoulsByCost(slashAbilityCost);
                 }
@@ -207,6 +212,7 @@ public class PlayerClassOne : MonoBehaviour
                 if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping) {
                     ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
                     ultimateAbility();
+                    ultimateAbilityCooldownImage.fillAmount = 1;
                     StartCoroutine(disableUltimate());
                     //Start animation which displays the ultimate
                     SoulBackpack.Instance.reduceSoulsByCost(ultimateAbilityCost);
