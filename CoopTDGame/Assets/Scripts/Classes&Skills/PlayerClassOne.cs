@@ -107,9 +107,9 @@ public class PlayerClassOne : MonoBehaviour
         currentHealth = GetComponent<LifeAndStats>().health;
         healthbar.fillAmount = currentHealth / maxHealth;
 
-        ultimateAbilityCooldownImage.fillAmount -=  1 / ultimateRechargeSpeed * Time.deltaTime;
-        slashAbilityCooldownImage.fillAmount -= 1 / slashRechargeSpeed * Time.deltaTime;
-        healAbilityCooldownImage.fillAmount -= 1 / healAbilityRechardgeSpeed * Time.deltaTime;
+        ultimateAbilityCooldownImage.fillAmount -=  1 / ultimateAbilityCooldown * Time.deltaTime;
+        slashAbilityCooldownImage.fillAmount -= 1 / slashAbilityCooldown * Time.deltaTime;
+        healAbilityCooldownImage.fillAmount -= 1 / healAbilityCooldown * Time.deltaTime;
 
 
         //* Player 0 input */
