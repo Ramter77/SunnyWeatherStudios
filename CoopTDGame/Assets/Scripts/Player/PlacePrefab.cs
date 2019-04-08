@@ -91,7 +91,7 @@ public class PlacePrefab : MonoBehaviour
 
     private void Update()
     {
-/* if (playC.Player_ == 0) {
+if (playC.Player_ == 0) {
 checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for following functions
         if (currentPrefab != null)
         {
@@ -106,7 +106,6 @@ checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for foll
             if (playC.Player_ == 0) {
                 //_enterBuildMode = Input.GetKeyDown(KeyCode.Alpha0 + 1 + i);
                 _input = InputManager.Instance.Fire1;
-                _transferInput = Input.GetKey(KeyCode.C);
             } 
 
             if (_input) {
@@ -114,16 +113,12 @@ checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for foll
             }
             #endregion
         }
-} */
+}
 
 
 
-if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
-        /* Debug.Log("ChangeMaterialColor: "+setColorToRed); */
-        /* if (playC.isInBuildMode)
-        { */
-        setColorToRed = true;
-        }
+
+
 
 
 
@@ -160,16 +155,15 @@ if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
 
         //Enter build mode
         //if (_enterBuildMode && !playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isJumping && !playC.isDead) {
-           //Enter build mode
-        if (_enterBuildMode && !playC.isDead) {
+if (_enterBuildMode && !playC.isDead) {
             if (_transferInput) {
                 
                 GameObject.FindObjectOfType<soulTransfer>().InputHandler(GetComponent<Animator>());
             }
             else if (!_transferInput) {
                 //playerAnim.SetBool("Channeling", false);     
-    
 
+            //}
             
             playC.isInBuildMode = true;
             /* Debug.Log("buidö1: "+_build1); */
@@ -220,25 +214,18 @@ if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
                     _spawnTowerMode = true;
                     currentPrefab = Instantiate(Prefabs[1]);
                     currentPrefabIndex = 1;
+                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().placeByPlayer_ = playC.Player_; 
 
-                    if (currentPrefab.transform.GetChild(0).childCount > 0) {
-                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().placeByPlayer_ = playC.Player_; 
-                    }
                     //Save original Material & On Instantiation give the Prefab the RedGreenMaterial
                         //currentPrefabChild = currentPrefab.transform.GetChild(0).GetChild(0);
                         if (currentPrefab.transform != null) {
                             if (currentPrefab.transform.childCount > 0) {
                         if (currentPrefab.transform.GetChild(0) != null) {
-                                if (currentPrefab.transform.GetChild(0).name != "trap_spikes.001")
-                            if (currentPrefab.transform.GetChild(0).childCount > 0) {
-                                if (currentPrefab.transform.GetChild(0).childCount > 0) {
                         if (currentPrefab.transform.GetChild(0).GetChild(0) != null) {
                             OriginalMaterial = currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;
                             currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load<Material>("RedGreenMaterial");
                             //currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn off collision
                         }
-                            }
-                            }
                         }
                         }
                         }
@@ -273,7 +260,6 @@ if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
                         }
                         }
                 }                
-            }
             }
 
             /* else if (_build2) {
@@ -321,14 +307,11 @@ if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
                 RotatePrefabByScrolling();
                 }
 
-
+            }
             } 
         }
         //On exiting building mode, if current prefab is not null the place it
         else {
-
-
-
             playC.isInBuildMode = false;
             //if not in spawnturrentmode set an invalid index n exit build mode
             if (currentPrefab == null) {
@@ -338,19 +321,21 @@ if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
             }
             //Place it!
             else {
-                if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)   //If enough souls
-{
-                if (!setColorToRed)
-            {
-                PlacePrefabOnRelease();
                 
-            }
+                //if (!setColorToRed)
+            //{
+                //if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)   //If enough souls
+{
+                PlacePrefabOnRelease();
 }
-            else {
-                //Debug.Log("sydggsdrbtxzsrtzhrtsjdrgsdtrgberz");
+                
+            //}
+//}
+            /* else {
+                Debug.Log("sydggsdrbtxzsrtzhrtsjdrgsdtrgberz");
                 currentPrefabIndex = -1;
                 Destroy(currentPrefab);
-            }
+            } */
             }
                 /* Destroy(currentPrefab);
                 currentPrefabIndex = -1;
@@ -363,7 +348,6 @@ if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
         
         }
     }
-    
 
 
         
@@ -506,11 +490,9 @@ if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
                     //currentPrefabChild = 
                     if (currentPrefab != null) {
                         if (currentPrefab.transform.childCount > 0) {
-                            if (currentPrefab.transform.GetChild(0).childCount > 0) {
                     if (currentPrefab.transform.GetChild(0).GetChild(0) != null) {
                         currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
                     }
-                            }
                     }
                     }
                 }
@@ -533,7 +515,7 @@ if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
         {
             tag = "MainCamera2";
         }
-        //Debug.Log("Finding " + tag + " tag");
+        Debug.Log("Finding " + tag + " tag");
         MainCamera = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>();
             ray = MainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         }
@@ -577,8 +559,7 @@ if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
         //If hotKey is pressed, place prefab if allowed
         /* if (_input)
         { */
-            if (!setColorToRed)
-            {
+            
                 #region TEST
                 if (currentPrefab.name == "TestRangeIndicator(Clone)")
                 {
@@ -600,22 +581,23 @@ if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
                 #region Normal behaviour
                 else
                 {
-                    //if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)   //If enough souls
-                    //{
+                    if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)   //If enough souls
+                    {
                         if (!setColorToRed)
             {
                         if (currentPrefab.transform.childCount > 0) {
-                            if (currentPrefab.transform.GetChild(0).childCount > 0) {
+
+                            if (currentPrefab.gameObject.tag != "Trap") {
                             //Switch back to original Material
                             currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial;
                             //Turn on collision   
                             currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;  
                             //Disable OnTrigger script           
                             currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().enabled = false; 
-
+                        
                             currentPrefab.gameObject.layer = 11;            //Put on "Turrets" layer to prevent casting ray on itself
+                            }
                         }
-                        }   
 
                         
                         SoulStorage.Instance.substractCostsToBuild();   //Subtract souls
@@ -627,10 +609,15 @@ if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
                         /* _meleeAttack.enabled = true;
                         _rangedAttack.enabled = true; */
             }
-                    //}
+                    }
+                    else {
+                Destroy(currentPrefab);
+                currentPrefabIndex = -1;
+            
                 }
                 #endregion
             }
+            
         //}
     }
     #endregion
