@@ -36,6 +36,8 @@ public class PlayerClassOne : MonoBehaviour
 
     private float fallbackHealAmount = 25f;
 
+    public GameObject healParticle;
+
     [Header("Slash Ability Settings")]
 
     [SerializeField] private KeyCode slashAbilityHotkey = KeyCode.E;
@@ -223,6 +225,10 @@ public class PlayerClassOne : MonoBehaviour
 
     void healAbility()
     {
+        Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y+5, transform.position.z);
+                        Instantiate(healParticle, spawnPos, Quaternion.identity);
+
+                        
         Collider[] col = Physics.OverlapSphere(transform.position, healRadius); // draw a sphere at desire point based on player pos + offset and desired radius of effect
         if (col.Length > 0)
         {
@@ -250,6 +256,8 @@ public class PlayerClassOne : MonoBehaviour
                 {
                     if ((hit.tag == "Player" || hit.tag == "Player2") && hit.gameObject != this.gameObject)
                     {
+                        
+
                         if (hit.gameObject.GetComponent<LifeAndStats>().health <= 75)
                         {
                             hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
