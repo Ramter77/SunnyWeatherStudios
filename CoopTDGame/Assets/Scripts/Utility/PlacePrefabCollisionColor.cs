@@ -64,7 +64,7 @@ public class PlacePrefabCollisionColor : MonoBehaviour
             _PlacePrefabScript.SetColorToRed(true);
         }
         else {
-            _PlacePrefabScript.SetColorToRed(false);
+            //_PlacePrefabScript.SetColorToRed(false);
         }
     }
 
