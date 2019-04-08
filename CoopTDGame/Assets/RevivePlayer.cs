@@ -18,7 +18,13 @@ public class RevivePlayer : MonoBehaviour
         if (Input.GetKey(KeyCode.I)) {
             player1.GetComponent<PlayerController>().isDead = false;
             player1.GetComponent<LifeAndStats>().health = 100;
-            player1.GetComponent<Animator>().SetBool("isDead", false);
+            player1.GetComponent<Animator>().SetBool("Dead", false);
+        }
+
+        else if (Input.GetKey(KeyCode.O)) {
+            player2.GetComponent<PlayerController>().isDead = false;
+            player2.GetComponent<LifeAndStats>().health = 100;
+            player2.GetComponent<Animator>().SetBool("Dead", false);
         }
     }
 }

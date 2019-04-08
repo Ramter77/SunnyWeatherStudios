@@ -8,7 +8,7 @@ public class SceneControl : Singleton<SceneControl>
     #region Variables
     [Tooltip("HotKey to reset current scene")]
     [SerializeField]
-    private KeyCode resetHotkey = KeyCode.R;
+    private KeyCode resetHotkey = KeyCode.P;
     #endregion
 
     void Update()

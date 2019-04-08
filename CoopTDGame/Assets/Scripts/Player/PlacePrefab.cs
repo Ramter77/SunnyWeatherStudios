@@ -68,7 +68,9 @@ public class PlacePrefab : MonoBehaviour
     private MeshRenderer[] meshRenderers;
     
     private PlayerController playC;
+    private Animator playerAnim;
     private bool _input;
+    private bool _transferInput;
     private bool _enterBuildMode, _spawnTowerMode;
     private bool _build1, _build2, _build3;
     private bool enteredBuildMode;
@@ -80,6 +82,7 @@ public class PlacePrefab : MonoBehaviour
     {
         #region References
         playC = GetComponent<PlayerController>();
+        playerAnim = GetComponent<Animator>();
 
         
 
@@ -90,22 +93,82 @@ public class PlacePrefab : MonoBehaviour
 
     private void Update()
     {
+        if (playC.Player_ == 0) {
+        checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for following functions
+        if (currentPrefab != null)
+        {
+            //Get halfScale in update to check transform.y against it & place appropriately because the anchor is centered
+            halfScale = currentPrefab.transform.localScale.y / 2f;
+
+            MovePrefabToRayHit();
+            ChangeMaterialColor();
+            RotatePrefabByScrolling();
+
+            #region Input check for placement
+            if (playC.Player_ == 0) {
+                //_enterBuildMode = Input.GetKeyDown(KeyCode.Alpha0 + 1 + i);
+                _input = InputManager.Instance.Fire1;
+                _transferInput = Input.GetKey(KeyCode.C);
+            } 
+
+            if (_input) {
+                PlacePrefabOnRelease();
+            }
+            #endregion
+        }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         if (playC.Player_ == 1) {
             _enterBuildMode = InputManager.Instance.BuildMode1;
             _build1 = InputManager.Instance.Heal1;
             _build2 = InputManager.Instance.Ultimate1;
             _build3 = InputManager.Instance.Slash1;
+
+            _transferInput = InputManager.Instance.isRunning1;
         }
         else if (playC.Player_ == 2) {
             _enterBuildMode = InputManager.Instance.BuildMode2;
             _build1 = InputManager.Instance.Heal2;
             _build2 = InputManager.Instance.Ultimate2;
             _build3 = InputManager.Instance.Slash2;
+
+            _transferInput = InputManager.Instance.isRunning2;
         }
 
         //Enter build mode
         if (_enterBuildMode && !playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isJumping && !playC.isDead) {
+            if (_transferInput) {
+                
+                GameObject.FindObjectOfType<soulTransfer>().InputHandler(GetComponent<Animator>());
+            }
+            else if (!_transferInput) {
+                //playerAnim.SetBool("Channeling", false);
+            
+
+
+
             playC.isInBuildMode = true;
             /* Debug.Log("buidö1: "+_build1); */
             //if pressed x, y, b set current prefab (enter spawnturrentmode)
@@ -250,7 +313,7 @@ public class PlacePrefab : MonoBehaviour
 
 
             } 
-        }
+        
         //On exiting building mode, if current prefab is not null the place it
         else {
             playC.isInBuildMode = false;
@@ -281,40 +344,13 @@ public class PlacePrefab : MonoBehaviour
                 /* _meleeAttack.enabled = true;     //reenable melee combat & ranged combat
                 _rangedAttack.enabled = true; */
             //}
-        
+        }
+        }
         }
     }
 
 
-        /* checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for following functions
-        if (currentPrefab != null)
-        {
-            //Get halfScale in update to check transform.y against it & place appropriately because the anchor is centered
-            halfScale = currentPrefab.transform.localScale.y / 2f;
-
-            MovePrefabToRayHit();
-            ChangeMaterialColor();
-            RotatePrefabByScrolling();
-
-            #region Input check for placement
-            if (playC.Player_ == 0) {
-                //_enterBuildMode = Input.GetKeyDown(KeyCode.Alpha0 + 1 + i);
-                _input = InputManager.Instance.Fire1;
-            }
-            if (playC.Player_ == 1) {
-                //_enterBuildMode = InputManager.Instance.BuildMode1;
-                _input = InputManager.Instance.Fire11;
-            }
-            else if (playC.Player_ == 2) {
-                //_enterBuildMode = InputManager.Instance.BuildMode2;
-                _input = InputManager.Instance.Fire12;
-            }        
-
-            if (_input) {
-                PlacePrefabOnRelease();
-            }
-            #endregion
-        } */
+        
     //}
 
     #region checkHotKeys

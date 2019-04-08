@@ -10,18 +10,35 @@ public class soulTransfer : MonoBehaviour
     [SerializeField] private float timeToTransferAmount = .2f;
     private float fallbackTime = 0f;
 
+
+    private bool _input;
+
     private void Start()
     {
         fallbackTime = timeToTransferAmount;
     }
 
-    private void Update()
-    {
-        if(enableSoulTransfer == true && Input.GetKey(transferKey))
+    public void InputHandler(Animator anim) {
+        //_input = true;
+
+        
+        if(enableSoulTransfer == true)
         {
+            anim.SetBool("Channeling", true);
             tranferProcess();
             Debug.Log("Im channeling the souls");
         }
+        else {
+            anim.SetBool("Channeling", false);
+        }
+    }
+
+    private void Update()
+    {
+        //_input = false;
+
+
+        
     }
 
     private void OnTriggerEnter(Collider other)

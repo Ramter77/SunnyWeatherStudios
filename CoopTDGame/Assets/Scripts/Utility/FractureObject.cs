@@ -9,7 +9,7 @@ public class FractureObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)) {
+        if (Input.GetKeyDown(KeyCode.U)) {
             Instantiate(FracturedObject, transform.position, transform.rotation);
             Destroy(gameObject);
         }

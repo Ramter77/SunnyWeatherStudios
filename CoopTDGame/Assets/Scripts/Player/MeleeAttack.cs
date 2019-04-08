@@ -25,6 +25,7 @@ public class MeleeAttack : MonoBehaviour
         playerAnim = GetComponent<Animator>();
 
         WeaponTriggerCollider.enabled = false;
+        UltimateWeaponTriggerCollider.enabled = false;
     }
 
     void Update()
