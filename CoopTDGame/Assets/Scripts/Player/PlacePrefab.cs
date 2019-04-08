@@ -161,7 +161,7 @@ if (_enterBuildMode && !playC.isDead) {
                 GameObject.FindObjectOfType<soulTransfer>().InputHandler(GetComponent<Animator>());
             }
             else if (!_transferInput) {
-                //playerAnim.SetBool("Channeling", false);     
+                GetComponent<Animator>().SetBool("Channeling", false);     
 
             //}
             
@@ -495,9 +495,11 @@ if (_enterBuildMode && !playC.isDead) {
                     //currentPrefabChild = 
                     if (currentPrefab != null) {
                         if (currentPrefab.transform.childCount > 0) {
+                            if (currentPrefab.transform.GetChild(0).childCount > 0) {
                     if (currentPrefab.transform.GetChild(0).GetChild(0) != null) {
                         currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
                     }
+                            }
                     }
                     }
                 }
