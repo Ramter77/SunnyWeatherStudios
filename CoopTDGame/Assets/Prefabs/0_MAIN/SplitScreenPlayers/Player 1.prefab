@@ -2765,6 +2765,7 @@ GameObject:
   - component: {fileID: 1488362263}
   - component: {fileID: 1488362262}
   - component: {fileID: 1488362261}
+  - component: {fileID: 2333843432124801581}
   m_Layer: 9
   m_Name: Player 1
   m_TagString: Player
@@ -2780,7 +2781,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488362260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1037.1, y: 2.8, z: 784.9}
+  m_LocalPosition: {x: 1037.1, y: 3.63, z: 784.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 947539536}
@@ -2891,6 +2892,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponTriggerCollider: {fileID: 1269531642}
+  UltimateWeaponTriggerCollider: {fileID: 0}
   attackDamage: 110
 --- !u!114 &1488362269
 MonoBehaviour:
@@ -2939,6 +2941,7 @@ MonoBehaviour:
   ParticleOnHitEffectYoffset: 4
   praticleSpawnLocation: {fileID: 0}
   destroyable: 0
+  GameOverScreen: {fileID: 0}
 --- !u!114 &1488362267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2997,6 +3000,7 @@ MonoBehaviour:
   isMeleeAttacking: 0
   isRangedAttacking: 0
   isJumping: 0
+  isDead: 0
 --- !u!114 &1488362264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3015,14 +3019,17 @@ MonoBehaviour:
   healAbilityHotkey: 113
   healAbilityUiImageOn: {fileID: 0}
   healAbilityUiImageOff: {fileID: 0}
+  healAbilityCooldownImage: {fileID: 0}
   healAbilityCooldown: 10
   healAbilityCost: 10
   healRadius: 7
   selfHeal: 0
   healAmount: 25
+  healParticle: {fileID: 0}
   slashAbilityHotkey: 101
   slashAbilityUiImageOn: {fileID: 0}
   slashAbilityUiImageOff: {fileID: 0}
+  slashAbilityCooldownImage: {fileID: 0}
   slashAbilityCooldown: 2
   slashAbilityCost: 10
   slashSlashPrefab: {fileID: 9003700133114425031, guid: c28fea64ccc640946bad586dfb6f2aeb,
@@ -3031,8 +3038,10 @@ MonoBehaviour:
   ultimateAbilityHotkey: 98
   ultimateAbilityUiImageOn: {fileID: 0}
   ultimateAbilityUiImageOff: {fileID: 0}
+  ultimateAbilityCooldownImage: {fileID: 0}
   ultimateAbilityCooldown: 30
   ultimateAbilityCost: 20
+  weaponGameobject: {fileID: 0}
   ultimateAbilityGameobject: {fileID: 1269531639}
   ultimateAbilityDuration: 10
 --- !u!82 &1488362263
@@ -3177,6 +3186,19 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!135 &2333843432124801581
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1488362260}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &1492798954
 GameObject:
   m_ObjectHideFlags: 0
@@ -3617,7 +3639,7 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: -0.00000023841858, y: 0.031280518, z: 0}
+    m_Center: {x: -0.00000023841858, y: 0.031311035, z: 0}
     m_Extent: {x: 0.012199452, y: 0.7131034, z: 0.008238925}
   m_DirtyAABB: 0
 --- !u!1 &1601980182

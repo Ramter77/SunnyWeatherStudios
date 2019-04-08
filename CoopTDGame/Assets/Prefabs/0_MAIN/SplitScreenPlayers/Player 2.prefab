@@ -2686,6 +2686,7 @@ GameObject:
   - component: {fileID: 1805114395}
   - component: {fileID: 1805114394}
   - component: {fileID: 1805114393}
+  - component: {fileID: 3191497375238532182}
   m_Layer: 9
   m_Name: Player 2
   m_TagString: Player2
@@ -2812,6 +2813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponTriggerCollider: {fileID: 1855574305}
+  UltimateWeaponTriggerCollider: {fileID: 0}
   attackDamage: 110
 --- !u!114 &1805114401
 MonoBehaviour:
@@ -2860,6 +2862,7 @@ MonoBehaviour:
   ParticleOnHitEffectYoffset: 4
   praticleSpawnLocation: {fileID: 0}
   destroyable: 0
+  GameOverScreen: {fileID: 0}
 --- !u!114 &1805114399
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2918,6 +2921,7 @@ MonoBehaviour:
   isMeleeAttacking: 0
   isRangedAttacking: 0
   isJumping: 0
+  isDead: 0
 --- !u!114 &1805114396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2936,14 +2940,17 @@ MonoBehaviour:
   healAbilityHotkey: 113
   healAbilityUiImageOn: {fileID: 0}
   healAbilityUiImageOff: {fileID: 0}
+  healAbilityCooldownImage: {fileID: 0}
   healAbilityCooldown: 10
   healAbilityCost: 10
   healRadius: 7
   selfHeal: 0
   healAmount: 25
+  healParticle: {fileID: 0}
   slashAbilityHotkey: 101
   slashAbilityUiImageOn: {fileID: 0}
   slashAbilityUiImageOff: {fileID: 0}
+  slashAbilityCooldownImage: {fileID: 0}
   slashAbilityCooldown: 2
   slashAbilityCost: 10
   slashSlashPrefab: {fileID: 9003700133114425031, guid: c28fea64ccc640946bad586dfb6f2aeb,
@@ -2952,8 +2959,10 @@ MonoBehaviour:
   ultimateAbilityHotkey: 98
   ultimateAbilityUiImageOn: {fileID: 0}
   ultimateAbilityUiImageOff: {fileID: 0}
+  ultimateAbilityCooldownImage: {fileID: 0}
   ultimateAbilityCooldown: 30
   ultimateAbilityCost: 20
+  weaponGameobject: {fileID: 0}
   ultimateAbilityGameobject: {fileID: 1855574302}
   ultimateAbilityDuration: 10
 --- !u!82 &1805114395
@@ -3098,6 +3107,19 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 1024
+--- !u!135 &3191497375238532182
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1805114392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 3, z: 0}
 --- !u!1 &1855574302
 GameObject:
   m_ObjectHideFlags: 0
