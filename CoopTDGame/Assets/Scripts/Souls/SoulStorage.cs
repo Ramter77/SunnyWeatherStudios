@@ -53,17 +53,17 @@ public class SoulStorage : Singleton<SoulStorage>
     public void substractCostsToBuild() //give a float and then subtract that?
     {
         Debug.Log("COST: "+costToBuild);
-        soulCount -= costToBuild;
+        sphere.GetComponent<LifeAndStats>().health -= costToBuild;
         Debug.Log(soulCount);
     }
     
     public void substactCostsToUpgrade()
     {
-        soulCount -= costToUpgrade;
+        sphere.GetComponent<LifeAndStats>().health -= costToUpgrade;
     }
 
     public void substractCostToRevive()
     {
-        soulCount -= costToRevive;
+        sphere.GetComponent<LifeAndStats>().health -= costToRevive;
     }
 }
