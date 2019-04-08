@@ -7,7 +7,7 @@ public class MeleeAttack : MonoBehaviour
     #region Variables and References    
     [Header("References")]
     [SerializeField] private Collider WeaponTriggerCollider;
-    [SerializeField] private Collider UltimateWeaponTriggerCollider;
+    [SerializeField] private BoxCollider UltimateWeaponTriggerCollider;
     //[SerializeField] private int enemyLayer;
 
     [Header("Attack Settings")] 
@@ -19,13 +19,15 @@ public class MeleeAttack : MonoBehaviour
     private bool _input, _runInput;
     #endregion
 
-    void Start()
+    void Awake()
     {
         playC = GetComponent<PlayerController>();
         playerAnim = GetComponent<Animator>();
 
         WeaponTriggerCollider.enabled = false;
         UltimateWeaponTriggerCollider.enabled = false;
+
+        UltimateWeaponTriggerCollider = GameObject.FindGameObjectWithTag("UltWep").GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -76,14 +78,15 @@ public class MeleeAttack : MonoBehaviour
         }
         #endregion
 
+
         //Enable weaponCollider which gets disabled along the reset of the attackCD
         //WeaponTriggerCollider.enabled = true;
         if (WeaponTriggerCollider != null) {
             WeaponTriggerCollider.enabled = true;
         }
-        else if (UltimateWeaponTriggerCollider) {
+        //else if (GameObject.FindGameObjectWithTag("UltWep")) {
             UltimateWeaponTriggerCollider.enabled = true;
-        }
+        //}
     }
     
     #region Reset melee CD from the melee animations
@@ -93,9 +96,11 @@ public class MeleeAttack : MonoBehaviour
         if (WeaponTriggerCollider != null) {
             WeaponTriggerCollider.enabled = false;
         }
-        else if (UltimateWeaponTriggerCollider) {
+UltimateWeaponTriggerCollider.enabled = false;
+
+        /* else if (UltimateWeaponTriggerCollider != null) {
             UltimateWeaponTriggerCollider.enabled = false;
-        }
+        } */
     }
     #endregion
 }

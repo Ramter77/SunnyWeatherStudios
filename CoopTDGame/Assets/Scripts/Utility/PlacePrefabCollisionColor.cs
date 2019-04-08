@@ -81,7 +81,7 @@ public class PlacePrefabCollisionColor : MonoBehaviour
         int surfaceIndex = SurfaceManager.singleton.GetSurfaceIndex(currentGroundInfo.collider, currentGroundInfo.point);
 
         if (debugMode) {
-            Debug.Log("Current surfaceIndex " + surfaceIndex);
+            //Debug.Log("Current surfaceIndex " + surfaceIndex);
         }
 
         //Set color accordingly

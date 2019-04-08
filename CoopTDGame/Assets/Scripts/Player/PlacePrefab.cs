@@ -68,9 +68,7 @@ public class PlacePrefab : MonoBehaviour
     private MeshRenderer[] meshRenderers;
     
     private PlayerController playC;
-    private Animator playerAnim;
     private bool _input;
-    private bool _transferInput;
     private bool _enterBuildMode, _spawnTowerMode;
     private bool _build1, _build2, _build3;
     private bool enteredBuildMode;
@@ -82,7 +80,6 @@ public class PlacePrefab : MonoBehaviour
     {
         #region References
         playC = GetComponent<PlayerController>();
-        playerAnim = GetComponent<Animator>();
 
         
 
@@ -93,8 +90,8 @@ public class PlacePrefab : MonoBehaviour
 
     private void Update()
     {
-        if (playC.Player_ == 0) {
-        checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for following functions
+/* if (playC.Player_ == 0) {
+checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for following functions
         if (currentPrefab != null)
         {
             //Get halfScale in update to check transform.y against it & place appropriately because the anchor is centered
@@ -108,7 +105,6 @@ public class PlacePrefab : MonoBehaviour
             if (playC.Player_ == 0) {
                 //_enterBuildMode = Input.GetKeyDown(KeyCode.Alpha0 + 1 + i);
                 _input = InputManager.Instance.Fire1;
-                _transferInput = Input.GetKey(KeyCode.C);
             } 
 
             if (_input) {
@@ -116,8 +112,7 @@ public class PlacePrefab : MonoBehaviour
             }
             #endregion
         }
-        }
-
+} */
 
 
 
@@ -145,30 +140,20 @@ public class PlacePrefab : MonoBehaviour
             _build1 = InputManager.Instance.Heal1;
             _build2 = InputManager.Instance.Ultimate1;
             _build3 = InputManager.Instance.Slash1;
-
-            _transferInput = InputManager.Instance.isRunning1;
         }
         else if (playC.Player_ == 2) {
             _enterBuildMode = InputManager.Instance.BuildMode2;
             _build1 = InputManager.Instance.Heal2;
             _build2 = InputManager.Instance.Ultimate2;
             _build3 = InputManager.Instance.Slash2;
-
-            _transferInput = InputManager.Instance.isRunning2;
         }
 
         //Enter build mode
         if (_enterBuildMode && !playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isJumping && !playC.isDead) {
-            if (_transferInput) {
                 
-                GameObject.FindObjectOfType<soulTransfer>().InputHandler(GetComponent<Animator>());
-            }
-            else if (!_transferInput) {
-                //playerAnim.SetBool("Channeling", false);
+
+
             
-
-
-
             playC.isInBuildMode = true;
             /* Debug.Log("buidö1: "+_build1); */
             //if pressed x, y, b set current prefab (enter spawnturrentmode)
@@ -313,9 +298,12 @@ public class PlacePrefab : MonoBehaviour
 
 
             } 
-        
+        }
         //On exiting building mode, if current prefab is not null the place it
         else {
+
+
+
             playC.isInBuildMode = false;
             //if not in spawnturrentmode set an invalid index n exit build mode
             if (currentPrefab == null) {
@@ -325,13 +313,16 @@ public class PlacePrefab : MonoBehaviour
             }
             //Place it!
             else {
+                if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)   //If enough souls
+{
                 if (!setColorToRed)
             {
                 PlacePrefabOnRelease();
                 
             }
+}
             else {
-                Debug.Log("sydggsdrbtxzsrtzhrtsjdrgsdtrgberz");
+                //Debug.Log("sydggsdrbtxzsrtzhrtsjdrgsdtrgberz");
                 currentPrefabIndex = -1;
                 Destroy(currentPrefab);
             }
@@ -344,8 +335,7 @@ public class PlacePrefab : MonoBehaviour
                 /* _meleeAttack.enabled = true;     //reenable melee combat & ranged combat
                 _rangedAttack.enabled = true; */
             //}
-        }
-        }
+        
         }
     }
 
@@ -490,9 +480,11 @@ public class PlacePrefab : MonoBehaviour
                     //currentPrefabChild = 
                     if (currentPrefab != null) {
                         if (currentPrefab.transform.childCount > 0) {
+                            if (currentPrefab.transform.GetChild(0).childCount > 0) {
                     if (currentPrefab.transform.GetChild(0).GetChild(0) != null) {
                         currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.green);
                     }
+                            }
                     }
                     }
                 }
@@ -515,7 +507,7 @@ public class PlacePrefab : MonoBehaviour
         {
             tag = "MainCamera2";
         }
-        Debug.Log("Finding " + tag + " tag");
+        //Debug.Log("Finding " + tag + " tag");
         MainCamera = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>();
             ray = MainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         }
@@ -582,11 +574,12 @@ public class PlacePrefab : MonoBehaviour
                 #region Normal behaviour
                 else
                 {
-                    if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)   //If enough souls
-                    {
+                    //if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)   //If enough souls
+                    //{
                         if (!setColorToRed)
             {
                         if (currentPrefab.transform.childCount > 0) {
+                            if (currentPrefab.transform.GetChild(0).childCount > 0) {
                             //Switch back to original Material
                             currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = OriginalMaterial;
                             //Turn on collision   
@@ -596,6 +589,7 @@ public class PlacePrefab : MonoBehaviour
 
                             currentPrefab.gameObject.layer = 11;            //Put on "Turrets" layer to prevent casting ray on itself
                         }
+                        }   
 
                         
                         SoulStorage.Instance.substractCostsToBuild();   //Subtract souls
@@ -607,7 +601,7 @@ public class PlacePrefab : MonoBehaviour
                         /* _meleeAttack.enabled = true;
                         _rangedAttack.enabled = true; */
             }
-                    }
+                    //}
                 }
                 #endregion
             }
