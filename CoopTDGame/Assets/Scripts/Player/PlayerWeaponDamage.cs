@@ -25,7 +25,7 @@ public class PlayerWeaponDamage : MonoBehaviour
 
     IEnumerator resetLastHitGO()
     {
-        yield return new WaitForSeconds(.1f);
+        yield return new WaitForSeconds(.25f);
         lastHitEnemy = null;
     }
 }

@@ -26,5 +26,9 @@ public class PlayerSlashBehavior : MonoBehaviour
         {
             other.gameObject.GetComponent<LifeAndStats>().health -= slashDamage;
         }
+        if(other.gameObject.tag == "Environment")
+        {
+            Destroy(gameObject);
+        }
     }
 }
