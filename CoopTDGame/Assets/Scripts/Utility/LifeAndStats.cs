@@ -34,6 +34,11 @@ public class LifeAndStats : MonoBehaviour
         fractureScript = GetComponent<FractureObject>();
         fallbackHealCooldown = healCooldown;
         amountOfUnitsAttacking = 0;
+        if(gameObject.CompareTag("Sphere"))
+        {
+            GameOverScreen.SetActive(false);
+        }
+        
     }
 
     void Update()
@@ -82,16 +87,16 @@ public class LifeAndStats : MonoBehaviour
 
             if(health < 0)
             {
-                //GameOverScreen.SetActive(true);
-                //StartCoroutine(restartgame());
+                GameOverScreen.SetActive(true);
+                StartCoroutine(restartgame());
             }
         }
     }
 
     IEnumerator restartgame()
     {
-        yield return new WaitForSeconds(10);
-        // reload scene
+        yield return new WaitForSeconds(5);
+        SceneManager.LoadScene(1);
     }
 
     public void TakeDamage(float dmg) {

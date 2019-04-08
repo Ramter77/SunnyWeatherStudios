@@ -274,7 +274,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a7a61810191484da31877229740a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathLayer: 4
+  pathLayer1: 4
+  pathLayer2: 3
   debugMode: 1
   groundCheckHeight: 0
   groundCheckRadius: 5
@@ -282,6 +283,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 1024
+  placeByPlayer_: 0
 --- !u!208 &4988058536931195302
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -289,7 +291,7 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3181500200931432532}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.032, y: 0.015000001, z: 0.053000003}
@@ -345,7 +347,7 @@ GameObject:
   - component: {fileID: 3529278560104736142}
   - component: {fileID: 801544617176057136}
   m_Layer: 0
-  m_Name: Tower_Holder 2
+  m_Name: Tower_Holder_WEAK
   m_TagString: possibleTargets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -387,6 +389,7 @@ MonoBehaviour:
   ParticleOnHitEffectYoffset: 11
   praticleSpawnLocation: {fileID: 7400475672675634001}
   destroyable: 1
+  GameOverScreen: {fileID: 0}
 --- !u!114 &5542685769309437334
 MonoBehaviour:
   m_ObjectHideFlags: 0
