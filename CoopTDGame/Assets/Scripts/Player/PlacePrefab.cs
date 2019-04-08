@@ -324,12 +324,12 @@ if (_enterBuildMode && !playC.isDead) {
                 
                 //if (!setColorToRed)
             //{
-                //if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)   //If enough souls
-{
+                /* if (SoulStorage.Instance.soulCount > SoulStorage.Instance.costToBuild)   //If enough souls
+{ */
                 PlacePrefabOnRelease();
-}
+//}
                 
-            //}
+            }
 //}
             /* else {
                 Debug.Log("sydggsdrbtxzsrtzhrtsjdrgsdtrgberz");
@@ -346,7 +346,7 @@ if (_enterBuildMode && !playC.isDead) {
                 _rangedAttack.enabled = true; */
             //}
         
-        }
+       // }
     }
 
 
@@ -477,6 +477,11 @@ if (_enterBuildMode && !playC.isDead) {
         /* Debug.Log("ChangeMaterialColor: "+setColorToRed); */
         /* if (playC.isInBuildMode)
         { */
+
+        if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild)   //If enough souls
+        {
+            setColorToRed = true;
+        }
             if (setColorToRed)
             {
                 if (currentPrefab.transform.childCount > 0) {
@@ -503,7 +508,7 @@ if (_enterBuildMode && !playC.isDead) {
 
     #region MovePrefabToRayHit
     private void MovePrefabToRayHit()
-    {
+    {        
         Ray ray;
         RaycastHit hit;
 
