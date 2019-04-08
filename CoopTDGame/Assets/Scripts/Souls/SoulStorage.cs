@@ -37,7 +37,7 @@ public class SoulStorage : Singleton<SoulStorage>
 
     void Update()
     {
-        soulCount = Mathf.RoundToInt(sphere.GetComponent<LifeAndStats>().health);
+        soulCount = Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Sphere").GetComponent<LifeAndStats>().health);
 
         if (soulAmountDisplayText != null) {
             soulAmountDisplayText.text = "Total Souls:" + soulCount;

@@ -82,8 +82,8 @@ public class LifeAndStats : MonoBehaviour
 
             if(health < 0)
             {
-                GameOverScreen.SetActive(true);
-                StartCoroutine(restartgame());
+                //GameOverScreen.SetActive(true);
+                //StartCoroutine(restartgame());
             }
         }
     }

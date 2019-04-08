@@ -27,7 +27,7 @@ public class MeleeAttack : MonoBehaviour
         WeaponTriggerCollider.enabled = false;
         UltimateWeaponTriggerCollider.enabled = false;
 
-        UltimateWeaponTriggerCollider = GameObject.FindGameObjectWithTag("UltWep").GetComponent<BoxCollider>();
+        //UltimateWeaponTriggerCollider = GameObject.FindGameObjectWithTag("UltWep").GetComponent<BoxCollider>();
     }
 
     void Update()
@@ -55,7 +55,7 @@ public class MeleeAttack : MonoBehaviour
         #region Input
         if (_input) {
             //If not already attacking or in build mode
-            if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping && !playC.isDead) {
+            if (!playC.isMeleeAttacking && !playC.isInBuildMode && !playC.isJumping && !playC.isDead) {
                 playC.isMeleeAttacking = true;
                 _MeleeAttack();
             }

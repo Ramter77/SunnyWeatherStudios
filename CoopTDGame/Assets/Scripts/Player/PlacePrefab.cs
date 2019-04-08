@@ -69,6 +69,7 @@ public class PlacePrefab : MonoBehaviour
     
     private PlayerController playC;
     private bool _input;
+    private bool _transferInput;
     private bool _enterBuildMode, _spawnTowerMode;
     private bool _build1, _build2, _build3;
     private bool enteredBuildMode;
@@ -105,6 +106,7 @@ checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for foll
             if (playC.Player_ == 0) {
                 //_enterBuildMode = Input.GetKeyDown(KeyCode.Alpha0 + 1 + i);
                 _input = InputManager.Instance.Fire1;
+                _transferInput = Input.GetKey(KeyCode.C);
             } 
 
             if (_input) {
@@ -140,18 +142,29 @@ checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for foll
             _build1 = InputManager.Instance.Heal1;
             _build2 = InputManager.Instance.Ultimate1;
             _build3 = InputManager.Instance.Slash1;
+
+            _transferInput = InputManager.Instance.isRunning1;
         }
         else if (playC.Player_ == 2) {
             _enterBuildMode = InputManager.Instance.BuildMode2;
             _build1 = InputManager.Instance.Heal2;
             _build2 = InputManager.Instance.Ultimate2;
             _build3 = InputManager.Instance.Slash2;
+
+            _transferInput = InputManager.Instance.isRunning2;
         }
 
         //Enter build mode
-        if (_enterBuildMode && !playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isJumping && !playC.isDead) {
+        //if (_enterBuildMode && !playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isJumping && !playC.isDead) {
+           //Enter build mode
+        if (_enterBuildMode && !playC.isDead) {
+            if (_transferInput) {
                 
-
+                GameObject.FindObjectOfType<soulTransfer>().InputHandler(GetComponent<Animator>());
+            }
+            else if (!_transferInput) {
+                //playerAnim.SetBool("Channeling", false);     
+    
 
             
             playC.isInBuildMode = true;
@@ -203,18 +216,25 @@ checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for foll
                     _spawnTowerMode = true;
                     currentPrefab = Instantiate(Prefabs[1]);
                     currentPrefabIndex = 1;
-                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().placeByPlayer_ = playC.Player_; 
 
+                    if (currentPrefab.transform.GetChild(0).childCount > 0) {
+                        currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().placeByPlayer_ = playC.Player_; 
+                    }
                     //Save original Material & On Instantiation give the Prefab the RedGreenMaterial
                         //currentPrefabChild = currentPrefab.transform.GetChild(0).GetChild(0);
                         if (currentPrefab.transform != null) {
                             if (currentPrefab.transform.childCount > 0) {
                         if (currentPrefab.transform.GetChild(0) != null) {
+                                if (currentPrefab.transform.GetChild(0).name != "trap_spikes.001")
+                            if (currentPrefab.transform.GetChild(0).childCount > 0) {
+                                if (currentPrefab.transform.GetChild(0).childCount > 0) {
                         if (currentPrefab.transform.GetChild(0).GetChild(0) != null) {
                             OriginalMaterial = currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material;
                             currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material = Resources.Load<Material>("RedGreenMaterial");
                             //currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshCollider>().isTrigger = false;    //Turn off collision
                         }
+                            }
+                            }
                         }
                         }
                         }
@@ -249,6 +269,7 @@ checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for foll
                         }
                         }
                 }                
+            }
             }
 
             /* else if (_build2) {
@@ -338,6 +359,7 @@ checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for foll
         
         }
     }
+    
 
 
         
