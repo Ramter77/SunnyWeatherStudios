@@ -54,8 +54,9 @@ public class EnemySpawnCycle : MonoBehaviour
         Enemies = GameObject.FindGameObjectsWithTag("Enemy");
         fallbackCheckTime = timeBetweenCheck;
         startNewWave();
-        annoucementText.text = ("The game starts now! Defend the Sphere with everything you have!");
+        annoucementText.text = ("The game starts now! You need to defend the Sphere!");
         StartCoroutine(disableAnnoucment());
+        Wave = 1;
     }
 
     // Update is called once per frame
@@ -138,7 +139,8 @@ public class EnemySpawnCycle : MonoBehaviour
     IEnumerator betweenWaveTime()
     {
         yield return new WaitForSeconds(timeBetweenWave);
-        annoucementText.text = ("New Wave approaching");
+        Wave += 1;
+        annoucementText.text = ("Wave " + Wave + " approaching");
         StartCoroutine(disableAnnoucment());
         startNewWave();
     }

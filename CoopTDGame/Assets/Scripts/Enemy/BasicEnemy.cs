@@ -166,6 +166,16 @@ public class BasicEnemy : MonoBehaviour
             {
                 foreach (Collider hit in col) // checks each object hit
                 {
+                    if(hit.tag == "Sphere")
+                    {
+                        if(Target == null)
+                        {
+                            Target = hit.gameObject;
+                            return;
+                        }
+                        
+                    }
+
                     if ((hit.tag == "Player" || hit.tag == "Player2") && hit.GetComponent<LifeAndStats>().health > 0 && hit.GetComponent<LifeAndStats>().amountOfUnitsAttacking < maxEnemiesSwarmingPlayer)
                     {
                         if(Target == null)
@@ -173,7 +183,6 @@ public class BasicEnemy : MonoBehaviour
                             Target = hit.gameObject;
                             hit.GetComponent<LifeAndStats>().amountOfUnitsAttacking += 1;
                         }
-                        
                     }
                 }
             }
