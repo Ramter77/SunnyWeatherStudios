@@ -19,7 +19,14 @@ public class PlayerAnim : MonoBehaviour
     private float jumpDamping = 0;
 
 
-    [SerializeField] float m_JumpPower = 12f;
+    #region INPUT
+    private float _verticalInput;
+    private float _horizontalInput;
+    private bool _runInput;
+    private bool _jumpInput;
+    #endregion
+
+    /* [SerializeField] float m_JumpPower = 12f; */
 
 
 
@@ -37,114 +44,103 @@ public class PlayerAnim : MonoBehaviour
         playerRB = GetComponent<Rigidbody>();
     }
 
-    void HandleGroundedMovement(bool jump)
-		{
-			// check whether conditions are right to allow a jump:
-			if (jump)// && animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
-			{
-				// jump!
-                Debug.Log("JUMP");
-				/* playerRB.velocity = new Vector3(playerRB.velocity.x, m_JumpPower, playerRB.velocity.z);
-				animator.SetBool("isGrounded", false); */
-				//animator.applyRootMotion = false;
-				//m_GroundCheckDistance = 0.1f;
-
-                animator.SetTrigger("Jump");
-			}
-		}
-
     void Update()
     {
-        #region Grounded Check
-        if (charController.isGrounded) {
-            animator.SetBool("isGrounded", true);
-            animator.applyRootMotion = true;
-
-            //animator.SetFloat("isJumping", 1);
-
-            HandleGroundedMovement(InputManager.Instance.Jump);
-        }
-        else {
-            animator.SetBool("isGrounded", false);
-            
-        }
-        animator.SetFloat("isJumping", playerRB.velocity.y);
-        #endregion
-
+        #region Get Input
         if (playC.Player_ == 0) {
-            #region Axis based animation
-            animator.SetFloat("Vertical", InputManager.Instance.Vertical, axisDamping, Time.deltaTime);
-            animator.SetFloat("Horizontal", InputManager.Instance.Horizontal, axisDamping, Time.deltaTime);
-            #endregion
-
-            #region Button based animation
-            /* //JUMP
-            if (InputManager.Instance.Jump) {
-                animator.SetFloat("Jump", 1);//, jumpDamping, Time.deltaTime);
-            }
-            else {
-                animator.SetFloat("Jump", 0);//, jumpDamping, Time.deltaTime);
-            } */
-
-            //RUN
-            if (InputManager.Instance.isRunning) {
-                animator.SetFloat("isRunning", 1, buttonDamping, Time.deltaTime);
-            }
-            else {
-                animator.SetFloat("isRunning", 0, buttonDamping, Time.deltaTime);
-            }
-            #endregion
+            _verticalInput = InputManager.Instance.Vertical;
+            _horizontalInput = InputManager.Instance.Horizontal;
+            _runInput = InputManager.Instance.isRunning;
+            _jumpInput = InputManager.Instance.Jump;
         }
 
-        if (playC.Player_ == 1) {
-            #region Axis based animation
-            animator.SetFloat("Vertical", InputManager.Instance.Vertical1, axisDamping, Time.deltaTime);
-            animator.SetFloat("Horizontal", InputManager.Instance.Horizontal1, axisDamping, Time.deltaTime);
-            #endregion
-
-            #region Button based animation
-            //JUMP
-            if (InputManager.Instance.Jump1) {
-                animator.SetFloat("isJumping", 1, jumpDamping, Time.deltaTime);
-            }
-            else {
-                animator.SetFloat("isJumping", 0, jumpDamping, Time.deltaTime);
-            }
-
-            //RUN
-            if (InputManager.Instance.isRunning1) {
-                animator.SetFloat("isRunning", 1, buttonDamping, Time.deltaTime);
-            }
-            else {
-                animator.SetFloat("isRunning", 0, buttonDamping, Time.deltaTime);
-            }
-            #endregion
+        else if (playC.Player_ == 1) {
+            _verticalInput = InputManager.Instance.Vertical1;
+            _horizontalInput = InputManager.Instance.Horizontal1;
+            _runInput = InputManager.Instance.isRunning1;
+            _jumpInput = InputManager.Instance.Jump1;
         }
 
         else if (playC.Player_ == 2) {
-            #region Axis based animation
-            animator.SetFloat("Vertical", InputManager.Instance.Vertical2, axisDamping, Time.deltaTime);
-            animator.SetFloat("Horizontal", InputManager.Instance.Horizontal2, axisDamping, Time.deltaTime);
-            #endregion
+            _verticalInput = InputManager.Instance.Vertical2;
+            _horizontalInput = InputManager.Instance.Horizontal2;
+            _runInput = InputManager.Instance.isRunning2;
+            _jumpInput = InputManager.Instance.Jump2;
+        }
+        #endregion
 
-            //RUN
-            #region Button based animation
-            if (InputManager.Instance.isRunning2) {
-                animator.SetFloat("isRunning", 1, buttonDamping, Time.deltaTime);
+
+        #region Set Input
+        #region Axis based animation
+        animator.SetFloat("Vertical", _verticalInput, axisDamping, Time.deltaTime);
+        animator.SetFloat("Horizontal", _horizontalInput, axisDamping, Time.deltaTime);
+        #endregion
+
+        #region Run
+        if (_runInput) {
+            animator.SetFloat("isRunning", 1, buttonDamping, Time.deltaTime);
+        }
+        else {
+            animator.SetFloat("isRunning", 0, buttonDamping, Time.deltaTime);
+        }
+        #endregion
+
+        #region Grounded Check & Jumping
+        if (charController.isGrounded) {
+            animator.SetBool("isGrounded", true);
+            //playC.isJumping = false;
+            //animator.applyRootMotion = true;
+            //animator.SetFloat("isJumping", 1);
+
+            if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isJumping) {
+                _Jump(_jumpInput);
             }
-            else {
-                animator.SetFloat("isRunning", 0, buttonDamping, Time.deltaTime);
-            }
-            #endregion
-        }        
+
+            //Jump(_jumpInput);
+            /* if (_jumpInput) {
+                animator.SetTrigger("Jump");
+                playC.isJumping = true;
+            } */
+            //animator.SetFloat("isJumping", 0);
+        }
+        else {
+            animator.SetBool("isGrounded", false);
+            //animator.SetFloat("isJumping", playerRB.velocity.y);
+        }
+        
+        #endregion
+        #endregion
     }
 
-    void Jump()
+    public void resetJumpingCD() {
+        playC.isJumping = false;
+    }
+
+    void _Jump(bool jump)
+    {
+        // check whether conditions are right to allow a jump:
+        if (jump)// && animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+        {
+            // jump!
+            //Debug.Log("JUMP");
+            /* playerRB.velocity = new Vector3(playerRB.velocity.x, m_JumpPower, playerRB.velocity.z);
+            animator.SetBool("isGrounded", false); */
+            //animator.applyRootMotion = false;
+            //m_GroundCheckDistance = 0.1f;
+
+
+            
+            animator.SetTrigger("Jump");
+            playC.isJumping = true;
+        }
+    }
+
+    /* void Jump()
     {
         if (InputManager.Instance.Jump) {
             //playerAnim.animator.SetTrigger("Jump");
 
-            /*
+            
             if (!isJumping) {
                 isJumping = true;
 
@@ -152,11 +148,8 @@ public class PlayerAnim : MonoBehaviour
                     isJumping = false;
                 }
             }
-            */
+           
         }
     }
-
-    public void Land() {
-
-    }
+    */
 }

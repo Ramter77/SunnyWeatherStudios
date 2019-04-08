@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &122213262
+--- !u!1 &2008448918
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,14 +8,14 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 122213270}
-  - component: {fileID: 122213269}
-  - component: {fileID: 122213268}
-  - component: {fileID: 122213267}
-  - component: {fileID: 122213266}
-  - component: {fileID: 122213265}
-  - component: {fileID: 122213264}
-  - component: {fileID: 122213263}
+  - component: {fileID: 2008448919}
+  - component: {fileID: 2008448926}
+  - component: {fileID: 2008448925}
+  - component: {fileID: 2008448924}
+  - component: {fileID: 2008448923}
+  - component: {fileID: 2008448922}
+  - component: {fileID: 7868450716263585257}
+  - component: {fileID: 1567465798}
   m_Layer: 0
   m_Name: GameManager_Instance
   m_TagString: Untagged
@@ -23,13 +23,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!4 &122213270
+--- !u!4 &2008448919
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 2008448918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -37,25 +37,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &122213269
+--- !u!114 &2008448926
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 2008448918}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91cbf43102bfc374a93f7b942915d238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &122213268
+--- !u!114 &2008448925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 2008448918}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ded7e84adfc72b64ba8a2d77fe257f49, type: 3}
@@ -76,9 +76,6 @@ MonoBehaviour:
     _Fire1: Fire1
     _Fire2: Fire2
     _isRunning: Run
-    _Heal: Heal
-    _Slash: Slash
-    _Ultimate: Ultimate
   _Player1:
     useController: 1
     _Vertical: Vertical1
@@ -89,10 +86,6 @@ MonoBehaviour:
     _Fire1: Fire11
     _Fire2: Fire21
     _isRunning: Run1
-    _Heal: Heal1
-    _Slash: Slash1
-    _Ultimate: Ultimate1
-    _BuildMode: BuildMode1
   _Player2:
     useController: 1
     _Vertical: Vertical2
@@ -103,10 +96,6 @@ MonoBehaviour:
     _Fire1: Fire12
     _Fire2: Fire22
     _isRunning: Run2
-    _Heal: Heal2
-    _Slash: Slash2
-    _Ultimate: Ultimate2
-    _BuildMode: BuildMode2
   Vertical: 0
   Horizontal: 0
   Jump: 0
@@ -114,9 +103,6 @@ MonoBehaviour:
   Fire1: 0
   Fire2: 0
   isRunning: 0
-  Heal: 0
-  Slash: 0
-  Ultimate: 0
   Vertical1: 0
   Horizontal1: 0
   Jump1: 0
@@ -124,10 +110,6 @@ MonoBehaviour:
   Fire11: 0
   Fire21: 0
   isRunning1: 0
-  Heal1: 0
-  Slash1: 0
-  Ultimate1: 0
-  BuildMode1: 0
   Vertical2: 0
   Horizontal2: 0
   Jump2: 0
@@ -135,34 +117,26 @@ MonoBehaviour:
   Fire12: 0
   Fire22: 0
   isRunning2: 0
-  Heal2: 0
-  Slash2: 0
-  Ultimate2: 0
-  BuildMode2: 0
-  _strJoystickName: 
-  _iButtonNumber: 0
-  _iJoystickNumber: 0
-  _strButtonIdentifier: 
---- !u!114 &122213267
+--- !u!114 &2008448924
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 2008448918}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55279486c415f5642ab1bc4f206a07bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resetHotkey: 112
---- !u!114 &122213266
+  resetHotkey: 114
+--- !u!114 &2008448923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 2008448918}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 288a83d0afc184f47a63045585577571, type: 3}
@@ -171,13 +145,13 @@ MonoBehaviour:
   slowMoHotkey: 32
   holdHotKey: 1
   slowMotionTimeScale: 0.4
---- !u!114 &122213265
+--- !u!114 &2008448922
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 2008448918}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 322fabc2e9e52994f8bc97e4659ccd03, type: 3}
@@ -189,13 +163,13 @@ MonoBehaviour:
   costToBuild: 75
   costToUpgrade: 20
   costToRevive: 50
---- !u!114 &122213264
+--- !u!114 &7868450716263585257
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 2008448918}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a655c84c524ee1045a4e4f308728218f, type: 3}
@@ -203,13 +177,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sharedSoulAmount: 200
   soulBackpackText: {fileID: 0}
---- !u!114 &122213263
+--- !u!114 &1567465798
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 2008448918}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efd771b8daedadc47a1363e28836b08c, type: 3}

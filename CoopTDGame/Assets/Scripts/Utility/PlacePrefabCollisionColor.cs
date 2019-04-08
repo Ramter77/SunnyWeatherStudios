@@ -26,15 +26,39 @@ public class PlacePrefabCollisionColor : MonoBehaviour
     private PlacePrefab _PlacePrefabScript;
     private RaycastHit currentGroundInfo;
     private bool isGrounded;
+    private bool isColliding;
+    private bool isColliding1;
+
+    public int placeByPlayer_;
 
     void Start()
     {
-        _PlacePrefabScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlacePrefab>();
+        //_PlacePrefabScript = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlacePrefab>();
     }
 
-    void Update() {
-        //Check if is grounded
+
+
+    /// <summary>
+    /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void LateUpdate()
+    {
         CheckGround();
+
+        if (placeByPlayer_ == 1) {
+            _PlacePrefabScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlacePrefab>();
+        }
+        else {
+            _PlacePrefabScript = GameObject.FindGameObjectWithTag("Player2").GetComponent<PlacePrefab>();
+        }
+
+        //if (isColliding) {
+            _PlacePrefabScript.SetColorToRed(true);
+            //Debug.Log("SETIING SREDD");
+        //}
+        if (!isColliding) {
+            _PlacePrefabScript.SetColorToRed(false);
+        }
     }
 
     void CheckGround() {
@@ -61,10 +85,15 @@ public class PlacePrefabCollisionColor : MonoBehaviour
 
         //Set color accordingly
         if (surfaceIndex == pathLayer) {
-            _PlacePrefabScript.SetColorToRed(true);
+            isColliding = true;
         }
         else {
-            //_PlacePrefabScript.SetColorToRed(false);
+            //if (!isColliding) {
+                //_PlacePrefabScript.SetColorToRed(false);
+            //}
+            if (!isColliding1) {
+                isColliding = false;
+            }
         }
     }
 
@@ -85,17 +114,32 @@ public class PlacePrefabCollisionColor : MonoBehaviour
     {
         if (other.name != "Terrain") {
             //Debug.Log("SetColorToRed() RED: " + other.name);
-            _PlacePrefabScript.SetColorToRed(true);
+            //isColliding1 = true;
+
+            isColliding = true;
+            isColliding1 = true;
         }
     }
     #endregion
+
+    /* void OnTriggerStay(Collider other)
+    {
+        if (other.name != "Terrain") {
+            //Debug.Log("SetColorToRed(): " + other.name);
+            isColliding = true;
+            isColliding1 = true;
+        }
+    } */
 
     #region OnTriggerStay (Change color of material to red on collision (with non-Terrain)
     void OnTriggerExit(Collider other)
     {
         if (other.name != "Terrain") {
             //Debug.Log("SetColorToRed(): " + other.name);
-            _PlacePrefabScript.SetColorToRed(false);
+            //isColliding1 = false;
+
+            isColliding = false;
+            isColliding1 = false;
         }
     }
     #endregion

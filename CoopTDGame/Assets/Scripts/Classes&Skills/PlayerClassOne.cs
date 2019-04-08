@@ -71,9 +71,19 @@ public class PlayerClassOne : MonoBehaviour
     [Tooltip("Duration has to be smaller than cooldown")] public float ultimateAbilityDuration = 10f;
 
 
+
+    #region INPUT
+    private PlayerController playC;
+    private bool _healInput;
+    private bool _slashInput;
+    private bool _ultimateInput;
+    #endregion
+
+
     // Start is called before the first frame update
     void Start()
     {
+        playC = GetComponent<PlayerController>();
         playerAnim = GetComponent<Animator>();
         Player = gameObject;
         fallbackHealAmount = healAmount;
@@ -93,6 +103,39 @@ public class PlayerClassOne : MonoBehaviour
         healthbar.fillAmount = currentHealth / maxHealth;
 
 
+        //* Player 0 input */
+        if (playC.Player_ == 0)
+        {
+            _healInput = InputManager.Instance.Heal;
+            _slashInput = InputManager.Instance.Slash;
+            _ultimateInput = InputManager.Instance.Ultimate;
+        }
+
+        //* Player 1 input */
+        else if (playC.Player_ == 1)
+        {
+            _healInput = InputManager.Instance.Heal1;
+            _slashInput = InputManager.Instance.Slash1;
+            _ultimateInput = InputManager.Instance.Ultimate1;
+        }
+
+        //*Player 2 input */
+        else if (playC.Player_ == 2) {
+            _healInput = InputManager.Instance.Heal2;
+            _slashInput = InputManager.Instance.Slash2;
+            _ultimateInput = InputManager.Instance.Ultimate2;
+        }
+
+        /* #region Input
+        if (_input) {
+            //If not already attacking or in build mode
+            if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping) {
+                playC.isMeleeAttacking = true;
+                _MeleeAttack();
+            }
+        }
+        #endregion */
+
         #region Input / Abilities
         
         //If cooldown is low enough: shoot
@@ -100,12 +143,21 @@ public class PlayerClassOne : MonoBehaviour
         {
             healAbilityUiImageOn.enabled = true;
             healAbilityUiImageOff.enabled = false;
-            if (Input.GetKeyDown(healAbilityHotkey))
+
+
+            if (_healInput) //{
+            //if (Input.GetKeyDown(healAbilityHotkey))
             {
-                healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;
-                healAbility();
-                //Start animation which displays the healing effect and player anim
-                SoulBackpack.Instance.reduceSoulsByCost(healAbilityCost);
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping) {
+                    playC.isRangedAttacking = true;
+
+                    healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;
+                    healAbility();
+                    playerAnim.SetTrigger("Heal");
+
+                    //Start animation which displays the healing effect and player anim
+                    SoulBackpack.Instance.reduceSoulsByCost(healAbilityCost);
+                }
             }
         }
         else
@@ -118,12 +170,20 @@ public class PlayerClassOne : MonoBehaviour
         {
             slashAbilityUiImageOn.enabled = true;
             slashAbilityUiImageOff.enabled = false;
-            if (Input.GetKeyDown(slashAbilityHotkey))
+
+            if (_slashInput)
+            //if (Input.GetKeyDown(slashAbilityHotkey))
             {
-                slashRechargeSpeed = Time.time + slashAbilityCooldown;
-                slashAbility();
-                //Start animation which displays the slash
-                SoulBackpack.Instance.reduceSoulsByCost(slashAbilityCost);
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping) {
+                    playC.isRangedAttacking = true;
+
+                    slashRechargeSpeed = Time.time + slashAbilityCooldown;
+                    slashAbility();
+                    playerAnim.SetTrigger("Slash");
+
+                    //Start animation which displays the slash
+                    SoulBackpack.Instance.reduceSoulsByCost(slashAbilityCost);
+                }
             }
         }
         else
@@ -136,13 +196,17 @@ public class PlayerClassOne : MonoBehaviour
         {
             ultimateAbilityUiImageOn.enabled = true;
             ultimateAbilityUiImageOff.enabled = false;
-            if (Input.GetKeyDown(ultimateAbilityHotkey))
+
+            if (_ultimateInput)
+            //if (Input.GetKeyDown(ultimateAbilityHotkey))
             {
-                ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
-                ultimateAbility();
-                StartCoroutine(disableUltimate());
-                //Start animation which displays the ultimate
-                SoulBackpack.Instance.reduceSoulsByCost(ultimateAbilityCost);
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping) {
+                    ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
+                    ultimateAbility();
+                    StartCoroutine(disableUltimate());
+                    //Start animation which displays the ultimate
+                    SoulBackpack.Instance.reduceSoulsByCost(ultimateAbilityCost);
+                }
             }
         }
         else
@@ -216,7 +280,7 @@ public class PlayerClassOne : MonoBehaviour
         //* First set the projectile
         GetComponent<RangedAttack>().ChangeProjectileTo(slashSlashPrefab);
         //* Then execute animation which calls public function "ShootActiveProjectile" on "RangedAttack" component
-        playerAnim.SetTrigger("RangedAttack");
+        //playerAnim.SetTrigger("RangedAttack");
 
 
 

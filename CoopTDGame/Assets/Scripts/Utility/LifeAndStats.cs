@@ -76,7 +76,7 @@ public class LifeAndStats : MonoBehaviour
 
         if(gameObject.CompareTag("Sphere"))
         {
-            GameOverScreen.SetActive(true);
+            //GameOverScreen.SetActive(true);
             
 
         }
@@ -92,6 +92,11 @@ public class LifeAndStats : MonoBehaviour
     public void TakeDamage(float dmg) {
         health -= dmg;
         ParticleOnHitEffect(ParticleOnHitEffectYoffset);
+
+        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
+        {
+            playerAnim.SetTrigger("TakeDamage");
+        }
     }
 
     public void ParticleOnHitEffect(float yOffset) {

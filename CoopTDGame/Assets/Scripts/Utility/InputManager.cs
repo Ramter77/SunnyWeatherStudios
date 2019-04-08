@@ -38,6 +38,9 @@ public class InputManager : Singleton<InputManager>
         public string _Fire1 = "Fire1";
         public string _Fire2 = "Fire2";
         public string _isRunning = "Run";
+        public string _Heal = "Heal";
+        public string _Slash = "Slash";
+        public string _Ultimate = "Ultimate";
     }
     [SerializeField] private Player _Player;
     #endregion
@@ -49,12 +52,16 @@ public class InputManager : Singleton<InputManager>
         public bool useController;
         public string _Vertical = "Vertical";
         public string _Horizontal = "Horizontal";
-        public string _Jump = "Jump";
+        public string _Jump = "Jump1";
         public string _MouseInputX = "Mouse X";
         public string _MouseInputY = "Mouse Y";
         public string _Fire1 = "Fire1";
         public string _Fire2 = "Fire2";
         public string _isRunning = "Run";
+        public string _Heal = "Heal1";
+        public string _Slash = "Slash1";
+        public string _Ultimate = "Ultimate1";
+        public string _BuildMode = "BuildMode1";
     }
     [SerializeField] private Player1 _Player1;
     #endregion
@@ -72,6 +79,10 @@ public class InputManager : Singleton<InputManager>
         public string _Fire1 = "Fire12";
         public string _Fire2 = "Fire22";
         public string _isRunning = "Run2";
+        public string _Heal = "Heal2";
+        public string _Slash = "Slash2";
+        public string _Ultimate = "Ultimate2";
+        public string _BuildMode = "BuildMode2";
     }
     [SerializeField] private Player2 _Player2;
     #endregion
@@ -88,6 +99,9 @@ public class InputManager : Singleton<InputManager>
     public bool Fire1;
     public bool Fire2;
     public bool isRunning;
+    public bool Heal;
+    public bool Slash;
+    public bool Ultimate;
     #endregion
 
     #region Player 1
@@ -99,6 +113,10 @@ public class InputManager : Singleton<InputManager>
     public bool Fire11;
     public bool Fire21;
     public bool isRunning1;
+    public bool Heal1;
+    public bool Slash1;
+    public bool Ultimate1;
+    public bool BuildMode1;
     #endregion
 
     #region Player 2
@@ -110,6 +128,18 @@ public class InputManager : Singleton<InputManager>
     public bool Fire12;
     public bool Fire22;
     public bool isRunning2;
+    public bool Heal2;
+    public bool Slash2;
+    public bool Ultimate2;
+    public bool BuildMode2;
+
+
+
+
+     public string        _strJoystickName;
+         public int            _iButtonNumber;            // 0 indexed
+         public int            _iJoystickNumber;        // 1 indexed
+         public string        _strButtonIdentifier;  
     #endregion
     #endregion
     
@@ -135,8 +165,64 @@ public class InputManager : Singleton<InputManager>
         #endregion
     }
 
+    /* public bool ButtonIsPressed()
+         {
+             // N.B. you could use Input.KeyDown( KeyCode ) if you parse the string 
+             // into a value of the KeyCode enum http://stackoverflow.com/a/16104
+             return Input.GetButtonDown( _strButtonIdentifier );
+         }
+
+         public void InitialiseButtonIdentifier( string strJoystickName, int iButtonNumber )
+         {
+             _strJoystickName    = strJoystickName;
+             _iButtonNumber        = iButtonNumber;
+ 
+             string[] astrJoysticks = Input.GetJoystickNames();
+ 
+             // find the named joystick in the array
+             // array position corresponds to joystick number
+             for( int i = 0; i < astrJoysticks.Length; ++ i )
+             {
+                 if( _strJoystickName == astrJoysticks[ i ] )
+                 {
+                     _iJoystickNumber = ( i + 1 );
+                     _strButtonIdentifier = string.Format(    "joystick{0}button{1}", 
+                                                             _iJoystickNumber, 
+                                                             _iButtonNumber );
+                 }
+             }
+         } */
+     
+
     void Update()
     {
+        /* for (int i = 0; i < 3; i++)
+        {
+        //Debug.Log(Input.GetJoystickNames()[i] + " is moved");
+
+        string[] astrJoysticks = Input.GetJoystickNames();
+
+        // find the named joystick in the array
+             // array position corresponds to joystick number
+             for( int i = 0; i < astrJoysticks.Length; ++ i )
+             {
+                 if( _strJoystickName == astrJoysticks[ i ] )
+                 {
+                     _iJoystickNumber = ( i + 1 );
+                     _strButtonIdentifier = string.Format(    "joystick{0}button{1}", 
+                                                             _iJoystickNumber, 
+                                                             _iButtonNumber );
+                 }
+             }
+        } */
+
+         
+ 
+         
+ 
+         
+
+
         #region Player
         if (_Player.useController) {
             //Round controller input
@@ -158,6 +244,9 @@ public class InputManager : Singleton<InputManager>
         Jump = Input.GetButtonDown(_Player._Jump);
         MouseInput = new Vector2(Input.GetAxisRaw(_Player._MouseInputX), Input.GetAxisRaw(_Player._MouseInputY));
         isRunning = Input.GetButton(_Player._isRunning);
+        Heal = Input.GetButtonDown(_Player._Heal);
+        Slash = Input.GetButtonDown(_Player._Slash);
+        Ultimate = Input.GetButtonDown(_Player._Ultimate);
         #endregion
 
         #region Player1
@@ -179,8 +268,13 @@ public class InputManager : Singleton<InputManager>
         }
 
         Jump1 = Input.GetButtonDown(_Player1._Jump);
+        //Debug.Log(Jump1 + " JUas ckmaf");
         MouseInput1 = new Vector2(Input.GetAxisRaw(_Player1._MouseInputX), Input.GetAxisRaw(_Player1._MouseInputY));
         isRunning1 = Input.GetButton(_Player1._isRunning);
+        Heal1 = Input.GetButtonDown(_Player1._Heal);
+        Slash1 = Input.GetButtonDown(_Player1._Slash);
+        Ultimate1 = Input.GetButtonDown(_Player1._Ultimate);
+        BuildMode1 = Input.GetButton(_Player1._BuildMode);
         #endregion
         
         #region Player2
@@ -207,6 +301,14 @@ public class InputManager : Singleton<InputManager>
         Jump2 = Input.GetButtonDown(_Player2._Jump);
         MouseInput2 = new Vector2(Input.GetAxisRaw(_Player2._MouseInputX), Input.GetAxisRaw(_Player2._MouseInputY));
         isRunning2 = Input.GetButton(_Player2._isRunning);
+        Heal2 = Input.GetButtonDown(_Player2._Heal);
+        Slash2 = Input.GetButtonDown(_Player2._Slash);
+        Ultimate2 = Input.GetButtonDown(_Player2._Ultimate);
+        BuildMode2 = Input.GetButton(_Player2._BuildMode);
+
+
+
+        //Debug.Log("BM: "+BuildMode1 + " asfaefkn BM2: "+BuildMode2);
         #endregion
     }
 }

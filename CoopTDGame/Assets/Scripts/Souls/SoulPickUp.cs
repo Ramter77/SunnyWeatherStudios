@@ -9,6 +9,8 @@ public class SoulPickUp : MonoBehaviour
     [SerializeField] private int minValue = 0;
     [SerializeField] private int maxValue = 0;
 
+    public GameObject particleEffect;
+
     private void Start()
     {
         soulValue = Random.Range(minValue, maxValue);
@@ -16,8 +18,9 @@ public class SoulPickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && pickedUp == false)
+        if ((other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") && pickedUp == false)
         {
+            Instantiate(particleEffect, transform.position, Quaternion.identity);
             pickedUp = true;
             SoulBackpack.Instance.sharedSoulAmount += soulValue;
             Destroy(gameObject);
