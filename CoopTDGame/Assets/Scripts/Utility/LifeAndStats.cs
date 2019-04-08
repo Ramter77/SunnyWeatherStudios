@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LifeAndStats : MonoBehaviour
 {
@@ -25,7 +26,7 @@ public class LifeAndStats : MonoBehaviour
 
     private Animator playerAnim;
     private FractureObject fractureScript;
-    
+    public GameObject GameOverScreen = null;
 
     void Start()
     {
@@ -72,6 +73,20 @@ public class LifeAndStats : MonoBehaviour
                 playerAnim.SetBool("Dead", true);
             }
         } 
+
+        if(gameObject.CompareTag("Sphere"))
+        {
+            GameOverScreen.SetActive(true);
+            
+
+        }
+
+    }
+
+    IEnumerator restartgame()
+    {
+        yield return new WaitForSeconds(10);
+        // reload scene
     }
 
     public void TakeDamage(float dmg) {
