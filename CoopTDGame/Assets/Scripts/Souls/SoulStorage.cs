@@ -25,18 +25,20 @@ public class SoulStorage : Singleton<SoulStorage>
 
     [Tooltip("Amount that the players pay for reviving a teammate")]
     public int costToRevive = 0;
+    private GameObject sphere;
 
     void Start()
     {
         GameObject SoulSphere = GameObject.FindGameObjectWithTag("Sphere");
         soulAmountDisplayText = SoulSphere.transform.parent.GetComponentInChildren<Text>();
-
         soulCount = amountOfSoulsAtStart;
-        costToBuild = 10;
+        sphere = GameObject.FindGameObjectWithTag("Sphere");
     }
 
     void Update()
     {
+        soulCount = Mathf.RoundToInt(sphere.GetComponent<LifeAndStats>().health);
+
         if (soulAmountDisplayText != null) {
             soulAmountDisplayText.text = "Total Souls:" + soulCount;
             //Debug.Log("SoulCount:" + soulCount);

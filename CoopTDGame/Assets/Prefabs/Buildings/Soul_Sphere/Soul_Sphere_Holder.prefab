@@ -223,34 +223,6 @@ MonoBehaviour:
     format: 0
     data: 
   shadowDatas: []
---- !u!135 &3797213004068149325
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348397092059966592}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 20
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8848640854797591298
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 348397092059966592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 647cacea8a2ce674184783a31f87d2f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  transferKey: 99
-  amountOfSoulsToTransfer: 10
-  timeToTransferAmount: 0.2
 --- !u!64 &1533497898569867002
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -362,6 +334,8 @@ GameObject:
   m_Component:
   - component: {fileID: 363901875034044773}
   - component: {fileID: 7836417752706181167}
+  - component: {fileID: 9064052185075965512}
+  - component: {fileID: 723122394330653483}
   m_Layer: 0
   m_Name: AttackPoint
   m_TagString: Sphere
@@ -404,6 +378,35 @@ MonoBehaviour:
   ParticleOnHitEffectYoffset: 1
   praticleSpawnLocation: {fileID: 348397092060065956}
   destroyable: 0
+  GameOverScreen: {fileID: 0}
+--- !u!135 &9064052185075965512
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187311588156848180}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 10.239808
+  m_Center: {x: -0.0000000066845143, y: 0, z: 0.28086945}
+--- !u!114 &723122394330653483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187311588156848180}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647cacea8a2ce674184783a31f87d2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transferKey: 99
+  amountOfSoulsToTransfer: 10
+  timeToTransferAmount: 0.2
 --- !u!1 &5285693086137551694
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,21 +741,21 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: e99fa45aedfddfb48b54658ad22eea7d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e03621d51bb5514cbe054f99cd0c44e, type: 3}
+--- !u!4 &348397092060065956 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400004, guid: 6e03621d51bb5514cbe054f99cd0c44e,
+    type: 3}
+  m_PrefabInstance: {fileID: 348397092059933216}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &348397092059966594 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100002, guid: 6e03621d51bb5514cbe054f99cd0c44e,
     type: 3}
   m_PrefabInstance: {fileID: 348397092059933216}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &348397092059966596 stripped
+--- !u!1 &348397092059966598 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 100004, guid: 6e03621d51bb5514cbe054f99cd0c44e,
-    type: 3}
-  m_PrefabInstance: {fileID: 348397092059933216}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &348397092060065956 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 400004, guid: 6e03621d51bb5514cbe054f99cd0c44e,
+  m_CorrespondingSourceObject: {fileID: 100006, guid: 6e03621d51bb5514cbe054f99cd0c44e,
     type: 3}
   m_PrefabInstance: {fileID: 348397092059933216}
   m_PrefabAsset: {fileID: 0}
@@ -762,15 +765,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 348397092059933216}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &348397092059966592 stripped
+--- !u!1 &348397092059966596 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 100000, guid: 6e03621d51bb5514cbe054f99cd0c44e,
-    type: 3}
-  m_PrefabInstance: {fileID: 348397092059933216}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &348397092059966598 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 100006, guid: 6e03621d51bb5514cbe054f99cd0c44e,
+  m_CorrespondingSourceObject: {fileID: 100004, guid: 6e03621d51bb5514cbe054f99cd0c44e,
     type: 3}
   m_PrefabInstance: {fileID: 348397092059933216}
   m_PrefabAsset: {fileID: 0}

@@ -7,10 +7,12 @@ public class SoulBackpack : Singleton<SoulBackpack>
 {
     public int sharedSoulAmount;
     public Text soulBackpackText; // displays the amount of shared souls in the ui
+    private GameObject sphere;
 
     private void Start() {
         GameObject soulBackpackTextParent = GameObject.FindGameObjectWithTag("SoulCounter");
         soulBackpackText = soulBackpackTextParent.GetComponentInChildren<Text>();
+        sphere = GameObject.FindGameObjectWithTag("Sphere");
     }
 
     private void Update()
@@ -31,7 +33,7 @@ public class SoulBackpack : Singleton<SoulBackpack>
         if(sharedSoulAmount >= amount)
         {
             sharedSoulAmount -= amount;
-            SoulStorage.Instance.soulCount += amount;
+            sphere.GetComponent<LifeAndStats>().health += amount;
         }
         else
         {

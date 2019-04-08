@@ -77,11 +77,15 @@ public class LifeAndStats : MonoBehaviour
 
         if(gameObject.CompareTag("Sphere"))
         {
-            //GameOverScreen.SetActive(true);
-            
+            GameManager.Instance.GetComponent<SoulStorage>().soulCount = Mathf.RoundToInt(health);
 
+
+            if(health < 0)
+            {
+                GameOverScreen.SetActive(true);
+                StartCoroutine(restartgame());
+            }
         }
-
     }
 
     IEnumerator restartgame()
