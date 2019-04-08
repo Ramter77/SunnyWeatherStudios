@@ -118,8 +118,12 @@ checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for foll
 
 
 
-
-
+if (SoulStorage.Instance.soulCount < SoulStorage.Instance.costToBuild) {
+        /* Debug.Log("ChangeMaterialColor: "+setColorToRed); */
+        /* if (playC.isInBuildMode)
+        { */
+        setColorToRed = true;
+        }
 
 
 

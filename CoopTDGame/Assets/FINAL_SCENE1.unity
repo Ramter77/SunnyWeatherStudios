@@ -1226,8 +1226,12 @@ PrefabInstance:
     - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
       propertyPath: healParticle
       value: 
-      objectReference: {fileID: 4337264345346879602, guid: e8488329e59410d4390a8e409c86a464,
+      objectReference: {fileID: 1312923869523673248, guid: efde4b8957e6d704a9a861a347c9b627,
         type: 3}
+    - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
+      propertyPath: healRadius
+      value: 100000000
+      objectReference: {fileID: 0}
     - target: {fileID: 1488362261, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
       propertyPath: minVolume
       value: 0.1
@@ -1718,12 +1722,17 @@ PrefabInstance:
     - target: {fileID: 363901875034044773, guid: 35a2c08fd0cbd574a93bc040cd761251,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6
+      value: 5.29
       objectReference: {fileID: 0}
     - target: {fileID: 363901875034044773, guid: 35a2c08fd0cbd574a93bc040cd761251,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.55
+      value: 23.82
+      objectReference: {fileID: 0}
+    - target: {fileID: 363901875034044773, guid: 35a2c08fd0cbd574a93bc040cd761251,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.86
       objectReference: {fileID: 0}
     - target: {fileID: 7836417752706181167, guid: 35a2c08fd0cbd574a93bc040cd761251,
         type: 3}
@@ -2393,8 +2402,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5.220974, y: 1, z: 1.384558}
-  m_Center: {x: -1.0315881, y: 0, z: 0.19227956}
+  m_Size: {x: 5.220974, y: 1, z: 0.08629267}
+  m_Center: {x: -1.0315863, y: 0, z: -0.45685145}
 --- !u!1001 &509868185
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4774,8 +4783,12 @@ PrefabInstance:
     - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
       propertyPath: healParticle
       value: 
-      objectReference: {fileID: 4337264345346879602, guid: e8488329e59410d4390a8e409c86a464,
+      objectReference: {fileID: 1312923869523673248, guid: efde4b8957e6d704a9a861a347c9b627,
         type: 3}
+    - target: {fileID: 1488362264, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
+      propertyPath: healRadius
+      value: 1e+10
+      objectReference: {fileID: 0}
     - target: {fileID: 1488362261, guid: 2bde36dc1b51c554ba12ef8db0ffadad, type: 3}
       propertyPath: minVolume
       value: 0.1

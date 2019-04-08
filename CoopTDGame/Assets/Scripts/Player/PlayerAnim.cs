@@ -129,7 +129,7 @@ public class PlayerAnim : MonoBehaviour
             //m_GroundCheckDistance = 0.1f;
 
 
-            
+            animator.GetComponent<MeleeAttack>().ActivateWeaponCollider();
             animator.SetTrigger("Jump");
             playC.isJumping = true;
         }

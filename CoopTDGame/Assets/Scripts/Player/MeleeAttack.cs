@@ -78,7 +78,11 @@ public class MeleeAttack : MonoBehaviour
         }
         #endregion
 
+        ActivateWeaponCollider();
+        
+    }
 
+    public void ActivateWeaponCollider() {
         //Enable weaponCollider which gets disabled along the reset of the attackCD
         //WeaponTriggerCollider.enabled = true;
         if (WeaponTriggerCollider != null) {
