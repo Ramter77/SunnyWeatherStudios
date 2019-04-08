@@ -5579,15 +5579,15 @@ PrefabInstance:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3181500200931432532, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
-        type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 3329165327428139085, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
         type: 3}
       propertyPath: debugMode
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3181500200931432532, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6061596055778099200, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a, type: 3}
@@ -6161,14 +6161,14 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4988058536931195302, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3329165327428139085, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
         type: 3}
       propertyPath: debugMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4988058536931195302, guid: 9f12ba6fd0212eb4db57c4f9f4c3020a,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -7727,6 +7727,26 @@ PrefabInstance:
       propertyPath: soulBackpackText
       value: 
       objectReference: {fileID: 6449109461380041606}
+    - target: {fileID: 2008448925, guid: aea326ef67bf4b445865bb1ee2e813fb, type: 3}
+      propertyPath: _MouseControl.LockMouse
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008448925, guid: aea326ef67bf4b445865bb1ee2e813fb, type: 3}
+      propertyPath: _MouseControl.hideCursor
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008448923, guid: aea326ef67bf4b445865bb1ee2e813fb, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008448922, guid: aea326ef67bf4b445865bb1ee2e813fb, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2008448922, guid: aea326ef67bf4b445865bb1ee2e813fb, type: 3}
+      propertyPath: costToBuild
+      value: 75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aea326ef67bf4b445865bb1ee2e813fb, type: 3}
 --- !u!114 &1166094087815792977 stripped
@@ -7820,6 +7840,52 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6146779374079693079, guid: ee627079683599849a1ae2042eba23fd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6146779375928444810, guid: ee627079683599849a1ae2042eba23fd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 18.92
+      objectReference: {fileID: 0}
+    - target: {fileID: 2533939395136166845, guid: ee627079683599849a1ae2042eba23fd,
+        type: 3}
+      propertyPath: maximumEnemies
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7075118036268076196, guid: ee627079683599849a1ae2042eba23fd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8188472305329452560, guid: ee627079683599849a1ae2042eba23fd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -16
+      objectReference: {fileID: 0}
+    - target: {fileID: 5918215250258553995, guid: ee627079683599849a1ae2042eba23fd,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+    - target: {fileID: 5918215250258553995, guid: ee627079683599849a1ae2042eba23fd,
+        type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879707459896128399, guid: ee627079683599849a1ae2042eba23fd,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 6879707459896128399, guid: ee627079683599849a1ae2042eba23fd,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: b51a3e520f9164da198dc59c8acfccd6,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee627079683599849a1ae2042eba23fd, type: 3}
 --- !u!114 &3267781850241398060 stripped
@@ -7941,6 +8007,26 @@ PrefabInstance:
       propertyPath: ultimateAbilityUiImageOff
       value: 
       objectReference: {fileID: 3267781850241398060}
+    - target: {fileID: 2140898390, guid: 6e31277bcd27a5d4b8144f1644e37d45, type: 3}
+      propertyPath: slashAbilityCost
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140898395, guid: 6e31277bcd27a5d4b8144f1644e37d45, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2140898394, guid: 6e31277bcd27a5d4b8144f1644e37d45, type: 3}
+      propertyPath: axisDamping
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 745858424, guid: 6e31277bcd27a5d4b8144f1644e37d45, type: 3}
+      propertyPath: attackDamage
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 885854650, guid: 6e31277bcd27a5d4b8144f1644e37d45, type: 3}
+      propertyPath: attackDamage
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6e31277bcd27a5d4b8144f1644e37d45, type: 3}
 --- !u!114 &5179812909748934902 stripped

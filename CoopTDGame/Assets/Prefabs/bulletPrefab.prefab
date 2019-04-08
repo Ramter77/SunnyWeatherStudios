@@ -29,8 +29,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455592500324762051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 184.10025, y: 7.914379, z: 179.6007}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalPosition: {x: 184.10025, y: 7.914379, z: 179.58}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 5978510264147587200}
   m_Father: {fileID: 0}
@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  damage: 25
+  damage: 100
   penetrationFactor: 10
 --- !u!54 &3074725652997519177
 Rigidbody:
@@ -150,7 +150,7 @@ PrefabInstance:
     - target: {fileID: 6496701407421858964, guid: 8b27f18bcc747324885bc2fd69da821f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -1.52
       objectReference: {fileID: 0}
     - target: {fileID: 6496701407421858964, guid: 8b27f18bcc747324885bc2fd69da821f,
         type: 3}
