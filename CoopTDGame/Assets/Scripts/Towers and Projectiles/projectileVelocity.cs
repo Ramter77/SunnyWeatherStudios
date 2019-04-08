@@ -32,7 +32,7 @@ public class projectileVelocity : MonoBehaviour
         {
             targetDefense = other.GetComponent<LifeAndStats>().defense;
             float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
-            other.GetComponent<LifeAndStats>().health -= applyingDamage;
+            other.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
             appliedDamage = true;
             Destroy(gameObject);
         }

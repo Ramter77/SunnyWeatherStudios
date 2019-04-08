@@ -19,11 +19,14 @@ public class PlayerAnim : MonoBehaviour
     private float jumpDamping = 0;
 
 
+    [SerializeField] float m_JumpPower = 12f;
+
+
 
     private PlayerController playC;
     private Animator animator;
     private CharacterController charController;
-    private Rigidbody rb;
+    private Rigidbody playerRB;
     #endregion
 
     void Awake()
@@ -31,17 +34,41 @@ public class PlayerAnim : MonoBehaviour
         playC = GetComponent<PlayerController>();
         animator = GetComponent<Animator>();
         charController = GetComponent<CharacterController>();
+        playerRB = GetComponent<Rigidbody>();
     }
+
+    void HandleGroundedMovement(bool jump)
+		{
+			// check whether conditions are right to allow a jump:
+			if (jump)// && animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
+			{
+				// jump!
+                Debug.Log("JUMP");
+				/* playerRB.velocity = new Vector3(playerRB.velocity.x, m_JumpPower, playerRB.velocity.z);
+				animator.SetBool("isGrounded", false); */
+				//animator.applyRootMotion = false;
+				//m_GroundCheckDistance = 0.1f;
+
+                animator.SetTrigger("Jump");
+			}
+		}
 
     void Update()
     {
         #region Grounded Check
         if (charController.isGrounded) {
             animator.SetBool("isGrounded", true);
+            animator.applyRootMotion = true;
+
+            //animator.SetFloat("isJumping", 1);
+
+            HandleGroundedMovement(InputManager.Instance.Jump);
         }
         else {
             animator.SetBool("isGrounded", false);
+            
         }
+        animator.SetFloat("isJumping", playerRB.velocity.y);
         #endregion
 
         if (playC.Player_ == 0) {
@@ -51,13 +78,13 @@ public class PlayerAnim : MonoBehaviour
             #endregion
 
             #region Button based animation
-            //JUMP
+            /* //JUMP
             if (InputManager.Instance.Jump) {
-                animator.SetFloat("isJumping", 1, jumpDamping, Time.deltaTime);
+                animator.SetFloat("Jump", 1);//, jumpDamping, Time.deltaTime);
             }
             else {
-                animator.SetFloat("isJumping", 0, jumpDamping, Time.deltaTime);
-            }
+                animator.SetFloat("Jump", 0);//, jumpDamping, Time.deltaTime);
+            } */
 
             //RUN
             if (InputManager.Instance.isRunning) {

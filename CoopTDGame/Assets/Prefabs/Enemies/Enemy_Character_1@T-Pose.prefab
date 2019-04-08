@@ -922,7 +922,7 @@ MonoBehaviour:
   preparationTime: 0
   maxEnemiesSwarmingPlayer: 5
   maxEnemiesSwarmingTower: 8
-  enemySpeed: 7
+  enemySpeed: 10
   attackRange: 8
   followRadius: 25
   stoppingRange: 5
@@ -942,7 +942,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e44126dc44c0474aa4bfa3a609acf54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 15
+  damageDelay: 1
   Target: {fileID: 0}
   enableAttack: 1
   targetDefense: 0

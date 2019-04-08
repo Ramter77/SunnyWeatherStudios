@@ -5,28 +5,27 @@ using UnityEngine;
 public class PlayerWeaponDamage : MonoBehaviour
 {
     public float attackDamage = 0f;
+    private GameObject lastHitEnemy = null;
 
-    public GameObject ParentEnemy;
-    // Start is called before the first frame update
     void Start()
     {
-        if (ParentEnemy != null) {
-            attackDamage = ParentEnemy.GetComponent<MeleeAttack>().attackDamage;
-        }
-        else {
-            //Debug.Log("ParentEnemy is null: " + gameObject.name);
-            attackDamage = 40;  //default to 40 dmg to test
-        }
-        
+        lastHitEnemy = null;
     }
 
     private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Enemy" )
+    { 
+        if(other.gameObject.tag == "Enemy" && other.gameObject != lastHitEnemy)
         {
-            //Debug.Log("Weapon hit enemy");
-            other.gameObject.GetComponent<LifeAndStats>().TakeDamage(attackDamage); //!public functions pls
-            //Destroy(gameObject);
+            Debug.Log("Weapon hit enemy");
+            lastHitEnemy = other.gameObject;
+            other.gameObject.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
+            StartCoroutine(resetLastHitGO());
         }
+    }
+
+    IEnumerator resetLastHitGO()
+    {
+        yield return new WaitForSeconds(.25f);
+        lastHitEnemy = null;
     }
 }

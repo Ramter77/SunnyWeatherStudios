@@ -62,8 +62,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _MouseControl:
-    hideCursor: 0
-    LockMouse: 0
+    hideCursor: 1
+    LockMouse: 1
   _ControllerControl:
     ControllerTriggerAxisLimit: 0.5
   _Player:
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2008448918}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 288a83d0afc184f47a63045585577571, type: 3}
   m_Name: 
@@ -160,9 +160,9 @@ MonoBehaviour:
   tempSoulCounter: {fileID: 0}
   soulCount: 0
   amountOfSoulsAtStart: 100
-  costToBuild: 10
-  costToUpgrade: 0
-  costToRevive: 0
+  costToBuild: 75
+  costToUpgrade: 20
+  costToRevive: 50
 --- !u!114 &7868450716263585257
 MonoBehaviour:
   m_ObjectHideFlags: 0

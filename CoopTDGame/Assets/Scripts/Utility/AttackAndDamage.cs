@@ -8,6 +8,8 @@ public class AttackAndDamage : MonoBehaviour
     public float damage = 20f; // flat damage amount
     private float attackSpeed = 2f; // 1f = 1 attack per second ; 2f = 1 attack every 2 seconds ; ...
     private float penetrationFactor = 3f; // factor that recudes the amount of damage reduction the target recives through its defense stat
+    public float damageDelay = 1f;
+
 
     [Header("Target")]
     public GameObject Target = null;
@@ -26,11 +28,6 @@ public class AttackAndDamage : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void performAttack()
     {
@@ -39,29 +36,31 @@ public class AttackAndDamage : MonoBehaviour
         {
             if(Target != null)
             {
-                //Debug.Log("Enemy attacked");
-                targetDefense = Target.GetComponent<LifeAndStats>().defense;
-                float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
-                //Target.GetComponent<LifeAndStats>().health -= applyingDamage;       //!make these public please
-                Target.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
-
-
                 enemyAnim.SetTrigger("Attack");
-                //Debug.Log("AI: apply damage amount" + Target.GetComponent<LifeAndStats>().health);
                 enableAttack = false;
                 StartCoroutine(resetAttackCooldown());
-
-                //AttackAnimation
-                //transform.GetChild(0).GetComponent<Animator>().SetTrigger("Attack");
-                
             }
             else
             {
                 return;
             }
         }
-
     }
+
+   public void enemyDamageApply()
+    {
+        StartCoroutine(damageApply());
+    }
+
+    IEnumerator damageApply()
+    {
+        yield return new WaitForSeconds(damageDelay);
+        targetDefense = Target.GetComponent<LifeAndStats>().defense;
+        float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
+        Target.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
+    }
+
+
 
     IEnumerator resetAttackCooldown()
     {

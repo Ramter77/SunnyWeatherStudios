@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawnCycle : MonoBehaviour
 {
@@ -40,6 +41,9 @@ public class EnemySpawnCycle : MonoBehaviour
     public float timeBetweenCheck = 2f;
     private float fallbackCheckTime = 0f;
 
+    public GameObject annoucementMessageHolder;
+    public Text annoucementText;
+    public float disableTime = 5f;
 
     #endregion
 
@@ -50,6 +54,8 @@ public class EnemySpawnCycle : MonoBehaviour
         Enemies = GameObject.FindGameObjectsWithTag("Enemy");
         fallbackCheckTime = timeBetweenCheck;
         startNewWave();
+        annoucementText.text = ("The game starts now! Defend the Sphere with everything you have!");
+        StartCoroutine(disableAnnoucment());
     }
 
     // Update is called once per frame
@@ -78,9 +84,7 @@ public class EnemySpawnCycle : MonoBehaviour
                 endWave();
                 newWavePending = true;
             }
-            
         }
-        
     }
 
     /// <summary>
@@ -122,6 +126,8 @@ public class EnemySpawnCycle : MonoBehaviour
 
     public void endWave()
     {
+        annoucementMessageHolder.SetActive(true);
+        annoucementText.text = ("New Wave coming in " + timeBetweenWave + " seconds");
         StartCoroutine(betweenWaveTime());
     }
 
@@ -132,7 +138,8 @@ public class EnemySpawnCycle : MonoBehaviour
     IEnumerator betweenWaveTime()
     {
         yield return new WaitForSeconds(timeBetweenWave);
-
+        annoucementText.text = ("New Wave approaching");
+        StartCoroutine(disableAnnoucment());
         startNewWave();
     }
 
@@ -142,5 +149,11 @@ public class EnemySpawnCycle : MonoBehaviour
 
         CheckWaveStatus();
 
+    }
+
+    IEnumerator disableAnnoucment()
+    {
+        yield return new WaitForSeconds(disableTime);
+        annoucementMessageHolder.SetActive(false);
     }
 }
