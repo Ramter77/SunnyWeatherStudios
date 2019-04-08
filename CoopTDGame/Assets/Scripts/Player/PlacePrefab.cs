@@ -105,7 +105,7 @@ public class PlacePrefab : MonoBehaviour
         }
 
         //Enter build mode
-        if (_enterBuildMode) {
+        if (_enterBuildMode && !playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isJumping && !playC.isDead) {
             playC.isInBuildMode = true;
             /* Debug.Log("buidö1: "+_build1); */
             //if pressed x, y, b set current prefab (enter spawnturrentmode)

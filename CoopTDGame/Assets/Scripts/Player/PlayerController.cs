@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public bool isMeleeAttacking;
     public bool isRangedAttacking;
     public bool isJumping;
+    public bool isDead;
     #endregion 
 
     private Transform MainCameraTransform;

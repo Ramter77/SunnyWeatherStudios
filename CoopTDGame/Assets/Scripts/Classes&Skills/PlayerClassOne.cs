@@ -66,6 +66,7 @@ public class PlayerClassOne : MonoBehaviour
 
     private float ultimateRechargeSpeed;
 
+    public GameObject weaponGameobject;
     public GameObject ultimateAbilityGameobject;
 
     [Tooltip("Duration has to be smaller than cooldown")] public float ultimateAbilityDuration = 10f;
@@ -90,6 +91,7 @@ public class PlayerClassOne : MonoBehaviour
         
         //ability Cooldowns
         ultimateAbilityGameobject.SetActive(false);
+        //weaponGameobject.SetActive(true);
         slashRechargeSpeed = slashAbilityCooldown;
         healAbilityRechardgeSpeed = healAbilityCooldown;
         ultimateRechargeSpeed = ultimateAbilityCooldown;
@@ -148,7 +150,7 @@ public class PlayerClassOne : MonoBehaviour
             if (_healInput) //{
             //if (Input.GetKeyDown(healAbilityHotkey))
             {
-                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping) {
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping && !playC.isDead) {
                     playC.isRangedAttacking = true;
 
                     healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;
@@ -267,12 +269,14 @@ public class PlayerClassOne : MonoBehaviour
     void ultimateAbility()
     {
         ultimateAbilityGameobject.SetActive(true);
+        weaponGameobject.SetActive(false);
     }
 
     IEnumerator disableUltimate()
     {
         yield return new WaitForSeconds(ultimateAbilityDuration);
         ultimateAbilityGameobject.SetActive(false);
+        weaponGameobject.SetActive(true);
     }
 
     void slashAbility()

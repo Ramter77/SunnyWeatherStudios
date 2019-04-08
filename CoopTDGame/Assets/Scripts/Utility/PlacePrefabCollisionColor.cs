@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlacePrefabCollisionColor : MonoBehaviour
 {
     [Tooltip("The layer in the surface manager that the prefabs cannot be placed on.")]
-    [SerializeField] int pathLayer = 4;
+    [SerializeField] int pathLayer1 = 4;
+    [SerializeField] int pathLayer2 = 3;
 
     [Tooltip("If this is enabled, you can see how far the script will check for ground, and the radius of the check.")]
 	[SerializeField] bool debugMode = true;
@@ -84,7 +85,7 @@ public class PlacePrefabCollisionColor : MonoBehaviour
         }
 
         //Set color accordingly
-        if (surfaceIndex == pathLayer) {
+        if (surfaceIndex == pathLayer1 || surfaceIndex == pathLayer2) {
             isColliding = true;
         }
         else {

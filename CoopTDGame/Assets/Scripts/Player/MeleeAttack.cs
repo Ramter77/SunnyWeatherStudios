@@ -7,6 +7,7 @@ public class MeleeAttack : MonoBehaviour
     #region Variables and References    
     [Header("References")]
     [SerializeField] private Collider WeaponTriggerCollider;
+    [SerializeField] private Collider UltimateWeaponTriggerCollider;
     //[SerializeField] private int enemyLayer;
 
     [Header("Attack Settings")] 
@@ -51,7 +52,7 @@ public class MeleeAttack : MonoBehaviour
         #region Input
         if (_input) {
             //If not already attacking or in build mode
-            if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping) {
+            if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping && !playC.isDead) {
                 playC.isMeleeAttacking = true;
                 _MeleeAttack();
             }
@@ -75,13 +76,25 @@ public class MeleeAttack : MonoBehaviour
         #endregion
 
         //Enable weaponCollider which gets disabled along the reset of the attackCD
-        WeaponTriggerCollider.enabled = true;
+        //WeaponTriggerCollider.enabled = true;
+        if (WeaponTriggerCollider != null) {
+            WeaponTriggerCollider.enabled = true;
+        }
+        else if (UltimateWeaponTriggerCollider) {
+            UltimateWeaponTriggerCollider.enabled = true;
+        }
     }
     
     #region Reset melee CD from the melee animations
     public void resetMeleeAttackCD() {
         playC.isMeleeAttacking = false;
-        WeaponTriggerCollider.enabled = false;
+
+        if (WeaponTriggerCollider != null) {
+            WeaponTriggerCollider.enabled = false;
+        }
+        else if (UltimateWeaponTriggerCollider) {
+            UltimateWeaponTriggerCollider.enabled = false;
+        }
     }
     #endregion
 }

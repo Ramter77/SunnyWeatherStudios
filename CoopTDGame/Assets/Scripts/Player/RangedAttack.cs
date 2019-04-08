@@ -94,7 +94,7 @@ public class RangedAttack : MonoBehaviour
 
     private void _RangedAttack() {
         //If not ranged attacking
-        if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isInBuildMode && !playC.isJumping) {
+        if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isInBuildMode && !playC.isJumping && !playC.isDead) {
             playC.isRangedAttacking = true;
 
             //Start animation which ShootProjectile() on event & resets isRangedAttacking

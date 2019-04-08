@@ -71,6 +71,7 @@ public class LifeAndStats : MonoBehaviour
             if (health <= 0) {
                 Debug.Log("Player dead");
                 playerAnim.SetBool("Dead", true);
+                GetComponent<PlayerController>().isDead = true;
             }
         } 
 

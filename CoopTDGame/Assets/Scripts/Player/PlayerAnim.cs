@@ -92,7 +92,7 @@ public class PlayerAnim : MonoBehaviour
             //animator.applyRootMotion = true;
             //animator.SetFloat("isJumping", 1);
 
-            if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isJumping) {
+            if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping && !playC.isDead) {
                 _Jump(_jumpInput);
             }
 
