@@ -10,6 +10,13 @@ public class DebuffTrapSlow : MonoBehaviour
 
     private float multipliedSpeedPercentage;
     private NavMeshAgent agent;
+    public float lifetime = 30f;
+
+
+    private void Start()
+    {
+        Destroy(gameObject, lifetime);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
