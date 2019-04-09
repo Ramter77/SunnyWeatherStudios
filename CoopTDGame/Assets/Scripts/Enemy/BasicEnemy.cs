@@ -199,9 +199,10 @@ public class BasicEnemy : MonoBehaviour
                 //Debug.Log("Checking for towers");
                 foreach (Collider hit in tol)
                 {
-                    if (hit.tag == "possibleTargets" && hit.transform.parent.transform.parent.GetComponent<LifeAndStats>().health > 0 && hit.transform.parent.transform.parent.GetComponent<LifeAndStats>().amountOfUnitsAttacking < maxEnemiesSwarmingTower)
+                    if (hit.tag == "possibleTargets" && hit.transform.parent.gameObject.transform.parent.GetComponent<LifeAndStats>().health > 0 && hit.transform.parent.gameObject.transform.parent.GetComponent<LifeAndStats>().amountOfUnitsAttacking < maxEnemiesSwarmingTower)
                         // if hit object has equal tag to possibleTarget tag
                     {
+                        Debug.Log("found tower");
                         action = Random.Range(0, 100);
                         //Debug.Log("tower found");
                         if (checkedTarget == null)
