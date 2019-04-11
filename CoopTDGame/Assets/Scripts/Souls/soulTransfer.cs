@@ -31,6 +31,11 @@ public class soulTransfer : MonoBehaviour
         else {
             anim.SetBool("Channeling", false);
         }
+        
+    }
+
+    public void DisableChannelingAnim(Animator anim) {
+        anim.SetBool("Channeling", false);
     }
 
     private void Update()

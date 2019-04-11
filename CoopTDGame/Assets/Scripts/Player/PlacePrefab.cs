@@ -313,6 +313,7 @@ if (_enterBuildMode && !playC.isDead) {
         //On exiting building mode, if current prefab is not null the place it
         else {
             playC.isInBuildMode = false;
+            GetComponent<Animator>().SetBool("Channeling", false);
             //if not in spawnturrentmode set an invalid index n exit build mode
             if (currentPrefab == null) {
                 //Debug.Log("DEFSEGJKESNEJFLNSPOOOOOOOOOOOOOOY");
