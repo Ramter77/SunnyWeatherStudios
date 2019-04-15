@@ -18,11 +18,11 @@ public class BasicEnemy : MonoBehaviour
     public List<GameObject> possibleTargets;
     public bool checkedForTarget = false;
 
-
     [Header("BehaviorStates / Effect States")]
     public int attackState = 0; // 0 == not attacking // 1 == attacking // 2 == has recently attacked
     [SerializeField] private int action = 0;
     [SerializeField] private int decisionLimit = 0;
+    [SerializeField] private bool detectedTarget = false;
     [SerializeField] private float preparationTime = 0f;
     [SerializeField] private int maxEnemiesSwarmingPlayer;
     [SerializeField] private int maxEnemiesSwarmingTower;
@@ -37,7 +37,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private float scanDelay = 5f;
     [SerializeField] private float minPreparationTimeForAttack = 1f;
     [SerializeField] private float maxPreparationTimeForAttack = 5f;
-
+    public float fleeRange = 3f;
 
 
     private Animator enemyAnim;
@@ -76,21 +76,27 @@ public class BasicEnemy : MonoBehaviour
             targetPos = Target.transform;
             float distance = Vector3.Distance(targetPos.position, transform.position);
 
+            /// if target is in range for the enemy
             if (distance <= detectionRadius && distance > stoppingRange)
             {
-                agent.isStopped = false;
-                attackState = 1;
-                agent.SetDestination(targetPos.position);
+                MoveToTarget(); 
             }
+
+            if(detectedTarget == true && distance > followRadius) // if enemy 
+            {
+                stopAttackingTarget();
+            }
+
             if (distance <= attackRange) // in attack range
             {
                 FaceTowardsPlayer();
                 prepareAttack();
                 attackState = 1;
-                //Debug.Log("Ai: Preparing Attack now");
             }
+
             if (distance <= stoppingRange) // in stopping range prevents ai from bumping into player
             {
+                agent.SetDestination(transform.position);
                 agent.isStopped = true;
                 rigid.velocity = Vector3.zero;
                 rigid.angularVelocity = Vector3.zero;
@@ -98,18 +104,54 @@ public class BasicEnemy : MonoBehaviour
 
             if ((attackState == 1 && distance > followRadius || Target.GetComponent<LifeAndStats>().health <= 0) || attackState == 1 && Target == null)
             {
-                Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
-                Target = null;
-                StartCoroutine(ScanCycle());
-                agent.isStopped = false;
-                attackState = 0;
-                WalkToSphere();
+                stopAttackingTarget();
             }
-
         }
     }
 
+    /// <summary>
+    /// move towards the target to attack it
+    /// </summary>
+    void MoveToTarget()
+    {
+        agent.isStopped = false;
+        attackState = 1;
+        agent.SetDestination(targetPos.position);
+    }
+    
+    /// <summary>
+    /// makes the enemy flee from the target
+    /// </summary>
+    void RunFromTarget()
+    {
+        transform.rotation = Quaternion.LookRotation(transform.position - targetPos.position);
+        Vector3 runTo = transform.position + transform.forward * fleeRange;
+        NavMeshHit hit;
+#pragma warning disable CS0618 // Typ oder Element ist veraltet
+        NavMesh.SamplePosition(runTo, out hit, 5, areaMask: 1 << NavMesh.GetNavMeshLayerFromName("Default"));
+#pragma warning restore CS0618 // Typ oder Element ist veraltet
+        agent.SetDestination(hit.position);
+    }
 
+    /// <summary>
+    /// makes the enemy stop attacking the target
+    /// enemy then walks towards sphere
+    /// </summary>
+    void stopAttackingTarget()
+    {
+        Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
+        Target = null;
+        StartCoroutine(ScanCycle());
+        agent.isStopped = false;
+        attackState = 0;
+        attackIndication.SetActive(false);
+        detectedTarget = false;
+        WalkToSphere();
+    }
+
+    /// <summary>
+    /// prepares the attack 
+    /// </summary>
     public void prepareAttack()
     {
        // set the enemy animation to idle / preparation for attack
@@ -138,7 +180,9 @@ public class BasicEnemy : MonoBehaviour
         }
     }
 
-
+    /// <summary>
+    /// makes the enemy rotate towards the target
+    /// </summary>
     void FaceTowardsPlayer()
     {
         Vector3 direction = (Target.transform.position - transform.position).normalized;
