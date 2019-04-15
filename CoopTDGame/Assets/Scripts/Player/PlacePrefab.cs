@@ -214,7 +214,8 @@ if (_enterBuildMode && !playC.isDead) {
                     _spawnTowerMode = true;
                     currentPrefab = Instantiate(Prefabs[1]);
                     currentPrefabIndex = 1;
-                    currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().placeByPlayer_ = playC.Player_; 
+                    
+                    //currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().placeByPlayer_ = playC.Player_; 
 
                     //Save original Material & On Instantiation give the Prefab the RedGreenMaterial
                         //currentPrefabChild = currentPrefab.transform.GetChild(0).GetChild(0);
@@ -486,7 +487,9 @@ if (_enterBuildMode && !playC.isDead) {
             if (setColorToRed)
             {
                 if (currentPrefab.transform.childCount > 0) {
+                    if (currentPrefab.transform.GetChild(0).childCount > 0) {
                     currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>().material.SetColor("_BaseColor", Color.red);
+                }
                 }
             }
             else
