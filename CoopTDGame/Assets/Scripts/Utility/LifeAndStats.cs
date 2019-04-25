@@ -71,14 +71,14 @@ public class LifeAndStats : MonoBehaviour
             }
         }
 
-        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
+        /* if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
         {
             if (health <= 0) {
                 Debug.Log("Player dead");
                 playerAnim.SetBool("Dead", true);
                 GetComponent<PlayerController>().isDead = true;
             }
-        } 
+        } */ 
 
         if(gameObject.CompareTag("Sphere"))
         {
@@ -105,7 +105,14 @@ public class LifeAndStats : MonoBehaviour
 
         if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
         {
-            playerAnim.SetTrigger("TakeDamage");
+            if (health <= 0) {
+                Debug.Log("Player dead");
+                playerAnim.SetBool("Dead", true);
+                GetComponent<PlayerController>().isDead = true;
+            }
+            else {
+                playerAnim.SetTrigger("TakeDamage");
+            }
         }
     }
 

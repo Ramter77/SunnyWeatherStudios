@@ -262,17 +262,23 @@ public class PlayerClassOne : MonoBehaviour
                 {
                     if ((hit.tag == "Player" || hit.tag == "Player2") && hit.gameObject != this.gameObject)
                     {
-                        
+                        if (hit.gameObject.GetComponent<LifeAndStats>().health <= 0) {
 
-                        if (hit.gameObject.GetComponent<LifeAndStats>().health <= 75)
-                        {
-                            hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
+                            Debug.Log("REVIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIVE");
+                            hit.gameObject.GetComponent<RevivePlayer>().Revive(hit.gameObject);
                         }
-                        if (hit.gameObject.GetComponent<LifeAndStats>().health > 75)
-                        {
-                            healAmount = maxHealth - hit.gameObject.GetComponent<LifeAndStats>().health;
-                            hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
-                            healAmount = fallbackHealAmount;
+                        else {
+
+                            if (hit.gameObject.GetComponent<LifeAndStats>().health <= 75)
+                            {
+                                hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
+                            }
+                            if (hit.gameObject.GetComponent<LifeAndStats>().health > 75)
+                            {
+                                healAmount = maxHealth - hit.gameObject.GetComponent<LifeAndStats>().health;
+                                hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
+                                healAmount = fallbackHealAmount;
+                            }
                         }
                     }
                 }
