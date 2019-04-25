@@ -47,7 +47,7 @@ public class AttackAndDamage : MonoBehaviour
         }
     }
 
-   public void enemyDamageApply()
+    public void enemyDamageApply()
     {
         StartCoroutine(damageApply());
     }
@@ -55,6 +55,15 @@ public class AttackAndDamage : MonoBehaviour
     IEnumerator damageApply()
     {
         yield return new WaitForSeconds(damageDelay);
+        targetDefense = Target.GetComponent<LifeAndStats>().defense;
+        float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
+        Target.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
+    }
+
+
+
+    public void applyDamage()
+    {
         targetDefense = Target.GetComponent<LifeAndStats>().defense;
         float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
         Target.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);

@@ -22,11 +22,16 @@ public class LifeAndStats : MonoBehaviour
     public Transform praticleSpawnLocation;
     private Vector3 spawnPos;
 
+    public bool ragdollOnDeath;
     public bool destroyable;
 
     private Animator playerAnim;
     private FractureObject fractureScript;
     public GameObject GameOverScreen = null;
+
+
+
+    private bool _dead;
 
     void Start()
     {
@@ -56,18 +61,28 @@ public class LifeAndStats : MonoBehaviour
         }
         if (gameObject.CompareTag("Enemy"))
         {
-            if (health <= 0) {
-                #region Instantiate Soul & destroy self
-                if (dropSoul) {
-                    Vector3 dropPos = new Vector3(transform.position.x, transform.position.y+2, transform.position.z);
-                    GameObject _Soul = Instantiate(Resources.Load("Soul", typeof(GameObject)), dropPos, Quaternion.identity) as GameObject;
+            if (!_dead) {
+                if (health <= 0) {
+                    #region Instantiate Soul & destroy self
+                    if (dropSoul) {
+                        Vector3 dropPos = new Vector3(transform.position.x, transform.position.y+2, transform.position.z);
+                        GameObject _Soul = Instantiate(Resources.Load("Soul", typeof(GameObject)), dropPos, Quaternion.identity) as GameObject;
+                    }
+                    if (GetComponent<BasicEnemy>().Target != null && GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking > 0)
+                    {
+                        GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
+                    }
+
+
+                    if (ragdollOnDeath) {
+                        GetComponent<Ragdoll>().toggleRagdoll(true);
+                        _dead = true;
+                    }
+                    else {
+                        Destroy(gameObject);
+                    }
+                    #endregion
                 }
-                if(GetComponent<BasicEnemy>().Target != null && GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking > 0)
-                {
-                    GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
-                }
-                Destroy(gameObject);
-                #endregion
             }
         }
 

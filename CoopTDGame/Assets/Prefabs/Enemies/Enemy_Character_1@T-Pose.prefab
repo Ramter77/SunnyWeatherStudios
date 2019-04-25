@@ -843,6 +843,7 @@ GameObject:
   - component: {fileID: 7383123797276358845}
   - component: {fileID: 4688082940104256734}
   - component: {fileID: 2604484383380889238}
+  - component: {fileID: 221023853338719819}
   m_Layer: 0
   m_Name: Enemy_Character_1@T-Pose
   m_TagString: Enemy
@@ -919,6 +920,7 @@ MonoBehaviour:
   attackState: 0
   action: 0
   decisionLimit: 100
+  detectedTarget: 0
   preparationTime: 0
   maxEnemiesSwarmingPlayer: 5
   maxEnemiesSwarmingTower: 8
@@ -930,6 +932,7 @@ MonoBehaviour:
   scanDelay: 1
   minPreparationTimeForAttack: 1
   maxPreparationTimeForAttack: 3
+  fleeRange: 3
 --- !u!114 &4762429106283773193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1048,6 +1051,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
+--- !u!114 &221023853338719819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 441651628348768842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ab10d73dcd507b4eb08bf966fec2a0f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &441651628348768844
 GameObject:
   m_ObjectHideFlags: 0
