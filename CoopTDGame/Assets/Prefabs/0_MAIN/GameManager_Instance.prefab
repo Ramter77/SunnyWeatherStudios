@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &122213262
+--- !u!1 &256656428
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,14 +8,15 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 122213270}
-  - component: {fileID: 122213269}
-  - component: {fileID: 122213268}
-  - component: {fileID: 122213267}
-  - component: {fileID: 122213266}
-  - component: {fileID: 122213265}
-  - component: {fileID: 122213264}
-  - component: {fileID: 122213263}
+  - component: {fileID: 135921806333454534}
+  - component: {fileID: 2331339089537376779}
+  - component: {fileID: 6669502109914906010}
+  - component: {fileID: 7978184620902713474}
+  - component: {fileID: 6009582045929630236}
+  - component: {fileID: 8611296634836897472}
+  - component: {fileID: 5721786437306105353}
+  - component: {fileID: 8106289129259376002}
+  - component: {fileID: 256656429}
   m_Layer: 0
   m_Name: GameManager_Instance
   m_TagString: Untagged
@@ -23,39 +24,39 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!4 &122213270
+--- !u!4 &135921806333454534
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_GameObject: {fileID: 256656428}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &122213269
+--- !u!114 &2331339089537376779
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 256656428}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91cbf43102bfc374a93f7b942915d238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &122213268
+--- !u!114 &6669502109914906010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 256656428}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ded7e84adfc72b64ba8a2d77fe257f49, type: 3}
@@ -143,26 +144,26 @@ MonoBehaviour:
   _iButtonNumber: 0
   _iJoystickNumber: 0
   _strButtonIdentifier: 
---- !u!114 &122213267
+--- !u!114 &7978184620902713474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 256656428}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55279486c415f5642ab1bc4f206a07bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resetHotkey: 112
---- !u!114 &122213266
+--- !u!114 &6009582045929630236
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 256656428}
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 288a83d0afc184f47a63045585577571, type: 3}
@@ -171,13 +172,13 @@ MonoBehaviour:
   slowMoHotkey: 32
   holdHotKey: 1
   slowMotionTimeScale: 0.4
---- !u!114 &122213265
+--- !u!114 &8611296634836897472
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 256656428}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 322fabc2e9e52994f8bc97e4659ccd03, type: 3}
@@ -186,16 +187,16 @@ MonoBehaviour:
   tempSoulCounter: {fileID: 0}
   soulCount: 0
   amountOfSoulsAtStart: 100
-  costToBuild: 75
+  costToBuild: 50
   costToUpgrade: 20
   costToRevive: 50
---- !u!114 &122213264
+--- !u!114 &5721786437306105353
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 256656428}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a655c84c524ee1045a4e4f308728218f, type: 3}
@@ -203,13 +204,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sharedSoulAmount: 200
   soulBackpackText: {fileID: 0}
---- !u!114 &122213263
+--- !u!114 &8106289129259376002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122213262}
+  m_GameObject: {fileID: 256656428}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efd771b8daedadc47a1363e28836b08c, type: 3}
@@ -255,3 +256,15 @@ MonoBehaviour:
     surfaceIndex: 0
   - texture: {fileID: 2800000, guid: f6605a6d90c197c4d99424a12dffb35c, type: 3}
     surfaceIndex: 4
+--- !u!114 &256656429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256656428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 868082c66463d30479422a77631272cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
