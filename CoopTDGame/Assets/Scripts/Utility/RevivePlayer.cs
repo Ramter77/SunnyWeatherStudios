@@ -27,4 +27,11 @@ public class RevivePlayer : MonoBehaviour
             player2.GetComponent<Animator>().SetBool("Dead", false);
         }
     }
+
+    public void Revive(GameObject player) {
+        player.GetComponent<PlayerController>().isDead = false;
+        player.GetComponent<LifeAndStats>().health = 100;
+        player.GetComponent<Animator>().SetBool("Dead", false);
+        player.GetComponent<PlayerController>().isDead = false;
+    }
 }
