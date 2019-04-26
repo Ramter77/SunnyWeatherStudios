@@ -5,44 +5,53 @@ using UnityEngine;
 public class DissolveDelay : MonoBehaviour
 {
     [SerializeField]
-    private Material dissolveMaterial;
+    private MeshRenderer weaponRenderer; 
 
     [SerializeField]
-    private float dissolveDelay = 1f;
-    [SerializeField]
-    private float destroyDelay = 2f;
+    private float delay = 4f;
+    private float lerp;
 
+    [SerializeField]    
+    private bool dissolveOnStart;
+    private bool startDissolving;
 
     private MeshRenderer meshRenderer;
-    private Material currentMaterial;
-    
+    private SkinnedMeshRenderer skinnedMeshRenderer;
 
     void Start()
     {
-        meshRenderer = GetComponent<MeshRenderer>();
-        currentMaterial = meshRenderer.material;
+        skinnedMeshRenderer = GetComponentInChildren<SkinnedMeshRenderer>();
+        skinnedMeshRenderer.material.SetFloat("_Dissolve", 0);
 
-        //Switch to dissolve material after dissolveDelay
-        StartCoroutine(dissolveAfterDelay(dissolveDelay));
+        if (weaponRenderer != null) {
+            weaponRenderer.material.SetFloat("_Dissolve", 0);
+        }
+
+
+        if (dissolveOnStart) {
+            Dissolve();
+        }
     }
 
-    void Update()
-    {
-        
+    void Update() {
+        if (startDissolving) {
+            skinnedMeshRenderer.material.SetFloat("_Dissolve", Mathf.Lerp(0, 1, lerp));
+            if (weaponRenderer != null) {
+                weaponRenderer.material.SetFloat("_Dissolve", Mathf.Lerp(0, 1, lerp));
+            }
+
+            if (lerp < 1) { //While lerp is below the end limit
+                //Increment it at the desired rate every frame
+                lerp += Time.deltaTime/delay;
+            }
+        }
     }
 
-    IEnumerator dissolveAfterDelay(float delay) {
-        yield return new WaitForSeconds(delay);
+    public void Dissolve() {
+        startDissolving = true;
 
-        meshRenderer.material = dissolveMaterial;
-
-        //Destroy after destroyDelay
-        StartCoroutine(destroyAfterDelay(destroyDelay));
-    }
-
-    IEnumerator destroyAfterDelay(float delay) {
-        yield return new WaitForSeconds(delay);
-
-        Destroy(gameObject);
+        //Destroy after delay time when completely dissolved
+        Destroy(gameObject, delay + 0.1f);
+        Destroy(weaponRenderer.gameObject, delay + 0.1f);
     }
 }

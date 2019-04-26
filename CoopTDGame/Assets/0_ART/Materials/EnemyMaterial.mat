@@ -8,11 +8,11 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: EnemyMaterial
-  m_Shader: {fileID: 4800000, guid: d06fe58446ed24777b56996ad517731e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 20e717bd7fc37ae418744e4e3c36043b, type: 3}
   m_ShaderKeywords: _DOUBLESIDED_ON _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
-  m_DoubleSidedGI: 1
+  m_DoubleSidedGI: 0
   m_CustomRenderQueue: -1
   stringTagMap:
     MotionVector: User
@@ -25,6 +25,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_552D8329:
+        m_Texture: {fileID: 2800000, guid: 82dcd21aa3fe3fe42beb1f384e38d6c9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_62122E41:
         m_Texture: {fileID: 2800000, guid: 82dcd21aa3fe3fe42beb1f384e38d6c9, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -126,8 +130,10 @@ Material:
     - Vector1_1D2CEC22: 0.01
     - Vector1_23156CA3: -0.3
     - Vector1_5825786: 1
+    - Vector1_8609B40C: 0.01
     - Vector1_8A26164C: 0
     - Vector1_AA01DD5: 1
+    - Vector1_C4D8952: 30
     - Vector1_CB479353: 1
     - Vector1_CD766B85: 0.25
     - Vector1_DD40DC28: 0
@@ -157,6 +163,7 @@ Material:
     - _DisplacementLockObjectScale: 1
     - _DisplacementLockTilingScale: 1
     - _DisplacementMode: 0
+    - _Dissolve: 0
     - _DistortionBlendMode: 0
     - _DistortionBlurBlendMode: 0
     - _DistortionBlurDstBlend: 1
@@ -248,7 +255,8 @@ Material:
     m_Colors:
     - Color_3617E2BE: {r: 0.30188674, g: 0.30188674, b: 0.30188674, a: 0}
     - Color_684E1F3E: {r: 0, g: 0, b: 0, a: 0}
-    - Color_E55A4F87: {r: 0, g: 0.63532114, b: 1, a: 0}
+    - Color_B9814FB5: {r: 0.49056596, g: 0.19668916, b: 0.48356402, a: 0}
+    - Color_E55A4F87: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

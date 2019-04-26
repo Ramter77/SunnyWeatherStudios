@@ -8,6 +8,10 @@ public class Ragdoll : MonoBehaviour
     public bool ragdollOnStart;
 
 
+
+    private Component[] rbs;
+
+
     Animator anim;
     EnemyAnim animScript;
     BasicEnemy enemyScript;
@@ -22,11 +26,16 @@ public class Ragdoll : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rbs = GetComponentsInChildren<Rigidbody>();
+        foreach (Rigidbody _rb in rbs)
+            _rb.isKinematic = true;
+
+
         anim = GetComponent<Animator>();
         animScript = GetComponent<EnemyAnim>();
         enemyScript = GetComponent<BasicEnemy>();
-        //dmgScript = GetComponent<AttackAndDamage>();
-        //lifeScript = GetComponent<LifeAndStats>();
+        dmgScript = GetComponent<AttackAndDamage>();
+        lifeScript = GetComponent<LifeAndStats>();
         rb = GetComponent<Rigidbody>();
 
         agent = GetComponent<NavMeshAgent>();
@@ -50,8 +59,8 @@ public class Ragdoll : MonoBehaviour
         anim.enabled = !ragdoll;
         animScript.enabled = !ragdoll;
         enemyScript.enabled = !ragdoll;
-        //dmgScript.enabled = !ragdoll;
-        //lifeScript.enabled = !ragdoll;
+        dmgScript.enabled = !ragdoll;
+        lifeScript.enabled = !ragdoll;
         agent.enabled = !ragdoll;
         
         //and set components
@@ -68,6 +77,11 @@ public class Ragdoll : MonoBehaviour
             rb.constraints = RigidbodyConstraints.None;
         }
 
+        foreach (Rigidbody _rb in rbs)
+            _rb.isKinematic = false;
+
+
+        //Disable attack indicator
         transform.GetChild(2).gameObject.SetActive(false);
         //Destroy(transform.GetChild(2).gameObject);
         

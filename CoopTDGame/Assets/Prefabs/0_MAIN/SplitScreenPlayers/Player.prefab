@@ -2767,7 +2767,7 @@ GameObject:
   - component: {fileID: 1488362261}
   - component: {fileID: 2333843432124801581}
   m_Layer: 9
-  m_Name: Player 1
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2940,6 +2940,7 @@ MonoBehaviour:
     type: 3}
   ParticleOnHitEffectYoffset: 4
   praticleSpawnLocation: {fileID: 0}
+  ragdollOnDeath: 0
   destroyable: 0
   GameOverScreen: {fileID: 0}
 --- !u!114 &1488362267
@@ -3153,12 +3154,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be8a12d03ebbf42a8a0c3f65686b0953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ikActive: 0
+  ikActive: 1
   rotation: 0
   showMarkers: 1
   LeftFoot: {fileID: 1638888743}
   RightFoot: {fileID: 1980511794}
-  footOffset: 0.4
+  footOffset: 0.5
   deltaAmplifier: 0.1
 --- !u!114 &1488362261
 MonoBehaviour:
@@ -3181,8 +3182,8 @@ MonoBehaviour:
   minVolume: 0.1
   maxVolume: 0.2
   debugMode: 1
-  groundCheckHeight: 1
-  groundCheckRadius: 1
+  groundCheckHeight: 1.5
+  groundCheckRadius: 1.5
   groundCheckDistance: 0.5
   groundLayers:
     serializedVersion: 2
@@ -3640,8 +3641,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.00000029802322, y: 0.031311035, z: 0}
-    m_Extent: {x: 0.012199451, y: 0.7131025, z: 0.008238923}
+    m_Center: {x: -0.00000023841858, y: 0.031311035, z: 0}
+    m_Extent: {x: 0.012199452, y: 0.7131034, z: 0.008238925}
   m_DirtyAABB: 0
 --- !u!1 &1601980182
 GameObject:
