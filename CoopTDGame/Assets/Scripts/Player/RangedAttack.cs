@@ -20,41 +20,28 @@ public class RangedAttack : MonoBehaviour
     [SerializeField]    
     private Transform projectileOrigin;
 
-
-    /* [Header ("Parameters")] */
-    /* [Tooltip("Delay of instantiating projectile")]
-    [SerializeField]
-    private float shootDelay = 0.3f; */
-
-    /* [Tooltip("Attack cooldown")]
-    [SerializeField]
-    private float attackCD = 0.1f; */
-    /* private float attackSpeed; */
-
     [Header ("RayCast")]
     [SerializeField]
     private LayerMask mask;
-    [SerializeField]
     private float maxDistance = 9999;
     [SerializeField]
-    private float defaultDistance = 100.0f;
+    private float fallbackDistance = 100.0f;
     private Vector3 intersectionPoint, direction;
 
     #region Internal variables
     private PlayerController playC;
-    private Camera MainCamera;
     private Animator playerAnim;
-    private bool _input;
-
-
+    private Camera MainCamera;
     private CapsuleCollider myCollider;
+    
+    private bool _input;
     #endregion
     #endregion
 
-    void Start() {        
+    void Start() {
+        playC = GetComponent<PlayerController>();   
         playerAnim = GetComponent<Animator>();
-        playC = GetComponent<PlayerController>();
-
+        
         string tag = "MainCamera";
         if (playC.Player_ == 2)
         {
@@ -145,9 +132,9 @@ public class RangedAttack : MonoBehaviour
             direction = (intersectionPoint - projectileOrigin.position).normalized;            
         }
 
-        //else direct the projectile to the GetPoint(defaultDistance) intersection
+        //else direct the projectile to the GetPoint(fallbackDistance) intersection
         else {
-            direction = (ray.GetPoint(defaultDistance) - projectileOrigin.position).normalized;
+            direction = (ray.GetPoint(fallbackDistance) - projectileOrigin.position).normalized;
         }
 
         //Create projectile

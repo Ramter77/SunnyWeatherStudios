@@ -7,9 +7,10 @@ public class Ragdoll : MonoBehaviour
 {
     public bool ragdollOnStart;
 
-
-
+    private Component[] ownColliders;
+    private Component[] colliders;
     private Component[] rbs;
+    
 
 
     Animator anim;
@@ -26,6 +27,19 @@ public class Ragdoll : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Disable ragdoll colliders
+        colliders = GetComponentsInChildren<Collider>();
+        foreach (Collider _col in colliders)
+            _col.enabled = false;
+
+        ownColliders = GetComponents<Collider>();
+        foreach (Collider _col in ownColliders)
+            _col.enabled = true;
+
+        //Reenable needed colliders
+        //transform.GetChild(2).GetComponent<SphereCollider>().enabled = true;
+
+
         rbs = GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody _rb in rbs)
             _rb.isKinematic = true;
@@ -76,6 +90,9 @@ public class Ragdoll : MonoBehaviour
         else {
             rb.constraints = RigidbodyConstraints.None;
         }
+
+        foreach (Collider _col in colliders)
+            _col.enabled = true;
 
         foreach (Rigidbody _rb in rbs)
             _rb.isKinematic = false;

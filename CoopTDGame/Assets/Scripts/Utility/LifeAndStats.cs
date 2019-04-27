@@ -89,7 +89,7 @@ public class LifeAndStats : MonoBehaviour
 
                     #region Dissolve
                     if (dissolveOnDeath) {
-                        GetComponent<DissolveDelay>().Dissolve();
+                        GetComponent<DissolveDelay>().DissolveCoroutine();
                     }
                     #endregion
                 }

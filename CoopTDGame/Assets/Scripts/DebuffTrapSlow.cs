@@ -15,6 +15,9 @@ public class DebuffTrapSlow : MonoBehaviour
 
     private void Start()
     {
+        //enemyMaxSpeed = EnemySpawnCycle.Instance.Enemies[0].GetComponent<NavMeshAgent>().speed;
+
+
         Destroy(gameObject, lifetime);
     }
 
@@ -23,6 +26,7 @@ public class DebuffTrapSlow : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             agent = other.gameObject.GetComponent<NavMeshAgent>();
+            //enemyMaxSpeed = agent.speed;
 
             multipliedSpeedPercentage = enemyMaxSpeed * moveSpeedMultiplier;
             agent.speed = multipliedSpeedPercentage;
