@@ -7,6 +7,9 @@ using Random = UnityEngine.Random;
 
 public class BasicEnemy : MonoBehaviour
 {
+    [Header("Define enemy Type")]
+    [Tooltip("0 = Melee; 1= Range; 2 = Boss")] public int enemyType = 0;
+
     [Header("Navigation")]
     public NavMeshAgent agent;
     public GameObject Target = null; // picked Target
@@ -20,6 +23,7 @@ public class BasicEnemy : MonoBehaviour
 
     [Header("BehaviorStates / Effect States")]
     public int attackState = 0; // 0 == not attacking // 1 == attacking // 2 == has recently attacked
+    public bool targetInAttackRange = false;
     [SerializeField] private int action = 0;
     [SerializeField] private int decisionLimit = 0;
     [SerializeField] private bool detectedTarget = false;
@@ -91,7 +95,12 @@ public class BasicEnemy : MonoBehaviour
             {
                 FaceTowardsPlayer();
                 prepareAttack();
+                targetInAttackRange = true;
                 attackState = 1;
+            }
+            else
+            {
+                targetInAttackRange = false;
             }
 
             if (distance <= stoppingRange) // in stopping range prevents ai from bumping into player
@@ -165,7 +174,14 @@ public class BasicEnemy : MonoBehaviour
         if(preparationTime <= 0)
         {
             gameObject.GetComponent<AttackAndDamage>().Target = Target;
-            gameObject.GetComponent<AttackAndDamage>().performAttack();
+            if(enemyType == 0 || enemyType == 2)
+            {
+                gameObject.GetComponent<AttackAndDamage>().performAttack("melee");
+            }
+            if(enemyType == 1)
+            {
+                gameObject.GetComponent<AttackAndDamage>().performAttack("range");
+            }
             preparationTime = Random.Range(1, maxPreparationTimeForAttack);
             attackIndication.SetActive(false);
             

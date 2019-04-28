@@ -14,6 +14,9 @@ public class AttackAndDamage : MonoBehaviour
     [Header("Target")]
     public GameObject Target = null;
     public bool enableAttack = true;
+    private bool targetInRange = false;
+    public Transform shootPoint = null;
+    public GameObject rangedAttackProjectilePrefab = null;
 
     [Header("Damage Calculation")]
     public float targetDefense = 0f;
@@ -28,17 +31,30 @@ public class AttackAndDamage : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
     }
 
-
-    public void performAttack()
+    private void Update()
+    {
+        targetInRange = gameObject.GetComponent<BasicEnemy>().targetInAttackRange;
+    }
+    public void performAttack(string attackMode)
     {
         //Debug.Log("Enemy wdasfattacked");
         if (enableAttack)
         {
             if(Target != null)
             {
-                enemyAnim.SetTrigger("Attack");
-                enableAttack = false;
-                StartCoroutine(resetAttackCooldown());
+                if(attackMode == "melee")
+                {
+                    enemyAnim.SetTrigger("Attack");
+                    enableAttack = false;
+                    StartCoroutine(resetAttackCooldown());
+                }
+                if(attackMode == "range")
+                {
+                    /// display bow shooting anim and instantiate prefab
+                    rangeAttack();
+                    enableAttack = false;
+                    StartCoroutine(resetAttackCooldown());
+                }
             }
             else
             {
@@ -60,6 +76,13 @@ public class AttackAndDamage : MonoBehaviour
         Target.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
     }
 
+    void rangeAttack()
+    {
+        if(shootPoint)
+        {
+            Instantiate(rangedAttackProjectilePrefab, shootPoint.position, transform.rotation);
+        }
+    }
 
 
     public void applyDamage()
