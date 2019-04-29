@@ -6,6 +6,7 @@ public class AttackAndDamage : MonoBehaviour
 {
     [Header("Attack Stats")]
     public float damage = 20f; // flat damage amount
+    [SerializeField]
     private float attackSpeed = 2f; // 1f = 1 attack per second ; 2f = 1 attack every 2 seconds ; ...
     private float penetrationFactor = 3f; // factor that recudes the amount of damage reduction the target recives through its defense stat
     public float damageDelay = 1f;
@@ -23,40 +24,44 @@ public class AttackAndDamage : MonoBehaviour
 
     [Header ("Animation")]
     private Animator enemyAnim;
+    private BasicEnemy basicEnemy;
+    //private NavMeshAgent agent;
+    private float defaultSpeed;
 
     // Start is called before the first frame update
     void Start()
     {
         enableAttack = true;
         enemyAnim = GetComponent<Animator>();
+        basicEnemy = GetComponent<BasicEnemy>();
+        defaultSpeed = basicEnemy.enemySpeed;
     }
 
     private void Update()
     {
-        targetInRange = gameObject.GetComponent<BasicEnemy>().targetInAttackRange;
+        targetInRange = basicEnemy.targetInAttackRange;
     }
 
     public void performAttack(string attackMode)
     {
-        //Debug.Log("Enemy wdasfattacked");
         if (enableAttack)
         {
-            if(Target != null)
+            if (Target != null)
             {
-                if(attackMode == "melee")
+                //agent.speed = 0;
+                enemyAnim.SetTrigger("Attack");
+                enableAttack = false;
+                StartCoroutine(resetAttackCooldown());
+
+                if (attackMode == "range")
                 {
-                    enemyAnim.SetTrigger("Attack");
-                    enableAttack = false;
-                    StartCoroutine(resetAttackCooldown());
-                }
-                if(attackMode == "range")
-                {
-                    /// display bow shooting anim and instantiate prefab
+                    //instantiate prefab
                     rangeAttack();
-                    enableAttack = false;
-                    StartCoroutine(resetAttackCooldown());
                 }
             }
+
+
+            //why?
             else
             {
                 return;
@@ -66,7 +71,7 @@ public class AttackAndDamage : MonoBehaviour
     
 
 
-    public void enemyDamageApply()
+    /* public void enemyDamageApply()
     {
         StartCoroutine(damageApply());
     }
@@ -77,7 +82,7 @@ public class AttackAndDamage : MonoBehaviour
         targetDefense = Target.GetComponent<LifeAndStats>().defense;
         float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
         Target.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
-    }
+    } */
 
     void rangeAttack()
     {

@@ -50,6 +50,7 @@ public class BasicEnemy : MonoBehaviour
 
     private Animator enemyAnim;
     private bool charging;
+    public bool enabledAttack;
 
 
 
@@ -105,6 +106,8 @@ public class BasicEnemy : MonoBehaviour
             else
             {
                 targetInAttackRange = false;
+
+                enemyAnim.SetBool("Charge", false);
             }
 
             if (distance <= stoppingRange) // in stopping range prevents ai from bumping into player
@@ -152,6 +155,8 @@ public class BasicEnemy : MonoBehaviour
     /// </summary>
     void stopAttackingTarget()
     {
+        enemyAnim.SetBool("Charge", false);
+
         Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
         Target = null;
         StartCoroutine(ScanCycle());
@@ -174,9 +179,13 @@ public class BasicEnemy : MonoBehaviour
             enemyAnim.SetBool("Charge", true);
         } */
 
+        enemyAnim.SetBool("Charge", true);
+
         preparationTime -= Time.deltaTime;  
         if(preparationTime <= 0)
         {
+            preparationTime = Random.Range(minPreparationTimeForAttack, maxPreparationTimeForAttack);
+
             gameObject.GetComponent<AttackAndDamage>().Target = Target;
             if(enemyType == 0 || enemyType == 2)
             {
@@ -186,10 +195,11 @@ public class BasicEnemy : MonoBehaviour
             {
                 gameObject.GetComponent<AttackAndDamage>().performAttack("range");
             }
-            preparationTime = Random.Range(1, maxPreparationTimeForAttack);
+
+
             attackIndication.SetActive(false);
             
-            charging = false;
+            //charging = false;
             //agent.speed *= 1;
             /* enemyAnim.SetBool("Charge", false); */
         }
