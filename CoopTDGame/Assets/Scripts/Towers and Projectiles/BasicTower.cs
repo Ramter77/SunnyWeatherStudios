@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 public class BasicTower : MonoBehaviour
 {
     [Header("Object References")]
@@ -139,8 +141,18 @@ void Update()
 
     void OnDrawGizmosSelected()
     {
-        // Draw a sphere at the transform's position
-        Gizmos.DrawWireSphere(centerAttackRadius.position, attackRange);
+        Vector3 centerOfAttackRadius = centerAttackRadius.position;
+        Vector3 targetPoint = interceptPoint;
+        if (Vector3.Distance(centerOfAttackRadius, targetPoint) <= attackRange)
+        {
+            Handles.color = new Color(0f, 1f, 0f, 0.5f);
+            Handles.DrawSolidDisc(centerAttackRadius.position, Vector3.down, attackRange);
+        }
+        else
+        {
+            Handles.color = new Color(1f, 0f, 0f, 0.5f);
+            Handles.DrawSolidDisc(centerAttackRadius.position, Vector3.down, attackRange);
+        }
     }
 
     /// <summary>
