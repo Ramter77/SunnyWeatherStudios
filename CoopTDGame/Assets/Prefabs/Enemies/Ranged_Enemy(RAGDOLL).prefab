@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 4094519002884726250}
   - component: {fileID: 1560184034320636103}
   m_Layer: 0
-  m_Name: Range_Enemy(RAGDOLL)
+  m_Name: Ranged_Enemy(RAGDOLL)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -283,7 +283,7 @@ Transform:
   m_GameObject: {fileID: 776199509}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 937.6, y: 26.863213, z: 939.94}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.2}
   m_Children:
   - {fileID: 1197934725}
   - {fileID: 1097095242}
@@ -304,7 +304,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: fd79df03073cf654f8832efb2412b7c0, type: 3}
   m_Controller: {fileID: 9100000, guid: 85f8b12c5a02f93458ae9d8b40d6d244, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -359,7 +359,6 @@ MonoBehaviour:
   minPreparationTimeForAttack: 4
   maxPreparationTimeForAttack: 5
   fleeRange: 3
-  enabledAttack: 0
 --- !u!114 &776199516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,7 +372,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 15
-  attackSpeed: 5
   damageDelay: 0
   Target: {fileID: 0}
   enableAttack: 1
@@ -403,6 +401,7 @@ MonoBehaviour:
   praticleSpawnLocation: {fileID: 0}
   ragdollOnDeath: 1
   dissolveOnDeath: 1
+  invincible: 0
   destroyable: 0
   GameOverScreen: {fileID: 0}
 --- !u!195 &776199514

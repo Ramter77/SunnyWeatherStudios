@@ -10,7 +10,7 @@ public class EnemyAnim : MonoBehaviour
 
     private BasicEnemy basicEnemy;
     private NavMeshAgent agent;
-    private Animator anim;
+    private Animator enemyAnim;
 
     private float maxSpeed;
     private float speedPercentage;    
@@ -19,20 +19,30 @@ public class EnemyAnim : MonoBehaviour
     {
         basicEnemy = GetComponent<BasicEnemy>();
         agent = GetComponent<NavMeshAgent>();
-        anim = GetComponent<Animator>();
+        enemyAnim = GetComponent<Animator>();
 
         maxSpeed = basicEnemy.enemySpeed;
     }
 
     void Update()
     {
-        
-        //speedPercentage = agent.velocity.magnitude / maxSpeed;
+        //Debug.Log(enemyAnim.GetCurrentAnimatorStateInfo(0).IsName("Grounded"));
+        //if (enemyAnim.GetCurrentAnimatorStateInfo(0).IsName("Grounded")) {
+        //if (enemyAnim.GetLayerName(0) != "Grounded") {
+        if (!enemyAnim.GetCurrentAnimatorStateInfo(0).IsName("Grounded")) {
+            agent.speed = 0;
+        }
+            //Debug.Log("NOT GROUNDED ANIMA");
+            //speedPercentage = agent.velocity.magnitude / maxSpeed;
 
-        //Debug.Log("mag: " + agent.velocity.magnitude + " & maxSpeed: " + maxSpeed);
-        speedPercentage = Mathf.Clamp01(agent.velocity.magnitude / maxSpeed);
-        //Debug.Log(agent.velocity.magnitude + " :mag / maxSpeed: " + maxSpeed + " = " + speedPercentage);
-        
-        anim.SetFloat("speedPercentage", speedPercentage, 0, Time.deltaTime);        
+            //Debug.Log("mag: " + agent.velocity.magnitude + " & maxSpeed: " + maxSpeed);
+            speedPercentage = Mathf.Clamp01(agent.velocity.magnitude / maxSpeed);
+            //Debug.Log(agent.velocity.magnitude + " :mag / maxSpeed: " + maxSpeed + " = " + speedPercentage);
+            
+            enemyAnim.SetFloat("speedPercentage", speedPercentage, 0, Time.deltaTime);      
+        //}
+        /* else {
+            agent.speed = maxSpeed;
+        } */
     }
 }

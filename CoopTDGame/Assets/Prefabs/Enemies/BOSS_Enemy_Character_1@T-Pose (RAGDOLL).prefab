@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 7511806057366465253}
   - component: {fileID: 2323864931533410183}
   m_Layer: 0
-  m_Name: BOSS_Enemy_Character_1@T-Pose (RAGDOLL) 1 1
+  m_Name: BOSS_Enemy_Character_1@T-Pose (RAGDOLL)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -629,7 +629,6 @@ MonoBehaviour:
   minPreparationTimeForAttack: 4
   maxPreparationTimeForAttack: 6
   fleeRange: 3
-  enabledAttack: 0
 --- !u!114 &5710184237337554136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -643,7 +642,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  attackSpeed: 2
   damageDelay: 0
   Target: {fileID: 0}
   enableAttack: 1
