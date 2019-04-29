@@ -24,6 +24,7 @@ public class LifeAndStats : MonoBehaviour
 
     public bool ragdollOnDeath;
     public bool dissolveOnDeath;
+    public bool invincible = false;
     public bool destroyable;
 
     private Animator playerAnim;
@@ -33,6 +34,7 @@ public class LifeAndStats : MonoBehaviour
 
 
     private bool _dead;
+    
 
     void Start()
     {
@@ -69,7 +71,6 @@ public class LifeAndStats : MonoBehaviour
                         GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
                     }
 
-
                     #region Instantiate Soul
                     if (dropSoul) {
                         Vector3 dropPos = new Vector3(transform.position.x, transform.position.y+2, transform.position.z);
@@ -105,12 +106,11 @@ public class LifeAndStats : MonoBehaviour
             }
         } 
 
-        if(gameObject.CompareTag("Sphere"))
+        if (gameObject.CompareTag("Sphere"))
         {
             GameManager.Instance.GetComponent<SoulStorage>().soulCount = Mathf.RoundToInt(health);
 
-
-            if(health < 0)
+            if (health < 0)
             {
                 GameOverScreen.SetActive(true);
                 StartCoroutine(restartgame());
@@ -125,12 +125,14 @@ public class LifeAndStats : MonoBehaviour
     }
 
     public void TakeDamage(float dmg) {
-        health -= dmg;
-        ParticleOnHitEffect(ParticleOnHitEffectYoffset);
+        if (!invincible) {
+            health -= dmg;
+            ParticleOnHitEffect(ParticleOnHitEffectYoffset);
 
-        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
-        {
-            playerAnim.SetTrigger("TakeDamage");
+            /* if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
+            { */
+                playerAnim.SetTrigger("TakeDamage");
+            //}
         }
     }
 
