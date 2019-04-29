@@ -343,8 +343,18 @@ public class BasicEnemy : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Handles.color = new Color(0, 1.0f, 0, 0.2f);
-        Handles.DrawSolidDisc(transform.position, Vector3.down,detectionRadius);
+        if(!Target)
+        {
+            Handles.color = new Color(0, 1.0f, 0, 0.2f);
+            Handles.DrawSolidDisc(transform.position, Vector3.down, detectionRadius);
+            Handles.color = new Color(1.0f, 0, 0, 0.2f);
+            Handles.DrawSolidDisc(transform.position, Vector3.down, followRadius);
+            Handles.color = new Color(0, 0, 1.0f, 0.2f);
+            Handles.DrawSolidDisc(transform.position, Vector3.down, attackRange);
+            Gizmos.color = new Color(0.2f, 0.2f, 0.2f, .5f);
+            Handles.DrawSolidDisc(transform.position, Vector3.down, stoppingRange);
+        }
+        
         if (enemyType == 0)
         {
             Handles.Label(transform.position + Vector3.up * 10f, "Enemy Type: Melee");
@@ -357,12 +367,14 @@ public class BasicEnemy : MonoBehaviour
         {
             Handles.Label(transform.position + Vector3.up * 10f, "Enemy Type: Boss");
         }
-        Handles.color = new Color(1.0f, 0, 0, 0.2f);
-        Handles.DrawSolidDisc(transform.position, Vector3.down, followRadius);
-        Handles.color = new Color(0, 0, 1.0f, 0.2f);
-        Handles.DrawSolidDisc(transform.position, Vector3.down, attackRange);
-        Gizmos.color = new Color(0.2f, 0.2f, 0.2f, .5f);
-        Handles.DrawSolidDisc(transform.position, Vector3.down, stoppingRange);
+        Handles.color = new Color(0, 1.0f, 0, 0.05f);
+        Handles.DrawSolidDisc(transform.position, Vector3.down, detectionRadius);
+        float dashSize = 5f;
+        if (Target)
+        {
+            Handles.color = new Color(1f, 0, 0, 1f);
+            Handles.DrawDottedLine(transform.position, Target.transform.position, dashSize);
+        }
     }
 
 #endif 
