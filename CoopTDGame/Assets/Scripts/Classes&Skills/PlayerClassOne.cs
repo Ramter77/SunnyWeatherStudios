@@ -264,7 +264,7 @@ public class PlayerClassOne : MonoBehaviour
                     {
                         if (hit.gameObject.GetComponent<LifeAndStats>().health <= 0) {
 
-                            Debug.Log("REVIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIVE");
+                            //Debug.Log("REVIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIVE");
                             hit.gameObject.GetComponent<RevivePlayer>().Revive(hit.gameObject);
                         }
                         else {

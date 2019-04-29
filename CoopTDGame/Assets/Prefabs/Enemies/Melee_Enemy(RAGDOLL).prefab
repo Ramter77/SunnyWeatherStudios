@@ -268,7 +268,7 @@ GameObject:
   - component: {fileID: 4094519002884726250}
   - component: {fileID: 1560184034320636103}
   m_Layer: 0
-  m_Name: Enemy_Character_1@T-Pose (RAGDOLL)
+  m_Name: Melee_Enemy(RAGDOLL)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,12 +335,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2111477359479b948b9efa57e65fc4c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyType: 0
   agent: {fileID: 0}
   Target: {fileID: 0}
   attackIndication: {fileID: 93794640}
   possibleTargets: []
   checkedForTarget: 0
   attackState: 0
+  targetInAttackRange: 0
   action: 0
   decisionLimit: 100
   detectedTarget: 0
@@ -372,6 +374,8 @@ MonoBehaviour:
   damageDelay: 0
   Target: {fileID: 0}
   enableAttack: 1
+  shootPoint: {fileID: 0}
+  rangedAttackProjectilePrefab: {fileID: 0}
   targetDefense: 0
 --- !u!114 &776199515
 MonoBehaviour:

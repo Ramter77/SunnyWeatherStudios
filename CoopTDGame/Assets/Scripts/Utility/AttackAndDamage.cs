@@ -35,6 +35,7 @@ public class AttackAndDamage : MonoBehaviour
     {
         targetInRange = gameObject.GetComponent<BasicEnemy>().targetInAttackRange;
     }
+
     public void performAttack(string attackMode)
     {
         //Debug.Log("Enemy wdasfattacked");
@@ -62,6 +63,8 @@ public class AttackAndDamage : MonoBehaviour
             }
         }
     }
+    
+
 
     public void enemyDamageApply()
     {

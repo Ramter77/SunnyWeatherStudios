@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.AI;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 using Random = UnityEngine.Random;
 
 public class BasicEnemy : MonoBehaviour
 {
     [Header("Define enemy Type")]
     [Tooltip("0 = Melee; 1= Range; 2 = Boss")] public int enemyType = 0;
+    
 
     [Header("Navigation")]
     public NavMeshAgent agent;
@@ -335,17 +339,31 @@ public class BasicEnemy : MonoBehaviour
 
     #endregion
 
+#if UNITY_EDITOR
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, detectionRadius);
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, followRadius);
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, stoppingRange);
+        Handles.color = new Color(0, 1.0f, 0, 0.2f);
+        Handles.DrawSolidDisc(transform.position, Vector3.down,detectionRadius);
+        if (enemyType == 0)
+        {
+            Handles.Label(transform.position + Vector3.up * 10f, "Enemy Type: Melee");
+        }
+        if (enemyType == 1)
+        {
+            Handles.Label(transform.position + Vector3.up * 10f, "Enemy Type: Ranged");
+        }
+        if (enemyType == 2)
+        {
+            Handles.Label(transform.position + Vector3.up * 10f, "Enemy Type: Boss");
+        }
+        Handles.color = new Color(1.0f, 0, 0, 0.2f);
+        Handles.DrawSolidDisc(transform.position, Vector3.down, followRadius);
+        Handles.color = new Color(0, 0, 1.0f, 0.2f);
+        Handles.DrawSolidDisc(transform.position, Vector3.down, attackRange);
+        Gizmos.color = new Color(0.2f, 0.2f, 0.2f, .5f);
+        Handles.DrawSolidDisc(transform.position, Vector3.down, stoppingRange);
     }
 
+#endif 
 }
