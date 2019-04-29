@@ -629,6 +629,9 @@ MonoBehaviour:
   minPreparationTimeForAttack: 4
   maxPreparationTimeForAttack: 6
   fleeRange: 3
+  enabledAttack: 0
+  alwaysShowGizmos: 1
+  opacityOfGizmos: 0.1
 --- !u!114 &5710184237337554136
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -642,6 +645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  attackSpeed: 2
   damageDelay: 0
   Target: {fileID: 0}
   enableAttack: 1
