@@ -355,13 +355,13 @@ public class BasicEnemy : MonoBehaviour
     {
         if(!Target)
         {
-            Handles.color = new Color(0, 1.0f, 0, 0.2f);
+            Handles.color = new Color(0, 1.0f, 0, 0.1f);
             Handles.DrawSolidDisc(transform.position, Vector3.down, detectionRadius);
-            Handles.color = new Color(1.0f, 0, 0, 0.2f);
+            Handles.color = new Color(1.0f, 0, 0, 0.1f);
             Handles.DrawSolidDisc(transform.position, Vector3.down, followRadius);
-            Handles.color = new Color(0, 0, 1.0f, 0.2f);
+            Handles.color = new Color(0, 0, 1.0f, 0.1f);
             Handles.DrawSolidDisc(transform.position, Vector3.down, attackRange);
-            Gizmos.color = new Color(0.2f, 0.2f, 0.2f, .5f);
+            Gizmos.color = new Color(0.2f, 0.2f, 0.2f, .1f);
             Handles.DrawSolidDisc(transform.position, Vector3.down, stoppingRange);
         }
         

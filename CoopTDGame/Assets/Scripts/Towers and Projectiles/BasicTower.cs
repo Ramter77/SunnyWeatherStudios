@@ -145,12 +145,12 @@ void Update()
         Vector3 targetPoint = interceptPoint;
         if (Vector3.Distance(centerOfAttackRadius, targetPoint) <= attackRange)
         {
-            Handles.color = new Color(0f, 1f, 0f, 0.5f);
+            Handles.color = new Color(0f, 1f, 0f, 0.2f);
             Handles.DrawSolidDisc(centerAttackRadius.position, Vector3.down, attackRange);
         }
         else
         {
-            Handles.color = new Color(1f, 0f, 0f, 0.5f);
+            Handles.color = new Color(1f, 0f, 0f, 0.2f);
             Handles.DrawSolidDisc(centerAttackRadius.position, Vector3.down, attackRange);
         }
     }
