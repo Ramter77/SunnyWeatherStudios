@@ -29,20 +29,23 @@ public class EnemyAnim : MonoBehaviour
         //Debug.Log(enemyAnim.GetCurrentAnimatorStateInfo(0).IsName("Grounded"));
         //if (enemyAnim.GetCurrentAnimatorStateInfo(0).IsName("Grounded")) {
         //if (enemyAnim.GetLayerName(0) != "Grounded") {
-        if (!enemyAnim.GetCurrentAnimatorStateInfo(0).IsName("Grounded")) {
+         if (!enemyAnim.GetCurrentAnimatorStateInfo(0).IsName("Grounded")) {
             agent.speed = 0;
+        } 
+                 
+        
+         else {
+            agent.speed = maxSpeed;
         }
-            //Debug.Log("NOT GROUNDED ANIMA");
+
+
+        //Debug.Log("NOT GROUNDED ANIMA");
             //speedPercentage = agent.velocity.magnitude / maxSpeed;
 
             //Debug.Log("mag: " + agent.velocity.magnitude + " & maxSpeed: " + maxSpeed);
             speedPercentage = Mathf.Clamp01(agent.velocity.magnitude / maxSpeed);
             //Debug.Log(agent.velocity.magnitude + " :mag / maxSpeed: " + maxSpeed + " = " + speedPercentage);
             
-            enemyAnim.SetFloat("speedPercentage", speedPercentage, 0, Time.deltaTime);      
-        //}
-        /* else {
-            agent.speed = maxSpeed;
-        } */
+            enemyAnim.SetFloat("speedPercentage", speedPercentage, 0, Time.deltaTime); 
     }
 }

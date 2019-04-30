@@ -129,10 +129,10 @@ public class LifeAndStats : MonoBehaviour
             health -= dmg;
             ParticleOnHitEffect(ParticleOnHitEffectYoffset);
 
-            /* if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
-            { */
+             if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2") || gameObject.CompareTag("Enemy")) 
+            { 
                 playerAnim.SetTrigger("TakeDamage");
-            //}
+            }
         }
     }
 

@@ -98,6 +98,8 @@ public class AttackAndDamage : MonoBehaviour
         targetDefense = Target.GetComponent<LifeAndStats>().defense;
         float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
         Target.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
+        
+        enemyAnim.SetBool("Charge", false);
     }
 
 

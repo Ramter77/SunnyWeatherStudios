@@ -92,7 +92,7 @@ public class BasicEnemy : MonoBehaviour
                 MoveToTarget(); 
             }
 
-            if(detectedTarget == true && distance > followRadius) // if enemy 
+            if(distance > followRadius) // if enemy 
             {
                 stopAttackingTarget();
             }
@@ -103,10 +103,14 @@ public class BasicEnemy : MonoBehaviour
                 prepareAttack();
                 targetInAttackRange = true;
                 attackState = 1;
+
+                enemyAnim.SetBool("AllowDamage", true);
             }
             else
             {
                 targetInAttackRange = false;
+
+                enemyAnim.SetBool("AllowDamage", false);
 
                 enemyAnim.SetBool("Charge", false);
             }
@@ -119,9 +123,21 @@ public class BasicEnemy : MonoBehaviour
                 rigid.angularVelocity = Vector3.zero;
             }
 
-            if ((attackState == 1 && distance > followRadius || Target.GetComponent<LifeAndStats>().health <= 0) || attackState == 1 && Target == null)
+            if ((attackState == 1 && distance > followRadius) || attackState == 1 && Target == null)
             {
-                stopAttackingTarget();
+                Debug.Log("EJfhkaehfknhakuhfkhakughgjhgjfjg");
+                if (Target != null) {
+                    if (Target.GetComponent<LifeAndStats>().health <= 0) {
+                        stopAttackingTarget();
+                    }
+                }
+                else {
+                    stopAttackingTarget();
+                }
+                
+            }
+            else {
+                Debug.Log("hbohonoijiiasrkgnwjrfgmkuhkuhkunng");
             }
         }
     }
@@ -156,6 +172,7 @@ public class BasicEnemy : MonoBehaviour
     /// </summary>
     void stopAttackingTarget()
     {
+        Debug.Log("khgbdkzjzgjzvfjzgjhvjhghjgjhgjhhjgzjggjzhj");
         enemyAnim.SetBool("Charge", false);
 
         Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
@@ -326,6 +343,7 @@ public class BasicEnemy : MonoBehaviour
 
     private void WalkToSphere()
     {
+        Debug.Log("WALK TO SPHERE ------------------------");
         NavMeshPath path = new NavMeshPath();
         if (Sphere != null)
         { // check if path is reachable, if so then set destination to closest target
