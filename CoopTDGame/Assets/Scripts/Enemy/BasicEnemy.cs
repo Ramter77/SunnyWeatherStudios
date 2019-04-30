@@ -38,6 +38,7 @@ public class BasicEnemy : MonoBehaviour
 
     [Header("Interaction/Vision/Attack Radius")]
     public float enemySpeed = 2f;
+    private float fallbackSpeed = 0f;
     public float attackRange = 5f;
     [SerializeField] private float followRadius = 15f; 
     [SerializeField] private float stoppingRange = 3.5f; // stops the ai from bumping into targets
@@ -68,6 +69,7 @@ public class BasicEnemy : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
         possibleTargets = new List<GameObject>();
         agent.speed = enemySpeed;
+        fallbackSpeed = enemySpeed;
     }
 
     void Update()
@@ -103,7 +105,6 @@ public class BasicEnemy : MonoBehaviour
                 prepareAttack();
                 targetInAttackRange = true;
                 attackState = 1;
-
                 enemyAnim.SetBool("AllowDamage", true);
             }
             else
@@ -121,11 +122,11 @@ public class BasicEnemy : MonoBehaviour
                 agent.isStopped = true;
                 rigid.velocity = Vector3.zero;
                 rigid.angularVelocity = Vector3.zero;
+                enemySpeed = 0f;
             }
 
             if ((attackState == 1 && distance > followRadius) || attackState == 1 && Target == null)
             {
-                Debug.Log("EJfhkaehfknhakuhfkhakughgjhgjfjg");
                 if (Target != null) {
                     if (Target.GetComponent<LifeAndStats>().health <= 0) {
                         stopAttackingTarget();
@@ -135,10 +136,7 @@ public class BasicEnemy : MonoBehaviour
                     stopAttackingTarget();
                 }
                 
-            }
-            else {
-                Debug.Log("hbohonoijiiasrkgnwjrfgmkuhkuhkunng");
-            }
+            }   
         }
     }
 
@@ -150,6 +148,7 @@ public class BasicEnemy : MonoBehaviour
         agent.isStopped = false;
         attackState = 1;
         agent.SetDestination(targetPos.position);
+        enemySpeed = fallbackSpeed;
     }
     
     /// <summary>
@@ -172,9 +171,7 @@ public class BasicEnemy : MonoBehaviour
     /// </summary>
     void stopAttackingTarget()
     {
-        Debug.Log("khgbdkzjzgjzvfjzgjhvjhghjgjhgjhhjgzjggjzhj");
         enemyAnim.SetBool("Charge", false);
-
         Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
         Target = null;
         StartCoroutine(ScanCycle());
@@ -182,6 +179,7 @@ public class BasicEnemy : MonoBehaviour
         attackState = 0;
         attackIndication.SetActive(false);
         detectedTarget = false;
+        enemySpeed = fallbackSpeed;
         WalkToSphere();
     }
 
@@ -198,7 +196,7 @@ public class BasicEnemy : MonoBehaviour
         } */
 
         enemyAnim.SetBool("Charge", true);
-
+        enemySpeed = 0f;
         preparationTime -= Time.deltaTime;  
         if(preparationTime <= 0)
         {
@@ -343,7 +341,6 @@ public class BasicEnemy : MonoBehaviour
 
     private void WalkToSphere()
     {
-        Debug.Log("WALK TO SPHERE ------------------------");
         NavMeshPath path = new NavMeshPath();
         if (Sphere != null)
         { // check if path is reachable, if so then set destination to closest target
