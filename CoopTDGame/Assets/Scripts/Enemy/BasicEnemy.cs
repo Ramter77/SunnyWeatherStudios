@@ -26,26 +26,48 @@ public class BasicEnemy : MonoBehaviour
     public bool checkedForTarget = false;
 
     [Header("BehaviorStates / Effect States")]
-    public int attackState = 0; // 0 == not attacking // 1 == attacking // 2 == has recently attacked
+
+    [Tooltip("// 0 == not attacking // 1 == attacking // 2 == has recently attacked")]
+    public int attackState = 0; 
+
+    [Tooltip("True if there is a target in attack range")]
     public bool targetInAttackRange = false;
-    [SerializeField] private int action = 0;
-    [SerializeField] private int decisionLimit = 0;
-    [SerializeField] private bool detectedTarget = false;
-    [SerializeField] private float preparationTime = 0f;
-    [SerializeField] private int maxEnemiesSwarmingPlayer;
-    [SerializeField] private int maxEnemiesSwarmingTower;
+
+    [SerializeField] private int action = 0; // used for a decision if enemy wants to attack a target
+    [SerializeField] private int decisionLimit = 0; // used to evaluate the decision
+    [SerializeField] private bool detectedTarget = false; // if target got detected
+    [SerializeField] private int maxEnemiesSwarmingPlayer; // of this type of enemy
+    [SerializeField] private int maxEnemiesSwarmingTower; // of this type of enemy
 
 
     [Header("Interaction/Vision/Attack Radius")]
+
+    [Tooltip("default speed for enemies")]
     public float enemySpeed = 2f;
     private float fallbackSpeed = 0f;
+
+    [Tooltip("Attack range of the enemies")]
     public float attackRange = 5f;
-    [SerializeField] private float followRadius = 15f; 
-    [SerializeField] private float stoppingRange = 3.5f; // stops the ai from bumping into targets
+
+    [Tooltip("the radius that the enemy can follow the target")]
+    [SerializeField] private float followRadius = 15f;
+
+    [Tooltip("makes the enemy stop and prevents bumping into targets")]
+    [SerializeField] private float stoppingRange = 3.5f; 
+
+    [Tooltip("The radius for enemies to detect a target")]
     [SerializeField] private float detectionRadius = 15f;
+
+    [Tooltip("Seconds between each Scan (for targets)")]
     [SerializeField] private float scanDelay = 5f;
+
+    [Tooltip("Min time between attacks")]
     [SerializeField] private float minPreparationTimeForAttack = 1f;
+    [SerializeField] private float preparationTime = 0f;
+    [Tooltip("Max time between attacks")]
     [SerializeField] private float maxPreparationTimeForAttack = 5f;
+
+    [Tooltip("Distance that the enemy flees")]
     public float fleeRange = 3f;
 
 
@@ -78,12 +100,16 @@ public class BasicEnemy : MonoBehaviour
         
     }
 
-    #region enemyBehaviorStates
 
+    #region Enemy Behavior Manager
+
+    /// <summary>
+    /// Behavior Manager 
+    /// </summary>
 
     public void behaviorManager()
     {
-        if(Target != null)
+        if (Target != null)
         {
             targetPos = Target.transform;
             float distance = Vector3.Distance(targetPos.position, transform.position);
@@ -91,10 +117,10 @@ public class BasicEnemy : MonoBehaviour
             /// if target is in range for the enemy
             if (distance <= detectionRadius && distance > stoppingRange)
             {
-                MoveToTarget(); 
+                MoveToTarget();
             }
 
-            if(distance > followRadius) // if enemy 
+            if (distance > followRadius) // if enemy 
             {
                 stopAttackingTarget();
             }
@@ -127,19 +153,31 @@ public class BasicEnemy : MonoBehaviour
 
             if ((attackState == 1 && distance > followRadius) || attackState == 1 && Target == null)
             {
-                if (Target != null) {
-                    if (Target.GetComponent<LifeAndStats>().health <= 0) {
+                if (Target != null)
+                {
+                    if (Target.GetComponent<LifeAndStats>().health <= 0)
+                    {
                         stopAttackingTarget();
                     }
                 }
-                else {
+                else
+                {
                     stopAttackingTarget();
                 }
-                
-            }   
+
+            }
         }
     }
 
+
+    #endregion
+
+
+
+
+
+
+    #region enemyBehaviorStates
     /// <summary>
     /// move towards the target to attack it
     /// </summary>
@@ -188,13 +226,6 @@ public class BasicEnemy : MonoBehaviour
     /// </summary>
     public void prepareAttack()
     {
-       // set the enemy animation to idle / preparation for attack
-        /* if (!charging) {
-            charging = true;
-            agent.speed *= 0;
-            enemyAnim.SetBool("Charge", true);
-        } */
-
         enemyAnim.SetBool("Charge", true);
         enemySpeed = 0f;
         preparationTime -= Time.deltaTime;  
@@ -237,6 +268,8 @@ public class BasicEnemy : MonoBehaviour
     }
 
     #endregion 
+
+
 
 
 
@@ -337,7 +370,10 @@ public class BasicEnemy : MonoBehaviour
 
 
 
+
+
     #region SetDestinationToSphere
+
 
     private void WalkToSphere()
     {
@@ -365,9 +401,17 @@ public class BasicEnemy : MonoBehaviour
 
     #endregion
 
+
+
+
+
+
 #if UNITY_EDITOR
 
-    
+    /// <summary>
+    ///  Gizmos etc
+    /// </summary>
+
     private void OnDrawGizmosSelected()
     {
         if(!alwaysShowGizmos)
