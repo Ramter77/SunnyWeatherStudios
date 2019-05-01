@@ -69,7 +69,7 @@ public class AbilityDrop : MonoBehaviour
     /// </summary>
     public void FindNewSpawnLocation()
     {
-        if(possibleSpawnpoint == Vector3.zero)
+        if (possibleSpawnpoint == Vector3.zero)
         {
             float xPos = Random.Range(xMin, xMax);
             float zPos = Random.Range(zMin, zMax);
@@ -97,7 +97,7 @@ public class AbilityDrop : MonoBehaviour
     /// </summary>
     public void spawnAbility()
     {
-        for(int i = 0; i < amountOfAbilitiesToSpawn; i++)
+        for (int i = 0; i < amountOfAbilitiesToSpawn; i++)
         {
             int randomAbilityIndex = Random.Range(0, Abilities.Length);
             Instantiate(Abilities[randomAbilityIndex], possibleSpawnpoint + spawnOffset, Quaternion.identity);
@@ -119,7 +119,7 @@ public class AbilityDrop : MonoBehaviour
 
 
     #region Gizmos
-#if UNITY_EDITOR
+    #if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if(possibleSpawnpointFound)
@@ -129,6 +129,6 @@ public class AbilityDrop : MonoBehaviour
         }
         Handles.DrawWireCube(transform.position, gizmoCubeSize);
     }
-#endif
+    #endif
     #endregion
 }

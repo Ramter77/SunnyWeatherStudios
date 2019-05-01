@@ -42,21 +42,24 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812526672416981923}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0, y: 0, z: 0}
-  m_Size: 1
+  m_LocalReferencePoint: {x: -0.0005662488, y: 0.023625249, z: 0.00053052045}
+  m_Size: 0.0536553
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
   - screenRelativeHeight: 0.6
     fadeTransitionWidth: 0
-    renderers: []
+    renderers:
+    - renderer: {fileID: 5453107835775317723}
   - screenRelativeHeight: 0.3
     fadeTransitionWidth: 0
-    renderers: []
+    renderers:
+    - renderer: {fileID: 3553865239333502609}
   - screenRelativeHeight: 0.1
     fadeTransitionWidth: 0
-    renderers: []
+    renderers:
+    - renderer: {fileID: 7392572432732990196}
   m_Enabled: 1
 --- !u!1 &3115408992850046267
 GameObject:
@@ -69,7 +72,7 @@ GameObject:
   - component: {fileID: 2469305751924930004}
   - component: {fileID: 6023998706897763861}
   - component: {fileID: 5453107835775317723}
-  - component: {fileID: 6647697747961846049}
+  - component: {fileID: 3617253305141218222}
   m_Layer: 0
   m_Name: tree_dandelion.003_LOD0
   m_TagString: Untagged
@@ -116,7 +119,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d829efc168695a0488e1acef9bb7745c, type: 2}
+  - {fileID: 2100000, guid: d79ca15a84759f94199c01f75057dcda, type: 2}
   - {fileID: 2100000, guid: 5621ebd01c06aa44eb19491b2e4f5ff8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -137,7 +140,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6647697747961846049
+--- !u!64 &3617253305141218222
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -286,7 +289,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d829efc168695a0488e1acef9bb7745c, type: 2}
+  - {fileID: 2100000, guid: d79ca15a84759f94199c01f75057dcda, type: 2}
   - {fileID: 2100000, guid: 5621ebd01c06aa44eb19491b2e4f5ff8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0

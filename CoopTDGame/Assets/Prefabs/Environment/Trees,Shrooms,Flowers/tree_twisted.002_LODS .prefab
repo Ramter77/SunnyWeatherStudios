@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 7271754186880832663}
   - component: {fileID: 4291158272549950772}
   - component: {fileID: 2964369473672752779}
+  - component: {fileID: 565928616005001487}
   m_Layer: 0
   m_Name: tree_twisted.002_LOD0
   m_TagString: Untagged
@@ -135,7 +136,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d829efc168695a0488e1acef9bb7745c, type: 2}
+  - {fileID: 2100000, guid: d79ca15a84759f94199c01f75057dcda, type: 2}
   - {fileID: 2100000, guid: 5621ebd01c06aa44eb19491b2e4f5ff8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -156,6 +157,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &565928616005001487
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263315006204633689}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 8a317f5bad7d0b34d8d67d22e672ab3c, type: 3}
 --- !u!1 &4836434548422914992
 GameObject:
   m_ObjectHideFlags: 0
@@ -182,7 +197,7 @@ Transform:
   m_GameObject: {fileID: 4836434548422914992}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 969.8016, y: 27.142944, z: 946.4306}
-  m_LocalScale: {x: 300, y: 300, z: 300}
+  m_LocalScale: {x: 450, y: 450, z: 450}
   m_Children:
   - {fileID: 7271754186880832663}
   - {fileID: 284099542831915250}
@@ -198,21 +213,21 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4836434548422914992}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.002652835, y: 0.019624792, z: 0.0023113154}
-  m_Size: 0.042242095
+  m_LocalReferencePoint: {x: -0.006350007, y: 0.0275083, z: 0.0011669025}
+  m_Size: 0.058125548
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0.12034161
+  - screenRelativeHeight: 0.6
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 2964369473672752779}
-  - screenRelativeHeight: 0.05292961
+  - screenRelativeHeight: 0.3
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 4221007220804370276}
-  - screenRelativeHeight: 0.004750096
+  - screenRelativeHeight: 0.1
     fadeTransitionWidth: 0
     renderers:
     - renderer: {fileID: 5992264047999398895}
@@ -274,7 +289,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d829efc168695a0488e1acef9bb7745c, type: 2}
+  - {fileID: 2100000, guid: d79ca15a84759f94199c01f75057dcda, type: 2}
   - {fileID: 2100000, guid: 5621ebd01c06aa44eb19491b2e4f5ff8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
