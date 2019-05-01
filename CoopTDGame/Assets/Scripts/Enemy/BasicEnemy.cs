@@ -36,6 +36,7 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField] private int action = 0; // used for a decision if enemy wants to attack a target
     [SerializeField] private int decisionLimit = 0; // used to evaluate the decision
     [SerializeField] private bool detectedTarget = false; // if target got detected
+    [Space(10)]
     [SerializeField] private int maxEnemiesSwarmingPlayer; // of this type of enemy
     [SerializeField] private int maxEnemiesSwarmingTower; // of this type of enemy
 
@@ -45,7 +46,7 @@ public class BasicEnemy : MonoBehaviour
     [Tooltip("default speed for enemies")]
     public float enemySpeed = 2f;
     private float fallbackSpeed = 0f;
-
+    [Space(10)]
     [Tooltip("Attack range of the enemies")]
     public float attackRange = 5f;
 
@@ -60,7 +61,7 @@ public class BasicEnemy : MonoBehaviour
 
     [Tooltip("Seconds between each Scan (for targets)")]
     [SerializeField] private float scanDelay = 5f;
-
+    [Space(10)]
     [Tooltip("Min time between attacks")]
     [SerializeField] private float minPreparationTimeForAttack = 1f;
     [SerializeField] private float preparationTime = 0f;
