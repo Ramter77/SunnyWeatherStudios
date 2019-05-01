@@ -119,7 +119,7 @@ public class AbilityDrop : MonoBehaviour
 
 
     #region Gizmos
-
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         if(possibleSpawnpointFound)
@@ -129,7 +129,6 @@ public class AbilityDrop : MonoBehaviour
         }
         Handles.DrawWireCube(transform.position, gizmoCubeSize);
     }
-    
-
-    #endregion 
+#endif
+    #endregion
 }
