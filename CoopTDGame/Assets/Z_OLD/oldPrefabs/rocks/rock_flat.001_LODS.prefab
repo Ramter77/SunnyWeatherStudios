@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1242524397908545617
+--- !u!1 &3645276161324264163
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,45 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 807125316625543528}
-  - component: {fileID: 1821626781511050825}
-  - component: {fileID: 1805901389529546758}
+  - component: {fileID: 3688526207735158715}
+  - component: {fileID: 1310536728511835938}
+  - component: {fileID: 4122475048604240293}
   m_Layer: 0
-  m_Name: ore.mineral.002_LOD1
+  m_Name: rock_flat.001_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &807125316625543528
+--- !u!4 &3688526207735158715
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242524397908545617}
-  m_LocalRotation: {x: 0.00000008146034, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0566323, y: 2.0566323, z: 2.0566323}
+  m_GameObject: {fileID: 3645276161324264163}
+  m_LocalRotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
-  m_Father: {fileID: 8654728839514810862}
+  m_Father: {fileID: 8507956960062009697}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1821626781511050825
+--- !u!33 &1310536728511835938
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242524397908545617}
-  m_Mesh: {fileID: 4300004, guid: 31faa20c33f6bfb41a46bba7c0631cad, type: 3}
---- !u!23 &1805901389529546758
+  m_GameObject: {fileID: 3645276161324264163}
+  m_Mesh: {fileID: 4300000, guid: f8c201fc98767f74eabbf432d070d464, type: 3}
+--- !u!23 &4122475048604240293
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242524397908545617}
+  m_GameObject: {fileID: 3645276161324264163}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -77,7 +77,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &3332332434828007937
+--- !u!1 &7927551109845927590
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,45 +85,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4970041903294238121}
-  - component: {fileID: 926394446939097823}
-  - component: {fileID: 6256050139736485506}
+  - component: {fileID: 1690094454426432025}
+  - component: {fileID: 7256679114753980147}
+  - component: {fileID: 2844001786488005443}
   m_Layer: 0
-  m_Name: ore.mineral.002_LOD0
+  m_Name: rock_flat.001_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4970041903294238121
+--- !u!4 &1690094454426432025
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3332332434828007937}
-  m_LocalRotation: {x: 0.00000008146034, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0566323, y: 2.0566323, z: 2.0566323}
+  m_GameObject: {fileID: 7927551109845927590}
+  m_LocalRotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
-  m_Father: {fileID: 8654728839514810862}
-  m_RootOrder: 0
+  m_Father: {fileID: 8507956960062009697}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &926394446939097823
+--- !u!33 &7256679114753980147
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3332332434828007937}
-  m_Mesh: {fileID: 4300000, guid: 31faa20c33f6bfb41a46bba7c0631cad, type: 3}
---- !u!23 &6256050139736485506
+  m_GameObject: {fileID: 7927551109845927590}
+  m_Mesh: {fileID: 4300000, guid: f8c201fc98767f74eabbf432d070d464, type: 3}
+--- !u!23 &2844001786488005443
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3332332434828007937}
+  m_GameObject: {fileID: 7927551109845927590}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -154,7 +154,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!1 &4033646272921019073
+--- !u!1 &8596217821424505555
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -162,60 +162,60 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8654728839514810862}
-  - component: {fileID: 4474938106011917911}
+  - component: {fileID: 8507956960062009697}
+  - component: {fileID: 3467813401660783074}
   m_Layer: 0
-  m_Name: ore.mineral.002
+  m_Name: rock_flat.001_LODS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8654728839514810862
+--- !u!4 &8507956960062009697
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4033646272921019073}
+  m_GameObject: {fileID: 8596217821424505555}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 296.4, y: 0.9265002, z: 269.63}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 4970041903294238121}
-  - {fileID: 807125316625543528}
-  - {fileID: 4840003333783438896}
+  - {fileID: 6340929586458162210}
+  - {fileID: 3688526207735158715}
+  - {fileID: 1690094454426432025}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!205 &4474938106011917911
+--- !u!205 &3467813401660783074
 LODGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4033646272921019073}
+  m_GameObject: {fileID: 8596217821424505555}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: -0.15903807, y: 1.3435309, z: 1.5855885}
-  m_Size: 9.492449
+  m_LocalReferencePoint: {x: 0, y: 0.22222488, z: 0.0000076293945}
+  m_Size: 6.4381175
   m_FadeMode: 0
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
-  - screenRelativeHeight: 0
+  - screenRelativeHeight: 0.6
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 6256050139736485506}
-  - screenRelativeHeight: 0
+    - renderer: {fileID: 9015186738233064971}
+  - screenRelativeHeight: 0.3
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 1805901389529546758}
-  - screenRelativeHeight: 0
+    - renderer: {fileID: 4122475048604240293}
+  - screenRelativeHeight: 0.1
     fadeTransitionWidth: 0
     renderers:
-    - renderer: {fileID: 5708413411110976465}
+    - renderer: {fileID: 2844001786488005443}
   m_Enabled: 1
---- !u!1 &4762296915646663285
+--- !u!1 &9044215538446473713
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -223,45 +223,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4840003333783438896}
-  - component: {fileID: 553190451279199274}
-  - component: {fileID: 5708413411110976465}
+  - component: {fileID: 6340929586458162210}
+  - component: {fileID: 8812478767908930154}
+  - component: {fileID: 9015186738233064971}
+  - component: {fileID: 6255863164466021378}
   m_Layer: 0
-  m_Name: ore_mineral.002_LOD2
+  m_Name: rock_flat.001_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4840003333783438896
+--- !u!4 &6340929586458162210
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4762296915646663285}
-  m_LocalRotation: {x: 0.00000008146034, y: 0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 2.0566323, y: 2.0566323, z: 2.0566323}
+  m_GameObject: {fileID: 9044215538446473713}
+  m_LocalRotation: {x: 0.000000081460335, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
-  m_Father: {fileID: 8654728839514810862}
-  m_RootOrder: 2
+  m_Father: {fileID: 8507956960062009697}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &553190451279199274
+--- !u!33 &8812478767908930154
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4762296915646663285}
-  m_Mesh: {fileID: 4300002, guid: 31faa20c33f6bfb41a46bba7c0631cad, type: 3}
---- !u!23 &5708413411110976465
+  m_GameObject: {fileID: 9044215538446473713}
+  m_Mesh: {fileID: 4300000, guid: f8c201fc98767f74eabbf432d070d464, type: 3}
+--- !u!23 &9015186738233064971
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4762296915646663285}
+  m_GameObject: {fileID: 9044215538446473713}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -292,3 +293,17 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &6255863164466021378
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9044215538446473713}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: f8c201fc98767f74eabbf432d070d464, type: 3}
