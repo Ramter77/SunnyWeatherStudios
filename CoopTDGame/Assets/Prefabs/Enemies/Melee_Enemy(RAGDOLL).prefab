@@ -346,7 +346,6 @@ MonoBehaviour:
   action: 0
   decisionLimit: 100
   detectedTarget: 0
-  preparationTime: 0
   maxEnemiesSwarmingPlayer: 5
   maxEnemiesSwarmingTower: 8
   enemySpeed: 4
@@ -356,6 +355,7 @@ MonoBehaviour:
   detectionRadius: 30
   scanDelay: 1
   minPreparationTimeForAttack: 3
+  preparationTime: 0
   maxPreparationTimeForAttack: 4
   fleeRange: 3
   enabledAttack: 0
@@ -400,7 +400,7 @@ MonoBehaviour:
   particleEffect: {fileID: 2266160152052906837, guid: 76b6c0581f619724487b267899a10536,
     type: 3}
   ParticleOnHitEffectYoffset: 4
-  praticleSpawnLocation: {fileID: 0}
+  particleSpawnLocation: {fileID: 0}
   ragdollOnDeath: 1
   dissolveOnDeath: 1
   invincible: 0
@@ -512,7 +512,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponRenderer: {fileID: 1866237214}
   startDelay: 1
-  delay: 6
+  delay: 10
   useMeshRenderer: 0
   dissolveOnStart: 0
   sinkWhileDissolving: 0

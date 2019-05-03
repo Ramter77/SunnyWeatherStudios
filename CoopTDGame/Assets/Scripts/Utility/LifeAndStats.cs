@@ -19,7 +19,7 @@ public class LifeAndStats : MonoBehaviour
 
     public GameObject particleEffect;
     public float ParticleOnHitEffectYoffset = 1;
-    public Transform praticleSpawnLocation;
+    public Transform particleSpawnLocation;
     private Vector3 spawnPos;
 
     public bool ragdollOnDeath;
@@ -59,7 +59,8 @@ public class LifeAndStats : MonoBehaviour
             gameObject.tag = "destroyedTarget";
 
             if (destroyable) {
-                fractureScript.Fracture();
+                Debug.Log("Fractured target");
+                fractureScript.Fracture(gameObject);
             }
         }
         if (gameObject.CompareTag("Enemy"))
@@ -112,6 +113,9 @@ public class LifeAndStats : MonoBehaviour
 
             if (health < 0)
             {
+                Debug.Log("Fractured SPHERE");
+                fractureScript.Fracture(gameObject.transform.parent.gameObject);
+
                 GameOverScreen.SetActive(true);
                 StartCoroutine(restartgame());
             }
@@ -139,13 +143,13 @@ public class LifeAndStats : MonoBehaviour
     public void ParticleOnHitEffect(float yOffset) {
         if (particleEffect != null) {
             //If there us no spawn location then use the Y offset
-            if (praticleSpawnLocation == null) {
+            if (particleSpawnLocation == null) {
                 spawnPos = new Vector3(transform.position.x, transform.position.y + yOffset, transform.position.z);
             }
 
             //Else use the provided spawn location
             else {
-                spawnPos = praticleSpawnLocation.position;
+                spawnPos = particleSpawnLocation.position;
             }
 
             Instantiate(particleEffect, spawnPos, Quaternion.identity);

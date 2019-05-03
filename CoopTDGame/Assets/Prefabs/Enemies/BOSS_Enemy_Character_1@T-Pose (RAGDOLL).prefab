@@ -617,7 +617,6 @@ MonoBehaviour:
   action: 0
   decisionLimit: 100
   detectedTarget: 0
-  preparationTime: 0
   maxEnemiesSwarmingPlayer: 5
   maxEnemiesSwarmingTower: 8
   enemySpeed: 2
@@ -627,6 +626,7 @@ MonoBehaviour:
   detectionRadius: 40
   scanDelay: 1
   minPreparationTimeForAttack: 4
+  preparationTime: 0
   maxPreparationTimeForAttack: 6
   fleeRange: 3
   enabledAttack: 0
@@ -664,14 +664,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b3f0b9ede1df9438b6c311604cf4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1000
-  maxhealth: 1000
+  health: 400
+  maxhealth: 400
   defense: 10
   amountOfUnitsAttacking: 0
   particleEffect: {fileID: 2266160152052906837, guid: 76b6c0581f619724487b267899a10536,
     type: 3}
   ParticleOnHitEffectYoffset: 6
-  praticleSpawnLocation: {fileID: 0}
+  particleSpawnLocation: {fileID: 0}
   ragdollOnDeath: 1
   dissolveOnDeath: 1
   invincible: 0
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponRenderer: {fileID: 3127364602419970535}
   startDelay: 5
-  delay: 10
+  delay: 12
   useMeshRenderer: 0
   dissolveOnStart: 0
   sinkWhileDissolving: 0

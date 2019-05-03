@@ -9,6 +9,15 @@ public class Projectile : MonoBehaviour
 
     [SerializeField]
     private float destroyTime = 5;
+    [SerializeField]
+    private bool destroyOnContact = false;
+    [SerializeField]
+    private bool unparentChild = false;
+    [SerializeField]
+    private bool destroyChild = false;
+    [SerializeField]
+    private float childDestroyTime = 1;
+    
 
     private Light lightSource;
 
@@ -34,5 +43,25 @@ public class Projectile : MonoBehaviour
     void Update()
     {
         //transform.Translate(Vector3.forward * Time.deltaTime * speed);
+    }
+
+    /// <summary>
+    /// OnCollisionEnter is called when this collider/rigidbody has begun
+    /// touching another rigidbody/collider.
+    /// </summary>
+    /// <param name="other">The Collision data associated with this collision.</param>
+    void OnCollisionEnter(Collision other)
+    {
+        if (destroyOnContact) {
+            if (unparentChild) {
+                if (transform.GetChild(0) != null) {
+                    if (destroyChild) {
+                        Destroy(transform.GetChild(0).gameObject, childDestroyTime);
+                    }
+                    transform.GetChild(0).transform.parent = null;
+                }
+            }
+            Destroy(gameObject);
+        }
     }
 }

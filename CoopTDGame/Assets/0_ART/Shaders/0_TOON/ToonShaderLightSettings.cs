@@ -1,25 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.ShaderGraph;
 using System.Reflection;
 
 [ExecuteInEditMode]
 public class ToonShaderLightSettings : MonoBehaviour
 {
-	private Light light;
+	private Light _light;
 
 	void OnEnable()
 	{
-		light = GetComponent<Light>();
+		_light = GetComponent<Light>();
 	}
 	
 	void Update ()
 	{
 		//Shader.SetGlobalVector("_LightDirection", -transform.forward);
-		Shader.SetGlobalColor("_LightColor", light.color);
-		//Shader.SetGlobalVector("_LightColor", light.shadowAngle);
-		//light.shadowAttenuation;
-		
+		Shader.SetGlobalColor("_LightColor", _light.color);
 	}
 }
