@@ -256,10 +256,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3181500200931432532}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: a63c16590f9c5134fb2607a6caf724ec, type: 3}
 --- !u!114 &3329165327428139085
@@ -274,7 +274,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a7a61810191484da31877229740a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathLayer: 4
+  pathLayer1: 4
+  pathLayer2: 3
   debugMode: 1
   groundCheckHeight: 4.46
   groundCheckRadius: 9.9
@@ -282,6 +283,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 1024
+  placeByPlayer_: 0
 --- !u!208 &4988058536931195302
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -345,7 +347,7 @@ GameObject:
   - component: {fileID: 3529278560104736142}
   - component: {fileID: 801544617176057136}
   m_Layer: 0
-  m_Name: Tower_Holder 1
+  m_Name: Tower_Holder_STRONG
   m_TagString: possibleTargets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -385,8 +387,12 @@ MonoBehaviour:
   particleEffect: {fileID: 1778350501494656303, guid: 15d393a3399c0214b9f7416b92e1ae76,
     type: 3}
   ParticleOnHitEffectYoffset: 11
-  praticleSpawnLocation: {fileID: 4175127233134175654}
+  particleSpawnLocation: {fileID: 0}
+  ragdollOnDeath: 0
+  dissolveOnDeath: 0
+  invincible: 0
   destroyable: 1
+  GameOverScreen: {fileID: 0}
 --- !u!114 &5542685769309437334
 MonoBehaviour:
   m_ObjectHideFlags: 0

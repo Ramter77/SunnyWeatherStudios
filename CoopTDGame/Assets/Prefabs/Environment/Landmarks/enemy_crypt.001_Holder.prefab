@@ -158,7 +158,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300004, guid: c10d184839e639f4c8fb42567f281903, type: 3}
 --- !u!1 &1337932356826116608
@@ -255,7 +255,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: c10d184839e639f4c8fb42567f281903, type: 3}
 --- !u!1 &2950424275695277231
@@ -352,7 +352,7 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: c10d184839e639f4c8fb42567f281903, type: 3}
 --- !u!1 &9016153495817792057
@@ -393,11 +393,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8542309220502540114}
     m_Modifications:
-    - target: {fileID: 3944780832053196346, guid: 69c5c8c0cd5efee4c88311558ced99f2,
-        type: 3}
-      propertyPath: m_Name
-      value: enemy_crypt.001
-      objectReference: {fileID: 0}
     - target: {fileID: 8223875958645512826, guid: 69c5c8c0cd5efee4c88311558ced99f2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -451,6 +446,26 @@ PrefabInstance:
     - target: {fileID: 8223875958645512826, guid: 69c5c8c0cd5efee4c88311558ced99f2,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3944780832053196346, guid: 69c5c8c0cd5efee4c88311558ced99f2,
+        type: 3}
+      propertyPath: m_Name
+      value: enemy_crypt.001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7384089239891823896, guid: 69c5c8c0cd5efee4c88311558ced99f2,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 303784293466938210, guid: 69c5c8c0cd5efee4c88311558ced99f2,
+        type: 3}
+      propertyPath: m_Convex
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3721102106332864234, guid: 69c5c8c0cd5efee4c88311558ced99f2,
+        type: 3}
+      propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

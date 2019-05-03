@@ -261,6 +261,7 @@ GameObject:
   - component: {fileID: 81425208564960755}
   - component: {fileID: 3901131555904093032}
   - component: {fileID: 2895532858435802728}
+  - component: {fileID: 1386671032191566502}
   m_Layer: 0
   m_Name: mixamorig:Hips
   m_TagString: Untagged
@@ -314,6 +315,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4813232, y: 3.1210365, z: 1.2674628}
   m_Center: {x: 0.000051617622, y: 1.2482378, z: -0.10336435}
+--- !u!208 &1386671032191566502
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833795367487212348}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.2406615, y: 1.5605185, z: 0.6337315}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.00005161762, y: 1.248238, z: -0.1033643}
+  m_TimeToStationary: 0.5
 --- !u!1 &2257888936009433440
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +785,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab10d73dcd507b4eb08bf966fec2a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rig: {fileID: 81425208564960755}
   ragdollOnStart: 0
 --- !u!114 &7511806057366465253
 MonoBehaviour:
@@ -782,8 +800,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRenderer: {fileID: 3127364602419970535}
-  startDelay: 5
-  delay: 12
+  startDelay: 3
+  delay: 10
   useMeshRenderer: 0
   dissolveOnStart: 0
   sinkWhileDissolving: 0

@@ -77,6 +77,11 @@ public class DissolveDelay : MonoBehaviour
         yield return new WaitForSeconds(startDelay);
         startDissolving = true;
 
+        //Disable colliders
+        if (GetComponent<Ragdoll>() != null) {
+            GetComponent<Ragdoll>().disableAllColliders();
+        }
+
         //Destroy after delay time when completely dissolved
         if (weaponRenderer != null) {
             Destroy(weaponRenderer.gameObject, delay + 0.1f);

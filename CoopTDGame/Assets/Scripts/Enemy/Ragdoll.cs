@@ -5,9 +5,12 @@ using UnityEngine.AI;
 
 public class Ragdoll : MonoBehaviour
 {
+    public Transform rig;
+
     public bool ragdollOnStart;
 
     private Component[] ownColliders;
+    private bool disabledRigColliders;
     private Component[] colliders;
     private Component[] rbs;
     
@@ -28,7 +31,7 @@ public class Ragdoll : MonoBehaviour
     void Start()
     {
         //Disable ragdoll colliders
-        colliders = GetComponentsInChildren<Collider>();
+        colliders = rig.GetComponentsInChildren<Collider>();
         foreach (Collider _col in colliders)
             _col.enabled = false;
 
@@ -68,6 +71,8 @@ public class Ragdoll : MonoBehaviour
     /// </summary>
     /// <param name="ragdoll">Param to enable or disable ragdoll</param>
     public void toggleRagdoll(bool ragdoll) {
+        rig.GetComponent<NavMeshObstacle>().enabled = true;
+        
 
         //if ragdoll is true --> disable scripts..
         anim.enabled = !ragdoll;
@@ -91,8 +96,10 @@ public class Ragdoll : MonoBehaviour
             rb.constraints = RigidbodyConstraints.None;
         }
 
-        foreach (Collider _col in colliders)
-            _col.enabled = true;
+        if (!disabledRigColliders) {
+            foreach (Collider _col in colliders)
+                _col.enabled = true;
+        }
 
         foreach (Rigidbody _rb in rbs)
             _rb.isKinematic = false;
@@ -109,5 +116,49 @@ public class Ragdoll : MonoBehaviour
         else {
             agent.speed = defaultSpeed;
         } */
+    }
+
+
+    public void disableAllColliders() {
+        /* ownColliders = GetComponents<Collider>();
+        foreach (Collider _col in ownColliders)
+            _col.enabled = false; */
+        
+        if (!disabledRigColliders) {
+            disabledRigColliders = true;
+            foreach (Collider _col in colliders)
+                _col.enabled = false;
+
+            /* Component[] capsuleColliders = rig.GetComponentsInChildren<CapsuleCollider>();
+            foreach (CapsuleCollider _col in capsuleColliders)
+            {
+                //if (_col is BoxCollider) {} else {
+                //    _col.enabled = false;
+                //} 
+
+                _col.radius *= 0.25f;
+                _col.height *= 0.5f;
+            }
+            Component[] sphereColliders = rig.GetComponentsInChildren<SphereCollider>();
+            foreach (SphereCollider _col in sphereColliders)
+            {
+                _col.radius *= 0.25f;
+            }
+            Component[] boxColliders = rig.GetComponentsInChildren<BoxCollider>();
+            foreach (BoxCollider _col in boxColliders)
+            {
+                _col.size = new Vector3(_col.size.x*0.5f, _col.size.y*0.5f, _col.size.z*0.5f);
+            } */
+        }
+
+        BoxCollider boxCollider = rig.GetComponent<BoxCollider>();
+        boxCollider.enabled = true;
+        //Half torso box collider
+        boxCollider.size = new Vector3(boxCollider.size.x*0.5f, boxCollider.size.y, boxCollider.size.z*0.5f);
+
+        
+
+        /* mainCollider.radius *= 0.25f;
+        mainCollider.height *= 0.5f; */
     }
 }

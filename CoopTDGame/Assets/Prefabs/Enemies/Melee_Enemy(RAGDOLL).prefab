@@ -497,6 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ab10d73dcd507b4eb08bf966fec2a0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rig: {fileID: 1097095242}
   ragdollOnStart: 0
 --- !u!114 &4094519002884726250
 MonoBehaviour:
@@ -511,8 +512,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponRenderer: {fileID: 1866237214}
-  startDelay: 1
-  delay: 10
+  startDelay: 3
+  delay: 6
   useMeshRenderer: 0
   dissolveOnStart: 0
   sinkWhileDissolving: 0
@@ -1722,6 +1723,7 @@ GameObject:
   - component: {fileID: 1097095242}
   - component: {fileID: 1097095219}
   - component: {fileID: 1097095241}
+  - component: {fileID: 9008208088331900482}
   m_Layer: 0
   m_Name: mixamorig:Hips
   m_TagString: Untagged
@@ -1775,6 +1777,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4813232, y: 3.1210365, z: 1.2674628}
   m_Center: {x: 0.000051617622, y: 1.2482378, z: -0.10336435}
+--- !u!208 &9008208088331900482
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097095209}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.2406615, y: 1.5605185, z: 0.6337315}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.00005161762, y: 1.248238, z: -0.1033643}
+  m_TimeToStationary: 0.5
 --- !u!1 &1161028278
 GameObject:
   m_ObjectHideFlags: 0

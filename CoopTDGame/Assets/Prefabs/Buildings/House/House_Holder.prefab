@@ -82,8 +82,12 @@ MonoBehaviour:
   amountOfUnitsAttacking: 0
   particleEffect: {fileID: 0}
   ParticleOnHitEffectYoffset: 1
-  praticleSpawnLocation: {fileID: 0}
+  particleSpawnLocation: {fileID: 0}
+  ragdollOnDeath: 0
+  dissolveOnDeath: 0
+  invincible: 0
   destroyable: 1
+  GameOverScreen: {fileID: 0}
 --- !u!114 &3360429499921808087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,10 +126,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6166262329567557295}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 110a00b5c6be74143a4ff3fc083ed185, type: 3}
 --- !u!114 &1956797527722112317
@@ -140,7 +144,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86a7a61810191484da31877229740a91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathLayer: 4
+  pathLayer1: 4
+  pathLayer2: 3
   debugMode: 1
   groundCheckHeight: 0.5
   groundCheckRadius: 10
@@ -148,6 +153,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 10
+  placeByPlayer_: 0
 --- !u!1001 &6166262329567522831
 PrefabInstance:
   m_ObjectHideFlags: 0
