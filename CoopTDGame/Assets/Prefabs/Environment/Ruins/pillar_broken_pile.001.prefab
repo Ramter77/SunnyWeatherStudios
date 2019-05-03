@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1708145562257183311}
   - component: {fileID: 5126837782815839928}
   - component: {fileID: 6864212685047985622}
-  - component: {fileID: 6361487092603847779}
   m_Layer: 0
   m_Name: pillar_broken_pile.001_LOD2
   m_TagString: Untagged
@@ -78,20 +77,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &6361487092603847779
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 180099936277294941}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300004, guid: 50421227e2bf52b4793a7832d9f7a3e0, type: 3}
 --- !u!1 &3424720808101627035
 GameObject:
   m_ObjectHideFlags: 0
@@ -103,7 +88,6 @@ GameObject:
   - component: {fileID: 210933420835709729}
   - component: {fileID: 4518599492846714967}
   - component: {fileID: 3536679305020701812}
-  - component: {fileID: 7326602803766471550}
   m_Layer: 0
   m_Name: pillar_broken_pile.001_LOD1
   m_TagString: Untagged
@@ -170,20 +154,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7326602803766471550
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3424720808101627035}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 50421227e2bf52b4793a7832d9f7a3e0, type: 3}
 --- !u!1 &6811985083133215255
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,6 +227,7 @@ GameObject:
   - component: {fileID: 3591170248745079497}
   - component: {fileID: 2769566026344438923}
   - component: {fileID: 127071722743379375}
+  - component: {fileID: 4718702631014202939}
   m_Layer: 0
   m_Name: pillar_broken_pile.001_LOD0
   m_TagString: Untagged
@@ -337,3 +308,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: 50421227e2bf52b4793a7832d9f7a3e0, type: 3}
+--- !u!208 &4718702631014202939
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8577335343659086794}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.010000001, y: 0.006, z: 0.014}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.004, z: -0.014}
+  m_TimeToStationary: 0.5

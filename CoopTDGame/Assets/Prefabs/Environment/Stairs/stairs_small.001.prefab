@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1323082286999875397}
   - component: {fileID: 3981190527553528809}
   - component: {fileID: 1082303130832043623}
+  - component: {fileID: 2751146927591154267}
   m_Layer: 0
   m_Name: stairs_small.001
   m_TagString: Untagged
@@ -92,3 +93,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 77ea2ff65d2af214283c6077ba77547e, type: 3}
+--- !u!208 &2751146927591154267
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9063603167334576993}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.025, y: 0.015000001, z: 0.025}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0.025, y: 0.012, z: -0.025}
+  m_TimeToStationary: 0.5

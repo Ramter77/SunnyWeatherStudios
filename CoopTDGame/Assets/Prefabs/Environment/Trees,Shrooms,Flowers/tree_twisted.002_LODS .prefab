@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 4291158272549950772}
   - component: {fileID: 2964369473672752779}
   - component: {fileID: 565928616005001487}
+  - component: {fileID: 2007905920779881516}
   m_Layer: 0
   m_Name: tree_twisted.002_LOD0
   m_TagString: Untagged
@@ -171,6 +172,22 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 8a317f5bad7d0b34d8d67d22e672ab3c, type: 3}
+--- !u!208 &2007905920779881516
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263315006204633689}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.020000001, y: 0.029000001, z: 0.018000001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.006, y: 0.028, z: 0.001}
+  m_TimeToStationary: 0.5
 --- !u!1 &4836434548422914992
 GameObject:
   m_ObjectHideFlags: 0

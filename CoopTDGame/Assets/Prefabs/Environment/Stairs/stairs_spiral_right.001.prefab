@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4990383008749411317}
   - component: {fileID: 9150727189446073882}
   - component: {fileID: 559694702642728036}
+  - component: {fileID: 7850693953763582541}
   m_Layer: 0
   m_Name: stairs_spiral_right.001
   m_TagString: Untagged
@@ -92,3 +93,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: c32e7fc2ae0c29b4c8271b323ade6ede, type: 3}
+--- !u!208 &7850693953763582541
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5503652957731391266}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.052, y: 0.029000001, z: 0.052}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -0.049000002, y: 0.025, z: -0.051000003}
+  m_TimeToStationary: 0.5

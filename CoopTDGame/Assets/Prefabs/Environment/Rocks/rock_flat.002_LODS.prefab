@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1819809489326211344}
   - component: {fileID: 247156397756217844}
   - component: {fileID: 8875711075612365613}
+  - component: {fileID: 8464356035634150966}
   m_Layer: 0
   m_Name: rock_flat.002_LOD0
   m_TagString: Untagged
@@ -87,11 +88,27 @@ MeshCollider:
   m_GameObject: {fileID: 3165878153652288213}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 99d15f5bd6fde104e9f0146c023cd85b, type: 3}
+--- !u!208 &8464356035634150966
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3165878153652288213}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.019000001, y: 0.002, z: 0.023000002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.002, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &5147287091978945355
 GameObject:
   m_ObjectHideFlags: 0

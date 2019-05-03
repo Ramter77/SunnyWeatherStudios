@@ -95,11 +95,17 @@ public class AttackAndDamage : MonoBehaviour
 
     public void applyDamage()
     {
-        targetDefense = Target.GetComponent<LifeAndStats>().defense;
-        float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
-        Target.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
-        
-        enemyAnim.SetBool("Charge", false);
+        if (Target != null) {
+            targetDefense = Target.GetComponent<LifeAndStats>().defense;
+            float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
+            Target.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
+            
+            //enemyAnim.SetBool("Charge", false);
+        }
+        else
+        {
+            Debug.Log("Target already destroyed: no damage applied");
+        }
     }
 
 

@@ -6,17 +6,28 @@ using UnityEngine.Experimental.VFX;
 
 public class Projectile : MonoBehaviour
 {   
-    [SerializeField]
+    //[SerializeField]
     private float speed = 10;
 
+    [Tooltip ("Seconds before destroying game object")]
     [SerializeField]
     private float destroyTime = 5;
+    [Tooltip ("Destroy game object on contact")]
     [SerializeField]
-    private bool destroyOnContact = false;
+    private bool destroyOnContact;
+    [Tooltip ("Set the velocity of the game object's rigidbody to zero on contact")]
     [SerializeField]
-    private bool unparentChild = false;
+    private bool stopVelocityOnContact;
+    [Tooltip ("Set the game object's rigidbody to kinematic")]
     [SerializeField]
-    private bool destroyChild = false;
+    private bool kinematicOnContact;
+    [Tooltip ("Uparent game object's child (if there is one) before destroying")]
+    [SerializeField]
+    private bool unparentChild;
+    [Tooltip ("Destroy the game object's child")]
+    [SerializeField]
+    private bool destroyChild;
+    [Tooltip ("Seconds before destroying the game object's child")]
     [SerializeField]
     private float childDestroyTime = 1;
     [Tooltip ("Name of VFX spawn rate property")]
@@ -26,10 +37,11 @@ public class Projectile : MonoBehaviour
     
 
     private Light lightSource;
+    
 
-    public void SetSpeed(float newSpeed) {
+    /* public void SetSpeed(float newSpeed) {
         speed = newSpeed;
-    }
+    } */
 
     void Start()
     {
@@ -67,8 +79,7 @@ public class Projectile : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
-        if (destroyOnContact) {
-            if (transform != null) {
+        if (transform != null) {
             if (transform.childCount > 0) {
                 GameObject child = transform.GetChild(0).gameObject;
                 if (unparentChild) {
@@ -77,11 +88,25 @@ public class Projectile : MonoBehaviour
                     }
                     child.transform.parent = null;
                 }
+
                 child.GetComponent<VisualEffect>().SetFloat(SPAWN_RATE_NAME, 0);
                 child.GetComponent<VisualEffect>().SetVector2(LIFETIME_RATE_NAME, new Vector2(0,0));
             }
-            }
+        }
+
+        if (destroyOnContact) {
             Destroy(gameObject);
+        }
+        else {
+            if (GetComponent<Rigidbody>() != null) {
+                Rigidbody rb = GetComponent<Rigidbody>();
+                if (stopVelocityOnContact) {
+                    rb.velocity = Vector3.zero;
+                }
+                if (kinematicOnContact) {
+                    rb.isKinematic = true;
+                }
+            }
         }
     }
 }

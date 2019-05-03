@@ -42,9 +42,16 @@ public class LifeAndStats : MonoBehaviour
         fractureScript = GetComponent<FractureObject>();
         fallbackHealCooldown = healCooldown;
         amountOfUnitsAttacking = 0;
+
         if(gameObject.CompareTag("Sphere"))
         {
-            GameOverScreen.SetActive(false);
+            if (GameOverScreen != null) {
+                GameOverScreen.SetActive(false);
+            }
+            else
+            {
+                Debug.Log("GameOverScreen not assigned to sphere");
+            }
         }
         
     }

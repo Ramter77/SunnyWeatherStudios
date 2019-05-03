@@ -141,6 +141,7 @@ void Update()
 
     void OnDrawGizmosSelected()
     {
+        #if UNITY_EDITOR
         Vector3 centerOfAttackRadius = centerAttackRadius.position;
         Vector3 targetPoint = interceptPoint;
         if (Vector3.Distance(centerOfAttackRadius, targetPoint) <= attackRange)
@@ -153,6 +154,7 @@ void Update()
             Handles.color = new Color(1f, 0f, 0f, 0.2f);
             Handles.DrawSolidDisc(centerAttackRadius.position, Vector3.down, attackRange);
         }
+        #endif
     }
 
     /// <summary>

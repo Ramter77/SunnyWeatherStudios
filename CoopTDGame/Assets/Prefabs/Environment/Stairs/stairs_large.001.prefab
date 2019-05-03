@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5531167456142968273}
   - component: {fileID: 3066464899056592119}
   - component: {fileID: 5714117931149669338}
+  - component: {fileID: 4600287363773401122}
   m_Layer: 0
   m_Name: stairs_large.001
   m_TagString: Untagged
@@ -92,3 +93,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: a09dd8d918a8594479004fcb4bf93c5b, type: 3}
+--- !u!208 &4600287363773401122
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1261988681927198512}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.064, y: 0.025, z: 0.044000003}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0.025, z: 0}
+  m_TimeToStationary: 0.5
