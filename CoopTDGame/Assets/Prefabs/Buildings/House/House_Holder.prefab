@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 123
   m_IsActive: 1
 --- !u!4 &1944356786319431057
 Transform:
@@ -47,7 +47,7 @@ GameObject:
   m_TagString: possibleTargets
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 123
   m_IsActive: 1
 --- !u!4 &5421635244461095719
 Transform:
@@ -164,6 +164,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 110a00b5c6be74143a4ff3fc083ed185, type: 3}
       propertyPath: m_Name
       value: House
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 110a00b5c6be74143a4ff3fc083ed185, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 110a00b5c6be74143a4ff3fc083ed185, type: 3}
       propertyPath: m_LocalPosition.x

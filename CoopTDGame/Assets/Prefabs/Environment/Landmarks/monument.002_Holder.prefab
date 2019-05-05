@@ -18,8 +18,8 @@ GameObject:
   m_Name: monument.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 123
   m_IsActive: 1
 --- !u!4 &6364137914346771899
 Transform:
@@ -212,6 +212,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: monument.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508333098083825086, guid: ef74373b1ca7f8349be12cc1591a09b7,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
+      objectReference: {fileID: 0}
+    - target: {fileID: 1508333098083825086, guid: ef74373b1ca7f8349be12cc1591a09b7,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef74373b1ca7f8349be12cc1591a09b7, type: 3}
