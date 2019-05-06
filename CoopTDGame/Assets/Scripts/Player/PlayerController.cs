@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     private Transform MainCameraTransform;
     private PlayerAnim playerAnim;
+    [HideInInspector]
+    public AudioSource audioSource;
     #endregion
 
     void Awake()
@@ -39,7 +41,8 @@ public class PlayerController : MonoBehaviour
         Debug.Log("Finding " + tag + " tag");
         MainCameraTransform = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>().transform;
         
-        playerAnim = GetComponent<PlayerAnim>(); 
+        playerAnim = GetComponent<PlayerAnim>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Start() {

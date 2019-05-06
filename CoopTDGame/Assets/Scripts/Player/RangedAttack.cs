@@ -28,11 +28,16 @@ public class RangedAttack : MonoBehaviour
     private float fallbackDistance = 100.0f;
     private Vector3 intersectionPoint, direction;
 
+    [Header ("Sound")]
+    [SerializeField]
+    private AudioClip rangedAttackSound;
+
+
     #region Internal variables
     private PlayerController playC;
     private Animator playerAnim;
     private Camera MainCamera;
-    private CapsuleCollider myCollider;
+    private Component[] ownColliders;
     
     private bool _input;
     #endregion
@@ -50,7 +55,8 @@ public class RangedAttack : MonoBehaviour
         Debug.Log("Finding " + tag + " tag");
         MainCamera = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>();
 
-        myCollider = GetComponent<CapsuleCollider>();
+        //Get own colliders
+        ownColliders = GetComponents<Collider>();
     }
 
     void Update()
@@ -90,10 +96,14 @@ public class RangedAttack : MonoBehaviour
         }
     }
 
-    private void IgnoreCollisionSelf(Rigidbody rb) {
-        //Ignore collisions with owner
-        if (rb.GetComponent<SphereCollider>()) {
+    private void IgnoreCollisionSelf(Collider col) {
+        //!OLD  Ignore collisions with owner
+        /* if (rb.GetComponent<SphereCollider>()) {
             Physics.IgnoreCollision(myCollider, rb.GetComponent<SphereCollider>());
+        } */
+
+        foreach (Collider _col in ownColliders) {
+            Physics.IgnoreCollision(_col, col);
         }
     }
 
@@ -144,7 +154,10 @@ public class RangedAttack : MonoBehaviour
         _projectileRB.AddForce(direction * projectileSpeed, ForceMode.Impulse);
 
         //Ignore collisions with owner
-        IgnoreCollisionSelf(projectileRB);
+        IgnoreCollisionSelf(projectileRB.GetComponent<Collider>());
+
+        //Play sound
+        AudioManager.Instance.PlaySound(playC.audioSource, rangedAttackSound);
     }
     #endregion
 }

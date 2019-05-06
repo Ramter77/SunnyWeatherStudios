@@ -170,7 +170,14 @@ public class LifeAndStats : MonoBehaviour
             health += healAmount;
             healCooldown = fallbackHealCooldown;
         }
-    }    
+    }
+
+    public void Revive() {
+        GetComponent<PlayerController>().isDead = false;
+        GetComponent<LifeAndStats>().health = 100;
+        GetComponent<Animator>().SetBool("Dead", false);
+        GetComponent<PlayerController>().isDead = false;
+    }
 
     void reduceHealthCooldown()
     {
