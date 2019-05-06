@@ -17,9 +17,10 @@ GameObject:
   - component: {fileID: 2544546448591885996}
   - component: {fileID: 5750830792990983559}
   - component: {fileID: 658456508164392532}
+  - component: {fileID: 3170644541522032349}
   m_Layer: 0
   m_Name: Iceball
-  m_TagString: Untagged
+  m_TagString: ElementProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -245,6 +246,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 100
+--- !u!114 &3170644541522032349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113481993458745524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec0f3e53609273a4291f92eab084c7ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 1
+  projectileTag: ElementProjectile
+  allowInteraction: 0
 --- !u!1 &4356106845673668711
 GameObject:
   m_ObjectHideFlags: 0
