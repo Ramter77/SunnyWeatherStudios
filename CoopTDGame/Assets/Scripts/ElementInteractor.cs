@@ -14,6 +14,7 @@ public class ElementInteractor : MonoBehaviour
     [Tooltip("indicates if the prjectile is ready to interact with another one")]
     public bool allowInteraction = false;
 
+    private Vector3 otherPos = Vector3.zero;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -28,9 +29,26 @@ public class ElementInteractor : MonoBehaviour
                     Debug.Log(other.gameObject.name + other.GetComponent<ElementInteractor>().elementType);
                     if (otherProjectileElement != elementType)
                     {
+                        otherPos = other.transform.position;
                         ElementManager.Instance.requestingInteractor = this.gameObject;
                         ElementManager.Instance.combineElement(elementType, otherProjectileElement);
                         allowInteraction = false;
+                        if (other.transform.parent)
+                        {
+                            Destroy(other.transform.parent.gameObject);
+                        }
+                        else
+                        {
+                            Destroy(other.gameObject);
+                        }
+                        if (transform.parent)
+                        {
+                            Destroy(transform.parent.gameObject);
+                        }
+                        else
+                        {
+                            Destroy(gameObject);
+                        }
                     }
                 }
             }
@@ -39,7 +57,8 @@ public class ElementInteractor : MonoBehaviour
 
     public void createReaction(GameObject reactionPrefab)
     {
-        Instantiate(reactionPrefab, transform.position, Quaternion.identity);
+        Vector3 pos = Vector3.Lerp(transform.position, otherPos, .5f);
+        Instantiate(reactionPrefab, pos, Quaternion.identity);
     }
 
 }
