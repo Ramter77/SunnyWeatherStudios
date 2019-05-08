@@ -20,7 +20,7 @@ public class EnemyAnim : MonoBehaviour {
     private LifeAndStats lifeAndStats;
     private NavMeshAgent agent;
     private Animator enemyAnim;
-    private int injuredLayerIndex;
+    private int injuredLayerIndex, injuredBlendLayerIndex;
     private float maxSpeed;
     private float speedPercentage;
     private float healthPercentage; 
@@ -34,10 +34,32 @@ public class EnemyAnim : MonoBehaviour {
 
         maxSpeed = basicEnemy.enemySpeed;
         injuredLayerIndex = enemyAnim.GetLayerIndex("Injured");
+        injuredBlendLayerIndex = enemyAnim.GetLayerIndex("InjuredBlend");
 
         if (injuredLayerIndex == -1) {
             Debug.Log("Couldn't find 'Injured' layer");
         }
+        if (injuredBlendLayerIndex == -1) {
+            Debug.Log("Couldn't find 'InjuredBlend' layer");
+        }
+    }
+
+    void SetLayerWeight(int layer, bool reset) {
+        if (setInjuredLayerWeight) {
+            if (reset) {
+                enemyAnim.SetLayerWeight(layer, 0);
+            }
+            else {
+                //Calculate the health percentage & apply it to the Injured animation layer weight
+                healthPercentage = Mathf.Clamp01(1 - (lifeAndStats.health / lifeAndStats.maxhealth));
+                enemyAnim.SetLayerWeight(layer, healthPercentage);
+            }
+        }
+    }
+
+    void ToggleLayerWeight(bool toggle) {
+        SetLayerWeight(injuredLayerIndex, toggle);
+        SetLayerWeight(injuredBlendLayerIndex, !toggle);
     }
 
     void Update()
@@ -46,17 +68,18 @@ public class EnemyAnim : MonoBehaviour {
             //No movement when not in "Grounded" state
             if (!enemyAnim.GetCurrentAnimatorStateInfo(0).IsName("Grounded")) {
                 agent.speed = 0;
+
+                ToggleLayerWeight(false);
             }
+            //In grounded state set use injured blend tree
             else {
                 agent.speed = maxSpeed;
+
+                ToggleLayerWeight(true);
             }
         }
 
-        if (setInjuredLayerWeight) {
-            //Calculate the health percentage & apply it to the Injured animation layer weight
-            healthPercentage = Mathf.Clamp01(1 - (lifeAndStats.health / lifeAndStats.maxhealth));
-            enemyAnim.SetLayerWeight(injuredLayerIndex, healthPercentage);
-        }
+        
 
         if (setSpeedPercentage) {
             //Calculate the speed percentage & apply it to the 'Grounded' animations

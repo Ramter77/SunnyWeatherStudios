@@ -12,6 +12,17 @@ public class Projectile : MonoBehaviour
     [Tooltip ("Seconds before destroying game object")]
     [SerializeField]
     private float destroyTime = 5;
+
+    [Header ("On Collision")]
+    [Tooltip ("Disable the damage script on contact")]
+    [SerializeField]
+    private bool disableDamageScriptOnContact;    
+    [Tooltip ("Parent to colliders on contact")]
+    [SerializeField]
+    private bool parentOnContact;
+    [Tooltip ("Adjust position, rotation & scale when parenting to colliders on contact")]
+    [SerializeField]
+    private bool adjustWhenParentingOnContact;
     [Tooltip ("Destroy game object on contact")]
     [SerializeField]
     private bool destroyOnContact;
@@ -23,21 +34,26 @@ public class Projectile : MonoBehaviour
     private bool kinematicOnContact;
     [Tooltip ("Uparent game object's child (if there is one) before destroying")]
     [SerializeField]
-    private bool unparentChild;
+    private bool unparentChildOnContact;
     [Tooltip ("Destroy the game object's child")]
     [SerializeField]
-    private bool destroyChild;
+    private bool destroyChildOnContact;
     [Tooltip ("Seconds before destroying the game object's child")]
     [SerializeField]
     private float childDestroyTime = 1;
     [Tooltip ("Name of VFX spawn rate property")]
     public static readonly string SPAWN_RATE_NAME = "SpawnRate";
     [Tooltip ("Name of VFX lifetime property")]
+    [SerializeField]
     public static readonly string LIFETIME_RATE_NAME = "LifeTimeMinMax";
+    [Tooltip ("Min & Max lifetime of child VFX in seconds (max should be lower than destroy time)")]
+    [SerializeField]
+    private Vector2 lifetimeMinMax = new Vector2(4,4);
     
 
     private Light lightSource;
     
+
 
     /* public void SetSpeed(float newSpeed) {
         speed = newSpeed;
@@ -45,11 +61,12 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
-        if (transform.GetChild(0) != null) {
-            //Set VFX lifetime equal to destroyTime
-            GameObject child = transform.GetChild(0).gameObject;
-            Vector2 lifetimeMinMax = new Vector2(4, 4);
-            child.GetComponent<VisualEffect>().SetVector2(LIFETIME_RATE_NAME, lifetimeMinMax);
+        if (transform.childCount > 0) {
+            if (transform.GetChild(0) != null) {
+                //Set VFX lifetime
+                GameObject child = transform.GetChild(0).gameObject;
+                child.GetComponent<VisualEffect>().SetVector2(LIFETIME_RATE_NAME, lifetimeMinMax);
+            }
         }
 
 
@@ -79,13 +96,17 @@ public class Projectile : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
+        #region Child (Stop VFX spawnRate & maybe unparent child)
         if (transform != null) {
             if (transform.childCount > 0) {
                 GameObject child = transform.GetChild(0).gameObject;
-                if (unparentChild) {
-                    if (destroyChild) {
+                if (unparentChildOnContact) {
+                    #region Destroy Child
+                    if (destroyChildOnContact) {
                         Destroy(child, destroyTime);
                     }
+                    #endregion
+
                     child.transform.parent = null;
                 }
 
@@ -93,11 +114,23 @@ public class Projectile : MonoBehaviour
                 child.GetComponent<VisualEffect>().SetVector2(LIFETIME_RATE_NAME, new Vector2(0,0));
             }
         }
+        #endregion
 
+        #region Destroy
         if (destroyOnContact) {
             Destroy(gameObject);
         }
+        #endregion
         else {
+            #region Turn off damage script on contact
+            if (disableDamageScriptOnContact) {
+                if (GetComponent<PlayerWeaponDamage>() != null) {
+                    GetComponent<PlayerWeaponDamage>().enabled = false;
+                }
+            }
+            #endregion
+
+            #region Rigidbody
             if (GetComponent<Rigidbody>() != null) {
                 Rigidbody rb = GetComponent<Rigidbody>();
                 if (stopVelocityOnContact) {
@@ -107,6 +140,13 @@ public class Projectile : MonoBehaviour
                     rb.isKinematic = true;
                 }
             }
+            #endregion
+
+            #region Parent on contact
+            if (parentOnContact) {
+                gameObject.transform.SetParent(other.transform, adjustWhenParentingOnContact);
+            }
+            #endregion
         }
     }
 }
