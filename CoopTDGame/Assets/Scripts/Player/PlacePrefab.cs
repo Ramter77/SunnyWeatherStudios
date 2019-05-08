@@ -105,7 +105,7 @@ checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for foll
             #region Input check for placement
             if (playC.Player_ == 0) {
                 //_enterBuildMode = Input.GetKeyDown(KeyCode.Alpha0 + 1 + i);
-                _input = InputManager.Instance.Fire1;
+                _input = InputManager.Instance.Melee0;
             } 
 
             if (_input) {
@@ -137,20 +137,20 @@ checkHotKeys(); //Instantiates Prefab & sets it to currentPrefab to use for foll
 
 
         if (playC.Player_ == 1) {
-            _enterBuildMode = InputManager.Instance.BuildMode1;
+            //_enterBuildMode = InputManager.Instance.BuildMode1;
             _build1 = InputManager.Instance.Heal1;
             _build2 = InputManager.Instance.Ultimate1;
-            _build3 = InputManager.Instance.Slash1;
+            _build3 = InputManager.Instance.Interact1;
 
-            _transferInput = InputManager.Instance.isRunning1;
+            _transferInput = InputManager.Instance.Run1;
         }
         else if (playC.Player_ == 2) {
-            _enterBuildMode = InputManager.Instance.BuildMode2;
+            //_enterBuildMode = InputManager.Instance.BuildMode2;
             _build1 = InputManager.Instance.Heal2;
             _build2 = InputManager.Instance.Ultimate2;
-            _build3 = InputManager.Instance.Slash2;
+            _build3 = InputManager.Instance.Interact2;
 
-            _transferInput = InputManager.Instance.isRunning2;
+            _transferInput = InputManager.Instance.Run2;
         }
 
         //Enter build mode
@@ -426,12 +426,12 @@ if (_enterBuildMode && !playC.isDead) {
                             currentPrefabIndex = 0;
                             currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().placeByPlayer_ = playC.Player_; 
                         }
-                        else if (InputManager.Instance.Ultimate) {
+                        else if (InputManager.Instance.Ultimate1) {
                             currentPrefab = Instantiate(Prefabs[1]);
                             currentPrefabIndex = 1;
                             currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().placeByPlayer_ = playC.Player_; 
                         }
-                        else if (InputManager.Instance.Slash1) {
+                        else if (InputManager.Instance.Interact1) {
                             currentPrefab = Instantiate(Prefabs[2]);
                             currentPrefabIndex = 2;
                             currentPrefab.transform.GetChild(0).GetChild(0).GetComponent<PlacePrefabCollisionColor>().placeByPlayer_ = playC.Player_; 

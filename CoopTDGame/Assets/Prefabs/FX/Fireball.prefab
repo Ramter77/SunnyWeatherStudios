@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 2544546448591885996}
   - component: {fileID: 5750830792990983559}
   - component: {fileID: 658456508164392532}
-  - component: {fileID: 2823224071437778043}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: ElementProjectile
@@ -77,7 +76,7 @@ SphereCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113481993458745524}
-  m_Material: {fileID: 13400000, guid: 31683653fc5794f4198db97c2e4c8c1d, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
@@ -251,19 +250,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 90
---- !u!135 &2823224071437778043
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113481993458745524}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.8471283
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1422469810137160074
 GameObject:
   m_ObjectHideFlags: 0

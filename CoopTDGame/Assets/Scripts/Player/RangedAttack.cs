@@ -64,18 +64,18 @@ public class RangedAttack : MonoBehaviour
         //* Player 0 input */
         if (playC.Player_ == 0)
         {
-            _input = InputManager.Instance.Fire1;
+            _input = InputManager.Instance.Ranged0;
         }
 
         //* Player 1 input */
         else if (playC.Player_ == 1)
         {
-            _input = InputManager.Instance.Fire11;
+            _input = InputManager.Instance.Ranged1;
         }
 
         //*Player 2 input */
         else if (playC.Player_ == 2) {
-            _input = InputManager.Instance.Fire12;
+            _input = InputManager.Instance.Ranged2;
         }
         
         #region Input

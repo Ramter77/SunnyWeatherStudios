@@ -115,23 +115,23 @@ public class PlayerClassOne : MonoBehaviour
         //* Player 0 input */
         if (playC.Player_ == 0)
         {
-            _healInput = InputManager.Instance.Heal;
-            _slashInput = InputManager.Instance.Slash;
-            _ultimateInput = InputManager.Instance.Ultimate;
+            _healInput = InputManager.Instance.Heal0;
+            _slashInput = InputManager.Instance.Interact0;
+            _ultimateInput = InputManager.Instance.Ultimate0;
         }
 
         //* Player 1 input */
         else if (playC.Player_ == 1)
         {
             _healInput = InputManager.Instance.Heal1;
-            _slashInput = InputManager.Instance.Slash1;
+            _slashInput = InputManager.Instance.Interact1;
             _ultimateInput = InputManager.Instance.Ultimate1;
         }
 
         //*Player 2 input */
         else if (playC.Player_ == 2) {
             _healInput = InputManager.Instance.Heal2;
-            _slashInput = InputManager.Instance.Slash2;
+            _slashInput = InputManager.Instance.Interact2;
             _ultimateInput = InputManager.Instance.Ultimate2;
         }
 

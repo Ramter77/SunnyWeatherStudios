@@ -48,23 +48,23 @@ public class PlayerAnim : MonoBehaviour
     {
         #region Get Input
         if (playC.Player_ == 0) {
-            _verticalInput = InputManager.Instance.Vertical;
-            _horizontalInput = InputManager.Instance.Horizontal;
-            _runInput = InputManager.Instance.isRunning;
-            _jumpInput = InputManager.Instance.Jump;
+            _verticalInput = InputManager.Instance.Vertical0;
+            _horizontalInput = InputManager.Instance.Horizontal0;
+            _runInput = InputManager.Instance.Run0;
+            _jumpInput = InputManager.Instance.Jump0;
         }
 
         else if (playC.Player_ == 1) {
             _verticalInput = InputManager.Instance.Vertical1;
             _horizontalInput = InputManager.Instance.Horizontal1;
-            _runInput = InputManager.Instance.isRunning1;
+            _runInput = InputManager.Instance.Run1;
             _jumpInput = InputManager.Instance.Jump1;
         }
 
         else if (playC.Player_ == 2) {
             _verticalInput = InputManager.Instance.Vertical2;
             _horizontalInput = InputManager.Instance.Horizontal2;
-            _runInput = InputManager.Instance.isRunning2;
+            _runInput = InputManager.Instance.Run2;
             _jumpInput = InputManager.Instance.Jump2;
         }
         #endregion
@@ -78,10 +78,10 @@ public class PlayerAnim : MonoBehaviour
 
         #region Run
         if (_runInput) {
-            animator.SetFloat("isRunning", 1, buttonDamping, Time.deltaTime);
+            animator.SetFloat("isRunning", 0, buttonDamping, Time.deltaTime);
         }
         else {
-            animator.SetFloat("isRunning", 0, buttonDamping, Time.deltaTime);
+            animator.SetFloat("isRunning", 1, buttonDamping, Time.deltaTime);
         }
         #endregion
 

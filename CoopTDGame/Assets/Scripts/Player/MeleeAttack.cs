@@ -35,21 +35,21 @@ public class MeleeAttack : MonoBehaviour
         //* Player 0 input */
         if (playC.Player_ == 0)
         {
-            _input = InputManager.Instance.Fire2;
-            _runInput = InputManager.Instance.isRunning;
+            _input = InputManager.Instance.Melee0;
+            _runInput = InputManager.Instance.Run0;
         }
 
         //* Player 1 input */
         else if (playC.Player_ == 1)
         {
-            _input = InputManager.Instance.Fire21;
-            _runInput = InputManager.Instance.isRunning1;
+            _input = InputManager.Instance.Melee1;
+            _runInput = InputManager.Instance.Run1;
         }
 
         //*Player 2 input */
         else if (playC.Player_ == 2) {
-            _input = InputManager.Instance.Fire22;
-            _runInput = InputManager.Instance.isRunning2;
+            _input = InputManager.Instance.Melee2;
+            _runInput = InputManager.Instance.Run2;
         }
 
         #region Input
