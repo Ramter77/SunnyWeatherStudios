@@ -34,7 +34,10 @@ public class EffectHandler : MonoBehaviour
         {
             if(exploded == false)
             {
-                ExplosionManager.Instance.displayEffect(effectIndex, this.transform, this.transform.rotation);
+                Vector3 offset = new Vector3(0,1,0);
+                Vector3 spawnPoint = transform.position + offset;
+
+                ExplosionManager.Instance.displayEffect(effectIndex, spawnPoint, this.transform.rotation);
                 exploded = true;
             }
         }
@@ -45,7 +48,9 @@ public class EffectHandler : MonoBehaviour
     {
         if(exploded == false)
         {
-            ExplosionManager.Instance.displayEffect(effectIndex, this.transform, this.transform.rotation);
+            Vector3 offset = new Vector3(0, 1, 0);
+            Vector3 spawnPoint = transform.position + offset;
+            ExplosionManager.Instance.displayEffect(effectIndex, spawnPoint, Quaternion.Euler(90f,0f,0f));
             exploded = true;
         }
     }

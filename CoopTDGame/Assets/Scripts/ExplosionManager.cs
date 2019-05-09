@@ -20,20 +20,21 @@ public class ExplosionManager : Singleton<ExplosionManager>
     // Start is called before the first frame update
     void Start()
     {
-        PoolManager.instance.CreatePool(enemyHitExplosion, 2);
-        PoolManager.instance.CreatePool(fireballExplosion, 2);
-        PoolManager.instance.CreatePool(iceballExplosion, 2);
+        PoolManager.instance.CreatePool(enemyHitExplosion, 3);
+        PoolManager.instance.CreatePool(fireballExplosion, 3);
+        PoolManager.instance.CreatePool(iceballExplosion, 3);
+        PoolManager.instance.CreatePool(blastballExplosion, 3);
     }
 
-    public void displayEffect(int explosionIndex, Transform explosionPos, Quaternion rotation)
+    public void displayEffect(int explosionIndex, Vector3 explosionPos, Quaternion rotation)
     {
         if (explosionIndex == 0)
-            PoolManager.instance.ReuseObject(enemyHitExplosion, explosionPos.position, rotation);
+            PoolManager.instance.ReuseObject(enemyHitExplosion, explosionPos, rotation);
         else if(explosionIndex == 1)
-            PoolManager.instance.ReuseObject(fireballExplosion, explosionPos.position, rotation);
+            PoolManager.instance.ReuseObject(fireballExplosion, explosionPos, rotation);
         else if (explosionIndex == 2)
-            PoolManager.instance.ReuseObject(iceballExplosion, explosionPos.position, rotation);
+            PoolManager.instance.ReuseObject(iceballExplosion, explosionPos, rotation);
         else if (explosionIndex == 3)
-            PoolManager.instance.ReuseObject(blastballExplosion, explosionPos.position, rotation);
+            PoolManager.instance.ReuseObject(blastballExplosion, explosionPos, rotation);
     }
 }
