@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 2544546448591885996}
   - component: {fileID: 5750830792990983559}
   - component: {fileID: 658456508164392532}
+  - component: {fileID: 8139901428762959573}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: ElementProjectile
@@ -250,6 +251,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDamage: 90
+--- !u!114 &8139901428762959573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113481993458745524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd7c12723014fd48bf7ccfd78ec8c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usedElement: 1
+  effectIndex: 0
 --- !u!1 &1422469810137160074
 GameObject:
   m_ObjectHideFlags: 0

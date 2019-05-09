@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public enum Element { NoElement, Fire, Ice };
-public enum CombinationElement { Blast };
+public enum Element { NoElement, Fire, Ice, Blast };
+public enum CombinationElement { NoCombination, Blast };
 public class ElementManager : Singleton<ElementManager>
 {
     [Header("Reaction Settings")]
