@@ -9,6 +9,12 @@ public class EnemyAnim : MonoBehaviour {
     [Tooltip ("Sets the 'speedPercentage' variable of the animator to handle movement animations")]
     [SerializeField]
     private bool setSpeedPercentage = true;
+    [Tooltip ("Multiplies the speed of all animations by the speedMultiplier")]
+    [SerializeField]
+    private bool setSpeedMultiplier = true;
+    [Tooltip ("Multiplies the speed of all animations by this multiplier")]
+    [SerializeField]
+    private float speedMultiplier = 1f;    
     [Tooltip ("Sets the agent speed to 0 when not in the 'Grounded' animation blend tree")]
     [SerializeField]
     private bool stopMovementWhenNotGrounded;
@@ -42,6 +48,12 @@ public class EnemyAnim : MonoBehaviour {
         if (injuredBlendLayerIndex == -1) {
             Debug.Log("Couldn't find 'InjuredBlend' layer");
         }
+
+        #region SET SPEED MULTIPLIER
+        if (setSpeedMultiplier) {
+            enemyAnim.SetFloat("speedMultiplier", speedMultiplier, 0, Time.deltaTime);
+        }
+        #endregion
     }
 
     void SetLayerWeight(int layer, bool reset) {

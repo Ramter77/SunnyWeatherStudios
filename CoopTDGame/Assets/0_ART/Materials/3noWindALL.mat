@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 3noWindALL
-  m_Shader: {fileID: 4800000, guid: bea6a0cabf80c604c8d11dc703872d18, type: 3}
+  m_Shader: {fileID: 4800000, guid: e49631a99ddb5594cadcbf6f855953ba, type: 3}
   m_ShaderKeywords: BOOLEAN_36BEA747_ON BOOLEAN_64D39403_ON BOOLEAN_A04A810C_ON BOOLEAN_DB17DB5B_ON
     BOOLEAN_EA093D51_ON _NORMALMAP_TANGENT_SPACE _TERRAIN_INSTANCED_PERPIXEL_NORMAL
   m_LightmapFlags: 4
@@ -47,6 +47,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_84F49065:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_8BC05B6D:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -155,6 +159,7 @@ Material:
     - Boolean_EC3D2E83: 0
     - Vector1_10E2C0A8: 0.15
     - Vector1_132E6245: 1
+    - Vector1_1BABFC5A: 3.5
     - Vector1_1DE55CD1: 1
     - Vector1_1E858DC7: 4
     - Vector1_23368965: 1.98
@@ -162,12 +167,21 @@ Material:
     - Vector1_27037BAB: 0
     - Vector1_2BDCF0F6: 0
     - Vector1_2E5C18E7: 1
+    - Vector1_47E25F23: 0
+    - Vector1_4DE14620: 0
+    - Vector1_52BA5C6D: 5
     - Vector1_5AE21157: 0.1
+    - Vector1_5BF33B12: 1
+    - Vector1_5E5CE9F9: 2
     - Vector1_634B63BD: 3
     - Vector1_67138358: 0.01
     - Vector1_6CF05A32: 1.35
     - Vector1_74B6CED4: 30
     - Vector1_774BD901: 0.17
+    - Vector1_85B69C37: 1
+    - Vector1_9075AE9C: 0.1
+    - Vector1_911F395F: 5
+    - Vector1_9472975D: 1
     - Vector1_98F0088E: 1
     - Vector1_A08F1DC5: 0
     - Vector1_A4E9D01D: 3
@@ -180,6 +194,7 @@ Material:
     - Vector1_D1CE4506: 0.5
     - Vector1_D48B029A: 1
     - Vector1_E4015737: 0.3
+    - Vector1_F1D45247: 4
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -203,6 +218,7 @@ Material:
     - _DisplacementLockObjectScale: 1
     - _DisplacementLockTilingScale: 1
     - _DisplacementMode: 0
+    - _Dissolve: 0
     - _DistortionBlendMode: 0
     - _DistortionBlurBlendMode: 0
     - _DistortionBlurDstBlend: 1
@@ -292,12 +308,17 @@ Material:
     - _ZTestModeDistortion: 4
     - _ZWrite: 1
     m_Colors:
+    - Color_130BA236: {r: 1.435294, g: 0.227451, b: 0.05490196, a: 0}
     - Color_ADAB764: {r: 0.22921386, g: 0.5849056, b: 0.21796006, a: 0}
     - Color_D7112DF3: {r: 0.49056596, g: 0.19668916, b: 0.48356402, a: 0}
+    - Color_DD78947D: {r: 0, g: 0.7923036, b: 1, a: 0}
     - Vector2_681EB9FE: {r: 1, g: 1, b: 0, a: 0}
     - Vector2_7EE570AE: {r: 6, g: 0, b: 0, a: 0}
+    - Vector2_891EABC3: {r: 0, g: -0.3, b: 0, a: 0}
     - Vector2_A9B8D902: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_C1FFEF7D: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_C20187D7: {r: 0.2, g: 1, b: 0, a: 0}
+    - Vector2_FC0F533D: {r: -0.1, g: -0.5, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}

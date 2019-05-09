@@ -18,11 +18,10 @@ public class ElementInteractor : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == projectileTag)
-        {
-            if (other.GetComponent<ElementInteractor>())
+        if (allowInteraction) {
+            if (other.gameObject.tag == projectileTag)
             {
-                if(allowInteraction)
+                if (other.GetComponent<ElementInteractor>())
                 {
                     Element otherProjectileElement;
                     otherProjectileElement = other.GetComponent<ElementInteractor>().elementType;

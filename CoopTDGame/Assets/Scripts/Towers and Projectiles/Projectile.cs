@@ -49,6 +49,12 @@ public class Projectile : MonoBehaviour
     [Tooltip ("Min & Max lifetime of child VFX in seconds (max should be lower than destroy time)")]
     [SerializeField]
     private Vector2 lifetimeMinMax = new Vector2(4,4);
+
+
+    [Header ("Status effects")]
+    [Tooltip ("Applies the burning status effect to enemies on contact")]
+    [SerializeField]
+    private bool burnEnemiesOnContact;
     
 
     private Light lightSource;

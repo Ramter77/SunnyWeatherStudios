@@ -18,6 +18,7 @@ public class InputManager : Singleton<InputManager>
     #region Controller Control
     [System.Serializable]
     public class ControllerControl {
+        [Tooltip ("Threshold to convert axis input to true")]
         public float ControllerTriggerAxisLimit = 0.5f;
     }
     [SerializeField] public ControllerControl _ControllerControl;
@@ -27,7 +28,7 @@ public class InputManager : Singleton<InputManager>
     #region SET
     #region Player
     [System.Serializable]
-    private class Player {  //MOUSE PLAYER
+    private class Player0 {  //MOUSE PLAYER
         [Tooltip ("Enable if controls are setup for a controller")]
         public bool useController;
         public string _Vertical = "Vertical0";
@@ -41,8 +42,10 @@ public class InputManager : Singleton<InputManager>
         public string _Heal = "Ability10";
         public string _Ultimate = "Ability20";
         public string _Interact = "Ability30";
+        public string _LB = "LB0";
+        public string _RB = "RB0";
     }
-    [SerializeField] private Player _Player0;
+    [SerializeField] private Player0 _Player0;
     #endregion
 
     #region Player 1
@@ -60,7 +63,9 @@ public class InputManager : Singleton<InputManager>
         public string _Jump = "Jump1";
         public string _Heal = "Ability11";
         public string _Ultimate = "Ability21";
-        public string _Interact = "Ability31";        
+        public string _Interact = "Ability31";
+        public string _LB = "LB1";
+        public string _RB = "RB1";       
     }
     [SerializeField] private Player1 _Player1;
     #endregion
@@ -81,6 +86,8 @@ public class InputManager : Singleton<InputManager>
         public string _Heal = "Ability12";
         public string _Ultimate = "Ability22";
         public string _Interact = "Ability32";
+        public string _LB = "LB2";
+        public string _RB = "RB2";
         
     }
     [SerializeField] private Player2 _Player2;
@@ -101,6 +108,8 @@ public class InputManager : Singleton<InputManager>
     public bool Heal0;
     public bool Ultimate0;
     public bool Interact0;
+    public bool LB0;
+    public bool RB0;
     #endregion
 
     #region Player 1
@@ -115,6 +124,8 @@ public class InputManager : Singleton<InputManager>
     public bool Heal1;
     public bool Ultimate1;
     public bool Interact1;
+    public bool LB1;
+    public bool RB1;
     #endregion
 
     #region Player 2
@@ -129,15 +140,17 @@ public class InputManager : Singleton<InputManager>
     public bool Heal2;
     public bool Ultimate2;
     public bool Interact2;
+    public bool LB2;
+    public bool RB2;
     
 
 
 
 
      public string        _strJoystickName;
-         public int            _iButtonNumber;            // 0 indexed
-         public int            _iJoystickNumber;        // 1 indexed
-         public string        _strButtonIdentifier;  
+    public int            _iButtonNumber;            // 0 indexed
+    public int            _iJoystickNumber;        // 1 indexed
+    public string        _strButtonIdentifier;  
     #endregion
     #endregion
     
@@ -228,15 +241,15 @@ public class InputManager : Singleton<InputManager>
             Horizontal0 = Mathf.Round(Input.GetAxisRaw(_Player0._Horizontal));
 
             //Convert fire float to bool
-            Ranged0 = (Input.GetAxis(_Player0._Ranged) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
-            Melee0 = (Input.GetAxis(_Player0._Melee) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
+            Ranged0 = (Input.GetAxisRaw(_Player0._Ranged) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
+            Melee0 = (Input.GetAxisRaw(_Player0._Melee) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
         }
         else {
             Vertical0 = Input.GetAxisRaw(_Player0._Vertical);
             Horizontal0 = Input.GetAxisRaw(_Player0._Horizontal);
 
-            Ranged0 = Input.GetButtonDown(_Player0._Ranged);
-            Melee0 = Input.GetButtonDown(_Player0._Melee);
+            Ranged0 = Input.GetButton(_Player0._Ranged);
+            Melee0 = Input.GetButton(_Player0._Melee);
         }
 
         MouseInput0 = new Vector2(Input.GetAxisRaw(_Player0._MouseInputX), Input.GetAxisRaw(_Player0._MouseInputY));
@@ -245,6 +258,8 @@ public class InputManager : Singleton<InputManager>
         Heal0 = Input.GetButtonDown(_Player0._Heal);
         Ultimate0 = Input.GetButtonDown(_Player0._Ultimate);
         Interact0 = Input.GetButtonDown(_Player0._Interact);
+        LB0 = Input.GetButtonDown(_Player0._LB);
+        RB0 = Input.GetButtonDown(_Player0._RB);
         #endregion
 
         #region Player1
@@ -254,15 +269,15 @@ public class InputManager : Singleton<InputManager>
             Horizontal1 = Mathf.Round(Input.GetAxisRaw(_Player1._Horizontal));
 
             //Convert fire float to bool
-            Ranged1 = (Input.GetAxis(_Player1._Ranged) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
-            Melee1 = (Input.GetAxis(_Player1._Melee) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
+            Ranged1 = (Input.GetAxisRaw(_Player1._Ranged) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
+            Melee1 = (Input.GetAxisRaw(_Player1._Melee) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
         }
         else {
             Vertical1 = Input.GetAxisRaw(_Player1._Vertical);
             Horizontal1 = Input.GetAxisRaw(_Player1._Horizontal);
 
-            Ranged1 = Input.GetButtonDown(_Player1._Ranged);
-            Melee1 = Input.GetButtonDown(_Player1._Melee);
+            Ranged1 = Input.GetButton(_Player1._Ranged);
+            Melee1 = Input.GetButton(_Player1._Melee);
         }
 
         Jump1 = Input.GetButtonDown(_Player1._Jump);
@@ -271,6 +286,8 @@ public class InputManager : Singleton<InputManager>
         Heal1 = Input.GetButtonDown(_Player1._Heal);
         Ultimate1 = Input.GetButtonDown(_Player1._Ultimate);
         Interact1 = Input.GetButtonDown(_Player1._Interact);
+        LB1 = Input.GetButtonDown(_Player1._LB);
+        RB1 = Input.GetButtonDown(_Player1._RB);
         #endregion
         
         #region Player2
@@ -280,8 +297,8 @@ public class InputManager : Singleton<InputManager>
             Horizontal2 = Mathf.Round(Input.GetAxisRaw(_Player2._Horizontal));
 
             //Convert fire float to bool
-            Ranged2 = ((Input.GetAxis(_Player2._Ranged)) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
-            Melee2 = ((Input.GetAxis(_Player2._Melee)) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
+            Ranged2 = ((Input.GetAxisRaw(_Player2._Ranged)) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
+            Melee2 = ((Input.GetAxisRaw(_Player2._Melee)) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
             /* Fire12 = Input.GetAxis(_Player2._Ranged2);
             Fire22 = Input.GetAxis(_Player2._Melee2); */
         }
@@ -290,8 +307,8 @@ public class InputManager : Singleton<InputManager>
             Vertical2 = Input.GetAxisRaw(_Player2._Vertical);
             Horizontal2 = Input.GetAxisRaw(_Player2._Horizontal);
 
-            Ranged2 = Input.GetButtonDown(_Player2._Ranged);
-            Melee2 = Input.GetButtonDown(_Player2._Melee);
+            Ranged2 = Input.GetButton(_Player2._Ranged);
+            Melee2 = Input.GetButton(_Player2._Melee);
         }
 
         Jump2 = Input.GetButtonDown(_Player2._Jump);
@@ -300,6 +317,8 @@ public class InputManager : Singleton<InputManager>
         Heal2 = Input.GetButtonDown(_Player2._Heal);
         Ultimate2 = Input.GetButtonDown(_Player2._Ultimate);
         Interact2 = Input.GetButtonDown(_Player2._Interact);
+        LB2 = Input.GetButtonDown(_Player2._LB);
+        RB2 = Input.GetButtonDown(_Player2._RB);
         #endregion
     }
 }
