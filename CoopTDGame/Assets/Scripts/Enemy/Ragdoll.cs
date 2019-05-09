@@ -27,6 +27,14 @@ public class Ragdoll : MonoBehaviour
 
     private float defaultSpeed;
 
+
+
+
+
+
+
+    private bool ragdollToggle = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +71,13 @@ public class Ragdoll : MonoBehaviour
 
         if (ragdollOnStart) {
             toggleRagdoll(true);
+        }
+    }
+
+    void Update() {
+        if (Input.GetKeyDown(KeyCode.M)) {
+            ragdollToggle = !ragdollToggle;
+            toggleRagdoll(ragdollToggle);
         }
     }
 
@@ -154,9 +169,7 @@ public class Ragdoll : MonoBehaviour
         BoxCollider boxCollider = rig.GetComponent<BoxCollider>();
         boxCollider.enabled = true;
         //Half torso box collider
-        boxCollider.size = new Vector3(boxCollider.size.x*0.5f, boxCollider.size.y, boxCollider.size.z*0.5f);
-
-        
+        boxCollider.size = new Vector3(boxCollider.size.x*0.5f, boxCollider.size.y*0.5f, boxCollider.size.z*0.8f);        
 
         /* mainCollider.radius *= 0.25f;
         mainCollider.height *= 0.5f; */

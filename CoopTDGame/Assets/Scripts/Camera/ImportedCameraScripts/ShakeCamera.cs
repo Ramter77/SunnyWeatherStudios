@@ -12,13 +12,17 @@ public class ShakeCamera : MonoBehaviour {
     {
         position = transform.localPosition;
 	}
+
+
 	
 	void Update () 
     {
+        if (Input.GetKey(KeyCode.N)) {
         if (positionShakeSpeed > 0)
         {   
             Debug.Log("shake");
             transform.localPosition = position + Vector3.Scale(SmoothRandom.GetVector3(positionShakeSpeed), positionShakeRange);
+        }
         }
 	}
 }

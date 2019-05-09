@@ -556,7 +556,7 @@ GameObject:
   - component: {fileID: 7511806057366465253}
   - component: {fileID: 2323864931533410183}
   m_Layer: 0
-  m_Name: BOSS_Enemy_Character_1@T-Pose (RAGDOLL)
+  m_Name: BOSS_Enemy(RAGDOLL)
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -612,6 +612,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dampTime: 0.2
   setSpeedPercentage: 1
+  setSpeedMultiplier: 1
+  speedMultiplier: 0.5
   stopMovementWhenNotGrounded: 1
   setInjuredLayerWeight: 1
 --- !u!114 &3726828852262387536
