@@ -16,7 +16,7 @@ public class PlayerWeaponDamage : MonoBehaviour
     { 
         if(other.gameObject.tag == "Enemy" && other.gameObject != lastHitEnemy)
         {
-            Debug.Log("Weapon hit enemy");
+            //Debug.Log("Weapon hit enemy");
             lastHitEnemy = other.gameObject;
             other.gameObject.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
             StartCoroutine(resetLastHitGO());

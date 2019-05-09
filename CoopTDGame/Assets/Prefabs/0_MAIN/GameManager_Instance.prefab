@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 5721786437306105353}
   - component: {fileID: 8106289129259376002}
   - component: {fileID: 256656429}
+  - component: {fileID: 8703649603730897719}
+  - component: {fileID: 2073116336198379852}
   m_Layer: 0
   m_Name: GameManager_Instance
   m_TagString: Untagged
@@ -67,79 +69,75 @@ MonoBehaviour:
     LockMouse: 1
   _ControllerControl:
     ControllerTriggerAxisLimit: 0.5
-  _Player:
+  _Player0:
     useController: 0
-    _Vertical: Vertical
-    _Horizontal: Horizontal
-    _Jump: Jump
-    _MouseInputX: MouseX
-    _MouseInputY: MouseY
-    _Fire1: Fire1
-    _Fire2: Fire2
-    _isRunning: Run
-    _Heal: Heal
-    _Slash: Slash
-    _Ultimate: Ultimate
+    _Vertical: Vertical0
+    _Horizontal: Horizontal0
+    _MouseInputX: MouseX0
+    _MouseInputY: MouseY0
+    _Ranged: Fire10
+    _Melee: Fire20
+    _Run: Run0
+    _Jump: Jump0
+    _Heal: Ability10
+    _Ultimate: Ability20
+    _Interact: Ability30
   _Player1:
     useController: 1
     _Vertical: Vertical1
     _Horizontal: Horizontal1
-    _Jump: Jump1
     _MouseInputX: MouseX1
     _MouseInputY: MouseY1
-    _Fire1: Fire11
-    _Fire2: Fire21
-    _isRunning: Run1
+    _Ranged: Fire11
+    _Melee: Fire21
+    _Run: Run1
+    _Jump: Jump1
     _Heal: Heal1
-    _Slash: Slash1
     _Ultimate: Ultimate1
-    _BuildMode: BuildMode1
+    _Interact: Ability31
   _Player2:
     useController: 1
     _Vertical: Vertical2
     _Horizontal: Horizontal2
-    _Jump: Jump2
     _MouseInputX: MouseX2
     _MouseInputY: MouseY2
-    _Fire1: Fire12
-    _Fire2: Fire22
-    _isRunning: Run2
+    _Ranged: Fire12
+    _Melee: Fire22
+    _Run: Run2
+    _Jump: Jump2
     _Heal: Heal2
-    _Slash: Slash2
     _Ultimate: Ultimate2
-    _BuildMode: BuildMode2
-  Vertical: 0
-  Horizontal: 0
-  Jump: 0
-  MouseInput: {x: 0, y: 0}
-  Fire1: 0
-  Fire2: 0
-  isRunning: 0
-  Heal: 0
-  Slash: 0
-  Ultimate: 0
+    _Interact: Ability32
+  Vertical0: 0
+  Horizontal0: 0
+  MouseInput0: {x: 0, y: 0}
+  Ranged0: 0
+  Melee0: 0
+  Run0: 0
+  Jump0: 0
+  Heal0: 0
+  Ultimate0: 0
+  Interact0: 0
   Vertical1: 0
   Horizontal1: 0
-  Jump1: 0
   MouseInput1: {x: 0, y: 0}
-  Fire11: 0
-  Fire21: 0
-  isRunning1: 0
+  Ranged1: 0
+  Melee1: 0
+  Run1: 0
+  Jump1: 0
   Heal1: 0
-  Slash1: 0
   Ultimate1: 0
-  BuildMode1: 0
+  Interact1: 0
   Vertical2: 0
   Horizontal2: 0
-  Jump2: 0
   MouseInput2: {x: 0, y: 0}
-  Fire12: 0
-  Fire22: 0
-  isRunning2: 0
+  Ranged2: 0
+  Melee2: 0
+  Run2: 0
+  Jump2: 0
   Heal2: 0
-  Slash2: 0
   Ultimate2: 0
-  BuildMode2: 0
+  Interact2: 0
   _strJoystickName: 
   _iButtonNumber: 0
   _iJoystickNumber: 0
@@ -268,3 +266,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 868082c66463d30479422a77631272cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8703649603730897719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256656428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef722d059f18c3148a5d31aaf2efe3db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2073116336198379852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256656428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbc410d751b4dbb46bc72e0bd22e2e88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHitExplosion: {fileID: 6826820034995168941, guid: fe6744b2c4a60b54c9553f8f9b33afe8,
+    type: 3}
+  fireballExplosion: {fileID: 115286, guid: bdc554c1634c5dd4da1bae1cf2ac3c64, type: 3}
+  iceballExplosion: {fileID: 153912, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
+  blastballExplosion: {fileID: 147226, guid: 048183cabac4fd64296e7560006a3cb3, type: 3}
