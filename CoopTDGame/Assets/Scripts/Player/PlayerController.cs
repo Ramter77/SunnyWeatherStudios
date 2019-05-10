@@ -24,6 +24,9 @@ public class PlayerController : MonoBehaviour
     private PlayerAnim playerAnim;
     [HideInInspector]
     public AudioSource audioSource;
+    CharacterController charController;
+    [SerializeField] private float slopeForce;
+    [SerializeField] private float slopeForceRayLength;
     #endregion
 
     void Awake()
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
         
         playerAnim = GetComponent<PlayerAnim>();
         audioSource = GetComponent<AudioSource>();
+        charController = GetComponent<CharacterController>();
     }
 
     private void Start() {
@@ -57,7 +61,24 @@ public class PlayerController : MonoBehaviour
         if (TurnPlayerForward) {
             SmoothLookForward();
         }
+        if(OnSlope())
+        {
+            charController.Move(Vector3.down * charController.height / 2 * slopeForce * Time.deltaTime);
+        }
     }
+
+    private bool OnSlope()
+    {
+        if (isJumping)
+            return false;
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, charController.height / 2 * slopeForceRayLength))
+            if (hit.normal != Vector3.up)
+                return true;
+        return false;
+    }
+
 
     private void SmoothLookForward(){
         //Turn player to cameras look rotation
