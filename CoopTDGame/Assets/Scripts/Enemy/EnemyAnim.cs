@@ -14,7 +14,7 @@ public class EnemyAnim : MonoBehaviour {
     private bool setSpeedMultiplier = true;
     [Tooltip ("Multiplies the speed of all animations by this multiplier")]
     [SerializeField]
-    private float speedMultiplier = 1f;    
+    public float speedMultiplier = 1f;    
     [Tooltip ("Sets the agent speed to 0 when not in the 'Grounded' animation blend tree")]
     [SerializeField]
     private bool stopMovementWhenNotGrounded;

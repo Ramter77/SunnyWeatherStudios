@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5750830792990983559}
   - component: {fileID: 658456508164392532}
   - component: {fileID: 3509651711479888806}
+  - component: {fileID: 8615860283899236736}
   m_Layer: 0
   m_Name: Iceball
   m_TagString: ElementProjectile
@@ -95,19 +96,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d48b706a4df57446a17d226372bf30e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 10
-  disableDamageScriptOnContact: 1
-  parentOnContact: 1
-  adjustWhenParentingOnContact: 1
-  destroyOnContact: 0
-  stopVelocityOnContact: 1
-  kinematicOnContact: 1
+  burnEnemiesOnContact: 0
+  freezeEnemiesOnContact: 1
   unparentChildOnContact: 0
   destroyChildOnContact: 0
   childDestroyTime: 10
-  lifetimeMinMax: {x: 4, y: 4}
-  burnEnemiesOnContact: 0
-  freezeEnemiesOnContact: 1
+  vfxLifetimeMinMax: {x: 4, y: 4}
+  destroyOnContact: 0
+  destroyTime: 10
+  disableDamageScriptOnContact: 1
+  stopVelocityOnContact: 1
+  kinematicOnContact: 1
+  parentOnContact: 1
+  adjustWhenParentingOnContact: 1
 --- !u!108 &2346435194113405527
 Light:
   m_ObjectHideFlags: 0
@@ -267,6 +268,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usedElement: 2
   effectIndex: 0
+--- !u!114 &8615860283899236736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113481993458745524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76887f3471b34c419bd85c7fc9fb9d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  damage: 20
+  penetrationFactor: 10
 --- !u!1 &4356106845673668711
 GameObject:
   m_ObjectHideFlags: 0

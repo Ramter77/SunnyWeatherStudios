@@ -60,7 +60,7 @@ Transform:
   m_GameObject: {fileID: 337065605337123481}
   m_LocalRotation: {x: -0.7071069, y: -0, z: -0, w: 0.70710677}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 100, y: 100.000015, z: 100.00007}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8984321556602797030}
   m_RootOrder: 0
@@ -90,7 +90,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 32274fefb62bda94c83290ffff21da73, type: 2}
+  - {fileID: 2100000, guid: c9a7fd0801ac33c46b89652e5205b9bb, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -140,7 +140,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 123
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8984321556602797030
 Transform:
   m_ObjectHideFlags: 0
@@ -149,8 +149,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1025838237891953612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.87, y: 12.52, z: 0.55}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -0.87, y: 28.35, z: 0.55}
+  m_LocalScale: {x: 300, y: 300, z: 300}
   m_Children:
   - {fileID: 5139060713326646723}
   m_Father: {fileID: 6583948794926743055}
@@ -215,7 +215,7 @@ GameObject:
   - component: {fileID: 296385467}
   - component: {fileID: 296385468}
   - component: {fileID: 6676443270354138882}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Tower_Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -292,6 +292,11 @@ MonoBehaviour:
   closestEnemy: {fileID: 0}
   gos: []
   shooter: {fileID: 1025838237891953612}
+  bulletPrefabs:
+  - {fileID: 455592500324762051, guid: 0f07f9cff13c3b3449f56e35a515922b, type: 3}
+  - {fileID: 113481993458745524, guid: 1145971759cf4554183ec2c4d65d44eb, type: 3}
+  - {fileID: 113481993458745524, guid: aa2f8ce765f12b14ab772ed55baed70a, type: 3}
+  - {fileID: 0}
   bulletPrefab: {fileID: 455592500324762051, guid: 0f07f9cff13c3b3449f56e35a515922b,
     type: 3}
   shootingPoint: {fileID: 8984321556602797030}
@@ -330,7 +335,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 15
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!111 &296385468
 Animation:
   m_ObjectHideFlags: 0
@@ -360,6 +365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trapDuration: 10
+  towerActive: 0
+  trapActive: 0
   disabledVFX: {fileID: 13018920001646016}
   enabledVFX: {fileID: 1083060925}
 --- !u!1 &2725089659040535179
@@ -376,6 +383,7 @@ GameObject:
   - component: {fileID: 5234404637006732804}
   - component: {fileID: 2847020772529151392}
   - component: {fileID: 2068852245058561547}
+  - component: {fileID: 307556178}
   m_Layer: 0
   m_Name: _tower
   m_TagString: Untagged
@@ -464,7 +472,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2725089659040535179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86a7a61810191484da31877229740a91, type: 3}
   m_Name: 
@@ -495,6 +503,24 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.0050000004, y: 0.006, z: 0.015000001}
   m_TimeToStationary: 0.5
+--- !u!114 &307556178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725089659040535179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8462d778f7b429419c5fb67b31be2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileTag: ElementProjectile
+  trapFireVFX: {fileID: 0}
+  trapIceVFX: {fileID: 0}
+  crystalObject: {fileID: 337065605337123481}
+  fireMat: {fileID: 2100000, guid: 195ffe05c15f6174883e2716c5fee538, type: 2}
+  iceMat: {fileID: 2100000, guid: 32274fefb62bda94c83290ffff21da73, type: 2}
 --- !u!1 &5281330852495207241
 GameObject:
   m_ObjectHideFlags: 0
@@ -519,7 +545,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5281330852495207241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -12.51, z: 0}
+  m_LocalPosition: {x: 0, y: -12.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8670951264699820415}

@@ -6,15 +6,17 @@ public class ActivatePrefab : MonoBehaviour
 {
     [SerializeField]
     private float trapDuration = 10.0f;
+    private float maxTrapDuration;
     private SphereCollider activationCollider;
     private Animation anim;
     private Transform meshChild;
+    private CombineElements combineElementScript;
     private bool isTower;
-    private bool towerActive;
-    private bool trapActive;
+    public bool towerActive;
+    public bool trapActive;
     private bool startTrapCD;
     private AnimationClip riseTrap, lowerTrap;
-
+    
     private PlayerController playC;
     private bool _input;
 
@@ -23,13 +25,13 @@ public class ActivatePrefab : MonoBehaviour
     private GameObject disabledVFX;
     [SerializeField]
     private GameObject enabledVFX;
-    
 
     void Start()
     {
         activationCollider = GetComponent<SphereCollider>();
         anim = GetComponent<Animation>();
         meshChild = transform.GetChild(0).GetChild(0);
+        combineElementScript = meshChild.GetComponent<CombineElements>();
 
         //isTower = GetComponent<BasicTower>().enabled;
         if (GetComponent<BasicTower>()) {
@@ -39,6 +41,8 @@ public class ActivatePrefab : MonoBehaviour
             riseTrap = anim.GetClip("RiseTrap");
             lowerTrap = anim.GetClip("LowerTrap");
         }
+
+        maxTrapDuration = trapDuration;
     }
 
     /// <summary>
@@ -117,6 +121,7 @@ public class ActivatePrefab : MonoBehaviour
     }
 
     void _LowerTrap() {
+        trapDuration = maxTrapDuration;
         startTrapCD = false;
 
         trapActive = false;
@@ -125,5 +130,8 @@ public class ActivatePrefab : MonoBehaviour
 
         anim.clip = lowerTrap;
         anim.Play();
+
+        combineElementScript.disableVFX();
+        activationCollider.enabled = true;
     }
 }

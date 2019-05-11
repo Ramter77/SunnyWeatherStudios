@@ -12,6 +12,12 @@ public class AdjustMaterial : MonoBehaviour
     [SerializeField]
     private string freezeString = "_Ice";
 
+    [Header ("VFX")]
+    [SerializeField]
+    private GameObject burnVFX;
+    [SerializeField]
+    private GameObject freezeVFX;
+
     [Header ("Options")]
     [SerializeField]    
     private bool useMeshRenderer;
@@ -65,8 +71,8 @@ public class AdjustMaterial : MonoBehaviour
 
         #region BURN
         if (startBurning) {
-            Debug.Log("BURNINIFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF" + burned);
             _AdjustMaterial(burnString, false, burnLerp, burned);
+            burnVFX.SetActive(!burned);
             
             if (burnLerp < 1) { //While lerp is below the end limit
                 //Increment it at the desired rate every frame
@@ -83,6 +89,7 @@ public class AdjustMaterial : MonoBehaviour
         #region FREEZE
         if (startFreezing) {
             _AdjustMaterial(freezeString, false, freezeLerp, frozen);
+            freezeVFX.SetActive(!frozen);
             
             if (freezeLerp < 1) { //While lerp is below the end limit
                 //Increment it at the desired rate every frame
@@ -90,6 +97,7 @@ public class AdjustMaterial : MonoBehaviour
             }
             else
             {
+                startFreezing = false;
                 frozen = !frozen;
             }
         }

@@ -11,6 +11,7 @@ public class BasicTower : MonoBehaviour
     [SerializeField] private GameObject[] gos; // game object array for enemies
     public GameObject shooter; // the tower - used for intercept calculation
     private GameObject target; // the target he picked from the enemy array - used for intercept calculation
+    public GameObject[] bulletPrefabs;
     public GameObject bulletPrefab; // prefab he shoots
     public Transform shootingPoint;
     public Transform centerAttackRadius; // center for attack range calculation
@@ -36,6 +37,8 @@ public class BasicTower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        bulletPrefab = bulletPrefabs[0];
+
         FindClosestTarget();
         target = closestEnemy;
         attackSpeed = 2;
@@ -155,6 +158,10 @@ void Update()
             Handles.DrawSolidDisc(centerAttackRadius.position, Vector3.down, attackRange);
         }
         #endif
+    }
+
+    public void changeProjectile(int i) {
+        bulletPrefab = bulletPrefabs[i];
     }
 
     /// <summary>
