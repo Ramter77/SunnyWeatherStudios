@@ -24,6 +24,8 @@ public class PlayerAnim : MonoBehaviour
     private float _horizontalInput;
     private bool _runInput;
     private bool _jumpInput;
+    private bool toggleRun;
+    private bool toggleRunning;
     #endregion
 
     /* [SerializeField] float m_JumpPower = 12f; */
@@ -42,6 +44,8 @@ public class PlayerAnim : MonoBehaviour
         animator = GetComponent<Animator>();
         charController = GetComponent<CharacterController>();
         playerRB = GetComponent<Rigidbody>();
+
+        toggleRun = InputManager.Instance.toggleRun;
     }
 
     void Update()
@@ -77,11 +81,25 @@ public class PlayerAnim : MonoBehaviour
         #endregion
 
         #region Run
-        if (_runInput) {
-            animator.SetFloat("isRunning", 0, buttonDamping, Time.deltaTime);
+        if (toggleRun) {
+            if (_runInput) {
+                if (toggleRunning) {
+                    animator.SetFloat("isRunning", 0, buttonDamping, Time.time);
+                }
+                else
+                {
+                    animator.SetFloat("isRunning", 1, buttonDamping, Time.time);
+                }
+                toggleRunning = !toggleRunning;
+            }
         }
         else {
-            animator.SetFloat("isRunning", 1, buttonDamping, Time.deltaTime);
+            if (_runInput) {
+                animator.SetFloat("isRunning", 0, buttonDamping, Time.deltaTime);
+            }
+            else {
+                animator.SetFloat("isRunning", 1, buttonDamping, Time.deltaTime);
+            }
         }
         #endregion
 

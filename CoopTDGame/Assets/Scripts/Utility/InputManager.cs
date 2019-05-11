@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class InputManager : Singleton<InputManager>
 {
+    [SerializeField]
+    public bool toggleRun;
+
     #region Mouse Control
     [System.Serializable]
     public class MouseControl {
@@ -253,7 +256,14 @@ public class InputManager : Singleton<InputManager>
         }
 
         MouseInput0 = new Vector2(Input.GetAxisRaw(_Player0._MouseInputX), Input.GetAxisRaw(_Player0._MouseInputY));
-        Run0 = Input.GetButton(_Player0._Run);
+
+        if (toggleRun) {
+            Run0 = Input.GetButtonDown(_Player0._Run);
+        }
+        else
+        {
+            Run0 = Input.GetButton(_Player0._Run);
+        }
         Jump0 = Input.GetButtonDown(_Player0._Jump);
         Heal0 = Input.GetButtonDown(_Player0._Heal);
         Ultimate0 = Input.GetButtonDown(_Player0._Ultimate);
