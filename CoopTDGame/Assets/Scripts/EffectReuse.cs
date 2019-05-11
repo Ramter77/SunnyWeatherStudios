@@ -17,6 +17,13 @@ public class EffectReuse : PoolObject
         {
             myParticleSystem.Simulate(0.0f, true, true);
             myParticleSystem.Play();
+            //Invoke("HideSelf", 2);
         }
     }
+
+    void HideSelf()
+    {
+        gameObject.SetActive(false);
+    }
+
 }

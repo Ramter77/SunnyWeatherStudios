@@ -80,10 +80,10 @@ public class PoolManager : MonoBehaviour
         {
             if(hasPoolObjectComponent)
             {
-                gameObject.SetActive(true);
                 transform.position = position;
                 transform.rotation = rotation;
                 PoolObjectScript.OnObjectReuse();
+                gameObject.SetActive(true);
             }
         }
 

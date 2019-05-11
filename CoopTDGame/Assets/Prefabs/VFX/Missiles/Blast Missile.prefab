@@ -4700,13 +4700,14 @@ MonoBehaviour:
   disableDamageScriptOnContact: 0
   parentOnContact: 1
   adjustWhenParentingOnContact: 0
-  destroyOnContact: 0
+  destroyOnContact: 1
   stopVelocityOnContact: 1
   kinematicOnContact: 0
   unparentChildOnContact: 0
   destroyChildOnContact: 0
   childDestroyTime: 4
   lifetimeMinMax: {x: 4, y: 4}
+  burnEnemiesOnContact: 0
 --- !u!135 &639020462421659225
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4718,7 +4719,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.2
+  m_Radius: 0.2748077
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &3553916147953047504
 SphereCollider:
@@ -4731,7 +4732,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.3987941
+  m_Radius: 0.11227575
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &122346
 GameObject:
