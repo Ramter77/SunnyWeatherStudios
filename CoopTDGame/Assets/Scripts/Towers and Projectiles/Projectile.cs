@@ -9,30 +9,20 @@ public class Projectile : MonoBehaviour
     /* [SerializeField]
     private float speed = 10; */
 
-    [Tooltip ("Seconds before destroying game object")]
+    [Header ("Status effects")]
+    [Tooltip ("Applies the burning status effect to enemies on contact")]
     [SerializeField]
-    private float destroyTime = 5;
+    private bool burnEnemiesOnContact;
+    [Tooltip ("Applies the freezing status effect to enemies on contact")]
+    [SerializeField]
+    private bool freezeEnemiesOnContact;
 
+    
+
+    [Header ("GetChild(0)")]
     [Header ("On Collision")]
-    [Tooltip ("Disable the damage script on contact")]
-    [SerializeField]
-    private bool disableDamageScriptOnContact = false;    
-    [Tooltip ("Parent to colliders on contact")]
-    [SerializeField]
-    private bool parentOnContact = false;
-    [Tooltip ("Adjust position, rotation & scale when parenting to colliders on contact")]
-    [SerializeField]
-    private bool adjustWhenParentingOnContact = false;
-    [Tooltip ("Destroy game object on contact")]
-    [SerializeField]
-    private bool destroyOnContact = false;
-    [Tooltip ("Set the velocity of the game object's rigidbody to zero on contact")]
-    [SerializeField]
-    private bool stopVelocityOnContact = false;
-    [Tooltip ("Set the game object's rigidbody to kinematic")]
-    [SerializeField]
-    private bool kinematicOnContact = false;
-    [Tooltip ("Uparent game object's child (if there is one) before destroying")]
+    [Space (10)]
+    [Tooltip ("Unparent game object's child (if there is one) before destroying")]
     [SerializeField]
     private bool unparentChildOnContact = false;
     [Tooltip ("Destroy the game object's child")]
@@ -41,7 +31,6 @@ public class Projectile : MonoBehaviour
     [Tooltip ("Seconds before destroying the game object's child")]
     [SerializeField]
     private float childDestroyTime = 1;
-
     private VisualEffect vfxChild;
     [Tooltip ("Name of VFX spawn rate property")]
     public static readonly string SPAWN_RATE_NAME = "SpawnRate";
@@ -50,13 +39,34 @@ public class Projectile : MonoBehaviour
     public static readonly string LIFETIME_RATE_NAME = "LifeTimeMinMax";
     [Tooltip ("Min & Max lifetime of child VFX in seconds (max should be lower than destroy time)")]
     [SerializeField]
-    private Vector2 lifetimeMinMax = new Vector2(4,4);
+    private Vector2 vfxLifetimeMinMax = new Vector2(4,4);
 
-
-    [Header ("Status effects")]
-    [Tooltip ("Applies the burning status effect to enemies on contact")]
+    [Header ("This gameObject")]
+    [Tooltip ("Destroy game object on contact (If 'destroyOnContact' is enabled then the following options on collision are ignored)")]
     [SerializeField]
-    private bool burnEnemiesOnContact;
+    private bool destroyOnContact = false;
+    [Space (10)]
+    [Tooltip ("Seconds before destroying game object")]
+    [SerializeField]
+    private float destroyTime = 5;
+    [Tooltip ("Disable the damage script on contact")]
+    [SerializeField]
+    private bool disableDamageScriptOnContact = false;  
+    [Tooltip ("Set the velocity of the game object's rigidbody to zero on contact")]
+    [SerializeField]
+    private bool stopVelocityOnContact = false;
+    [Tooltip ("Set the game object's rigidbody to kinematic")]
+    [SerializeField]
+    private bool kinematicOnContact = false;
+    [Tooltip ("Parent to colliders on contact")]
+    [SerializeField]
+    private bool parentOnContact = false;
+    [Tooltip ("Adjust position, rotation & scale when parenting to colliders on contact")]
+    [SerializeField]
+    private bool adjustWhenParentingOnContact = false;
+    
+
+    
     
 
     private Light lightSource;
@@ -73,7 +83,7 @@ public class Projectile : MonoBehaviour
             if (transform.GetChild(0) != null) {
                 //Set VFX lifetime
                 GameObject child = transform.GetChild(0).gameObject;
-                child.GetComponent<VisualEffect>().SetVector2(LIFETIME_RATE_NAME, lifetimeMinMax);
+                child.GetComponent<VisualEffect>().SetVector2(LIFETIME_RATE_NAME, vfxLifetimeMinMax);
             }
         }
 
@@ -104,55 +114,69 @@ public class Projectile : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
+        #region Child (Stop VFX spawnRate & maybe unparent child)
+        if (transform != null) {
+            if (transform.childCount > 0) {
+                GameObject child = transform.GetChild(0).gameObject;
+                
+                if (child.GetComponent<VisualEffect>() != null) {
+                    vfxChild = child.GetComponent<VisualEffect>();
+
+                    vfxChild.SetFloat(SPAWN_RATE_NAME, 0);
+                    vfxChild.SetVector2(LIFETIME_RATE_NAME, new Vector2(0,0));
+                }
+                
+                if (unparentChildOnContact) {
+                    #region Destroy Child
+                    if (destroyChildOnContact) {
+                        Destroy(child, childDestroyTime);
+                    }
+                    #endregion
+
+                    child.transform.parent = null;
+                }
+            }
+        }
+        #endregion
+
+
+
+        #region On contact with an ENEMY
+        if (other.gameObject.tag == "Enemy") {
+            //References & allow interaction
+            StatusEffect statusEffect = other.gameObject.GetComponent<StatusEffect>();
+            ElementInteractor elemInteraction = other.gameObject.GetComponent<ElementInteractor>();
+            elemInteraction.allowInteraction = true;
+
+            #region BURN
+            if (burnEnemiesOnContact) {
+                //Burn
+                statusEffect.BurnCoroutine();
+
+                //Set type
+                elemInteraction.elementType = Element.Fire;
+            }
+            #endregion
+
+            #region FREEZE
+            if (freezeEnemiesOnContact) {
+                //Freeze
+                statusEffect.FreezeCoroutine();
+
+                //Set type
+                elemInteraction.elementType = Element.Ice;
+            }
+            #endregion
+        }
+        #endregion
+
+
         #region Destroy
         if (destroyOnContact) {
-            Destroy(gameObject);
+            Destroy(gameObject, 0.05f);
         }
         #endregion
         else {
-            #region On contact with an ENEMY
-            if (other.gameObject.tag == "Enemy") {
-                #region BURN
-                if (burnEnemiesOnContact) {
-                    //Burn
-                    StatusEffect statusEffect = other.gameObject.GetComponent<StatusEffect>();
-                    statusEffect.BurnCoroutine();
-
-                    //Allow interaction
-                    ElementInteractor elemInteraction = other.gameObject.GetComponent<ElementInteractor>();
-                    elemInteraction.elementType = Element.Fire;
-                    elemInteraction.allowInteraction = true;
-                }
-                #endregion
-            }
-            #endregion
-
-
-            #region Child (Stop VFX spawnRate & maybe unparent child)
-            if (transform != null) {
-                if (transform.childCount > 0) {
-                    GameObject child = transform.GetChild(0).gameObject;
-                    
-                    if (child.GetComponent<VisualEffect>() != null) {
-                        vfxChild = child.GetComponent<VisualEffect>();
-
-                        vfxChild.SetFloat(SPAWN_RATE_NAME, 0);
-                        vfxChild.SetVector2(LIFETIME_RATE_NAME, new Vector2(0,0));
-                    }
-                    
-                    if (unparentChildOnContact) {
-                        #region Destroy Child
-                        if (destroyChildOnContact) {
-                            Destroy(child, childDestroyTime);
-                        }
-                        #endregion
-
-                        child.transform.parent = null;
-                    }
-                }
-            }
-            #endregion
-
             #region Turn off damage script on contact
             if (disableDamageScriptOnContact) {
                 if (GetComponent<PlayerWeaponDamage>() != null) {

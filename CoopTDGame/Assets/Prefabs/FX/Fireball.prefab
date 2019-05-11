@@ -95,18 +95,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d48b706a4df57446a17d226372bf30e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyTime: 10
-  disableDamageScriptOnContact: 0
-  parentOnContact: 1
-  adjustWhenParentingOnContact: 0
-  destroyOnContact: 0
-  stopVelocityOnContact: 1
-  kinematicOnContact: 0
-  unparentChildOnContact: 0
+  burnEnemiesOnContact: 1
+  freezeEnemiesOnContact: 0
+  unparentChildOnContact: 1
   destroyChildOnContact: 0
   childDestroyTime: 4
-  lifetimeMinMax: {x: 4, y: 4}
-  burnEnemiesOnContact: 1
+  vfxLifetimeMinMax: {x: 4, y: 4}
+  destroyOnContact: 1
+  destroyTime: 10
+  disableDamageScriptOnContact: 0
+  stopVelocityOnContact: 0
+  kinematicOnContact: 0
+  parentOnContact: 0
+  adjustWhenParentingOnContact: 0
 --- !u!108 &2346435194113405527
 Light:
   m_ObjectHideFlags: 0

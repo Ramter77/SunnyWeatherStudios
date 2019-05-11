@@ -46,7 +46,7 @@ public class EffectHandler : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if(exploded == false)
+        if (exploded == false)
         {
             Vector3 offset = new Vector3(0, 1, 0);
             Vector3 spawnPoint = transform.position + offset;
