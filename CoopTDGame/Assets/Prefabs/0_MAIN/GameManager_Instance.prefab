@@ -19,6 +19,8 @@ GameObject:
   - component: {fileID: 256656429}
   - component: {fileID: 8703649603730897719}
   - component: {fileID: 2073116336198379852}
+  - component: {fileID: 230509593}
+  - component: {fileID: 230509602}
   m_Layer: 0
   m_Name: GameManager_Instance
   m_TagString: Untagged
@@ -33,7 +35,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256656428}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -82,6 +84,8 @@ MonoBehaviour:
     _Heal: Ability10
     _Ultimate: Ability20
     _Interact: Ability30
+    _LB: LB0
+    _RB: RB0
   _Player1:
     useController: 1
     _Vertical: Vertical1
@@ -92,9 +96,11 @@ MonoBehaviour:
     _Melee: Fire21
     _Run: Run1
     _Jump: Jump1
-    _Heal: Heal1
-    _Ultimate: Ultimate1
+    _Heal: Ability11
+    _Ultimate: Ability21
     _Interact: Ability31
+    _LB: LB1
+    _RB: RB1
   _Player2:
     useController: 1
     _Vertical: Vertical2
@@ -105,9 +111,11 @@ MonoBehaviour:
     _Melee: Fire22
     _Run: Run2
     _Jump: Jump2
-    _Heal: Heal2
-    _Ultimate: Ultimate2
+    _Heal: Ability12
+    _Ultimate: Ability22
     _Interact: Ability32
+    _LB: LB2
+    _RB: RB2
   Vertical0: 0
   Horizontal0: 0
   MouseInput0: {x: 0, y: 0}
@@ -118,6 +126,8 @@ MonoBehaviour:
   Heal0: 0
   Ultimate0: 0
   Interact0: 0
+  LB0: 0
+  RB0: 0
   Vertical1: 0
   Horizontal1: 0
   MouseInput1: {x: 0, y: 0}
@@ -128,6 +138,8 @@ MonoBehaviour:
   Heal1: 0
   Ultimate1: 0
   Interact1: 0
+  LB1: 0
+  RB1: 0
   Vertical2: 0
   Horizontal2: 0
   MouseInput2: {x: 0, y: 0}
@@ -138,6 +150,8 @@ MonoBehaviour:
   Heal2: 0
   Ultimate2: 0
   Interact2: 0
+  LB2: 0
+  RB2: 0
   _strJoystickName: 
   _iButtonNumber: 0
   _iJoystickNumber: 0
@@ -162,13 +176,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256656428}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 288a83d0afc184f47a63045585577571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slowMoHotkey: 32
-  holdHotKey: 1
+  slowMoHotkey: 117
+  holdHotKey: 0
   slowMotionTimeScale: 0.4
 --- !u!114 &8611296634836897472
 MonoBehaviour:
@@ -295,3 +309,36 @@ MonoBehaviour:
   fireballExplosion: {fileID: 115286, guid: bdc554c1634c5dd4da1bae1cf2ac3c64, type: 3}
   iceballExplosion: {fileID: 153912, guid: 932046b7eaf3b554f8d74c81e2f00558, type: 3}
   blastballExplosion: {fileID: 147226, guid: 048183cabac4fd64296e7560006a3cb3, type: 3}
+--- !u!114 &230509593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256656428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de5eaca2aa26c5f4cafcc220c0bbd769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reactionPrefabs:
+  - {fileID: 2032401034173042461, guid: 93b1d625ef996164884420c8fcb7fd91, type: 3}
+  requestingInteractor: {fileID: 0}
+  productElement: 0
+  reactionIndex: 0
+--- !u!114 &230509602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256656428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 169c11a0a61ccb84fa49c0f420c0455f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tests: 0
+  stopSoundBeforeNext: 0
+  soundAudioSource: {fileID: 0}
+  musicAudioSource: {fileID: 0}

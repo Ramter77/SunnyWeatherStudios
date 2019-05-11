@@ -7,15 +7,15 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] private string horizontalInputName;
     [SerializeField] private string verticalInputName;
 
-    [SerializeField] private float walkSpeed;
-    [SerializeField] private float runSpeed;
+    [SerializeField] private float walkSpeed = 1;
+    [SerializeField] private float runSpeed = 2;
     [SerializeField] private float buildUpRunSpeed;
     [SerializeField] private KeyCode runKey;
 
     private float movementSpeed;
 
-    [SerializeField] private float slopeForce;
-    [SerializeField] private float slopeForceRayLength;
+    [SerializeField] private float slopeForce = 12;
+    [SerializeField] private float slopeForceRayLength = 1;
 
     private CharacterController charController;
 

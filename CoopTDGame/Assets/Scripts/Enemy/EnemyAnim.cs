@@ -4,8 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 
 public class EnemyAnim : MonoBehaviour {
-    [SerializeField]
-    private float dampTime = 0.2f;
+    /* [SerializeField]
+    private float dampTime = 0.2f; */
     [Tooltip ("Sets the 'speedPercentage' variable of the animator to handle movement animations")]
     [SerializeField]
     private bool setSpeedPercentage = true;

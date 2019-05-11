@@ -70,6 +70,7 @@ public class LifeAndStats : MonoBehaviour
                 fractureScript.Fracture(gameObject);
             }
         }
+        
         if (gameObject.CompareTag("Enemy"))
         {
             if (!_dead) {
@@ -98,7 +99,7 @@ public class LifeAndStats : MonoBehaviour
 
                     #region Dissolve
                     if (dissolveOnDeath) {
-                        GetComponent<DissolveDelay>().DissolveCoroutine();
+                        GetComponent<StatusEffect>().DissolveCoroutine();
                     }
                     #endregion
                 }

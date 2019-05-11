@@ -265,8 +265,10 @@ GameObject:
   - component: {fileID: 776199511}
   - component: {fileID: 776199510}
   - component: {fileID: 776199521}
-  - component: {fileID: 4094519002884726250}
   - component: {fileID: 1560184034320636103}
+  - component: {fileID: 1938275148637552760}
+  - component: {fileID: 574218289363473349}
+  - component: {fileID: 4859211874745313367}
   m_Layer: 0
   m_Name: Ranged_Enemy(RAGDOLL)
   m_TagString: Enemy
@@ -323,7 +325,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e33bc274016d6a41825384bb974e4f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dampTime: 0.2
   setSpeedPercentage: 1
   setSpeedMultiplier: 1
   speedMultiplier: 0.6
@@ -506,25 +507,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 1097095242}
   ragdollOnStart: 0
---- !u!114 &4094519002884726250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776199509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ce748c826628d459e019b66fd1ba55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponRenderer: {fileID: 1866237214}
-  startDelay: 3
-  delay: 6
-  useMeshRenderer: 0
-  dissolveOnStart: 0
-  sinkWhileDissolving: 0
-  sinkAmount: 1
 --- !u!114 &1560184034320636103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,6 +520,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 1.5
+--- !u!114 &1938275148637552760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776199509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afedd1ff1f0f5447ba597664ce6492f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponRenderer: {fileID: 7621869506129049584}
+  dissolveOnStart: 0
+  dissolveStartDelay: 3
+  dissolveDelay: 6
+  burnOnStart: 0
+  burnStartDelay: 0
+  burnDelay: 4
+  freezeOnStart: 0
+  freezeStartDelay: 0
+  freezeDelay: 4
+--- !u!114 &574218289363473349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776199509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0254ffe898bf1874e8b0a11fb7d313de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveString: _Dissolve
+  burnString: _Flames
+  freezeString: _Ice
+  useMeshRenderer: 0
+--- !u!114 &4859211874745313367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776199509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01d749b32a1a314eb656955f60a87f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 0
+  projectileTag: ElementProjectile
+  allowInteraction: 0
 --- !u!1 &802091323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2043,7 +2078,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1068218305}
-  - {fileID: 1866237213}
   - {fileID: 730384784539250915}
   - {fileID: 7621869506126755088}
   m_Father: {fileID: 802091324}
@@ -2237,83 +2271,6 @@ Transform:
   m_Father: {fileID: 1741667240}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1866237212
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1866237213}
-  - component: {fileID: 1866237215}
-  - component: {fileID: 1866237214}
-  m_Layer: 0
-  m_Name: Enemy_Weapon_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &1866237213
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866237212}
-  m_LocalRotation: {x: 0.7143989, y: 0.03472184, z: -0.03921479, w: 0.69777566}
-  m_LocalPosition: {x: 0.12, y: 0.39, z: -0.19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1338644496}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 91.39499, y: 18.121994, z: 12.127991}
---- !u!33 &1866237215
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866237212}
-  m_Mesh: {fileID: 4300000, guid: b6f0d54be05b7f04d936556717fcc60b, type: 3}
---- !u!23 &1866237214
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866237212}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
 --- !u!1 &1883842412
 GameObject:
   m_ObjectHideFlags: 0
@@ -2465,7 +2422,7 @@ Transform:
   m_LocalScale: {x: 8.598736, y: 13.970347, z: 182.25143}
   m_Children: []
   m_Father: {fileID: 1338644496}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 21.675001, z: -180.00002}
 --- !u!33 &730384784542118083
 MeshFilter:
@@ -2572,7 +2529,7 @@ Transform:
   m_LocalScale: {x: 12.8981, y: 12.433888, z: 273.3772}
   m_Children: []
   m_Father: {fileID: 1338644496}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
 --- !u!33 &7621869506128082224
 MeshFilter:
@@ -2599,7 +2556,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e43c1612cf185104f97d8454d0d2e811, type: 2}
+  - {fileID: 2100000, guid: 8cb609b1c3cd7fa438c978486193feea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

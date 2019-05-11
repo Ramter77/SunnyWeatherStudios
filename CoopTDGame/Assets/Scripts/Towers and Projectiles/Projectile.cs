@@ -6,8 +6,8 @@ using UnityEngine.Experimental.VFX;
 
 public class Projectile : MonoBehaviour
 {   
-    //[SerializeField]
-    private float speed = 10;
+    /* [SerializeField]
+    private float speed = 10; */
 
     [Tooltip ("Seconds before destroying game object")]
     [SerializeField]
@@ -16,31 +16,33 @@ public class Projectile : MonoBehaviour
     [Header ("On Collision")]
     [Tooltip ("Disable the damage script on contact")]
     [SerializeField]
-    private bool disableDamageScriptOnContact;    
+    private bool disableDamageScriptOnContact = false;    
     [Tooltip ("Parent to colliders on contact")]
     [SerializeField]
-    private bool parentOnContact;
+    private bool parentOnContact = false;
     [Tooltip ("Adjust position, rotation & scale when parenting to colliders on contact")]
     [SerializeField]
-    private bool adjustWhenParentingOnContact;
+    private bool adjustWhenParentingOnContact = false;
     [Tooltip ("Destroy game object on contact")]
     [SerializeField]
-    private bool destroyOnContact;
+    private bool destroyOnContact = false;
     [Tooltip ("Set the velocity of the game object's rigidbody to zero on contact")]
     [SerializeField]
-    private bool stopVelocityOnContact;
+    private bool stopVelocityOnContact = false;
     [Tooltip ("Set the game object's rigidbody to kinematic")]
     [SerializeField]
-    private bool kinematicOnContact;
+    private bool kinematicOnContact = false;
     [Tooltip ("Uparent game object's child (if there is one) before destroying")]
     [SerializeField]
-    private bool unparentChildOnContact;
+    private bool unparentChildOnContact = false;
     [Tooltip ("Destroy the game object's child")]
     [SerializeField]
-    private bool destroyChildOnContact;
+    private bool destroyChildOnContact = false;
     [Tooltip ("Seconds before destroying the game object's child")]
     [SerializeField]
     private float childDestroyTime = 1;
+
+    private VisualEffect vfxChild;
     [Tooltip ("Name of VFX spawn rate property")]
     public static readonly string SPAWN_RATE_NAME = "SpawnRate";
     [Tooltip ("Name of VFX lifetime property")]
@@ -102,32 +104,55 @@ public class Projectile : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
-        #region Child (Stop VFX spawnRate & maybe unparent child)
-        if (transform != null) {
-            if (transform.childCount > 0) {
-                GameObject child = transform.GetChild(0).gameObject;
-                if (unparentChildOnContact) {
-                    #region Destroy Child
-                    if (destroyChildOnContact) {
-                        Destroy(child, destroyTime);
-                    }
-                    #endregion
-
-                    child.transform.parent = null;
-                }
-
-                child.GetComponent<VisualEffect>().SetFloat(SPAWN_RATE_NAME, 0);
-                child.GetComponent<VisualEffect>().SetVector2(LIFETIME_RATE_NAME, new Vector2(0,0));
-            }
-        }
-        #endregion
-
         #region Destroy
         if (destroyOnContact) {
             Destroy(gameObject);
         }
         #endregion
         else {
+            #region On contact with an ENEMY
+            if (other.gameObject.tag == "Enemy") {
+                #region BURN
+                if (burnEnemiesOnContact) {
+                    //Burn
+                    StatusEffect statusEffect = other.gameObject.GetComponent<StatusEffect>();
+                    statusEffect.BurnCoroutine();
+
+                    //Allow interaction
+                    ElementInteractor elemInteraction = other.gameObject.GetComponent<ElementInteractor>();
+                    elemInteraction.elementType = Element.Fire;
+                    elemInteraction.allowInteraction = true;
+                }
+                #endregion
+            }
+            #endregion
+
+
+            #region Child (Stop VFX spawnRate & maybe unparent child)
+            if (transform != null) {
+                if (transform.childCount > 0) {
+                    GameObject child = transform.GetChild(0).gameObject;
+                    
+                    if (child.GetComponent<VisualEffect>() != null) {
+                        vfxChild = child.GetComponent<VisualEffect>();
+
+                        vfxChild.SetFloat(SPAWN_RATE_NAME, 0);
+                        vfxChild.SetVector2(LIFETIME_RATE_NAME, new Vector2(0,0));
+                    }
+                    
+                    if (unparentChildOnContact) {
+                        #region Destroy Child
+                        if (destroyChildOnContact) {
+                            Destroy(child, childDestroyTime);
+                        }
+                        #endregion
+
+                        child.transform.parent = null;
+                    }
+                }
+            }
+            #endregion
+
             #region Turn off damage script on contact
             if (disableDamageScriptOnContact) {
                 if (GetComponent<PlayerWeaponDamage>() != null) {

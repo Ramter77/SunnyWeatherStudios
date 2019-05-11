@@ -17,7 +17,7 @@ public class PlayerClassOne : MonoBehaviour
 
     [Header("Heall Ability Settings")]
 
-    [SerializeField] private KeyCode healAbilityHotkey = KeyCode.Q;
+    /* [SerializeField] private KeyCode healAbilityHotkey = KeyCode.Q; */
 
     public Image healAbilityUiImageOn;
     public Image healAbilityUiImageOff;
@@ -40,7 +40,7 @@ public class PlayerClassOne : MonoBehaviour
 
     [Header("Slash Ability Settings")]
 
-    [SerializeField] private KeyCode slashAbilityHotkey = KeyCode.E;
+    /* [SerializeField] private KeyCode slashAbilityHotkey = KeyCode.E; */
 
     public Image slashAbilityUiImageOn;
     public Image slashAbilityUiImageOff;
@@ -57,7 +57,7 @@ public class PlayerClassOne : MonoBehaviour
 
     [Header("Ultimate Ability Settings")]
 
-    [SerializeField] private KeyCode ultimateAbilityHotkey = KeyCode.Tab;
+    /* [SerializeField] private KeyCode ultimateAbilityHotkey = KeyCode.Tab; */
 
     public Image ultimateAbilityUiImageOn;
     public Image ultimateAbilityUiImageOff;

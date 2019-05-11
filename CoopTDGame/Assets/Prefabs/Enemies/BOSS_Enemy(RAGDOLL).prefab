@@ -553,8 +553,10 @@ GameObject:
   - component: {fileID: 2676044363242361468}
   - component: {fileID: 5130476524632844708}
   - component: {fileID: 5180868588797047482}
-  - component: {fileID: 7511806057366465253}
   - component: {fileID: 2323864931533410183}
+  - component: {fileID: 1681733917274279967}
+  - component: {fileID: 6008695060909011263}
+  - component: {fileID: 3428574695417520000}
   m_Layer: 0
   m_Name: BOSS_Enemy(RAGDOLL)
   m_TagString: Enemy
@@ -610,7 +612,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e33bc274016d6a41825384bb974e4f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dampTime: 0.2
   setSpeedPercentage: 1
   setSpeedMultiplier: 1
   speedMultiplier: 0.5
@@ -792,25 +793,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 81425208564960755}
   ragdollOnStart: 0
---- !u!114 &7511806057366465253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3585406873918648252}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ce748c826628d459e019b66fd1ba55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponRenderer: {fileID: 3127364602419970535}
-  startDelay: 3
-  delay: 10
-  useMeshRenderer: 0
-  dissolveOnStart: 0
-  sinkWhileDissolving: 0
-  sinkAmount: 1
 --- !u!114 &2323864931533410183
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -824,6 +806,59 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 1.5
+--- !u!114 &1681733917274279967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585406873918648252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afedd1ff1f0f5447ba597664ce6492f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponRenderer: {fileID: 3127364602419970535}
+  dissolveOnStart: 0
+  dissolveStartDelay: 3
+  dissolveDelay: 6
+  burnOnStart: 0
+  burnStartDelay: 0
+  burnDelay: 4
+  freezeOnStart: 0
+  freezeStartDelay: 0
+  freezeDelay: 4
+--- !u!114 &6008695060909011263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585406873918648252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0254ffe898bf1874e8b0a11fb7d313de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveString: _Dissolve
+  burnString: _Flames
+  freezeString: _Ice
+  useMeshRenderer: 0
+--- !u!114 &3428574695417520000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3585406873918648252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01d749b32a1a314eb656955f60a87f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 0
+  projectileTag: ElementProjectile
+  allowInteraction: 0
 --- !u!1 &3718562738143013743
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,7 +1516,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e43c1612cf185104f97d8454d0d2e811, type: 2}
+  - {fileID: 2100000, guid: 8cb609b1c3cd7fa438c978486193feea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

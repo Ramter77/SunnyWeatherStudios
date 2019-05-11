@@ -265,8 +265,10 @@ GameObject:
   - component: {fileID: 776199511}
   - component: {fileID: 776199510}
   - component: {fileID: 776199521}
-  - component: {fileID: 4094519002884726250}
   - component: {fileID: 1560184034320636103}
+  - component: {fileID: 6481808389212193739}
+  - component: {fileID: 1381512258294975841}
+  - component: {fileID: 1480570590666013463}
   m_Layer: 0
   m_Name: Melee_Enemy(RAGDOLL)
   m_TagString: Enemy
@@ -504,25 +506,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 1097095242}
   ragdollOnStart: 0
---- !u!114 &4094519002884726250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 776199509}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31ce748c826628d459e019b66fd1ba55, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weaponRenderer: {fileID: 1866237214}
-  startDelay: 3
-  delay: 6
-  useMeshRenderer: 0
-  dissolveOnStart: 0
-  sinkWhileDissolving: 0
-  sinkAmount: 1
 --- !u!114 &1560184034320636103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,6 +519,61 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 1.5
+--- !u!114 &6481808389212193739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776199509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0afedd1ff1f0f5447ba597664ce6492f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponRenderer: {fileID: 1866237214}
+  dissolveOnStart: 0
+  dissolveStartDelay: 3
+  dissolveDelay: 6
+  sinkWhileDissolving: 0
+  sinkAmount: 1
+  burnOnStart: 0
+  burnStartDelay: 0
+  burnDelay: 4
+  freezeOnStart: 0
+  freezeStartDelay: 0
+  freezeDelay: 4
+--- !u!114 &1381512258294975841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776199509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0254ffe898bf1874e8b0a11fb7d313de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dissolveString: _Dissolve
+  burnString: _Flames
+  freezeString: _Ice
+  useMeshRenderer: 0
+--- !u!114 &1480570590666013463
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776199509}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01d749b32a1a314eb656955f60a87f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 0
+  projectileTag: ElementProjectile
+  allowInteraction: 0
 --- !u!1 &802091323
 GameObject:
   m_ObjectHideFlags: 0
@@ -2275,7 +2313,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e43c1612cf185104f97d8454d0d2e811, type: 2}
+  - {fileID: 2100000, guid: 8cb609b1c3cd7fa438c978486193feea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

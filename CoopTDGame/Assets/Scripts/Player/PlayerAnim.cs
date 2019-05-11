@@ -15,8 +15,8 @@ public class PlayerAnim : MonoBehaviour
     /* [SerializeField]
     private float controllerDamping = 0;
     [Tooltip ("0 damping for jumping")] */
-    [SerializeField]
-    private float jumpDamping = 0;
+    /* [SerializeField]
+    private float jumpDamping = 0; */
 
 
     #region INPUT

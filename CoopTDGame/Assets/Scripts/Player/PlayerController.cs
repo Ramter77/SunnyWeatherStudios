@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     public int Player_ = 1;
     [SerializeField] bool TurnPlayerForward;
     [SerializeField] float turn_Speed;
+    [SerializeField] bool movePlayerTowardSlope;
+    [SerializeField] float slopeForce;
+    [SerializeField] float slopeForceRayLength;
 
     #region STATES
     [Header ("Player STATES")]
@@ -25,8 +28,6 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public AudioSource audioSource;
     CharacterController charController;
-    [SerializeField] private float slopeForce;
-    [SerializeField] private float slopeForceRayLength;
     #endregion
 
     void Awake()
@@ -61,10 +62,20 @@ public class PlayerController : MonoBehaviour
         if (TurnPlayerForward) {
             SmoothLookForward();
         }
-        if(OnSlope())
-        {
-            charController.Move(Vector3.down * charController.height / 2 * slopeForce * Time.deltaTime);
+        //Move player towards slope
+        if (movePlayerTowardSlope) {
+            if (OnSlope())
+            {
+                charController.Move(Vector3.down * charController.height / 2 * slopeForce * Time.deltaTime);
+            }
         }
+    }
+
+    private void SmoothLookForward(){
+        //Turn player to cameras look rotation
+        Vector3 forward = MainCameraTransform.forward;
+        forward.y = 0;
+        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(forward), turn_Speed * Time.deltaTime);
     }
 
     private bool OnSlope()
@@ -77,13 +88,5 @@ public class PlayerController : MonoBehaviour
             if (hit.normal != Vector3.up)
                 return true;
         return false;
-    }
-
-
-    private void SmoothLookForward(){
-        //Turn player to cameras look rotation
-        Vector3 forward = MainCameraTransform.forward;
-        forward.y = 0;
-        transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(forward), turn_Speed * Time.deltaTime);
     }
 }
