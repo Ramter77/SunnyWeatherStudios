@@ -13,6 +13,7 @@ public class BasicTower : MonoBehaviour
     private GameObject target; // the target he picked from the enemy array - used for intercept calculation
     public GameObject[] bulletPrefabs;
     public GameObject bulletPrefab; // prefab he shoots
+    private Projectile bulletPrefabProjectileScript;
     public Transform shootingPoint;
     public Transform centerAttackRadius; // center for attack range calculation
 
@@ -34,10 +35,16 @@ public class BasicTower : MonoBehaviour
 
 
 
+
+    private Component[] ownColliders;
+
     // Start is called before the first frame update
     void Start()
     {
         bulletPrefab = bulletPrefabs[0];
+        //Get own colliders
+        ownColliders = GetComponents<Collider>();
+
 
         FindClosestTarget();
         target = closestEnemy;
@@ -162,6 +169,21 @@ void Update()
 
     public void changeProjectile(int i) {
         bulletPrefab = bulletPrefabs[i];
+
+        //Get all sphere collider on the prefab & ignore all collisions
+        SphereCollider[] bulletPrefabSphereColliders = bulletPrefab.GetComponents<SphereCollider>();
+        IgnoreCollisions(bulletPrefabSphereColliders);
+    }
+
+    private void IgnoreCollisions(SphereCollider[] colliders) {
+        //loop over own colliders
+        foreach (Collider _col in ownColliders) {
+            //loop over bulletPrefabSphereColliders
+            foreach (Collider _col2 in colliders)
+            {
+                Physics.IgnoreCollision(_col, _col2);
+            }
+        }
     }
 
     /// <summary>

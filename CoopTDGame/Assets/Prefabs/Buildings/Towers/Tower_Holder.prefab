@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 5096141791222210681}
   - component: {fileID: 3290841231179701457}
   - component: {fileID: 834823137630047067}
-  - component: {fileID: 5305882877008075933}
   m_Layer: 0
   m_Name: tower_crystal
   m_TagString: Untagged
@@ -125,22 +124,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: a63c16590f9c5134fb2607a6caf724ec, type: 3}
---- !u!111 &5305882877008075933
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 337065605337123481}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: 9bda28a3e6ef53e44aaf3cc6f6581b9e, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &1025838237891953612
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,6 +134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8984321556602797030}
   - component: {fileID: 4320223883627884138}
+  - component: {fileID: 1039692743}
   m_Layer: 0
   m_Name: Crystal_Holder
   m_TagString: Untagged
@@ -186,6 +170,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 30
+  playAnimationToo: 0
+--- !u!111 &1039692743
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025838237891953612}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f27f5fa49099f5a429c27cfbd6dc2dbe, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f27f5fa49099f5a429c27cfbd6dc2dbe, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1062709727728209807
 GameObject:
   m_ObjectHideFlags: 0
@@ -401,6 +402,7 @@ GameObject:
   - component: {fileID: 2847020772529151392}
   - component: {fileID: 2068852245058561547}
   - component: {fileID: 307556178}
+  - component: {fileID: 636816299}
   m_Layer: 0
   m_Name: _tower
   m_TagString: Untagged
@@ -538,6 +540,22 @@ MonoBehaviour:
   crystalObject: {fileID: 337065605337123481}
   fireMat: {fileID: 2100000, guid: 195ffe05c15f6174883e2716c5fee538, type: 2}
   iceMat: {fileID: 2100000, guid: 32274fefb62bda94c83290ffff21da73, type: 2}
+--- !u!54 &636816299
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725089659040535179}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5281330852495207241
 GameObject:
   m_ObjectHideFlags: 0
@@ -622,7 +640,7 @@ PrefabInstance:
     - target: {fileID: 5651716308895138794, guid: bf98a473f21057a4dbce04041435db93,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 5651716308895138794, guid: bf98a473f21057a4dbce04041435db93,
         type: 3}
@@ -704,7 +722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 490934, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 7.2
       objectReference: {fileID: 0}
     - target: {fileID: 490934, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_LocalPosition.z

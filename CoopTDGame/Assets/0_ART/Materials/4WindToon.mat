@@ -1,0 +1,126 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 4WindToon
+  m_Shader: {fileID: 4800000, guid: e49631a99ddb5594cadcbf6f855953ba, type: 3}
+  m_ShaderKeywords: BOOLEAN_36BEA747_ON BOOLEAN_8FED450D_ON BOOLEAN_A04A810C_ON BOOLEAN_EA093D51_ON
+    BOOLEAN_EC3D2E83_ON _DOUBLESIDED_ON _NORMALMAP_TANGENT_SPACE _TERRAIN_INSTANCED_PERPIXEL_NORMAL
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 1
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap:
+    MotionVector: User
+  disabledShaderPasses:
+  - DistortionVectors
+  - TransparentDepthPrepass
+  - TransparentDepthPostpass
+  - TransparentBackface
+  - MOTIONVECTORS
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_33D3A841:
+        m_Texture: {fileID: 2800000, guid: 52e66a9243cdfed44b5e906f5910d35b, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_62122E41:
+        m_Texture: {fileID: 2800000, guid: a8254df1260435446846cc982efbe55e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_63EACFE9:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_6F45B3FA:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_765E2FB4:
+        m_Texture: {fileID: 2800000, guid: 39f1df9c9e98f534db60b12503fabe33, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_84F49065:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_8BC05B6D:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Boolean_36BEA747: 1
+    - Boolean_3BA815A4: 0
+    - Boolean_434C1C9E: 0
+    - Boolean_55007501: 0
+    - Boolean_5AF96BD: 0
+    - Boolean_620C6DAE: 0
+    - Boolean_64D39403: 0
+    - Boolean_6722CF3A: 0
+    - Boolean_8FED450D: 1
+    - Boolean_A04A810C: 1
+    - Boolean_DF85FD86: 0
+    - Boolean_EA093D51: 1
+    - Boolean_EC3D2E83: 1
+    - Vector1_10E2C0A8: 0.15
+    - Vector1_12007AC9: 0
+    - Vector1_132E6245: 1
+    - Vector1_1BABFC5A: 3.5
+    - Vector1_1DE55CD1: 2
+    - Vector1_1E858DC7: 4
+    - Vector1_23368965: -0.5
+    - Vector1_2643807E: 1
+    - Vector1_27037BAB: 0
+    - Vector1_2BDCF0F6: 0
+    - Vector1_2E5C18E7: 1
+    - Vector1_3194C68C: 1
+    - Vector1_3628F6C: 0.5
+    - Vector1_47E25F23: 0
+    - Vector1_4DE14620: 0
+    - Vector1_52BA5C6D: 5
+    - Vector1_5AE21157: 0
+    - Vector1_5BF33B12: 1
+    - Vector1_5E5CE9F9: 2
+    - Vector1_634B63BD: 3
+    - Vector1_67138358: 0.01
+    - Vector1_6CF05A32: 0
+    - Vector1_74B6CED4: 30
+    - Vector1_774BD901: 0
+    - Vector1_85B69C37: 1
+    - Vector1_9075AE9C: 0.1
+    - Vector1_911F395F: 5
+    - Vector1_9472975D: 1
+    - Vector1_98F0088E: 1
+    - Vector1_A08F1DC5: 1
+    - Vector1_A4E9D01D: 1
+    - Vector1_B071801: 1
+    - Vector1_B7C19053: 1
+    - Vector1_BE4F817D: 0
+    - Vector1_C3543D74: 0.03
+    - Vector1_C8A28845: 0.5
+    - Vector1_D1CE4506: 0.5
+    - Vector1_D48B029A: 1
+    - Vector1_E3605846: 1
+    - Vector1_F1D45247: 4
+    - _Dissolve: 0
+    - _Flames: 0
+    - _Ice: 0
+    m_Colors:
+    - Color_130BA236: {r: 1.435294, g: 0.227451, b: 0.05490196, a: 0}
+    - Color_ADAB764: {r: 0.22921386, g: 0.5849056, b: 0.21796006, a: 0}
+    - Color_D7112DF3: {r: 0.49056596, g: 0.19668916, b: 0.48356402, a: 0}
+    - Color_DD78947D: {r: 0, g: 0.7923036, b: 1, a: 0}
+    - Vector2_681EB9FE: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_7EE570AE: {r: 10, g: 0, b: 0, a: 0}
+    - Vector2_891EABC3: {r: 0, g: -0.3, b: 0, a: 0}
+    - Vector2_A9B8D902: {r: 0, g: 0, b: 0, a: 0}
+    - Vector2_C1FFEF7D: {r: 1, g: 1, b: 0, a: 0}
+    - Vector2_C20187D7: {r: 0.2, g: 1, b: 0, a: 0}
+    - Vector2_FC0F533D: {r: -0.1, g: -0.5, b: 0, a: 0}
+    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}

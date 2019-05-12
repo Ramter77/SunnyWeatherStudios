@@ -56,9 +56,11 @@ public class CombineElements : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
+        Debug.Log("aesdgargskmbkfbnajesjgfnajgnhjnjgvnghgfhg " + other.collider.name);
         if (activatePrefabScript.trapActive || activatePrefabScript.towerActive) {
             if (other.gameObject.tag == projectileTag)
             {
+                
                 if (other.gameObject.GetComponent<EffectHandler>() != null)
                 {
                     int otherProjectileElementIndex = other.gameObject.GetComponent<EffectHandler>().effectIndex;
