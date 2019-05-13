@@ -33,7 +33,7 @@ public class BasicTower : MonoBehaviour
     private Vector3 shooterVelocity; // tower velocity
     [SerializeField] private Vector3 targetVelocity; // target velocity, since we are working with nav mesh, you need to access the agent velocity, not rigidbody
 
-
+    public bool activated = false;
 
 
     private Component[] ownColliders;
@@ -43,7 +43,7 @@ public class BasicTower : MonoBehaviour
     {
         bulletPrefab = bulletPrefabs[0];
         //Get own colliders
-        ownColliders = GetComponents<Collider>();
+        ownColliders = GetComponentsInChildren<Collider>();
 
 
         FindClosestTarget();
@@ -72,77 +72,84 @@ void Update()
 
     private void aimAtTarget()
     {
-        FindClosestTarget();
-        target = closestEnemy;
-        if(target != null)
+        if(activated)
         {
-            shooterPosition = shooter.transform.position;
-            targetPosition = target.transform.position;
-            shooterVelocity = shooter.GetComponent<Rigidbody>() ? shooter.GetComponent<Rigidbody>().velocity : Vector3.zero;
-            targetVelocity = target.GetComponent<BasicEnemy>().agent.velocity;
-            interceptPoint = FirstOrderIntercept
-            (
-                shooterPosition,
-                shooterVelocity,
-                shotSpeed,
-                targetPosition,
-                targetVelocity
-            );
-            Vector3 spawnPoint = shootingPoint.position;
-            Vector3 centerOfAttackRadius = centerAttackRadius.position;
-            Vector3 targetPoint = interceptPoint;
-            Vector3 toTarget = targetPoint - spawnPoint;
-            if (Vector3.Distance(centerOfAttackRadius, targetPoint) <= attackRange)
+            FindClosestTarget();
+            target = closestEnemy;
+            if (target != null)
             {
-                RaycastHit hit;
-                float distance = Vector3.Distance(gameObject.transform.position, interceptPoint);
-                Vector3 fwd = interceptPoint - gameObject.transform.position;
-                if (Physics.Raycast(transform.position, fwd, out hit, distance, turretLayerIgnore))
+                shooterPosition = shooter.transform.position;
+                targetPosition = target.transform.position;
+                shooterVelocity = shooter.GetComponent<Rigidbody>() ? shooter.GetComponent<Rigidbody>().velocity : Vector3.zero;
+                targetVelocity = target.GetComponent<BasicEnemy>().agent.velocity;
+                interceptPoint = FirstOrderIntercept
+                (
+                    shooterPosition,
+                    shooterVelocity,
+                    shotSpeed,
+                    targetPosition,
+                    targetVelocity
+                );
+                Vector3 spawnPoint = shootingPoint.position;
+                Vector3 centerOfAttackRadius = centerAttackRadius.position;
+                Vector3 targetPoint = interceptPoint;
+                Vector3 toTarget = targetPoint - spawnPoint;
+                if (Vector3.Distance(centerOfAttackRadius, targetPoint) <= attackRange)
                 {
-                    if(hit.collider.tag == "Environment") // list all the tags for objects that should block line of projectile
+                    RaycastHit hit;
+                    float distance = Vector3.Distance(gameObject.transform.position, interceptPoint);
+                    Vector3 fwd = interceptPoint - gameObject.transform.position;
+                    if (Physics.Raycast(transform.position, fwd, out hit, distance, turretLayerIgnore))
                     {
-                        Debug.DrawLine(transform.position, hit.point);
-                        //Debug.Log("Terrain in the way");
-                        StartCoroutine(shootCd());
+                        if (hit.collider.tag == "Environment") // list all the tags for objects that should block line of projectile
+                        {
+                            Debug.DrawLine(transform.position, hit.point);
+                            //Debug.Log("Terrain in the way");
+                            StartCoroutine(shootCd());
+                        }
+                        else // when it collides with an object of different tag 
+                        {
+                            bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
+                            Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
+                            StartCoroutine(shootCd());
+                        }
                     }
-                    else // when it collides with an object of different tag 
+                    else // when no collision occurs
                     {
                         bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
                         Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
                         StartCoroutine(shootCd());
                     }
                 }
-                else // when no collision occurs
+                else
                 {
-                    bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
-                    Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
+                    //Debug.Log("Turret: Target not in range");
                     StartCoroutine(shootCd());
                 }
+
+
+                //Debug.Log(shooterVelocity);
+                //Debug.Log(targetVelocity);
+                //Debug.Log(interceptPoint);
             }
             else
             {
-                //Debug.Log("Turret: Target not in range");
                 StartCoroutine(shootCd());
             }
-           
-               
-            //Debug.Log(shooterVelocity);
-            //Debug.Log(targetVelocity);
-            //Debug.Log(interceptPoint);
-        }
-        else
-        {
-            StartCoroutine(shootCd());
-        }
 
+        }
 
     }
 
 
     #endregion
 
+    public void startAiming()
+    {
+        StartCoroutine(shootCd());
+    }
 
-    IEnumerator shootCd()
+    public IEnumerator shootCd()
     {
         yield return new WaitForSeconds(attackSpeed);
         aimAtTarget();

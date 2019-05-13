@@ -103,6 +103,8 @@ public class ActivatePrefab : MonoBehaviour
 
             activationCollider.enabled = false;
             anim.Play();
+            GetComponent<BasicTower>().activated = true;
+            GetComponent<BasicTower>().startAiming();
             meshChild.tag = "possibleTargets";
         }
     }
