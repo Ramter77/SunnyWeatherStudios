@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     public bool isInBuildMode;
     public bool isMeleeAttacking;
     public bool isRangedAttacking;
+    public bool isGrounded;
     public bool isJumping;
     public bool isDead;
     #endregion 
@@ -28,6 +29,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public AudioSource audioSource;
     CharacterController charController;
+    
     #endregion
 
     void Awake()
@@ -80,13 +82,23 @@ public class PlayerController : MonoBehaviour
 
     private bool OnSlope()
     {
-        if (isJumping)
+        if (isJumping) {
             return false;
+        }
 
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, charController.height / 2 * slopeForceRayLength))
+        {
+            isGrounded = true;
             if (hit.normal != Vector3.up)
+            {
                 return true;
+            }
+        }
+        else
+        {
+            isGrounded = false;
+        }
         return false;
     }
 }

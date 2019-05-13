@@ -104,7 +104,8 @@ public class PlayerAnim : MonoBehaviour
         #endregion
 
         #region Grounded Check & Jumping
-        if (charController.isGrounded) {
+        //if (charController.isGrounded) {
+        if (playC.isGrounded) {
             animator.SetBool("isGrounded", true);
             //playC.isJumping = false;
             //animator.applyRootMotion = true;
