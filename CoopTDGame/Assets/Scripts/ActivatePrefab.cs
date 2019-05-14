@@ -45,6 +45,31 @@ public class ActivatePrefab : MonoBehaviour
         maxTrapDuration = trapDuration;
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerInteraction.Instance.Player_1InRange = true;
+        }
+        if (other.CompareTag("Player2"))
+        {
+            PlayerInteraction.Instance.Player_2InRange = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            PlayerInteraction.Instance.Player_1InRange = false;
+        }
+        if (other.CompareTag("Player2"))
+        {
+            PlayerInteraction.Instance.Player_2InRange = false;
+        }
+    }
+
     /// <summary>
     /// OnTriggerEnter is called when the Collider other enters the trigger.
     /// </summary>
@@ -54,7 +79,6 @@ public class ActivatePrefab : MonoBehaviour
         //Debug.Log("Colliding with " + other.tag);
         if (other.CompareTag("Player") || other.CompareTag("Player2")) {
             playC = other.GetComponent<PlayerController>();
-
             //* Player 0 input */
             if (playC.Player_ == 0)
             {
@@ -80,6 +104,14 @@ public class ActivatePrefab : MonoBehaviour
                 {
                     //It's a Trap
                     _RiseTrap();
+                }
+                if (other.CompareTag("Player"))
+                {
+                    PlayerInteraction.Instance.Player_1InRange = false;
+                }
+                if (other.CompareTag("Player2"))
+                {
+                    PlayerInteraction.Instance.Player_2InRange = false;
                 }
             }
         }
