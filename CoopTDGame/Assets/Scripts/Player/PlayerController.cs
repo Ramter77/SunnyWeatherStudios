@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,8 +9,12 @@ public class PlayerController : MonoBehaviour
     [Header ("Player")]
     [Tooltip ("Player_0 = Mouse, Player_1 = Controller 1, Player_2 = Controller 2")]
     public int Player_ = 1;
+    [SerializeField] bool debugMode;
     [SerializeField] bool TurnPlayerForward;
     [SerializeField] float turn_Speed;
+    [SerializeField] float groundCheckRadius = 1;
+    [SerializeField] float groundCheckHeight = 1.5f;
+    [SerializeField] int groundCheckDistance = 2;
     [SerializeField] bool movePlayerTowardSlope;
     [SerializeField] float slopeForce;
     [SerializeField] float slopeForceRayLength;
@@ -29,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public AudioSource audioSource;
     CharacterController charController;
-    
+    RaycastHit groundHit;
     #endregion
 
     void Awake()
@@ -44,7 +49,7 @@ public class PlayerController : MonoBehaviour
         {
             tag = "MainCamera2";
         }
-        Debug.Log("Finding " + tag + " tag");
+        if (debugMode) { Debug.Log("Finding " + tag + " tag"); }
         MainCameraTransform = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>().transform;
         
         playerAnim = GetComponent<PlayerAnim>();
@@ -64,6 +69,10 @@ public class PlayerController : MonoBehaviour
         if (TurnPlayerForward) {
             SmoothLookForward();
         }
+
+        //Check if isGrounded
+        CheckGround();
+
         //Move player towards slope
         if (movePlayerTowardSlope) {
             if (OnSlope())
@@ -80,6 +89,18 @@ public class PlayerController : MonoBehaviour
         transform.rotation = Quaternion.Lerp(transform.rotation, Quaternion.LookRotation(forward), turn_Speed * Time.deltaTime);
     }
 
+    void CheckGround() {
+        Ray ray = new Ray(transform.position + Vector3.up * groundCheckHeight, Vector3.down);
+
+        if (Physics.SphereCast(ray, groundCheckRadius, out groundHit, groundCheckDistance)) {
+            isGrounded = true;
+            isJumping = false;
+        }
+        else {
+            isGrounded = false;
+        }
+	}
+
     private bool OnSlope()
     {
         if (isJumping) {
@@ -89,16 +110,26 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(transform.position, Vector3.down, out hit, charController.height / 2 * slopeForceRayLength))
         {
-            isGrounded = true;
             if (hit.normal != Vector3.up)
             {
                 return true;
             }
         }
-        else
-        {
-            isGrounded = false;
-        }
         return false;
+    }
+
+
+    void OnDrawGizmos() {
+        if(debugMode) {
+            #region CheckGround
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position + Vector3.up * groundCheckHeight, groundCheckRadius);
+            Gizmos.DrawRay(transform.position + Vector3.up * groundCheckHeight, Vector3.down * (groundCheckDistance + groundCheckRadius));
+            #endregion
+
+            #region OnSlope
+            Gizmos.DrawRay(transform.position, Vector3.down * charController.height / 2 * slopeForceRayLength);
+            #endregion
+        }
     }
 }

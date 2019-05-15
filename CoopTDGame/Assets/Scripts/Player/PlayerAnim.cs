@@ -107,6 +107,7 @@ public class PlayerAnim : MonoBehaviour
         //if (charController.isGrounded) {
         if (playC.isGrounded) {
             animator.SetBool("isGrounded", true);
+            
             //playC.isJumping = false;
             //animator.applyRootMotion = true;
             //animator.SetFloat("isJumping", 1);
@@ -149,6 +150,9 @@ public class PlayerAnim : MonoBehaviour
 
 
             animator.GetComponent<MeleeAttack>().ActivateWeaponCollider();
+
+            animator.SetFloat("jumpVertical", _verticalInput);
+            animator.SetFloat("jumpHorizontal", _horizontalInput);
             animator.SetTrigger("Jump");
             playC.isJumping = true;
         }
