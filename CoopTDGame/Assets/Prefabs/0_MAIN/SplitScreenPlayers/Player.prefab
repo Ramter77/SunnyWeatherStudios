@@ -1327,7 +1327,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 727191211}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 2.25, y: -1.8499994, z: -4.789978}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1574554227}
@@ -1587,8 +1587,10 @@ MonoBehaviour:
   minDistance: 1
   maxDistance: 4
   smooth: 10
+  dollyDir: {x: 0, y: 0, z: 0}
   dollyDirAdjusted: {x: 0, y: 0, z: 0}
   distance: 0
+  isHitting: 0
 --- !u!1 &755063710
 GameObject:
   m_ObjectHideFlags: 0
@@ -2877,8 +2879,8 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 2147499319
-  maxDistance: 9999
-  defaultDistance: 100
+  fallbackDistance: 100
+  rangedAttackSound: {fileID: 0}
 --- !u!114 &1488362270
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2939,8 +2941,10 @@ MonoBehaviour:
   particleEffect: {fileID: 2712116678064869091, guid: 09eea307eba35884abc5cb2706e5619f,
     type: 3}
   ParticleOnHitEffectYoffset: 4
-  praticleSpawnLocation: {fileID: 0}
+  particleSpawnLocation: {fileID: 0}
   ragdollOnDeath: 0
+  dissolveOnDeath: 0
+  invincible: 0
   destroyable: 0
   GameOverScreen: {fileID: 0}
 --- !u!114 &1488362267
@@ -2957,7 +2961,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axisDamping: 0.2
   buttonDamping: 0.5
-  jumpDamping: 0
 --- !u!114 &1488362266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2997,11 +3000,16 @@ MonoBehaviour:
   Player_: 0
   TurnPlayerForward: 0
   turn_Speed: 2
+  movePlayerTowardSlope: 0
+  slopeForce: 0
+  slopeForceRayLength: 0
   isInBuildMode: 0
   isMeleeAttacking: 0
   isRangedAttacking: 0
+  isGrounded: 0
   isJumping: 0
   isDead: 0
+  audioSource: {fileID: 0}
 --- !u!114 &1488362264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3017,7 +3025,6 @@ MonoBehaviour:
   Camera: {fileID: 727191212}
   healthbar: {fileID: 0}
   maxHealth: 100
-  healAbilityHotkey: 113
   healAbilityUiImageOn: {fileID: 0}
   healAbilityUiImageOff: {fileID: 0}
   healAbilityCooldownImage: {fileID: 0}
@@ -3028,7 +3035,6 @@ MonoBehaviour:
   healAmount: 25
   healParticle: {fileID: 1312923869523673248, guid: efde4b8957e6d704a9a861a347c9b627,
     type: 3}
-  slashAbilityHotkey: 101
   slashAbilityUiImageOn: {fileID: 0}
   slashAbilityUiImageOff: {fileID: 0}
   slashAbilityCooldownImage: {fileID: 0}
@@ -3037,7 +3043,6 @@ MonoBehaviour:
   slashSlashPrefab: {fileID: 9003700133114425031, guid: c28fea64ccc640946bad586dfb6f2aeb,
     type: 3}
   FirePoint: {fileID: 1492798955}
-  ultimateAbilityHotkey: 98
   ultimateAbilityUiImageOn: {fileID: 0}
   ultimateAbilityUiImageOff: {fileID: 0}
   ultimateAbilityCooldownImage: {fileID: 0}
@@ -3286,7 +3291,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574554226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.25, y: -1.85, z: -4.79}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 727191212}
