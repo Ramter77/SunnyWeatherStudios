@@ -4,12 +4,11 @@ using System.Collections;
 public class FlyCamera : MonoBehaviour {
 
     [Header ("Mouse/WASD to move, space to ascend, left shift to speed up")]
-
-    private Vector3 _angles;
     public float speed = 1.0f;
     public float ySpeedMultiplier = 0.5f;
     public float fastSpeed = 2.0f;
     public float mouseSpeed = 4.0f;
+    private Vector3 _angles;
 
     private void OnEnable() {
         _angles = transform.eulerAngles;
