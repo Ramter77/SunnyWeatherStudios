@@ -33,7 +33,9 @@ public class PlayerController : MonoBehaviour
 
     [Space (10)]
     [SerializeField] bool allowAirMovement;
-    [SerializeField] private int airMoveSpeed;
+    [SerializeField] private float airMoveSpeed;
+    [SerializeField] bool allowJumpMovement;
+    [SerializeField] private float jumpMoveSpeedMultiplier = 0.5f;
     private Vector3 moveDirection = Vector3.zero;
     private Vector3 moveVelocity;
     private float _verticalInput;
@@ -56,7 +58,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public AudioSource audioSource;
     private RaycastHit groundHit;
-    private Rigidbody rb;    
+    private Rigidbody rb;
     #endregion
 
     void Awake()
@@ -120,17 +122,24 @@ public class PlayerController : MonoBehaviour
         if (Physics.SphereCast(ray, groundCheckRadius, out groundHit, groundCheckDistance, mask)) {
             isGrounded = true;
             //isJumping = false;
+
+            if (allowJumpMovement) {
+                //If playing Jump blend tree let player add movement
+                if (GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("JumpBlend")) {
+                    ControlInAir(jumpMoveSpeedMultiplier);
+                }
+            }
         }
         else {
             isGrounded = false;
 
             if (allowAirMovement) {
-                ControlInAir();
+                ControlInAir(1);
             }
         }
 	}
 
-    private void ControlInAir()
+    private void ControlInAir(float speedMultiplier)
     {
         #region Input
         //* Player 0 input */
@@ -156,7 +165,7 @@ public class PlayerController : MonoBehaviour
         
         moveDirection = new Vector3(_horizontalInput, 0, _verticalInput);        
         moveDirection = transform.TransformDirection(moveDirection);
-        moveVelocity = moveDirection.normalized * airMoveSpeed;
+        moveVelocity = moveDirection.normalized * airMoveSpeed * speedMultiplier;
 
         charController.Move(moveVelocity * Time.deltaTime);
 
