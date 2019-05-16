@@ -55,7 +55,7 @@ public class MeleeAttack : MonoBehaviour
         #region Input
         if (_input) {
             //If not already attacking or in build mode
-            if (!playC.isMeleeAttacking && !playC.isInBuildMode && !playC.isJumping && !playC.isDead) {
+            if (!playC.isMeleeAttacking && !playC.isInBuildMode && playC.isGrounded && !playC.isJumping && !playC.isDead) {
                 playC.isMeleeAttacking = true;
                 _MeleeAttack();
             }

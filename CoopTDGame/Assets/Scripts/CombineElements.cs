@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +7,11 @@ public class CombineElements : MonoBehaviour
 {
     [Tooltip("Tag used for the projectiles of players")]
     [SerializeField] private string projectileTag = "ElementProjectile";
+
+    [Header ("Parameters")]
+    public float towerCD = 10;
+    private bool startTowerCD;
+    private float towerDuration;
 
     [Header ("VFX")]
     [SerializeField]
@@ -17,16 +23,20 @@ public class CombineElements : MonoBehaviour
     [SerializeField]
     private GameObject crystalObject;
     private MeshRenderer crystalMeshRenderer;
+    private Material[] matArray;
+    private Material baseMat;
     [SerializeField]
     private Material fireMat;
     [SerializeField]
     private Material iceMat;
 
 
+    private MeshRenderer meshRend;
     private Transform holderTransform;
     private BasicTower basicTowerScript;
     private ActivatePrefab activatePrefabScript;
     private bool isTrap, isTower;
+    
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -34,6 +44,9 @@ public class CombineElements : MonoBehaviour
     /// </summary>
     void Start()
     {
+        meshRend = GetComponent<MeshRenderer>();
+        matArray = meshRend.materials;
+
         holderTransform = transform.parent.parent;
 
         if (holderTransform.GetComponent<BasicTower>() != null) {
@@ -47,6 +60,18 @@ public class CombineElements : MonoBehaviour
 
         activatePrefabScript = holderTransform.GetComponent<ActivatePrefab>();
         crystalMeshRenderer = crystalObject.GetComponent<MeshRenderer>();
+        baseMat = crystalMeshRenderer.material;
+    }
+
+    private void Update() {
+        if (startTowerCD) {
+            towerDuration -= Time.deltaTime;
+            if (towerDuration <= 0.0f) {
+                towerDuration = towerCD;
+                startTowerCD = false;
+                _SwitchBack(false);
+            }
+        }
     }
 
     /// <summary>
@@ -56,7 +81,6 @@ public class CombineElements : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log("aesdgargskmbkfbnajesjgfnajgnhjnjgvnghgfhg " + other.collider.name);
         if (activatePrefabScript.trapActive || activatePrefabScript.towerActive) {
             if (other.gameObject.tag == projectileTag)
             {
@@ -75,9 +99,14 @@ public class CombineElements : MonoBehaviour
         if (element == 1) {
             if (isTrap) {
                 trapFireVFX.SetActive(true);
+
+                matArray[1] = fireMat;
+                meshRend.materials = matArray;
             }
             else if (isTower) {
                 basicTowerScript.changeProjectile(1);
+
+                startTowerCD = true;
             }
             crystalMeshRenderer.material = fireMat;
         }
@@ -87,9 +116,14 @@ public class CombineElements : MonoBehaviour
         else if (element == 2) {
             if (isTrap) {
                 trapIceVFX.SetActive(true);
+
+                matArray[1] = iceMat;
+                meshRend.materials = matArray;
             }
             else if (isTower) {
                 basicTowerScript.changeProjectile(2);
+
+                startTowerCD = true;
             }
             crystalMeshRenderer.material = iceMat;
         }
@@ -105,6 +139,19 @@ public class CombineElements : MonoBehaviour
             }
         }
         #endregion */
+    }
+
+    public void _SwitchBack(bool isTrap)
+    {
+        if (isTrap) {
+            matArray[1] = baseMat;
+            meshRend.materials = matArray;
+        }
+        else
+        {
+            basicTowerScript.changeProjectile(0);
+        }
+        crystalMeshRenderer.material = baseMat;
     }
 
     public void disableVFX() {

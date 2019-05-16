@@ -173,7 +173,7 @@ public class Projectile : MonoBehaviour
 
         #region Destroy
         if (destroyOnContact) {
-            DestroyGO(0.05f);
+            StartCoroutine(DestroyGO(0f));
         }
         #endregion
         else {

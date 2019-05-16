@@ -45,7 +45,7 @@ public class DebuffTrapSlow : MonoBehaviour
             agent.speed = multipliedSpeedPercentage;
             enemyAnim.speedMultiplier *= moveSpeedMultiplier;
 
-            Debug.Log("speed: "+agent.speed + " & enemyAnim: "+enemyAnim.speedMultiplier);
+            //Debug.Log("speed: "+agent.speed + " & enemyAnim: "+enemyAnim.speedMultiplier);
         }
     }
 

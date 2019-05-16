@@ -78,6 +78,8 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         if (charController == null) { charController = GetComponent<CharacterController>(); }
         rb = GetComponent<Rigidbody>();
+
+        Physics.IgnoreLayerCollision(gameObject.layer, 15);
     }
 
     private void Start() {

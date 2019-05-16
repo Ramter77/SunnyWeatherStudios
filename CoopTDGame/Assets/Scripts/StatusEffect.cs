@@ -132,7 +132,7 @@ public class StatusEffect : MonoBehaviour
         //if (!slowed) {
           //  slowed = true;
 
-            multipliedSpeedPercentage = agent.speed * moveSpeedMultiplier;
+            multipliedSpeedPercentage = basicEnemyScript.enemySpeed * moveSpeedMultiplier;
             agent.speed = multipliedSpeedPercentage;
             enemyAnim.speedMultiplier *= moveSpeedMultiplier;
         //}

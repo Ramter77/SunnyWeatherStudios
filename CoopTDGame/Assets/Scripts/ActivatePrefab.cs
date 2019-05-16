@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -38,6 +39,8 @@ public class ActivatePrefab : MonoBehaviour
             isTower = true;
         }
         else {
+            isTower = false;
+
             riseTrap = anim.GetClip("RiseTrap");
             lowerTrap = anim.GetClip("LowerTrap");
         }
@@ -166,6 +169,7 @@ public class ActivatePrefab : MonoBehaviour
         anim.clip = lowerTrap;
         anim.Play();
 
+        combineElementScript._SwitchBack(true);
         combineElementScript.disableVFX();
         activationCollider.enabled = true;
     }

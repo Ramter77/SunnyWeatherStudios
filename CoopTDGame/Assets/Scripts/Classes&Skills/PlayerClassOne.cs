@@ -157,7 +157,7 @@ public class PlayerClassOne : MonoBehaviour
             if (_healInput) //{
             //if (Input.GetKeyDown(healAbilityHotkey))
             {
-                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode/*  && !playC.isJumping */ && !playC.isDead) {
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && playC.isGrounded/*  && !playC.isJumping */ && !playC.isDead) {
                     //playC.isRangedAttacking = true;
 
                     healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;
@@ -294,7 +294,7 @@ public class PlayerClassOne : MonoBehaviour
     }
 
     public void risePrefab() {
-        if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode/*  && !playC.isJumping */ && !playC.isDead) {
+        if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && playC.isGrounded/*  && !playC.isJumping */ && !playC.isDead) {
             playerAnim.SetTrigger("Slash");
             //SoulBackpack.Instance.reduceSoulsByCost(slashAbilityCost);
         }
