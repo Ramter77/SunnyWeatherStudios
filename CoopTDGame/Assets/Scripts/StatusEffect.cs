@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class StatusEffect : MonoBehaviour
 {
@@ -42,9 +44,22 @@ public class StatusEffect : MonoBehaviour
     private float freezeDelay = 4f;
     private bool startFreezing;
 
+    [Space (10)]
+    //SLOW
+    [SerializeField]
+    private float moveSpeedMultiplier = 0.7f;
+    private float multipliedSpeedPercentage;
+    private NavMeshAgent agent;
+    private EnemyAnim enemyAnim;
+    private BasicEnemy basicEnemyScript;
+    private bool slowed;
+
     void Start()
     {
         adjustMaterialScript = GetComponent<AdjustMaterial>();
+        basicEnemyScript = GetComponent<BasicEnemy>();
+        agent = GetComponent<NavMeshAgent>();
+        enemyAnim = GetComponent<EnemyAnim>();
 
         if (dissolveOnStart) {
             DissolveCoroutine();
@@ -108,5 +123,18 @@ public class StatusEffect : MonoBehaviour
         yield return new WaitForSeconds(freezeStartDelay);
 
         adjustMaterialScript.Freeze(freezeDelay);
+
+        SlowMovement();
+    }
+
+    private void SlowMovement()
+    {
+        //if (!slowed) {
+          //  slowed = true;
+
+            multipliedSpeedPercentage = agent.speed * moveSpeedMultiplier;
+            agent.speed = multipliedSpeedPercentage;
+            enemyAnim.speedMultiplier *= moveSpeedMultiplier;
+        //}
     }
 }

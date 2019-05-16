@@ -19,6 +19,11 @@ public class PlayerAnim : MonoBehaviour
     private float jumpDamping = 0; */
     [SerializeField]
     private bool enableWeaponColliderOnJump;
+    [SerializeField]
+    private bool toggleRunning;
+    [SerializeField]
+    private bool allowJumpWhileAttacking;
+
 
     #region INPUT
     private float _verticalInput;
@@ -26,7 +31,6 @@ public class PlayerAnim : MonoBehaviour
     private bool _runInput;
     private bool _jumpInput;
     private bool toggleRun;
-    private bool toggleRunning;
     #endregion
 
     private PlayerController playC;
@@ -105,8 +109,15 @@ public class PlayerAnim : MonoBehaviour
             animator.SetBool("isGrounded", true);
 
             #region Jumping
-            if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping && !playC.isDead) {
-                _Jump(_jumpInput);
+            if (/* !playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && */ !playC.isJumping && !playC.isDead) {
+                if (allowJumpWhileAttacking) {
+                    _Jump(_jumpInput);
+                }
+                else {
+                    if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode) {
+                        _Jump(_jumpInput);
+                    }
+                }
             }
             #endregion
         }
@@ -129,10 +140,13 @@ public class PlayerAnim : MonoBehaviour
             if (enableWeaponColliderOnJump) {
                 animator.GetComponent<MeleeAttack>().ActivateWeaponCollider();
             }
+            //Debug.Log(_verticalInput + " and " + Mathf.RoundToInt(_verticalInput));
+            //! rounding to int to prevent weird blends, especially with controllers
+            //! keep an eye on this: if it leads to problems use direct animation transitions
 
             //use a seperate float for directional jump blend tree
-            animator.SetFloat("jumpVertical", _verticalInput);
-            animator.SetFloat("jumpHorizontal", _horizontalInput);
+            animator.SetFloat("jumpVertical", Mathf.RoundToInt(_verticalInput));
+            animator.SetFloat("jumpHorizontal", Mathf.RoundToInt(_horizontalInput));
             animator.SetTrigger("Jump");
             playC.isJumping = true;
         }

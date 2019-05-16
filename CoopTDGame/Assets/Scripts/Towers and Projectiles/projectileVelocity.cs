@@ -10,12 +10,19 @@ public class projectileVelocity : MonoBehaviour
     public float penetrationFactor = 10f;
     private float targetDefense;
     private bool appliedDamage = false;
+
+    private bool allowDestroying;
     
 
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, lifetime);
+        if (GetComponent<Light>() == null) {
+            if (transform.childCount > 0) {
+                allowDestroying = true;
+                Destroy(gameObject, lifetime);
+            }
+        }
     }
 
     // Update is called once per frame
@@ -32,13 +39,16 @@ public class projectileVelocity : MonoBehaviour
             float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
             other.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
             appliedDamage = true;
-            /* Destroy(gameObject); */
+            if (allowDestroying) {
+                Destroy(gameObject);
+            }
         }
 
-        //! HANDLED IN PROJECTILE SCRIPT!
-        /* if (other.gameObject.tag == "Environment")
+        if (other.gameObject.tag == "Environment")
         {
-            Destroy(gameObject);
-        } */
+            if (allowDestroying) {
+                Destroy(gameObject);
+            }
+        }
     }
 }

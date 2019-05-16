@@ -94,7 +94,7 @@ public class Projectile : MonoBehaviour
         StartCoroutine(DisableLight(destroyTime));
 
         //Then destroy in destroyTime amout of seconds
-        Destroy(gameObject, destroyTime);
+        StartCoroutine(DestroyGO(destroyTime));
     }
 
     IEnumerator DisableLight(float delay) {
@@ -173,7 +173,7 @@ public class Projectile : MonoBehaviour
 
         #region Destroy
         if (destroyOnContact) {
-            Destroy(gameObject, 0.05f);
+            DestroyGO(0.05f);
         }
         #endregion
         else {
@@ -203,5 +203,16 @@ public class Projectile : MonoBehaviour
             }
             #endregion
         }
+    }
+
+    IEnumerator DestroyGO(float delay) {
+        yield return new WaitForSeconds(delay);
+
+        if (transform.childCount > 0) {
+            GameObject child = transform.GetChild(0).gameObject;
+            child.transform.parent = null;
+        }
+        
+        Destroy(gameObject);
     }
 }

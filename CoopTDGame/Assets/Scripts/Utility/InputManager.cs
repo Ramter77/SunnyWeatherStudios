@@ -240,8 +240,8 @@ public class InputManager : Singleton<InputManager>
         #region Player0
         if (_Player0.useController) {
             //Round controller input
-            Vertical0 = Mathf.Round(Input.GetAxisRaw(_Player0._Vertical));
-            Horizontal0 = Mathf.Round(Input.GetAxisRaw(_Player0._Horizontal));
+            Vertical0 = Input.GetAxisRaw(_Player0._Vertical);
+            Horizontal0 = Input.GetAxisRaw(_Player0._Horizontal);
 
             //Convert fire float to bool
             Ranged0 = (Input.GetAxisRaw(_Player0._Ranged) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
@@ -275,8 +275,8 @@ public class InputManager : Singleton<InputManager>
         #region Player1
         if (_Player1.useController) {
             //Round controller input
-            Vertical1 = Mathf.Round(Input.GetAxisRaw(_Player1._Vertical));
-            Horizontal1 = Mathf.Round(Input.GetAxisRaw(_Player1._Horizontal));
+            Vertical1 = Input.GetAxisRaw(_Player1._Vertical);
+            Horizontal1 = Input.GetAxisRaw(_Player1._Horizontal);
 
             //Convert fire float to bool
             Ranged1 = (Input.GetAxisRaw(_Player1._Ranged) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
@@ -303,8 +303,8 @@ public class InputManager : Singleton<InputManager>
         #region Player2
         if (_Player2.useController) {
             //Round controller input
-            Vertical2 = Mathf.Round(Input.GetAxisRaw(_Player2._Vertical));
-            Horizontal2 = Mathf.Round(Input.GetAxisRaw(_Player2._Horizontal));
+            Vertical2 = Input.GetAxisRaw(_Player2._Vertical);
+            Horizontal2 = Input.GetAxisRaw(_Player2._Horizontal);
 
             //Convert fire float to bool
             Ranged2 = ((Input.GetAxisRaw(_Player2._Ranged)) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;

@@ -85,6 +85,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: -50
+  playAnimationToo: 0
 --- !u!64 &4848358441140315533
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -112,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 200
+  playAnimationToo: 0
 --- !u!64 &1469784258433152242
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -171,7 +173,7 @@ GameObject:
   - component: {fileID: 7836417752706181167}
   - component: {fileID: 9064052185075965512}
   - component: {fileID: 723122394330653483}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: AttackPoint
   m_TagString: Sphere
   m_Icon: {fileID: 0}
@@ -226,9 +228,9 @@ SphereCollider:
   m_GameObject: {fileID: 1187311588156848180}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10.239808
+  m_Radius: 4
   m_Center: {x: -0.0000000066845143, y: 0, z: 0.28086945}
 --- !u!114 &723122394330653483
 MonoBehaviour:

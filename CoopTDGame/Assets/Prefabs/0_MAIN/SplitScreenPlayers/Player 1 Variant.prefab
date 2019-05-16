@@ -3094,6 +3094,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026984, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
+      propertyPath: projectileSpeed
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026984, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
       propertyPath: projectileOrigin
       value: 
       objectReference: {fileID: 2819464312486886812}
@@ -3129,6 +3134,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032027030, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
+      propertyPath: slopeForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032027030, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
       propertyPath: slopeForceRayLength
       value: 1.5
       objectReference: {fileID: 0}
@@ -3157,11 +3167,6 @@ PrefabInstance:
       propertyPath: RightFoot
       value: 
       objectReference: {fileID: 4760426672056431106}
-    - target: {fileID: 7777738009032027027, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: deltaAmplifier
-      value: 0.01
-      objectReference: {fileID: 0}
     - target: {fileID: 7777738009032027026, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: audioSource
@@ -3172,7 +3177,8 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 2819464313814937923}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7777738009032027031, guid: 064a8a3d64a5d784882a0951943238b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 064a8a3d64a5d784882a0951943238b9, type: 3}
 --- !u!143 &2819464313814937927 stripped
 CharacterController:
