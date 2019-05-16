@@ -105,6 +105,7 @@ public class ActivatePrefab : MonoBehaviour
                     //It's a Trap
                     _RiseTrap();
                 }
+                other.GetComponent<PlayerClassOne>().risePrefab();
                 if (other.CompareTag("Player"))
                 {
                     PlayerInteraction.Instance.Player_1InRange = false;

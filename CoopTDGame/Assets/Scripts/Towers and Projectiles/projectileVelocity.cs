@@ -15,7 +15,6 @@ public class projectileVelocity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        lifetime = 4f;
         Destroy(gameObject, lifetime);
     }
 
@@ -23,7 +22,6 @@ public class projectileVelocity : MonoBehaviour
     void Update()
     {
         transform.position += transform.forward * speed * Time.deltaTime;
-        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,14 +32,13 @@ public class projectileVelocity : MonoBehaviour
             float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
             other.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
             appliedDamage = true;
-            Destroy(gameObject);
+            /* Destroy(gameObject); */
         }
 
-        if(other.gameObject.tag == "Environment")
+        //! HANDLED IN PROJECTILE SCRIPT!
+        /* if (other.gameObject.tag == "Environment")
         {
             Destroy(gameObject);
-        }
+        } */
     }
-
-    
 }

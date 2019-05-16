@@ -99,14 +99,14 @@ MonoBehaviour:
   burnEnemiesOnContact: 1
   freezeEnemiesOnContact: 0
   unparentChildOnContact: 1
-  destroyChildOnContact: 0
-  childDestroyTime: 4
+  destroyChildOnContact: 1
+  childDestroyTime: 14
   vfxLifetimeMinMax: {x: 4, y: 4}
   destroyOnContact: 1
   destroyTime: 10
-  disableDamageScriptOnContact: 0
-  stopVelocityOnContact: 0
-  kinematicOnContact: 0
+  disableDamageScriptOnContact: 1
+  stopVelocityOnContact: 1
+  kinematicOnContact: 1
   parentOnContact: 0
   adjustWhenParentingOnContact: 0
 --- !u!108 &2346435194113405527
@@ -454,7 +454,7 @@ VisualEffect:
       - m_Value: 2
         m_Name: SmokeSize
         m_Overridden: 0
-      - m_Value: 1
+      - m_Value: 15
         m_Name: SmokeSpawnRateMultiplier
         m_Overridden: 1
       - m_Value: 10

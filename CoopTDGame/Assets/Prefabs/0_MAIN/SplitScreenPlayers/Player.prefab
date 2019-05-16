@@ -2874,7 +2874,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 113481993458745524, guid: 1145971759cf4554183ec2c4d65d44eb,
     type: 3}
-  projectileSpeed: 20
+  projectileSpeed: 100
   projectileOrigin: {fileID: 1492798955}
   mask:
     serializedVersion: 2
@@ -2903,7 +2903,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1488362260}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3caac4ec435705c41ad1cc589acf346d, type: 3}
   m_Name: 
@@ -2998,11 +2998,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player_: 0
+  debugMode: 1
   TurnPlayerForward: 0
   turn_Speed: 2
+  groundCheckRadius: 1
+  groundCheckHeight: 1.5
+  groundCheckDistance: 2
   movePlayerTowardSlope: 0
-  slopeForce: 0
-  slopeForceRayLength: 0
+  slopeForce: 12
+  slopeForceRayLength: 1
   isInBuildMode: 0
   isMeleeAttacking: 0
   isRangedAttacking: 0
@@ -3165,7 +3169,7 @@ MonoBehaviour:
   LeftFoot: {fileID: 1638888743}
   RightFoot: {fileID: 1980511794}
   footOffset: 0.5
-  deltaAmplifier: 0.1
+  deltaAmplifier: 0.01
 --- !u!114 &1488362261
 MonoBehaviour:
   m_ObjectHideFlags: 0

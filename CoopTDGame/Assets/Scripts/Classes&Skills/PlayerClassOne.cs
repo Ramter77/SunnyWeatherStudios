@@ -157,8 +157,8 @@ public class PlayerClassOne : MonoBehaviour
             if (_healInput) //{
             //if (Input.GetKeyDown(healAbilityHotkey))
             {
-                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping && !playC.isDead) {
-                    playC.isRangedAttacking = true;
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode/*  && !playC.isJumping */ && !playC.isDead) {
+                    //playC.isRangedAttacking = true;
 
                     healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;
                     healAbility();
@@ -180,20 +180,20 @@ public class PlayerClassOne : MonoBehaviour
             slashAbilityUiImageOn.enabled = true;
             slashAbilityUiImageOff.enabled = false;
 
-            if (_slashInput)
+            /* if (_slashInput)
             //if (Input.GetKeyDown(slashAbilityHotkey))
             {
-                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping) {
-                    playC.isRangedAttacking = true;
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isDead) {
+                    //playC.isRangedAttacking = true;
 
                     slashRechargeSpeed = Time.time + slashAbilityCooldown;
                     slashAbility();
-                    playerAnim.SetTrigger("Slash");
+                    //playerAnim.SetTrigger("Slash");
                     slashAbilityCooldownImage.fillAmount = 1;
                     //Start animation which displays the slash
                     SoulBackpack.Instance.reduceSoulsByCost(slashAbilityCost);
                 }
-            }
+            } */
         }
         else
         {
@@ -209,7 +209,7 @@ public class PlayerClassOne : MonoBehaviour
             if (_ultimateInput)
             //if (Input.GetKeyDown(ultimateAbilityHotkey))
             {
-                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping) {
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode/*  && !playC.isJumping */ && !playC.isDead) {
                     ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
                     ultimateAbility();
                     ultimateAbilityCooldownImage.fillAmount = 1;
@@ -268,6 +268,13 @@ public class PlayerClassOne : MonoBehaviour
                             hit.gameObject.GetComponent<LifeAndStats>().Revive();
                         }
                         else {
+                            //! Why not reset to max health? :
+                            /* if (hit.gameObject.GetComponent<LifeAndStats>().health + healAmount > hit.gameObject.GetComponent<LifeAndStats>().maxhealth) {
+                                hit.gameObject.GetComponent<LifeAndStats>().health = hit.gameObject.GetComponent<LifeAndStats>().maxhealth;
+                            }
+                            else {
+                                hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
+                            } */
 
                             if (hit.gameObject.GetComponent<LifeAndStats>().health <= 75)
                             {
@@ -283,6 +290,13 @@ public class PlayerClassOne : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void risePrefab() {
+        if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode/*  && !playC.isJumping */ && !playC.isDead) {
+            playerAnim.SetTrigger("Slash");
+            //SoulBackpack.Instance.reduceSoulsByCost(slashAbilityCost);
         }
     }
 

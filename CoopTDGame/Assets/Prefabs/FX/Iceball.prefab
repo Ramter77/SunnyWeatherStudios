@@ -98,11 +98,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   burnEnemiesOnContact: 0
   freezeEnemiesOnContact: 1
-  unparentChildOnContact: 0
-  destroyChildOnContact: 0
-  childDestroyTime: 10
+  unparentChildOnContact: 1
+  destroyChildOnContact: 1
+  childDestroyTime: 14
   vfxLifetimeMinMax: {x: 4, y: 4}
-  destroyOnContact: 0
+  destroyOnContact: 1
   destroyTime: 10
   disableDamageScriptOnContact: 1
   stopVelocityOnContact: 1
@@ -377,7 +377,7 @@ VisualEffect:
       - m_Value: 0
         m_Name: SmokeSize
         m_Overridden: 0
-      - m_Value: 1
+      - m_Value: 15
         m_Name: SmokeSpawnRateMultiplier
         m_Overridden: 1
       - m_Value: 10

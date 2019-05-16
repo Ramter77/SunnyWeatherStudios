@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,14 +11,34 @@ public class PlayerController : MonoBehaviour
     [Tooltip ("Player_0 = Mouse, Player_1 = Controller 1, Player_2 = Controller 2")]
     public int Player_ = 1;
     [SerializeField] bool debugMode;
+    public CharacterController charController;
+
+    [Header ("Parameters")]
+    [Tooltip ("Layer mask used for all rays")]
+    [SerializeField] LayerMask mask;
+
+    [Space (20)]
     [SerializeField] bool TurnPlayerForward;
     [SerializeField] float turn_Speed;
+
+    [Space (10)]
     [SerializeField] float groundCheckRadius = 1;
     [SerializeField] float groundCheckHeight = 1.5f;
     [SerializeField] int groundCheckDistance = 2;
+
+    [Space (10)]
     [SerializeField] bool movePlayerTowardSlope;
     [SerializeField] float slopeForce;
     [SerializeField] float slopeForceRayLength;
+
+    [Space (10)]
+    [SerializeField] bool allowAirMovement;
+    [SerializeField] private int airMoveSpeed;
+    private Vector3 moveDirection = Vector3.zero;
+    private Vector3 moveVelocity;
+    private float _verticalInput;
+    private float _horizontalInput;
+    
 
     #region STATES
     [Header ("Player STATES")]
@@ -27,14 +48,15 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     public bool isJumping;
     public bool isDead;
-    #endregion 
+    #endregion
+
 
     private Transform MainCameraTransform;
     private PlayerAnim playerAnim;
     [HideInInspector]
     public AudioSource audioSource;
-    CharacterController charController;
-    RaycastHit groundHit;
+    private RaycastHit groundHit;
+    private Rigidbody rb;    
     #endregion
 
     void Awake()
@@ -54,7 +76,8 @@ public class PlayerController : MonoBehaviour
         
         playerAnim = GetComponent<PlayerAnim>();
         audioSource = GetComponent<AudioSource>();
-        charController = GetComponent<CharacterController>();
+        if (charController == null) { charController = GetComponent<CharacterController>(); }
+        rb = GetComponent<Rigidbody>();
     }
 
     private void Start() {
@@ -92,14 +115,51 @@ public class PlayerController : MonoBehaviour
     void CheckGround() {
         Ray ray = new Ray(transform.position + Vector3.up * groundCheckHeight, Vector3.down);
 
-        if (Physics.SphereCast(ray, groundCheckRadius, out groundHit, groundCheckDistance)) {
+        if (Physics.SphereCast(ray, groundCheckRadius, out groundHit, groundCheckDistance, mask)) {
             isGrounded = true;
-            isJumping = false;
+            //isJumping = false;
         }
         else {
             isGrounded = false;
+
+            if (allowAirMovement) {
+                ControlInAir();
+            }
         }
 	}
+
+    private void ControlInAir()
+    {
+        #region Input
+        //* Player 0 input */
+        if (Player_ == 0)
+        {
+            _verticalInput = InputManager.Instance.Vertical0;
+            _horizontalInput = InputManager.Instance.Horizontal0;
+        }
+
+        //* Player 1 input */
+        else if (Player_ == 1)
+        {
+            _verticalInput = InputManager.Instance.Vertical1;
+            _horizontalInput = InputManager.Instance.Horizontal1;
+        }
+
+        //*Player 2 input */
+        else if (Player_ == 2) {
+            _verticalInput = InputManager.Instance.Vertical2;
+            _horizontalInput = InputManager.Instance.Horizontal2;
+        }
+        #endregion
+        
+        moveDirection = new Vector3(_horizontalInput, 0, _verticalInput);        
+        moveDirection = transform.TransformDirection(moveDirection);
+        moveVelocity = moveDirection.normalized * airMoveSpeed;
+
+        charController.Move(moveVelocity * Time.deltaTime);
+
+        //rb.MovePosition(rb.position + moveVelocity * Time.deltaTime);
+    }
 
     private bool OnSlope()
     {
@@ -108,7 +168,7 @@ public class PlayerController : MonoBehaviour
         }
 
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, charController.height / 2 * slopeForceRayLength))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, charController.height / 2 * slopeForceRayLength, mask))
         {
             if (hit.normal != Vector3.up)
             {
@@ -120,7 +180,7 @@ public class PlayerController : MonoBehaviour
 
 
     void OnDrawGizmos() {
-        if(debugMode) {
+        if (debugMode) {
             #region CheckGround
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position + Vector3.up * groundCheckHeight, groundCheckRadius);

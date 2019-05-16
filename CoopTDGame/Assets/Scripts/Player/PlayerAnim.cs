@@ -17,7 +17,8 @@ public class PlayerAnim : MonoBehaviour
     [Tooltip ("0 damping for jumping")] */
     /* [SerializeField]
     private float jumpDamping = 0; */
-
+    [SerializeField]
+    private bool enableWeaponColliderOnJump;
 
     #region INPUT
     private float _verticalInput;
@@ -27,10 +28,6 @@ public class PlayerAnim : MonoBehaviour
     private bool toggleRun;
     private bool toggleRunning;
     #endregion
-
-    /* [SerializeField] float m_JumpPower = 12f; */
-
-
 
     private PlayerController playC;
     private Animator animator;
@@ -103,31 +100,19 @@ public class PlayerAnim : MonoBehaviour
         }
         #endregion
 
-        #region Grounded Check & Jumping
-        //if (charController.isGrounded) {
+        #region Grounded Check
         if (playC.isGrounded) {
             animator.SetBool("isGrounded", true);
-            
-            //playC.isJumping = false;
-            //animator.applyRootMotion = true;
-            //animator.SetFloat("isJumping", 1);
 
+            #region Jumping
             if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping && !playC.isDead) {
                 _Jump(_jumpInput);
             }
-
-            //Jump(_jumpInput);
-            /* if (_jumpInput) {
-                animator.SetTrigger("Jump");
-                playC.isJumping = true;
-            } */
-            //animator.SetFloat("isJumping", 0);
+            #endregion
         }
         else {
             animator.SetBool("isGrounded", false);
-            //animator.SetFloat("isJumping", playerRB.velocity.y);
         }
-        
         #endregion
         #endregion
     }
@@ -138,41 +123,18 @@ public class PlayerAnim : MonoBehaviour
 
     void _Jump(bool jump)
     {
-        // check whether conditions are right to allow a jump:
         if (jump)// && animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
         {
-            // jump!
-            //Debug.Log("JUMP");
-            /* playerRB.velocity = new Vector3(playerRB.velocity.x, m_JumpPower, playerRB.velocity.z);
-            animator.SetBool("isGrounded", false); */
-            //animator.applyRootMotion = false;
-            //m_GroundCheckDistance = 0.1f;
+            //remember to disable weapon collider after jump
+            if (enableWeaponColliderOnJump) {
+                animator.GetComponent<MeleeAttack>().ActivateWeaponCollider();
+            }
 
-
-            animator.GetComponent<MeleeAttack>().ActivateWeaponCollider();
-
+            //use a seperate float for directional jump blend tree
             animator.SetFloat("jumpVertical", _verticalInput);
             animator.SetFloat("jumpHorizontal", _horizontalInput);
             animator.SetTrigger("Jump");
             playC.isJumping = true;
         }
     }
-
-    /* void Jump()
-    {
-        if (InputManager.Instance.Jump) {
-            //playerAnim.animator.SetTrigger("Jump");
-
-            
-            if (!isJumping) {
-                isJumping = true;
-
-                if (playerAnim.animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1f) {
-                    isJumping = false;
-                }
-            }
-           
-        }
-    }
-    */
 }
