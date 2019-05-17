@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 7564052649095865483}
   - component: {fileID: 2482028260622926280}
   - component: {fileID: 2335984332643212525}
-  - component: {fileID: 8221578345319010306}
   m_Layer: 0
   m_Name: log.002_LOD0
   m_TagString: Untagged
@@ -93,22 +92,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: e4c8c13566f4bb44197b0609c2618637, type: 3}
---- !u!208 &8221578345319010306
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3483473585738327495}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.0050000004, y: 0.043, z: 0.0050000004}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &4632632293108752460
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +213,7 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: 0, y: 0, z: 0.0000038146973}
   m_Size: 8.566438
-  m_FadeMode: 0
+  m_FadeMode: 1
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:

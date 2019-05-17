@@ -44,7 +44,7 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: -0.7121372, y: 9.892093, z: 3.3366084}
   m_Size: 21.705626
-  m_FadeMode: 0
+  m_FadeMode: 1
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 5278986742700835782}
   - component: {fileID: 6594036086436263101}
   - component: {fileID: 1580777026129599919}
-  - component: {fileID: 807634130547013694}
   m_Layer: 0
   m_Name: tree_dandelion.001_LOD0
   m_TagString: Untagged
@@ -155,22 +154,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 2498a836cbdaa8144847ee19f17a6e35, type: 3}
---- !u!208 &807634130547013694
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3873593297360916790}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.010000001, y: 0.036000002, z: 0.015000001}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: -0.002, y: 0.033, z: 0.011000001}
-  m_TimeToStationary: 0.5
 --- !u!1 &4969794740612262865
 GameObject:
   m_ObjectHideFlags: 0

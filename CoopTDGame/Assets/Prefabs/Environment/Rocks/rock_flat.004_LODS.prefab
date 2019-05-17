@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3936722448704031976}
   - component: {fileID: 3210323591012463628}
   - component: {fileID: 2367444717342305650}
-  - component: {fileID: 3373403023946462304}
   m_Layer: 0
   m_Name: rock_flat.004_LOD0
   m_TagString: Untagged
@@ -93,22 +92,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: 1e8f93dfe0e56f64f90874a7d119bb5b, type: 3}
---- !u!208 &3373403023946462304
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291672170122114861}
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.016, y: 0.002, z: 0.017}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.002, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &2255745843584298191
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,7 +290,7 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: -0.29191208, y: -0.49391747, z: 0.17470169}
   m_Size: 21.870068
-  m_FadeMode: 0
+  m_FadeMode: 1
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:

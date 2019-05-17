@@ -9,6 +9,8 @@ public class RotateGameObject : MonoBehaviour
     public bool playAnimationToo;
     private Animation anim;
 
+    public bool rotateSidewards = false;
+
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
@@ -24,6 +26,9 @@ public class RotateGameObject : MonoBehaviour
 
     void Update()
     {
+        if(rotateSidewards)
+            transform.Rotate(Vector3.forward * (RotationSpeed * Time.deltaTime));
+        else 
         transform.Rotate(Vector3.up * ( RotationSpeed * Time.deltaTime));
     }
 }

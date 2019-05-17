@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3936722448704031976}
   - component: {fileID: 3210323591012463628}
   - component: {fileID: 2499224403363030442}
-  - component: {fileID: 1660128131871043853}
   m_Layer: 0
   m_Name: rockpile_rounded.001_LOD0
   m_TagString: Untagged
@@ -93,22 +92,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300000, guid: fad4af58898716c4dab3050a108efa63, type: 3}
---- !u!208 &1660128131871043853
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 291672170122114861}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.010000001, y: 0.004, z: 0.009000001}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.004, z: 0}
-  m_TimeToStationary: 0.5
 --- !u!1 &1239011935749722718
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,7 +213,7 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: 0, y: 1.337434, z: 0.0000014305115}
   m_Size: 6.0027575
-  m_FadeMode: 0
+  m_FadeMode: 1
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:

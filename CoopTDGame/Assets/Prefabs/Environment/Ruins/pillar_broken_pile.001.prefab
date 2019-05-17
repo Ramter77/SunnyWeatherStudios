@@ -198,7 +198,7 @@ LODGroup:
   serializedVersion: 2
   m_LocalReferencePoint: {x: -2.8405838, y: 28.57233, z: -92.06122}
   m_Size: 173.98578
-  m_FadeMode: 0
+  m_FadeMode: 1
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
   m_LODs:
@@ -227,13 +227,12 @@ GameObject:
   - component: {fileID: 3591170248745079497}
   - component: {fileID: 2769566026344438923}
   - component: {fileID: 127071722743379375}
-  - component: {fileID: 4718702631014202939}
   m_Layer: 0
   m_Name: pillar_broken_pile.001_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 1
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 91
   m_IsActive: 1
 --- !u!4 &6043984069136624310
 Transform:
@@ -308,19 +307,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300002, guid: 50421227e2bf52b4793a7832d9f7a3e0, type: 3}
---- !u!208 &4718702631014202939
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8577335343659086794}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 1
-  m_Extents: {x: 0.010000001, y: 0.006, z: 0.014}
-  m_MoveThreshold: 0.1
-  m_Carve: 1
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 0.004, z: -0.014}
-  m_TimeToStationary: 0.5
