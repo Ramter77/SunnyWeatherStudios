@@ -35,6 +35,10 @@ public class StatusEffect : MonoBehaviour
     private float burnDelay = 4f;
     private bool startBurning;
 
+    public float burnDamage = 10f;
+    public float timeBetweenEachBurn = 2f;
+    private float fallbackTimeBetweenBurns = 2.0f;
+
     [Header ("Freeze")]
     [SerializeField]    
     private bool freezeOnStart;
@@ -43,6 +47,16 @@ public class StatusEffect : MonoBehaviour
     [SerializeField]
     private float freezeDelay = 4f;
     private bool startFreezing;
+
+
+    [Header("DOT SETTINGS")]
+    public float DotDuration = 10f;
+
+    public bool burning = false;
+
+    public bool freezing = false;
+
+    private bool appliedDot = false;
 
     [Space (10)]
     //SLOW
@@ -60,6 +74,7 @@ public class StatusEffect : MonoBehaviour
         basicEnemyScript = GetComponent<BasicEnemy>();
         agent = GetComponent<NavMeshAgent>();
         enemyAnim = GetComponent<EnemyAnim>();
+        fallbackTimeBetweenBurns = timeBetweenEachBurn;
 
         if (dissolveOnStart) {
             DissolveCoroutine();
@@ -82,6 +97,16 @@ public class StatusEffect : MonoBehaviour
             }
         }
         #endregion */
+
+        if(burning)
+        {
+            if(freezing && !appliedDot)
+            {
+                SlowMovement();
+                appliedDot = true;
+            }
+            BurnEnemy();
+        }
     }
 
     public void DissolveCoroutine() {
@@ -117,6 +142,28 @@ public class StatusEffect : MonoBehaviour
         yield return new WaitForSeconds(burnStartDelay);
 
         adjustMaterialScript.Burn(burnDelay);
+
+        burning = true;
+
+        StartCoroutine(resetDot());
+
+    }
+
+    private IEnumerator resetDot()
+    {
+        yield return new WaitForSeconds(DotDuration);
+
+        if(freezing)
+        {
+            multipliedSpeedPercentage = basicEnemyScript.enemySpeed / moveSpeedMultiplier;
+            agent.speed = multipliedSpeedPercentage;
+            enemyAnim.speedMultiplier /= moveSpeedMultiplier;
+        }
+
+        burning = false;
+        freezing = false;
+        appliedDot = false;
+        timeBetweenEachBurn = 2f;
     }
 
     private IEnumerator Freeze() {
@@ -125,6 +172,10 @@ public class StatusEffect : MonoBehaviour
         adjustMaterialScript.Freeze(freezeDelay);
 
         SlowMovement();
+
+        freezing = true;
+
+        StartCoroutine(resetDot());
     }
 
     private void SlowMovement()
@@ -136,5 +187,20 @@ public class StatusEffect : MonoBehaviour
             agent.speed = multipliedSpeedPercentage;
             enemyAnim.speedMultiplier *= moveSpeedMultiplier;
         //}
+    }
+
+    private void BurnEnemy()
+    {
+        Component LifeScript = gameObject.GetComponent<LifeAndStats>();
+        
+        if(LifeScript != null)
+        {
+            timeBetweenEachBurn -= Time.deltaTime;
+            if (timeBetweenEachBurn <= 0)
+            {
+                gameObject.GetComponent<LifeAndStats>().TakeDamage(burnDamage);
+                timeBetweenEachBurn = fallbackTimeBetweenBurns;
+            }
+        }
     }
 }
