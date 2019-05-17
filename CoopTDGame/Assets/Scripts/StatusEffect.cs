@@ -104,18 +104,15 @@ public class StatusEffect : MonoBehaviour
         }
         #endregion */
 
-        /* if (burning)
+        if (burning)
         {
+            BurnEnemy();
+
             if (freezing && !appliedDot)
             {
                 SlowMovement(freezing);
                 appliedDot = true;
             }
-            BurnEnemy();
-        } */
-
-        if (burning) {
-            BurnEnemy();
         }
     }
 
@@ -162,7 +159,6 @@ public class StatusEffect : MonoBehaviour
             StartCoroutine(resetDot());
         }
     }
-
     
     private IEnumerator Freeze() {
         yield return new WaitForSeconds(freezeStartDelay);
@@ -210,14 +206,14 @@ public class StatusEffect : MonoBehaviour
 
         if (burning) {
             StartCoroutine(Burn());
+
+            timeBetweenEachBurn = 2f;
         }
 
         if (freezing) {
             StartCoroutine(Freeze());
+
+            appliedDot = false;
         }
-
-        appliedDot = false;
-        timeBetweenEachBurn = 2f;
     }
-
 }
