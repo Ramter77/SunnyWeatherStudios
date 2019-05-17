@@ -4,15 +4,42 @@ using System.Collections;
 public class FlyCamera : MonoBehaviour {
 
     [Header ("Mouse/WASD to move, space to ascend, left shift to speed up")]
+    public bool disableUI;
+    public bool disablePlayers;
     public float speed = 1.0f;
     public float ySpeedMultiplier = 0.5f;
     public float fastSpeed = 2.0f;
     public float mouseSpeed = 4.0f;
     private Vector3 _angles;
+    private Canvas canvas;
 
     private void OnEnable() {
         _angles = transform.eulerAngles;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void Start() {
+        if (GameObject.Find("UICanvas") != null) {
+            canvas = GameObject.Find("UICanvas").GetComponent<Canvas>();
+        
+            if (disableUI) {
+                canvas.renderMode = RenderMode.ScreenSpaceCamera;
+                canvas.worldCamera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
+            }
+            else
+            {
+                canvas.renderMode = RenderMode.ScreenSpaceOverlay;;
+            }
+        }
+        else
+        {
+            Debug.Log("Couldn't find 'UICanvas'");
+        }
+
+        if (disablePlayers) {
+            GameObject.FindGameObjectWithTag("Player").SetActive(false);
+            GameObject.FindGameObjectWithTag("Player2").SetActive(false);
+        }
     }
 
     private void OnDisable() { Cursor.lockState = CursorLockMode.None; }
