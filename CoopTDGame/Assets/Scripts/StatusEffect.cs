@@ -124,11 +124,15 @@ public class StatusEffect : MonoBehaviour
     }
 
     public void BurnCoroutine() {
-        StartCoroutine(Burn());
+        if (!burning) {
+            StartCoroutine(Burn());
+        }
     }
 
     public void FreezeCoroutine() {
-        StartCoroutine(Freeze());
+        if (!freezing) {
+            StartCoroutine(Freeze());
+        }
     }
 
     private IEnumerator Dissolve() {
@@ -154,7 +158,7 @@ public class StatusEffect : MonoBehaviour
 
         adjustMaterialScript.Burn(burnDelay);
 
-        if (!burning) {
+        if (burning) {
             StartCoroutine(resetDot());
         }
     }
@@ -167,7 +171,7 @@ public class StatusEffect : MonoBehaviour
         adjustMaterialScript.Freeze(freezeDelay);
         SlowMovement(freezing);
 
-        if (!freezing) {
+        if (freezing) {
             StartCoroutine(resetDot());
         }
     }
