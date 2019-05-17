@@ -21,7 +21,7 @@ public class enableSplitScreen : MonoBehaviour
             if (otherPlayer == null) {
                 GameObject otherPlayer = GameObject.FindGameObjectWithTag("Player2");
             }
-            otherPlayer.gameObject.SetActive(false);
+            otherPlayer.gameObject.SetActive(true);
         }
         else
         {
@@ -30,7 +30,7 @@ public class enableSplitScreen : MonoBehaviour
             if (otherPlayer == null) {
                 GameObject otherPlayer = GameObject.FindGameObjectWithTag("Player2");
             }
-            otherPlayer.gameObject.SetActive(true);
+            otherPlayer.gameObject.SetActive(false);
         }
     }
 }

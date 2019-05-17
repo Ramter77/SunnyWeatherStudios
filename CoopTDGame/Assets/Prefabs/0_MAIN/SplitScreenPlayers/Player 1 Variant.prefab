@@ -15,6 +15,19 @@ MonoBehaviour:
   _enableSplitScreen: 1
   cam: {fileID: 2819464312394078172}
   otherPlayer: {fileID: 0}
+--- !u!114 &2819464314047535631
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2819464313814938034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb8675f79def8c146bea6dd138afc70a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: 1
 --- !u!1 &4760426672055938560
 GameObject:
   m_ObjectHideFlags: 0
@@ -2918,22 +2931,22 @@ PrefabInstance:
     - target: {fileID: 7777738009032027036, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_Name
-      value: Player 1
+      value: Player 1 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 480
+      value: 445.01
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 54.5
+      value: 27.3
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 499.3
+      value: 517.23
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
@@ -3187,13 +3200,42 @@ PrefabInstance:
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 2819464313814938046}
+    - target: {fileID: 7777738009032027037, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7777738008566605904, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 2819464313814937923}
-    m_RemovedComponents: []
+    - target: {fileID: 7777738008700112370, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2684419895
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 7777738009032027031, guid: 064a8a3d64a5d784882a0951943238b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 064a8a3d64a5d784882a0951943238b9, type: 3}
+--- !u!4 &2819464312486886812 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7777738007734904754, guid: 064a8a3d64a5d784882a0951943238b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5535113436561414702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!20 &2819464312394078172 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 7777738008700112370, guid: 064a8a3d64a5d784882a0951943238b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5535113436561414702}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2819464312394078154 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7777738008700112356, guid: 064a8a3d64a5d784882a0951943238b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 5535113436561414702}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2819464313814938034 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7777738009032027036, guid: 064a8a3d64a5d784882a0951943238b9,
@@ -3215,24 +3257,6 @@ CharacterController:
 --- !u!82 &2819464313814938046 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 7777738009032027024, guid: 064a8a3d64a5d784882a0951943238b9,
-    type: 3}
-  m_PrefabInstance: {fileID: 5535113436561414702}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2819464312486886812 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7777738007734904754, guid: 064a8a3d64a5d784882a0951943238b9,
-    type: 3}
-  m_PrefabInstance: {fileID: 5535113436561414702}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2819464312394078154 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7777738008700112356, guid: 064a8a3d64a5d784882a0951943238b9,
-    type: 3}
-  m_PrefabInstance: {fileID: 5535113436561414702}
-  m_PrefabAsset: {fileID: 0}
---- !u!20 &2819464312394078172 stripped
-Camera:
-  m_CorrespondingSourceObject: {fileID: 7777738008700112370, guid: 064a8a3d64a5d784882a0951943238b9,
     type: 3}
   m_PrefabInstance: {fileID: 5535113436561414702}
   m_PrefabAsset: {fileID: 0}

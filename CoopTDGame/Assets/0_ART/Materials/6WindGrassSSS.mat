@@ -8,8 +8,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: 6WindGrassSSS
-  m_Shader: {fileID: 4800000, guid: 63b8a371047725f40856136c2a8e615b, type: 3}
-  m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE
+  m_Shader: {fileID: 4800000, guid: dac3091208faae34d83d9853c14317d8, type: 3}
+  m_ShaderKeywords: BOOLEAN_A29075A1_ON _NORMALMAP_TANGENT_SPACE
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 1
   m_DoubleSidedGI: 0
@@ -90,7 +90,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: d759574bc0cb2c84ab23b77834a708d0, type: 3}
+        m_Texture: {fileID: 2800000, guid: d6cdc79ec19714fcd980ca3f6ac01a0a, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
@@ -103,6 +103,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NormalMapOS:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ramp:
+        m_Texture: {fileID: 2800000, guid: 52e66a9243cdfed44b5e906f5910d35b, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecularColorMap:
@@ -141,33 +145,52 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _albedomap:
+        m_Texture: {fileID: 2800000, guid: d6cdc79ec19714fcd980ca3f6ac01a0a, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _maskmap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _normalmap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - Boolean_20748E3D: 0
     - Boolean_434C1C9E: 0
+    - Boolean_4B1E0988: 1
     - Boolean_55007501: 0
     - Vector1_10E2C0A8: 0.5
     - Vector1_12007AC9: 0
+    - Vector1_1254652E: 1
     - Vector1_1DE55CD1: 1
     - Vector1_20AB97EA: 0
     - Vector1_2643807E: 1
+    - Vector1_3061D1E6: 4.5
     - Vector1_3194C68C: 1
     - Vector1_3369874E: 0
     - Vector1_3628F6C: 0.5
     - Vector1_3A52F292: 0.5
+    - Vector1_46C961DA: 4.5
     - Vector1_6E5D50C4: 0
     - Vector1_7E30C262: 0.4
     - Vector1_8A26164C: 0
     - Vector1_9407F179: 0.2
     - Vector1_A08F1DC5: 0
+    - Vector1_BC7A9268: 4
     - Vector1_BE4F817D: 0
     - Vector1_C3543D74: 0.1
     - Vector1_CD766B85: 0
     - Vector1_DD40DC28: 0
     - Vector1_E0B55811: 0
     - Vector1_E3605846: 1
+    - Vector1_E75735E: 0.5
     - Vector1_E830F8C4: 2
     - Vector1_F092A6AB: 0.03
     - Vector1_F2CA7575: 0
+    - Vector1_F6BB031B: 7
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
@@ -234,6 +257,7 @@ Material:
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
+    - _MaxWidth: 0.1
     - _Metallic: 0
     - _NormalMapSpace: 0
     - _NormalScale: 1
@@ -243,8 +267,10 @@ Material:
     - _PPDPrimitiveLength: 1
     - _PPDPrimitiveWidth: 1
     - _PreRefractionPass: 0
+    - _Radius: 1
     - _ReceivesSSR: 1
     - _RefractionModel: 0
+    - _Rigidness: 25
     - _SSRefractionProjectionModel: 0
     - _ShiverDirectionality: 0.5
     - _ShiverDrag: 0.2
@@ -253,6 +279,7 @@ Material:
     - _SmoothnessRemapMin: 0
     - _SpecularAAScreenSpaceVariance: 0.1
     - _SpecularAAThreshold: 0.2
+    - _Speed: 25
     - _SrcBlend: 1
     - _StencilRef: 2
     - _StencilRefMV: 128
@@ -262,6 +289,7 @@ Material:
     - _SubsurfaceMask: 1
     - _SupportDecals: 1
     - _SurfaceType: 0
+    - _SwayMax: 0.005
     - _TexWorldScale: 1
     - _TexWorldScaleEmissive: 1
     - _Thickness: 1
@@ -275,10 +303,20 @@ Material:
     - _UVDetail: 0
     - _UVEmissive: 0
     - _UseShadowThreshold: 0
+    - _YOffset: 0
     - _ZTestDepthEqualForOpaque: 3
     - _ZTestGBuffer: 4
     - _ZTestModeDistortion: 4
     - _ZWrite: 1
+    - _albedostrength: 1
+    - _alphaclip: 0.485
+    - _metal: 0
+    - _radius: 0.2
+    - _smoothness: 0
+    - _turbulence: 15
+    - _usenormalmap: 0
+    - _verticaloffset: 0
+    - _windstrength: 0.5
     m_Colors:
     - Color_3617E2BE: {r: 0.30188674, g: 0.30188674, b: 0.30188674, a: 0}
     - Color_684E1F3E: {r: 0, g: 0, b: 0, a: 0}
@@ -287,6 +325,8 @@ Material:
     - Vector2_7EE570AE: {r: 6, g: 0, b: 0, a: 0}
     - Vector2_A506B2AF: {r: 10, g: 0, b: 0, a: 0}
     - Vector2_A9B8D902: {r: 0, g: 0, b: 0, a: 0}
+    - Vector3_1934CAD4: {r: 0, g: 0, b: 0, a: 0}
+    - Vector3_F5EE64CD: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
@@ -295,9 +335,14 @@ Material:
     - _EmissiveColor: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
+    - _Player1: {r: 0, g: 0, b: 0, a: 0}
     - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
     - _ThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
     - _TransmittanceColor: {r: 1, g: 1, b: 1, a: 1}
     - _UVDetailsMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMask: {r: 1, g: 0, b: 0, a: 0}
     - _UVMappingMaskEmissive: {r: 1, g: 0, b: 0, a: 0}
+    - _albedocolor: {r: 0.22921386, g: 0.5849056, b: 0.21796006, a: 0}
+    - _offset: {r: 0, g: 0, b: 0, a: 0}
+    - _tiling: {r: 1, g: 1, b: 0, a: 0}
+    - _trackerPosition: {r: 0, g: 0, b: 0, a: 0}
