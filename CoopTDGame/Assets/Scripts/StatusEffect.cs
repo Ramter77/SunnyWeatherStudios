@@ -66,6 +66,7 @@ public class StatusEffect : MonoBehaviour
     private NavMeshAgent agent;
     private EnemyAnim enemyAnim;
     private BasicEnemy basicEnemyScript;
+    private LifeAndStats LifeScript;
     private bool slowed;
 
     void Start()
@@ -74,6 +75,7 @@ public class StatusEffect : MonoBehaviour
         basicEnemyScript = GetComponent<BasicEnemy>();
         agent = GetComponent<NavMeshAgent>();
         enemyAnim = GetComponent<EnemyAnim>();
+        LifeScript = GetComponent<LifeAndStats>();
         fallbackTimeBetweenBurns = timeBetweenEachBurn;
 
         if (dissolveOnStart) {
@@ -87,6 +89,10 @@ public class StatusEffect : MonoBehaviour
         if (freezeOnStart) {
             FreezeCoroutine();
         }
+
+        /* if (blastOnStart) {
+            BlastCoroutine();
+        } */
     }
 
     void Update() {
@@ -98,13 +104,17 @@ public class StatusEffect : MonoBehaviour
         }
         #endregion */
 
-        if(burning)
+        /* if (burning)
         {
-            if(freezing && !appliedDot)
+            if (freezing && !appliedDot)
             {
-                SlowMovement();
+                SlowMovement(freezing);
                 appliedDot = true;
             }
+            BurnEnemy();
+        } */
+
+        if (burning) {
             BurnEnemy();
         }
     }
@@ -140,67 +150,70 @@ public class StatusEffect : MonoBehaviour
 
     private IEnumerator Burn() {
         yield return new WaitForSeconds(burnStartDelay);
+        burning = !burning;
 
         adjustMaterialScript.Burn(burnDelay);
 
-        burning = true;
+        if (!burning) {
+            StartCoroutine(resetDot());
+        }
+    }
 
-        StartCoroutine(resetDot());
+    
+    private IEnumerator Freeze() {
+        yield return new WaitForSeconds(freezeStartDelay);
+        freezing = !freezing;
 
+        adjustMaterialScript.Freeze(freezeDelay);
+        SlowMovement(freezing);
+
+        if (!freezing) {
+            StartCoroutine(resetDot());
+        }
+    }
+
+    private void BurnEnemy()
+    {
+        if (LifeScript != null)
+        {
+            timeBetweenEachBurn -= Time.deltaTime;
+            if (timeBetweenEachBurn <= 0)
+            {
+                LifeScript.TakeDamage(burnDamage);
+                timeBetweenEachBurn = fallbackTimeBetweenBurns;
+            }
+        }
+    }
+
+    private void SlowMovement(bool toggle)
+    {
+        if (toggle) {
+            multipliedSpeedPercentage = basicEnemyScript.enemySpeed * moveSpeedMultiplier;
+            agent.speed = multipliedSpeedPercentage;
+            enemyAnim.speedMultiplier *= moveSpeedMultiplier;
+        }
+        else
+        {
+            multipliedSpeedPercentage = basicEnemyScript.enemySpeed / moveSpeedMultiplier;
+            agent.speed = multipliedSpeedPercentage;
+            enemyAnim.speedMultiplier /= moveSpeedMultiplier;
+        }
     }
 
     private IEnumerator resetDot()
     {
         yield return new WaitForSeconds(DotDuration);
 
-        if(freezing)
-        {
-            multipliedSpeedPercentage = basicEnemyScript.enemySpeed / moveSpeedMultiplier;
-            agent.speed = multipliedSpeedPercentage;
-            enemyAnim.speedMultiplier /= moveSpeedMultiplier;
+        if (burning) {
+            StartCoroutine(Burn());
         }
 
-        burning = false;
-        freezing = false;
+        if (freezing) {
+            StartCoroutine(Freeze());
+        }
+
         appliedDot = false;
         timeBetweenEachBurn = 2f;
     }
 
-    private IEnumerator Freeze() {
-        yield return new WaitForSeconds(freezeStartDelay);
-
-        adjustMaterialScript.Freeze(freezeDelay);
-
-        SlowMovement();
-
-        freezing = true;
-
-        StartCoroutine(resetDot());
-    }
-
-    private void SlowMovement()
-    {
-        //if (!slowed) {
-          //  slowed = true;
-
-            multipliedSpeedPercentage = basicEnemyScript.enemySpeed * moveSpeedMultiplier;
-            agent.speed = multipliedSpeedPercentage;
-            enemyAnim.speedMultiplier *= moveSpeedMultiplier;
-        //}
-    }
-
-    private void BurnEnemy()
-    {
-        Component LifeScript = gameObject.GetComponent<LifeAndStats>();
-        
-        if(LifeScript != null)
-        {
-            timeBetweenEachBurn -= Time.deltaTime;
-            if (timeBetweenEachBurn <= 0)
-            {
-                gameObject.GetComponent<LifeAndStats>().TakeDamage(burnDamage);
-                timeBetweenEachBurn = fallbackTimeBetweenBurns;
-            }
-        }
-    }
 }

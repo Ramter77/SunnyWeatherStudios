@@ -56,50 +56,26 @@ public class AdjustMaterial : MonoBehaviour
     {
         #region DISSOLVE
         if (startDissolving) {
-            _AdjustMaterial(dissolveString, true, dissolveLerp, dissolved);
-            
-            if (dissolveLerp < 1) { //While lerp is below the end limit
-                //Increment it at the desired rate every frame
-                dissolveLerp += Time.deltaTime / _dissolveDuration;
-            }
-            else
-            {
-                dissolved = !dissolved;
-            }
+            Dissolving();
+        }
+        #endregion
+
+        #region BLAST
+        if (startFreezing & startBurning) {
+            Burning();
+            Freezing();
         }
         #endregion
 
         #region BURN
-        if (startBurning) {
-            _AdjustMaterial(burnString, false, burnLerp, burned);
-            burnVFX.SetActive(!burned);
-            
-            if (burnLerp < 1) { //While lerp is below the end limit
-                //Increment it at the desired rate every frame
-                burnLerp += Time.deltaTime / _burnDuration;
-            }
-            else
-            {
-                startBurning = false;
-                burned = !burned;
-            }
+        else if (startBurning) {
+            Burning();
         }
         #endregion
 
         #region FREEZE
-        if (startFreezing) {
-            _AdjustMaterial(freezeString, false, freezeLerp, frozen);
-            freezeVFX.SetActive(!frozen);
-            
-            if (freezeLerp < 1) { //While lerp is below the end limit
-                //Increment it at the desired rate every frame
-                freezeLerp += Time.deltaTime / _freezeDuration;
-            }
-            else
-            {
-                startFreezing = false;
-                frozen = !frozen;
-            }
+        else if (startFreezing) {
+            Freezing();
         }
         #endregion
     }
@@ -136,5 +112,48 @@ public class AdjustMaterial : MonoBehaviour
     public void Freeze(float duration) {
         _freezeDuration = duration;
         startFreezing = true;
+    }
+
+    private void Dissolving() {
+        _AdjustMaterial(dissolveString, true, dissolveLerp, dissolved);
+            
+        if (dissolveLerp < 1) { //While lerp is below the end limit
+            //Increment it at the desired rate every frame
+            dissolveLerp += Time.deltaTime / _dissolveDuration;
+        }
+        else
+        {
+            dissolved = !dissolved;
+        }
+    }
+
+    private void Burning() {
+        _AdjustMaterial(burnString, false, burnLerp, burned);
+        burnVFX.SetActive(!burned);
+        
+        if (burnLerp < 1) { //While lerp is below the end limit
+            //Increment it at the desired rate every frame
+            burnLerp += Time.deltaTime / _burnDuration;
+        }
+        else
+        {
+            startBurning = false;
+            burned = !burned;
+        }
+    }
+
+    private void Freezing() {
+        _AdjustMaterial(freezeString, false, freezeLerp, frozen);
+        freezeVFX.SetActive(!frozen);
+        
+        if (freezeLerp < 1) { //While lerp is below the end limit
+            //Increment it at the desired rate every frame
+            freezeLerp += Time.deltaTime / _freezeDuration;
+        }
+        else
+        {
+            startFreezing = false;
+            frozen = !frozen;
+        }
     }
 }
