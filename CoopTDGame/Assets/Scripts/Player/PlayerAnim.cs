@@ -24,8 +24,10 @@ public class PlayerAnim : MonoBehaviour
     [SerializeField]
     private bool allowJumpWhileMelee;
     [SerializeField]
+    private bool restrictForwardJump;
+    [SerializeField]
     private bool allowJumpWhileRanged;
-
+    private bool allowJump;
 
 
     #region INPUT
@@ -115,22 +117,40 @@ public class PlayerAnim : MonoBehaviour
             if (/* !playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && */ !playC.isJumping && !playC.isDead) {
                 if (!allowJumpWhileMelee && !allowJumpWhileRanged) {
                     if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode) {
-                        _Jump(_jumpInput);
+                        allowJump = true;
                     }
                 }
 
                 else if (allowJumpWhileMelee && allowJumpWhileRanged) {
-                    _Jump(_jumpInput);
+                    allowJump = true;
                 }
 
                 else if (allowJumpWhileMelee) {
                     if (!playC.isRangedAttacking) {
-                        _Jump(_jumpInput);
+                        allowJump = true;
                     }
                 }
 
                 else if (allowJumpWhileRanged) {
                     if (!playC.isMeleeAttacking) {
+                        allowJump = true;
+                    }
+                }
+
+                if (allowJump) {
+                    if (restrictForwardJump) {
+                        if (playC.isMeleeAttacking || playC.isRangedAttacking) {
+                            if (_verticalInput <= 0)  {
+                                _Jump(_jumpInput);
+                            }
+                        }
+                        else
+                        {
+                            _Jump(_jumpInput);
+                        }
+                    }
+                    else
+                    {
                         _Jump(_jumpInput);
                     }
                 }

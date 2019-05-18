@@ -143,6 +143,7 @@ public class AdjustMaterial : MonoBehaviour
     }
 
     private void Freezing() {
+        Debug.Log("frouzen: "+frozen);
         _AdjustMaterial(freezeString, false, freezeLerp, frozen);
         freezeVFX.SetActive(!frozen);
         

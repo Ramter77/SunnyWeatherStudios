@@ -6,6 +6,8 @@ using UnityEngine;
 public class ActivatePrefab : MonoBehaviour
 {
     [SerializeField]
+    private bool playLowerAnim;
+    [SerializeField]
     private float trapDuration = 10.0f;
     private float maxTrapDuration;
     private SphereCollider activationCollider;
@@ -16,7 +18,7 @@ public class ActivatePrefab : MonoBehaviour
     public bool towerActive;
     public bool trapActive;
     private bool startTrapCD;
-    private AnimationClip riseTrap, lowerTrap;
+    private AnimationClip riseTower, lowerTower, riseTrap, lowerTrap;
     
     private PlayerController playC;
     private bool _input;
@@ -26,6 +28,7 @@ public class ActivatePrefab : MonoBehaviour
     private GameObject disabledVFX;
     [SerializeField]
     private GameObject enabledVFX;
+    
 
     void Start()
     {
@@ -39,6 +42,9 @@ public class ActivatePrefab : MonoBehaviour
             isTower = true;
 
             anim.Play("LowerTower");
+
+            riseTower = anim.GetClip("RiseTower");
+            lowerTower = anim.GetClip("LowerTower");
         }
         else {
             isTower = false;
@@ -142,10 +148,35 @@ public class ActivatePrefab : MonoBehaviour
             disabledVFX.SetActive(false);
 
             activationCollider.enabled = false;
+
+            anim.clip = riseTower;
             anim.Play();
             GetComponent<BasicTower>().activated = true;
             GetComponent<BasicTower>().startAiming();
-            meshChild.tag = "possibleTargets";
+            gameObject.tag = "possibleTargets";
+        }
+    }
+
+    public void _LowerTower() {
+        if (towerActive) {
+            towerActive = false;
+            enabledVFX.SetActive(false);
+            disabledVFX.SetActive(true);
+
+            activationCollider.enabled = true;
+
+            if (playLowerAnim) {
+                anim.clip = lowerTrap;
+                anim.Play();
+            }
+            else
+            {
+                transform.GetChild(0).position = new Vector3(transform.GetChild(0).position.x, transform.GetChild(0).position.y - 24, transform.GetChild(0).position.z);
+            }
+
+            GetComponent<BasicTower>().activated = false;
+            //GetComponent<BasicTower>().startAiming();
+            gameObject.tag = "Untagged";
         }
     }
 
