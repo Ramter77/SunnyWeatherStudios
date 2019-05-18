@@ -37,9 +37,13 @@ public class ActivatePrefab : MonoBehaviour
         //isTower = GetComponent<BasicTower>().enabled;
         if (GetComponent<BasicTower>()) {
             isTower = true;
+
+            anim.Play("LowerTower");
         }
         else {
             isTower = false;
+
+            anim.Play("LowerTrap");
 
             riseTrap = anim.GetClip("RiseTrap");
             lowerTrap = anim.GetClip("LowerTrap");

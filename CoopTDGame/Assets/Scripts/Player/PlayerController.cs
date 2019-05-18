@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
     [Tooltip ("Layer mask used for all rays")]
     [SerializeField] LayerMask mask;
 
-    [Space (20)]
+    [Space (10)]
     [SerializeField] bool TurnPlayerForward;
     [SerializeField] float turn_Speed;
 

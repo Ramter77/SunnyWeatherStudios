@@ -37,6 +37,7 @@ public class BasicTower : MonoBehaviour
 
 
     private Component[] ownColliders;
+    private MeshCollider crystalCollider;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,9 @@ public class BasicTower : MonoBehaviour
         bulletPrefab = bulletPrefabs[0];
         //Get own colliders
         ownColliders = GetComponentsInChildren<Collider>();
+        if (shooter.transform.childCount > 0) {
+            crystalCollider = shooter.transform.GetChild(0).GetComponent<MeshCollider>();
+        }
 
 
         FindClosestTarget();
@@ -110,14 +114,16 @@ void Update()
                         else // when it collides with an object of different tag 
                         {
                             bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
-                            Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
+                            GameObject bullet = Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
+                            bullet.layer = 16;
                             StartCoroutine(shootCd());
                         }
                     }
                     else // when no collision occurs
                     {
                         bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
-                        Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
+                        GameObject bullet = Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
+                        bullet.layer = 16;
                         StartCoroutine(shootCd());
                     }
                 }
@@ -177,21 +183,22 @@ void Update()
     public void changeProjectile(int i) {
         bulletPrefab = bulletPrefabs[i];
 
-        //Get all sphere collider on the prefab & ignore all collisions
+        /* //Get all sphere collider on the prefab & ignore all collisions
         SphereCollider[] bulletPrefabSphereColliders = bulletPrefab.GetComponents<SphereCollider>();
-        IgnoreCollisions(bulletPrefabSphereColliders);
+        IgnoreCollisions(bulletPrefabSphereColliders); */
     }
 
-    private void IgnoreCollisions(SphereCollider[] colliders) {
+    /* private void IgnoreCollisions(SphereCollider[] colliders) {
         //loop over own colliders
         foreach (Collider _col in ownColliders) {
             //loop over bulletPrefabSphereColliders
             foreach (Collider _col2 in colliders)
             {
                 Physics.IgnoreCollision(_col, _col2);
+                Physics.IgnoreCollision(crystalCollider, _col2);
             }
         }
-    }
+    } */
 
     /// <summary>
     /// find closest enemy

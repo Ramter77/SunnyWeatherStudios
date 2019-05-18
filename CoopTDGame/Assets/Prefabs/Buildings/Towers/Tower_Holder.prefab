@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2004167258}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: VFX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2004167258
 Transform:
   m_ObjectHideFlags: 0
@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2004167257}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5651716308763271591}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 5096141791222210681}
   - component: {fileID: 3290841231179701457}
   - component: {fileID: 834823137630047067}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: tower_crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 8984321556602797030}
   - component: {fileID: 4320223883627884138}
   - component: {fileID: 1039692743}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Crystal_Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -171,6 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RotationSpeed: 30
   playAnimationToo: 0
+  rotateSidewards: 0
 --- !u!111 &1039692743
 Animation:
   m_ObjectHideFlags: 0
@@ -196,7 +197,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5205946790411524809}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: AttackRadiusCenter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -233,7 +234,7 @@ GameObject:
   - component: {fileID: 296385467}
   - component: {fileID: 296385468}
   - component: {fileID: 6676443270354138882}
-  m_Layer: 2
+  m_Layer: 21
   m_Name: Tower_Holder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -354,7 +355,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 15
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!111 &296385468
 Animation:
   m_ObjectHideFlags: 0
@@ -366,6 +367,7 @@ Animation:
   serializedVersion: 3
   m_Animation: {fileID: 7400000, guid: 98557ea5590946541a0376c86cb10b9a, type: 2}
   m_Animations:
+  - {fileID: 7400000, guid: ae73abceec019cd4c815e093a45d6c78, type: 2}
   - {fileID: 7400000, guid: 98557ea5590946541a0376c86cb10b9a, type: 2}
   m_WrapMode: 0
   m_PlayAutomatically: 0
@@ -404,7 +406,7 @@ GameObject:
   - component: {fileID: 2068852245058561547}
   - component: {fileID: 307556178}
   - component: {fileID: 636816299}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: _tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -567,7 +569,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6583948794926743055}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: Tower
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -582,7 +584,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5281330852495207241}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -12.5, z: 0}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8670951264699820415}
@@ -600,7 +602,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3421786896668722839}
-  m_Layer: 0
+  m_Layer: 21
   m_Name: particleSpawnLocation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -634,6 +636,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Object Interactable Disabled
       objectReference: {fileID: 0}
+    - target: {fileID: 13018920435404685, guid: bf98a473f21057a4dbce04041435db93,
+        type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 5651716308895138794, guid: bf98a473f21057a4dbce04041435db93,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -642,7 +649,7 @@ PrefabInstance:
     - target: {fileID: 5651716308895138794, guid: bf98a473f21057a4dbce04041435db93,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5651716308895138794, guid: bf98a473f21057a4dbce04041435db93,
         type: 3}
@@ -689,6 +696,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3225853243868891777, guid: bf98a473f21057a4dbce04041435db93,
+        type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145587557385556423, guid: bf98a473f21057a4dbce04041435db93,
+        type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091807289293470721, guid: bf98a473f21057a4dbce04041435db93,
+        type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bf98a473f21057a4dbce04041435db93, type: 3}
 --- !u!1 &13018920001646016 stripped
@@ -710,13 +732,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2004167258}
     m_Modifications:
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_Name
+      value: Object Interactable Enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 490934, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 490934, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 490934, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -766,13 +800,22 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_Name
-      value: Object Interactable Enabled
+    - target: {fileID: 174594, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_Layer
+      value: 21
       objectReference: {fileID: 0}
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
+    - target: {fileID: 149522, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 102806, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 6934764129340079568, guid: 9b95de169c5cf5b46b404f6f2bed4afb,
+        type: 3}
+      propertyPath: m_Layer
+      value: 21
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}

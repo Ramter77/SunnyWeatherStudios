@@ -21,6 +21,9 @@ public class EnemyAnim : MonoBehaviour {
     [Tooltip ("Sets the animators 'Injured' layer weigth corresponding the health percentage calculate from the 'LifeAndStats' script")]
     [SerializeField]
     private bool setInjuredLayerWeight;
+    [Tooltip ("Allows the 'Injured' layer to be blended")]
+    [SerializeField]
+    private bool blendInjuredIdle;
 
     private BasicEnemy basicEnemy;
     private LifeAndStats lifeAndStats;
@@ -48,15 +51,9 @@ public class EnemyAnim : MonoBehaviour {
         if (injuredBlendLayerIndex == -1) {
             Debug.Log("Couldn't find 'InjuredBlend' layer");
         }
-
-        #region SET SPEED MULTIPLIER
-        if (setSpeedMultiplier) {
-            enemyAnim.SetFloat("speedMultiplier", speedMultiplier, 0, Time.deltaTime);
-        }
-        #endregion
     }
 
-    void SetLayerWeight(int layer, bool reset) {
+    void SetInjuredLayerWeight(int layer, bool reset) {
         if (setInjuredLayerWeight) {
             if (reset) {
                 enemyAnim.SetLayerWeight(layer, 0);
@@ -70,8 +67,15 @@ public class EnemyAnim : MonoBehaviour {
     }
 
     void ToggleLayerWeight(bool toggle) {
-        SetLayerWeight(injuredLayerIndex, toggle);
-        SetLayerWeight(injuredBlendLayerIndex, !toggle);
+        if (blendInjuredIdle) {
+            SetInjuredLayerWeight(injuredLayerIndex, toggle);
+        }
+        else
+        {
+            enemyAnim.SetLayerWeight(injuredLayerIndex, 0);
+        }
+        
+        SetInjuredLayerWeight(injuredBlendLayerIndex, !toggle);
     }
 
     void Update()
@@ -82,6 +86,11 @@ public class EnemyAnim : MonoBehaviour {
                 agent.speed = 0;
 
                 ToggleLayerWeight(false);
+
+                //Dont blend it for ranged enemy
+                if (basicEnemy.enemyType == 1) {
+
+                }
             }
             //In grounded state set use injured blend tree
             else {
@@ -92,11 +101,18 @@ public class EnemyAnim : MonoBehaviour {
         }
 
         
-
+        #region SET SPEED PERCENTAGE
         if (setSpeedPercentage) {
             //Calculate the speed percentage & apply it to the 'Grounded' animations
             speedPercentage = Mathf.Clamp01(agent.velocity.magnitude / maxSpeed);
             enemyAnim.SetFloat("speedPercentage", speedPercentage, 0, Time.deltaTime);
         }
+        #endregion
+
+        #region SET SPEED MULTIPLIER
+        if (setSpeedMultiplier) {
+            enemyAnim.SetFloat("speedMultiplier", speedMultiplier, 0, Time.deltaTime);
+        }
+        #endregion
     }
 }

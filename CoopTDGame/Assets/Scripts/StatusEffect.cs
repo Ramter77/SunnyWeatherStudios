@@ -6,12 +6,11 @@ using UnityEngine.AI;
 
 public class StatusEffect : MonoBehaviour
 {
+    [Header ("VISUALS")]
     public MeshRenderer weaponRenderer; 
     private MeshRenderer meshRenderer;
     private SkinnedMeshRenderer skinnedMeshRenderer;
     private AdjustMaterial adjustMaterialScript;
-
-
 
     [Header ("Dissolve")]
     [SerializeField]    
@@ -35,10 +34,6 @@ public class StatusEffect : MonoBehaviour
     private float burnDelay = 4f;
     private bool startBurning;
 
-    public float burnDamage = 10f;
-    public float timeBetweenEachBurn = 2f;
-    private float fallbackTimeBetweenBurns = 2.0f;
-
     [Header ("Freeze")]
     [SerializeField]    
     private bool freezeOnStart;
@@ -48,26 +43,31 @@ public class StatusEffect : MonoBehaviour
     private float freezeDelay = 4f;
     private bool startFreezing;
 
+    
+    [Header("EFFECT")]
+    [Space (25)]
+    public float effectDuration = 10f;
+    
+    [Header ("Burn")]
+    //BURNING
+    [SerializeField]
+    private bool burning = false;
+    public float burnDamage = 10f;
+    public float timeBetweenEachBurn = 2f;
+    private float fallbackTimeBetweenBurns = 2.0f;
+    private LifeAndStats LifeScript;
 
-    [Header("DOT SETTINGS")]
-    public float DotDuration = 10f;
-
-    public bool burning = false;
-
-    public bool freezing = false;
-
+    [Header ("Freeze")]
+    //FREEZING
+    [SerializeField]
+    private bool freezing = false;
     private bool appliedDot = false;
-
-    [Space (10)]
-    //SLOW
     [SerializeField]
     private float moveSpeedMultiplier = 0.7f;
     private float multipliedSpeedPercentage;
     private NavMeshAgent agent;
     private EnemyAnim enemyAnim;
     private BasicEnemy basicEnemyScript;
-    private LifeAndStats LifeScript;
-    private bool slowed;
 
     void Start()
     {
@@ -202,7 +202,7 @@ public class StatusEffect : MonoBehaviour
 
     private IEnumerator resetDot()
     {
-        yield return new WaitForSeconds(DotDuration);
+        yield return new WaitForSeconds(effectDuration);
 
         if (burning) {
             StartCoroutine(Burn());
