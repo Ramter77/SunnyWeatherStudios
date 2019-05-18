@@ -9,9 +9,15 @@ public class EnemyAnim : MonoBehaviour {
     [Tooltip ("Sets the 'speedPercentage' variable of the animator to handle movement animations")]
     [SerializeField]
     private bool setSpeedPercentage = true;
+    [Tooltip ("How long to lerp the speed percentage")]
+    [SerializeField]
+    private float setSpeedPercentageLerp = 0.2f;
     [Tooltip ("Multiplies the speed of all animations by the speedMultiplier")]
     [SerializeField]
     private bool setSpeedMultiplier = true;
+    [Tooltip ("How long to lerp the speed multiplier")]
+    [SerializeField]
+    private float setSpeedMultiplierLerp = 0.2f;
     [Tooltip ("Multiplies the speed of all animations by this multiplier")]
     [SerializeField]
     public float speedMultiplier = 1f;    
@@ -105,13 +111,13 @@ public class EnemyAnim : MonoBehaviour {
         if (setSpeedPercentage) {
             //Calculate the speed percentage & apply it to the 'Grounded' animations
             speedPercentage = Mathf.Clamp01(agent.velocity.magnitude / maxSpeed);
-            enemyAnim.SetFloat("speedPercentage", speedPercentage, 0, Time.deltaTime);
+            enemyAnim.SetFloat("speedPercentage", speedPercentage, setSpeedPercentageLerp, Time.deltaTime);
         }
         #endregion
 
         #region SET SPEED MULTIPLIER
         if (setSpeedMultiplier) {
-            enemyAnim.SetFloat("speedMultiplier", speedMultiplier, 0, Time.deltaTime);
+            enemyAnim.SetFloat("speedMultiplier", speedMultiplier, setSpeedMultiplierLerp, Time.deltaTime);
         }
         #endregion
     }

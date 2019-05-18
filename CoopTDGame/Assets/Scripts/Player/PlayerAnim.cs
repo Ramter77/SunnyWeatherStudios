@@ -22,7 +22,10 @@ public class PlayerAnim : MonoBehaviour
     [SerializeField]
     private bool toggleRunning;
     [SerializeField]
-    private bool allowJumpWhileAttacking;
+    private bool allowJumpWhileMelee;
+    [SerializeField]
+    private bool allowJumpWhileRanged;
+
 
 
     #region INPUT
@@ -110,14 +113,28 @@ public class PlayerAnim : MonoBehaviour
 
             #region Jumping
             if (/* !playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && */ !playC.isJumping && !playC.isDead) {
-                if (allowJumpWhileAttacking) {
-                    _Jump(_jumpInput);
-                }
-                else {
+                if (!allowJumpWhileMelee && !allowJumpWhileRanged) {
                     if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode) {
                         _Jump(_jumpInput);
                     }
                 }
+
+                else if (allowJumpWhileMelee && allowJumpWhileRanged) {
+                    _Jump(_jumpInput);
+                }
+
+                else if (allowJumpWhileMelee) {
+                    if (!playC.isRangedAttacking) {
+                        _Jump(_jumpInput);
+                    }
+                }
+
+                else if (allowJumpWhileRanged) {
+                    if (!playC.isMeleeAttacking) {
+                        _Jump(_jumpInput);
+                    }
+                }
+                
             }
             #endregion
         }
@@ -130,12 +147,21 @@ public class PlayerAnim : MonoBehaviour
 
     public void resetJumpingCD() {
         playC.isJumping = false;
+        playC.isRangedAttacking = false;
+        animator.SetBool("Jumping", false);
     }
 
     void _Jump(bool jump)
     {
+        
+
+
         if (jump)// && animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
         {
+            if (!playC.isRangedAttacking) {
+            playC.isJumping = true;
+
+
             //remember to disable weapon collider after jump
             if (enableWeaponColliderOnJump) {
                 animator.GetComponent<MeleeAttack>().ActivateWeaponCollider();
@@ -147,8 +173,9 @@ public class PlayerAnim : MonoBehaviour
             //use a seperate float for directional jump blend tree
             animator.SetFloat("jumpVertical", Mathf.RoundToInt(_verticalInput));
             animator.SetFloat("jumpHorizontal", Mathf.RoundToInt(_horizontalInput));
-            animator.SetTrigger("Jump");
-            playC.isJumping = true;
+            //animator.SetTrigger("Jump");
+            animator.SetBool("Jumping", true);
+            }
         }
     }
 }
