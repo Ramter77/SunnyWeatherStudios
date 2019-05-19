@@ -15,6 +15,9 @@ public class RangedAttack : MonoBehaviour
     [Tooltip("Speed of projectile")]
     [SerializeField]
     public float projectileSpeed;
+    public int projectileCost = 10;
+    public float rangedAttackCooldown = 5f;
+    private float rangedRechargeSpeed = 5f;
 
     [Tooltip("Origin of thrown projectile")]
     [SerializeField]    
@@ -82,7 +85,12 @@ public class RangedAttack : MonoBehaviour
         
         #region Input
         if (_input) {
-            _RangedAttack();
+            if(Time.time > rangedRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= projectileCost)
+            {
+                rangedRechargeSpeed = Time.time + rangedAttackCooldown;
+                _RangedAttack();
+            }
+            
         }    
         #endregion
     }
@@ -91,6 +99,8 @@ public class RangedAttack : MonoBehaviour
         //If not ranged attacking
         if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isInBuildMode && playC.isGrounded && !playC.isJumping && !playC.isDead) {
             playC.isRangedAttacking = true;
+
+            SoulBackpack.Instance.reduceSoulsByCost(projectileCost);
 
             //Start animation which ShootProjectile() on event & resets isRangedAttacking
             ChangeProjectileTo(projectile); //change projectile to assigned GameObject
