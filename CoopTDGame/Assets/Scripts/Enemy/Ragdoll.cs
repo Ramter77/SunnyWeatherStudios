@@ -27,7 +27,7 @@ public class Ragdoll : MonoBehaviour
 
     Transform[] allChildren;
 
-    void Start()
+    void Awake()
     {
         //Disable ragdoll colliders
         colliders = rig.GetComponentsInChildren<Collider>();
@@ -77,7 +77,7 @@ public class Ragdoll : MonoBehaviour
     /// </summary>
     /// <param name="ragdoll">Param to enable or disable ragdoll</param>
     public void toggleRagdoll(bool ragdoll) {
-        rig.GetComponent<NavMeshObstacle>().enabled = true;
+        //rig.GetComponent<NavMeshObstacle>().enabled = true;
         
         //if ragdoll is true --> disable scripts..
         anim.enabled = !ragdoll;
@@ -133,6 +133,10 @@ public class Ragdoll : MonoBehaviour
         else {
             agent.speed = defaultSpeed;
         } */
+
+
+        //GetComponent<Rigidbody>().isKinematic = true;
+        GetComponent<Rigidbody>().useGravity = false;
     }
 
 

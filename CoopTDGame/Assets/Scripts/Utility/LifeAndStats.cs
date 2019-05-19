@@ -24,8 +24,9 @@ public class LifeAndStats : MonoBehaviour
 
     public bool ragdollOnDeath;
     public bool dissolveOnDeath;
-    public bool invincible = false;
     public bool destroyable;
+    public bool invincible = false;
+    private float invinciblityDuration = 0.3f;
 
     private Animator playerAnim;
     private FractureObject fractureScript;
@@ -138,6 +139,8 @@ public class LifeAndStats : MonoBehaviour
 
     public void TakeDamage(float dmg) {
         if (!invincible) {
+            Invincible();
+
             health -= dmg;
             ParticleOnHitEffect(ParticleOnHitEffectYoffset);
 
@@ -185,4 +188,32 @@ public class LifeAndStats : MonoBehaviour
         healCooldown -= Time.deltaTime;
     }
 
+    void Invincible() {
+        invincible = true;
+
+        StartCoroutine(stopInvincible(invinciblityDuration));
+    }
+
+    IEnumerator stopInvincible(float duration) {
+        yield return new WaitForSeconds(duration);
+
+        invincible = false;
+    }
+
+
+    /// <summary>
+    /// OnTriggerEnter is called when the Collider other enters the trigger.
+    /// </summary>
+    /// <param name="other">The other Collider involved in this collision.</param>
+    void OnTriggerEnter(Collider other)
+    {
+        if (gameObject.tag == "Player" || gameObject.tag == "Player2") {
+            if (other.tag == "EnemyWeapon") {
+                TakeDamage(20);
+            }
+            else if (other.tag == "EnemyProjectile") {
+                TakeDamage(10);
+            }
+        }
+    }
 }

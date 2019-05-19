@@ -42,6 +42,7 @@ public class PlayerAnim : MonoBehaviour
     private Animator animator;
     private CharacterController charController;
     private Rigidbody playerRB;
+    private CleanIK cleanIKscript;
     #endregion
 
     void Awake()
@@ -50,6 +51,7 @@ public class PlayerAnim : MonoBehaviour
         animator = GetComponent<Animator>();
         charController = GetComponent<CharacterController>();
         playerRB = GetComponent<Rigidbody>();
+        cleanIKscript = GetComponent<CleanIK>();
 
         toggleRun = InputManager.Instance.toggleRun;
     }
@@ -112,6 +114,15 @@ public class PlayerAnim : MonoBehaviour
         #region Grounded Check
         if (playC.isGrounded) {
             animator.SetBool("isGrounded", true);
+
+            //Enable CleanIK if input is 0
+            if (_verticalInput == 0 && _horizontalInput == 0) {
+                cleanIKscript.enabled = true;
+            }
+            else
+            {
+                cleanIKscript.enabled = false;
+            }
 
             #region Jumping
             if (/* !playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && */ !playC.isJumping && !playC.isDead) {

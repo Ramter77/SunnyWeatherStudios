@@ -29,15 +29,15 @@ public class SoulStorage : Singleton<SoulStorage>
 
     void Start()
     {
-        GameObject SoulSphere = GameObject.FindGameObjectWithTag("Sphere");
-        soulAmountDisplayText = SoulSphere.transform.parent.GetComponentInChildren<Text>();
-        soulCount = amountOfSoulsAtStart;
+        //GameObject SoulSphere = GameObject.FindGameObjectWithTag("Sphere");
         sphere = GameObject.FindGameObjectWithTag("Sphere");
+        soulAmountDisplayText = sphere.transform.parent.GetComponentInChildren<Text>();
+        soulCount = amountOfSoulsAtStart;
     }
 
     void Update()
     {
-        soulCount = Mathf.RoundToInt(GameObject.FindGameObjectWithTag("Sphere").GetComponent<LifeAndStats>().health);
+        soulCount = Mathf.RoundToInt(sphere.GetComponent<LifeAndStats>().health);
 
         if (soulAmountDisplayText != null) {
             soulAmountDisplayText.text = "Total Souls:" + soulCount;

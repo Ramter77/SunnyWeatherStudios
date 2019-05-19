@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 83
   m_IsActive: 1
 --- !u!4 &306738988
 Transform:
@@ -144,7 +144,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 83
   m_IsActive: 1
 --- !u!4 &4177097901980104348
 Transform:
@@ -181,7 +181,7 @@ GameObject:
   m_TagString: Sphere
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 83
   m_IsActive: 1
 --- !u!4 &363901875034044773
 Transform:
@@ -191,7 +191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1187311588156848180}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.2195, y: -0.8, z: 24.8}
+  m_LocalPosition: {x: 9.2195, y: 4.2, z: 24.8}
   m_LocalScale: {x: 3.8363, y: 3.8363, z: 3.8363}
   m_Children: []
   m_Father: {fileID: 4177097901980104348}
@@ -219,8 +219,8 @@ MonoBehaviour:
   particleSpawnLocation: {fileID: 0}
   ragdollOnDeath: 0
   dissolveOnDeath: 0
-  invincible: 0
   destroyable: 0
+  invincible: 0
   GameOverScreen: {fileID: 0}
 --- !u!135 &9064052185075965512
 SphereCollider:
@@ -264,6 +264,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FracturedObject: {fileID: 5000789972137501976, guid: 8e405b0f67ae1964ab548cb3c6597582,
     type: 3}
+  destroyObject: 1
+  debug: 0
 --- !u!1 &5285693086137551694
 GameObject:
   m_ObjectHideFlags: 0
@@ -280,7 +282,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 83
   m_IsActive: 1
 --- !u!224 &8912081688365350453
 RectTransform:
@@ -360,7 +362,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 83
   m_IsActive: 1
 --- !u!224 &4388033543315729199
 RectTransform:
@@ -458,7 +460,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 123
+  m_StaticEditorFlags: 83
   m_IsActive: 1
 --- !u!224 &5775055716846833900
 RectTransform:
@@ -530,19 +532,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 6e03621d51bb5514cbe054f99cd0c44e, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 123
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 6e03621d51bb5514cbe054f99cd0c44e, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 123
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 100004, guid: 6e03621d51bb5514cbe054f99cd0c44e, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 123
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 100006, guid: 6e03621d51bb5514cbe054f99cd0c44e, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 123
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 6e03621d51bb5514cbe054f99cd0c44e, type: 3}
       propertyPath: m_LocalPosition.x
