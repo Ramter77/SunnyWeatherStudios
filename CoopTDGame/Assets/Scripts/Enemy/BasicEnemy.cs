@@ -304,8 +304,11 @@ public class BasicEnemy : MonoBehaviour
                     {
                         if(Target == null)
                         {
-                            Target = hit.gameObject;
-                            hit.GetComponent<LifeAndStats>().amountOfUnitsAttacking += 1;
+                            if(hit.gameObject.GetComponent<LifeAndStats>().health > 0)
+                            {
+                                Target = hit.gameObject;
+                                hit.GetComponent<LifeAndStats>().amountOfUnitsAttacking += 1;
+                            }
                         }
                     }
                 }
