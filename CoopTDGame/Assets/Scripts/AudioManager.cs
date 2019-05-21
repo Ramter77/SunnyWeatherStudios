@@ -26,6 +26,33 @@ public class AudioManager : Singleton<AudioManager>
     [Tooltip ("The second child of the object playing the music (looping)")]
     private AudioSource musicAudioSource;
 
+
+    [Header("Selection of all Sounds")]
+    public AudioClip GameMusic;
+
+    [Header("Movement Sounds")]
+    public AudioClip playerJump;
+    public AudioClip playerLand;
+
+    [Header("Attacks")]
+    public AudioClip playerBasicAttack;
+    public AudioClip playerUltimateAttack;
+    public AudioClip playerRangedAttack;
+
+    [Header("Spells")]
+    public AudioClip playerHeal;
+    public AudioClip playerUltimateActivation;
+
+    [Header("Damaged")]
+    public AudioClip playerTakingDamage;
+    public AudioClip playerTakingHighDamage;
+
+    [Header("Interactions")]
+    public AudioClip playerActivateBuilding;
+
+
+
+
     void Start()
     {
         //Get audio sources

@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     public Transform spawnPoint;
     public GameObject[] EnemyPrefabs;
     public EnemySpawnCycle spawnCycle;
+    public GameObject EnemyBoss;
 
     [Header("Spawnrate")]
     public bool enableSpawn = false;
@@ -50,6 +51,15 @@ public class EnemySpawner : MonoBehaviour
             spawnCycle.spawnedEnemies += 1;
         }
         
+    }
+
+    public void spawnBoss()
+    {
+        Vector3 centerPos = spawnPoint.position;
+        Vector3 pos = new Vector3(Random.Range(MinX, MaxX), 0, Random.Range(MinZ, MaxZ));
+        Vector3 spawnPos = centerPos - pos;
+        int random = Random.Range(0, EnemyPrefabs.Length);
+        Instantiate(EnemyBoss, spawnPos, Quaternion.identity);
     }
 
     void spawnTimer()

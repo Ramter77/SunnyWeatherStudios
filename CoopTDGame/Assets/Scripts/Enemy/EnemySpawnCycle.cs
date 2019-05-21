@@ -44,6 +44,7 @@ public class EnemySpawnCycle : MonoBehaviour
     public GameObject annoucementMessageHolder;
     public Text annoucementText;
     public float disableTime = 5f;
+    public int BossWave;
 
     #endregion
 
@@ -81,7 +82,6 @@ public class EnemySpawnCycle : MonoBehaviour
         {
             if(!newWavePending)
             {
-                Debug.Log("EndGame here");
                 endWave();
                 newWavePending = true;
             }
@@ -119,7 +119,7 @@ public class EnemySpawnCycle : MonoBehaviour
     {
         maximumEnemies += addedEnemiesPerWave;
         spawnedEnemies = 0;
-        Debug.Log("Cycle: NewWave");
+        //Debug.Log("Cycle: NewWave");
         waveLive = true;
         newWavePending = false;
         StartCoroutine(checkWaveStatusCooldown());
@@ -129,7 +129,16 @@ public class EnemySpawnCycle : MonoBehaviour
     {
         annoucementMessageHolder.SetActive(true);
         annoucementText.text = ("New Wave coming in " + timeBetweenWave + " seconds");
-        StartCoroutine(betweenWaveTime());
+        if(Wave == BossWave)
+        {
+            int a;
+            a = Random.Range(0, Spawners.Length);
+            Spawners[a].GetComponent<EnemySpawner>().spawnBoss();
+        }
+        else
+        {
+            StartCoroutine(betweenWaveTime());
+        }
     }
 
     /// <summary>

@@ -152,7 +152,7 @@ public class BasicEnemy : MonoBehaviour
                 enemySpeed = 0f;
             }
 
-            if ((attackState == 1 && distance > followRadius) || attackState == 1 && Target == null)
+            if ((attackState == 1 && distance > followRadius) || attackState == 1 && Target == null || Target != null && Target.GetComponent<LifeAndStats>().health <= 0)
             {
                 if (Target != null)
                 {
@@ -329,7 +329,6 @@ public class BasicEnemy : MonoBehaviour
                     if (hit.tag == "possibleTargets" && hit.transform.parent.gameObject.transform.parent.GetComponent<LifeAndStats>().health > 0 && hit.transform.parent.gameObject.transform.parent.GetComponent<LifeAndStats>().amountOfUnitsAttacking < maxEnemiesSwarmingTower)
                         // if hit object has equal tag to possibleTarget tag
                     {
-                        Debug.Log("found tower");
                         action = Random.Range(0, 100);
                         //Debug.Log("tower found");
                         if (checkedTarget == null)
