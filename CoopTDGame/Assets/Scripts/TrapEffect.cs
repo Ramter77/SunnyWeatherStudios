@@ -18,11 +18,11 @@ public class TrapEffect : MonoBehaviour
         if (other.gameObject.tag == "Enemy")
         {
             if (elem == Element.Fire) {
-                other.gameObject.GetComponent<StatusEffect>().FreezeCoroutine();
+                other.gameObject.GetComponent<StatusEffect>().BurnCoroutine();
             }
 
             else if (elem == Element.Ice) {
-                other.gameObject.GetComponent<StatusEffect>().BurnCoroutine();
+                other.gameObject.GetComponent<StatusEffect>().FreezeCoroutine();
             }
         }
     }
