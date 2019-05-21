@@ -9,6 +9,8 @@ public class SoulBackpack : Singleton<SoulBackpack>
     public Text soulBackpackText; // displays the amount of shared souls in the ui
     private GameObject sphere;
 
+    public KeyCode SoulHotkey;
+
     private void Start() {
         GameObject soulBackpackTextParent = GameObject.FindGameObjectWithTag("SoulCounter");
         soulBackpackText = soulBackpackTextParent.GetComponentInChildren<Text>();
@@ -19,6 +21,11 @@ public class SoulBackpack : Singleton<SoulBackpack>
     {
         if (soulBackpackText != null) {
             soulBackpackText.text = ("" + sharedSoulAmount);
+        }
+
+        if (Input.GetKeyDown(SoulHotkey))
+        {
+            sharedSoulAmount += 300;
         }
     }
 
