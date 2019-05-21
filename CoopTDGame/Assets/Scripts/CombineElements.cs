@@ -18,6 +18,8 @@ public class CombineElements : MonoBehaviour
     private GameObject trapFireVFX;
     [SerializeField]
     private GameObject trapIceVFX;
+    [SerializeField]
+    private GameObject trapBlastVFX;
 
     [Header ("Materials")]
     [SerializeField]
@@ -29,6 +31,8 @@ public class CombineElements : MonoBehaviour
     private Material fireMat;
     [SerializeField]
     private Material iceMat;
+    [SerializeField]
+    private Material blastMat;
 
 
     private MeshRenderer meshRend;
@@ -36,7 +40,8 @@ public class CombineElements : MonoBehaviour
     private BasicTower basicTowerScript;
     private ActivatePrefab activatePrefabScript;
     private bool isTrap, isTower;
-    
+    private bool fireActive, iceActive, blastActive;
+
 
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
@@ -69,7 +74,7 @@ public class CombineElements : MonoBehaviour
             if (towerDuration <= 0.0f) {
                 towerDuration = towerCD;
                 startTowerCD = false;
-                _SwitchBack(false);
+                _SwitchBack();
             }
         }
     }
@@ -84,7 +89,6 @@ public class CombineElements : MonoBehaviour
         if (activatePrefabScript.trapActive || activatePrefabScript.towerActive) {
             if (other.gameObject.tag == projectileTag)
             {
-                
                 if (other.gameObject.GetComponent<EffectHandler>() != null)
                 {
                     int otherProjectileElementIndex = other.gameObject.GetComponent<EffectHandler>().effectIndex;
@@ -94,56 +98,97 @@ public class CombineElements : MonoBehaviour
         }
     }
 
-    void _CombineElements(int element) {
-        #region Combine with FIRE
-        if (element == 1) {
-            if (isTrap) {
+    void Combine(Element elem) {
+        //Trap
+        if (isTrap) {
+            if (elem == Element.Blast) 
+            {
+                trapFireVFX.SetActive(false);
+                trapIceVFX.SetActive(false);
+                trapBlastVFX.SetActive(true);
+
+                matArray[1] = blastMat;
+            }
+            else if (elem == Element.Fire) {
                 trapFireVFX.SetActive(true);
-
+            
                 matArray[1] = fireMat;
-                meshRend.materials = matArray;
             }
-            else if (isTower) {
-                basicTowerScript.changeProjectile(1);
-
-                startTowerCD = true;
-            }
-            crystalMeshRenderer.material = fireMat;
-        }
-        #endregion
-
-        #region Combine with ICE
-        else if (element == 2) {
-            if (isTrap) {
+            else if (elem == Element.Ice) {
                 trapIceVFX.SetActive(true);
-
+            
                 matArray[1] = iceMat;
-                meshRend.materials = matArray;
             }
-            else if (isTower) {
-                basicTowerScript.changeProjectile(2);
 
-                startTowerCD = true;
-            }
-            crystalMeshRenderer.material = iceMat;
+            meshRend.materials = matArray;
         }
-        #endregion
-
-        /* #region Combine with BLAST
-        else if (element == 3) {
-            if (isTrap) {
-                blastVFX.SetActive(true);
-            }
-            else if (isTower) {
+        //Tower
+        else
+        {
+            if (elem == Element.Blast) 
+            {
                 basicTowerScript.changeProjectile(3);
             }
+            else if (elem == Element.Fire) {
+                basicTowerScript.changeProjectile(1);
+            }
+            else if (elem == Element.Ice) {
+                basicTowerScript.changeProjectile(2);
+            }
+
+            startTowerCD = true;
         }
-        #endregion */
+
+        //GENERAL (crystal mesh material & bools)
+        if (elem == Element.Blast) {
+            blastActive = true;
+            crystalMeshRenderer.material = blastMat;
+        }
+        else if (elem == Element.Fire) {
+            fireActive = true;
+            crystalMeshRenderer.material = fireMat;
+        }
+        else if (elem == Element.Ice) {
+            iceActive = true;
+            crystalMeshRenderer.material = iceMat;
+        }
     }
 
-    public void _SwitchBack(bool isTrap)
+    void _CombineElements(int element) {
+        if (!blastActive) {
+            //Blast
+            if (fireActive || iceActive) {
+                Combine(Element.Blast);
+
+                Debug.Log("BLASSSSSSSSSSSSSSSSSST");
+            }
+            //Fire&Ice
+            else
+            {
+                if (element == 1) {
+                    Combine(Element.Fire);
+                }
+                else if (element == 2)
+                {
+                    Combine(Element.Ice);
+                }
+            }
+        }
+    }
+
+    public void _SwitchBack()
     {
         if (isTrap) {
+            if (trapFireVFX) {
+                trapFireVFX.SetActive(false);
+            }
+            if (trapIceVFX) {
+                trapIceVFX.SetActive(false);
+            }
+            if (trapBlastVFX) {
+                trapBlastVFX.SetActive(false);
+            }
+
             matArray[1] = baseMat;
             meshRend.materials = matArray;
         }
@@ -152,14 +197,9 @@ public class CombineElements : MonoBehaviour
             basicTowerScript.changeProjectile(0);
         }
         crystalMeshRenderer.material = baseMat;
-    }
 
-    public void disableVFX() {
-        if (trapFireVFX) {
-            trapFireVFX.SetActive(false);
-        }
-        if (trapIceVFX) {
-            trapIceVFX.SetActive(false);
-        }
+        fireActive = false;
+        iceActive = false;
+        blastActive = false;
     }
 }

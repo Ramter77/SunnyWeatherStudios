@@ -204,8 +204,8 @@ public class ActivatePrefab : MonoBehaviour
         anim.clip = lowerTrap;
         anim.Play();
 
-        combineElementScript._SwitchBack(true);
-        combineElementScript.disableVFX();
+        combineElementScript._SwitchBack();
+        //combineElementScript.disableVFX();
         activationCollider.enabled = true;
     }
 }
