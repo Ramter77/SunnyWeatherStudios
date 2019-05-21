@@ -22,7 +22,7 @@ namespace GameObjectBrush
         [Tooltip("Should the rotation be randomized on the z axis?")] public bool randomizeZRotation = false;
 
         public Transform parentContainer;
-        [Range(0, 1)] public float density = 1f;
+        [Range(0, 10)] public float density = 1f;
         [Range(0, 100)] public float brushSize = 5f;
         [Range(0, 10)] public float minScale = 0.5f;
         [Range(0, 10)] public float maxScale = 1.5f;
