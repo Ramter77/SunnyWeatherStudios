@@ -72,8 +72,6 @@ public class CombineElements : MonoBehaviour
         if (startTowerCD) {
             towerDuration -= Time.deltaTime;
             if (towerDuration <= 0.0f) {
-                towerDuration = towerCD;
-                startTowerCD = false;
                 _SwitchBack();
             }
         }
@@ -87,6 +85,7 @@ public class CombineElements : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         if (activatePrefabScript.trapActive || activatePrefabScript.towerActive) {
+        //reset = true;
             if (other.gameObject.tag == projectileTag)
             {
                 if (other.gameObject.GetComponent<EffectHandler>() != null)
@@ -181,6 +180,8 @@ public class CombineElements : MonoBehaviour
 
     public void _SwitchBack()
     {
+        //reset = true;
+
         if (isTrap) {
             if (trapFireVFX) {
                 trapFireVFX.SetActive(false);
@@ -198,6 +199,9 @@ public class CombineElements : MonoBehaviour
         else
         {
             basicTowerScript.changeProjectile(0);
+
+            towerDuration = towerCD;
+            startTowerCD = false;
         }
         crystalMeshRenderer.material = baseMat;
 

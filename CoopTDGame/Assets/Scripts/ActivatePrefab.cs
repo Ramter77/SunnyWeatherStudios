@@ -5,21 +5,28 @@ using UnityEngine;
 
 public class ActivatePrefab : MonoBehaviour
 {
-    [SerializeField]
-    private bool playLowerAnim;
+    [Header ("Trap")]
+    public bool trapActive;
     [SerializeField]
     private float trapDuration = 30.0f;
     private float maxTrapDuration;
+
+    [Header ("Tower")]
+    public bool towerActive;
     [SerializeField]
     private float towerDuration = 30.0f;
     private float maxTowerDuration;
+    [SerializeField]
+    private bool playLowerAnim;
+
+    
     private SphereCollider activationCollider;
     private Animation anim;
     private Transform meshChild;
     private CombineElements combineElementScript;
     private bool isTower;
-    public bool towerActive;
-    public bool trapActive;
+    
+    
     private bool startTrapCD, startTowerCD;
     private AnimationClip riseTower, lowerTower, riseTrap, lowerTrap;
     
@@ -186,7 +193,7 @@ public class ActivatePrefab : MonoBehaviour
             activationCollider.enabled = true;
 
             if (playLowerAnim) {
-                anim.clip = lowerTrap;
+                anim.clip = lowerTower;
                 anim.Play();
             }
             else
@@ -194,9 +201,13 @@ public class ActivatePrefab : MonoBehaviour
                 transform.GetChild(0).position = new Vector3(transform.GetChild(0).position.x, transform.GetChild(0).position.y - 24, transform.GetChild(0).position.z);
             }
 
+            combineElementScript._SwitchBack();
+
             GetComponent<BasicTower>().activated = false;
             //GetComponent<BasicTower>().startAiming();
             gameObject.tag = "Untagged";
+
+            //combineElementScript._SwitchBack();
         }
     }
 
