@@ -49,9 +49,6 @@ public class CombineElements : MonoBehaviour
     /// </summary>
     void Start()
     {
-        meshRend = GetComponent<MeshRenderer>();
-        matArray = meshRend.materials;
-
         holderTransform = transform.parent.parent;
 
         if (holderTransform.GetComponent<BasicTower>() != null) {
@@ -65,6 +62,8 @@ public class CombineElements : MonoBehaviour
 
         activatePrefabScript = holderTransform.GetComponent<ActivatePrefab>();
         crystalMeshRenderer = crystalObject.GetComponent<MeshRenderer>();
+        meshRend = GetComponent<MeshRenderer>();
+        matArray = meshRend.materials;
         baseMat = crystalMeshRenderer.material;
     }
 
@@ -84,8 +83,8 @@ public class CombineElements : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
+        //only when already activated
         if (activatePrefabScript.trapActive || activatePrefabScript.towerActive) {
-        //reset = true;
             if (other.gameObject.tag == projectileTag)
             {
                 if (other.gameObject.GetComponent<EffectHandler>() != null)
@@ -180,9 +179,8 @@ public class CombineElements : MonoBehaviour
 
     public void _SwitchBack()
     {
-        //reset = true;
-
         if (isTrap) {
+            //disable all vfx
             if (trapFireVFX) {
                 trapFireVFX.SetActive(false);
             }
@@ -193,16 +191,19 @@ public class CombineElements : MonoBehaviour
                 trapBlastVFX.SetActive(false);
             }
 
+            //switch back to baseMat
             matArray[1] = baseMat;
             meshRend.materials = matArray;
         }
         else
         {
+            //switch back to default projectile & reset towerCD
             basicTowerScript.changeProjectile(0);
 
             towerDuration = towerCD;
             startTowerCD = false;
         }
+        //switch crystal back to baseMat
         crystalMeshRenderer.material = baseMat;
 
         fireActive = false;
