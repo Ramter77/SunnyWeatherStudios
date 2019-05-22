@@ -8,8 +8,11 @@ public class ActivatePrefab : MonoBehaviour
     [SerializeField]
     private bool playLowerAnim;
     [SerializeField]
-    private float trapDuration = 10.0f;
+    private float trapDuration = 30.0f;
     private float maxTrapDuration;
+    [SerializeField]
+    private float towerDuration = 30.0f;
+    private float maxTowerDuration;
     private SphereCollider activationCollider;
     private Animation anim;
     private Transform meshChild;
@@ -17,7 +20,7 @@ public class ActivatePrefab : MonoBehaviour
     private bool isTower;
     public bool towerActive;
     public bool trapActive;
-    private bool startTrapCD;
+    private bool startTrapCD, startTowerCD;
     private AnimationClip riseTower, lowerTower, riseTrap, lowerTrap;
     
     private PlayerController playC;
@@ -55,7 +58,9 @@ public class ActivatePrefab : MonoBehaviour
             lowerTrap = anim.GetClip("LowerTrap");
         }
 
+        
         maxTrapDuration = trapDuration;
+        maxTowerDuration = towerDuration;
     }
 
 
@@ -136,7 +141,19 @@ public class ActivatePrefab : MonoBehaviour
             trapDuration -= Time.deltaTime;
             if (trapDuration <= 0.0f)
             {
-                _LowerTrap();
+                if (trapActive) {
+                    _LowerTrap();
+                }
+            }
+        }
+        else if (startTowerCD) {
+            towerDuration -= Time.deltaTime;
+            if (towerDuration <= 0.0f)
+            {
+                if (towerActive)
+                {
+                    _LowerTower();
+                }
             }
         }
     }
@@ -151,6 +168,8 @@ public class ActivatePrefab : MonoBehaviour
 
             anim.clip = riseTower;
             anim.Play();
+            startTowerCD = true;
+
             GetComponent<BasicTower>().activated = true;
             GetComponent<BasicTower>().startAiming();
             gameObject.tag = "possibleTargets";
@@ -159,6 +178,7 @@ public class ActivatePrefab : MonoBehaviour
 
     public void _LowerTower() {
         if (towerActive) {
+            towerDuration = maxTowerDuration;
             towerActive = false;
             enabledVFX.SetActive(false);
             disabledVFX.SetActive(true);

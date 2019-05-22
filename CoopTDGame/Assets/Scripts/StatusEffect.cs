@@ -56,6 +56,7 @@ public class StatusEffect : MonoBehaviour
     public float timeBetweenEachBurn = 2f;
     private float fallbackTimeBetweenBurns = 2.0f;
     private LifeAndStats LifeScript;
+    Coroutine BurnCoroutineReset;
 
     [Header ("Freeze")]
     //FREEZING
@@ -68,6 +69,9 @@ public class StatusEffect : MonoBehaviour
     private NavMeshAgent agent;
     private EnemyAnim enemyAnim;
     private BasicEnemy basicEnemyScript;
+    private bool allowReset = true;
+    Coroutine FreezeCoroutineReset;
+    
 
     void Start()
     {
@@ -121,14 +125,29 @@ public class StatusEffect : MonoBehaviour
     }
 
     public void BurnCoroutine() {
-        if (!burning) {
-            StartCoroutine(Burn());
+        //if already burning then reset resetting DoT
+        if (burning) {
+            StopCoroutine(BurnCoroutineReset);
+            BurnCoroutineReset = StartCoroutine(resetDot());
+        }
+        else
+        {
+            StartCoroutine(Burn(true));
+            BurnCoroutineReset = StartCoroutine(resetDot());
         }
     }
 
     public void FreezeCoroutine() {
-        if (!freezing) {
-            StartCoroutine(Freeze());
+        //if already freezing then reset resetting DoT
+        if (freezing) {
+            StopCoroutine(FreezeCoroutineReset);
+            FreezeCoroutineReset = StartCoroutine(resetDot());
+            
+        }
+        else
+        {
+            StartCoroutine(Freeze(true));
+            FreezeCoroutineReset = StartCoroutine(resetDot());
         }
     }
 
@@ -149,27 +168,18 @@ public class StatusEffect : MonoBehaviour
         Destroy(gameObject, dissolveDelay + 0.1f);
     }
 
-    private IEnumerator Burn() {
+    private IEnumerator Burn(bool isActive) {
         yield return new WaitForSeconds(burnStartDelay);
-        burning = !burning;
+        burning = isActive;
 
         adjustMaterialScript.Burn(burnDelay);
-
-        if (burning) {
-            StartCoroutine(resetDot());
-        }
     }
     
-    private IEnumerator Freeze() {
+    private IEnumerator Freeze(bool isActive) {
         yield return new WaitForSeconds(freezeStartDelay);
-        freezing = !freezing;
+        freezing = isActive;
 
         adjustMaterialScript.Freeze(freezeDelay);
-        SlowMovement(freezing);
-
-        if (freezing) {
-            StartCoroutine(resetDot());
-        }
     }
 
     private void BurnEnemy()
@@ -203,15 +213,14 @@ public class StatusEffect : MonoBehaviour
     private IEnumerator resetDot()
     {
         yield return new WaitForSeconds(effectDuration);
-
         if (burning) {
-            StartCoroutine(Burn());
+            StartCoroutine(Burn(false));
 
             timeBetweenEachBurn = 2f;
         }
 
         if (freezing) {
-            StartCoroutine(Freeze());
+            StartCoroutine(Freeze(false));
 
             appliedDot = false;
         }

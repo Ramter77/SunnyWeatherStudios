@@ -137,13 +137,13 @@ public class AdjustMaterial : MonoBehaviour
         }
         else
         {
+            burnLerp = 0;
             startBurning = false;
             burned = !burned;
         }
     }
 
     private void Freezing() {
-        Debug.Log("frouzen: "+frozen);
         _AdjustMaterial(freezeString, false, freezeLerp, frozen);
         freezeVFX.SetActive(!frozen);
         
@@ -153,6 +153,7 @@ public class AdjustMaterial : MonoBehaviour
         }
         else
         {
+            freezeLerp = 0;
             startFreezing = false;
             frozen = !frozen;
         }

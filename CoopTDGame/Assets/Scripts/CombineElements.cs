@@ -156,19 +156,22 @@ public class CombineElements : MonoBehaviour
 
     void _CombineElements(int element) {
         if (!blastActive) {
-            //Blast
-            if (fireActive || iceActive) {
-                Combine(Element.Blast);
-
-                Debug.Log("BLASSSSSSSSSSSSSSSSSST");
-            }
-            //Fire&Ice
-            else
-            {
-                if (element == 1) {
+            //Fire
+            if (element == 1) {
+                if (iceActive) {
+                    Combine(Element.Blast);
+                }
+                else
+                {
                     Combine(Element.Fire);
                 }
-                else if (element == 2)
+            }
+            //Ice
+            else if (element == 2) {
+                if (fireActive) {
+                    Combine(Element.Blast);
+                }
+                else
                 {
                     Combine(Element.Ice);
                 }

@@ -1778,7 +1778,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 7459361935336740751}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.55
+  m_Radius: 0.6
   m_Speed: 1
   m_Acceleration: 8
   avoidancePriority: 50
@@ -1893,10 +1893,10 @@ MonoBehaviour:
   dissolveDelay: 6
   burnOnStart: 0
   burnStartDelay: 0
-  burnDelay: 4
+  burnDelay: 1
   freezeOnStart: 0
   freezeStartDelay: 0
-  freezeDelay: 4
+  freezeDelay: 1
   effectDuration: 10
   burning: 0
   burnDamage: 10
@@ -2517,6 +2517,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1199130653960296274}
     m_Modifications:
+    - target: {fileID: 115116, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
+      propertyPath: m_Name
+      value: Enemy on Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 115116, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 115116, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 460338, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -2573,28 +2585,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 115116, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
-      propertyPath: m_Name
-      value: Enemy on Fire
-      objectReference: {fileID: 0}
-    - target: {fileID: 115116, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 115116, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 170370, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 137196, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 5327823291965960981, guid: 4b1275c68da762a469aec97c97f0b473,
-        type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
@@ -2608,7 +2603,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 1923516457761927116, guid: 4b1275c68da762a469aec97c97f0b473,
+    - target: {fileID: 5327823291965960981, guid: 4b1275c68da762a469aec97c97f0b473,
         type: 3}
       propertyPath: m_Layer
       value: 15
@@ -2618,12 +2613,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 5238867656513313589, guid: 4b1275c68da762a469aec97c97f0b473,
+    - target: {fileID: 1923516457761927116, guid: 4b1275c68da762a469aec97c97f0b473,
         type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7592895641729061550, guid: 4b1275c68da762a469aec97c97f0b473,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5238867656513313589, guid: 4b1275c68da762a469aec97c97f0b473,
         type: 3}
       propertyPath: m_Layer
       value: 15
@@ -2649,6 +2649,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1199130653960296274}
     m_Modifications:
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy on Slow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5953861532791573198, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2718,21 +2733,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy on Slow
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3540249742271492023, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
