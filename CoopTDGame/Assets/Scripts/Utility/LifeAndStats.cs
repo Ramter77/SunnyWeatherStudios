@@ -33,7 +33,7 @@ public class LifeAndStats : MonoBehaviour
     public GameObject GameOverScreen = null;
 
 
-
+    
     private bool _dead;
     
 
@@ -79,6 +79,11 @@ public class LifeAndStats : MonoBehaviour
                     if (GetComponent<BasicEnemy>().Target != null && GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking > 0)
                     {
                         GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
+                    }
+
+                    if(GetComponent<BasicEnemy>().enemyType == 2)
+                    {
+                        EnemySpawnCycle.Instance.callnewWave();
                     }
 
                     #region Instantiate Soul

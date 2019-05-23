@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EnemySpawnCycle : MonoBehaviour
+public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
 {
     #region Variables
 
@@ -127,8 +127,7 @@ public class EnemySpawnCycle : MonoBehaviour
 
     public void endWave()
     {
-        annoucementMessageHolder.SetActive(true);
-        annoucementText.text = ("New Wave coming in " + timeBetweenWave + " seconds");
+       
         if(Wave == BossWave)
         {
             int a;
@@ -137,15 +136,24 @@ public class EnemySpawnCycle : MonoBehaviour
         }
         else
         {
+            annoucementMessageHolder.SetActive(true);
+            annoucementText.text = ("New Wave coming in " + timeBetweenWave + " seconds");
             StartCoroutine(betweenWaveTime());
         }
+    }
+
+    public void callnewWave()
+    {
+        annoucementMessageHolder.SetActive(true);
+        annoucementText.text = ("New Wave coming in " + timeBetweenWave + " seconds");
+        StartCoroutine(betweenWaveTime());
     }
 
     /// <summary>
     /// cooldwon between each wave - then starts new wave
     /// </summary>
     /// <returns></returns>
-    IEnumerator betweenWaveTime()
+    public IEnumerator betweenWaveTime()
     {
         yield return new WaitForSeconds(timeBetweenWave);
         Wave += 1;
