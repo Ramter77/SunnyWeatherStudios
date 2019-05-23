@@ -45,6 +45,7 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
     public Text annoucementText;
     public float disableTime = 5f;
     public int BossWave;
+    public int BossEveryXRounds = 5;
 
     #endregion
 
@@ -147,6 +148,7 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
         annoucementMessageHolder.SetActive(true);
         annoucementText.text = ("New Wave coming in " + timeBetweenWave + " seconds");
         StartCoroutine(betweenWaveTime());
+        BossWave = BossWave + BossEveryXRounds;
     }
 
     /// <summary>
