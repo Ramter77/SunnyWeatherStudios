@@ -199,7 +199,8 @@ public class PlayerController : MonoBehaviour
             #endregion
 
             #region OnSlope
-            Gizmos.DrawRay(transform.position, Vector3.down * charController.height / 2 * slopeForceRayLength);
+            if(charController != null) 
+                Gizmos.DrawRay(transform.position, Vector3.down * charController.height / 2 * slopeForceRayLength);
             #endregion
         }
     }
