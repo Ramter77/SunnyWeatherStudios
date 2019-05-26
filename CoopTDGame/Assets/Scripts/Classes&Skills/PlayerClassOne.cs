@@ -10,50 +10,6 @@ public class PlayerClassOne : MonoBehaviour
     private GameObject Player;
     public Transform Camera;
 
-    [Header("General UI settings")]
-    public Image healthbar;
-    private float currentHealth = 100f;
-    public float maxHealth = 100f;
-
-    [Header("Heall Ability Settings")]
-
-    /* [SerializeField] private KeyCode healAbilityHotkey = KeyCode.Q; */
-
-    public Image healAbilityUiImageOn;
-    public Image healAbilityUiImageOff;
-    public Image healAbilityCooldownImage;
-    [SerializeField] private float healAbilityCooldown = 0.1f;
-
-    [SerializeField] private int healAbilityCost = 10;
-
-    private float healAbilityRechardgeSpeed; // ability cooldown time
-
-    public float healRadius = 7f;
-
-    public bool selfHeal = false;
-
-    [SerializeField] private float healAmount = 25f;
-
-    private float fallbackHealAmount = 25f;
-
-    public GameObject healParticle;
-
-    [Header("Slash Ability Settings")]
-
-    /* [SerializeField] private KeyCode slashAbilityHotkey = KeyCode.E; */
-
-    public Image slashAbilityUiImageOn;
-    public Image slashAbilityUiImageOff;
-    public Image slashAbilityCooldownImage;
-    [SerializeField] private float slashAbilityCooldown = 0.1f;
-
-    [SerializeField] private int slashAbilityCost = 20;
-
-    private float slashRechargeSpeed;
-
-    public GameObject slashSlashPrefab;
-
-    public Transform FirePoint;
 
     [Header("Ultimate Ability Settings")]
 
@@ -77,8 +33,6 @@ public class PlayerClassOne : MonoBehaviour
 
     #region INPUT
     private PlayerController playC;
-    private bool _healInput;
-    private bool _slashInput;
     private bool _ultimateInput;
     #endregion
 
@@ -89,122 +43,57 @@ public class PlayerClassOne : MonoBehaviour
         playC = GetComponent<PlayerController>();
         playerAnim = GetComponent<Animator>();
         Player = gameObject;
-        fallbackHealAmount = healAmount;
-        
         //ability Cooldowns
         ultimateAbilityGameobject.SetActive(false);
         //weaponGameobject.SetActive(true);
-        slashRechargeSpeed = slashAbilityCooldown;
-        healAbilityRechardgeSpeed = healAbilityCooldown;
         ultimateRechargeSpeed = ultimateAbilityCooldown;
-       
+        if (ultimateAbilityCooldownImage != null)
+        {
+            ultimateAbilityCooldownImage.fillAmount = 0;
+        }
+        else
+            Debug.Log("No Ult CooldownImage");
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ui displays
-        currentHealth = GetComponent<LifeAndStats>().health;
-        healthbar.fillAmount = currentHealth / maxHealth;
-
-        ultimateAbilityCooldownImage.fillAmount -=  1 / ultimateAbilityCooldown * Time.deltaTime;
-        slashAbilityCooldownImage.fillAmount -= 1 / slashAbilityCooldown * Time.deltaTime;
-        healAbilityCooldownImage.fillAmount -= 1 / healAbilityCooldown * Time.deltaTime;
-
+        if (ultimateAbilityCooldownImage != null)
+        {
+            ultimateAbilityCooldownImage.fillAmount += 1 / ultimateAbilityCooldown * Time.deltaTime;
+        }
+        else
+            Debug.Log("No Ult CooldownImage");
 
         //* Player 0 input */
         if (playC.Player_ == 0)
         {
-            _healInput = InputManager.Instance.Heal0;
-            _slashInput = InputManager.Instance.Interact0;
             _ultimateInput = InputManager.Instance.Ultimate0;
         }
 
         //* Player 1 input */
         else if (playC.Player_ == 1)
         {
-            _healInput = InputManager.Instance.Heal1;
-            _slashInput = InputManager.Instance.Interact1;
             _ultimateInput = InputManager.Instance.Ultimate1;
         }
 
         //*Player 2 input */
         else if (playC.Player_ == 2) {
-            _healInput = InputManager.Instance.Heal2;
-            _slashInput = InputManager.Instance.Interact2;
             _ultimateInput = InputManager.Instance.Ultimate2;
         }
 
-        /* #region Input
-        if (_input) {
-            //If not already attacking or in build mode
-            if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isJumping) {
-                playC.isMeleeAttacking = true;
-                _MeleeAttack();
-            }
-        }
-        #endregion */
 
         #region Input / Abilities
-        
-        //If cooldown is low enough: shoot
-        if (Time.time > healAbilityRechardgeSpeed && SoulBackpack.Instance.sharedSoulAmount >= healAbilityCost)
-        {
-            healAbilityUiImageOn.enabled = true;
-            healAbilityUiImageOff.enabled = false;
-
-
-            if (_healInput) //{
-            //if (Input.GetKeyDown(healAbilityHotkey))
-            {
-                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && playC.isGrounded/*  && !playC.isJumping */ && !playC.isDead) {
-                    //playC.isRangedAttacking = true;
-
-                    healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;
-                    healAbility();
-                    playerAnim.SetTrigger("Heal");
-                    healAbilityCooldownImage.fillAmount = 1;
-                    //Start animation which displays the healing effect and player anim
-                    SoulBackpack.Instance.reduceSoulsByCost(healAbilityCost);
-                }
-            }
-        }
-        else
-        {
-            healAbilityUiImageOn.enabled = false;
-            healAbilityUiImageOff.enabled = true;
-        }
-        //If cooldown is low enough: shoot
-        if (Time.time > slashRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= slashAbilityCost)
-        {
-            slashAbilityUiImageOn.enabled = true;
-            slashAbilityUiImageOff.enabled = false;
-
-            /* if (_slashInput)
-            //if (Input.GetKeyDown(slashAbilityHotkey))
-            {
-                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && !playC.isDead) {
-                    //playC.isRangedAttacking = true;
-
-                    slashRechargeSpeed = Time.time + slashAbilityCooldown;
-                    slashAbility();
-                    //playerAnim.SetTrigger("Slash");
-                    slashAbilityCooldownImage.fillAmount = 1;
-                    //Start animation which displays the slash
-                    SoulBackpack.Instance.reduceSoulsByCost(slashAbilityCost);
-                }
-            } */
-        }
-        else
-        {
-            slashAbilityUiImageOn.enabled = false;
-            slashAbilityUiImageOff.enabled = true;
-        }
         //If cooldown is low enough: shoot
         if (Time.time > ultimateRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= ultimateAbilityCost)
         {
-            ultimateAbilityUiImageOn.enabled = true;
-            ultimateAbilityUiImageOff.enabled = false;
+            if(ultimateAbilityUiImageOn != null && ultimateAbilityUiImageOff != null)
+            {
+                ultimateAbilityUiImageOn.enabled = true;
+                ultimateAbilityUiImageOff.enabled = false;
+            }
+            else
+                Debug.Log("No ult icons selected");
 
             if (_ultimateInput)
             //if (Input.GetKeyDown(ultimateAbilityHotkey))
@@ -212,7 +101,7 @@ public class PlayerClassOne : MonoBehaviour
                 if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode/*  && !playC.isJumping */ && !playC.isDead) {
                     ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
                     ultimateAbility();
-                    ultimateAbilityCooldownImage.fillAmount = 1;
+                    ultimateAbilityCooldownImage.fillAmount = 0;
                     StartCoroutine(disableUltimate());
                     //Start animation which displays the ultimate
                     SoulBackpack.Instance.reduceSoulsByCost(ultimateAbilityCost);
@@ -221,77 +110,18 @@ public class PlayerClassOne : MonoBehaviour
         }
         else
         {
-            ultimateAbilityUiImageOn.enabled = false;
-            ultimateAbilityUiImageOff.enabled = true;
+            if (ultimateAbilityUiImageOn != null && ultimateAbilityUiImageOff != null)
+            {
+                ultimateAbilityUiImageOn.enabled = false;
+                ultimateAbilityUiImageOff.enabled = true;
+            }
+            else
+                Debug.Log("No ult icons selected");
         }
         #endregion
 
     }
        
-
-    void healAbility()
-    {
-        Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y+5, transform.position.z);
-                        Instantiate(healParticle, spawnPos, Quaternion.identity);
-
-                        
-        Collider[] col = Physics.OverlapSphere(transform.position, healRadius); // draw a sphere at desire point based on player pos + offset and desired radius of effect
-        if (col.Length > 0)
-        {
-
-            foreach (Collider hit in col) // checks each object hit
-            {
-                if (selfHeal)
-                {
-                    if (hit.tag == "Player" || hit.tag == "Player2")
-                    {
-                        if (hit.gameObject.GetComponent<LifeAndStats>().health <= 75)
-                        {
-                            hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
-                            healAmount = fallbackHealAmount;
-                        }
-                        if (hit.gameObject.GetComponent<LifeAndStats>().health > 75)
-                        {
-                            healAmount = maxHealth - hit.gameObject.GetComponent<LifeAndStats>().health;
-                            hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
-                            healAmount = fallbackHealAmount;
-                        }
-                    }
-                }
-                if (!selfHeal)
-                {
-                    if ((hit.tag == "Player" || hit.tag == "Player2") && hit.gameObject != this.gameObject)
-                    {
-                        if (hit.gameObject.GetComponent<LifeAndStats>().health <= 0) {
-
-                            //hit.gameObject.GetComponent<RevivePlayer>().Revive(hit.gameObject);
-                            hit.gameObject.GetComponent<LifeAndStats>().Revive();
-                        }
-                        else {
-                            //! Why not reset to max health? :
-                            /* if (hit.gameObject.GetComponent<LifeAndStats>().health + healAmount > hit.gameObject.GetComponent<LifeAndStats>().maxhealth) {
-                                hit.gameObject.GetComponent<LifeAndStats>().health = hit.gameObject.GetComponent<LifeAndStats>().maxhealth;
-                            }
-                            else {
-                                hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
-                            } */
-
-                            if (hit.gameObject.GetComponent<LifeAndStats>().health <= 75)
-                            {
-                                hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
-                            }
-                            if (hit.gameObject.GetComponent<LifeAndStats>().health > 75)
-                            {
-                                healAmount = maxHealth - hit.gameObject.GetComponent<LifeAndStats>().health;
-                                hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
-                                healAmount = fallbackHealAmount;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
 
     public void risePrefab() {
         if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && playC.isGrounded/*  && !playC.isJumping */ && !playC.isDead) {
@@ -313,16 +143,4 @@ public class PlayerClassOne : MonoBehaviour
         weaponGameobject.SetActive(true);
     }
 
-    void slashAbility()
-    {
-        //* First set the projectile
-        GetComponent<RangedAttack>().ChangeProjectileTo(slashSlashPrefab);
-        //* Then execute animation which calls public function "ShootActiveProjectile" on "RangedAttack" component
-        //playerAnim.SetTrigger("RangedAttack");
-
-
-
-        /* Vector3 slashSpawnPoint = FirePoint.position;
-        Instantiate(slashSlashPrefab, slashSpawnPoint, Camera.rotation); */
-    }
 }
