@@ -69,12 +69,18 @@ public class RangedAttack : MonoBehaviour
         //Get own colliders
         ownColliders = GetComponents<Collider>();
         rangedRechargeSpeed = rangedAttackCooldown;
-        rangedAbilityCooldownImage.fillAmount = 0;
+        if (rangedAbilityCooldownImage != null)
+        {
+            rangedAbilityCooldownImage.fillAmount = 0;
+        }
     }
 
     void Update()
     {
-        rangedAbilityCooldownImage.fillAmount += 1 / rangedAttackCooldown * Time.deltaTime;
+        if(rangedAbilityCooldownImage != null)
+        {
+            rangedAbilityCooldownImage.fillAmount += 1 / rangedAttackCooldown * Time.deltaTime;
+        }
 
         //* Player 0 input */
         if (playC.Player_ == 0)
@@ -97,21 +103,29 @@ public class RangedAttack : MonoBehaviour
 
         if (Time.time > rangedRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= projectileCost)
         {
-            rangedAbilityUiImageOn.enabled = true;
-            rangedAbilityUiImageOff.enabled = false;
+            if(rangedAbilityUiImageOn != null && rangedAbilityUiImageOff != null)
+            {
+                rangedAbilityUiImageOn.enabled = true;
+                rangedAbilityUiImageOff.enabled = false;
+            }
 
             if (_input)
             {
                 rangedRechargeSpeed = Time.time + rangedAttackCooldown;
+                if(rangedAbilityCooldownImage != null)
                 rangedAbilityCooldownImage.fillAmount = 0;
+
                 _RangedAttack();
             }
             
         }
         else
         {
-            rangedAbilityUiImageOn.enabled = false;
-            rangedAbilityUiImageOff.enabled = true;
+            if (rangedAbilityUiImageOn != null && rangedAbilityUiImageOff != null)
+            {
+                rangedAbilityUiImageOn.enabled = false;
+                rangedAbilityUiImageOff.enabled = true;
+            }
         }
         #endregion
     }

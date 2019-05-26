@@ -49,8 +49,10 @@ public class HealAbility : MonoBehaviour
         healAbilityRechardgeSpeed = healAbilityCooldown;
 
 
-        if(healAbilityCooldownImage)
-        healAbilityCooldownImage.fillAmount = 0;
+        if (healAbilityCooldownImage)
+            healAbilityCooldownImage.fillAmount = 0;
+        else
+            Debug.Log("No HealAbilityCooldownImage");
     }
 
     // Update is called once per frame
@@ -62,7 +64,10 @@ public class HealAbility : MonoBehaviour
             float v = currentHealth/ maxHealth;
             healthbar.fillAmount = v;
         }
-         healAbilityCooldownImage.fillAmount += 1 / healAbilityCooldown * Time.deltaTime;
+        if (healAbilityCooldownImage != null)
+            healAbilityCooldownImage.fillAmount += 1 / healAbilityCooldown * Time.deltaTime;
+        else
+            Debug.Log("No HealAbilityCooldownImage");
 
         //* Player 0 input */
         if (playC.Player_ == 0)
@@ -87,8 +92,13 @@ public class HealAbility : MonoBehaviour
 
         if (Time.time > healAbilityRechardgeSpeed && SoulBackpack.Instance.sharedSoulAmount >= healAbilityCost)
         {
-            healAbilityUiImageOn.enabled = true;
-            healAbilityUiImageOff.enabled = false;
+            if(healAbilityUiImageOff != null && healAbilityUiImageOn != null)
+            {
+                healAbilityUiImageOn.enabled = true;
+                healAbilityUiImageOff.enabled = false;
+            }
+            else
+                Debug.Log("No HealAbilityImage & No HealAbilityOffImage");
 
 
             if (_healInput) //{
@@ -101,7 +111,12 @@ public class HealAbility : MonoBehaviour
                     healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;
                     healAbility();
                     playerAnim.SetTrigger("Heal");
-                    healAbilityCooldownImage.fillAmount = 0;
+                    if(healAbilityCooldownImage != null)
+                    {
+                        healAbilityCooldownImage.fillAmount = 0;
+                    }
+                    else
+                        Debug.Log("No HealAbilityCooldownImage");
                     //Start animation which displays the healing effect and player anim
                     SoulBackpack.Instance.reduceSoulsByCost(healAbilityCost);
                 }
@@ -109,8 +124,13 @@ public class HealAbility : MonoBehaviour
         }
         else
         {
-            healAbilityUiImageOn.enabled = false;
-            healAbilityUiImageOff.enabled = true;
+            if (healAbilityUiImageOff != null && healAbilityUiImageOn != null)
+            {
+                healAbilityUiImageOn.enabled = false;
+                healAbilityUiImageOff.enabled = true;
+            }
+            else
+                Debug.Log("No HealAbilityImage & No HealAbilityOffImage");
         }
 
         #endregion
