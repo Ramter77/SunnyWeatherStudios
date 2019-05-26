@@ -83,7 +83,10 @@ public class Projectile : MonoBehaviour
             if (transform.GetChild(0) != null) {
                 //Set VFX lifetime
                 GameObject child = transform.GetChild(0).gameObject;
-                child.GetComponent<VisualEffect>().SetVector2(LIFETIME_RATE_NAME, vfxLifetimeMinMax);
+
+                if (child.GetComponent<VisualEffect>() != null) {
+                    child.GetComponent<VisualEffect>().SetVector2(LIFETIME_RATE_NAME, vfxLifetimeMinMax);
+                }
             }
         }
 

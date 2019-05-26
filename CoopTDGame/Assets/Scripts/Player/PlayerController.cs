@@ -204,4 +204,10 @@ public class PlayerController : MonoBehaviour
             #endregion
         }
     }
+
+
+
+    public void PlaySound(AudioClip _clip) {
+        AudioManager.Instance.PlaySound(audioSource, _clip);
+    }
 }

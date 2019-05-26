@@ -10,11 +10,12 @@ public class projectileVelocity : MonoBehaviour
     public float penetrationFactor = 10f;
     private float targetDefense;
     private bool appliedDamage = false;
+    [SerializeField]
+    private bool allowMovement = true;
 
     private bool allowDestroying;
     
 
-    // Start is called before the first frame update
     void Start()
     {
         if (GetComponent<Light>() == null) {
@@ -25,26 +26,23 @@ public class projectileVelocity : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * speed * Time.deltaTime;
+        if (allowMovement) {
+            transform.position += transform.forward * speed * Time.deltaTime;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy" && appliedDamage == false)
+        if (other.gameObject.tag == "Enemy" && appliedDamage == false)
         {
-            targetDefense = other.GetComponent<LifeAndStats>().defense;
-            float applyingDamage = damage - targetDefense / penetrationFactor; // calculates the damage for the 
-            other.GetComponent<LifeAndStats>().TakeDamage(applyingDamage);
-            appliedDamage = true;
             if (allowDestroying) {
                 Destroy(gameObject);
             }
         }
 
-        if (other.gameObject.tag == "Environment")
+        else
         {
             if (allowDestroying) {
                 Destroy(gameObject);

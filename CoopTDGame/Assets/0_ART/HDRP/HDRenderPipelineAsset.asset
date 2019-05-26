@@ -151,7 +151,7 @@ MonoBehaviour:
     supportShadowMask: 1
     supportSSR: 1
     supportSSAO: 1
-    supportSubsurfaceScattering: 1
+    supportSubsurfaceScattering: 0
     increaseSssSampleCount: 1
     supportVolumetrics: 1
     increaseResolutionOfVolumetrics: 1
@@ -189,7 +189,7 @@ MonoBehaviour:
       maxEnvLightsOnScreen: 64
       maxDecalsOnScreen: 512
     hdShadowInitParams:
-      shadowAtlasResolution: 4096
+      shadowAtlasResolution: 2048
       maxShadowRequests: 128
       shadowMapsDepthBits: 32
       useDynamicViewportRescale: 1
@@ -200,7 +200,7 @@ MonoBehaviour:
       atlasHeight: 4096
       perChannelMask: 0
   allowShaderVariantStripping: 1
-  enableSRPBatcher: 0
+  enableSRPBatcher: 1
   enableVariantStrippingLog: 0
   diffusionProfileSettings: {fileID: 11400000, guid: e4fa46dd3811649418d254797712402b,
     type: 2}

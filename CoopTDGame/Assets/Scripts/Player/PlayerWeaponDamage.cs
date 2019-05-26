@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class PlayerWeaponDamage : MonoBehaviour
 {
-    public float attackDamage = 0f;
+    private bool isPlayer;
+    public float attackDamage = 10f;
     private GameObject lastHitEnemy = null;
 
     void Start()
@@ -14,13 +15,23 @@ public class PlayerWeaponDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     { 
-        if(other.gameObject.tag == "Enemy" && other.gameObject != lastHitEnemy)
-        {
-            //Debug.Log("Weapon hit enemy");
-            lastHitEnemy = other.gameObject;
-            other.gameObject.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
-            StartCoroutine(resetLastHitGO());
+        if (isPlayer) {
+            if (other.gameObject.tag == "Enemy" && other.gameObject != lastHitEnemy)
+            {
+                _WeaponDamage(other.gameObject);
+            }
         }
+        else {
+            if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") {
+                _WeaponDamage(other.gameObject);
+            }
+        }
+    }
+
+    void _WeaponDamage(GameObject other) {
+        lastHitEnemy = other;
+        other.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
+        StartCoroutine(resetLastHitGO());
     }
 
     IEnumerator resetLastHitGO()
