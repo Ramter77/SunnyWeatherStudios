@@ -16,6 +16,8 @@ public class AttackAndDamage : MonoBehaviour
     public GameObject Target = null;
     public bool enableAttack = true;
     private bool targetInRange = false;
+    public GameObject weapon;
+    private BoxCollider weaponCollider;
     public Transform shootPoint = null;
     public GameObject rangedAttackProjectilePrefab = null;
 
@@ -35,6 +37,11 @@ public class AttackAndDamage : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
         basicEnemy = GetComponent<BasicEnemy>();
         defaultSpeed = basicEnemy.enemySpeed;
+
+        if (weapon) {
+            weaponCollider = weapon.GetComponent<BoxCollider>();
+            DisableWeaponCollider();
+        }
     }
 
     private void Update()
@@ -86,7 +93,7 @@ public class AttackAndDamage : MonoBehaviour
 
     void rangeAttack()
     {
-        if(shootPoint)
+        if (shootPoint)
         {
             Instantiate(rangedAttackProjectilePrefab, shootPoint.position, transform.rotation);
         }
@@ -114,6 +121,16 @@ public class AttackAndDamage : MonoBehaviour
     {
         yield return new WaitForSeconds(attackSpeed);
         enableAttack = true;
+    }
+
+
+
+    public void EnableWeaponCollider() {
+        weaponCollider.enabled = true;
+    }
+
+    public void DisableWeaponCollider() {
+        weaponCollider.enabled = false;
     }
 
 }

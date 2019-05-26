@@ -401,7 +401,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42b93eab304597e44b010914dbfe9999, type: 2}
+  - {fileID: 2100000, guid: e305d8fff1a57af4e974be1f662d638f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -949,6 +949,7 @@ MonoBehaviour:
   damageDelay: 0
   Target: {fileID: 0}
   enableAttack: 1
+  weapon: {fileID: 5541838969302723851}
   shootPoint: {fileID: 0}
   rangedAttackProjectilePrefab: {fileID: 0}
   targetDefense: 0
@@ -1052,7 +1053,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
@@ -1515,7 +1516,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 0
+  isFriendly: 0
   attackDamage: 10
 --- !u!1 &5572279288599786223
 GameObject:
