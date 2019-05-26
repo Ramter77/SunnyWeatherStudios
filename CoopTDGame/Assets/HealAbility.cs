@@ -32,6 +32,7 @@ public class HealAbility : MonoBehaviour
 
     public GameObject healParticle;
 
+    private Animator playerAnim;
 
     #region Input
     private PlayerController playC;
@@ -43,19 +44,25 @@ public class HealAbility : MonoBehaviour
     void Start()
     {
         playC = GetComponent<PlayerController>();
+        playerAnim = GetComponent<Animator>();
         fallbackHealAmount = healAmount;
         healAbilityRechardgeSpeed = healAbilityCooldown;
+
+
+        if(healAbilityCooldownImage)
+        healAbilityCooldownImage.fillAmount = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ui displays
         currentHealth = GetComponent<LifeAndStats>().health;
-        healthbar.fillAmount = currentHealth / maxHealth;
-
-        healAbilityCooldownImage.fillAmount -= 1 / healAbilityCooldown * Time.deltaTime;
-
+        if(healthbar != null)
+        {
+            float v = currentHealth/ maxHealth;
+            healthbar.fillAmount = v;
+        }
+         healAbilityCooldownImage.fillAmount += 1 / healAbilityCooldown * Time.deltaTime;
 
         //* Player 0 input */
         if (playC.Player_ == 0)
@@ -74,6 +81,40 @@ public class HealAbility : MonoBehaviour
         {
             _healInput = InputManager.Instance.Heal2;
         }
+
+
+        #region HealInput/Call
+
+        if (Time.time > healAbilityRechardgeSpeed && SoulBackpack.Instance.sharedSoulAmount >= healAbilityCost)
+        {
+            healAbilityUiImageOn.enabled = true;
+            healAbilityUiImageOff.enabled = false;
+
+
+            if (_healInput) //{
+            //if (Input.GetKeyDown(healAbilityHotkey))
+            {
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && playC.isGrounded/*  && !playC.isJumping */ && !playC.isDead)
+                {
+                    //playC.isRangedAttacking = true;
+
+                    healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;
+                    healAbility();
+                    playerAnim.SetTrigger("Heal");
+                    healAbilityCooldownImage.fillAmount = 0;
+                    //Start animation which displays the healing effect and player anim
+                    SoulBackpack.Instance.reduceSoulsByCost(healAbilityCost);
+                }
+            }
+        }
+        else
+        {
+            healAbilityUiImageOn.enabled = false;
+            healAbilityUiImageOff.enabled = true;
+        }
+
+        #endregion
+
     }
 
     #region Heal Ability 

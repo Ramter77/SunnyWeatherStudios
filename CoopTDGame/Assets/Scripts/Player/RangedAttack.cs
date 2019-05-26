@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RangedAttack : MonoBehaviour
 {
@@ -35,6 +36,11 @@ public class RangedAttack : MonoBehaviour
     [SerializeField]
     private AudioClip rangedAttackSound;
 
+    [Header("UI Settings")]
+    public Image rangedAbilityUiImageOn;
+    public Image rangedAbilityUiImageOff;
+    public Image rangedAbilityCooldownImage;
+
 
     #region Internal variables
     private PlayerController playC;
@@ -62,10 +68,14 @@ public class RangedAttack : MonoBehaviour
 
         //Get own colliders
         ownColliders = GetComponents<Collider>();
+        rangedRechargeSpeed = rangedAttackCooldown;
+        rangedAbilityCooldownImage.fillAmount = 0;
     }
 
     void Update()
     {
+        rangedAbilityCooldownImage.fillAmount += 1 / rangedAttackCooldown * Time.deltaTime;
+
         //* Player 0 input */
         if (playC.Player_ == 0)
         {
@@ -82,16 +92,27 @@ public class RangedAttack : MonoBehaviour
         else if (playC.Player_ == 2) {
             _input = InputManager.Instance.Ranged2;
         }
-        
+
         #region Input
-        if (_input) {
-            if(Time.time > rangedRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= projectileCost)
+
+        if (Time.time > rangedRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= projectileCost)
+        {
+            rangedAbilityUiImageOn.enabled = true;
+            rangedAbilityUiImageOff.enabled = false;
+
+            if (_input)
             {
                 rangedRechargeSpeed = Time.time + rangedAttackCooldown;
+                rangedAbilityCooldownImage.fillAmount = 0;
                 _RangedAttack();
             }
             
-        }    
+        }
+        else
+        {
+            rangedAbilityUiImageOn.enabled = false;
+            rangedAbilityUiImageOff.enabled = true;
+        }
         #endregion
     }
 

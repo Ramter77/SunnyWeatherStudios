@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 1099153509272865652}
   - component: {fileID: 1099153509272865655}
   - component: {fileID: 1099153509272865654}
+  - component: {fileID: 7023255781223283234}
   - component: {fileID: 1099153509272865649}
   - component: {fileID: 1099153509272865648}
   - component: {fileID: 1099153509272865651}
@@ -321,6 +322,29 @@ MonoBehaviour:
   isJumping: 0
   isDead: 0
   audioSource: {fileID: 1099153509272865648}
+--- !u!114 &7023255781223283234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1099153509272865660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9952b25c805e2489c13820abe9cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 0}
+  maxHealth: 100
+  healAbilityUiImageOn: {fileID: 0}
+  healAbilityUiImageOff: {fileID: 0}
+  healAbilityCooldownImage: {fileID: 0}
+  healAbilityCooldown: 0.1
+  healAbilityCost: 10
+  healRadius: 7
+  selfHeal: 0
+  healAmount: 25
+  healParticle: {fileID: 0}
 --- !u!114 &1099153509272865649
 MonoBehaviour:
   m_ObjectHideFlags: 0

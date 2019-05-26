@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 68345726}
   - component: {fileID: 68345725}
   - component: {fileID: 68345724}
+  - component: {fileID: 9015447330886337416}
   - component: {fileID: 68345723}
   - component: {fileID: 68345722}
   - component: {fileID: 68345721}
@@ -58,7 +59,7 @@ Animator:
   m_GameObject: {fileID: 68345718}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 9aaf85c5076ef0c489b751d4ab8e26d3, type: 3}
-  m_Controller: {fileID: 9100000, guid: e106c3b6409c65e409e513c4ac7e35e5, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 1
   m_UpdateMode: 1
   m_ApplyRootMotion: 1
@@ -130,6 +131,8 @@ MonoBehaviour:
   projectile: {fileID: 113481993458745524, guid: 1145971759cf4554183ec2c4d65d44eb,
     type: 3}
   projectileSpeed: 20
+  projectileCost: 10
+  rangedAttackCooldown: 5
   projectileOrigin: {fileID: 1466782552}
   mask:
     serializedVersion: 2
@@ -199,8 +202,8 @@ MonoBehaviour:
   particleSpawnLocation: {fileID: 0}
   ragdollOnDeath: 0
   dissolveOnDeath: 0
-  invincible: 0
   destroyable: 0
+  invincible: 0
   GameOverScreen: {fileID: 0}
 --- !u!114 &68345726
 MonoBehaviour:
@@ -216,6 +219,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   axisDamping: 0.2
   buttonDamping: 0.5
+  enableWeaponColliderOnJump: 0
+  toggleRunning: 0
+  allowJumpWhileMelee: 0
+  restrictForwardJump: 0
+  allowJumpWhileRanged: 0
 --- !u!114 &68345725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -253,11 +261,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player_: 0
+  debugMode: 0
+  charController: {fileID: 0}
+  mask:
+    serializedVersion: 2
+    m_Bits: 0
   TurnPlayerForward: 0
   turn_Speed: 2
+  groundCheckRadius: 1
+  groundCheckHeight: 1.5
+  groundCheckDistance: 2
   movePlayerTowardSlope: 0
   slopeForce: 0
   slopeForceRayLength: 0
+  allowAirMovement: 0
+  airMoveSpeed: 0
+  allowJumpMovement: 0
+  jumpMoveSpeedMultiplier: 0.5
   isInBuildMode: 0
   isMeleeAttacking: 0
   isRangedAttacking: 0
@@ -265,6 +285,29 @@ MonoBehaviour:
   isJumping: 0
   isDead: 0
   audioSource: {fileID: 0}
+--- !u!114 &9015447330886337416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 68345718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad9952b25c805e2489c13820abe9cacc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthbar: {fileID: 0}
+  maxHealth: 100
+  healAbilityUiImageOn: {fileID: 0}
+  healAbilityUiImageOff: {fileID: 0}
+  healAbilityCooldownImage: {fileID: 0}
+  healAbilityCooldown: 2
+  healAbilityCost: 15
+  healRadius: 20
+  selfHeal: 0
+  healAmount: 25
+  healParticle: {fileID: 0}
 --- !u!114 &68345723
 MonoBehaviour:
   m_ObjectHideFlags: 0
