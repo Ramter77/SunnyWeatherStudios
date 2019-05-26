@@ -71,7 +71,7 @@ public class BasicEnemy : MonoBehaviour
     [Tooltip("Distance that the enemy flees")]
     public float fleeRange = 3f;
 
-
+    private AudioSource audioSource;
     private Animator enemyAnim;
     private bool charging;
     public bool enabledAttack;
@@ -84,6 +84,7 @@ public class BasicEnemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         rigid = GetComponent<Rigidbody>();
+        audioSource = GetComponent<AudioSource>();
         Sphere = GameObject.FindGameObjectWithTag("Sphere");
         WalkToSphere();
         StartCoroutine(ScanCycle());
@@ -93,6 +94,7 @@ public class BasicEnemy : MonoBehaviour
         possibleTargets = new List<GameObject>();
         agent.speed = enemySpeed;
         fallbackSpeed = enemySpeed;
+
     }
 
     void Update()
@@ -406,7 +408,10 @@ public class BasicEnemy : MonoBehaviour
 
 
 
-
+    public void PlaySound(AudioClip _clip)
+    {
+        AudioManager.Instance.PlaySound(audioSource, _clip);
+    }
 
 
 #if UNITY_EDITOR
