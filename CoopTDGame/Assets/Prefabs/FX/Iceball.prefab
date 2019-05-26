@@ -16,9 +16,8 @@ GameObject:
   - component: {fileID: 2346435194113405527}
   - component: {fileID: 2544546448591885996}
   - component: {fileID: 5750830792990983559}
-  - component: {fileID: 658456508164392532}
   - component: {fileID: 3509651711479888806}
-  - component: {fileID: 8615860283899236736}
+  - component: {fileID: 4251599272759571473}
   m_Layer: 0
   m_Name: Iceball
   m_TagString: ElementProjectile
@@ -241,19 +240,6 @@ MonoBehaviour:
     format: 0
     data: 
   shadowDatas: []
---- !u!114 &658456508164392532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 113481993458745524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3b164fe50494b46b90c03a8c739400, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackDamage: 10
 --- !u!114 &3509651711479888806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,21 +254,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   usedElement: 2
   effectIndex: 2
---- !u!114 &8615860283899236736
+--- !u!114 &4251599272759571473
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 113481993458745524}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e76887f3471b34c419bd85c7fc9fb9d1, type: 3}
+  m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  damage: 20
-  penetrationFactor: 10
+  isPlayer: 1
+  attackDamage: 50
 --- !u!1 &4356106845673668711
 GameObject:
   m_ObjectHideFlags: 0

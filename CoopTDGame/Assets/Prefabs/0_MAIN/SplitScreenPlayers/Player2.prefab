@@ -176,6 +176,9 @@ MonoBehaviour:
     m_Bits: 2147540497
   fallbackDistance: 100
   rangedAttackSound: {fileID: 0}
+  rangedAbilityUiImageOn: {fileID: 0}
+  rangedAbilityUiImageOff: {fileID: 0}
+  rangedAbilityCooldownImage: {fileID: 0}
 --- !u!114 &1099153509272865675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3159,7 +3162,7 @@ GameObject:
   - component: {fileID: 8134681642376037501}
   - component: {fileID: 8134681642376037498}
   - component: {fileID: 8134681642376037499}
-  - component: {fileID: 8134681642376037496}
+  - component: {fileID: 632678837116107997}
   m_Layer: 13
   m_Name: player_ultimate_weapon
   m_TagString: Untagged
@@ -3241,7 +3244,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0.04}
---- !u!114 &8134681642376037496
+--- !u!114 &632678837116107997
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3250,9 +3253,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8134681642376037494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3b164fe50494b46b90c03a8c739400, type: 3}
+  m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   attackDamage: 100
 --- !u!1 &8134681642390761370
 GameObject:
@@ -3266,7 +3270,7 @@ GameObject:
   - component: {fileID: 8134681642390761377}
   - component: {fileID: 8134681642390761374}
   - component: {fileID: 8134681642390761375}
-  - component: {fileID: 8134681642390761372}
+  - component: {fileID: 2623209114914021429}
   m_Layer: 13
   m_Name: PlayerCharacterModel_Weapon_1
   m_TagString: Untagged
@@ -3348,7 +3352,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.012686663, y: 0.0099486485, z: 0.009803718}
   m_Center: {x: -0.0014569988, y: 0.0034868754, z: 0.0000046535733}
---- !u!114 &8134681642390761372
+--- !u!114 &2623209114914021429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3357,9 +3361,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 8134681642390761370}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3b164fe50494b46b90c03a8c739400, type: 3}
+  m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   attackDamage: 50
 --- !u!1 &8134681642750247412
 GameObject:

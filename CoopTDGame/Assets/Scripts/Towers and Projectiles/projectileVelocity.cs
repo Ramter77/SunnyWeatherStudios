@@ -6,9 +6,6 @@ public class projectileVelocity : MonoBehaviour
 {
     public float speed;
     private float lifetime = 4f;
-    public float damage = 20f;
-    public float penetrationFactor = 10f;
-    private float targetDefense;
     private bool appliedDamage = false;
     [SerializeField]
     private bool allowMovement = true;

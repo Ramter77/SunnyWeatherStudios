@@ -802,6 +802,7 @@ GameObject:
   - component: {fileID: 9031823747634353308}
   - component: {fileID: 3255070068988302758}
   - component: {fileID: 481606394628153116}
+  - component: {fileID: 1627866098281028475}
   m_Layer: 12
   m_Name: Enemy_Weapon_1
   m_TagString: EnemyWeapon
@@ -909,6 +910,20 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.45894477, y: 1.1826539, z: 0.1092982}
   m_Center: {x: 0.0000002555738, y: 0.46805176, z: 0.009573555}
+--- !u!114 &1627866098281028475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848924434285836558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isPlayer: 0
+  attackDamage: 15
 --- !u!1 &2078343133210196363
 GameObject:
   m_ObjectHideFlags: 0
@@ -3886,15 +3901,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cca93549278b2174f85a8fe0bfdb8125, type: 3}
---- !u!1 &8578159019892552895 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-    type: 3}
-  m_PrefabInstance: {fileID: 5253275151957786046}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1893548611681384304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5953861532791573198, guid: cca93549278b2174f85a8fe0bfdb8125,
+    type: 3}
+  m_PrefabInstance: {fileID: 5253275151957786046}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8578159019892552895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
     type: 3}
   m_PrefabInstance: {fileID: 5253275151957786046}
   m_PrefabAsset: {fileID: 0}

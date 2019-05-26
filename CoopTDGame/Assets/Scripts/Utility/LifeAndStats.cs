@@ -204,21 +204,4 @@ public class LifeAndStats : MonoBehaviour
 
         invincible = false;
     }
-
-
-    /// <summary>
-    /// OnTriggerEnter is called when the Collider other enters the trigger.
-    /// </summary>
-    /// <param name="other">The other Collider involved in this collision.</param>
-    void OnTriggerEnter(Collider other)
-    {
-        if (gameObject.tag == "Player" || gameObject.tag == "Player2") {
-            if (other.tag == "EnemyWeapon") {
-                TakeDamage(20);
-            }
-            else if (other.tag == "EnemyProjectile") {
-                TakeDamage(10);
-            }
-        }
-    }
 }

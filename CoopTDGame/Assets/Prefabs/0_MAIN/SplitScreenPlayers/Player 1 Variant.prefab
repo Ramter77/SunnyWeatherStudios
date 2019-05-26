@@ -2687,7 +2687,7 @@ GameObject:
   - component: {fileID: 6378350839055400627}
   - component: {fileID: 6378350839055400628}
   - component: {fileID: 6378350839055400629}
-  - component: {fileID: 6378350839055400630}
+  - component: {fileID: 8891516822890119853}
   m_Layer: 9
   m_Name: player_ultimate_weapon
   m_TagString: Untagged
@@ -2769,7 +2769,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.01, y: 0.01, z: 0.07}
   m_Center: {x: 0, y: 0, z: 0.04}
---- !u!114 &6378350839055400630
+--- !u!114 &8891516822890119853
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2778,9 +2778,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6378350839055400632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3b164fe50494b46b90c03a8c739400, type: 3}
+  m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   attackDamage: 100
 --- !u!1 &6378350839070102868
 GameObject:
@@ -2794,7 +2795,7 @@ GameObject:
   - component: {fileID: 6378350839070102895}
   - component: {fileID: 6378350839070102864}
   - component: {fileID: 6378350839070102865}
-  - component: {fileID: 6378350839070102866}
+  - component: {fileID: 5323661439591073511}
   m_Layer: 9
   m_Name: PlayerCharacterModel_Weapon_1
   m_TagString: Untagged
@@ -2876,7 +2877,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.012686663, y: 0.0099486485, z: 0.009803718}
   m_Center: {x: -0.0014569988, y: 0.0034868754, z: 0.0000046535733}
---- !u!114 &6378350839070102866
+--- !u!114 &5323661439591073511
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2885,9 +2886,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 6378350839070102868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3b164fe50494b46b90c03a8c739400, type: 3}
+  m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 1
   attackDamage: 50
 --- !u!1 &6378350839827542186
 GameObject:

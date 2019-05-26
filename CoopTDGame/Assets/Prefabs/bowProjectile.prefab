@@ -110,8 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
-  damage: 100
-  penetrationFactor: 10
+  allowMovement: 1
 --- !u!54 &1410822819003916361
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -154,6 +153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPlayer: 0
+  attackDamage: 5
 --- !u!1001 &8111917232813766013
 PrefabInstance:
   m_ObjectHideFlags: 0

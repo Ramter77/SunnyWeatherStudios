@@ -25,6 +25,7 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField]
     [Tooltip ("The second child of the object playing the music (looping)")]
     private AudioSource musicAudioSource;
+    private AudioClip musicAudioClip;
 
 
     [Header("Selection of all Sounds")]
