@@ -361,26 +361,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 1099153510804679940}
-  healthbar: {fileID: 0}
-  maxHealth: 100
-  healAbilityUiImageOn: {fileID: 0}
-  healAbilityUiImageOff: {fileID: 0}
-  healAbilityCooldownImage: {fileID: 0}
-  healAbilityCooldown: 25
-  healAbilityCost: 15
-  healRadius: 2000
-  selfHeal: 0
-  healAmount: 25
-  healParticle: {fileID: 1312923869523673248, guid: efde4b8957e6d704a9a861a347c9b627,
-    type: 3}
-  slashAbilityUiImageOn: {fileID: 0}
-  slashAbilityUiImageOff: {fileID: 0}
-  slashAbilityCooldownImage: {fileID: 0}
-  slashAbilityCooldown: 5
-  slashAbilityCost: 10
-  slashSlashPrefab: {fileID: 9003700133114425031, guid: c28fea64ccc640946bad586dfb6f2aeb,
-    type: 3}
-  FirePoint: {fileID: 1099153510629033810}
   ultimateAbilityUiImageOn: {fileID: 0}
   ultimateAbilityUiImageOff: {fileID: 0}
   ultimateAbilityCooldownImage: {fileID: 0}
@@ -3256,7 +3236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
+  isFriendly: 1
   attackDamage: 100
 --- !u!1 &8134681642390761370
 GameObject:
@@ -3364,7 +3344,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isPlayer: 1
+  isFriendly: 1
   attackDamage: 50
 --- !u!1 &8134681642750247412
 GameObject:
