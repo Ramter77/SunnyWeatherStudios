@@ -111,11 +111,14 @@ public class RangedAttack : MonoBehaviour
 
             if (_input)
             {
-                rangedRechargeSpeed = Time.time + rangedAttackCooldown;
-                if(rangedAbilityCooldownImage != null)
-                rangedAbilityCooldownImage.fillAmount = 0;
+                if(!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isInBuildMode && playC.isGrounded && !playC.isJumping && !playC.isDead)
+                {
+                    rangedRechargeSpeed = Time.time + rangedAttackCooldown;
+                    if (rangedAbilityCooldownImage != null)
+                        rangedAbilityCooldownImage.fillAmount = 0;
 
-                _RangedAttack();
+                    _RangedAttack();
+                }
             }
             
         }
