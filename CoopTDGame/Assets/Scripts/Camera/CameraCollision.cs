@@ -14,10 +14,14 @@ public class CameraCollision : MonoBehaviour
 
     public bool isHitting = false;
 
+    private Camera cam;
+
     void Awake()
     {
         dollyDir = transform.localPosition.normalized;
         distance = transform.localPosition.magnitude;
+
+        cam = GetComponent<Camera>();
     }
 
     // Update is called once per frame
@@ -29,13 +33,22 @@ public class CameraCollision : MonoBehaviour
         {
             distance = Mathf.Clamp((hit.distance * 0.9f), minDistance, maxDistance);
             isHitting = true;
+
+            cam.useOcclusionCulling = false;
         }
         else
         {
             distance = maxDistance;
-
+            
+            cam.useOcclusionCulling = true;
         }
         transform.localPosition = Vector3.Lerp(transform.localPosition, dollyDir * distance, Time.deltaTime * smooth);
+
+        if (isHitting) {
+            //cam.useOcclusionCulling = false;
+        }
     }
+
+
     
 }

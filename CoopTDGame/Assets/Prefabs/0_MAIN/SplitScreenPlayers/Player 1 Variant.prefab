@@ -2933,7 +2933,7 @@ PrefabInstance:
     - target: {fileID: 7777738009032027036, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_Name
-      value: Player 1 Variant
+      value: Player 1
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026990, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
@@ -2979,7 +2979,7 @@ PrefabInstance:
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 463.63007
+      value: 437.5
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
@@ -2989,7 +2989,7 @@ PrefabInstance:
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 504.09003
+      value: 496
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
@@ -3048,6 +3048,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026984, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
+      propertyPath: projectileCost
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026984, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
       propertyPath: projectileOrigin
       value: 
       objectReference: {fileID: 2819464312486886812}
@@ -3058,8 +3063,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026984, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
-      propertyPath: projectileCost
-      value: 1
+      propertyPath: rangedAbilityUiImageOn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026984, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: rangedAbilityUiImageOff
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026984, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: rangedAbilityCooldownImage
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026985, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
@@ -3169,51 +3184,6 @@ PrefabInstance:
       objectReference: {fileID: 2819464312394078154}
     - target: {fileID: 7777738009032027025, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
-      propertyPath: healthbar
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032027025, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: healAbilityUiImageOn
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032027025, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: healAbilityUiImageOff
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032027025, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: healAbilityCooldownImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032027025, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: healRadius
-      value: 2000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032027025, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: slashAbilityUiImageOn
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032027025, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: slashAbilityUiImageOff
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032027025, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: slashAbilityCooldownImage
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032027025, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: FirePoint
-      value: 
-      objectReference: {fileID: 2819464312486886812}
-    - target: {fileID: 7777738009032027025, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
       propertyPath: ultimateAbilityUiImageOn
       value: 
       objectReference: {fileID: 0}
@@ -3252,7 +3222,39 @@ PrefabInstance:
       propertyPath: antialiasingMode
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1652080087782389602, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: healthbar
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652080087782389602, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: healAbilityUiImageOn
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652080087782389602, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: healAbilityUiImageOff
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652080087782389602, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: healAbilityCooldownImage
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652080087782389602, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: healAbilityCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1652080087782389602, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: healParticle
+      value: 
+      objectReference: {fileID: 1312923869523673248, guid: efde4b8957e6d704a9a861a347c9b627,
+        type: 3}
+    m_RemovedComponents:
+    - {fileID: 7777738009032027031, guid: 064a8a3d64a5d784882a0951943238b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 064a8a3d64a5d784882a0951943238b9, type: 3}
 --- !u!4 &2819464312486886812 stripped
 Transform:

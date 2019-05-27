@@ -4,27 +4,21 @@ using UnityEngine;
 
 public class AudioManager : Singleton<AudioManager>
 {
-    #region TEST
-    //Define Enum
-    public enum TestEnum{Test1, Test2, Test3};
-
-    //This is what you need to show in the inspector.
-    public TestEnum Tests;
-    #endregion
-
-
-
     [SerializeField]
     [Tooltip ("Stop any sound before playing the next one")]
     private bool stopSoundBeforeNext;
 
-    //private Component[] audioSources;
-    [SerializeField]
+    [HideInInspector]
+    //[SerializeField] hidden because it adds the component on start
     [Tooltip ("The first child of the object playing the sounds")]
     private AudioSource soundAudioSource;
-    [SerializeField]
+    [HideInInspector]
+    //[SerializeField] hidden because it adds the component on start
     [Tooltip ("The second child of the object playing the music (looping)")]
     private AudioSource musicAudioSource;
+    [Header ("Music")]
+    [SerializeField]
+    [Tooltip ("Music clip (looping)")]
     private AudioClip musicAudioClip;
 
 
@@ -50,8 +44,6 @@ public class AudioManager : Singleton<AudioManager>
 
     [Header("Interactions")]
     public AudioClip playerActivateBuilding;
-
-
 
 
     void Start()

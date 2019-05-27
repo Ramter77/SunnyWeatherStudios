@@ -49,7 +49,6 @@ GameObject:
   - component: {fileID: 1099153509272865674}
   - component: {fileID: 1099153509272865653}
   - component: {fileID: 1099153509272865652}
-  - component: {fileID: 1099153509272865655}
   - component: {fileID: 1099153509272865654}
   - component: {fileID: 7023255781223283234}
   - component: {fileID: 1099153509272865649}
@@ -264,30 +263,6 @@ MonoBehaviour:
   allowJumpWhileMelee: 1
   restrictForwardJump: 1
   allowJumpWhileRanged: 0
---- !u!114 &1099153509272865655
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1099153509272865660}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b51b5c64280d8e41b0c039a33b64dd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  specialAbilityHotkey: 113
-  specialAbilityCooldown: 5
-  specialAbilityCost: 10
-  healRadius: 15
-  selfHeal: 1
-  healAmount: 25
-  maxHealth: 100
-  ultimateAbilityHotkey: 101
-  ultimateAbilityCooldown: 20
-  ultimateAbilityCost: 20
-  ultimateAbilityGameobject: {fileID: 0}
-  ultimateAbilityDuration: 10
 --- !u!114 &1099153509272865654
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -342,12 +317,13 @@ MonoBehaviour:
   healAbilityUiImageOn: {fileID: 0}
   healAbilityUiImageOff: {fileID: 0}
   healAbilityCooldownImage: {fileID: 0}
-  healAbilityCooldown: 0.1
-  healAbilityCost: 10
-  healRadius: 7
+  healAbilityCooldown: 10
+  healAbilityCost: 15
+  healRadius: 20
   selfHeal: 0
   healAmount: 25
-  healParticle: {fileID: 0}
+  healParticle: {fileID: 1312923869523673248, guid: efde4b8957e6d704a9a861a347c9b627,
+    type: 3}
 --- !u!114 &1099153509272865649
 MonoBehaviour:
   m_ObjectHideFlags: 0

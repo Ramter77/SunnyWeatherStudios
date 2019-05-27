@@ -10,8 +10,8 @@ public class MeleeAttack : MonoBehaviour
     [SerializeField] private BoxCollider UltimateWeaponTriggerCollider;
     //[SerializeField] private int enemyLayer;
 
-    [Header("Attack Settings")] 
-    [Tooltip("Damage to apply")] public float attackDamage;
+    /* [Header("Attack Settings")] 
+    [Tooltip("Damage to apply")] public float attackDamage; */
 
     
     private PlayerController playC;

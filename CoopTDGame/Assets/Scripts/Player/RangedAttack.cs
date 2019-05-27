@@ -32,10 +32,6 @@ public class RangedAttack : MonoBehaviour
     private float fallbackDistance = 100.0f;
     private Vector3 intersectionPoint, direction;
 
-    [Header ("Sound")]
-    [SerializeField]
-    private AudioClip rangedAttackSound;
-
     [Header("UI Settings")]
     public Image rangedAbilityUiImageOn;
     public Image rangedAbilityUiImageOff;
@@ -205,9 +201,6 @@ public class RangedAttack : MonoBehaviour
 
         //Ignore collisions with owner
         IgnoreCollisionSelf(projectileRB.GetComponent<Collider>());
-
-        //Play sound
-        AudioManager.Instance.PlaySound(playC.audioSource, rangedAttackSound);
     }
     #endregion
 }
