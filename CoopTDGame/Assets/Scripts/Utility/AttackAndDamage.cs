@@ -66,13 +66,6 @@ public class AttackAndDamage : MonoBehaviour
                     rangeAttack();
                 }
             }
-
-
-            //why?
-            else
-            {
-                return;
-            }
         }
     }
     
@@ -95,7 +88,10 @@ public class AttackAndDamage : MonoBehaviour
     {
         if (shootPoint)
         {
-            Instantiate(rangedAttackProjectilePrefab, shootPoint.position, transform.rotation);
+            Vector3 targetRot = Target.transform.position - gameObject.transform.position;
+            Vector3 aimOffset = new Vector3(0, 5, 0);
+            Vector3 aimRotation = targetRot - aimOffset;
+            Instantiate(rangedAttackProjectilePrefab, shootPoint.position, Quaternion.LookRotation(aimRotation));
         }
     }
 

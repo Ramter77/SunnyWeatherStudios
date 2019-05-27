@@ -46,6 +46,7 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
     public float disableTime = 5f;
     public int BossWave;
     public int BossEveryXRounds = 5;
+    public bool startSpawningOnSceneStart = false;
 
     #endregion
 
@@ -55,9 +56,12 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
         Spawners = GameObject.FindGameObjectsWithTag("Spawner");
         Enemies = GameObject.FindGameObjectsWithTag("Enemy");
         fallbackCheckTime = timeBetweenCheck;
-        startNewWave();
-        annoucementText.text = ("The game starts now! You need to defend the Sphere!");
-        StartCoroutine(disableAnnoucment());
+        if(startSpawningOnSceneStart)
+        {
+            startNewWave();
+            annoucementText.text = ("The game starts now! You need to defend the Sphere!");
+            StartCoroutine(disableAnnoucment());
+        }
         Wave = 1;
     }
 
