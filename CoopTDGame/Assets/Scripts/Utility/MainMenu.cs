@@ -49,6 +49,8 @@ public class MainMenu : MonoBehaviour
         _Player1.SetActive(true);
         _Player2.SetActive(true);
         InGameUiHolder.SetActive(true);
+        EnemySpawnCycle.Instance.annoucementText.text = ("The game starts now! You need to defend the Sphere!");
+        EnemySpawnCycle.Instance.disableAnnoucement();
         EnemySpawnCycle.Instance.startNewWave();
     }
 

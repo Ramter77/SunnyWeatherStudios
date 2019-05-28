@@ -60,7 +60,7 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
         {
             startNewWave();
             annoucementText.text = ("The game starts now! You need to defend the Sphere!");
-            StartCoroutine(disableAnnoucment());
+            disableAnnoucement();
         }
         Wave = 1;
     }
@@ -164,7 +164,7 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
         yield return new WaitForSeconds(timeBetweenWave);
         Wave += 1;
         annoucementText.text = ("Wave " + Wave + " approaching");
-        StartCoroutine(disableAnnoucment());
+        disableAnnoucement();
         startNewWave();
     }
 
@@ -180,5 +180,10 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
     {
         yield return new WaitForSeconds(disableTime);
         annoucementMessageHolder.SetActive(false);
+    }
+
+    public void disableAnnoucement()
+    {
+        StartCoroutine(disableAnnoucment());
     }
 }
