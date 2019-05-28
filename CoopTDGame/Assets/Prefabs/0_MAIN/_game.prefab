@@ -3470,6 +3470,7 @@ GameObject:
   - component: {fileID: 8218522498466041185}
   - component: {fileID: 1091908911746848482}
   - component: {fileID: 617527809}
+  - component: {fileID: 598132148716041409}
   m_Layer: 0
   m_Name: TowerFallBackTarget
   m_TagString: Enemy
@@ -3589,6 +3590,31 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &598132148716041409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5965244382519212381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b3f0b9ede1df9438b6c311604cf4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 90000
+  maxhealth: 90000
+  defense: 20
+  amountOfUnitsAttacking: 0
+  particleEffect: {fileID: 2266160152052906837, guid: 76b6c0581f619724487b267899a10536,
+    type: 3}
+  ParticleOnHitEffectYoffset: 1
+  particleSpawnLocation: {fileID: 1034248233992895750}
+  ragdollOnDeath: 0
+  dissolveOnDeath: 0
+  destroyable: 0
+  invincible: 0
+  GameOverScreen: {fileID: 0}
 --- !u!1 &5987821796001759387
 GameObject:
   m_ObjectHideFlags: 0
