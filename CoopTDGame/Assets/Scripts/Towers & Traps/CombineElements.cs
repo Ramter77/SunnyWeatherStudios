@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.MultiAudioListener;
 
 public class CombineElements : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class CombineElements : MonoBehaviour
     private Transform holderTransform;
     private BasicTower basicTowerScript;
     private ActivatePrefab activatePrefabScript;
-    private AudioSource audioSource;
+    private MultiAudioSource audioSource;
     private bool isTrap, isTower;
     private bool fireActive, iceActive, blastActive;
 
@@ -61,7 +62,7 @@ public class CombineElements : MonoBehaviour
             isTrap = true;
         }
 
-        audioSource = holderTransform.GetComponent<AudioSource>();
+        audioSource = holderTransform.GetComponent<MultiAudioSource>();
         activatePrefabScript = holderTransform.GetComponent<ActivatePrefab>();
         crystalMeshRenderer = crystalObject.GetComponent<MeshRenderer>();
         meshRend = GetComponent<MeshRenderer>();

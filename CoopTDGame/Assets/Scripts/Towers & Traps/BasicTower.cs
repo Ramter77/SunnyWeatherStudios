@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.MultiAudioListener;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -39,7 +40,7 @@ public class BasicTower : MonoBehaviour
     private Component[] ownColliders;
     private MeshCollider crystalCollider;
 
-    private AudioSource audioSource;
+    private MultiAudioSource audioSource;
     private AudioClip _audioClip;
 
     // Start is called before the first frame update
@@ -50,6 +51,7 @@ public class BasicTower : MonoBehaviour
         if (AudioManager.Instance.towerProjectiles[0] != null) {
             _audioClip = AudioManager.Instance.towerProjectiles[0];
         } */
+        audioSource = GetComponent<MultiAudioSource>();
 
         //Get own colliders
         ownColliders = GetComponentsInChildren<Collider>();

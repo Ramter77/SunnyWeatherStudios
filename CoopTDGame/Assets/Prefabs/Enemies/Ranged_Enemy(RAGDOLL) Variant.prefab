@@ -1622,6 +1622,7 @@ GameObject:
   - component: {fileID: 3462445806617510031}
   - component: {fileID: 4856982969270314171}
   - component: {fileID: 8142306581513363980}
+  - component: {fileID: 8377647161499380743}
   m_Layer: 12
   m_Name: Ranged_Enemy(RAGDOLL) Variant
   m_TagString: Enemy
@@ -1685,6 +1686,7 @@ MonoBehaviour:
   speedMultiplier: 0.8
   stopMovementWhenNotGrounded: 1
   setInjuredLayerWeight: 1
+  maxLayerWeigth: 1
   blendInjuredIdle: 0
 --- !u!114 &3782931382100497968
 MonoBehaviour:
@@ -1741,6 +1743,7 @@ MonoBehaviour:
   damageDelay: 0
   Target: {fileID: 0}
   enableAttack: 1
+  weapon: {fileID: 0}
   shootPoint: {fileID: 5079376812023208744}
   rangedAttackProjectilePrefab: {fileID: 7422580703118685226, guid: b3c89af8acb99f248abac503a481fec8,
     type: 3}
@@ -1944,7 +1947,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7459361935336740751}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -2033,6 +2036,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8377647161499380743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7459361935336740751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 0}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 0
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+  OnlyPlayForClosestCamera: 0
 --- !u!1 &7518996312762980653
 GameObject:
   m_ObjectHideFlags: 0

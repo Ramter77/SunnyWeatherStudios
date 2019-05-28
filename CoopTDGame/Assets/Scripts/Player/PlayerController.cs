@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Assets.MultiAudioListener;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool debugMode;
     public CharacterController charController;
     public Transform MainCameraTransform;
-    public AudioSource playerAudioSource;
+    public MultiAudioSource playerAudioSource;
 
     [Header ("Parameters")]
     [Tooltip ("Layer mask used for all rays")]
@@ -57,8 +58,8 @@ public class PlayerController : MonoBehaviour
 
     
     private PlayerAnim playerAnim;
-    [HideInInspector]
-    public AudioSource audioSource;
+    //[HideInInspector]
+    //public MultiAudioSource audioSource;
     private RaycastHit groundHit;
     private Rigidbody rb;
     #endregion
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
         //MainCameraTransform = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>().transform;
         
         playerAnim = GetComponent<PlayerAnim>();
-        audioSource = GetComponent<AudioSource>();
+        playerAudioSource = GetComponent<MultiAudioSource>();
         if (charController == null) { charController = GetComponent<CharacterController>(); }
         rb = GetComponent<Rigidbody>();
 
@@ -217,6 +218,6 @@ public class PlayerController : MonoBehaviour
 
 
     public void PlaySound(AudioClip _clip) {
-        AudioManager.Instance.PlaySound(audioSource, _clip);
+        AudioManager.Instance.PlaySound(playerAudioSource, _clip);
     }
 }

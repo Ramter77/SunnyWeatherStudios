@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 2073116336198379852}
   - component: {fileID: 230509593}
   - component: {fileID: 230509602}
+  - component: {fileID: 806816560449707382}
+  - component: {fileID: 3785148092310920731}
   m_Layer: 0
   m_Name: GameManager_Instance
   m_TagString: Untagged
@@ -340,18 +342,92 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 169c11a0a61ccb84fa49c0f420c0455f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tests: 0
   stopSoundBeforeNext: 0
-  soundAudioSource: {fileID: 0}
-  musicAudioSource: {fileID: 0}
-  GameMusic: {fileID: 0}
-  playerJump: {fileID: 0}
-  playerLand: {fileID: 0}
-  playerBasicAttack: {fileID: 0}
+  soundAudioSource: {fileID: 806816560449707382}
+  musicAudioSource: {fileID: 3785148092310920731}
+  playMenuMusicOnStart: 0
+  menuMusicAudioClip: {fileID: 0}
+  ingameMusicAudioClip: {fileID: 0}
+  playerJump: {fileID: 8300000, guid: 9d4a6d9a239139047906229d019332f5, type: 3}
+  playerMeleeAttack:
+  - {fileID: 8300000, guid: 7062c2b436f65904da8999d96b8ba253, type: 3}
+  - {fileID: 8300000, guid: 7c3cb11003c1f8a4fbcc21c6d0ed7a9e, type: 3}
   playerUltimateAttack: {fileID: 0}
-  playerRangedAttack: {fileID: 0}
-  playerHeal: {fileID: 0}
+  playerHeal: {fileID: 8300000, guid: b3b3bb630031f0449b3875d015ddb26b, type: 3}
   playerUltimateActivation: {fileID: 0}
-  playerTakingDamage: {fileID: 0}
+  playerTakingDamage: {fileID: 8300000, guid: 7849c349206a8934892b9cfb8f087690, type: 3}
   playerTakingHighDamage: {fileID: 0}
-  playerActivateBuilding: {fileID: 0}
+  playerActivateBuilding: {fileID: 8300000, guid: c1ae28ca5dc9d744fbd045b4c6c56745,
+    type: 3}
+  playerPickupSoul: {fileID: 8300000, guid: dc0fa64554692304f8dd8bb78cff8d43, type: 3}
+  enemyTakingDamage:
+  - {fileID: 8300000, guid: 7c3cb11003c1f8a4fbcc21c6d0ed7a9e, type: 3}
+  towerTakingDamage: {fileID: 0}
+  towerProjectiles:
+  - {fileID: 0}
+  - {fileID: 8300000, guid: ec12c4444df1ae04f9cfb15b2b816f6f, type: 3}
+  - {fileID: 8300000, guid: 936f8c53f236d1341af9da830cf5f467, type: 3}
+  - {fileID: 0}
+  trapFire: {fileID: 8300000, guid: 87dabe7fe53fa004385f381f5fd080c9, type: 3}
+  trapIce: {fileID: 0}
+  trapBlast: {fileID: 0}
+--- !u!114 &806816560449707382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256656428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 0}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 0
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+  OnlyPlayForClosestCamera: 0
+--- !u!114 &3785148092310920731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256656428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 0}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 0
+  _loop: 1
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+  OnlyPlayForClosestCamera: 0

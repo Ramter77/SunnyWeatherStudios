@@ -167,6 +167,7 @@ GameObject:
   - component: {fileID: 6954260466101193346}
   - component: {fileID: 1760357599992290729}
   - component: {fileID: 6107560417174280264}
+  - component: {fileID: 621167984481899212}
   m_Layer: 2
   m_Name: Trap_Holder
   m_TagString: Untagged
@@ -248,7 +249,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5190334816255023422}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
@@ -337,6 +338,36 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &621167984481899212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5190334816255023422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 0}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 0
+  _loop: 1
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+  OnlyPlayForClosestCamera: 0
 --- !u!114 &6181779673293718169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -350,7 +381,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 42
-  playAnimationToo: 0
   rotateSidewards: 0
 --- !u!114 &7316336915287186481
 MonoBehaviour:
@@ -365,7 +395,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 10
-  playAnimationToo: 0
   rotateSidewards: 1
 --- !u!54 &1862907507639409846
 Rigidbody:
@@ -687,12 +716,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2cef04b51e1a12499d41fe6d31e4005, type: 3}
---- !u!4 &6846853987509311410 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5907403307948445901, guid: f2cef04b51e1a12499d41fe6d31e4005,
-    type: 3}
-  m_PrefabInstance: {fileID: 1080786319456175999}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &6181779673293718168 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6572351311468987879, guid: f2cef04b51e1a12499d41fe6d31e4005,
@@ -702,6 +725,12 @@ GameObject:
 --- !u!1 &6181779673293718170 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6572351311468987877, guid: f2cef04b51e1a12499d41fe6d31e4005,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080786319456175999}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6846853987509311410 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5907403307948445901, guid: f2cef04b51e1a12499d41fe6d31e4005,
     type: 3}
   m_PrefabInstance: {fileID: 1080786319456175999}
   m_PrefabAsset: {fileID: 0}

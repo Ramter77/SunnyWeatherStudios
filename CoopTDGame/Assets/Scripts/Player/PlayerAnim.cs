@@ -190,7 +190,7 @@ public class PlayerAnim : MonoBehaviour
             if (!playC.isRangedAttacking) {
                 playC.isJumping = true;
 
-                AudioManager.Instance.PlaySound(playC.audioSource, AudioManager.Instance.playerJump);
+                AudioManager.Instance.PlaySound(playC.playerAudioSource, AudioManager.Instance.playerJump);
 
 
                 //remember to disable weapon collider after jump
