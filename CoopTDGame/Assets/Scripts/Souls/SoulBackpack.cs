@@ -13,7 +13,10 @@ public class SoulBackpack : Singleton<SoulBackpack>
 
     private void Start() {
         GameObject soulBackpackTextParent = GameObject.FindGameObjectWithTag("SoulCounter");
-        soulBackpackText = soulBackpackTextParent.GetComponentInChildren<Text>();
+        if(soulBackpackTextParent != null)
+        {
+            soulBackpackText = soulBackpackTextParent.GetComponentInChildren<Text>();
+        }
         sphere = GameObject.FindGameObjectWithTag("Sphere");
     }
 

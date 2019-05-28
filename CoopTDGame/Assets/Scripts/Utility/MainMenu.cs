@@ -1,17 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject _Player1;
+    public GameObject _Player2;
+    public GameObject _Player1Duplica;
+    public GameObject _Player2Duplica;
 
-     /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
+    public GameObject MenuCam;
+    public GameObject MainMenuHolder;
+    public GameObject InGameUiHolder;
+
+    public Image fadeOutImage;
+    [Tooltip("This Image should be in the MainUI Canvas and should overlay all other UI Elements")]private Animator fadeImageAnim;
+    private bool gameStarted = false;
+
     void Start()
     {
+        fadeImageAnim = fadeOutImage.GetComponent<Animator>();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
@@ -23,11 +32,34 @@ public class MainMenu : MonoBehaviour
     }
     public void startGame()
     {
-        SceneManager.LoadScene(0);
+        if(gameStarted == false)
+        {
+            fadeImageAnim.SetTrigger("FadeOut");
+            gameStarted = true;
+            LockCursor();
+        }
+    }
+
+    public void InGameSpawn()
+    {
+        MenuCam.SetActive(false);
+        MainMenuHolder.SetActive(false);
+        _Player1Duplica.SetActive(false);
+        _Player2Duplica.SetActive(false);
+        _Player1.SetActive(true);
+        _Player2.SetActive(true);
+        InGameUiHolder.SetActive(true);
+        EnemySpawnCycle.Instance.startNewWave();
     }
 
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void LockCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }

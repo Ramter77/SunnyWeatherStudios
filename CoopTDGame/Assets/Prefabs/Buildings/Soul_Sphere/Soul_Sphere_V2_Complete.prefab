@@ -110,6 +110,7 @@ Transform:
   - {fileID: 919846903}
   - {fileID: 1103324307}
   - {fileID: 497980858}
+  - {fileID: 4458956983193199141}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -80.663, z: 0}
@@ -498,3 +499,106 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &4483620904198097288
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4458956983193199141}
+  - component: {fileID: 2098343734937172128}
+  - component: {fileID: 6908837621891507621}
+  - component: {fileID: 883817208930768769}
+  - component: {fileID: 8610236037057259721}
+  m_Layer: 2
+  m_Name: AttackPoint
+  m_TagString: Sphere
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 87
+  m_IsActive: 1
+--- !u!4 &4458956983193199141
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483620904198097288}
+  m_LocalRotation: {x: -0, y: 0.16334054, z: -0, w: 0.98656976}
+  m_LocalPosition: {x: 14.691133, y: 5.1026917, z: 15.048393}
+  m_LocalScale: {x: 3.8362994, y: 3.8363, z: 3.8362994}
+  m_Children: []
+  m_Father: {fileID: 95804816}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2098343734937172128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483620904198097288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96b3f0b9ede1df9438b6c311604cf4b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  maxhealth: 100
+  defense: 20
+  amountOfUnitsAttacking: 0
+  particleEffect: {fileID: 4488481194694188079, guid: 5752eb3adb15b414aa9bfbe3e672da49,
+    type: 3}
+  ParticleOnHitEffectYoffset: 1
+  particleSpawnLocation: {fileID: 0}
+  ragdollOnDeath: 0
+  dissolveOnDeath: 0
+  destroyable: 0
+  invincible: 0
+  GameOverScreen: {fileID: 0}
+--- !u!135 &6908837621891507621
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483620904198097288}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4
+  m_Center: {x: -0.0000000066845143, y: 0, z: 0.28086945}
+--- !u!114 &883817208930768769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483620904198097288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647cacea8a2ce674184783a31f87d2f8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  transferKey: 99
+  amountOfSoulsToTransfer: 10
+  timeToTransferAmount: 0.2
+--- !u!114 &8610236037057259721
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483620904198097288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c3ba992d95a2446b511f658e5197fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FracturedObject: {fileID: 5000789972137501976, guid: 8e405b0f67ae1964ab548cb3c6597582,
+    type: 3}
+  destroyObject: 1
+  debug: 0

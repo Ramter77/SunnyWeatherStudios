@@ -59,7 +59,7 @@ public class RangedAttack : MonoBehaviour
         }
         Debug.Log("Finding " + tag + " tag");
         MainCamera = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>(); */
-
+        if(gameObject.GetComponentInChildren<FreeCameraLook>().GetComponentInChildren<Camera>())
         MainCamera = gameObject.GetComponentInChildren<FreeCameraLook>().GetComponentInChildren<Camera>();
 
         //Get own colliders
