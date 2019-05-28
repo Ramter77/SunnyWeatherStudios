@@ -79,6 +79,7 @@ public class Projectile : MonoBehaviour
 
     void Start()
     {
+        Physics.IgnoreLayerCollision(0, 16);
         if (transform.childCount > 0) {
             if (transform.GetChild(0) != null) {
                 //Set VFX lifetime
