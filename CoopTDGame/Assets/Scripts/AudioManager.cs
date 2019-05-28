@@ -18,8 +18,14 @@ public class AudioManager : Singleton<AudioManager>
     private AudioSource musicAudioSource;
     [Header ("Music")]
     [SerializeField]
-    [Tooltip ("Music clip (looping)")]
-    private AudioClip musicAudioClip;
+    private bool playMenuMusicOnStart;
+    [SerializeField]
+    [Tooltip ("Menu music clip (looping)")]
+    private AudioClip menuMusicAudioClip;
+    [SerializeField]
+    [Tooltip ("Ingame music clip (looping)")]
+    private AudioClip ingameMusicAudioClip;
+    
 
 
     [Header("Selection of all Sounds")]
@@ -70,6 +76,10 @@ public class AudioManager : Singleton<AudioManager>
                 musicAudioSource = gameObject.AddComponent<AudioSource>();
                 musicAudioSource.loop = true;
             //}
+        }
+
+        if (playMenuMusicOnStart) {
+            PlayMusic(menuMusicAudioClip);
         }
     }
 

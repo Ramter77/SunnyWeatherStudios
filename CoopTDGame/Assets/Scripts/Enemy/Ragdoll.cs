@@ -41,16 +41,21 @@ public class Ragdoll : MonoBehaviour
         //Reenable needed colliders
         //transform.GetChild(2).GetComponent<SphereCollider>().enabled = true;
 
+        rb = GetComponent<Rigidbody>();
         rbs = GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody _rb in rbs)
             _rb.isKinematic = true;
+
+        //Set kinematic of main rigidbody to false after setting all to true
+        rb.isKinematic = false;
+
 
         anim = GetComponent<Animator>();
         animScript = GetComponent<EnemyAnim>();
         enemyScript = GetComponent<BasicEnemy>();
         dmgScript = GetComponent<AttackAndDamage>();
         lifeScript = GetComponent<LifeAndStats>();
-        rb = GetComponent<Rigidbody>();
+        
         agent = GetComponent<NavMeshAgent>();
 
         defaultSpeed = agent.speed;
@@ -63,6 +68,10 @@ public class Ragdoll : MonoBehaviour
 
 
         Transform[] allChildren = GetComponentsInChildren<Transform>();
+
+
+
+        
     }
 
     void Update() {

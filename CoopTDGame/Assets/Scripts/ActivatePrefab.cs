@@ -186,6 +186,8 @@ public class ActivatePrefab : MonoBehaviour
     public void _LowerTower() {
         if (towerActive) {
             towerDuration = maxTowerDuration;
+            startTowerCD = false;
+
             towerActive = false;
             enabledVFX.SetActive(false);
             disabledVFX.SetActive(true);
