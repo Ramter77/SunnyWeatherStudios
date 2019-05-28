@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094780086470958092}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 476.6741, y: 33.391308, z: 500.37692}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1170845278132929466}
@@ -40,8 +40,8 @@ LODGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094780086470958092}
   serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.000057935715, y: 0.00000047683716, z: 0.00005340576}
-  m_Size: 6.9524527
+  m_LocalReferencePoint: {x: 0.6244602, y: 0.6400614, z: -0.16120338}
+  m_Size: 20.32022
   m_FadeMode: 1
   m_AnimateCrossFading: 0
   m_LastLODIsBillboard: 0
@@ -63,7 +63,6 @@ GameObject:
   - component: {fileID: 3789295923933011420}
   - component: {fileID: 1973321701236139556}
   - component: {fileID: 6011151890485211975}
-  - component: {fileID: 5550696586254506081}
   m_Layer: 0
   m_Name: boulder.001_LOD0
   m_TagString: Untagged
@@ -80,7 +79,7 @@ Transform:
   m_GameObject: {fileID: 3785066724870726485}
   m_LocalRotation: {x: -0.67199886, y: -0.22003992, z: -0.22003992, w: 0.67199886}
   m_LocalPosition: {x: -0.32479858, y: -0.33288956, z: 0.083862305}
-  m_LocalScale: {x: 307.93, y: 307.93005, z: 307.93}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3572087870365474289}
   m_RootOrder: 0
@@ -117,7 +116,7 @@ MeshRenderer:
   m_StaticBatchRoot: {fileID: 0}
   m_ProbeAnchor: {fileID: 0}
   m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 0.2
+  m_ScaleInLightmap: 1
   m_PreserveUVs: 0
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
@@ -144,22 +143,3 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 14
   m_Mesh: {fileID: 4300024, guid: 77f36ddbf1c424748b5234fa7da8ed99, type: 3}
---- !u!205 &5550696586254506081
-LODGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3785066724870726485}
-  serializedVersion: 2
-  m_LocalReferencePoint: {x: 0.0006894353, y: 0.0008434355, z: 0.0010810569}
-  m_Size: 0.02130866
-  m_FadeMode: 1
-  m_AnimateCrossFading: 0
-  m_LastLODIsBillboard: 0
-  m_LODs:
-  - screenRelativeHeight: 0.2743652
-    fadeTransitionWidth: 0
-    renderers:
-    - renderer: {fileID: 1973321701236139556}
-  m_Enabled: 1
