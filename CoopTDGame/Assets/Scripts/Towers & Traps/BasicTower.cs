@@ -70,6 +70,18 @@ public class BasicTower : MonoBehaviour
         StartCoroutine(shootCd());
     }
 
+    private void Update()
+    {
+        if(target != null)
+        {
+            if(target.GetComponent<LifeAndStats>().health <= 0)
+            {
+                FindClosestTarget();
+            }
+        }
+    }
+
+
     #region Aiming and Shooting
     /// <summary>
     /// Calls for the intercept point, then checks if that point is in range, if in range checks for any objects blocking its path
@@ -232,12 +244,15 @@ public class BasicTower : MonoBehaviour
         Vector3 position = transform.position;
         foreach (GameObject go in gos)
         {
-            float diff = Vector3.Distance(centerAttackRadius.position, go.transform.position);
-            float curDistance = diff;
-            if(curDistance > minAttackRange && curDistance < distance)
+            if(go.GetComponent<LifeAndStats>().health > 0)
             {
-                closestEnemy = go;
-                distance = curDistance;
+                float diff = Vector3.Distance(centerAttackRadius.position, go.transform.position);
+                float curDistance = diff;
+                if (curDistance > minAttackRange && curDistance < distance)
+                {
+                    closestEnemy = go;
+                    distance = curDistance;
+                }
             }
         }
     }

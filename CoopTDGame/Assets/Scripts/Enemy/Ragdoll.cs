@@ -25,7 +25,7 @@ public class Ragdoll : MonoBehaviour
 
 
 
-    Transform[] allChildren;
+    //Transform[] allChildren;
 
     void Awake()
     {
@@ -41,13 +41,16 @@ public class Ragdoll : MonoBehaviour
         //Reenable needed colliders
         //transform.GetChild(2).GetComponent<SphereCollider>().enabled = true;
 
-        rb = GetComponent<Rigidbody>();
-        rbs = GetComponentsInChildren<Rigidbody>();
+        rbs = rig.GetComponentsInChildren<Rigidbody>();
         foreach (Rigidbody _rb in rbs)
             _rb.isKinematic = true;
 
+        rb = GetComponent<Rigidbody>();
         //Set kinematic of main rigidbody to false after setting all to true
-        rb.isKinematic = false;
+        rb.isKinematic = true;
+        Debug.Log("SET TO STATICICIASICIAISFIAKFA SFJAJFMEMUAE");
+
+        
 
 
         anim = GetComponent<Animator>();
@@ -67,18 +70,15 @@ public class Ragdoll : MonoBehaviour
 
 
 
-        Transform[] allChildren = GetComponentsInChildren<Transform>();
-
-
-
-        
+        //Transform[] allChildren = GetComponentsInChildren<Transform>();
     }
-
     void Update() {
         if (Input.GetKeyDown(KeyCode.M)) {
             ragdollToggle = !ragdollToggle;
             toggleRagdoll(ragdollToggle);
         }
+
+        //rb.isKinematic = false;
     }
 
     /// <summary>

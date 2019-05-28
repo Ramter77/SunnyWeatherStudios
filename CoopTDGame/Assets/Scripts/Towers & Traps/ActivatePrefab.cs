@@ -25,7 +25,7 @@ public class ActivatePrefab : MonoBehaviour
     private Transform meshChild;
     private CombineElements combineElementScript;
     private bool isTower;
-    
+    [Tooltip("children that needs the tag changed at activation")] public GameObject towerChildren = null;
     
     private bool startTrapCD, startTowerCD;
     private AnimationClip riseTower, lowerTower, riseTrap, lowerTrap;
@@ -199,7 +199,7 @@ public class ActivatePrefab : MonoBehaviour
 
             GetComponent<BasicTower>().activated = true;
             GetComponent<BasicTower>().startAiming();
-            gameObject.tag = "possibleTargets";
+            towerChildren.tag = "possibleTargets";
         }
     }
 
@@ -227,7 +227,7 @@ public class ActivatePrefab : MonoBehaviour
 
             GetComponent<BasicTower>().activated = false;
             //GetComponent<BasicTower>().startAiming();
-            gameObject.tag = "Untagged";
+            towerChildren.tag = "Untagged";
 
             //combineElementScript._SwitchBack();
         }

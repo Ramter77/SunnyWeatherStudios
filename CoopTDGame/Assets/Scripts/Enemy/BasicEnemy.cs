@@ -77,6 +77,10 @@ public class BasicEnemy : MonoBehaviour
     private bool charging;
     public bool enabledAttack;
 
+
+    [SerializeField]
+    private bool isFallbackTarget;
+
     [Header("Gizmos")]
     public bool alwaysShowGizmos = false;
     public float opacityOfGizmos = 0.1f;
@@ -135,15 +139,20 @@ public class BasicEnemy : MonoBehaviour
                 prepareAttack();
                 targetInAttackRange = true;
                 attackState = 1;
-                enemyAnim.SetBool("AllowDamage", true);
+
+                if (!isFallbackTarget) {
+                    enemyAnim.SetBool("AllowDamage", true);
+                }
             }
             else
             {
                 targetInAttackRange = false;
 
-                enemyAnim.SetBool("AllowDamage", false);
+                if (!isFallbackTarget) {
+                    enemyAnim.SetBool("AllowDamage", false);
 
-                enemyAnim.SetBool("Charge", false);
+                    enemyAnim.SetBool("Charge", false);
+                }
             }
 
             if (distance <= stoppingRange) // in stopping range prevents ai from bumping into player
@@ -213,7 +222,10 @@ public class BasicEnemy : MonoBehaviour
     /// </summary>
     void stopAttackingTarget()
     {
-        enemyAnim.SetBool("Charge", false);
+        if (!isFallbackTarget) {
+            enemyAnim.SetBool("Charge", false);
+        }
+
         Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
         Target = null;
         StartCoroutine(ScanCycle());
@@ -230,7 +242,10 @@ public class BasicEnemy : MonoBehaviour
     /// </summary>
     public void prepareAttack()
     {
-        enemyAnim.SetBool("Charge", true);
+        if (!isFallbackTarget) {
+            enemyAnim.SetBool("Charge", true);
+        }
+
         enemySpeed = 0f;
         preparationTime -= Time.deltaTime;  
         if(preparationTime <= 0)
