@@ -9,7 +9,7 @@ public class SoulPickUp : MonoBehaviour
     [SerializeField] private int minValue = 0;
     [SerializeField] private int maxValue = 0;
 
-    public GameObject particleEffect;
+    [SerializeField] private GameObject particleEffect;
 
     private void Start()
     {
@@ -23,6 +23,9 @@ public class SoulPickUp : MonoBehaviour
             Instantiate(particleEffect, transform.position, Quaternion.identity);
             pickedUp = true;
             SoulBackpack.Instance.sharedSoulAmount += soulValue;
+
+            AudioManager.Instance.PlaySound(null, AudioManager.Instance.playerPickupSoul);
+
             Destroy(gameObject);
         }
     }

@@ -174,6 +174,8 @@ public class ActivatePrefab : MonoBehaviour
 
     void RiseVFX() {
         riseVFX.SetActive(true);
+        AudioManager.Instance.PlaySound(playC.playerAudioSource, AudioManager.Instance.playerActivateBuilding);
+
         StartCoroutine(DisableRiseVFX());
     }
 

@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] bool debugMode;
     public CharacterController charController;
     public Transform MainCameraTransform;
+    public AudioSource playerAudioSource;
 
     [Header ("Parameters")]
     [Tooltip ("Layer mask used for all rays")]

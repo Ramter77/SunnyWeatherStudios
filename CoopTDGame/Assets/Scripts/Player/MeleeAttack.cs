@@ -74,7 +74,8 @@ public class MeleeAttack : MonoBehaviour
         #endregion
 
         ActivateWeaponCollider();
-        
+
+        AudioManager.Instance.PlaySound(playC.playerAudioSource, AudioManager.Instance.playerMeleeAttack);
     }
 
     public void ActivateWeaponCollider() {

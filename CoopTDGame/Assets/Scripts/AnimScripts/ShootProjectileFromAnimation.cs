@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class ShootProjectileFromAnimation : StateMachineBehaviour
 {
-    public float shootDelay = 0.5f;
+    [SerializeField]
+    private float shootDelay = 0.5f;
     private bool shot;
     private PlayerController playC;
     private RangedAttack rangedAttackScript;

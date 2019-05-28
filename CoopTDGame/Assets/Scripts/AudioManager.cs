@@ -27,16 +27,13 @@ public class AudioManager : Singleton<AudioManager>
     private AudioClip ingameMusicAudioClip;
     
 
-
-    [Header("Selection of all Sounds")]
-    public AudioClip GameMusic;
-
     [Header("Movement Sounds")]
+    [Header("Player Sounds")]
     public AudioClip playerJump;
     public AudioClip playerLand;
 
     [Header("Attacks")]
-    public AudioClip playerBasicAttack;
+    public AudioClip playerMeleeAttack;
     public AudioClip playerUltimateAttack;
     public AudioClip playerRangedAttack;
 
@@ -50,6 +47,16 @@ public class AudioManager : Singleton<AudioManager>
 
     [Header("Interactions")]
     public AudioClip playerActivateBuilding;
+    public AudioClip playerPickupSoul;
+
+    [Space (15)]
+    [Header ("Enemies")]
+    public AudioClip enemyTakingDamage;
+
+    [Space (15)]
+    [Header ("Towers")]
+    public AudioClip towerTakingDamage;
+
 
 
     void Start()

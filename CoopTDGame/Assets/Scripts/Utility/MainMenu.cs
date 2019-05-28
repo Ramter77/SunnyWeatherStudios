@@ -9,8 +9,6 @@ public class MainMenu : MonoBehaviour
     private float playersEnableDelay = 2f;
     public GameObject _Player1;
     public GameObject _Player2;
-    public GameObject _Player1Duplica;
-    public GameObject _Player2Duplica;
 
     public GameObject MenuCam;
     public GameObject MainMenuHolder;
@@ -55,10 +53,6 @@ public class MainMenu : MonoBehaviour
         InGameUiHolder.SetActive(true);
 
         EnablePlayers();
-        //_Player1Duplica.SetActive(false);
-        //_Player2Duplica.SetActive(false);
-        //_Player1.SetActive(true);
-        //_Player2.SetActive(true);
 
         EnemySpawnCycle.Instance.annoucementText.text = ("The game starts now! You need to defend the Sphere!");
         EnemySpawnCycle.Instance.disableAnnoucement();

@@ -29,8 +29,12 @@ public class LifeAndStats : MonoBehaviour
     private float invinciblityDuration = 0.3f;
 
     private PlayerController playC;
-    private Animator playerAnim;
+    private Animator anim;
+    private BasicEnemy basicEnemyScript;
+    private Ragdoll ragdollScript;
+    private StatusEffect statusEffectScript;
     private FractureObject fractureScript;
+    
     public GameObject GameOverScreen = null;
 
 
@@ -43,12 +47,19 @@ public class LifeAndStats : MonoBehaviour
         if (GetComponent<PlayerController>() != null) {
             playC = GetComponent<PlayerController>();
         }
-        playerAnim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
+
+        if (gameObject.CompareTag("Enemy")) {
+            basicEnemyScript = GetComponent<BasicEnemy>();
+            ragdollScript = GetComponent<Ragdoll>();
+            statusEffectScript = GetComponent<StatusEffect>();
+        }
+
         fractureScript = GetComponent<FractureObject>();
         fallbackHealCooldown = healCooldown;
         amountOfUnitsAttacking = 0;
 
-        if(gameObject.CompareTag("Sphere"))
+        if (gameObject.CompareTag("Sphere"))
         {
             if (GameOverScreen != null) {
                 GameOverScreen.SetActive(false);
@@ -64,70 +75,7 @@ public class LifeAndStats : MonoBehaviour
     void Update()
     {
         reduceHealthCooldown();
-
-        if(gameObject.CompareTag("possibleTargets") && health <= 0)
-        {
-            //Debug.Log("yeah im dead");
-            gameObject.tag = "destroyedTarget";
-
-            if (destroyable) {
-                Debug.Log("Fractured target");
-                fractureScript.Fracture(gameObject);
-            }
-        }
         
-        if (gameObject.CompareTag("Enemy"))
-        {
-            if (!_dead) {
-                if (health <= 0) {
-                    if (GetComponent<BasicEnemy>().Target != null && GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking > 0)
-                    {
-                        GetComponent<BasicEnemy>().Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
-                    }
-
-                    if(GetComponent<BasicEnemy>().enemyType == 2)
-                    {
-                        EnemySpawnCycle.Instance.callnewWave();
-                    }
-
-                    #region Instantiate Soul
-                    if (dropSoul) {
-                        Vector3 dropPos = new Vector3(transform.position.x, transform.position.y+2, transform.position.z);
-                        GameObject _Soul = Instantiate(Resources.Load("Soul", typeof(GameObject)), dropPos, Quaternion.identity) as GameObject;
-                    }
-                    #endregion
-                    
-                    #region Ragdoll
-                    if (ragdollOnDeath) {
-                        GetComponent<Ragdoll>().toggleRagdoll(true);
-                        _dead = true;
-                    }
-                    else {
-                        Destroy(gameObject);
-                    }
-                    #endregion
-
-                    #region Dissolve
-                    if (dissolveOnDeath) {
-                        GetComponent<StatusEffect>().DissolveCoroutine();
-                    }
-                    #endregion
-                }
-            }
-        }
-
-        if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
-        {
-            if (!playC.isDead) {
-                if (health <= 0) {
-                    Debug.Log(playC.gameObject.name + " is dead");
-                    playC.isDead = true;
-
-                    playerAnim.SetBool("Dead", true);
-                }
-            }
-        } 
-
         if (gameObject.CompareTag("Sphere"))
         {
             GameManager.Instance.GetComponent<SoulStorage>().soulCount = Mathf.RoundToInt(health);
@@ -156,9 +104,85 @@ public class LifeAndStats : MonoBehaviour
             health -= dmg;
             ParticleOnHitEffect(ParticleOnHitEffectYoffset);
 
-             if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2") || gameObject.CompareTag("Enemy")) 
+            if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
             { 
-                playerAnim.SetTrigger("TakeDamage");
+                AudioManager.Instance.PlaySound(playC.playerAudioSource, AudioManager.Instance.playerTakingDamage);
+
+                if (!playC.isDead) {
+                    if (health <= 0) {
+                        Debug.Log(playC.gameObject.name + " is dead");
+                        playC.isDead = true;
+
+                        anim.SetBool("Dead", true);
+                    }
+                    else
+                    {
+                        anim.SetTrigger("TakeDamage");
+                    }
+                }
+            }
+
+            else if (gameObject.CompareTag("Enemy")) 
+            {
+                AudioManager.Instance.PlaySound(gameObject.GetComponent<AudioSource>(), AudioManager.Instance.enemyTakingDamage);
+
+                if (!_dead) {
+                    if (health <= 0) {
+                        if (basicEnemyScript.Target != null && basicEnemyScript.Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking > 0)
+                        {
+                            basicEnemyScript.Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
+                        }
+
+                        if (basicEnemyScript.enemyType == 2)
+                        {
+                            EnemySpawnCycle.Instance.callnewWave();
+                        }
+
+                        #region Instantiate Soul
+                        if (dropSoul) {
+                            Vector3 dropPos = new Vector3(transform.position.x, transform.position.y+2, transform.position.z);
+                            GameObject _Soul = Instantiate(Resources.Load("Soul", typeof(GameObject)), dropPos, Quaternion.identity) as GameObject;
+                        }
+                        #endregion
+                        
+                        #region Ragdoll
+                        if (ragdollOnDeath) {
+                            ragdollScript.toggleRagdoll(true);
+                            _dead = true;
+                        }
+                        else {
+                            Destroy(gameObject);
+                        }
+                        #endregion
+
+                        #region Dissolve
+                        if (dissolveOnDeath) {
+                            statusEffectScript.DissolveCoroutine();
+                        }
+                        #endregion
+                    }
+                }
+                else
+                {
+                    anim.SetTrigger("TakeDamage");
+                }
+            }
+
+            else if (gameObject.CompareTag("possibleTargets")) {
+                AudioManager.Instance.PlaySound(gameObject.GetComponent<AudioSource>(), AudioManager.Instance.towerTakingDamage);
+
+                if (health <= 0) {
+                    gameObject.tag = "destroyedTarget";
+
+                    if (destroyable) {
+                        Debug.Log("Fractured target");
+                        fractureScript.Fracture(gameObject);
+                    }
+                }
+            }
+
+            else if (gameObject.CompareTag("Sphere")) {
+
             }
         }
     }
@@ -189,10 +213,9 @@ public class LifeAndStats : MonoBehaviour
     }
 
     public void Revive() {
-        GetComponent<PlayerController>().isDead = false;
-        GetComponent<LifeAndStats>().health = 100;
-        GetComponent<Animator>().SetBool("Dead", false);
-        GetComponent<PlayerController>().isDead = false;
+        playC.isDead = false;
+        health = 100;
+        anim.SetBool("Dead", false);
     }
 
     void reduceHealthCooldown()

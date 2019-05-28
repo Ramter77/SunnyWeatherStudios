@@ -150,6 +150,8 @@ public class HealAbility : MonoBehaviour
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
         Instantiate(healParticle, spawnPos, Quaternion.identity);
 
+        AudioManager.Instance.PlaySound(playC.playerAudioSource, AudioManager.Instance.playerHeal);
+
 
         Collider[] col = Physics.OverlapSphere(transform.position, healRadius); // draw a sphere at desire point based on player pos + offset and desired radius of effect
         if (col.Length > 0)

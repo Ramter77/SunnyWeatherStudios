@@ -202,6 +202,8 @@ public class RangedAttack : MonoBehaviour
 
         //Ignore collisions with owner
         IgnoreCollisionSelf(projectileRB.GetComponent<Collider>());
+
+        AudioManager.Instance.PlaySound(playC.playerAudioSource, AudioManager.Instance.playerRangedAttack);
     }
     #endregion
 }
