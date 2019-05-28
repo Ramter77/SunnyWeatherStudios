@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 8984321556602797030}
   - component: {fileID: 4320223883627884138}
   - component: {fileID: 1039692743}
+  - component: {fileID: 6851429503535690848}
   m_Layer: 21
   m_Name: Crystal_Holder
   m_TagString: Untagged
@@ -171,7 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotationSpeed: 30
-  playAnimationToo: 1
   rotateSidewards: 0
 --- !u!111 &1039692743
 Animation:
@@ -186,9 +186,22 @@ Animation:
   m_Animations:
   - {fileID: 7400000, guid: f27f5fa49099f5a429c27cfbd6dc2dbe, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &6851429503535690848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1025838237891953612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2ef2482348dc25408b698585962e884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playAnimationOnStart: 1
 --- !u!1 &1062709727728209807
 GameObject:
   m_ObjectHideFlags: 0
