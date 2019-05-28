@@ -125,7 +125,7 @@ public class LifeAndStats : MonoBehaviour
 
             else if (gameObject.CompareTag("Enemy")) 
             {
-                if (AudioManager.Instance.towerProjectiles.Length > 0) {
+                if (AudioManager.Instance.enemyTakingDamage.Length > 0) {
                     AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), AudioManager.Instance.enemyTakingDamage[basicEnemyScript.enemyType]);
                 }
 
