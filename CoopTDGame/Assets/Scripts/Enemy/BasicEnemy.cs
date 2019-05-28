@@ -310,9 +310,16 @@ public class BasicEnemy : MonoBehaviour
                 {
                     if(hit.tag == "Sphere")
                     {
-                        if(Target == null)
+                        if (Target == null)
                         {
                             Target = hit.gameObject;
+                            if (enemyType != 1)
+                            {
+                                attackRange = 41f;
+                                followRadius = 45f;
+                                detectionRadius = 43f;
+                                stoppingRange = 40f;
+                            }
                             return;
                         }
                         
@@ -401,12 +408,13 @@ public class BasicEnemy : MonoBehaviour
         NavMeshPath path = new NavMeshPath();
         if (Sphere != null)
         { // check if path is reachable, if so then set destination to closest target
-            agent.CalculatePath(Sphere.transform.position, path);
+            /*agent.CalculatePath(Sphere.transform.position, path);
             if (path.status != NavMeshPathStatus.PathPartial)
             {
                 agent.destination = Sphere.transform.position;
-            }
-            if(Target != null)
+            }*/
+            agent.destination = Sphere.transform.position;
+            if (Target != null)
             {
                 if(Target.GetComponent<LifeAndStats>())
                 {

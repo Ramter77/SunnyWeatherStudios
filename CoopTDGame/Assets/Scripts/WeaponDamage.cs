@@ -25,6 +25,10 @@ public class WeaponDamage : MonoBehaviour {
             if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") {
                 _WeaponDamage(other.gameObject);
             }
+            if(other.gameObject.tag == "Sphere")
+            {
+                _WeaponDamage(other.gameObject);
+            }
         }
     }
 
