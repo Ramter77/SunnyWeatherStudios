@@ -115,8 +115,15 @@ public class BasicTower : MonoBehaviour
                         }
                         else // when it collides with an object of different tag 
                         {
-                            bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
+                            if (bulletPrefab.GetComponent<projectileVelocity>() != null) {
+                                bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
+                            }
+
                             GameObject bullet = Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
+                            if (bullet.GetComponent<Rigidbody>() != null) {
+                                bullet.GetComponent<Rigidbody>().useGravity = false;
+                            }
+
                             bullet.layer = 16;
 
                             AudioManager.Instance.PlaySound(audioSource, _audioClip);
@@ -126,8 +133,15 @@ public class BasicTower : MonoBehaviour
                     }
                     else // when no collision occurs
                     {
-                        bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
+                        if (bulletPrefab.GetComponent<projectileVelocity>() != null) {
+                            bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
+                        }
+
                         GameObject bullet = Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
+                        if (bullet.GetComponent<Rigidbody>() != null) {
+                            bullet.GetComponent<Rigidbody>().useGravity = false;
+                        }
+                        
                         bullet.layer = 16;
                         StartCoroutine(shootCd());
                     }

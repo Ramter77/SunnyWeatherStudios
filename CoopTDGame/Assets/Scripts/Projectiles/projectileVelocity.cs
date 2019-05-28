@@ -9,6 +9,9 @@ public class projectileVelocity : MonoBehaviour
     private bool appliedDamage = false;
     [SerializeField]
     private bool allowMovement = true;
+
+    [SerializeField]
+    private bool allowCollision = true;
     [SerializeField]
     private bool enableAndDetachImpactVFX;
     [SerializeField]
@@ -36,6 +39,7 @@ public class projectileVelocity : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (allowCollision) {
         if (other.gameObject.tag == "Enemy" && appliedDamage == false)
         {
             if (allowDestroying) {
@@ -54,6 +58,7 @@ public class projectileVelocity : MonoBehaviour
 
                 Destroy(gameObject);
             }
+        }
         }
     }
 }

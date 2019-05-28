@@ -449,6 +449,20 @@ MonoBehaviour:
   fireMat: {fileID: 2100000, guid: 195ffe05c15f6174883e2716c5fee538, type: 2}
   iceMat: {fileID: 2100000, guid: 32274fefb62bda94c83290ffff21da73, type: 2}
   blastMat: {fileID: 2100000, guid: 4bf6e2da9cc9181489dc94ac2dd7c411, type: 2}
+--- !u!64 &4373023635670637297
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6181779673293718170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 618e0382eeaa28843a519b458b12e92f, type: 3}
 --- !u!1 &8576943111870140126
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,15 +1113,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75832a1975bf8a044ba5d0a90a414421, type: 3}
---- !u!1 &862277866140132780 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1999389748638523420, guid: 75832a1975bf8a044ba5d0a90a414421,
-    type: 3}
-  m_PrefabInstance: {fileID: 1173239674246710704}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1173239676237402937 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2035848841, guid: 75832a1975bf8a044ba5d0a90a414421,
+    type: 3}
+  m_PrefabInstance: {fileID: 1173239674246710704}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &862277866140132780 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1999389748638523420, guid: 75832a1975bf8a044ba5d0a90a414421,
     type: 3}
   m_PrefabInstance: {fileID: 1173239674246710704}
   m_PrefabAsset: {fileID: 0}

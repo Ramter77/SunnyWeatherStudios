@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 5750830792990983559}
   - component: {fileID: 3509651711479888806}
   - component: {fileID: 4251599272759571473}
+  - component: {fileID: 137133873866356120}
   m_Layer: 0
   m_Name: Iceball
   m_TagString: ElementProjectile
@@ -268,6 +269,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFriendly: 1
   attackDamage: 50
+--- !u!114 &137133873866356120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113481993458745524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e76887f3471b34c419bd85c7fc9fb9d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 20
+  allowMovement: 1
+  allowCollision: 0
+  enableAndDetachImpactVFX: 0
+  impactVFX: {fileID: 0}
 --- !u!1 &4356106845673668711
 GameObject:
   m_ObjectHideFlags: 0
