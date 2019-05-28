@@ -8,11 +8,6 @@ public class MeleeAttack : MonoBehaviour
     [Header("References")]
     [SerializeField] private Collider WeaponTriggerCollider;
     [SerializeField] private BoxCollider UltimateWeaponTriggerCollider;
-    //[SerializeField] private int enemyLayer;
-
-    /* [Header("Attack Settings")] 
-    [Tooltip("Damage to apply")] public float attackDamage; */
-
     
     private PlayerController playC;
     private Animator playerAnim;
@@ -26,36 +21,36 @@ public class MeleeAttack : MonoBehaviour
 
         WeaponTriggerCollider.enabled = false;
         UltimateWeaponTriggerCollider.enabled = false;
-
-        //UltimateWeaponTriggerCollider = GameObject.FindGameObjectWithTag("UltWep").GetComponent<BoxCollider>();
     }
 
     void Update()
     {
-        //* Player 0 input */
-        if (playC.Player_ == 0)
-        {
-            _input = InputManager.Instance.Melee0;
-            _runInput = InputManager.Instance.Run0;
-        }
+        if (!playC.isDead) {
+            //* Player 0 input */
+            if (playC.Player_ == 0)
+            {
+                _input = InputManager.Instance.Melee0;
+                _runInput = InputManager.Instance.Run0;
+            }
 
-        //* Player 1 input */
-        else if (playC.Player_ == 1)
-        {
-            _input = InputManager.Instance.Melee1;
-            _runInput = InputManager.Instance.Run1;
-        }
+            //* Player 1 input */
+            else if (playC.Player_ == 1)
+            {
+                _input = InputManager.Instance.Melee1;
+                _runInput = InputManager.Instance.Run1;
+            }
 
-        //*Player 2 input */
-        else if (playC.Player_ == 2) {
-            _input = InputManager.Instance.Melee2;
-            _runInput = InputManager.Instance.Run2;
+            //*Player 2 input */
+            else if (playC.Player_ == 2) {
+                _input = InputManager.Instance.Melee2;
+                _runInput = InputManager.Instance.Run2;
+            }
         }
 
         #region Input
         if (_input) {
             //If not already attacking or in build mode
-            if (!playC.isMeleeAttacking && !playC.isInBuildMode && playC.isGrounded && !playC.isJumping && !playC.isDead) {
+            if (!playC.isMeleeAttacking && !playC.isInBuildMode && playC.isGrounded && !playC.isJumping) {
                 playC.isMeleeAttacking = true;
                 _MeleeAttack();
             }

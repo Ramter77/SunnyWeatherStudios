@@ -36,6 +36,7 @@ public class HealAbility : MonoBehaviour
 
     #region Input
     private PlayerController playC;
+    private LifeAndStats lifeAndStatsScript;
     private bool _healInput;
     #endregion
 
@@ -45,6 +46,7 @@ public class HealAbility : MonoBehaviour
     {
         playC = GetComponent<PlayerController>();
         playerAnim = GetComponent<Animator>();
+        lifeAndStatsScript = GetComponent<LifeAndStats>();
         fallbackHealAmount = healAmount;
         healAbilityRechardgeSpeed = healAbilityCooldown;
 
@@ -58,7 +60,7 @@ public class HealAbility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentHealth = GetComponent<LifeAndStats>().health;
+        currentHealth = lifeAndStatsScript.health;
         if(healthbar != null)
         {
             float v = currentHealth/ maxHealth;
@@ -69,27 +71,27 @@ public class HealAbility : MonoBehaviour
         else
             Debug.Log("No HealAbilityCooldownImage");
 
-        //* Player 0 input */
-        if (playC.Player_ == 0)
-        {
-            _healInput = InputManager.Instance.Heal0;
-        }
+        if (!playC.isDead) {
+            //* Player 0 input */
+            if (playC.Player_ == 0)
+            {
+                _healInput = InputManager.Instance.Heal0;
+            }
 
-        //* Player 1 input */
-        else if (playC.Player_ == 1)
-        {
-            _healInput = InputManager.Instance.Heal1;
-        }
+            //* Player 1 input */
+            else if (playC.Player_ == 1)
+            {
+                _healInput = InputManager.Instance.Heal1;
+            }
 
-        //*Player 2 input */
-        else if (playC.Player_ == 2)
-        {
-            _healInput = InputManager.Instance.Heal2;
+            //*Player 2 input */
+            else if (playC.Player_ == 2)
+            {
+                _healInput = InputManager.Instance.Heal2;
+            }
         }
-
 
         #region HealInput/Call
-
         if (Time.time > healAbilityRechardgeSpeed && SoulBackpack.Instance.sharedSoulAmount >= healAbilityCost)
         {
             if(healAbilityUiImageOff != null && healAbilityUiImageOn != null)
@@ -132,9 +134,7 @@ public class HealAbility : MonoBehaviour
             else
                 Debug.Log("No HealAbilityImage & No HealAbilityOffImage");
         }
-
         #endregion
-
     }
 
     #region Heal Ability 

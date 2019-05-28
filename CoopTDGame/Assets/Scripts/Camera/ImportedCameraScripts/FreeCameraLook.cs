@@ -73,6 +73,14 @@ public class FreeCameraLook : Pivot {
 		base.Update();
 
 		HandleRotationMovement();
+
+        if (playC.isDead) {
+            RotateTransformRoot = false;
+        }
+        else
+        {
+            RotateTransformRoot = true;
+        }
 	}
 
 	protected override void Follow (float deltaTime)

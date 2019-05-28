@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField]
+    private float playersEnableDelay = 2f;
     public GameObject _Player1;
     public GameObject _Player2;
     public GameObject _Player1Duplica;
@@ -21,18 +23,19 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         fadeImageAnim = fadeOutImage.GetComponent<Animator>();
+
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
     }
 
     private void Update() {
-        if(Input.GetButtonDown("Submit")) {
+        if (Input.GetButtonDown("Submit")) {
             startGame();
         }
     }
     public void startGame()
     {
-        if(gameStarted == false)
+        if (gameStarted == false)
         {
             fadeImageAnim.SetTrigger("FadeOut");
             gameStarted = true;
@@ -40,15 +43,23 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void EnablePlayers() {
+        _Player1.GetComponent<PlayerController>().SetAlive();
+        _Player2.GetComponent<PlayerController>().SetAlive();
+    }
+
     public void InGameSpawn()
     {
         MenuCam.SetActive(false);
         MainMenuHolder.SetActive(false);
-        _Player1Duplica.SetActive(false);
-        _Player2Duplica.SetActive(false);
-        _Player1.SetActive(true);
-        _Player2.SetActive(true);
         InGameUiHolder.SetActive(true);
+
+        EnablePlayers();
+        //_Player1Duplica.SetActive(false);
+        //_Player2Duplica.SetActive(false);
+        //_Player1.SetActive(true);
+        //_Player2.SetActive(true);
+
         EnemySpawnCycle.Instance.annoucementText.text = ("The game starts now! You need to defend the Sphere!");
         EnemySpawnCycle.Instance.disableAnnoucement();
         EnemySpawnCycle.Instance.startNewWave();

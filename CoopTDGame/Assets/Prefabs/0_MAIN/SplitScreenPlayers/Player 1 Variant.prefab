@@ -2979,7 +2979,7 @@ PrefabInstance:
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 437.5
+      value: 487.98
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
@@ -2989,27 +2989,27 @@ PrefabInstance:
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 496
+      value: 521.87
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.8433915
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.53729963
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
@@ -3024,7 +3024,7 @@ PrefabInstance:
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -115
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
@@ -3139,6 +3139,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032027030, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
+      propertyPath: isGrounded
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032027030, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: isDead
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032027030, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: MainCameraTransform
+      value: 
+      objectReference: {fileID: 2819464312394078154}
+    - target: {fileID: 7777738009032027030, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
       propertyPath: audioSource
       value: 
       objectReference: {fileID: 2819464313814938046}
@@ -3207,21 +3222,6 @@ PrefabInstance:
       propertyPath: ultimateAbilityGameobject
       value: 
       objectReference: {fileID: 6378350839055400632}
-    - target: {fileID: 7777738008700112370, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738008566605904, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: target
-      value: 
-      objectReference: {fileID: 2819464313814937923}
-    - target: {fileID: 7777738008700112377, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: antialiasingMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1652080087782389602, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: healthbar
@@ -3253,8 +3253,27 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1312923869523673248, guid: efde4b8957e6d704a9a861a347c9b627,
         type: 3}
-    m_RemovedComponents:
-    - {fileID: 7777738009032027031, guid: 064a8a3d64a5d784882a0951943238b9, type: 3}
+    - target: {fileID: 7777738008700112370, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738008700112359, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738008566605904, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 2819464313814937923}
+    - target: {fileID: 7777738008700112377, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: antialiasingMode
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064a8a3d64a5d784882a0951943238b9, type: 3}
 --- !u!4 &2819464312486886812 stripped
 Transform:

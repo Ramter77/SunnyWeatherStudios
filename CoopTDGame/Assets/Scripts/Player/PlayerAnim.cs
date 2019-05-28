@@ -58,29 +58,30 @@ public class PlayerAnim : MonoBehaviour
 
     void Update()
     {
-        #region Get Input
-        if (playC.Player_ == 0) {
-            _verticalInput = InputManager.Instance.Vertical0;
-            _horizontalInput = InputManager.Instance.Horizontal0;
-            _runInput = InputManager.Instance.Run0;
-            _jumpInput = InputManager.Instance.Jump0;
-        }
+        if (!playC.isDead) {
+            #region Get Input
+            if (playC.Player_ == 0) {
+                _verticalInput = InputManager.Instance.Vertical0;
+                _horizontalInput = InputManager.Instance.Horizontal0;
+                _runInput = InputManager.Instance.Run0;
+                _jumpInput = InputManager.Instance.Jump0;
+            }
 
-        else if (playC.Player_ == 1) {
-            _verticalInput = InputManager.Instance.Vertical1;
-            _horizontalInput = InputManager.Instance.Horizontal1;
-            _runInput = InputManager.Instance.Run1;
-            _jumpInput = InputManager.Instance.Jump1;
-        }
+            else if (playC.Player_ == 1) {
+                _verticalInput = InputManager.Instance.Vertical1;
+                _horizontalInput = InputManager.Instance.Horizontal1;
+                _runInput = InputManager.Instance.Run1;
+                _jumpInput = InputManager.Instance.Jump1;
+            }
 
-        else if (playC.Player_ == 2) {
-            _verticalInput = InputManager.Instance.Vertical2;
-            _horizontalInput = InputManager.Instance.Horizontal2;
-            _runInput = InputManager.Instance.Run2;
-            _jumpInput = InputManager.Instance.Jump2;
+            else if (playC.Player_ == 2) {
+                _verticalInput = InputManager.Instance.Vertical2;
+                _horizontalInput = InputManager.Instance.Horizontal2;
+                _runInput = InputManager.Instance.Run2;
+                _jumpInput = InputManager.Instance.Jump2;
+            }
+            #endregion
         }
-        #endregion
-
 
         #region Set Input
         #region Axis based animation
@@ -125,7 +126,7 @@ public class PlayerAnim : MonoBehaviour
             }
 
             #region Jumping
-            if (/* !playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && */ !playC.isJumping && !playC.isDead) {
+            if (/* !playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && */ !playC.isJumping) {
                 if (!allowJumpWhileMelee && !allowJumpWhileRanged) {
                     if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode) {
                         allowJump = true;

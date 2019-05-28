@@ -28,6 +28,7 @@ public class LifeAndStats : MonoBehaviour
     public bool invincible = false;
     private float invinciblityDuration = 0.3f;
 
+    private PlayerController playC;
     private Animator playerAnim;
     private FractureObject fractureScript;
     public GameObject GameOverScreen = null;
@@ -39,6 +40,9 @@ public class LifeAndStats : MonoBehaviour
 
     void Start()
     {
+        if (GetComponent<PlayerController>() != null) {
+            playC = GetComponent<PlayerController>();
+        }
         playerAnim = GetComponent<Animator>();
         fractureScript = GetComponent<FractureObject>();
         fallbackHealCooldown = healCooldown;
@@ -114,10 +118,13 @@ public class LifeAndStats : MonoBehaviour
 
         if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
         {
-            if (health <= 0) {
-                Debug.Log("Player dead");
-                playerAnim.SetBool("Dead", true);
-                GetComponent<PlayerController>().isDead = true;
+            if (!playC.isDead) {
+                if (health <= 0) {
+                    Debug.Log(playC.gameObject.name + " is dead");
+                    playC.isDead = true;
+
+                    playerAnim.SetBool("Dead", true);
+                }
             }
         } 
 

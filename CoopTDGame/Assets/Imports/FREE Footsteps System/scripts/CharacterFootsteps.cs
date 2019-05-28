@@ -63,7 +63,13 @@ namespace Footsteps {
 		bool isGrounded;
 
 
+
+		PlayerController playC;
+
+
 		void Start() {
+			playC = GetComponent<PlayerController>();
+
 			if(groundLayers.value == 0) {
 				groundLayers = 1;
 			}
@@ -83,14 +89,16 @@ namespace Footsteps {
 		}
 
 		void Update() {
-			CheckGround();
+			if (!playC.isDead) {
+				CheckGround();
 
-			if(triggeredBy == TriggeredBy.TRAVELED_DISTANCE) {
-				float speed = (characterController ? characterController.velocity : characterRigidbody.velocity).magnitude;
+				if(triggeredBy == TriggeredBy.TRAVELED_DISTANCE) {
+					float speed = (characterController ? characterController.velocity : characterRigidbody.velocity).magnitude;
 
-				if(isGrounded) {
-					// Advance the step cycle only if the character is grounded.
-					AdvanceStepCycle(speed * Time.deltaTime);
+					if(isGrounded) {
+						// Advance the step cycle only if the character is grounded.
+						AdvanceStepCycle(speed * Time.deltaTime);
+					}
 				}
 			}
 		}

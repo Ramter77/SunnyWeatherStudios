@@ -58,30 +58,31 @@ public class PlayerClassOne : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (ultimateAbilityCooldownImage != null)
-        {
-            ultimateAbilityCooldownImage.fillAmount += 1 / ultimateAbilityCooldown * Time.deltaTime;
-        }
-        else
-            Debug.Log("No Ult CooldownImage");
+        if (!playC.isDead) {
+            if (ultimateAbilityCooldownImage != null)
+            {
+                ultimateAbilityCooldownImage.fillAmount += 1 / ultimateAbilityCooldown * Time.deltaTime;
+            }
+            else
+                Debug.Log("No Ult CooldownImage");
 
-        //* Player 0 input */
-        if (playC.Player_ == 0)
-        {
-            _ultimateInput = InputManager.Instance.Ultimate0;
-        }
+            //* Player 0 input */
+            if (playC.Player_ == 0)
+            {
+                _ultimateInput = InputManager.Instance.Ultimate0;
+            }
 
-        //* Player 1 input */
-        else if (playC.Player_ == 1)
-        {
-            _ultimateInput = InputManager.Instance.Ultimate1;
-        }
+            //* Player 1 input */
+            else if (playC.Player_ == 1)
+            {
+                _ultimateInput = InputManager.Instance.Ultimate1;
+            }
 
-        //*Player 2 input */
-        else if (playC.Player_ == 2) {
-            _ultimateInput = InputManager.Instance.Ultimate2;
+            //*Player 2 input */
+            else if (playC.Player_ == 2) {
+                _ultimateInput = InputManager.Instance.Ultimate2;
+            }
         }
-
 
         #region Input / Abilities
         //If cooldown is low enough: shoot
@@ -119,7 +120,6 @@ public class PlayerClassOne : MonoBehaviour
                 Debug.Log("No ult icons selected");
         }
         #endregion
-
     }
        
 

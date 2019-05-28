@@ -73,33 +73,34 @@ public class RangedAttack : MonoBehaviour
 
     void Update()
     {
-        if(rangedAbilityCooldownImage != null)
+        if (rangedAbilityCooldownImage != null)
         {
             rangedAbilityCooldownImage.fillAmount += 1 / rangedAttackCooldown * Time.deltaTime;
         }
 
-        //* Player 0 input */
-        if (playC.Player_ == 0)
-        {
-            _input = InputManager.Instance.Ranged0;
-        }
+        if (!playC.isDead) {
+            //* Player 0 input */
+            if (playC.Player_ == 0)
+            {
+                _input = InputManager.Instance.Ranged0;
+            }
 
-        //* Player 1 input */
-        else if (playC.Player_ == 1)
-        {
-            _input = InputManager.Instance.Ranged1;
-        }
+            //* Player 1 input */
+            else if (playC.Player_ == 1)
+            {
+                _input = InputManager.Instance.Ranged1;
+            }
 
-        //*Player 2 input */
-        else if (playC.Player_ == 2) {
-            _input = InputManager.Instance.Ranged2;
+            //*Player 2 input */
+            else if (playC.Player_ == 2) {
+                _input = InputManager.Instance.Ranged2;
+            }
         }
 
         #region Input
-
         if (Time.time > rangedRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= projectileCost)
         {
-            if(rangedAbilityUiImageOn != null && rangedAbilityUiImageOff != null)
+            if (rangedAbilityUiImageOn != null && rangedAbilityUiImageOff != null)
             {
                 rangedAbilityUiImageOn.enabled = true;
                 rangedAbilityUiImageOff.enabled = false;
@@ -107,7 +108,7 @@ public class RangedAttack : MonoBehaviour
 
             if (_input)
             {
-                if(!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isInBuildMode && playC.isGrounded && !playC.isJumping && !playC.isDead)
+                if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isInBuildMode && playC.isGrounded && !playC.isJumping)
                 {
                     rangedRechargeSpeed = Time.time + rangedAttackCooldown;
                     if (rangedAbilityCooldownImage != null)
@@ -131,7 +132,7 @@ public class RangedAttack : MonoBehaviour
 
     private void _RangedAttack() {
         //If not ranged attacking
-        if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isInBuildMode && playC.isGrounded && !playC.isJumping && !playC.isDead) {
+        if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isInBuildMode && playC.isGrounded && !playC.isJumping) {
             playC.isRangedAttacking = true;
 
             SoulBackpack.Instance.reduceSoulsByCost(projectileCost);

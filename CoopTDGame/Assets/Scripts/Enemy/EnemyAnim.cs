@@ -27,6 +27,9 @@ public class EnemyAnim : MonoBehaviour {
     [Tooltip ("Sets the animators 'Injured' layer weigth corresponding the health percentage calculate from the 'LifeAndStats' script")]
     [SerializeField]
     private bool setInjuredLayerWeight;
+    [SerializeField]
+    [Range (0, 1)]
+    private float maxLayerWeigth = 1;  
     [Tooltip ("Allows the 'Injured' layer to be blended")]
     [SerializeField]
     private bool blendInjuredIdle;
@@ -38,7 +41,7 @@ public class EnemyAnim : MonoBehaviour {
     private int injuredLayerIndex, injuredBlendLayerIndex;
     private float maxSpeed;
     private float speedPercentage;
-    private float healthPercentage; 
+    private float healthPercentage;
 
     void Start()
     {
@@ -67,6 +70,12 @@ public class EnemyAnim : MonoBehaviour {
             else {
                 //Calculate the health percentage & apply it to the Injured animation layer weight
                 healthPercentage = Mathf.Clamp01(1 - (lifeAndStats.health / lifeAndStats.maxhealth));
+
+                //Clamp to minimum layer weigth
+                if (healthPercentage >= maxLayerWeigth) {
+                    healthPercentage = maxLayerWeigth;
+                }
+
                 enemyAnim.SetLayerWeight(layer, healthPercentage);
             }
         }

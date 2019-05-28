@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public int Player_ = 1;
     [SerializeField] bool debugMode;
     public CharacterController charController;
+    public Transform MainCameraTransform;
 
     [Header ("Parameters")]
     [Tooltip ("Layer mask used for all rays")]
@@ -52,8 +53,7 @@ public class PlayerController : MonoBehaviour
     public bool isDead;
     #endregion
 
-
-    private Transform MainCameraTransform;
+    
     private PlayerAnim playerAnim;
     [HideInInspector]
     public AudioSource audioSource;
@@ -68,13 +68,13 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         //If player 1 get MainCamera, else get MainCamera2
-        string tag = "MainCamera";
+        /* string tag = "MainCamera";
         if (Player_ == 2)
         {
             tag = "MainCamera2";
         }
-        if (debugMode) { Debug.Log("Finding " + tag + " tag"); }
-        MainCameraTransform = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>().transform;
+        if (debugMode) { Debug.Log("Finding " + tag + " tag"); } */
+        //MainCameraTransform = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>().transform;
         
         playerAnim = GetComponent<PlayerAnim>();
         audioSource = GetComponent<AudioSource>();
@@ -91,10 +91,12 @@ public class PlayerController : MonoBehaviour
         isJumping = false;
     }
 
-    private void FixedUpdate() {
-        //Turn Player forward
-        if (TurnPlayerForward) {
-            SmoothLookForward();
+    private void Update() {
+        if (!isDead) {
+            //Turn Player forward
+            if (TurnPlayerForward) {
+                SmoothLookForward();
+            }
         }
 
         //Check if isGrounded
@@ -203,6 +205,11 @@ public class PlayerController : MonoBehaviour
                 Gizmos.DrawRay(transform.position, Vector3.down * charController.height / 2 * slopeForceRayLength);
             #endregion
         }
+    }
+
+    public void SetAlive() {
+        isDead = false;
+        MainCameraTransform.parent.transform.parent.transform.parent.gameObject.SetActive(true);
     }
 
 
