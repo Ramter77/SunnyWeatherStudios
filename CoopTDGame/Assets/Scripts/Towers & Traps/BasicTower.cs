@@ -39,10 +39,15 @@ public class BasicTower : MonoBehaviour
     private Component[] ownColliders;
     private MeshCollider crystalCollider;
 
+    private AudioSource audioSource;
+    private AudioClip _audioClip;
+
     // Start is called before the first frame update
     void Start()
     {
         bulletPrefab = bulletPrefabs[0];
+        _audioClip = AudioManager.Instance.towerProjectiles[0];
+
         //Get own colliders
         ownColliders = GetComponentsInChildren<Collider>();
         if (shooter.transform.childCount > 0) {
@@ -59,16 +64,8 @@ public class BasicTower : MonoBehaviour
         targetVelocity = target.GetComponent<Rigidbody>() ? target.GetComponent<Rigidbody>().velocity : Vector3.zero;
         StartCoroutine(shootCd());
     }
-   
-
-// Update is called once per frame
-void Update()
-    {
-
-    }
 
     #region Aiming and Shooting
-
     /// <summary>
     /// Calls for the intercept point, then checks if that point is in range, if in range checks for any objects blocking its path
     /// If there is no object blocking the path of the bullet, the tower shoots.
@@ -116,6 +113,9 @@ void Update()
                             bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
                             GameObject bullet = Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
                             bullet.layer = 16;
+
+                            AudioManager.Instance.PlaySound(audioSource, _audioClip);
+
                             StartCoroutine(shootCd());
                         }
                     }
@@ -182,6 +182,7 @@ void Update()
 
     public void changeProjectile(int i) {
         bulletPrefab = bulletPrefabs[i];
+        _audioClip = AudioManager.Instance.towerProjectiles[i];
 
         /* //Get all sphere collider on the prefab & ignore all collisions
         SphereCollider[] bulletPrefabSphereColliders = bulletPrefab.GetComponents<SphereCollider>();

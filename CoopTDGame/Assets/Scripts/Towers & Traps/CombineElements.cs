@@ -39,6 +39,7 @@ public class CombineElements : MonoBehaviour
     private Transform holderTransform;
     private BasicTower basicTowerScript;
     private ActivatePrefab activatePrefabScript;
+    private AudioSource audioSource;
     private bool isTrap, isTower;
     private bool fireActive, iceActive, blastActive;
 
@@ -60,6 +61,7 @@ public class CombineElements : MonoBehaviour
             isTrap = true;
         }
 
+        audioSource = holderTransform.GetComponent<AudioSource>();
         activatePrefabScript = holderTransform.GetComponent<ActivatePrefab>();
         crystalMeshRenderer = crystalObject.GetComponent<MeshRenderer>();
         meshRend = GetComponent<MeshRenderer>();
@@ -105,15 +107,21 @@ public class CombineElements : MonoBehaviour
                 trapIceVFX.SetActive(false);
                 trapBlastVFX.SetActive(true);
 
+                AudioManager.Instance.PlaySound(audioSource, AudioManager.Instance.trapBlast);
+
                 matArray[1] = blastMat;
             }
             else if (elem == Element.Fire) {
                 trapFireVFX.SetActive(true);
+
+                AudioManager.Instance.PlaySound(audioSource, AudioManager.Instance.trapFire);
             
                 matArray[1] = fireMat;
             }
             else if (elem == Element.Ice) {
                 trapIceVFX.SetActive(true);
+
+                AudioManager.Instance.PlaySound(audioSource, AudioManager.Instance.trapIce);
             
                 matArray[1] = iceMat;
             }
@@ -179,6 +187,8 @@ public class CombineElements : MonoBehaviour
 
     public void _SwitchBack()
     {
+        audioSource.Stop();
+
         if (isTrap) {
             //disable all vfx
             if (trapFireVFX) {

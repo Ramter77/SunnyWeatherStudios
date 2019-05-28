@@ -185,28 +185,27 @@ public class PlayerAnim : MonoBehaviour
 
     void _Jump(bool jump)
     {
-        
-
-
         if (jump)// && animator.GetCurrentAnimatorStateInfo(0).IsName("Grounded"))
         {
             if (!playC.isRangedAttacking) {
-            playC.isJumping = true;
+                playC.isJumping = true;
+
+                AudioManager.Instance.PlaySound(playC.audioSource, AudioManager.Instance.playerJump);
 
 
-            //remember to disable weapon collider after jump
-            if (enableWeaponColliderOnJump) {
-                animator.GetComponent<MeleeAttack>().ActivateWeaponCollider();
-            }
-            //Debug.Log(_verticalInput + " and " + Mathf.RoundToInt(_verticalInput));
-            //! rounding to int to prevent weird blends, especially with controllers
-            //! keep an eye on this: if it leads to problems use direct animation transitions
+                //remember to disable weapon collider after jump
+                if (enableWeaponColliderOnJump) {
+                    animator.GetComponent<MeleeAttack>().ActivateWeaponCollider();
+                }
+                //Debug.Log(_verticalInput + " and " + Mathf.RoundToInt(_verticalInput));
+                //! rounding to int to prevent weird blends, especially with controllers
+                //! keep an eye on this: if it leads to problems use direct animation transitions
 
-            //use a seperate float for directional jump blend tree
-            animator.SetFloat("jumpVertical", Mathf.RoundToInt(_verticalInput));
-            animator.SetFloat("jumpHorizontal", Mathf.RoundToInt(_horizontalInput));
-            //animator.SetTrigger("Jump");
-            animator.SetBool("Jumping", true);
+                //use a seperate float for directional jump blend tree
+                animator.SetFloat("jumpVertical", Mathf.RoundToInt(_verticalInput));
+                animator.SetFloat("jumpHorizontal", Mathf.RoundToInt(_horizontalInput));
+                //animator.SetTrigger("Jump");
+                animator.SetBool("Jumping", true);
             }
         }
     }

@@ -124,7 +124,7 @@ public class LifeAndStats : MonoBehaviour
 
             else if (gameObject.CompareTag("Enemy")) 
             {
-                AudioManager.Instance.PlaySound(gameObject.GetComponent<AudioSource>(), AudioManager.Instance.enemyTakingDamage);
+                AudioManager.Instance.PlaySound(gameObject.GetComponent<AudioSource>(), AudioManager.Instance.enemyTakingDamage[basicEnemyScript.enemyType]);
 
                 if (!_dead) {
                     if (health <= 0) {
@@ -179,10 +179,6 @@ public class LifeAndStats : MonoBehaviour
                         fractureScript.Fracture(gameObject);
                     }
                 }
-            }
-
-            else if (gameObject.CompareTag("Sphere")) {
-
             }
         }
     }

@@ -49,13 +49,19 @@ public class AudioManager : Singleton<AudioManager>
     public AudioClip playerActivateBuilding;
     public AudioClip playerPickupSoul;
 
-    [Space (15)]
+    
     [Header ("Enemies")]
-    public AudioClip enemyTakingDamage;
-
     [Space (15)]
-    [Header ("Towers")]
+    public AudioClip[] enemyTakingDamage;
+
+    
+    [Header ("Towers & Traps")]
+    [Space (15)]
     public AudioClip towerTakingDamage;
+    [Tooltip ("Order: Default, Fire, Ice, Blast")]
+    public AudioClip[] towerProjectiles;
+
+    public AudioClip trapFire, trapIce, trapBlast;
 
 
 
