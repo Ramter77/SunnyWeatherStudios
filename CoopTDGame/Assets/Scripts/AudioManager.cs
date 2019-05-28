@@ -103,29 +103,31 @@ public class AudioManager : Singleton<AudioManager>
     /// <param name="_source">Use provided audio source or own audio source when passed null</param>
     /// <param name="_clip">Play provided _clip once</param>
     public void PlaySound(AudioSource _source, AudioClip _clip) {
-        //Set audio source
-        AudioSource _audioSource;
-        if (_source != null) {
-            _audioSource = _source;
-        }
-        else
-        {
-            _audioSource = soundAudioSource;
-        }
-
-        //Set clip
-        _audioSource.clip = _clip;
-
-        //Play parameters
-        if (stopSoundBeforeNext) {
-            //If already playing sound then stop it first
-            if (_audioSource.isPlaying) {
-                _audioSource.Stop();
+        if (_clip != null) {
+            //Set audio source
+            AudioSource _audioSource;
+            if (_source != null) {
+                _audioSource = _source;
             }
-        }
+            else
+            {
+                _audioSource = soundAudioSource;
+            }
 
-        //Play once
-        _audioSource.PlayOneShot(_audioSource.clip);
+            //Set clip
+            _audioSource.clip = _clip;
+
+            //Play parameters
+            if (stopSoundBeforeNext) {
+                //If already playing sound then stop it first
+                if (_audioSource.isPlaying) {
+                    _audioSource.Stop();
+                }
+            }
+
+            //Play once
+            _audioSource.PlayOneShot(_audioSource.clip);
+        }
     }
 
 

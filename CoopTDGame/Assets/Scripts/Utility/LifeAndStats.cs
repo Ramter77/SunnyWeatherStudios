@@ -124,8 +124,10 @@ public class LifeAndStats : MonoBehaviour
 
             else if (gameObject.CompareTag("Enemy")) 
             {
-                AudioManager.Instance.PlaySound(gameObject.GetComponent<AudioSource>(), AudioManager.Instance.enemyTakingDamage[basicEnemyScript.enemyType]);
-
+                if (AudioManager.Instance.towerProjectiles.Length > 0) {
+                    AudioManager.Instance.PlaySound(gameObject.GetComponent<AudioSource>(), AudioManager.Instance.enemyTakingDamage[basicEnemyScript.enemyType]);
+                }
+                
                 if (!_dead) {
                     if (health <= 0) {
                         if (basicEnemyScript.Target != null && basicEnemyScript.Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking > 0)

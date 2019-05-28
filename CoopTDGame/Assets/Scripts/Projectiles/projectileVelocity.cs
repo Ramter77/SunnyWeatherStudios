@@ -9,6 +9,10 @@ public class projectileVelocity : MonoBehaviour
     private bool appliedDamage = false;
     [SerializeField]
     private bool allowMovement = true;
+    [SerializeField]
+    private bool enableAndDetachImpactVFX;
+    [SerializeField]
+    private GameObject impactVFX;
 
     private bool allowDestroying;
     
@@ -42,6 +46,12 @@ public class projectileVelocity : MonoBehaviour
         else
         {
             if (allowDestroying) {
+                if (enableAndDetachImpactVFX) {
+                    //Enable impact VFX & unparent (the bowProjectile impact destroys after 1 sec)
+                    impactVFX.SetActive(true);
+                    impactVFX.transform.parent = null;
+                }
+
                 Destroy(gameObject);
             }
         }

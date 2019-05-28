@@ -45,8 +45,11 @@ public class BasicTower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletPrefab = bulletPrefabs[0];
-        _audioClip = AudioManager.Instance.towerProjectiles[0];
+        changeProjectile(0);
+        /* bulletPrefab = bulletPrefabs[0];
+        if (AudioManager.Instance.towerProjectiles[0] != null) {
+            _audioClip = AudioManager.Instance.towerProjectiles[0];
+        } */
 
         //Get own colliders
         ownColliders = GetComponentsInChildren<Collider>();
@@ -182,7 +185,9 @@ public class BasicTower : MonoBehaviour
 
     public void changeProjectile(int i) {
         bulletPrefab = bulletPrefabs[i];
-        _audioClip = AudioManager.Instance.towerProjectiles[i];
+        if (AudioManager.Instance.towerProjectiles.Length > 0) {
+            _audioClip = AudioManager.Instance.towerProjectiles[i];
+        }
 
         /* //Get all sphere collider on the prefab & ignore all collisions
         SphereCollider[] bulletPrefabSphereColliders = bulletPrefab.GetComponents<SphereCollider>();

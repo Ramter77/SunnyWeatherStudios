@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [Header ("Player")]
     [Tooltip ("Player_0 = Mouse, Player_1 = Controller 1, Player_2 = Controller 2")]
     public int Player_ = 1;
+    public Element Element;
     [SerializeField] bool debugMode;
     public CharacterController charController;
     public Transform MainCameraTransform;
