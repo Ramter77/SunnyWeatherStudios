@@ -123,21 +123,21 @@ public class CombineElements : MonoBehaviour
                 trapIceVFX.SetActive(false);
                 trapBlastVFX.SetActive(true);
 
-                AudioManager.Instance.PlaySound(audioSource, AudioManager.Instance.trapBlast);
+                AudioManager.Instance.PlaySound(audioSource, Sound.trapBlast);
 
                 matArray[1] = blastMat;
             }
             else if (elem == Element.Fire) {
                 trapFireVFX.SetActive(true);
 
-                AudioManager.Instance.PlaySound(audioSource, AudioManager.Instance.trapFire);
+                AudioManager.Instance.PlaySound(audioSource, Sound.trapFire);
             
                 matArray[1] = fireMat;
             }
             else if (elem == Element.Ice) {
                 trapIceVFX.SetActive(true);
 
-                AudioManager.Instance.PlaySound(audioSource, AudioManager.Instance.trapIce);
+                AudioManager.Instance.PlaySound(audioSource, Sound.trapIce);
             
                 matArray[1] = iceMat;
             }

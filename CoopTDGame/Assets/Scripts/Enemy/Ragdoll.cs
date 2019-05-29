@@ -48,7 +48,6 @@ public class Ragdoll : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         //Set kinematic of main rigidbody to false after setting all to true
         rb.isKinematic = true;
-        Debug.Log("SET TO STATICICIASICIAISFIAKFA SFJAJFMEMUAE");
 
         
 
@@ -146,6 +145,9 @@ public class Ragdoll : MonoBehaviour
 
         //GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Rigidbody>().useGravity = false;
+
+        //disable weapon collider
+        dmgScript.DisableWeaponCollider();
     }
 
 

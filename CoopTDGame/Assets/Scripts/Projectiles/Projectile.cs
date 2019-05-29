@@ -1,8 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 using UnityEngine.Experimental.VFX;
+/* using Assets.MultiAudioListener; */
 
 public class Projectile : MonoBehaviour
 {   
@@ -70,7 +70,12 @@ public class Projectile : MonoBehaviour
     
 
     private Light lightSource;
-    
+
+    #region Sound
+    public bool playSoundOnStart = true;
+    /* public Sound sound;
+    private MultiAudioSource audioSource; */
+    #endregion
 
 
     /* public void SetSpeed(float newSpeed) {
@@ -90,6 +95,14 @@ public class Projectile : MonoBehaviour
                 }
             }
         }
+
+
+        /* audioSource = GetComponent<MultiAudioSource>();
+        if (playSoundOnStart) {
+            if (sound != Sound.empty) {
+                AudioManager.Instance.PlaySound(audioSource, sound);
+            }
+        } */
 
 
 

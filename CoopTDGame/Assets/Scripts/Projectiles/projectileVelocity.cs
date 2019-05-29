@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.MultiAudioListener;
 
 public class projectileVelocity : MonoBehaviour
 {
+    
+    
     public float speed;
     private float lifetime = 4f;
     private bool appliedDamage = false;
@@ -18,7 +21,12 @@ public class projectileVelocity : MonoBehaviour
     private GameObject impactVFX;
 
     private bool allowDestroying;
-    
+
+    #region Sound
+    public bool playSoundOnStart = true;
+    public Sound sound;
+    private MultiAudioSource audioSource;
+    #endregion
 
     void Start()
     {
@@ -26,6 +34,14 @@ public class projectileVelocity : MonoBehaviour
             if (transform.childCount > 0) {
                 allowDestroying = true;
                 Destroy(gameObject, lifetime);
+            }
+        }
+
+        audioSource = GetComponent<MultiAudioSource>();
+
+        if (playSoundOnStart) {
+            if (sound != Sound.empty) {
+                AudioManager.Instance.PlaySound(audioSource, sound);
             }
         }
     }

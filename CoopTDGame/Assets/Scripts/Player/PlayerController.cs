@@ -214,10 +214,4 @@ public class PlayerController : MonoBehaviour
         isDead = false;
         MainCameraTransform.parent.transform.parent.transform.parent.gameObject.SetActive(true);
     }
-
-
-
-    public void PlaySound(AudioClip _clip) {
-        AudioManager.Instance.PlaySound(playerAudioSource, _clip);
-    }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.AI;
-using Assets.MultiAudioListener;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -72,7 +71,6 @@ public class BasicEnemy : MonoBehaviour
     [Tooltip("Distance that the enemy flees")]
     public float fleeRange = 3f;
 
-    private MultiAudioSource audioSource;
     private Animator enemyAnim;
     private bool charging;
     public bool enabledAttack;
@@ -89,7 +87,6 @@ public class BasicEnemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         rigid = GetComponent<Rigidbody>();
-        audioSource = GetComponent<MultiAudioSource>();
         Sphere = GameObject.FindGameObjectWithTag("Sphere");
         WalkToSphere();
         StartCoroutine(ScanCycle());
@@ -430,12 +427,6 @@ public class BasicEnemy : MonoBehaviour
 
     #endregion
 
-
-
-    public void PlaySound(AudioClip _clip)
-    {
-        AudioManager.Instance.PlaySound(audioSource, _clip);
-    }
 
 
 #if UNITY_EDITOR

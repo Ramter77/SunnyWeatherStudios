@@ -16,7 +16,7 @@ public class CameraCollision : MonoBehaviour
 
     private Camera cam;
 
-    void Awake()
+    void Start()
     {
         dollyDir = transform.localPosition.normalized;
         distance = transform.localPosition.magnitude;
@@ -24,7 +24,6 @@ public class CameraCollision : MonoBehaviour
         cam = GetComponent<Camera>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         Vector3 desiredCameraPos = transform.parent.TransformPoint(dollyDir * maxDistance);
@@ -43,12 +42,5 @@ public class CameraCollision : MonoBehaviour
             cam.useOcclusionCulling = true;
         }
         transform.localPosition = Vector3.Lerp(transform.localPosition, dollyDir * distance, Time.deltaTime * smooth);
-
-        if (isHitting) {
-            //cam.useOcclusionCulling = false;
-        }
     }
-
-
-    
 }

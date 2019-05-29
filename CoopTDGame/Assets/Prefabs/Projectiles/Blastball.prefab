@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 6809602934826794238}
   - component: {fileID: 2607711891574106925}
   - component: {fileID: 650504421713984160}
+  - component: {fileID: 1163154664064150848}
   m_Layer: 0
   m_Name: Blastball
   m_TagString: ElementProjectile
@@ -235,6 +236,8 @@ MonoBehaviour:
   kinematicOnContact: 0
   parentOnContact: 0
   adjustWhenParentingOnContact: 0
+  playSoundOnStart: 1
+  sound: 0
 --- !u!108 &1073574776318464124
 Light:
   m_ObjectHideFlags: 0
@@ -395,6 +398,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   allowMovement: 1
+  allowCollision: 1
+  enableAndDetachImpactVFX: 0
+  impactVFX: {fileID: 0}
+  playSoundOnStart: 1
+  sound: 16
 --- !u!114 &650504421713984160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +417,36 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFriendly: 1
   attackDamage: 100
+--- !u!114 &1163154664064150848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451173172870750879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 0}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 1
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+  OnlyPlayForClosestCamera: 0
 --- !u!1001 &540124224381419998
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -46,6 +46,7 @@ Transform:
   m_Children:
   - {fileID: 1466782552}
   - {fileID: 1624251577}
+  - {fileID: 4256300441255020613}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -138,7 +139,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 2147499319
   fallbackDistance: 100
-  rangedAttackSound: {fileID: 0}
+  rangedAbilityUiImageOn: {fileID: 0}
+  rangedAbilityUiImageOff: {fileID: 0}
+  rangedAbilityCooldownImage: {fileID: 0}
 --- !u!114 &68345729
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponTriggerCollider: {fileID: 0}
   UltimateWeaponTriggerCollider: {fileID: 0}
-  attackDamage: 110
 --- !u!114 &68345728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -261,8 +263,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player_: 0
+  Element: 0
   debugMode: 0
   charController: {fileID: 0}
+  MainCameraTransform: {fileID: 0}
+  playerAudioSource: {fileID: 0}
   mask:
     serializedVersion: 2
     m_Bits: 0
@@ -284,7 +289,6 @@ MonoBehaviour:
   isGrounded: 0
   isJumping: 0
   isDead: 0
-  audioSource: {fileID: 0}
 --- !u!114 &9015447330886337416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,26 +325,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Camera: {fileID: 1759869198}
-  healthbar: {fileID: 0}
-  maxHealth: 100
-  healAbilityUiImageOn: {fileID: 0}
-  healAbilityUiImageOff: {fileID: 0}
-  healAbilityCooldownImage: {fileID: 0}
-  healAbilityCooldown: 25
-  healAbilityCost: 15
-  healRadius: 20
-  selfHeal: 0
-  healAmount: 25
-  healParticle: {fileID: 1312923869523673248, guid: efde4b8957e6d704a9a861a347c9b627,
-    type: 3}
-  slashAbilityUiImageOn: {fileID: 0}
-  slashAbilityUiImageOff: {fileID: 0}
-  slashAbilityCooldownImage: {fileID: 0}
-  slashAbilityCooldown: 5
-  slashAbilityCost: 10
-  slashSlashPrefab: {fileID: 9003700133114425031, guid: c28fea64ccc640946bad586dfb6f2aeb,
-    type: 3}
-  FirePoint: {fileID: 1466782552}
   ultimateAbilityUiImageOn: {fileID: 0}
   ultimateAbilityUiImageOff: {fileID: 0}
   ultimateAbilityCooldownImage: {fileID: 0}
@@ -481,7 +465,7 @@ MonoBehaviour:
   controllerType: 0
   characterRigidbody: {fileID: 0}
   characterController: {fileID: 0}
-  audioSource: {fileID: 68345722}
+  audioSource: {fileID: 0}
   minVolume: 0.1
   maxVolume: 0.2
   debugMode: 1
@@ -950,3 +934,64 @@ MonoBehaviour:
   dollyDirAdjusted: {x: 0, y: 0, z: 0}
   distance: 0
   isHitting: 0
+--- !u!1 &7376618731371607262
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4256300441255020613}
+  - component: {fileID: 5513667714425316760}
+  m_Layer: 9
+  m_Name: Feet
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4256300441255020613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7376618731371607262}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 68345735}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5513667714425316760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7376618731371607262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 0}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 0
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+  OnlyPlayForClosestCamera: 1

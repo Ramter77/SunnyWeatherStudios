@@ -261,10 +261,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 804ccf0daf6961c44be50e798ad6aec4, type: 3}
   - name: sand
     footsteps:
-    - {fileID: 8300000, guid: 7800f7bda4bc68f43a86d88827cd082a, type: 3}
-    - {fileID: 8300000, guid: c7449f353fcce324787a755ffee82b68, type: 3}
-    - {fileID: 8300000, guid: 62ac9bf37e313514e81b24534d632d69, type: 3}
-    - {fileID: 8300000, guid: de00eccdf54c99c40b5bd4bddfb8502c, type: 3}
+    - {fileID: 8300000, guid: e7ee090930569e342b5d44f2a09eaaac, type: 3}
+    - {fileID: 8300000, guid: 1e9a411774a79aa4dbbdb0e515c974da, type: 3}
+    - {fileID: 8300000, guid: f9ad490769784af408cd4c561de4f4b7, type: 3}
   registeredTextures:
   - texture: {fileID: 2800000, guid: 9e97314480fcc844da9bfd134b42fab5, type: 3}
     surfaceIndex: 3
@@ -348,29 +347,38 @@ MonoBehaviour:
   playMenuMusicOnStart: 0
   menuMusicAudioClip: {fileID: 0}
   ingameMusicAudioClip: {fileID: 0}
-  playerJump: {fileID: 8300000, guid: 9d4a6d9a239139047906229d019332f5, type: 3}
+  playerJump:
+  - {fileID: 8300000, guid: c1ae28ca5dc9d744fbd045b4c6c56745, type: 3}
   playerMeleeAttack:
   - {fileID: 8300000, guid: 7062c2b436f65904da8999d96b8ba253, type: 3}
+  playerHeal:
+  - {fileID: 8300000, guid: b3b3bb630031f0449b3875d015ddb26b, type: 3}
+  playerUltimate:
+  - {fileID: 8300000, guid: b3b3bb630031f0449b3875d015ddb26b, type: 3}
+  playerActivateBuilding:
+  - {fileID: 8300000, guid: c1ae28ca5dc9d744fbd045b4c6c56745, type: 3}
+  playerTakeDamage:
   - {fileID: 8300000, guid: 7c3cb11003c1f8a4fbcc21c6d0ed7a9e, type: 3}
-  playerUltimateAttack: {fileID: 0}
-  playerHeal: {fileID: 8300000, guid: b3b3bb630031f0449b3875d015ddb26b, type: 3}
-  playerUltimateActivation: {fileID: 0}
-  playerTakingDamage: {fileID: 8300000, guid: 7849c349206a8934892b9cfb8f087690, type: 3}
-  playerTakingHighDamage: {fileID: 0}
-  playerActivateBuilding: {fileID: 8300000, guid: c1ae28ca5dc9d744fbd045b4c6c56745,
-    type: 3}
-  playerPickupSoul: {fileID: 8300000, guid: dc0fa64554692304f8dd8bb78cff8d43, type: 3}
-  enemyTakingDamage:
-  - {fileID: 8300000, guid: 7c3cb11003c1f8a4fbcc21c6d0ed7a9e, type: 3}
-  towerTakingDamage: {fileID: 0}
+  playerPickupSoul:
+  - {fileID: 8300000, guid: c1ae28ca5dc9d744fbd045b4c6c56745, type: 3}
+  enemyMeleeAttack:
+  - {fileID: 8300000, guid: 9d4a6d9a239139047906229d019332f5, type: 3}
+  enemyRangedAttack:
+  - {fileID: 8300000, guid: ec12c4444df1ae04f9cfb15b2b816f6f, type: 3}
+  enemyTakeDamage:
+  - {fileID: 8300000, guid: 7849c349206a8934892b9cfb8f087690, type: 3}
+  towerTakeDamage:
+  - {fileID: 8300000, guid: f9ad490769784af408cd4c561de4f4b7, type: 3}
   towerProjectiles:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: ec12c4444df1ae04f9cfb15b2b816f6f, type: 3}
   - {fileID: 8300000, guid: ec12c4444df1ae04f9cfb15b2b816f6f, type: 3}
   - {fileID: 8300000, guid: 936f8c53f236d1341af9da830cf5f467, type: 3}
-  - {fileID: 0}
-  trapFire: {fileID: 8300000, guid: 87dabe7fe53fa004385f381f5fd080c9, type: 3}
-  trapIce: {fileID: 0}
-  trapBlast: {fileID: 0}
+  - {fileID: 8300000, guid: ec12c4444df1ae04f9cfb15b2b816f6f, type: 3}
+  trapVFX:
+  - {fileID: 8300000, guid: 936f8c53f236d1341af9da830cf5f467, type: 3}
+  - {fileID: 8300000, guid: 87dabe7fe53fa004385f381f5fd080c9, type: 3}
+  - {fileID: 8300000, guid: 936f8c53f236d1341af9da830cf5f467, type: 3}
+  - {fileID: 8300000, guid: 936f8c53f236d1341af9da830cf5f467, type: 3}
 --- !u!114 &806816560449707382
 MonoBehaviour:
   m_ObjectHideFlags: 0

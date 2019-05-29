@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Assets.MultiAudioListener;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -40,8 +39,8 @@ public class BasicTower : MonoBehaviour
     private Component[] ownColliders;
     private MeshCollider crystalCollider;
 
-    private MultiAudioSource audioSource;
-    private AudioClip _audioClip;
+    //private MultiAudioSource audioSource;
+    //private AudioClip _audioClip;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +50,7 @@ public class BasicTower : MonoBehaviour
         if (AudioManager.Instance.towerProjectiles[0] != null) {
             _audioClip = AudioManager.Instance.towerProjectiles[0];
         } */
-        audioSource = GetComponent<MultiAudioSource>();
+        //audioSource = GetComponent<MultiAudioSource>();
 
         //Get own colliders
         ownColliders = GetComponentsInChildren<Collider>();
@@ -138,7 +137,7 @@ public class BasicTower : MonoBehaviour
 
                             bullet.layer = 16;
 
-                            AudioManager.Instance.PlaySound(audioSource, _audioClip);
+                            //AudioManager.Instance.PlaySound(audioSource, _audioClip);
 
                             StartCoroutine(shootCd());
                         }
@@ -213,10 +212,10 @@ public class BasicTower : MonoBehaviour
 
     public void changeProjectile(int i) {
         bulletPrefab = bulletPrefabs[i];
-        if (AudioManager.Instance.towerProjectiles.Length > 0) {
+        /* if (AudioManager.Instance.towerProjectiles.Length > 0) {
             _audioClip = AudioManager.Instance.towerProjectiles[i];
-        }
-
+        } */
+ 
         /* //Get all sphere collider on the prefab & ignore all collisions
         SphereCollider[] bulletPrefabSphereColliders = bulletPrefab.GetComponents<SphereCollider>();
         IgnoreCollisions(bulletPrefabSphereColliders); */

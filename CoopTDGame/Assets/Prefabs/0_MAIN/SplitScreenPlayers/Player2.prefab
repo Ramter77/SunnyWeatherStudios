@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293488f44201be6428c40ebf241459c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Player_: 0
+  Player_: 1
   Element: 1
   debugMode: 1
   charController: {fileID: 1099153509272865673}
@@ -479,16 +479,16 @@ MonoBehaviour:
   controllerType: 0
   characterRigidbody: {fileID: 0}
   characterController: {fileID: 0}
-  audioSource: {fileID: 1099153509272865648}
+  audioSource: {fileID: 2652924093782135089}
   minVolume: 0.1
   maxVolume: 0.2
   debugMode: 1
   groundCheckHeight: 1.5
   groundCheckRadius: 1.5
-  groundCheckDistance: 0.5
+  groundCheckDistance: 1.5
   groundLayers:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 1025
 --- !u!135 &1099153509272865661
 SphereCollider:
   m_ObjectHideFlags: 0

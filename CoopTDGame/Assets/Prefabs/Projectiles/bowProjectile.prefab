@@ -1,19 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &3803484199791574957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3327857863322489808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37fac21d1f093d344816942d1abce94e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TimeOut: 1
-  m_DetachChildren: 0
 --- !u!1 &7422580703118685226
 GameObject:
   m_ObjectHideFlags: 0
@@ -28,6 +14,7 @@ GameObject:
   - component: {fileID: 1410822819003916361}
   - component: {fileID: 8080434404055376596}
   - component: {fileID: 8959072833924263893}
+  - component: {fileID: 6530510326287376592}
   m_Layer: 23
   m_Name: bowProjectile
   m_TagString: EnemyProjectile
@@ -47,7 +34,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 8050587073238692839}
-  - {fileID: 1295340288577912915}
+  - {fileID: 8111917232813765058}
   - {fileID: 7078551804046701702}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -79,8 +66,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 20
   allowMovement: 1
+  allowCollision: 1
   enableAndDetachImpactVFX: 1
-  impactVFX: {fileID: 3327857863322489808}
+  impactVFX: {fileID: 8111917232813766194}
+  playSoundOnStart: 1
+  sound: 10
 --- !u!54 &1410822819003916361
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -125,6 +115,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isFriendly: 0
   attackDamage: 5
+--- !u!114 &6530510326287376592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7422580703118685226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 0}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 1
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+  OnlyPlayForClosestCamera: 0
+--- !u!114 &3803484199791574957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8111917232813766194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37fac21d1f093d344816942d1abce94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TimeOut: 1
+  m_DetachChildren: 0
 --- !u!1 &9123272240995430278
 GameObject:
   m_ObjectHideFlags: 0
@@ -305,13 +339,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe6744b2c4a60b54c9553f8f9b33afe8, type: 3}
---- !u!1 &3327857863322489808 stripped
+--- !u!1 &8111917232813766194 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6826820034995168941, guid: fe6744b2c4a60b54c9553f8f9b33afe8,
     type: 3}
   m_PrefabInstance: {fileID: 8111917232813766013}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1295340288577912915 stripped
+--- !u!4 &8111917232813765058 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7019608373130409262, guid: fe6744b2c4a60b54c9553f8f9b33afe8,
     type: 3}

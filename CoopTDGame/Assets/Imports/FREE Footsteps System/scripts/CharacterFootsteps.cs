@@ -7,6 +7,7 @@
 // DISCLAIMER : THIS SCRIPT CAN BE USED IN ANY WAY, MENTIONING MY WORK WILL BE GREATLY APPRECIATED BUT NOT REQUIRED.
 
 using UnityEngine;
+using Assets.MultiAudioListener;
 
 namespace Footsteps {
 
@@ -34,7 +35,8 @@ namespace Footsteps {
 		[SerializeField] CharacterController characterController;
 
 		[Tooltip("You need an audio source to play a footstep sound.")]
-		[SerializeField] AudioSource audioSource;
+		//[SerializeField] AudioSource audioSource;
+		[SerializeField] MultiAudioSource audioSource;
 
 		// Random volume between this limits
 		[SerializeField] float minVolume = 0.3f;
@@ -110,7 +112,8 @@ namespace Footsteps {
 		}
 
 		void PlayLandSound() {
-			audioSource.PlayOneShot(SurfaceManager.singleton.GetFootstep(currentGroundInfo.collider, currentGroundInfo.point));
+			audioSource.AudioClip = SurfaceManager.singleton.GetFootstep(currentGroundInfo.collider, currentGroundInfo.point);
+			audioSource.Play();
 		}
 
 		void AdvanceStepCycle(float increment) {
@@ -127,7 +130,8 @@ namespace Footsteps {
 			float randomVolume = Random.Range(minVolume, maxVolume);
 
 			if(randomFootstep) {
-				audioSource.PlayOneShot(randomFootstep, randomVolume);
+				audioSource.AudioClip = randomFootstep;
+				audioSource.Play();
 			}
 		}
 

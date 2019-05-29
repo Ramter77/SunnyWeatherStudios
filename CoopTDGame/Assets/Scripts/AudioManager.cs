@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets.MultiAudioListener;
 
+
+public enum Sound { empty, 
+                    playerJump, playerMeleeAttack, playerHeal, playerUltimate, playerTakeDamage, playerActivateBuilding, playerPickupSoul, playerDie,
+                    enemyMeleeAttack, enemyRangedAttack, enemyTakeDamage,
+                    towerTakeDamage, towerDefault, towerFire, towerIce, towerBlast, trapDefault, trapFire, trapIce, trapBlast };
 public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField]
@@ -28,41 +33,39 @@ public class AudioManager : Singleton<AudioManager>
 
     [Header("Movement Sounds")]
     [Header("Player Sounds")]
-    public AudioClip playerJump;
+    public AudioClip[] playerJump;
     //public AudioClip playerLand;
 
     [Header("Attacks")]
     public AudioClip[] playerMeleeAttack;
-    public AudioClip playerUltimateAttack;
-    //public AudioClip playerRangedAttack;
 
     [Header("Spells")]
-    public AudioClip playerHeal;
-    public AudioClip playerUltimateActivation;
+    public AudioClip[] playerHeal;
+    public AudioClip[] playerUltimate;
+    public AudioClip[] playerActivateBuilding;
 
     [Header("Damaged")]
-    public AudioClip playerTakingDamage;
-    public AudioClip playerTakingHighDamage;
+    public AudioClip[] playerTakeDamage;
+    //public AudioClip playerTakingHighDamage;
 
     [Header("Interactions")]
-    public AudioClip playerActivateBuilding;
-    public AudioClip playerPickupSoul;
+    public AudioClip[] playerPickupSoul;
 
     
     [Header ("Enemies")]
     [Space (15)]
-    public AudioClip[] enemyTakingDamage;
+    public AudioClip[] enemyMeleeAttack;
+    public AudioClip[] enemyRangedAttack;
+    public AudioClip[] enemyTakeDamage;
 
     
     [Header ("Towers & Traps")]
     [Space (15)]
-    public AudioClip towerTakingDamage;
+    public AudioClip[] towerTakeDamage;
     [Tooltip ("Order: Default, Fire, Ice, Blast")]
     public AudioClip[] towerProjectiles;
-
-    public AudioClip trapFire, trapIce, trapBlast;
-
-
+    [Tooltip ("Order: Default, Fire, Ice, Blast")]
+    public AudioClip[] trapVFX;
 
     void Start()
     {
@@ -77,8 +80,8 @@ public class AudioManager : Singleton<AudioManager>
     /// </summary>
     /// <param name="_source">Use provided audio source or own audio source when passed null</param>
     /// <param name="_clip">Play provided _clip once</param>
-    public void PlaySound(MultiAudioSource _source, AudioClip _clip) {
-        if (_clip != null) {
+    public void PlaySound(MultiAudioSource _source, Sound sound) {
+        //if (sound != null) {
             //Set audio source
             MultiAudioSource  _audioSource;
             if (_source != null) {
@@ -97,12 +100,92 @@ public class AudioManager : Singleton<AudioManager>
                 }
             }
 
-            //Set clip
-            _audioSource.AudioClip = _clip;
+            AudioClip _clip;
+            //Pick audioClip
+            switch (sound) {
+                #region Player
+                case Sound.playerJump:
+                    _clip = playerJump[Random.Range(0, playerJump.Length - 1)];
+                    break;
+                case Sound.playerMeleeAttack:
+                    _clip = playerMeleeAttack[Random.Range(0, playerMeleeAttack.Length - 1)];
+                    break;
+                case Sound.playerHeal:
+                    _clip = playerHeal[Random.Range(0, playerHeal.Length - 1)];
+                    break;
+                case Sound.playerUltimate:
+                    _clip = playerUltimate[Random.Range(0, playerUltimate.Length - 1)];
+                    break;
+                case Sound.playerActivateBuilding:
+                    _clip = playerActivateBuilding[Random.Range(0, playerActivateBuilding.Length - 1)];
+                    break;
+                case Sound.playerTakeDamage:
+                    _clip = playerTakeDamage[Random.Range(0, playerTakeDamage.Length - 1)];
+                    break;
+                case Sound.playerPickupSoul:
+                    _clip = playerPickupSoul[Random.Range(0, playerPickupSoul.Length - 1)];
+                    break;
+                #endregion
 
-            //Play once
-            _audioSource.Play();
-        }
+                #region Enemy
+                case Sound.enemyMeleeAttack:
+                    _clip = enemyMeleeAttack[Random.Range(0, enemyMeleeAttack.Length - 1)];
+                    break;
+                case Sound.enemyRangedAttack:
+                    _clip = enemyRangedAttack[Random.Range(0, enemyRangedAttack.Length - 1)];
+                    break;
+                case Sound.enemyTakeDamage:
+                    _clip = enemyTakeDamage[Random.Range(0, enemyTakeDamage.Length - 1)];
+                    break;
+                #endregion
+
+                #region Towers & Traps
+                case Sound.towerTakeDamage:
+                    _clip = towerTakeDamage[Random.Range(0, towerTakeDamage.Length - 1)];
+                    break;
+
+                //Player & Tower Projectiles
+                case Sound.towerDefault:
+                    _clip = towerProjectiles[0];
+                    break;
+                case Sound.towerFire:
+                    _clip = towerProjectiles[1];
+                    break;
+                case Sound.towerIce:
+                    _clip = towerProjectiles[2];
+                    break;
+                case Sound.towerBlast:
+                    _clip = towerProjectiles[3];
+                    break;
+
+                //Trap VFX
+                case Sound.trapDefault:
+                    _clip = trapVFX[0];
+                    break;
+                case Sound.trapFire:
+                    _clip = trapVFX[1];
+                    break;
+                case Sound.trapIce:
+                    _clip = trapVFX[2];
+                    break;
+                case Sound.trapBlast:
+                    _clip = trapVFX[3];
+                    break;
+                #endregion
+
+                default:
+                    _clip = null;
+                    break;
+            }
+
+            if (_clip != null) { 
+                //Set clip
+                _audioSource.AudioClip = _clip;
+
+                //Play once
+                _audioSource.Play();
+            }
+        //}
     }
 
 

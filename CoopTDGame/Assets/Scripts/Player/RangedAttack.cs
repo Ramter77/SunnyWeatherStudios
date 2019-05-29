@@ -50,7 +50,8 @@ public class RangedAttack : MonoBehaviour
     #endregion
 
     void Start() {
-        playC = GetComponent<PlayerController>();   
+        playC = GetComponent<PlayerController>();
+        /*   
         if (AudioManager.Instance.towerProjectiles.Length > 0) {
             if (playC.Element ==  Element.Fire) {
                 _audioClip = AudioManager.Instance.towerProjectiles[1];
@@ -59,6 +60,7 @@ public class RangedAttack : MonoBehaviour
                 _audioClip = AudioManager.Instance.towerProjectiles[2];
             }
         }
+        */
 
         playerAnim = GetComponent<Animator>();
         
@@ -215,7 +217,7 @@ public class RangedAttack : MonoBehaviour
         //Ignore collisions with owner
         IgnoreCollisionSelf(projectileRB.GetComponent<Collider>());
 
-        AudioManager.Instance.PlaySound(playC.playerAudioSource, _audioClip);
+        //AudioManager.Instance.PlaySound(playC.playerAudioSource, _audioClip);
     }
     #endregion
 }

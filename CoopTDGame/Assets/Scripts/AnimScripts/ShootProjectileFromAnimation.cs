@@ -1,24 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.MultiAudioListener;
 
 public class ShootProjectileFromAnimation : StateMachineBehaviour
 {
     [SerializeField]
+    private float soundDelay = 0.1f;
+    [SerializeField]
     private float shootDelay = 0.5f;
-    private bool shot;
+
+    
+    private bool playedSound, shot;
     private PlayerController playC;
+    private Element element;
     private RangedAttack rangedAttackScript;
+    private MultiAudioSource audioSource;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         if (playC == null) {
             playC = animator.GetComponent<PlayerController>();
+            element = playC.Element;
         }
         if (rangedAttackScript == null) {
             rangedAttackScript = animator.GetComponent<RangedAttack>();
         }
+        audioSource = animator.GetComponent<MultiAudioSource>();
 
         shot = false;
     }
@@ -26,16 +35,32 @@ public class ShootProjectileFromAnimation : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (stateInfo.normalizedTime > shootDelay) {
-            ThrowProjectile();
-        }    
+        if (!playedSound) {
+            if (stateInfo.normalizedTime > soundDelay) {
+                if (element == Element.Fire) {
+                    AudioManager.Instance.PlaySound(audioSource, Sound.towerFire);
+                }
+                else if (element == Element.Ice) {
+                    AudioManager.Instance.PlaySound(audioSource, Sound.towerIce);
+                }
+                playedSound = true;
+            }
+        }
+
+        if (!shot) {
+            if (stateInfo.normalizedTime > shootDelay) {
+                rangedAttackScript.ShootActiveProjectile();
+                shot = true;
+            } 
+        }   
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        playedSound = false;
+        shot = false;
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -48,13 +73,4 @@ public class ShootProjectileFromAnimation : StateMachineBehaviour
     //{
     //    // Implement code that sets up animation IK (inverse kinematics)
     //}
-
-    void ThrowProjectile() {
-        if (!shot) {
-            if (!playC.isJumping) {
-                shot = true;
-                rangedAttackScript.ShootActiveProjectile();
-            }
-        }
-    }
 }

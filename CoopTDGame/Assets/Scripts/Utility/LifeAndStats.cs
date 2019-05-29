@@ -107,7 +107,7 @@ public class LifeAndStats : MonoBehaviour
 
             if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
             { 
-                AudioManager.Instance.PlaySound(playC.playerAudioSource, AudioManager.Instance.playerTakingDamage);
+                //AudioManager.Instance.PlaySound(playC.playerAudioSource, Sound.playerTakeDamage);
 
                 if (!playC.isDead) {
                     if (health <= 0) {
@@ -125,9 +125,10 @@ public class LifeAndStats : MonoBehaviour
 
             else if (gameObject.CompareTag("Enemy")) 
             {
-                if (AudioManager.Instance.enemyTakingDamage.Length > 2) {
-                    AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), AudioManager.Instance.enemyTakingDamage[basicEnemyScript.enemyType]);
-                }
+                
+                //if (AudioManager.Instance.enemyTakingDamage.Length > 2) {
+                //    AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), AudioManager.Instance.enemyTakingDamage[basicEnemyScript.enemyType]);
+                //}
 
                 if (!_dead) {
                     if (health <= 0) {
@@ -172,7 +173,7 @@ public class LifeAndStats : MonoBehaviour
             }
 
             else if (gameObject.CompareTag("possibleTargets")) {
-                AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), AudioManager.Instance.towerTakingDamage);
+                AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.towerTakeDamage);
 
                 if (health <= 0) {
                     gameObject.tag = "destroyedTarget";

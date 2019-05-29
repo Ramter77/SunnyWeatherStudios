@@ -75,7 +75,7 @@ public class MeleeAttack : MonoBehaviour
 
         ActivateWeaponCollider();
 
-        AudioManager.Instance.PlaySound(playC.playerAudioSource, AudioManager.Instance.playerMeleeAttack[Random.Range(0, AudioManager.Instance.playerMeleeAttack.Length)]);
+        //AudioManager.Instance.PlaySound(playC.playerAudioSource, Sound.playerMeleeAttack);
     }
 
     public void ActivateWeaponCollider() {
