@@ -122,7 +122,7 @@ public class RangedAttack : MonoBehaviour
 
             if (_input)
             {
-                if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isInBuildMode && playC.isGrounded && !playC.isJumping)
+                if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isCasting && playC.isGrounded && !playC.isJumping)
                 {
                     rangedRechargeSpeed = Time.time + rangedAttackCooldown;
                     if (rangedAbilityCooldownImage != null)
@@ -131,7 +131,6 @@ public class RangedAttack : MonoBehaviour
                     _RangedAttack();
                 }
             }
-            
         }
         else
         {
@@ -146,7 +145,7 @@ public class RangedAttack : MonoBehaviour
 
     private void _RangedAttack() {
         //If not ranged attacking
-        if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isInBuildMode && playC.isGrounded && !playC.isJumping) {
+        if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isCasting && playC.isGrounded && !playC.isJumping) {
             playC.isRangedAttacking = true;
 
             SoulBackpack.Instance.reduceSoulsByCost(projectileCost);

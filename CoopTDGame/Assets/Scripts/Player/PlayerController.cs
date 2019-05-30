@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
 
     #region STATES
     [Header ("Player STATES")]
-    public bool isInBuildMode;
+    public bool isCasting;
     public bool isMeleeAttacking;
     public bool isRangedAttacking;
     public bool isGrounded;
@@ -88,7 +88,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Start() {
-        isInBuildMode = false;
+        isCasting = false;
         isMeleeAttacking = false;
         isRangedAttacking = false;
         isJumping = false;

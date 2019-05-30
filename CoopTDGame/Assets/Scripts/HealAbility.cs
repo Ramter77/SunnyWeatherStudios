@@ -106,8 +106,9 @@ public class HealAbility : MonoBehaviour
             if (_healInput) //{
             //if (Input.GetKeyDown(healAbilityHotkey))
             {
-                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && playC.isGrounded/*  && !playC.isJumping */ && !playC.isDead)
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting && playC.isGrounded/*  && !playC.isJumping */ && !playC.isDead)
                 {
+                    playC.isCasting = true;
                     //playC.isRangedAttacking = true;
 
                     healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;

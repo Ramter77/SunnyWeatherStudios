@@ -128,7 +128,7 @@ public class PlayerAnim : MonoBehaviour
             #region Jumping
             if (/* !playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && */ !playC.isJumping) {
                 if (!allowJumpWhileMelee && !allowJumpWhileRanged) {
-                    if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode) {
+                    if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting) {
                         allowJump = true;
                     }
                 }

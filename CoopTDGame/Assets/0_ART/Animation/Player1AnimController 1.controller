@@ -6,7 +6,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Player1AnimController
+  m_Name: Player1AnimController 1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Horizontal
@@ -167,10 +167,16 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: Jump&Fall.JUMP
-    m_StateMachine: {fileID: 1107725907876689668}
-    m_Mask: {fileID: 31900000, guid: 38aaa839c095e484f9e5efb53ccc9bf9, type: 2}
-    m_Motions: []
+    m_Name: React.TORSO
+    m_StateMachine: {fileID: 1107401793590886220}
+    m_Mask: {fileID: 31900000, guid: 08d79958101dc4f4da92e4f0deef8436, type: 2}
+    m_Motions:
+    - serializedVersion: 2
+      m_State: {fileID: 0}
+      m_Motion: {fileID: 7400000, guid: 5268e80f7f4c4e24cb92672368b18359, type: 3}
+    - serializedVersion: 2
+      m_State: {fileID: 0}
+      m_Motion: {fileID: 7400000, guid: 5268e80f7f4c4e24cb92672368b18359, type: 3}
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
@@ -179,16 +185,10 @@ AnimatorController:
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
   - serializedVersion: 5
-    m_Name: React.TORSO
-    m_StateMachine: {fileID: 1107401793590886220}
-    m_Mask: {fileID: 31900000, guid: 08d79958101dc4f4da92e4f0deef8436, type: 2}
-    m_Motions:
-    - serializedVersion: 2
-      m_State: {fileID: 0}
-      m_Motion: {fileID: 0}
-    - serializedVersion: 2
-      m_State: {fileID: 0}
-      m_Motion: {fileID: 0}
+    m_Name: Jump&Fall.JUMP
+    m_StateMachine: {fileID: 1107725907876689668}
+    m_Mask: {fileID: 31900000, guid: 38aaa839c095e484f9e5efb53ccc9bf9, type: 2}
+    m_Motions: []
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: -1
@@ -262,18 +262,6 @@ MonoBehaviour:
   sound: 2
   isPlayer: 1
   delay: 0.1
---- !u!114 &114169023970596760
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6244175a1ca1fba4a9adb401e236320e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114183041771884108
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -642,18 +630,6 @@ MonoBehaviour:
   sound: 5
   isPlayer: 1
   delay: 0.1
---- !u!114 &114911420385670692
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6244175a1ca1fba4a9adb401e236320e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114917127679963556
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -3349,7 +3325,6 @@ AnimatorState:
   - {fileID: 1101960864452947236}
   m_StateMachineBehaviours:
   - {fileID: 114399309898380398}
-  - {fileID: 114911420385670692}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -3753,7 +3728,6 @@ AnimatorState:
   - {fileID: 1101539550984075792}
   m_StateMachineBehaviours:
   - {fileID: 114576420011174446}
-  - {fileID: 114169023970596760}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1
@@ -3815,7 +3789,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 28d671937cced5a4bb781fddb506cde2, type: 3}
+  m_Motion: {fileID: 7400000, guid: 6f959cc3ee9db5d48a61f567c3b3bf24, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

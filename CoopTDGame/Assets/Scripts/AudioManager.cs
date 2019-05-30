@@ -7,13 +7,12 @@ using Assets.MultiAudioListener;
 public enum Sound { empty, 
                     playerJump, playerMeleeAttack, playerHeal, playerUltimate, playerTakeDamage, playerActivateBuilding, playerPickupSoul, playerDie,
                     enemyMeleeAttack, enemyRangedAttack, enemyTakeDamage,
-                    towerTakeDamage, towerDefault, towerFire, towerIce, towerBlast, trapDefault, trapFire, trapIce, trapBlast };
+                    towerTakeDamage, towerDefault, towerFire, towerIce, towerBlast, towerDefaultImpact, towerFireImpact, towerIceImpact, towerBlastImpact, trapDefault, trapFire, trapIce, trapBlast };
 public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField]
     [Tooltip ("Stop any sound before playing the next one")]
     private bool stopSoundBeforeNext;
-
     [SerializeField] //hidden because it adds the component on start
     [Tooltip ("The first child of the object playing the sounds")]
     private MultiAudioSource soundAudioSource;
@@ -64,6 +63,8 @@ public class AudioManager : Singleton<AudioManager>
     public AudioClip[] towerTakeDamage;
     [Tooltip ("Order: Default, Fire, Ice, Blast")]
     public AudioClip[] towerProjectiles;
+    [Tooltip ("Order: Default, Fire, Ice, Blast")]
+    public AudioClip[] towerProjectileImpacts;
     [Tooltip ("Order: Default, Fire, Ice, Blast")]
     public AudioClip[] trapVFX;
 
@@ -156,6 +157,20 @@ public class AudioManager : Singleton<AudioManager>
                     break;
                 case Sound.towerBlast:
                     _clip = towerProjectiles[3];
+                    break;
+
+                //Player & Tower Projectiles
+                case Sound.towerDefaultImpact:
+                    _clip = towerProjectileImpacts[0];
+                    break;
+                case Sound.towerFireImpact:
+                    _clip = towerProjectileImpacts[1];
+                    break;
+                case Sound.towerIceImpact:
+                    _clip = towerProjectileImpacts[2];
+                    break;
+                case Sound.towerBlastImpact:
+                    _clip = towerProjectileImpacts[3];
                     break;
 
                 //Trap VFX

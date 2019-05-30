@@ -99,7 +99,7 @@ public class PlayerClassOne : MonoBehaviour
             if (_ultimateInput)
             //if (Input.GetKeyDown(ultimateAbilityHotkey))
             {
-                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode/*  && !playC.isJumping */ && !playC.isDead) {
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting/*  && !playC.isJumping */ && !playC.isDead) {
                     ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
                     ultimateAbility();
                     ultimateAbilityCooldownImage.fillAmount = 0;
@@ -124,7 +124,9 @@ public class PlayerClassOne : MonoBehaviour
        
 
     public void risePrefab() {
-        if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && playC.isGrounded/*  && !playC.isJumping */ && !playC.isDead) {
+        if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting && playC.isGrounded/*  && !playC.isJumping */ && !playC.isDead) {
+            playC.isCasting = true;
+
             playerAnim.SetTrigger("Slash");
             //SoulBackpack.Instance.reduceSoulsByCost(slashAbilityCost);
         }

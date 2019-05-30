@@ -165,7 +165,7 @@ if (_enterBuildMode && !playC.isDead) {
 
             //}
             
-            playC.isInBuildMode = true;
+            //playC.isInBuildMode = true;
             /* Debug.Log("buidö1: "+_build1); */
             //if pressed x, y, b set current prefab (enter spawnturrentmode)
             if (_build1) {
@@ -312,7 +312,7 @@ if (_enterBuildMode && !playC.isDead) {
         }
         //On exiting building mode, if current prefab is not null the place it
         else {
-            playC.isInBuildMode = false;
+            //playC.isInBuildMode = false;
             GetComponent<Animator>().SetBool("Channeling", false);
             //if not in spawnturrentmode set an invalid index n exit build mode
             if (currentPrefab == null) {
@@ -369,14 +369,14 @@ if (_enterBuildMode && !playC.isDead) {
                         Destroy(currentPrefab);
                         currentPrefabIndex = -1;
 
-                        playC.isInBuildMode = false;
+                        //playC.isInBuildMode = false;
 
                         /* _meleeAttack.enabled = true;     //reenable melee combat & ranged combat
                         _rangedAttack.enabled = true; */
                     }
                     else
                     {
-                        playC.isInBuildMode = true;
+                        //playC.isInBuildMode = true;
 
                         if (currentPrefab != null)
                         {
@@ -411,10 +411,10 @@ if (_enterBuildMode && !playC.isDead) {
                 //Enter build mode
                 /* Debug.Log(_enterBuildMode); */
                 if (_enterBuildMode) {
-                    if (!playC.isInBuildMode) {
+                    //if (!playC.isInBuildMode) {
                         //enteredBuildMode = true;
 
-                        playC.isInBuildMode = true;
+                        //playC.isInBuildMode = true;
 
                         if (currentPrefab != null)
                         {
@@ -453,13 +453,13 @@ if (_enterBuildMode && !playC.isDead) {
                         }
                         }
                         }
-                    }
+                    //}
                     //Pressed again
                     else {
                         Destroy(currentPrefab);
                         currentPrefabIndex = -1;
 
-                        playC.isInBuildMode = false;
+                        //playC.isInBuildMode = false;
                     }
                 }
             }
@@ -582,7 +582,7 @@ if (_enterBuildMode && !playC.isDead) {
 
                     //Reset
                     //currentPrefab = null;
-                    playC.isInBuildMode = false;
+                    //playC.isInBuildMode = false;
                 }
                 #endregion
 
@@ -613,7 +613,7 @@ if (_enterBuildMode && !playC.isDead) {
                         //Reset
                         currentPrefab = null;
                         //placing = false;
-                        playC.isInBuildMode = false;
+                        //playC.isInBuildMode = false;
                         /* _meleeAttack.enabled = true;
                         _rangedAttack.enabled = true; */
             }
