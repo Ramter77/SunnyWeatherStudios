@@ -47,7 +47,7 @@ GameObject:
   - component: {fileID: 369886348504367041}
   - component: {fileID: 891160057}
   - component: {fileID: 1915099333481812613}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: ReducedMovementTrap
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -106,7 +106,7 @@ GameObject:
   - component: {fileID: 5286069428281386977}
   - component: {fileID: 5977699397935848738}
   - component: {fileID: 8242950145804044926}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: ReducedMovementTrap
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -474,7 +474,7 @@ GameObject:
   - component: {fileID: 381447715869876736}
   - component: {fileID: 8712043244613460688}
   - component: {fileID: 8319430375628193621}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: DoTTrap
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -1132,6 +1132,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1139858139}
     m_Modifications:
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_Name
+      value: Object Interactable Enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
+      objectReference: {fileID: 0}
     - target: {fileID: 490934, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1187,18 +1199,6 @@ PrefabInstance:
     - target: {fileID: 490934, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_LocalScale.z
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_Name
-      value: Object Interactable Enabled
-      objectReference: {fileID: 0}
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_Layer
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 174594, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_Layer

@@ -344,36 +344,37 @@ MonoBehaviour:
   stopSoundBeforeNext: 0
   soundAudioSource: {fileID: 806816560449707382}
   musicAudioSource: {fileID: 3785148092310920731}
-  playMenuMusicOnStart: 0
-  menuMusicAudioClip: {fileID: 0}
+  playMenuMusicOnStart: 1
+  menuMusicAudioClip: {fileID: 8300000, guid: b993789a94b256242a6bf9b9044aec9c, type: 3}
   ingameMusicAudioClip: {fileID: 0}
   playerJump:
-  - {fileID: 8300000, guid: c1ae28ca5dc9d744fbd045b4c6c56745, type: 3}
+  - {fileID: 8300000, guid: b1f8cdb2ba233034e8150b7f0bef6188, type: 3}
   playerMeleeAttack:
-  - {fileID: 8300000, guid: 7062c2b436f65904da8999d96b8ba253, type: 3}
+  - {fileID: 8300000, guid: e2a56062a22204e44a0a560b4c74d3e0, type: 3}
   playerHeal:
-  - {fileID: 8300000, guid: b3b3bb630031f0449b3875d015ddb26b, type: 3}
+  - {fileID: 8300000, guid: 84d2f7df083ebcd4da6308c68671695e, type: 3}
   playerUltimate:
-  - {fileID: 8300000, guid: b3b3bb630031f0449b3875d015ddb26b, type: 3}
+  - {fileID: 8300000, guid: 77002f393a772c4408072a4937b16168, type: 3}
   playerActivateBuilding:
-  - {fileID: 8300000, guid: c1ae28ca5dc9d744fbd045b4c6c56745, type: 3}
+  - {fileID: 8300000, guid: 559d883b3a8558f488c83b9aca205fd1, type: 3}
   playerTakeDamage:
-  - {fileID: 8300000, guid: 7c3cb11003c1f8a4fbcc21c6d0ed7a9e, type: 3}
+  - {fileID: 8300000, guid: 56a5d1863f58a5a46987d6aa39921e4f, type: 3}
   playerPickupSoul:
-  - {fileID: 8300000, guid: c1ae28ca5dc9d744fbd045b4c6c56745, type: 3}
+  - {fileID: 8300000, guid: a6b654ae514f7f84892b25f7559bf47b, type: 3}
   enemyMeleeAttack:
-  - {fileID: 8300000, guid: 9d4a6d9a239139047906229d019332f5, type: 3}
+  - {fileID: 8300000, guid: 689ef185fe94eeb4fb5a8d2ebad885ae, type: 3}
   enemyRangedAttack:
-  - {fileID: 8300000, guid: ec12c4444df1ae04f9cfb15b2b816f6f, type: 3}
+  - {fileID: 8300000, guid: 206488c0d90ca39418f3396fe70a44a8, type: 3}
   enemyTakeDamage:
-  - {fileID: 8300000, guid: 7849c349206a8934892b9cfb8f087690, type: 3}
+  - {fileID: 8300000, guid: f6a727434d9be4f4ea793ef4e913c6cd, type: 3}
   towerTakeDamage:
   - {fileID: 8300000, guid: f9ad490769784af408cd4c561de4f4b7, type: 3}
   towerProjectiles:
-  - {fileID: 8300000, guid: ec12c4444df1ae04f9cfb15b2b816f6f, type: 3}
-  - {fileID: 8300000, guid: ec12c4444df1ae04f9cfb15b2b816f6f, type: 3}
-  - {fileID: 8300000, guid: 936f8c53f236d1341af9da830cf5f467, type: 3}
-  - {fileID: 8300000, guid: ec12c4444df1ae04f9cfb15b2b816f6f, type: 3}
+  - {fileID: 8300000, guid: 4e91a5600e53f43499f0aa8166a77bad, type: 3}
+  - {fileID: 8300000, guid: 8e69ac0abf0d39a47bf994ee7736eeea, type: 3}
+  - {fileID: 8300000, guid: b5d83180ef242ff42a306cedebbd1025, type: 3}
+  - {fileID: 8300000, guid: 110f8b541ad32254783c4f7c55ea96bc, type: 3}
+  towerProjectileImpacts: []
   trapVFX:
   - {fileID: 8300000, guid: 936f8c53f236d1341af9da830cf5f467, type: 3}
   - {fileID: 8300000, guid: 87dabe7fe53fa004385f381f5fd080c9, type: 3}
@@ -406,9 +407,9 @@ MonoBehaviour:
   _dopplerLevel: 1
   _spread: 0
   _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
-  OnlyPlayForClosestCamera: 0
+  _minDistance: 5000
+  _maxDistance: 5000
+  OnlyPlayForClosestCamera: 1
 --- !u!114 &3785148092310920731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,6 +437,6 @@ MonoBehaviour:
   _dopplerLevel: 1
   _spread: 0
   _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
-  OnlyPlayForClosestCamera: 0
+  _minDistance: 5000
+  _maxDistance: 5000
+  OnlyPlayForClosestCamera: 1
