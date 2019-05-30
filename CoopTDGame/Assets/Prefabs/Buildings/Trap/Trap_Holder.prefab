@@ -428,6 +428,20 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0.001, y: 0.014, z: 0}
   m_TimeToStationary: 0.5
+--- !u!64 &4373023635670637297
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6181779673293718170}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300000, guid: 618e0382eeaa28843a519b458b12e92f, type: 3}
 --- !u!114 &2032302054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,20 +463,6 @@ MonoBehaviour:
   fireMat: {fileID: 2100000, guid: 195ffe05c15f6174883e2716c5fee538, type: 2}
   iceMat: {fileID: 2100000, guid: 32274fefb62bda94c83290ffff21da73, type: 2}
   blastMat: {fileID: 2100000, guid: 4bf6e2da9cc9181489dc94ac2dd7c411, type: 2}
---- !u!64 &4373023635670637297
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6181779673293718170}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4300000, guid: 618e0382eeaa28843a519b458b12e92f, type: 3}
 --- !u!1 &8576943111870140126
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 7331349949658631037}
   - component: {fileID: 8295409769430368461}
   - component: {fileID: 7594838992466446177}
-  m_Layer: 20
+  m_Layer: 2
   m_Name: DoTTrap
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -1132,18 +1132,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1139858139}
     m_Modifications:
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_Name
-      value: Object Interactable Enabled
-      objectReference: {fileID: 0}
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_Layer
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 123
-      objectReference: {fileID: 0}
     - target: {fileID: 490934, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1199,6 +1187,18 @@ PrefabInstance:
     - target: {fileID: 490934, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_LocalScale.z
       value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_Name
+      value: Object Interactable Enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_Layer
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 123
       objectReference: {fileID: 0}
     - target: {fileID: 174594, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_Layer
