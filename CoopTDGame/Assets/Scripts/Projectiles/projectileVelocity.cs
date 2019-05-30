@@ -56,25 +56,33 @@ public class projectileVelocity : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (allowCollision) {
-        if (other.gameObject.tag == "Enemy" && appliedDamage == false)
-        {
-            if (allowDestroying) {
-                Destroy(gameObject);
-            }
-        }
-
-        else
-        {
-            if (allowDestroying) {
-                if (enableAndDetachImpactVFX) {
-                    //Enable impact VFX & unparent (the bowProjectile impact destroys after 1 sec)
-                    impactVFX.SetActive(true);
-                    impactVFX.transform.parent = null;
+            if (other.gameObject.tag == "Enemy" && appliedDamage == false)
+            {
+                if (allowDestroying) {
+                    KillProjectile();
                 }
+            }
 
-                Destroy(gameObject);
+            else
+            {
+                if (allowDestroying) {
+                    if (enableAndDetachImpactVFX) {
+                        //Enable impact VFX & unparent (the bowProjectile impact destroys after 1 sec)
+                        impactVFX.SetActive(true);
+                        impactVFX.transform.parent = null;
+                    }
+
+                    KillProjectile();
+                }
             }
         }
+    }
+
+
+    void KillProjectile() {
+        if (transform.childCount > 0) {
+            Destroy(transform.GetChild(0).gameObject);
         }
+        Destroy(gameObject);
     }
 }

@@ -146,6 +146,10 @@ public class Projectile : MonoBehaviour
                 if (unparentChildOnContact) {
                     #region Destroy Child
                     if (destroyChildOnContact) {
+                        if (transform.childCount > 1) {
+                            Destroy(transform.GetChild(1).gameObject, childDestroyTime);
+                        }
+
                         Destroy(child, childDestroyTime);
                     }
                     #endregion
@@ -226,10 +230,23 @@ public class Projectile : MonoBehaviour
         yield return new WaitForSeconds(delay);
 
         if (transform.childCount > 0) {
+            if (transform.childCount > 1) {
+                Destroy(transform.GetChild(1).gameObject, childDestroyTime);
+            }
             GameObject child = transform.GetChild(0).gameObject;
             child.transform.parent = null;
         }
         
         Destroy(gameObject);
     }
+
+
+
+    /// <summary>
+    /// This function is called when the MonoBehaviour will be destroyed.
+    /// </summary>
+    /* void OnDestroy()
+    {
+        if ()
+    } */
 }

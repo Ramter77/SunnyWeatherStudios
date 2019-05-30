@@ -234,9 +234,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trapActive: 0
-  trapDuration: 25
+  trapDuration: 60
   towerActive: 0
-  towerDuration: 30
+  towerDuration: 60
   playLowerAnim: 0
   riseVFX: {fileID: 8625013415901857463}
   riseDuration: 3
@@ -365,9 +365,9 @@ MonoBehaviour:
   _dopplerLevel: 1
   _spread: 0
   _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
-  OnlyPlayForClosestCamera: 0
+  _minDistance: 10
+  _maxDistance: 50
+  OnlyPlayForClosestCamera: 1
 --- !u!114 &6181779673293718169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileTag: ElementProjectile
-  towerCD: 10
+  towerCD: 40
   trapFireVFX: {fileID: 862277866140132780}
   trapIceVFX: {fileID: 1173239676175817937}
   trapBlastVFX: {fileID: 5285096592201132159}
