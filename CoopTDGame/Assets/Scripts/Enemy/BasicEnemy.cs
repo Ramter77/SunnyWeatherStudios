@@ -312,10 +312,10 @@ public class BasicEnemy : MonoBehaviour
                             Target = hit.gameObject;
                             if (enemyType != 1)
                             {
-                                attackRange = 41f;
+                                attackRange = 26f;
                                 followRadius = 45f;
                                 detectionRadius = 43f;
-                                stoppingRange = 40f;
+                                stoppingRange = 25f;
                             }
                             return;
                         }
