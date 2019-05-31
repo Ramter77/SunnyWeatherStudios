@@ -148,8 +148,9 @@ public class HealAbility : MonoBehaviour
 
     void healAbility()
     {
-        Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
-        Instantiate(healParticle, spawnPos, Quaternion.identity);
+        Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+        Vector3 spawnRot = new Vector3(0,90,0);
+        Instantiate(healParticle, spawnPos, Quaternion.LookRotation(spawnRot));
 
         //AudioManager.Instance.PlaySound(playC.playerAudioSource, Sound.playerHeal);
 
