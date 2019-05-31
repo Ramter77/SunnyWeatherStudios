@@ -4709,6 +4709,7 @@ MonoBehaviour:
   kinematicOnContact: 0
   parentOnContact: 1
   adjustWhenParentingOnContact: 0
+  playSoundOnStart: 1
 --- !u!135 &639020462421659225
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5523,7 +5524,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
@@ -9627,7 +9628,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1.6
+      scalar: 0.74
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -10136,7 +10137,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 25
+      scalar: 199.02
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -18582,7 +18583,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e653836c30661fe419b8992e230ca189, type: 2}
+  - {fileID: 2100000, guid: 1bafc7aca6a15ce4a92553883cdf5612, type: 2}
   - {fileID: 2100000, guid: a3706764c40746746934f5d22917b0a1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -18776,7 +18777,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.5
+      scalar: 1.01
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -20926,7 +20927,7 @@ ParticleSystem:
       m_Bits: 4294967295
     influenceList: []
   ClampVelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
