@@ -22,6 +22,8 @@ public class BasicTower : MonoBehaviour
     [Tooltip("Attack Speed of the tower")] public float attackSpeed; // the lower the value the faster the turret can shoot
     [Tooltip("Attack Range of th tower")]  public float attackRange = 20f; // the range of the tower
     [Tooltip("Minimum Attack Range of Tower")] public float minAttackRange = 5f;
+    [Tooltip("Offset the aim of towers on the Y axis")]public Vector3 aimOffset;
+
     private int turretLayerIgnore = ~11; // ignore this layer (the layer of tower)
 
     //locations
@@ -109,7 +111,7 @@ public class BasicTower : MonoBehaviour
                 );
                 Vector3 spawnPoint = shootingPoint.position;
                 Vector3 centerOfAttackRadius = centerAttackRadius.position;
-                Vector3 targetPoint = interceptPoint;
+                Vector3 targetPoint = interceptPoint + aimOffset;
                 Vector3 toTarget = targetPoint - spawnPoint;
                 if (Vector3.Distance(centerOfAttackRadius, targetPoint) <= attackRange)
                 {
