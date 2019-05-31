@@ -406,10 +406,13 @@ namespace Assets.MultiAudioListener
             }
             else
             {
+                _safetyAudioSource.time = 0f;
                 //The sound was still playing so we let is play again from start
                 _safetyAudioSource.Play();
                 foreach (var audioSource in _subAudioSources)
                 {
+                    Debug.Log(audioSource.Value.time);
+                    audioSource.Value.time = 0f;
                     audioSource.Value.Play();
                 }
             }
