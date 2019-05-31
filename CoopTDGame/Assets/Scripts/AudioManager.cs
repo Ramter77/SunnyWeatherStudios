@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Assets.MultiAudioListener;
@@ -42,6 +42,10 @@ public class AudioManager : Singleton<AudioManager>
     public AudioClip[] playerHeal;
     public AudioClip[] playerUltimate;
     public AudioClip[] playerActivateBuilding;
+    public AudioClip[] playerActivateTrap;                        //Trap activation for traps are shorter, so a shorter sound file is played
+    public AudioClip[] playerCombineBuildingFire;                 //when you combine a Fire ability with a tower
+    public AudioClip[] playerCombineBuildingIce;                  //When you combine a Ice ability with a tower
+    public AudioClip[] playerCombineBuildingBlast;                //When you combine both abilities with a tower
 
     [Header("Damaged")]
     public AudioClip[] playerTakeDamage;

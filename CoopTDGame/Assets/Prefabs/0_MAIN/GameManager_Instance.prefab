@@ -235,10 +235,10 @@ MonoBehaviour:
   definedSurfaces:
   - name: dirt
     footsteps:
-    - {fileID: 8300000, guid: 0056868aff218604e8b0c859b2f72e32, type: 3}
-    - {fileID: 8300000, guid: 8d93736d3c6baf341bc47a2953f63663, type: 3}
-    - {fileID: 8300000, guid: 129839f36797c2f4a809fb4b7046e7a4, type: 3}
-    - {fileID: 8300000, guid: 129839f36797c2f4a809fb4b7046e7a4, type: 3}
+    - {fileID: 8300000, guid: 0e92a4c98f5c4464d83f04a578e9f409, type: 3}
+    - {fileID: 8300000, guid: 0e92a4c98f5c4464d83f04a578e9f409, type: 3}
+    - {fileID: 8300000, guid: 0e92a4c98f5c4464d83f04a578e9f409, type: 3}
+    - {fileID: 8300000, guid: 0e92a4c98f5c4464d83f04a578e9f409, type: 3}
   - name: wood
     footsteps:
     - {fileID: 8300000, guid: 46100fda67d57774b93da415dd7c9e4f, type: 3}
@@ -345,10 +345,11 @@ MonoBehaviour:
   soundAudioSource: {fileID: 806816560449707382}
   musicAudioSource: {fileID: 3785148092310920731}
   playMenuMusicOnStart: 1
-  menuMusicAudioClip: {fileID: 8300000, guid: b993789a94b256242a6bf9b9044aec9c, type: 3}
-  ingameMusicAudioClip: {fileID: 0}
+  menuMusicAudioClip: {fileID: 8300000, guid: 54a4ec668ee0c4f4aaecc4104ef3270e, type: 3}
+  ingameMusicAudioClip: {fileID: 8300000, guid: 54a4ec668ee0c4f4aaecc4104ef3270e,
+    type: 3}
   playerJump:
-  - {fileID: 8300000, guid: b1f8cdb2ba233034e8150b7f0bef6188, type: 3}
+  - {fileID: 8300000, guid: 6e4a6f71df58d3b4ab698cbd3547ba4e, type: 3}
   playerMeleeAttack:
   - {fileID: 8300000, guid: e2a56062a22204e44a0a560b4c74d3e0, type: 3}
   playerHeal:
@@ -357,8 +358,19 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 77002f393a772c4408072a4937b16168, type: 3}
   playerActivateBuilding:
   - {fileID: 8300000, guid: 559d883b3a8558f488c83b9aca205fd1, type: 3}
+  playerActivateTrap:
+  - {fileID: 8300000, guid: d9bf29b671b4a9d4087170375be7acc8, type: 3}
+  playerCombineBuildingFire:
+  - {fileID: 8300000, guid: 58d93cf4cf2df67499bc98410a946421, type: 3}
+  playerCombineBuildingIce:
+  - {fileID: 8300000, guid: b162b56e8e047b848939c86761cc4710, type: 3}
+  playerCombineBuildingBlast:
+  - {fileID: 8300000, guid: 06fbdfc9db75e9f40977ebc33bb427b9, type: 3}
   playerTakeDamage:
-  - {fileID: 8300000, guid: 56a5d1863f58a5a46987d6aa39921e4f, type: 3}
+  - {fileID: 8300000, guid: 34b5e1f6080d73046a1dc8a082ee32a7, type: 3}
+  - {fileID: 8300000, guid: 3e158111607960048a3a8af278883326, type: 3}
+  - {fileID: 8300000, guid: 1b795c39bf326d740aff7b14be33d4ab, type: 3}
+  - {fileID: 8300000, guid: 1b795c39bf326d740aff7b14be33d4ab, type: 3}
   playerPickupSoul:
   - {fileID: 8300000, guid: a6b654ae514f7f84892b25f7559bf47b, type: 3}
   enemyMeleeAttack:
