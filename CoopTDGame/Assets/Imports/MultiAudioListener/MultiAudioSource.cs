@@ -411,7 +411,6 @@ namespace Assets.MultiAudioListener
                 _safetyAudioSource.Play();
                 foreach (var audioSource in _subAudioSources)
                 {
-                    Debug.Log(audioSource.Value.time);
                     audioSource.Value.time = 0f;
                     audioSource.Value.Play();
                 }
