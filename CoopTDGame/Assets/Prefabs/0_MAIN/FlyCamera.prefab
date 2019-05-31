@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 7522894987466764379}
   - component: {fileID: 7522894987466764380}
-  - component: {fileID: 7522894987466764381}
   - component: {fileID: 7522894987466764382}
   - component: {fileID: 7522894987466764383}
+  - component: {fileID: 3864852992469459615}
   m_Layer: 0
   m_Name: FlyCamera
   m_TagString: Untagged
@@ -76,14 +76,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!81 &7522894987466764381
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7522894987466764368}
-  m_Enabled: 1
 --- !u!114 &7522894987466764382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -170,3 +162,16 @@ MonoBehaviour:
   ySpeedMultiplier: 0.3
   fastSpeed: 1.5
   mouseSpeed: 3
+--- !u!114 &3864852992469459615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7522894987466764368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bfed13f5989cb3488076be6b47af218, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Volume: 1

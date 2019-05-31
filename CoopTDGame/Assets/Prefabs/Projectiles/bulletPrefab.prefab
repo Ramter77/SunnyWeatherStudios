@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 455592500324762051}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 184.10025, y: 7.914379, z: 179.58}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5978510264147587200}
   m_Father: {fileID: 0}
@@ -163,7 +163,7 @@ MonoBehaviour:
   _bypassEffects: 0
   _bypassListenerEffects: 0
   _bypassReverbZone: 0
-  _playOnAwake: 1
+  _playOnAwake: 0
   _loop: 0
   _priority: 128
   _volume: 1
@@ -172,8 +172,8 @@ MonoBehaviour:
   _dopplerLevel: 1
   _spread: 0
   _volumeRolloff: 0
-  _minDistance: 1
-  _maxDistance: 500
+  _minDistance: 5
+  _maxDistance: 50
   OnlyPlayForClosestCamera: 0
 --- !u!1001 &639235078226064404
 PrefabInstance:
@@ -200,7 +200,7 @@ PrefabInstance:
     - target: {fileID: 6496701407421858964, guid: 8b27f18bcc747324885bc2fd69da821f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.52
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6496701407421858964, guid: 8b27f18bcc747324885bc2fd69da821f,
         type: 3}

@@ -20,7 +20,8 @@ public class CleanIK : MonoBehaviour {
 	//length of the linecast
 	float legDistance;
 	//
-	int layerMask = 1 << 8;
+	//int layerMask = 1 << 8;
+	public LayerMask layerMask;
 	CharacterController controller;
 	UnityEngine.AI.NavMeshAgent agent;
 
@@ -36,7 +37,7 @@ public class CleanIK : MonoBehaviour {
 		agent = GetComponent<UnityEngine.AI.NavMeshAgent> ();
 
 		//hit all layers but the players layer
-		layerMask = ~layerMask;
+		//layerMask = ~layerMask;
 		colliderHeight = controller.height;
 		//controllerBoundsBottom = controller.bounds.extents.y;
 	}
