@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &3803484199791574957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3327857863322489808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37fac21d1f093d344816942d1abce94e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TimeOut: 1
+  m_DetachChildren: 0
 --- !u!1 &7422580703118685226
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,20 +158,6 @@ MonoBehaviour:
   _minDistance: 5
   _maxDistance: 50
   OnlyPlayForClosestCamera: 0
---- !u!114 &3803484199791574957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3327857863322489808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37fac21d1f093d344816942d1abce94e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_TimeOut: 1
-  m_DetachChildren: 0
 --- !u!1001 &8111917232813766013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -165,6 +165,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4307578528332608895}
     m_Modifications:
+    - target: {fileID: 6826820034995168941, guid: fe6744b2c4a60b54c9553f8f9b33afe8,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy Missile Explosion
+      objectReference: {fileID: 0}
+    - target: {fileID: 6826820034995168941, guid: fe6744b2c4a60b54c9553f8f9b33afe8,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7019608373130409262, guid: fe6744b2c4a60b54c9553f8f9b33afe8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -235,16 +245,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6826820034995168941, guid: fe6744b2c4a60b54c9553f8f9b33afe8,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy Missile Explosion
-      objectReference: {fileID: 0}
-    - target: {fileID: 6826820034995168941, guid: fe6744b2c4a60b54c9553f8f9b33afe8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe6744b2c4a60b54c9553f8f9b33afe8, type: 3}
 --- !u!1 &3327857863322489808 stripped
@@ -266,6 +266,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4307578528332608895}
     m_Modifications:
+    - target: {fileID: 7696856422987391200, guid: df4af5302d379b343b67b22dd697906e,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy Ranged Missile (Travels to Z+ axis)
+      objectReference: {fileID: 0}
     - target: {fileID: 2140762686186981418, guid: df4af5302d379b343b67b22dd697906e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -320,11 +325,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7696856422987391200, guid: df4af5302d379b343b67b22dd697906e,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy Ranged Missile (Travels to Z+ axis)
       objectReference: {fileID: 0}
     - target: {fileID: 795899585980087438, guid: df4af5302d379b343b67b22dd697906e,
         type: 3}

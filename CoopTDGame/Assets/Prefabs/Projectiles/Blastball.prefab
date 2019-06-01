@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 2607711891574106925}
   - component: {fileID: 650504421713984160}
   - component: {fileID: 1163154664064150848}
+  - component: {fileID: 476355338849879964}
   m_Layer: 0
   m_Name: Blastball
   m_TagString: ElementProjectile
@@ -157,6 +158,36 @@ MonoBehaviour:
   _minDistance: 5
   _maxDistance: 50
   OnlyPlayForClosestCamera: 0
+--- !u!114 &476355338849879964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3451173172870750879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 8300000, guid: 87dabe7fe53fa004385f381f5fd080c9, type: 3}
+  _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 1
+  _loop: 1
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 10
+  _maxDistance: 500
+  OnlyPlayForClosestCamera: 0
 --- !u!1001 &540124224381419998
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -164,6 +195,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3451173172870750876}
     m_Modifications:
+    - target: {fileID: 114646, guid: d5419f8a52049d7438b5d442bf0c3d22, type: 3}
+      propertyPath: m_Name
+      value: Blast Missile
+      objectReference: {fileID: 0}
     - target: {fileID: 462810, guid: d5419f8a52049d7438b5d442bf0c3d22, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -219,10 +254,6 @@ PrefabInstance:
     - target: {fileID: 462810, guid: d5419f8a52049d7438b5d442bf0c3d22, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114646, guid: d5419f8a52049d7438b5d442bf0c3d22, type: 3}
-      propertyPath: m_Name
-      value: Blast Missile
       objectReference: {fileID: 0}
     - target: {fileID: 1066129683368971862, guid: d5419f8a52049d7438b5d442bf0c3d22,
         type: 3}
