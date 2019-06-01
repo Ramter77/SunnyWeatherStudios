@@ -13,6 +13,33 @@ public class EffectReuse : PoolObject
     {
         myParticleSystem = GetComponent<ParticleSystem>();
         _source = GetComponent<MultiAudioSource>();
+        if (_source != null)
+        {
+            if (explosionIndex == 0)
+                AudioManager.Instance.PlaySound(_source, Sound.towerDefaultImpact);
+            if (explosionIndex == 1)
+                AudioManager.Instance.PlaySound(_source, Sound.towerFireImpact);
+            if (explosionIndex == 2)
+                AudioManager.Instance.PlaySound(_source, Sound.towerIceImpact);
+            if (explosionIndex == 3)
+                AudioManager.Instance.PlaySound(_source, Sound.towerBlastImpact);
+        }
+    }
+
+    public void PlaySound()
+    {
+        _source = GetComponent<MultiAudioSource>();
+        if (_source != null)
+        {
+            if (explosionIndex == 0)
+                AudioManager.Instance.PlaySound(_source, Sound.towerDefaultImpact);
+            if (explosionIndex == 1)
+                AudioManager.Instance.PlaySound(_source, Sound.towerFireImpact);
+            if (explosionIndex == 2)
+                AudioManager.Instance.PlaySound(_source, Sound.towerIceImpact);
+            if (explosionIndex == 3)
+                AudioManager.Instance.PlaySound(_source, Sound.towerBlastImpact);
+        }
     }
 
     public override void OnObjectReuse()
@@ -21,18 +48,9 @@ public class EffectReuse : PoolObject
         {
             myParticleSystem.Simulate(0.0f, true, true);
             myParticleSystem.Play();
+            PlaySound();
             //Invoke("HideSelf", 2);
         }
-        _source = GetComponent<MultiAudioSource>();
-        if (explosionIndex == 0)
-            AudioManager.Instance.PlaySound(_source, Sound.towerDefaultImpact);
-        if (explosionIndex == 1)
-            AudioManager.Instance.PlaySound(_source, Sound.towerFireImpact);
-        if (explosionIndex == 2)
-            AudioManager.Instance.PlaySound(_source, Sound.towerIceImpact);
-        if (explosionIndex == 3)
-            AudioManager.Instance.PlaySound(_source, Sound.towerBlastImpact);
-        
     }
 
     void HideSelf()
