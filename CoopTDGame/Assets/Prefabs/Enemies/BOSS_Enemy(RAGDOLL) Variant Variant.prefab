@@ -2635,7 +2635,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 85d47d8a039baef43b25ac1cd46591a4, type: 3}
   m_Controller: {fileID: 9100000, guid: f06faba9e19a8304e8f95374df5a8ce4, type: 2}
   m_CullingMode: 1
-  m_UpdateMode: 1
+  m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -2688,7 +2688,7 @@ MonoBehaviour:
   detectedTarget: 0
   maxEnemiesSwarmingPlayer: 5
   maxEnemiesSwarmingTower: 8
-  enemySpeed: 1
+  enemySpeed: 0.1
   attackRange: 18
   followRadius: 50
   stoppingRange: 10
@@ -2757,8 +2757,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 7854021692760138683}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.6
-  m_Speed: 1
+  m_Radius: 1
+  m_Speed: 0.1
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -2819,13 +2819,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7854021692760138683}
   serializedVersion: 2
-  m_Mass: 3
+  m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 3
 --- !u!114 &8703339304001417622
 MonoBehaviour:
@@ -2942,7 +2942,7 @@ MonoBehaviour:
   _dopplerLevel: 1
   _spread: 0
   _volumeRolloff: 0
-  _minDistance: 1
+  _minDistance: 10
   _maxDistance: 500
   OnlyPlayForClosestCamera: 0
 --- !u!1 &7854632294711136870
@@ -3726,6 +3726,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2008543640593032038}
     m_Modifications:
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy on Slow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5953861532791573198, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3795,21 +3810,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy on Slow
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3540249742271492023, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}

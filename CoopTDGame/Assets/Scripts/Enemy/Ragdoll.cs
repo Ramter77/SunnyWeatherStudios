@@ -47,7 +47,7 @@ public class Ragdoll : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         //Set kinematic of main rigidbody to false after setting all to true
-        rb.isKinematic = true;
+        rb.isKinematic = false;
 
         
 

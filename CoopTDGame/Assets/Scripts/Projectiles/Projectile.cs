@@ -131,99 +131,104 @@ public class Projectile : MonoBehaviour
     /// <param name="other">The Collision data associated with this collision.</param>
     void OnCollisionEnter(Collision other)
     {
-        #region Child (Stop VFX spawnRate & maybe unparent child)
-        if (transform != null) {
-            if (transform.childCount > 0) {
-                GameObject child = transform.GetChild(0).gameObject;
-                
-                if (child.GetComponent<VisualEffect>() != null) {
-                    vfxChild = child.GetComponent<VisualEffect>();
+        if (other.gameObject.layer == 20 || other.gameObject.layer == 21) {
+            other.gameObject.GetComponent<CombineElements>().TryCombine(gameObject);
+        }
+        //else {
+            #region Child (Stop VFX spawnRate & maybe unparent child)
+            if (transform != null) {
+                if (transform.childCount > 0) {
+                    GameObject child = transform.GetChild(0).gameObject;
+                    
+                    if (child.GetComponent<VisualEffect>() != null) {
+                        vfxChild = child.GetComponent<VisualEffect>();
 
-                    vfxChild.SetFloat(SPAWN_RATE_NAME, 0);
-                    vfxChild.SetVector2(LIFETIME_RATE_NAME, new Vector2(0,0));
-                }
-                
-                if (unparentChildOnContact) {
-                    #region Destroy Child
-                    if (destroyChildOnContact) {
-                        if (transform.childCount > 1) {
-                            Destroy(transform.GetChild(1).gameObject);
-                        }
-
-                        Destroy(child, childDestroyTime);
+                        vfxChild.SetFloat(SPAWN_RATE_NAME, 0);
+                        vfxChild.SetVector2(LIFETIME_RATE_NAME, new Vector2(0,0));
                     }
-                    #endregion
+                    
+                    if (unparentChildOnContact) {
+                        #region Destroy Child
+                        if (destroyChildOnContact) {
+                            if (transform.childCount > 1) {
+                                Destroy(transform.GetChild(1).gameObject);
+                            }
 
-                    child.transform.parent = null;
-                }
-            }
-        }
-        #endregion
+                            Destroy(child, childDestroyTime);
+                        }
+                        #endregion
 
-
-
-        #region On contact with an ENEMY
-        if (other.gameObject.tag == "Enemy") {
-            //References & allow interaction
-            StatusEffect statusEffect = other.gameObject.GetComponent<StatusEffect>();
-            ElementInteractor elemInteraction = other.gameObject.GetComponent<ElementInteractor>();
-            elemInteraction.allowInteraction = true;
-
-            #region BURN
-            if (burnEnemiesOnContact) {
-                //Burn
-                statusEffect.BurnCoroutine();
-
-                //Set type
-                elemInteraction.elementType = Element.Fire;
-            }
-            #endregion
-
-            #region FREEZE
-            if (freezeEnemiesOnContact) {
-                //Freeze
-                statusEffect.FreezeCoroutine();
-
-                //Set type
-                elemInteraction.elementType = Element.Ice;
-            }
-            #endregion
-        }
-        #endregion
-
-
-        #region Destroy
-        if (destroyOnContact) {
-            StartCoroutine(DestroyGO(0f));
-        }
-        #endregion
-        else {
-            #region Turn off damage script on contact
-            if (disableDamageScriptOnContact) {
-                if (GetComponent<PlayerWeaponDamage>() != null) {
-                    GetComponent<PlayerWeaponDamage>().enabled = false;
+                        child.transform.parent = null;
+                    }
                 }
             }
             #endregion
 
-            #region Rigidbody
-            if (GetComponent<Rigidbody>() != null) {
-                Rigidbody rb = GetComponent<Rigidbody>();
-                if (stopVelocityOnContact) {
-                    rb.velocity = Vector3.zero;
+
+
+            #region On contact with an ENEMY
+            if (other.gameObject.tag == "Enemy") {
+                //References & allow interaction
+                StatusEffect statusEffect = other.gameObject.GetComponent<StatusEffect>();
+                ElementInteractor elemInteraction = other.gameObject.GetComponent<ElementInteractor>();
+                elemInteraction.allowInteraction = true;
+
+                #region BURN
+                if (burnEnemiesOnContact) {
+                    //Burn
+                    statusEffect.BurnCoroutine();
+
+                    //Set type
+                    elemInteraction.elementType = Element.Fire;
                 }
-                if (kinematicOnContact) {
-                    rb.isKinematic = true;
+                #endregion
+
+                #region FREEZE
+                if (freezeEnemiesOnContact) {
+                    //Freeze
+                    statusEffect.FreezeCoroutine();
+
+                    //Set type
+                    elemInteraction.elementType = Element.Ice;
                 }
+                #endregion
             }
             #endregion
 
-            #region Parent on contact
-            if (parentOnContact) {
-                gameObject.transform.SetParent(other.transform, adjustWhenParentingOnContact);
+
+            #region Destroy
+            if (destroyOnContact) {
+                StartCoroutine(DestroyGO(0f));
             }
             #endregion
-        }
+            else {
+                #region Turn off damage script on contact
+                if (disableDamageScriptOnContact) {
+                    if (GetComponent<PlayerWeaponDamage>() != null) {
+                        GetComponent<PlayerWeaponDamage>().enabled = false;
+                    }
+                }
+                #endregion
+
+                #region Rigidbody
+                if (GetComponent<Rigidbody>() != null) {
+                    Rigidbody rb = GetComponent<Rigidbody>();
+                    if (stopVelocityOnContact) {
+                        rb.velocity = Vector3.zero;
+                    }
+                    if (kinematicOnContact) {
+                        rb.isKinematic = true;
+                    }
+                }
+                #endregion
+
+                #region Parent on contact
+                if (parentOnContact) {
+                    gameObject.transform.SetParent(other.transform, adjustWhenParentingOnContact);
+                }
+                #endregion
+            }
+        //}
     }
 
     IEnumerator DestroyGO(float delay) {

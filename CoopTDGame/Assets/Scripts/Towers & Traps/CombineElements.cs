@@ -79,35 +79,14 @@ public class CombineElements : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// OnCollisionEnter is called when this collider/rigidbody has begun
-    /// touching another rigidbody/collider.
-    /// </summary>
-    /// <param name="other">The Collision data associated with this collision.</param>
-    /* void OnCollisionEnter(Collision other)
-    {
+    public void TryCombine(GameObject go) {
         //only when already activated
         if (activatePrefabScript.trapActive || activatePrefabScript.towerActive) {
-            if (other.gameObject.tag == projectileTag)
+            if (go.tag == projectileTag)
             {
-                if (other.gameObject.GetComponent<EffectHandler>() != null)
+                if (go.GetComponent<EffectHandler>() != null)
                 {
-                    int otherProjectileElementIndex = other.gameObject.GetComponent<EffectHandler>().effectIndex;
-                    _CombineElements(otherProjectileElementIndex);
-                }
-            }
-        }
-    } */
-
-    void OnTriggerEnter(Collider other)
-    {
-        //only when already activated
-        if (activatePrefabScript.trapActive || activatePrefabScript.towerActive) {
-            if (other.gameObject.tag == projectileTag)
-            {
-                if (other.gameObject.GetComponent<EffectHandler>() != null)
-                {
-                    int otherProjectileElementIndex = other.gameObject.GetComponent<EffectHandler>().effectIndex;
+                    int otherProjectileElementIndex = go.GetComponent<EffectHandler>().effectIndex;
                     _CombineElements(otherProjectileElementIndex);
                 }
             }
