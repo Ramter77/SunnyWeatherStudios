@@ -23,7 +23,8 @@ public class EffectReuse : PoolObject
             myParticleSystem.Play();
             //Invoke("HideSelf", 2);
         }
-        if(explosionIndex == 0)
+        _source = GetComponent<MultiAudioSource>();
+        if (explosionIndex == 0)
             AudioManager.Instance.PlaySound(_source, Sound.towerDefaultImpact);
         if (explosionIndex == 1)
             AudioManager.Instance.PlaySound(_source, Sound.towerFireImpact);
@@ -31,7 +32,7 @@ public class EffectReuse : PoolObject
             AudioManager.Instance.PlaySound(_source, Sound.towerIceImpact);
         if (explosionIndex == 3)
             AudioManager.Instance.PlaySound(_source, Sound.towerBlastImpact);
-
+        
     }
 
     void HideSelf()
