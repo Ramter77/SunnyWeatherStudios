@@ -402,14 +402,8 @@ public class BasicEnemy : MonoBehaviour
 
     private void WalkToSphere()
     {
-        NavMeshPath path = new NavMeshPath();
         if (Sphere != null)
         { // check if path is reachable, if so then set destination to closest target
-            /*agent.CalculatePath(Sphere.transform.position, path);
-            if (path.status != NavMeshPathStatus.PathPartial)
-            {
-                agent.destination = Sphere.transform.position;
-            }*/
             agent.destination = Sphere.transform.position;
             if (Target != null)
             {
