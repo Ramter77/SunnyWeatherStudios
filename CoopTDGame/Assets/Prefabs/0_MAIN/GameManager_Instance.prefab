@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 230509602}
   - component: {fileID: 806816560449707382}
   - component: {fileID: 3785148092310920731}
+  - component: {fileID: 5611146664278077940}
   m_Layer: 0
   m_Name: GameManager_Instance
   m_TagString: Untagged
@@ -456,3 +457,16 @@ MonoBehaviour:
   _minDistance: 5000
   _maxDistance: 5000
   OnlyPlayForClosestCamera: 1
+--- !u!114 &5611146664278077940
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256656428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce629f49d4321a04ba1e90dc4daffa6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  use2Displays: 1
