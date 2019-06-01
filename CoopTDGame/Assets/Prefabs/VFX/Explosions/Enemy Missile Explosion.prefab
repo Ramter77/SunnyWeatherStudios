@@ -9433,6 +9433,8 @@ GameObject:
   - component: {fileID: 7019608373130409262}
   - component: {fileID: 369426963198600346}
   - component: {fileID: 3169700335274212157}
+  - component: {fileID: 3706497284611195544}
+  - component: {fileID: 1131760587518614985}
   m_Layer: 0
   m_Name: Enemy Missile Explosion
   m_TagString: Untagged
@@ -14110,6 +14112,49 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &3706497284611195544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6826820034995168941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69668b242b7a3374da3a9c4e75125405, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionIndex: 0
+--- !u!114 &1131760587518614985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6826820034995168941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 1
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 500
+  OnlyPlayForClosestCamera: 0
 --- !u!1 &7742341281410252535
 GameObject:
   m_ObjectHideFlags: 0

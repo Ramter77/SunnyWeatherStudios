@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 26634026197291010}
   - component: {fileID: 1836772957134276083}
   - component: {fileID: 4519301815525348686}
+  - component: {fileID: 5485108290111525223}
   m_Layer: 0
   m_Name: Blast Explosion
   m_TagString: Untagged
@@ -4681,6 +4682,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69668b242b7a3374da3a9c4e75125405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionIndex: 3
 --- !u!114 &26634026197291010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4721,6 +4723,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.1, z: 0.1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5485108290111525223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 147226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 1
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 750
+  OnlyPlayForClosestCamera: 0
 --- !u!1 &155830
 GameObject:
   m_ObjectHideFlags: 0

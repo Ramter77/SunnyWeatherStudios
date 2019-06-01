@@ -4678,6 +4678,7 @@ GameObject:
   - component: {fileID: 19871332}
   - component: {fileID: 19938588}
   - component: {fileID: 6842383938887633060}
+  - component: {fileID: 3889603300046557608}
   m_Layer: 0
   m_Name: Ice Explosion
   m_TagString: Untagged
@@ -9412,6 +9413,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69668b242b7a3374da3a9c4e75125405, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionIndex: 2
+--- !u!114 &3889603300046557608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 0
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 1
+  _maxDistance: 5000
+  OnlyPlayForClosestCamera: 0
 --- !u!1 &157652
 GameObject:
   m_ObjectHideFlags: 0
