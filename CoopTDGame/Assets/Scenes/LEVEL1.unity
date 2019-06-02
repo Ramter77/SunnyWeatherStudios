@@ -78747,16 +78747,29 @@ PrefabInstance:
       propertyPath: stopSoundBeforeNext
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 230509602, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
+      propertyPath: menuMusicAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e7608e0a56b7ef949867c62645189327, type: 3}
+    - target: {fileID: 230509602, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
+      propertyPath: ingameMusicAudioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e7608e0a56b7ef949867c62645189327, type: 3}
     - target: {fileID: 5611146664278077940, guid: bd8d990b7ca185547ac6ce483afb9a97,
         type: 3}
       propertyPath: enableFlyCam
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5611146664278077940, guid: bd8d990b7ca185547ac6ce483afb9a97,
         type: 3}
       propertyPath: FlyCam
       value: 
       objectReference: {fileID: 237619433}
+    - target: {fileID: 5611146664278077940, guid: bd8d990b7ca185547ac6ce483afb9a97,
+        type: 3}
+      propertyPath: use2Displays
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
 --- !u!1 &2819464313287289560 stripped
@@ -78780,7 +78793,7 @@ PrefabInstance:
     - target: {fileID: 2819464312394078172, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
       propertyPath: m_TargetDisplay
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2819464313814937923, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
@@ -79049,7 +79062,7 @@ PrefabInstance:
     - target: {fileID: 1099153510804679954, guid: 53d796d825431984aa41ca9d31735679,
         type: 3}
       propertyPath: m_TargetDisplay
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1099153510938151088, guid: 53d796d825431984aa41ca9d31735679,
         type: 3}
@@ -79193,7 +79206,7 @@ PrefabInstance:
     - target: {fileID: 1625836679264939064, guid: 267f19af63074424bb6baab78fadee3f,
         type: 3}
       propertyPath: m_TargetDisplay
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7690174963111231775, guid: 267f19af63074424bb6baab78fadee3f,
         type: 3}
