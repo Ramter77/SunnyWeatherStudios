@@ -48,7 +48,8 @@ public class HealAbility : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(playerIndex == 0)
+        isHealedParticle.SetActive(false);
+        if (playerIndex == 0)
         {
             playerToHeal = GameObject.FindGameObjectWithTag("Player2");
         }
@@ -157,6 +158,11 @@ public class HealAbility : MonoBehaviour
     /// you can choose to enable self heal (so it will heal himself and others)
     /// or just heal other players -> more coop
     /// </summary>
+    IEnumerator disableIsHealed()
+    {
+        yield return new WaitForSeconds(3.5f);
+        playerToHeal.GetComponent<HealAbility>().isHealedParticle.SetActive(false);
+    }
 
     void healAbility()
     {
@@ -167,8 +173,17 @@ public class HealAbility : MonoBehaviour
         {
             if(playerToHeal != null)
             {
-                spawnPos = new Vector3(playerToHeal.transform.position.x, playerToHeal.transform.position.y, playerToHeal.transform.position.z);
-                Instantiate(isHealedParticle, spawnPos, Quaternion.LookRotation(spawnRot));
+                playerToHeal.GetComponent<HealAbility>().isHealedParticle.SetActive(true);
+                StartCoroutine(disableIsHealed());
+                if (isHealedParticle.transform.childCount == 3)
+                {
+                    playerToHeal.GetComponent<HealAbility>().isHealedParticle.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Simulate(0.0f, true, true);
+                    playerToHeal.GetComponent<HealAbility>().isHealedParticle.transform.GetChild(0).gameObject.GetComponent<ParticleSystem>().Play();
+                    playerToHeal.GetComponent<HealAbility>().isHealedParticle.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>().Simulate(0.0f, true, true);
+                    playerToHeal.GetComponent<HealAbility>().isHealedParticle.transform.GetChild(1).gameObject.GetComponent<ParticleSystem>().Play();
+                    playerToHeal.GetComponent<HealAbility>().isHealedParticle.transform.GetChild(2).gameObject.GetComponent<ParticleSystem>().Simulate(0.0f, true, true);
+                    playerToHeal.GetComponent<HealAbility>().isHealedParticle.transform.GetChild(2).gameObject.GetComponent<ParticleSystem>().Play();
+                }
 
                 if (playerToHeal.GetComponent<LifeAndStats>().health <= 75)
                 {
