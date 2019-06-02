@@ -312,6 +312,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad9952b25c805e2489c13820abe9cacc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIndex: 1
+  playerToHeal: {fileID: 0}
   healthbar: {fileID: 0}
   maxHealth: 100
   healAbilityUiImageOn: {fileID: 0}
@@ -323,6 +325,7 @@ MonoBehaviour:
   selfHeal: 0
   healAmount: 25
   healParticle: {fileID: 2131744858, guid: 5d94fef93032a0748a6059e951f1c349, type: 3}
+  isHealedParticle: {fileID: 2131744858, guid: 6f14df1ce756ca446945667a9539bdcb, type: 3}
 --- !u!114 &1099153509272865649
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class HealAbility : MonoBehaviour
 {
+    [Tooltip("0 for Player 1; and 1 for Player 2")]public int playerIndex;
+    public GameObject playerToHeal;
 
     [Header("General UI settings")]
     public Image healthbar;
@@ -32,6 +34,8 @@ public class HealAbility : MonoBehaviour
 
     public GameObject healParticle;
 
+    public GameObject isHealedParticle;
+
     private Animator playerAnim;
 
     #region Input
@@ -44,6 +48,14 @@ public class HealAbility : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(playerIndex == 0)
+        {
+            playerToHeal = GameObject.FindGameObjectWithTag("Player2");
+        }
+        else
+        {
+            playerToHeal = GameObject.FindGameObjectWithTag("Player");
+        }
         playC = GetComponent<PlayerController>();
         playerAnim = GetComponent<Animator>();
         lifeAndStatsScript = GetComponent<LifeAndStats>();
@@ -151,9 +163,64 @@ public class HealAbility : MonoBehaviour
         Vector3 spawnPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
         Vector3 spawnRot = new Vector3(0,90,0);
         Instantiate(healParticle, spawnPos, Quaternion.LookRotation(spawnRot));
+        if(!selfHeal)
+        {
+            if(playerToHeal != null)
+            {
+                spawnPos = new Vector3(playerToHeal.transform.position.x, playerToHeal.transform.position.y, playerToHeal.transform.position.z);
+                Instantiate(isHealedParticle, spawnPos, Quaternion.LookRotation(spawnRot));
+
+                if (playerToHeal.GetComponent<LifeAndStats>().health <= 75)
+                {
+                    playerToHeal.GetComponent<LifeAndStats>().healHealth(healAmount);
+                    healAmount = fallbackHealAmount;
+                }
+                else if (playerToHeal.GetComponent<LifeAndStats>().health > maxHealth - healAmount)
+                {
+                    healAmount = maxHealth - playerToHeal.GetComponent<LifeAndStats>().health;
+                    playerToHeal.GetComponent<LifeAndStats>().healHealth(healAmount);
+                    healAmount = fallbackHealAmount;
+                }
+                else if (playerToHeal.GetComponent<LifeAndStats>().health <= 0)
+                {
+                    playerToHeal.GetComponent<LifeAndStats>().Revive();
+                }
+            }
+        }
+        if(selfHeal)
+        {
+            if(gameObject.GetComponent<LifeAndStats>().health <= 75)
+            {
+                gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
+                healAmount = fallbackHealAmount;
+            }
+            else if (gameObject.GetComponent<LifeAndStats>().health > maxHealth - healAmount)
+            {
+                healAmount = maxHealth - gameObject.GetComponent<LifeAndStats>().health;
+                gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
+                healAmount = fallbackHealAmount;
+            }
+            /*
+            if (playerToHeal.GetComponent<LifeAndStats>().health <= 75)
+            {
+                playerToHeal.GetComponent<LifeAndStats>().healHealth(healAmount);
+                healAmount = fallbackHealAmount;
+            }
+            else if (playerToHeal.GetComponent<LifeAndStats>().health > maxHealth - healAmount)
+            {
+                healAmount = maxHealth - playerToHeal.GetComponent<LifeAndStats>().health;
+                playerToHeal.GetComponent<LifeAndStats>().healHealth(healAmount);
+                healAmount = fallbackHealAmount;
+            }
+            else if (playerToHeal.GetComponent<LifeAndStats>().health <= 0)
+            {
+                playerToHeal.GetComponent<LifeAndStats>().Revive();
+            }*/
+        }
+
 
         //AudioManager.Instance.PlaySound(playC.playerAudioSource, Sound.playerHeal);
-
+        /*
 
         Collider[] col = Physics.OverlapSphere(transform.position, healRadius); // draw a sphere at desire point based on player pos + offset and desired radius of effect
         if (col.Length > 0)
@@ -196,7 +263,7 @@ public class HealAbility : MonoBehaviour
                             }
                             else {
                                 hit.gameObject.GetComponent<LifeAndStats>().healHealth(healAmount);
-                            } */
+                            } 
 
                             if (hit.gameObject.GetComponent<LifeAndStats>().health <= 75)
                             {
@@ -212,7 +279,7 @@ public class HealAbility : MonoBehaviour
                     }
                 }
             }
-        }
+        }*/
     }
     #endregion
 

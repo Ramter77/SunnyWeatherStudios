@@ -2795,11 +2795,52 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7777738008700112370, guid: 064a8a3d64a5d784882a0951943238b9,
+    - target: {fileID: 7777738009032027036, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
-      propertyPath: m_CullingMask.m_Bits
-      value: 4294967295
+      propertyPath: m_Name
+      value: Player 1 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026990, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1,
+        type: 2}
+    - target: {fileID: 7777738009032026990, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026990, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026990, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026991, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_Mass
+      value: 1000000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026991, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026988, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 782d0f42fa12e2f4db649ec9c5c6990a, type: 3}
+    - target: {fileID: 7777738009032026988, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 10474c2064b368248b13e0d88f1b5eda, type: 2}
     - target: {fileID: 7777738009032026989, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2855,68 +2896,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032026985, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1,
-        type: 2}
-    - target: {fileID: 7777738009032026985, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_Radius
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032026985, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_SlopeLimit
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032027036, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_Name
-      value: Player 1 Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032026990, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1,
-        type: 2}
-    - target: {fileID: 7777738009032026990, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032026990, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_Radius
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032026990, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_Center.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032026991, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1000000
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032026991, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_AngularDrag
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7777738009032026988, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_Avatar
-      value: 
-      objectReference: {fileID: 9000000, guid: 782d0f42fa12e2f4db649ec9c5c6990a, type: 3}
-    - target: {fileID: 7777738009032026988, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 10474c2064b368248b13e0d88f1b5eda, type: 2}
     - target: {fileID: 7777738009032026987, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: WeaponTriggerCollider
@@ -2966,6 +2945,22 @@ PrefabInstance:
         type: 3}
       propertyPath: rangedAbilityCooldownImage
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026985, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1,
+        type: 2}
+    - target: {fileID: 7777738009032026985, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738009032026985, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_SlopeLimit
+      value: 60
       objectReference: {fileID: 0}
     - target: {fileID: 7777738009032027037, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
@@ -3158,10 +3153,36 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2131744858, guid: 5d94fef93032a0748a6059e951f1c349,
         type: 3}
+    - target: {fileID: 1652080087782389602, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: isHealedParticle
+      value: 
+      objectReference: {fileID: 2131744858, guid: 6f14df1ce756ca446945667a9539bdcb,
+        type: 3}
     - target: {fileID: 5828072646404914351, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
       propertyPath: m_RootOrder
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7777738008700112370, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843011682767655282, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: _priority
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843011682767655282, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: _volume
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2843011682767655282, guid: 064a8a3d64a5d784882a0951943238b9,
+        type: 3}
+      propertyPath: _maxDistance
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7777738008566605906, guid: 064a8a3d64a5d784882a0951943238b9,
         type: 3}
@@ -3182,21 +3203,6 @@ PrefabInstance:
         type: 3}
       propertyPath: antialiasingMode
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843011682767655282, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: _priority
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843011682767655282, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: _volume
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2843011682767655282, guid: 064a8a3d64a5d784882a0951943238b9,
-        type: 3}
-      propertyPath: _maxDistance
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 064a8a3d64a5d784882a0951943238b9, type: 3}
