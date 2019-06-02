@@ -9,6 +9,9 @@ public class SoulBackpack : Singleton<SoulBackpack>
     public Text soulBackpackText; // displays the amount of shared souls in the ui
     private GameObject sphere;
 
+    public Color defaultColor;
+    public Color usageColor;
+
     public KeyCode SoulHotkey;
 
     private void Start() {
@@ -36,7 +39,15 @@ public class SoulBackpack : Singleton<SoulBackpack>
     public void reduceSoulsByCost(int cost)
     {
         sharedSoulAmount -= cost;
+        soulBackpackText.color = usageColor;
+        StartCoroutine(resetColor());
     }
+    IEnumerator resetColor()
+    {
+        yield return new WaitForSeconds(1f);
+        soulBackpackText.color = defaultColor; 
+    }
+
 
     public void transferSoulsIntoSphere(int amount)
     {
