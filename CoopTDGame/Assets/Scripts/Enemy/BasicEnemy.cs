@@ -20,7 +20,6 @@ public class BasicEnemy : MonoBehaviour
     private Rigidbody rigid;
     private GameObject Sphere;
     private GameObject checkedTarget = null;
-    public GameObject attackIndication;
     private Transform targetPos = null;
     public List<GameObject> possibleTargets;
     public bool checkedForTarget = false;
@@ -91,7 +90,6 @@ public class BasicEnemy : MonoBehaviour
         WalkToSphere();
         StartCoroutine(ScanCycle());
         preparationTime = Random.Range(1, maxPreparationTimeForAttack);
-        attackIndication.SetActive(false);
         enemyAnim = GetComponent<Animator>();
         possibleTargets = new List<GameObject>();
         agent.speed = enemySpeed;
@@ -228,7 +226,6 @@ public class BasicEnemy : MonoBehaviour
         StartCoroutine(ScanCycle());
         agent.isStopped = false;
         attackState = 0;
-        attackIndication.SetActive(false);
         detectedTarget = false;
         enemySpeed = fallbackSpeed;
         WalkToSphere();
@@ -260,7 +257,6 @@ public class BasicEnemy : MonoBehaviour
             }
 
 
-            attackIndication.SetActive(false);
             
             //charging = false;
             //agent.speed *= 1;
@@ -269,7 +265,6 @@ public class BasicEnemy : MonoBehaviour
         if(preparationTime <= 2)
         {
             // display attack indication 
-            attackIndication.SetActive(true);
         }
     }
 

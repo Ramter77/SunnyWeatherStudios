@@ -8547,6 +8547,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7522894987466764380, guid: 34a647b5930ad8a4bae54a1c43f54665,
+        type: 3}
+      propertyPath: m_TargetDisplay
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522894987466764383, guid: 34a647b5930ad8a4bae54a1c43f54665,
+        type: 3}
+      propertyPath: speed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522894987466764383, guid: 34a647b5930ad8a4bae54a1c43f54665,
+        type: 3}
+      propertyPath: ySpeedMultiplier
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522894987466764383, guid: 34a647b5930ad8a4bae54a1c43f54665,
+        type: 3}
+      propertyPath: mouseSpeed
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7522894987466764381, guid: 34a647b5930ad8a4bae54a1c43f54665, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 34a647b5930ad8a4bae54a1c43f54665, type: 3}
@@ -61631,6 +61651,16 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2098343734937172128, guid: 8b6237b3db08821448f330a044a1c41a,
+        type: 3}
+      propertyPath: maxhealth
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 2098343734937172128, guid: 8b6237b3db08821448f330a044a1c41a,
+        type: 3}
+      propertyPath: health
+      value: 3000
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b6237b3db08821448f330a044a1c41a, type: 3}
 --- !u!1001 &1698191020
@@ -78701,7 +78731,7 @@ PrefabInstance:
     - target: {fileID: 5721786437306105353, guid: bd8d990b7ca185547ac6ce483afb9a97,
         type: 3}
       propertyPath: sharedSoulAmount
-      value: 50
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 806816560449707382, guid: bd8d990b7ca185547ac6ce483afb9a97,
         type: 3}
@@ -78746,6 +78776,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464312394078172, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: m_TargetDisplay
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2819464313814937923, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
@@ -78860,6 +78895,26 @@ PrefabInstance:
     - target: {fileID: 2819464313814938040, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
       propertyPath: Player_
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464313814938040, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: turn_Speed
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464313814938040, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: TurnPlayerForward
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464312258998910, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: turnSpeed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464312394078165, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: damping
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -78984,7 +79039,22 @@ PrefabInstance:
     - target: {fileID: 1099153509272865654, guid: 53d796d825431984aa41ca9d31735679,
         type: 3}
       propertyPath: Player_
-      value: 0
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099153509272865654, guid: 53d796d825431984aa41ca9d31735679,
+        type: 3}
+      propertyPath: turn_Speed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099153510804679954, guid: 53d796d825431984aa41ca9d31735679,
+        type: 3}
+      propertyPath: m_TargetDisplay
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099153510938151088, guid: 53d796d825431984aa41ca9d31735679,
+        type: 3}
+      propertyPath: turnSpeed
+      value: 2.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53d796d825431984aa41ca9d31735679, type: 3}
@@ -79120,6 +79190,11 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1399312963}
+    - target: {fileID: 1625836679264939064, guid: 267f19af63074424bb6baab78fadee3f,
+        type: 3}
+      propertyPath: m_TargetDisplay
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7690174963111231775, guid: 267f19af63074424bb6baab78fadee3f,
         type: 3}
       propertyPath: BossWave
@@ -79135,6 +79210,11 @@ PrefabInstance:
       propertyPath: annoucementMessageHolder
       value: 
       objectReference: {fileID: 662600958}
+    - target: {fileID: 7690174963111231775, guid: 267f19af63074424bb6baab78fadee3f,
+        type: 3}
+      propertyPath: addedEnemiesPerWave
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5571738065447709121, guid: 267f19af63074424bb6baab78fadee3f,
         type: 3}
       propertyPath: m_IsActive
