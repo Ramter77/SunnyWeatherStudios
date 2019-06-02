@@ -5,6 +5,9 @@ using UnityEngine;
 public class DisplaySetup : MonoBehaviour
 {
     public bool use2Displays = false;
+    public bool enableFlyCam = false;
+    public GameObject FlyCam;
+
     // Use this for initialization
     void Start()
     {
@@ -17,6 +20,14 @@ public class DisplaySetup : MonoBehaviour
                 Display.displays[1].Activate();
             if (Display.displays.Length > 2)
                 Display.displays[2].Activate();
+        }
+
+        if (enableFlyCam)
+        {
+            if (FlyCam != null)
+            {
+                FlyCam.SetActive(true);
+            }
         }
     }
 }
