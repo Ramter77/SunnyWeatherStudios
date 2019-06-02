@@ -18,6 +18,8 @@ public class ActivatePrefab : MonoBehaviour
     private float maxTowerDuration;
     [SerializeField]
     private bool playLowerAnim;
+    [SerializeField]
+    private bool playFirstLowerAnim;
 
     
     private SphereCollider activationCollider;
@@ -58,7 +60,13 @@ public class ActivatePrefab : MonoBehaviour
         if (GetComponent<BasicTower>()) {
             isTower = true;
 
-            anim.Play("LowerTower");
+            if (playFirstLowerAnim) {
+                anim.Play("LowerTower");
+            }
+            else
+            {
+                lowering(-24);
+            }
 
             riseTower = anim.GetClip("RiseTower");
             lowerTower = anim.GetClip("LowerTower");
@@ -66,7 +74,13 @@ public class ActivatePrefab : MonoBehaviour
         else {
             isTower = false;
 
-            anim.Play("LowerTrap");
+            if (playFirstLowerAnim) {
+                anim.Play("LowerTrap");
+            }
+            else
+            {
+                lowering(-7);
+            }
 
             riseTrap = anim.GetClip("RiseTrap");
             lowerTrap = anim.GetClip("LowerTrap");
@@ -220,7 +234,7 @@ public class ActivatePrefab : MonoBehaviour
             }
             else
             {
-                transform.GetChild(0).position = new Vector3(transform.GetChild(0).position.x, transform.GetChild(0).position.y - 24, transform.GetChild(0).position.z);
+                lowering(-24);
             }
 
             combineElementScript._SwitchBack();
@@ -231,6 +245,10 @@ public class ActivatePrefab : MonoBehaviour
 
             //combineElementScript._SwitchBack();
         }
+    }
+
+    private void lowering(float amount) {
+        transform.GetChild(0).position = new Vector3(transform.GetChild(0).position.x, transform.GetChild(0).position.y + amount, transform.GetChild(0).position.z);
     }
 
     void _RiseTrap() {

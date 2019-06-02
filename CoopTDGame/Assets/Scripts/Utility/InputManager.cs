@@ -179,6 +179,19 @@ public class InputManager : Singleton<InputManager>
         #endregion
     }
 
+    void Start() {
+        Debug.Log("---------CONTROLS---------");
+        Debug.Log("Mouse present: " + Input.mousePresent);
+        Debug.Log("Controllers: ");
+        string[] JoystickNames = Input.GetJoystickNames();
+        
+        foreach (string str in JoystickNames) {
+            Debug.Log(str);
+        }
+        
+        Debug.Log("--------------------------");
+    }
+
     /* public bool ButtonIsPressed()
          {
              // N.B. you could use Input.KeyDown( KeyCode ) if you parse the string 
