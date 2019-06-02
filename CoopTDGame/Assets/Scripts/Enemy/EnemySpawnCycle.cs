@@ -141,16 +141,13 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
         }
         else
         {
-            annoucementMessageHolder.SetActive(true);
-            annoucementText.text = ("New Wave coming in " + timeBetweenWave + " seconds");
             StartCoroutine(betweenWaveTime());
         }
     }
 
     public void callnewWave()
     {
-        annoucementMessageHolder.SetActive(true);
-        annoucementText.text = ("New Wave coming in " + timeBetweenWave + " seconds");
+
         StartCoroutine(betweenWaveTime());
         BossWave = BossWave + BossEveryXRounds;
     }
@@ -163,6 +160,7 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
     {
         yield return new WaitForSeconds(timeBetweenWave);
         Wave += 1;
+        annoucementMessageHolder.SetActive(true);
         annoucementText.text = ("Wave " + Wave + " approaching");
         disableAnnoucement();
         startNewWave();
