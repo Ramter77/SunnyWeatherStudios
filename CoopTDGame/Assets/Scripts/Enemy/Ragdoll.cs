@@ -120,7 +120,7 @@ public class Ragdoll : MonoBehaviour
 
         //Disable attack indicator
         if (transform.childCount > 1) {
-            //transform.GetChild(2).gameObject.SetActive(false);
+            transform.GetChild(2).gameObject.SetActive(false);
         }
         //Destroy(transform.GetChild(2).gameObject);
 
