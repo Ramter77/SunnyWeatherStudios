@@ -40,6 +40,7 @@ public class AudioManager : Singleton<AudioManager>
 
     [Header("Attacks")]
     public AudioClip[] playerMeleeAttack;
+    public AudioClip[] playerMeleeImpact;
     public AudioClip[] playerRangedAttack;
 
     [Header("Spells")]
