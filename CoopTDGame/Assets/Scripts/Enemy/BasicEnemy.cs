@@ -74,6 +74,7 @@ public class BasicEnemy : MonoBehaviour
     [Tooltip("Distance that the enemy flees")]
     public float fleeRange = 3f;
     public bool fleeing = false;
+    private bool wasFleeing = false;
 
     private Animator enemyAnim;
     private bool charging;
@@ -103,6 +104,7 @@ public class BasicEnemy : MonoBehaviour
         possibleTargets = new List<GameObject>();
         agent.speed = enemySpeed;
         fallbackSpeed = enemySpeed;
+        fleeDelay = 3f;
 
     }
 
@@ -128,7 +130,8 @@ public class BasicEnemy : MonoBehaviour
 
             if (distance <= fleeRadius && enemyType == 1)
             {
-                startRunningAway();
+                if(wasFleeing == false)
+                    startRunningAway();
             }
 
             /// if target is in range for the enemy
@@ -216,7 +219,7 @@ public class BasicEnemy : MonoBehaviour
             if (fleeDelay <= 0)
             {
                 RunFromTarget();
-                fleeDelay = 2f;
+                fleeDelay = 3f;
             }
         }
     }
@@ -228,19 +231,27 @@ public class BasicEnemy : MonoBehaviour
     void RunFromTarget()
     {
         fleeing = true;
-        StartCoroutine(resetFleeing());
+        wasFleeing = true;
         agent.isStopped = false;
         enemySpeed = fallbackSpeed;
-        transform.rotation = Quaternion.LookRotation(transform.position - targetPos.position);
+        int zRot = Random.Range(-45, 45);
+        Vector3 offset = new Vector3(0, 0, zRot);
+        transform.rotation = Quaternion.LookRotation((transform.position - targetPos.position) + offset);
         Vector3 runTo = transform.position + transform.forward * fleeRange;
         NavMeshHit hit;
 #pragma warning disable CS0618 // Typ oder Element ist veraltet
         NavMesh.SamplePosition(runTo, out hit, 20, areaMask: 1 << NavMesh.GetNavMeshLayerFromName("Walkable"));
 #pragma warning restore CS0618 // Typ oder Element ist veraltet
-        Debug.Log("RunAway");
+        StartCoroutine(resetFleeing());
+        StartCoroutine(enableFleeing());
         agent.SetDestination(hit.position);
     }
 
+    IEnumerator enableFleeing()
+    {
+        yield return new WaitForSeconds(13);
+        wasFleeing = false;
+    }
     IEnumerator resetFleeing()
     {
         yield return new WaitForSeconds(3);
