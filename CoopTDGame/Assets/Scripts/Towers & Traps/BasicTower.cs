@@ -13,6 +13,8 @@ public class BasicTower : MonoBehaviour
     private GameObject target; // the target he picked from the enemy array - used for intercept calculation
     public GameObject[] bulletPrefabs;
     public GameObject bulletPrefab; // prefab he shoots
+    public GameObject[] muzzlePrefabs;
+    public GameObject muzzlePrefab;
     private Projectile bulletPrefabProjectileScript;
     public Transform shootingPoint;
     public Transform centerAttackRadius; // center for attack range calculation
@@ -47,6 +49,7 @@ public class BasicTower : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        muzzlePrefab = muzzlePrefabs[0];
         changeProjectile(0);
         /* bulletPrefab = bulletPrefabs[0];
         if (AudioManager.Instance.towerProjectiles[0] != null) {
@@ -131,7 +134,11 @@ public class BasicTower : MonoBehaviour
                             if (bulletPrefab.GetComponent<projectileVelocity>() != null) {
                                 bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
                             }
-
+                            muzzlePrefab.transform.rotation = Quaternion.LookRotation(toTarget);
+                            muzzlePrefab.transform.position = shootingPoint.position - transform.forward * 3f;
+                            muzzlePrefab.SetActive(true);
+                            muzzlePrefab.GetComponent<ParticleSystem>().Simulate(0.0f, true, true);
+                            muzzlePrefab.GetComponent<ParticleSystem>().Play();
                             GameObject bullet = Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
                             if (bullet.GetComponent<Rigidbody>() != null) {
                                 bullet.GetComponent<Rigidbody>().useGravity = false;
@@ -149,7 +156,11 @@ public class BasicTower : MonoBehaviour
                         if (bulletPrefab.GetComponent<projectileVelocity>() != null) {
                             bulletPrefab.GetComponent<projectileVelocity>().speed = shotSpeed;
                         }
-
+                        muzzlePrefab.transform.rotation = Quaternion.LookRotation(toTarget);
+                        muzzlePrefab.transform.position = shootingPoint.position - transform.forward * 3f;
+                        muzzlePrefab.SetActive(true);
+                        muzzlePrefab.GetComponent<ParticleSystem>().Simulate(0.0f, true, true);
+                        muzzlePrefab.GetComponent<ParticleSystem>().Play();
                         GameObject bullet = Instantiate(bulletPrefab, spawnPoint, Quaternion.LookRotation(toTarget));
                         if (bullet.GetComponent<Rigidbody>() != null) {
                             bullet.GetComponent<Rigidbody>().useGravity = false;
@@ -212,8 +223,10 @@ public class BasicTower : MonoBehaviour
         #endif
     }
 
+
     public void changeProjectile(int i) {
         bulletPrefab = bulletPrefabs[i];
+        muzzlePrefab = muzzlePrefabs[i];
         /* if (AudioManager.Instance.towerProjectiles.Length > 0) {
             _audioClip = AudioManager.Instance.towerProjectiles[i];
         } */
