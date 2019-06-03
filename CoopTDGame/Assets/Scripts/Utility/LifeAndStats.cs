@@ -38,6 +38,8 @@ public class LifeAndStats : MonoBehaviour
     
     public GameObject GameOverScreen = null;
 
+    private bool isPlayer, isSphere, isTower, isEnemy;
+
 
     
     private bool _dead;
@@ -62,6 +64,8 @@ public class LifeAndStats : MonoBehaviour
 
         if (gameObject.CompareTag("Sphere"))
         {
+            isSphere = true;
+
             if (GameOverScreen != null) {
                 GameOverScreen.SetActive(false);
             }
@@ -70,25 +74,28 @@ public class LifeAndStats : MonoBehaviour
                 Debug.Log("GameOverScreen not assigned to sphere");
             }
         }
-        
+
+        else if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
+        {
+            isPlayer = true;
+        }
+
+        else if (gameObject.CompareTag("Enemy")) {
+            isEnemy = true;
+        }
+
+        else if (gameObject.CompareTag("possibleTargets")) {
+            isTower = true;
+        }
     }
 
     void Update()
     {
         reduceHealthCooldown();
         
-        if (gameObject.CompareTag("Sphere"))
+        if (isSphere)
         {
             GameManager.Instance.GetComponent<SoulStorage>().soulCount = Mathf.RoundToInt(health);
-
-            if (health < 0)
-            {
-                Debug.Log("Fractured SPHERE");
-                fractureScript.Fracture(gameObject.transform.parent.gameObject);
-
-                GameOverScreen.SetActive(true);
-                StartCoroutine(restartgame());
-            }
         }
     }
 
@@ -105,7 +112,7 @@ public class LifeAndStats : MonoBehaviour
             health -= dmg;
             ParticleOnHitEffect(ParticleOnHitEffectYoffset);
 
-            if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
+            if (isPlayer)
             { 
                 //AudioManager.Instance.PlaySound(playC.playerAudioSource, Sound.playerTakeDamage);
 
@@ -123,7 +130,7 @@ public class LifeAndStats : MonoBehaviour
                 }
             }
 
-            else if (gameObject.CompareTag("Enemy")) 
+            else if (isEnemy) 
             {
                 
                 //if (AudioManager.Instance.enemyTakingDamage.Length > 2) {
@@ -165,14 +172,14 @@ public class LifeAndStats : MonoBehaviour
                         }
                         #endregion
                     }
-                }
-                else
-                {
-                    anim.SetTrigger("TakeDamage");
+                    else
+                    {
+                        anim.SetTrigger("TakeDamage");
+                    }
                 }
             }
 
-            else if (gameObject.CompareTag("possibleTargets")) {
+            else if (isTower) {
                 AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.towerTakeDamage);
 
                 if (health <= 0) {
@@ -181,6 +188,22 @@ public class LifeAndStats : MonoBehaviour
                     if (destroyable) {
                         Debug.Log("Fractured target");
                         fractureScript.Fracture(gameObject);
+                    }
+                }
+            }
+
+            else if (isSphere)
+            {
+                AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.towerTakeDamage);
+
+                if (health < 0)
+                {
+                    Debug.Log("Fractured SPHERE");
+                    if (destroyable) {
+                        fractureScript.Fracture(gameObject.transform.parent.gameObject);
+
+                        GameOverScreen.SetActive(true);
+                        StartCoroutine(restartgame());
                     }
                 }
             }

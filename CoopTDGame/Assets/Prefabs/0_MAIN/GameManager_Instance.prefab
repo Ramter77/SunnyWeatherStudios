@@ -355,32 +355,42 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 6e4a6f71df58d3b4ab698cbd3547ba4e, type: 3}
   playerMeleeAttack:
   - {fileID: 8300000, guid: e2a56062a22204e44a0a560b4c74d3e0, type: 3}
+  playerRangedAttack:
+  - {fileID: 8300000, guid: e2a56062a22204e44a0a560b4c74d3e0, type: 3}
   playerHeal:
   - {fileID: 8300000, guid: 84d2f7df083ebcd4da6308c68671695e, type: 3}
   playerUltimate:
   - {fileID: 8300000, guid: 77002f393a772c4408072a4937b16168, type: 3}
   playerActivateBuilding:
-  - {fileID: 8300000, guid: 559d883b3a8558f488c83b9aca205fd1, type: 3}
+  - {fileID: 8300000, guid: d9bf29b671b4a9d4087170375be7acc8, type: 3}
   playerActivateTrap:
   - {fileID: 8300000, guid: d9bf29b671b4a9d4087170375be7acc8, type: 3}
-  playerCombineBuildingFire:
+  playerCombineBuilding:
   - {fileID: 8300000, guid: 58d93cf4cf2df67499bc98410a946421, type: 3}
-  playerCombineBuildingIce:
   - {fileID: 8300000, guid: b162b56e8e047b848939c86761cc4710, type: 3}
-  playerCombineBuildingBlast:
   - {fileID: 8300000, guid: 06fbdfc9db75e9f40977ebc33bb427b9, type: 3}
   playerTakeDamage:
   - {fileID: 8300000, guid: 34b5e1f6080d73046a1dc8a082ee32a7, type: 3}
   - {fileID: 8300000, guid: 3e158111607960048a3a8af278883326, type: 3}
   - {fileID: 8300000, guid: 1b795c39bf326d740aff7b14be33d4ab, type: 3}
   - {fileID: 8300000, guid: 1b795c39bf326d740aff7b14be33d4ab, type: 3}
+  playerDeath:
+  - {fileID: 8300000, guid: 34b5e1f6080d73046a1dc8a082ee32a7, type: 3}
+  playerRevive:
+  - {fileID: 8300000, guid: 34b5e1f6080d73046a1dc8a082ee32a7, type: 3}
   playerPickupSoul:
   - {fileID: 8300000, guid: a6b654ae514f7f84892b25f7559bf47b, type: 3}
+  meleeImpacts:
+  - {fileID: 8300000, guid: e2a56062a22204e44a0a560b4c74d3e0, type: 3}
   enemyMeleeAttack:
-  - {fileID: 8300000, guid: 689ef185fe94eeb4fb5a8d2ebad885ae, type: 3}
+  - {fileID: 8300000, guid: e2a56062a22204e44a0a560b4c74d3e0, type: 3}
   enemyRangedAttack:
   - {fileID: 8300000, guid: 206488c0d90ca39418f3396fe70a44a8, type: 3}
+  enemyBossAttack:
+  - {fileID: 8300000, guid: e2a56062a22204e44a0a560b4c74d3e0, type: 3}
   enemyTakeDamage:
+  - {fileID: 8300000, guid: f6a727434d9be4f4ea793ef4e913c6cd, type: 3}
+  enemyRagdoll:
   - {fileID: 8300000, guid: f6a727434d9be4f4ea793ef4e913c6cd, type: 3}
   towerTakeDamage:
   - {fileID: 8300000, guid: f9ad490769784af408cd4c561de4f4b7, type: 3}
@@ -471,6 +481,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce629f49d4321a04ba1e90dc4daffa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  use2Displays: 1
+  use2Displays: 0
   enableFlyCam: 0
   FlyCam: {fileID: 0}

@@ -37,6 +37,8 @@ public class AdjustMaterial : MonoBehaviour
     private float dissolveLerp, burnLerp, freezeLerp;
     private float _dissolveDuration, _burnDuration, _freezeDuration;
 
+    private bool reset;
+
     private Vector2 lerpValues = new Vector2(0, 1);
 
     void Start()
@@ -140,7 +142,9 @@ public class AdjustMaterial : MonoBehaviour
         }
         else
         {
-            burnVFX.SetActive(!burned);
+            if (!reset) {
+                burnVFX.SetActive(!burned);
+            }
 
             burnLerp = 0;
             startBurning = false;
@@ -157,7 +161,9 @@ public class AdjustMaterial : MonoBehaviour
         }
         else
         {
-            freezeVFX.SetActive(!frozen);
+            if (!reset) {
+                freezeVFX.SetActive(!frozen);
+            }
 
             freezeLerp = 0;
             startFreezing = false;
@@ -165,9 +171,13 @@ public class AdjustMaterial : MonoBehaviour
         }
     }
 
-    public void resetFX() {
-        burnVFX.SetActive(false);
-        freezeVFX.SetActive(false);
+    public void resetFX(bool resetVFXinstantly) {
+        reset = true;
+
+        if (resetVFXinstantly) {
+            burnVFX.SetActive(false);
+            freezeVFX.SetActive(false);
+        }
 
 
         if (burned) {

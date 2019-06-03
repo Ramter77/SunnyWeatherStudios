@@ -10,8 +10,10 @@ public class PlaySoundOnAnimation : StateMachineBehaviour
     [SerializeField]
     [Tooltip ("If false it gets the audioSource on the gameObject where the animator is located")]
     private bool isPlayer;
+    [SerializeField]
+    private bool isEnemy;
     [SerializeField] 
-    private float delay = 0.1f;
+    private float delay = 0f;
 
 
     private bool played;
@@ -24,9 +26,9 @@ public class PlaySoundOnAnimation : StateMachineBehaviour
         if (isPlayer) {
             playC = animator.GetComponent<PlayerController>();
         }
-        else
+        else if (isEnemy)
         {
-            audioSource = animator.GetComponent<MultiAudioSource>();
+            audioSource = animator.GetComponent<BasicEnemy>().audioSource;
         }
     }
 

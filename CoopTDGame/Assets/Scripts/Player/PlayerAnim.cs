@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+//using Footsteps;
 
 public class PlayerAnim : MonoBehaviour
 {
@@ -29,6 +30,8 @@ public class PlayerAnim : MonoBehaviour
     private bool allowJumpWhileRanged;
     private bool allowJump;
 
+    public GameObject FootstepTrigger1, FootstepTrigger2;
+
 
     #region INPUT
     private float _verticalInput;
@@ -43,6 +46,7 @@ public class PlayerAnim : MonoBehaviour
     private CharacterController charController;
     private Rigidbody playerRB;
     private CleanIK cleanIKscript;
+    //private CharacterFootsteps characterFootstepsScript;
     private int rightArmLayerIndex;
     #endregion
 
@@ -53,6 +57,7 @@ public class PlayerAnim : MonoBehaviour
         charController = GetComponent<CharacterController>();
         playerRB = GetComponent<Rigidbody>();
         cleanIKscript = GetComponent<CleanIK>();
+        //characterFootstepsScript = GetComponent<CharacterFootsteps>();
 
         toggleRun = InputManager.Instance.toggleRun;
     }
@@ -132,10 +137,18 @@ public class PlayerAnim : MonoBehaviour
             //Enable CleanIK if input is 0
             if (_verticalInput == 0 && _horizontalInput == 0) {
                 cleanIKscript.enabled = true;
+                //characterFootstepsScript.enabled = false;
+
+                FootstepTrigger1.SetActive(false);
+                FootstepTrigger2.SetActive(false);
             }
             else
             {
                 cleanIKscript.enabled = false;
+                //characterFootstepsScript.enabled = true;
+
+                FootstepTrigger1.SetActive(true);
+                FootstepTrigger2.SetActive(true);
             }
 
             #region Jumping

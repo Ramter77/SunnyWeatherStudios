@@ -1801,6 +1801,7 @@ MonoBehaviour:
   fleeRange: 3
   enabledAttack: 0
   isFallbackTarget: 0
+  audioSource: {fileID: 0}
   alwaysShowGizmos: 0
   opacityOfGizmos: 0.03
 --- !u!114 &6011262257452996168
@@ -1943,6 +1944,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 941289498803653446}
   ragdollOnStart: 0
+  disableAllCollidersInstantly: 1
 --- !u!114 &9047936977814403537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1968,6 +1970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afedd1ff1f0f5447ba597664ce6492f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetVFXinstantly: 1
   weaponRenderer: {fileID: 2126074439390815550}
   dissolveOnStart: 0
   dissolveStartDelay: 3
@@ -1996,6 +1999,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0254ffe898bf1874e8b0a11fb7d313de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeOutDuration: 6
   dissolveString: _Dissolve
   burnString: _Flames
   freezeString: _Ice

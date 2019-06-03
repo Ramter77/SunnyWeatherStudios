@@ -9,6 +9,7 @@ public class StatusEffect : MonoBehaviour
     private ElementInteractor elemInteractorScript;
 
     [Header ("VISUALS")]
+    public bool resetVFXinstantly = true;
     public MeshRenderer weaponRenderer; 
     private MeshRenderer meshRenderer;
     private SkinnedMeshRenderer skinnedMeshRenderer;
@@ -163,7 +164,9 @@ public class StatusEffect : MonoBehaviour
 
         //Disable colliders
         if (GetComponent<Ragdoll>() != null) {
-            GetComponent<Ragdoll>().disableAllColliders();
+            if (GetComponent<Ragdoll>().disableAllCollidersInstantly == false) {
+                GetComponent<Ragdoll>().disableAllColliders();
+            }
         }
 
         //Destroy after dissolveDelay time when completely dissolved
@@ -249,7 +252,7 @@ public class StatusEffect : MonoBehaviour
     public void resetOnRagdoll() {
         //appliedDot = false;
 
-        adjustMaterialScript.resetFX();
+        adjustMaterialScript.resetFX(resetVFXinstantly);
 
         setInteraction(Element.NoElement, false);
     }

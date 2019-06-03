@@ -5,9 +5,12 @@ using Assets.MultiAudioListener;
 
 
 public enum Sound { empty, 
-                    playerJump, playerMeleeAttack, playerHeal, playerUltimate, playerTakeDamage, playerActivateBuilding, playerPickupSoul, playerDie,
-                    enemyMeleeAttack, enemyRangedAttack, enemyTakeDamage,
-                    towerTakeDamage, towerDefault, towerFire, towerIce, towerBlast, towerDefaultImpact, towerFireImpact, towerIceImpact, towerBlastImpact, trapDefault, trapFire, trapIce, trapBlast };
+                    playerJump, playerMeleeAttack, playerRangedAttack, playerHeal, playerUltimate, playerActivateBuilding, playerCombineBuildingFire, 
+                    playerCombineBuildingIce, playerCombineBuildingBlast, playerTakeDamage,playerDeath, playerRevive,
+                    playerPickupSoul, meleeImpact,
+                    enemyMeleeAttack, enemyRangedAttack, enemyBossAttack, enemyTakeDamage, enemyRagdoll,
+                    towerTakeDamage, towerDefault, towerFire, towerIce, towerBlast, towerDefaultImpact, towerFireImpact, towerIceImpact, towerBlastImpact, trapDefault, trapFire, trapIce, trapBlast, 
+                    };
 public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField]
@@ -37,31 +40,35 @@ public class AudioManager : Singleton<AudioManager>
 
     [Header("Attacks")]
     public AudioClip[] playerMeleeAttack;
+    public AudioClip[] playerRangedAttack;
 
     [Header("Spells")]
     public AudioClip[] playerHeal;
     public AudioClip[] playerUltimate;
     public AudioClip[] playerActivateBuilding;
     public AudioClip[] playerActivateTrap;              //Trap activation for traps are shorter, so a shorter sound file is played
-    public AudioClip[] playerCombineBuildingFire;       //when you combine a Fire ability with a tower
-    public AudioClip[] playerCombineBuildingIce;        //When you combine a Ice ability with a tower
-    public AudioClip[] playerCombineBuildingBlast;      //When you combine both abilities with a tower
+    [Tooltip ("Order: Fire, Ice, Blast")]
+    public AudioClip[] playerCombineBuilding;       //when you combine an ability with a tower
 
-    [Header("Damaged")]
+    [Header("Life & Death")]
     public AudioClip[] playerTakeDamage;
     //public AudioClip playerTakingHighDamage;
+    public AudioClip[] playerDeath;
+    public AudioClip[] playerRevive;
 
     [Header("Interactions")]
     public AudioClip[] playerPickupSoul;
+    public AudioClip[] meleeImpacts;
 
     
     [Header ("Enemies")]
     [Space (15)]
     public AudioClip[] enemyMeleeAttack;
     public AudioClip[] enemyRangedAttack;
+    public AudioClip[] enemyBossAttack;
     public AudioClip[] enemyTakeDamage;
+    public AudioClip[] enemyRagdoll;
 
-    
     [Header ("Towers & Traps")]
     [Space (15)]
     public AudioClip[] towerTakeDamage;
@@ -115,6 +122,9 @@ public class AudioManager : Singleton<AudioManager>
                 case Sound.playerMeleeAttack:
                     _clip = playerMeleeAttack[Random.Range(0, playerMeleeAttack.Length - 1)];
                     break;
+                case Sound.playerRangedAttack:
+                    _clip = playerRangedAttack[Random.Range(0, playerRangedAttack.Length - 1)];
+                    break;
                 case Sound.playerHeal:
                     _clip = playerHeal[Random.Range(0, playerHeal.Length - 1)];
                     break;
@@ -124,11 +134,35 @@ public class AudioManager : Singleton<AudioManager>
                 case Sound.playerActivateBuilding:
                     _clip = playerActivateBuilding[Random.Range(0, playerActivateBuilding.Length - 1)];
                     break;
+                case Sound.playerCombineBuildingFire:
+                    _clip = playerCombineBuilding[0];
+                    break;
+                case Sound.playerCombineBuildingIce:
+                    _clip = playerCombineBuilding[1];
+                    break;
+                case Sound.playerCombineBuildingBlast:
+                    _clip = playerCombineBuilding[2];
+                    break;
+
+                #region Life & Death
                 case Sound.playerTakeDamage:
                     _clip = playerTakeDamage[Random.Range(0, playerTakeDamage.Length - 1)];
                     break;
+                case Sound.playerDeath:
+                    _clip = playerDeath[Random.Range(0, playerDeath.Length - 1)];
+                    break;
+                case Sound.playerRevive:
+                    _clip = playerRevive[Random.Range(0, playerRevive.Length - 1)];
+                    break;
                 case Sound.playerPickupSoul:
                     _clip = playerPickupSoul[Random.Range(0, playerPickupSoul.Length - 1)];
+                    break;
+                    #endregion
+                #endregion
+
+                #region Interactions
+                case Sound.meleeImpact:
+                    _clip = meleeImpacts[Random.Range(0, meleeImpacts.Length - 1)];
                     break;
                 #endregion
 
@@ -139,8 +173,14 @@ public class AudioManager : Singleton<AudioManager>
                 case Sound.enemyRangedAttack:
                     _clip = enemyRangedAttack[Random.Range(0, enemyRangedAttack.Length - 1)];
                     break;
+                case Sound.enemyBossAttack:
+                    _clip = enemyBossAttack[Random.Range(0, enemyBossAttack.Length - 1)];
+                    break;
                 case Sound.enemyTakeDamage:
                     _clip = enemyTakeDamage[Random.Range(0, enemyTakeDamage.Length - 1)];
+                    break;
+                case Sound.enemyRagdoll:
+                    _clip = enemyRagdoll[Random.Range(0, enemyRagdoll.Length - 1)];
                     break;
                 #endregion
 

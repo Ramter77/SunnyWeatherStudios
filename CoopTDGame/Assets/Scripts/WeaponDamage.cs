@@ -1,16 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.MultiAudioListener;
 
 public class WeaponDamage : MonoBehaviour {
     [SerializeField]
     private bool isFriendly;
+    [SerializeField]
+    private bool isProjectile;
     public float attackDamage = 10f;
+    [SerializeField]
+    private float resetLastHitGOdelay = 0.25f;
     private GameObject lastHitEnemy = null;
+    private MultiAudioSource audioSource;
 
     void Start()
     {
         lastHitEnemy = null;
+
+        if (!isProjectile) {
+            audioSource = GetComponent<MultiAudioSource>();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,12 +45,17 @@ public class WeaponDamage : MonoBehaviour {
     void _WeaponDamage(GameObject other) {
         lastHitEnemy = other;
         other.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
+
+        if (!isProjectile) {
+            AudioManager.Instance.PlaySound(audioSource, Sound.meleeImpact);
+        }
+
         StartCoroutine(resetLastHitGO());
     }
 
     IEnumerator resetLastHitGO()
     {
-        yield return new WaitForSeconds(.25f);
+        yield return new WaitForSeconds(resetLastHitGOdelay);
         lastHitEnemy = null;
     }
 }

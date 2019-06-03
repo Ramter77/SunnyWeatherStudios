@@ -402,7 +402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604f783e2fd3ea14f8f1a44a93625209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: 3
+  sound: 4
   isPlayer: 1
   delay: 0.1
 --- !u!114 &114402076225119496
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604f783e2fd3ea14f8f1a44a93625209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: 5
+  sound: 10
   isPlayer: 1
   delay: 0
 --- !u!114 &114450657511956534
@@ -446,6 +446,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   delay: 0.79
+--- !u!114 &114482109350027956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 604f783e2fd3ea14f8f1a44a93625209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sound: 3
+  isPlayer: 0
+  delay: 0
 --- !u!114 &114491060146106928
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -516,7 +531,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604f783e2fd3ea14f8f1a44a93625209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: 8
+  sound: 11
   isPlayer: 1
   delay: 0.1
 --- !u!114 &114636131900674002
@@ -661,7 +676,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 604f783e2fd3ea14f8f1a44a93625209, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sound: 5
+  sound: 2
   isPlayer: 1
   delay: 0.1
 --- !u!114 &114917127679963556
@@ -3885,6 +3900,7 @@ AnimatorState:
   - {fileID: 114067637090979202}
   - {fileID: 114636131900674002}
   - {fileID: 114338617540067272}
+  - {fileID: 114482109350027956}
   m_Position: {x: 50, y: 50, z: 0}
   m_IKOnFeet: 0
   m_WriteDefaultValues: 1

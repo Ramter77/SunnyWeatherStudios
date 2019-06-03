@@ -711,6 +711,7 @@ GameObject:
   - component: {fileID: 3255070068988302758}
   - component: {fileID: 481606394628153116}
   - component: {fileID: 1627866098281028475}
+  - component: {fileID: 3365644211137119013}
   m_Layer: 12
   m_Name: Enemy_Weapon_1
   m_TagString: EnemyWeapon
@@ -820,7 +821,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFriendly: 0
+  isProjectile: 0
   attackDamage: 15
+  resetLastHitGOdelay: 0.25
+--- !u!114 &3365644211137119013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848924434285836558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 0
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 10
+  _maxDistance: 50
+  OnlyPlayForClosestCamera: 0
 --- !u!1 &2078343133210196363
 GameObject:
   m_ObjectHideFlags: 0
@@ -2595,6 +2628,7 @@ MonoBehaviour:
   fleeRange: 3
   enabledAttack: 0
   isFallbackTarget: 0
+  audioSource: {fileID: 0}
   alwaysShowGizmos: 1
   opacityOfGizmos: 0.03
 --- !u!114 &6347724829508887164
@@ -2736,6 +2770,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 5034261100650163307}
   ragdollOnStart: 0
+  disableAllCollidersInstantly: 1
 --- !u!114 &8569038970804014565
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2761,6 +2796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0afedd1ff1f0f5447ba597664ce6492f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resetVFXinstantly: 1
   weaponRenderer: {fileID: 6388688469099229979}
   dissolveOnStart: 0
   dissolveStartDelay: 3
@@ -2789,6 +2825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0254ffe898bf1874e8b0a11fb7d313de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fadeOutDuration: 6
   dissolveString: _Dissolve
   burnString: _Flames
   freezeString: _Ice

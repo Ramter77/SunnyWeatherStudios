@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using UnityEngine.AI;
+using Assets.MultiAudioListener;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -78,6 +79,9 @@ public class BasicEnemy : MonoBehaviour
     [SerializeField]
     private bool isFallbackTarget;
 
+    [Header ("Sound")] 
+    public MultiAudioSource audioSource;
+
     [Header("Gizmos")]
     public bool alwaysShowGizmos = false;
     public float opacityOfGizmos = 0.1f;
@@ -86,6 +90,7 @@ public class BasicEnemy : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         rigid = GetComponent<Rigidbody>();
+        audioSource = GetComponent<MultiAudioSource>();
         Sphere = GameObject.FindGameObjectWithTag("Sphere");
         WalkToSphere();
         StartCoroutine(ScanCycle());

@@ -144,14 +144,20 @@ public class CombineElements : MonoBehaviour
         if (elem == Element.Blast) {
             blastActive = true;
             crystalMeshRenderer.material = blastMat;
+
+            AudioManager.Instance.PlaySound(audioSource, Sound.playerCombineBuildingBlast);
         }
         else if (elem == Element.Fire) {
             fireActive = true;
             crystalMeshRenderer.material = fireMat;
+
+            AudioManager.Instance.PlaySound(audioSource, Sound.playerCombineBuildingFire);
         }
         else if (elem == Element.Ice) {
             iceActive = true;
             crystalMeshRenderer.material = iceMat;
+
+            AudioManager.Instance.PlaySound(audioSource, Sound.playerCombineBuildingIce);
         }
     }
 

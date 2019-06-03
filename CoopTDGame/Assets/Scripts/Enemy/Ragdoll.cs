@@ -26,7 +26,8 @@ public class Ragdoll : MonoBehaviour
 
 
 
-    //Transform[] allChildren;
+    Transform[] allChildren;
+    public bool disableAllCollidersInstantly = true;
 
     void Awake()
     {
@@ -70,7 +71,7 @@ public class Ragdoll : MonoBehaviour
 
 
 
-        //Transform[] allChildren = GetComponentsInChildren<Transform>();
+        allChildren = GetComponentsInChildren<Transform>();
     }
     void Update() {
         if (Input.GetKeyDown(KeyCode.M)) {
@@ -103,12 +104,16 @@ public class Ragdoll : MonoBehaviour
         rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         //rb.freezeRotation = ragdoll;
 
-        if (ragdoll) {
+        if (!ragdoll) {
             rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         }
         else {
             rb.constraints = RigidbodyConstraints.None;
         }
+
+        ownColliders = GetComponents<Collider>();
+        foreach (Collider _col in ownColliders)
+            _col.enabled = false;
 
         if (!disabledRigColliders) {
             foreach (Collider _col in colliders)
@@ -125,15 +130,23 @@ public class Ragdoll : MonoBehaviour
         }
         //Destroy(transform.GetChild(2).gameObject);
 
+        if (disableAllCollidersInstantly) {
+            disableAllColliders();
+        }
 
-        //ownColliders = GetComponents<Collider>();
-        foreach (Collider _col in ownColliders)
-            _col.enabled = false;
         /* gameObject.layer = 15;
         foreach (Transform child in allChildren) {
             child.gameObject.layer = 15;
         } */
 
+
+
+        /* gameObject.layer = 15;
+        foreach (Transform child in allChildren) {
+            child.gameObject.layer = 15;
+        } */
+
+        
 
 
         /* if (ragdoll) {
@@ -161,19 +174,43 @@ public class Ragdoll : MonoBehaviour
         statusEffectScript.resetOnRagdoll();
         //}
 
+        AudioManager.Instance.PlaySound(enemyScript.audioSource, Sound.enemyRagdoll);
+
     }
 
 
     public void disableAllColliders() {
+        gameObject.layer = 15;
+        foreach (Transform child in allChildren) {
+            child.gameObject.layer = 15;
+        }
+        /* if (!disabledRigColliders) {
+            disabledRigColliders = true;
+            foreach (Collider _col in colliders)
+                _col.enabled = false; */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
         /* ownColliders = GetComponents<Collider>();
         foreach (Collider _col in ownColliders)
             _col.enabled = false; */
-        
-        if (!disabledRigColliders) {
-            disabledRigColliders = true;
-            foreach (Collider _col in colliders)
-                _col.enabled = false;
-
+    
             /* Component[] capsuleColliders = rig.GetComponentsInChildren<CapsuleCollider>();
             foreach (CapsuleCollider _col in capsuleColliders)
             {
@@ -194,7 +231,7 @@ public class Ragdoll : MonoBehaviour
             {
                 _col.size = new Vector3(_col.size.x*0.5f, _col.size.y*0.5f, _col.size.z*0.5f);
             } */
-        }
+        //}
         //! JUST put on non collision layer
         //foreach (GameObject gameObject in GetComponentInChildren<Transform>())
 
@@ -203,8 +240,8 @@ public class Ragdoll : MonoBehaviour
             child.gameObject.layer = 15;
         } */
 
-        BoxCollider boxCollider = rig.GetComponent<BoxCollider>();
-        boxCollider.enabled = true;
+        //BoxCollider boxCollider = rig.GetComponent<BoxCollider>();
+        //boxCollider.enabled = true;
         //Half torso box collider
         /* boxCollider.size = new Vector3(boxCollider.size.x*0.5f, boxCollider.size.y*0.5f, boxCollider.size.z*0.8f); */        
 
