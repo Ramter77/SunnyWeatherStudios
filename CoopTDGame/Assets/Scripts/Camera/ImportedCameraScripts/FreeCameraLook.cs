@@ -163,7 +163,12 @@ public class FreeCameraLook : Pivot {
 
     public void WiggleCrosshairAndCamera(float kickback)
     { 
-        crosshairManager.activeCrosshair1.WiggleCrosshair();
+        if (transform.parent.gameObject.tag == "Player") {
+            crosshairManager.activeCrosshair1.WiggleCrosshair();
+        }
+        else if (transform.parent.gameObject.tag == "Player2") {
+            crosshairManager.activeCrosshair2.WiggleCrosshair();
+        }
 
         offsetY = kickback;
     }

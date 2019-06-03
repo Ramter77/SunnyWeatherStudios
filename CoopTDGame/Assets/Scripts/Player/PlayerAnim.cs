@@ -43,6 +43,7 @@ public class PlayerAnim : MonoBehaviour
     private CharacterController charController;
     private Rigidbody playerRB;
     private CleanIK cleanIKscript;
+    private int rightArmLayerIndex;
     #endregion
 
     void Awake()
@@ -56,6 +57,14 @@ public class PlayerAnim : MonoBehaviour
         toggleRun = InputManager.Instance.toggleRun;
     }
 
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        rightArmLayerIndex = animator.GetLayerIndex("RightArm&Head_Idle");
+    }
     void Update()
     {
         if (!playC.isDead) {
@@ -105,9 +114,13 @@ public class PlayerAnim : MonoBehaviour
         else {
             if (_runInput) {
                 animator.SetFloat("isRunning", 0, buttonDamping, Time.deltaTime);
+
+                //animator.SetLayerWeight(rightArmLayerIndex, 0);
             }
             else {
                 animator.SetFloat("isRunning", 1, buttonDamping, Time.deltaTime);
+
+                //animator.SetLayerWeight(rightArmLayerIndex, 1);
             }
         }
         #endregion

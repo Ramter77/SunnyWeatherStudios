@@ -73,7 +73,7 @@ public class MeleeAttack : MonoBehaviour
         }
         #endregion
 
-        ActivateWeaponCollider();
+        //ActivateWeaponCollider();
 
         //AudioManager.Instance.PlaySound(playC.playerAudioSource, Sound.playerMeleeAttack);
     }
@@ -84,9 +84,9 @@ public class MeleeAttack : MonoBehaviour
         if (WeaponTriggerCollider != null) {
             WeaponTriggerCollider.enabled = true;
         }
-        //else if (GameObject.FindGameObjectWithTag("UltWep")) {
+        if (UltimateWeaponTriggerCollider != null) {
             UltimateWeaponTriggerCollider.enabled = true;
-        //}
+        }
     }
     
     #region Reset melee CD from the melee animations
@@ -96,7 +96,10 @@ public class MeleeAttack : MonoBehaviour
         if (WeaponTriggerCollider != null) {
             WeaponTriggerCollider.enabled = false;
         }
-UltimateWeaponTriggerCollider.enabled = false;
+
+        if (UltimateWeaponTriggerCollider != null) {
+            UltimateWeaponTriggerCollider.enabled = false;
+        }
 
         /* else if (UltimateWeaponTriggerCollider != null) {
             UltimateWeaponTriggerCollider.enabled = false;

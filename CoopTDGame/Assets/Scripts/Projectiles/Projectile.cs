@@ -168,18 +168,12 @@ public class Projectile : MonoBehaviour
 
             #region On contact with an ENEMY
             if (other.gameObject.tag == "Enemy") {
-                //References & allow interaction
                 StatusEffect statusEffect = other.gameObject.GetComponent<StatusEffect>();
-                ElementInteractor elemInteraction = other.gameObject.GetComponent<ElementInteractor>();
-                elemInteraction.allowInteraction = true;
 
                 #region BURN
                 if (burnEnemiesOnContact) {
                     //Burn
                     statusEffect.BurnCoroutine();
-
-                    //Set type
-                    elemInteraction.elementType = Element.Fire;
                 }
                 #endregion
 
@@ -187,9 +181,6 @@ public class Projectile : MonoBehaviour
                 if (freezeEnemiesOnContact) {
                     //Freeze
                     statusEffect.FreezeCoroutine();
-
-                    //Set type
-                    elemInteraction.elementType = Element.Ice;
                 }
                 #endregion
             }

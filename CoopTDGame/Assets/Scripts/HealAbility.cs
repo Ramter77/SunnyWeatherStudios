@@ -185,10 +185,9 @@ public class HealAbility : MonoBehaviour
                     playerToHeal.GetComponent<HealAbility>().isHealedParticle.transform.GetChild(2).gameObject.GetComponent<ParticleSystem>().Play();
                 }
 
-                if (playerToHeal.GetComponent<LifeAndStats>().health <= 75)
+                if (playerToHeal.GetComponent<LifeAndStats>().health <= 0)
                 {
-                    playerToHeal.GetComponent<LifeAndStats>().healHealth(healAmount);
-                    healAmount = fallbackHealAmount;
+                    playerToHeal.GetComponent<LifeAndStats>().Revive();
                 }
                 else if (playerToHeal.GetComponent<LifeAndStats>().health > maxHealth - healAmount)
                 {
@@ -196,9 +195,10 @@ public class HealAbility : MonoBehaviour
                     playerToHeal.GetComponent<LifeAndStats>().healHealth(healAmount);
                     healAmount = fallbackHealAmount;
                 }
-                else if (playerToHeal.GetComponent<LifeAndStats>().health <= 0)
+                else if (playerToHeal.GetComponent<LifeAndStats>().health <= 75)
                 {
-                    playerToHeal.GetComponent<LifeAndStats>().Revive();
+                    playerToHeal.GetComponent<LifeAndStats>().healHealth(healAmount);
+                    healAmount = fallbackHealAmount;
                 }
             }
         }

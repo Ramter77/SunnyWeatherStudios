@@ -20,6 +20,7 @@ public class Ragdoll : MonoBehaviour
     private BasicEnemy enemyScript;
     private AttackAndDamage dmgScript;
     private LifeAndStats lifeScript;
+    private StatusEffect statusEffectScript;
     private NavMeshAgent agent;
     private Rigidbody rb;
 
@@ -57,7 +58,7 @@ public class Ragdoll : MonoBehaviour
         enemyScript = GetComponent<BasicEnemy>();
         dmgScript = GetComponent<AttackAndDamage>();
         lifeScript = GetComponent<LifeAndStats>();
-        
+        statusEffectScript = GetComponent<StatusEffect>();        
         agent = GetComponent<NavMeshAgent>();
 
         defaultSpeed = agent.speed;
@@ -148,6 +149,18 @@ public class Ragdoll : MonoBehaviour
 
         //disable weapon collider
         dmgScript.DisableWeaponCollider();
+
+        //if (ragdoll) {
+            /* elemInteractorScript.elementType = Element.NoElement;
+            elemInteractorScript.allowInteraction = false; */
+
+            //Debug.Log("RESETTTTTTTTTTTTTT");
+            //statusEffectScript.resetDot();
+
+
+        statusEffectScript.resetOnRagdoll();
+        //}
+
     }
 
 

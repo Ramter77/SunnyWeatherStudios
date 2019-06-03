@@ -5,6 +5,10 @@ using UnityEngine;
 public class AdjustMaterial : MonoBehaviour
 {
     [Header ("Material property strings")]
+    [Tooltip ("Set this lower than the 'Dissolve Start Delay' + 'Dissolve Delay' on the Status effect script combined")]
+    [SerializeField]
+    private float fadeOutDuration = 8f;
+
     [SerializeField]
     private string dissolveString = "_Dissolve";
     [SerializeField]
@@ -129,7 +133,6 @@ public class AdjustMaterial : MonoBehaviour
 
     private void Burning() {
         _AdjustMaterial(burnString, false, burnLerp, burned);
-        burnVFX.SetActive(!burned);
         
         if (burnLerp < 1) { //While lerp is below the end limit
             //Increment it at the desired rate every frame
@@ -137,6 +140,8 @@ public class AdjustMaterial : MonoBehaviour
         }
         else
         {
+            burnVFX.SetActive(!burned);
+
             burnLerp = 0;
             startBurning = false;
             burned = !burned;
@@ -145,7 +150,6 @@ public class AdjustMaterial : MonoBehaviour
 
     private void Freezing() {
         _AdjustMaterial(freezeString, false, freezeLerp, frozen);
-        freezeVFX.SetActive(!frozen);
         
         if (freezeLerp < 1) { //While lerp is below the end limit
             //Increment it at the desired rate every frame
@@ -153,9 +157,35 @@ public class AdjustMaterial : MonoBehaviour
         }
         else
         {
+            freezeVFX.SetActive(!frozen);
+
             freezeLerp = 0;
             startFreezing = false;
             frozen = !frozen;
+        }
+    }
+
+    public void resetFX() {
+        burnVFX.SetActive(false);
+        freezeVFX.SetActive(false);
+
+
+        if (burned) {
+            //burnVFX.SetActive(false);
+
+            Burn(fadeOutDuration);
+
+            //_AdjustMaterial(freezeString, false, freezeLerp, false);
+        }
+        if (frozen) {
+            Freeze(fadeOutDuration);
+            //frozen = !frozen;
+            //_freezeDuration = 4;
+            //startFreezing = true;
+
+            //freezeVFX.SetActive(false);
+
+            //_AdjustMaterial(freezeString, false, 0, false);
         }
     }
 }

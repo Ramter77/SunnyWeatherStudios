@@ -4,30 +4,47 @@ using UnityEngine;
 
 public class ResetMeleeDelay : StateMachineBehaviour
 {
-    public float delay = 0.75f;
+    [SerializeField]
+    private float startDelay = 0.15f;
+    [SerializeField]
+    private float resetDelay = 0.75f;
+    private MeleeAttack meleeAttackScript;
+    private bool enabled;
 
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
-    //override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        meleeAttackScript = animator.GetComponent<MeleeAttack>();
+    }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (stateInfo.normalizedTime > delay) {
-            if (animator.GetComponent<MeleeAttack>() != null){
-                animator.GetComponent<MeleeAttack>().resetMeleeAttackCD();
-            }
-        }   
+        if (!enabled) {
+            if (stateInfo.normalizedTime > startDelay) {
+                if (meleeAttackScript != null){
+                    meleeAttackScript.ActivateWeaponCollider();
+                    enabled = true;
+                }
+            } 
+        }
+
+        if (enabled) {
+            if (stateInfo.normalizedTime > resetDelay) {
+                if (meleeAttackScript != null){
+                    meleeAttackScript.resetMeleeAttackCD();
+                }
+            }  
+        } 
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    
-    //}
+    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    {
+        meleeAttackScript.resetMeleeAttackCD();
+        enabled = false;
+    }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)

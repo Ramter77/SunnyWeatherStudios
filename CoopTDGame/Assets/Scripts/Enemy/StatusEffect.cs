@@ -6,6 +6,8 @@ using UnityEngine.AI;
 
 public class StatusEffect : MonoBehaviour
 {
+    private ElementInteractor elemInteractorScript;
+
     [Header ("VISUALS")]
     public MeshRenderer weaponRenderer; 
     private MeshRenderer meshRenderer;
@@ -81,6 +83,9 @@ public class StatusEffect : MonoBehaviour
         enemyAnim = GetComponent<EnemyAnim>();
         LifeScript = GetComponent<LifeAndStats>();
         fallbackTimeBetweenBurns = timeBetweenEachBurn;
+
+        elemInteractorScript = GetComponent<ElementInteractor>();
+        elemInteractorScript.allowInteraction = false;
 
         if (dissolveOnStart) {
             DissolveCoroutine();
@@ -172,6 +177,10 @@ public class StatusEffect : MonoBehaviour
         yield return new WaitForSeconds(burnStartDelay);
         burning = isActive;
 
+        //Set type
+        setInteraction(Element.Fire, true);
+
+        //Adjust material
         adjustMaterialScript.Burn(burnDelay);
     }
     
@@ -179,6 +188,10 @@ public class StatusEffect : MonoBehaviour
         yield return new WaitForSeconds(freezeStartDelay);
         freezing = isActive;
 
+        //Set type
+        setInteraction(Element.Ice, true);
+
+        //Adjust material
         adjustMaterialScript.Freeze(freezeDelay);
     }
 
@@ -210,7 +223,7 @@ public class StatusEffect : MonoBehaviour
         }
     }
 
-    private IEnumerator resetDot()
+    public IEnumerator resetDot()
     {
         yield return new WaitForSeconds(effectDuration);
         if (burning) {
@@ -224,5 +237,20 @@ public class StatusEffect : MonoBehaviour
 
             appliedDot = false;
         }
+
+        setInteraction(Element.NoElement, false);
+    }
+
+    void setInteraction(Element element, bool allowInteraction) {
+        elemInteractorScript.elementType = element;
+        elemInteractorScript.allowInteraction = allowInteraction;
+    }
+
+    public void resetOnRagdoll() {
+        //appliedDot = false;
+
+        adjustMaterialScript.resetFX();
+
+        setInteraction(Element.NoElement, false);
     }
 }

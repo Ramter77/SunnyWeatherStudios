@@ -35,22 +35,22 @@ public class ShootProjectileFromAnimation : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (!playedSound) {
-            if (stateInfo.normalizedTime > soundDelay) {
-                if (element == Element.Fire) {
-                    AudioManager.Instance.PlaySound(audioSource, Sound.towerFire);
-                }
-                else if (element == Element.Ice) {
-                    AudioManager.Instance.PlaySound(audioSource, Sound.towerIce);
-                }
-                playedSound = true;
-            }
-        }
-
         if (!shot) {
             if (stateInfo.normalizedTime > shootDelay) {
-                rangedAttackScript.ShootActiveProjectile();
-                shot = true;
+                if (!playC.isMeleeAttacking) {
+                    if (!playedSound) {
+                        if (element == Element.Fire) {
+                            AudioManager.Instance.PlaySound(audioSource, Sound.towerFire);
+                        }
+                        else if (element == Element.Ice) {
+                            AudioManager.Instance.PlaySound(audioSource, Sound.towerIce);
+                        }
+                        playedSound = true;
+                    }
+
+                    rangedAttackScript.ShootActiveProjectile();
+                    shot = true;
+                }
             } 
         }   
     }
