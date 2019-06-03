@@ -2621,11 +2621,14 @@ MonoBehaviour:
   followRadius: 50
   stoppingRange: 10
   detectionRadius: 45
+  fleeDelay: 2
+  fleeRadius: 5
   scanDelay: 1
   minPreparationTimeForAttack: 4
   preparationTime: 0
   maxPreparationTimeForAttack: 6
   fleeRange: 3
+  fleeing: 0
   enabledAttack: 0
   isFallbackTarget: 0
   audioSource: {fileID: 0}
@@ -3594,16 +3597,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 137196, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 170370, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 5327823291965960981, guid: 4b1275c68da762a469aec97c97f0b473,
-        type: 3}
+    - target: {fileID: 137196, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
@@ -3617,7 +3615,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 1923516457761927116, guid: 4b1275c68da762a469aec97c97f0b473,
+    - target: {fileID: 5327823291965960981, guid: 4b1275c68da762a469aec97c97f0b473,
         type: 3}
       propertyPath: m_Layer
       value: 15
@@ -3627,12 +3625,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 5238867656513313589, guid: 4b1275c68da762a469aec97c97f0b473,
+    - target: {fileID: 1923516457761927116, guid: 4b1275c68da762a469aec97c97f0b473,
         type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7592895641729061550, guid: 4b1275c68da762a469aec97c97f0b473,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5238867656513313589, guid: 4b1275c68da762a469aec97c97f0b473,
         type: 3}
       propertyPath: m_Layer
       value: 15
@@ -3758,12 +3761,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.75
       objectReference: {fileID: 0}
-    - target: {fileID: 9012829207309500873, guid: cca93549278b2174f85a8fe0bfdb8125,
+    - target: {fileID: 5080922144313066625, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 5080922144313066625, guid: cca93549278b2174f85a8fe0bfdb8125,
+    - target: {fileID: 9012829207309500873, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
       propertyPath: m_Layer
       value: 15
@@ -3852,7 +3855,7 @@ PrefabInstance:
     - target: {fileID: 2300000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 8cb609b1c3cd7fa438c978486193feea, type: 2}
+      objectReference: {fileID: 2100000, guid: e99fa45aedfddfb48b54658ad22eea7d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
 --- !u!4 &5565955342546931546 stripped
