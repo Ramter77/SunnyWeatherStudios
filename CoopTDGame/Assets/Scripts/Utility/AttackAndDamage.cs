@@ -89,7 +89,7 @@ public class AttackAndDamage : MonoBehaviour
         if (shootPoint)
         {
             Vector3 targetRot = Target.transform.position - gameObject.transform.position;
-            Vector3 aimOffset = new Vector3(0, 5, 0);
+            Vector3 aimOffset = new Vector3(0, 1, 0);
             Vector3 aimRotation = targetRot - aimOffset;
             Instantiate(rangedAttackProjectilePrefab, shootPoint.position, Quaternion.LookRotation(aimRotation));
         }
