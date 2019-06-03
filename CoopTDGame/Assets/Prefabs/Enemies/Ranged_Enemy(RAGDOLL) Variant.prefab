@@ -1794,11 +1794,14 @@ MonoBehaviour:
   followRadius: 62
   stoppingRange: 55
   detectionRadius: 60
+  fleeDelay: 2
+  fleeRadius: 30
   scanDelay: 1.1
   minPreparationTimeForAttack: 4
   preparationTime: 0
   maxPreparationTimeForAttack: 5
-  fleeRange: 3
+  fleeRange: 30
+  fleeing: 0
   enabledAttack: 0
   isFallbackTarget: 0
   audioSource: {fileID: 0}
@@ -2764,21 +2767,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1199130653960296274}
     m_Modifications:
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy on Slow
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5953861532791573198, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2848,6 +2836,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy on Slow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3540249742271492023, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}

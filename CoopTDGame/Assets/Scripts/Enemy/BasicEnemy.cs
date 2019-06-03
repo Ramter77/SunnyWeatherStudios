@@ -59,6 +59,9 @@ public class BasicEnemy : MonoBehaviour
     [Tooltip("The radius for enemies to detect a target")]
     [SerializeField] private float detectionRadius = 15f;
 
+    [SerializeField] private float fleeDelay = 2f;
+    [SerializeField] private float fleeRadius = 5f;
+
     [Tooltip("Seconds between each Scan (for targets)")]
     [SerializeField] private float scanDelay = 5f;
     [Space(10)]
@@ -70,6 +73,7 @@ public class BasicEnemy : MonoBehaviour
 
     [Tooltip("Distance that the enemy flees")]
     public float fleeRange = 3f;
+    public bool fleeing = false;
 
     private Animator enemyAnim;
     private bool charging;
@@ -122,8 +126,13 @@ public class BasicEnemy : MonoBehaviour
             targetPos = Target.transform;
             float distance = Vector3.Distance(targetPos.position, transform.position);
 
+            if (distance <= fleeRadius && enemyType == 1)
+            {
+                startRunningAway();
+            }
+
             /// if target is in range for the enemy
-            if (distance <= detectionRadius && distance > stoppingRange)
+            if (distance <= detectionRadius && distance > stoppingRange && fleeing == false)
             {
                 MoveToTarget();
             }
@@ -133,7 +142,7 @@ public class BasicEnemy : MonoBehaviour
                 stopAttackingTarget();
             }
 
-            if (distance <= attackRange) // in attack range
+            if (distance <= attackRange && !fleeing) // in attack range
             {
                 FaceTowardsPlayer();
                 prepareAttack();
@@ -155,7 +164,7 @@ public class BasicEnemy : MonoBehaviour
                 }
             }
 
-            if (distance <= stoppingRange) // in stopping range prevents ai from bumping into player
+            if (distance <= stoppingRange && fleeing == false) // in stopping range prevents ai from bumping into player
             {
                 agent.SetDestination(transform.position);
                 agent.isStopped = true;
@@ -177,12 +186,9 @@ public class BasicEnemy : MonoBehaviour
                 {
                     stopAttackingTarget();
                 }
-
             }
         }
     }
-
-
     #endregion
 
 
@@ -202,18 +208,43 @@ public class BasicEnemy : MonoBehaviour
         enemySpeed = fallbackSpeed;
     }
     
+    void startRunningAway()
+    {
+        if(fleeing != true)
+        {
+            fleeDelay -= Time.deltaTime;
+            if (fleeDelay <= 0)
+            {
+                RunFromTarget();
+                fleeDelay = 2f;
+            }
+        }
+    }
+
+
     /// <summary>
     /// makes the enemy flee from the target
     /// </summary>
     void RunFromTarget()
     {
+        fleeing = true;
+        StartCoroutine(resetFleeing());
+        agent.isStopped = false;
+        enemySpeed = fallbackSpeed;
         transform.rotation = Quaternion.LookRotation(transform.position - targetPos.position);
         Vector3 runTo = transform.position + transform.forward * fleeRange;
         NavMeshHit hit;
 #pragma warning disable CS0618 // Typ oder Element ist veraltet
-        NavMesh.SamplePosition(runTo, out hit, 5, areaMask: 1 << NavMesh.GetNavMeshLayerFromName("Default"));
+        NavMesh.SamplePosition(runTo, out hit, 20, areaMask: 1 << NavMesh.GetNavMeshLayerFromName("Walkable"));
 #pragma warning restore CS0618 // Typ oder Element ist veraltet
+        Debug.Log("RunAway");
         agent.SetDestination(hit.position);
+    }
+
+    IEnumerator resetFleeing()
+    {
+        yield return new WaitForSeconds(3);
+        fleeing = false;
     }
 
     /// <summary>
@@ -443,6 +474,8 @@ public class BasicEnemy : MonoBehaviour
                 Handles.DrawSolidDisc(transform.position, Vector3.down, attackRange);
                 Gizmos.color = new Color(0.2f, 0.2f, 0.2f, opacityOfGizmos);
                 Handles.DrawSolidDisc(transform.position, Vector3.down, stoppingRange);
+                Gizmos.color = new Color(0.7f, 0.7f, 0.5f, opacityOfGizmos);
+                Handles.DrawSolidDisc(transform.position, Vector3.down, fleeRadius);
             }
             Handles.color = new Color(0, 1.0f, 0, 0.05f);
             Handles.DrawSolidDisc(transform.position, Vector3.down, detectionRadius);
@@ -481,6 +514,8 @@ public class BasicEnemy : MonoBehaviour
                 Handles.DrawSolidDisc(transform.position, Vector3.down, attackRange);
                 Gizmos.color = new Color(0.2f, 0.2f, 0.2f, opacityOfGizmos);
                 Handles.DrawSolidDisc(transform.position, Vector3.down, stoppingRange);
+                Gizmos.color = new Color(0.7f, 0.7f, 0.5f, opacityOfGizmos);
+                Handles.DrawSolidDisc(transform.position, Vector3.down, fleeRadius);
             }
             Handles.color = new Color(0, 1.0f, 0, 0.05f);
             Handles.DrawSolidDisc(transform.position, Vector3.down, detectionRadius);
