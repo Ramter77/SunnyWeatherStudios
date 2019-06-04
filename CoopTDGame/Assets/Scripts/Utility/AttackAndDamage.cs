@@ -31,6 +31,8 @@ public class AttackAndDamage : MonoBehaviour
     //private NavMeshAgent agent;
     private float defaultSpeed;
 
+    private GameObject sphere;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,7 @@ public class AttackAndDamage : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
         basicEnemy = GetComponent<BasicEnemy>();
         defaultSpeed = basicEnemy.enemySpeed;
+        sphere = GameObject.FindGameObjectWithTag("Sphere");
         if(MuzzleObject != null)
         {
             MuzzleObject.SetActive(false);
@@ -60,8 +63,15 @@ public class AttackAndDamage : MonoBehaviour
         {
             if (Target != null)
             {
-                //agent.speed = 0;
-                enemyAnim.SetTrigger("Attack");
+                if(attackMode == "sphereAttack")
+                {
+                    enemyAnim.SetTrigger("AttackSphere");
+                }
+
+                if(attackMode == "melee")
+                {
+                    enemyAnim.SetTrigger("Attack");
+                }
                 enableAttack = false;
                 StartCoroutine(resetAttackCooldown());
 

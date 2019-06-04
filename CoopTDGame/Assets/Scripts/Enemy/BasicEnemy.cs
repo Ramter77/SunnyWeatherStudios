@@ -294,9 +294,13 @@ public class BasicEnemy : MonoBehaviour
             preparationTime = Random.Range(minPreparationTimeForAttack, maxPreparationTimeForAttack);
 
             gameObject.GetComponent<AttackAndDamage>().Target = Target;
-            if(enemyType == 0 || enemyType == 2)
+            if(enemyType == 0 || (enemyType == 2 && Target != Sphere))
             {
                 gameObject.GetComponent<AttackAndDamage>().performAttack("melee");
+            }
+            else if(enemyType == 2 && Target == Sphere)
+            {
+                gameObject.GetComponent<AttackAndDamage>().performAttack("sphereAttack");
             }
             if(enemyType == 1)
             {
@@ -352,12 +356,19 @@ public class BasicEnemy : MonoBehaviour
                         if (Target == null)
                         {
                             Target = hit.gameObject;
-                            if (enemyType != 1)
+                            if (enemyType == 0)
                             {
                                 attackRange = 26f;
                                 followRadius = 45f;
                                 detectionRadius = 43f;
                                 stoppingRange = 25f;
+                            }
+                            if(enemyType == 2)
+                            {
+                                attackRange = 37f;
+                                followRadius = 55f;
+                                detectionRadius = 54f;
+                                stoppingRange = 35f;
                             }
                             return;
                         }
