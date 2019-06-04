@@ -100,6 +100,12 @@ public class LifeAndStats : MonoBehaviour
         {
             GameManager.Instance.GetComponent<SoulStorage>().soulCount = Mathf.RoundToInt(health);
         }
+
+        if (isEnemy) {
+            if (Input.GetKeyDown(KeyCode.Alpha0)) {
+                TakeDamage(health);
+            }
+        }
     }
 
     IEnumerator restartgame()

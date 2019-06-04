@@ -77,22 +77,42 @@ public class CombineElements : MonoBehaviour
     private void Update() {
         if (startTowerCD) {
             towerDuration -= Time.deltaTime;
-            if (towerDuration <= 0.0f) {
-                _SwitchBack();
+            if (towerDuration < 0.0f) {
+                
+                startTowerCD = false;
+                //_SwitchBack();
             }
         }
     }
 
     public void TryCombine(GameObject go) {
         //only when already activated
-        if (activatePrefabScript.trapActive || activatePrefabScript.towerActive) {
-            if (go.tag == projectileTag)
+        /* if (isTower) {
+            if (activatePrefabScript.towerActive) {
+                CombineHandler(go);
+            }
+        }
+        else if (isTrap) {
+            if (activatePrefabScript.trapActive) {
+                CombineHandler(go);
+            }
+        } */
+        //CombineHandler(go);
+
+        if (go.GetComponent<EffectHandler>() != null)
+        {
+            int otherProjectileElementIndex = go.GetComponent<EffectHandler>().effectIndex;
+            _CombineElements(otherProjectileElementIndex);
+        }
+    }
+
+    private void CombineHandler(GameObject go) {
+        if (go.tag == projectileTag)
+        {
+            if (go.GetComponent<EffectHandler>() != null)
             {
-                if (go.GetComponent<EffectHandler>() != null)
-                {
-                    int otherProjectileElementIndex = go.GetComponent<EffectHandler>().effectIndex;
-                    _CombineElements(otherProjectileElementIndex);
-                }
+                int otherProjectileElementIndex = go.GetComponent<EffectHandler>().effectIndex;
+                _CombineElements(otherProjectileElementIndex);
             }
         }
     }
@@ -131,19 +151,20 @@ public class CombineElements : MonoBehaviour
             meshRend.materials = matArray;
         }
         //Tower
-        else
+        else if (isTower)
         {
-            if (elem == Element.Blast) 
+            if (elem is Element.Blast) 
             {
                 basicTowerScript.changeProjectile(3);
             }
-            else if (elem == Element.Fire) {
+            else if (elem is Element.Fire) {
                 basicTowerScript.changeProjectile(1);
             }
-            else if (elem == Element.Ice) {
+            else if (elem is Element.Ice) {
                 basicTowerScript.changeProjectile(2);
             }
 
+            towerDuration = towerCD;
             startTowerCD = true;
         }
 
@@ -169,7 +190,28 @@ public class CombineElements : MonoBehaviour
     }
 
     void _CombineElements(int element) {
-        if (!blastActive) {
+        if (element == 1) {
+            if (iceActive) {
+                Combine(Element.Blast);
+            }
+            else
+            {
+                Combine(Element.Fire);
+            }
+            //Combine(Element.Fire);
+        }
+        else if (element == 2) {
+            if (fireActive) {
+                Combine(Element.Blast);
+            }
+            else
+            {
+                Combine(Element.Ice);
+            }
+        }
+
+        //Debug.Log("aeagga " + blastActive);
+        /* if (!blastActive) {
             //Fire
             if (element == 1) {
                 if (iceActive) {
@@ -190,11 +232,11 @@ public class CombineElements : MonoBehaviour
                     Combine(Element.Ice);
                 }
             }
-        }
+        } */
     }
 
     public void _SwitchBack()
-    {
+    {        
         audioSource.Stop();
 
         if (isTrap) {
@@ -220,9 +262,6 @@ public class CombineElements : MonoBehaviour
         {
             //switch back to default projectile & reset towerCD
             basicTowerScript.changeProjectile(0);
-
-            towerDuration = towerCD;
-            startTowerCD = false;
         }
         //switch crystal back to baseMat
         crystalMeshRenderer.material = baseMat;
