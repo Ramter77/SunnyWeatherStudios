@@ -85,6 +85,7 @@ public class AudioManager : Singleton<AudioManager>
     [Tooltip ("Order: Default, Fire, Ice, Blast")]
     public AudioClip[] trapVFX;
 
+
     void Start()
     {
         if (playMenuMusicOnStart) {
