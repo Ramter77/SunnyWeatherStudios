@@ -918,6 +918,7 @@ MonoBehaviour:
   maxPreparationTimeForAttack: 6
   fleeRange: 3
   fleeing: 0
+  isAttackingSphere: 0
   enabledAttack: 0
   isFallbackTarget: 0
   audioSource: {fileID: 3116285544776166989}
@@ -1170,7 +1171,7 @@ MonoBehaviour:
   _volumeRolloff: 0
   _minDistance: 10
   _maxDistance: 50
-  OnlyPlayForClosestCamera: 0
+  OnlyPlayForClosestCamera: 1
 --- !u!1 &5004688083444084199
 GameObject:
   m_ObjectHideFlags: 0
