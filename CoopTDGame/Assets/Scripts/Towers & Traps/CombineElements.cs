@@ -16,6 +16,8 @@ public class CombineElements : MonoBehaviour
 
     [Header ("VFX")]
     [SerializeField]
+    private GameObject trapDefaultVFX;
+    [SerializeField]
     private GameObject trapFireVFX;
     [SerializeField]
     private GameObject trapIceVFX;
@@ -98,6 +100,7 @@ public class CombineElements : MonoBehaviour
         if (isTrap) {
             if (elem == Element.Blast) 
             {
+                trapDefaultVFX.SetActive(false);
                 trapFireVFX.SetActive(false);
                 trapIceVFX.SetActive(false);
                 trapBlastVFX.SetActive(true);
@@ -107,6 +110,7 @@ public class CombineElements : MonoBehaviour
                 matArray[1] = blastMat;
             }
             else if (elem == Element.Fire) {
+                trapDefaultVFX.SetActive(false);
                 trapFireVFX.SetActive(true);
 
                 AudioManager.Instance.PlaySound(audioSource, Sound.trapFire);
@@ -114,6 +118,7 @@ public class CombineElements : MonoBehaviour
                 matArray[1] = fireMat;
             }
             else if (elem == Element.Ice) {
+                trapDefaultVFX.SetActive(false);
                 trapIceVFX.SetActive(true);
 
                 AudioManager.Instance.PlaySound(audioSource, Sound.trapIce);
@@ -192,6 +197,9 @@ public class CombineElements : MonoBehaviour
 
         if (isTrap) {
             //disable all vfx
+            if (trapDefaultVFX) {
+                trapDefaultVFX.SetActive(true);
+            }
             if (trapFireVFX) {
                 trapFireVFX.SetActive(false);
             }

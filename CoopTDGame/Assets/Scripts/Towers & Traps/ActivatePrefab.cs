@@ -40,6 +40,8 @@ public class ActivatePrefab : MonoBehaviour
     private GameObject riseVFX;
     [SerializeField]
     private float riseDuration = 3f;
+    [SerializeField]
+    private GameObject trapDefaultVFX;
 
     [Space (10)]
 
@@ -196,6 +198,12 @@ public class ActivatePrefab : MonoBehaviour
     IEnumerator DisableRiseVFX() {
         yield return new WaitForSeconds(riseDuration);
         riseVFX.SetActive(false);
+
+        if (trapDefaultVFX) {
+            if (trapActive) {
+                trapDefaultVFX.SetActive(true);
+            }
+        }
     }
 
     void _RiseTower() {
@@ -272,6 +280,8 @@ public class ActivatePrefab : MonoBehaviour
         trapActive = false;
         enabledVFX.SetActive(false);
         disabledVFX.SetActive(true);
+
+        trapDefaultVFX.SetActive(false);
 
         anim.clip = lowerTrap;
         anim.Play();
