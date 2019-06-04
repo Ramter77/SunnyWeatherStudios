@@ -78,6 +78,7 @@ public class BasicEnemy : MonoBehaviour
     public bool isAttackingSphere = false;
 
     private Animator enemyAnim;
+    private AttackAndDamage attacknDmgScript;
     private bool charging;
     public bool enabledAttack;
 
@@ -97,6 +98,7 @@ public class BasicEnemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         rigid = GetComponent<Rigidbody>();
         audioSource = GetComponent<MultiAudioSource>();
+        attacknDmgScript = gameObject.GetComponent<AttackAndDamage>();
         Sphere = GameObject.FindGameObjectWithTag("Sphere");
         WalkToSphere();
         StartCoroutine(ScanCycle());
@@ -293,18 +295,18 @@ public class BasicEnemy : MonoBehaviour
         {
             preparationTime = Random.Range(minPreparationTimeForAttack, maxPreparationTimeForAttack);
 
-            gameObject.GetComponent<AttackAndDamage>().Target = Target;
+            attacknDmgScript.Target = Target;
             if(enemyType == 0 || (enemyType == 2 && Target != Sphere))
             {
-                gameObject.GetComponent<AttackAndDamage>().performAttack("melee");
+                attacknDmgScript.performAttack("melee");
             }
             else if(enemyType == 2 && Target == Sphere)
             {
-                gameObject.GetComponent<AttackAndDamage>().performAttack("sphereAttack");
+                attacknDmgScript.performAttack("sphereAttack");
             }
             if(enemyType == 1)
             {
-                gameObject.GetComponent<AttackAndDamage>().performAttack("range");
+                attacknDmgScript.performAttack("range");
             }
 
 
