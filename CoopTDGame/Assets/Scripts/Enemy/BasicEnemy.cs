@@ -75,6 +75,7 @@ public class BasicEnemy : MonoBehaviour
     public float fleeRange = 3f;
     public bool fleeing = false;
     private bool wasFleeing = false;
+    public bool isAttackingSphere = false;
 
     private Animator enemyAnim;
     private bool charging;
@@ -128,14 +129,14 @@ public class BasicEnemy : MonoBehaviour
             targetPos = Target.transform;
             float distance = Vector3.Distance(targetPos.position, transform.position);
 
-            if (distance <= fleeRadius && enemyType == 1)
+            if ((distance <= fleeRadius) && enemyType == 1)
             {
                 if(wasFleeing == false)
                     startRunningAway();
             }
 
             /// if target is in range for the enemy
-            if (distance <= detectionRadius && distance > stoppingRange && fleeing == false)
+            if (distance <= detectionRadius && distance > stoppingRange && fleeing == false && isAttackingSphere == false)
             {
                 MoveToTarget();
             }
@@ -207,8 +208,8 @@ public class BasicEnemy : MonoBehaviour
     {
         agent.isStopped = false;
         attackState = 1;
-        agent.SetDestination(targetPos.position);
         enemySpeed = fallbackSpeed;
+        agent.SetDestination(Target.transform.position);
     }
     
     void startRunningAway()
@@ -267,7 +268,6 @@ public class BasicEnemy : MonoBehaviour
         if (!isFallbackTarget) {
             enemyAnim.SetBool("Charge", false);
         }
-
         Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
         Target = null;
         StartCoroutine(ScanCycle());
@@ -358,17 +358,26 @@ public class BasicEnemy : MonoBehaviour
                             Target = hit.gameObject;
                             if (enemyType == 0)
                             {
-                                attackRange = 26f;
-                                followRadius = 45f;
-                                detectionRadius = 43f;
-                                stoppingRange = 25f;
+                                isAttackingSphere = true;
+                                agent.SetDestination(Target.transform.position);
+                                agent.isStopped = false;
+                                enemySpeed = fallbackSpeed;
+                                attackRange = 29f;
+                                stoppingRange = 24f;
+                                followRadius = 90f;
+                                detectionRadius = 80f;
                             }
+
                             if(enemyType == 2)
                             {
-                                attackRange = 37f;
-                                followRadius = 55f;
-                                detectionRadius = 54f;
-                                stoppingRange = 35f;
+                                isAttackingSphere = true;
+                                agent.SetDestination(Target.transform.position);
+                                agent.isStopped = false;
+                                enemySpeed = fallbackSpeed;
+                                attackRange = 34f;
+                                stoppingRange = 32f;
+                                followRadius = 90f;
+                                detectionRadius = 80f;
                             }
                             return;
                         }
@@ -488,25 +497,26 @@ public class BasicEnemy : MonoBehaviour
         {
             if (!Target)
             {
-                Handles.color = new Color(0, 1.0f, 0, opacityOfGizmos);
-                Handles.DrawSolidDisc(transform.position, Vector3.down, detectionRadius);
-                Handles.color = new Color(1.0f, 0, 0, opacityOfGizmos);
-                Handles.DrawSolidDisc(transform.position, Vector3.down, followRadius);
-                Handles.color = new Color(0, 0, 1.0f, opacityOfGizmos);
-                Handles.DrawSolidDisc(transform.position, Vector3.down, attackRange);
-                Gizmos.color = new Color(0.2f, 0.2f, 0.2f, opacityOfGizmos);
-                Handles.DrawSolidDisc(transform.position, Vector3.down, stoppingRange);
-                Gizmos.color = new Color(0.7f, 0.7f, 0.5f, opacityOfGizmos);
-                Handles.DrawSolidDisc(transform.position, Vector3.down, fleeRadius);
+                
             }
+            Handles.color = new Color(0, 1.0f, 0, opacityOfGizmos);
+            Handles.DrawSolidDisc(transform.position, Vector3.down, detectionRadius);
+            Handles.color = new Color(1.0f, 0, 0, opacityOfGizmos);
+            Handles.DrawSolidDisc(transform.position, Vector3.down, followRadius);
+            Handles.color = new Color(0, 0, 1.0f, opacityOfGizmos);
+            Handles.DrawSolidDisc(transform.position, Vector3.down, attackRange);
+            Gizmos.color = new Color(0.2f, 0.2f, 0.2f, opacityOfGizmos);
+            Handles.DrawSolidDisc(transform.position, Vector3.down, stoppingRange);
+            Gizmos.color = new Color(0.7f, 0.7f, 0.5f, opacityOfGizmos);
+            Handles.DrawSolidDisc(transform.position, Vector3.down, fleeRadius);
             Handles.color = new Color(0, 1.0f, 0, 0.05f);
             Handles.DrawSolidDisc(transform.position, Vector3.down, detectionRadius);
-            float dashSize = 5f;
-            if (Target)
+            //float dashSize = 5f;
+            /*if (Target)
             {
                 Handles.color = new Color(1f, 0, 0, 1f);
                 Handles.DrawDottedLine(transform.position, Target.transform.position, dashSize);
-            }
+            }*/
         }
         
     }
