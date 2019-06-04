@@ -15,7 +15,7 @@ public class LifeAndStats : MonoBehaviour
 
     #region Soul
     private bool dropSoul = true;   //(Controls if an object drops souls) //Todo: Randomize?
-    private GameObject Soul;
+    public GameObject Soul;
     #endregion
 
     public GameObject particleEffect;
@@ -151,8 +151,8 @@ public class LifeAndStats : MonoBehaviour
 
                         #region Instantiate Soul
                         if (dropSoul) {
-                            Vector3 dropPos = new Vector3(transform.position.x, transform.position.y+2, transform.position.z);
-                            GameObject _Soul = Instantiate(Resources.Load("Soul", typeof(GameObject)), dropPos, Quaternion.identity) as GameObject;
+                            Vector3 dropPos = new Vector3(transform.position.x, transform.position.y+3, transform.position.z);
+                            Instantiate(Soul, dropPos, Quaternion.identity);
                         }
                         #endregion
                         
