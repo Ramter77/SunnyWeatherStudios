@@ -1668,6 +1668,8 @@ MonoBehaviour:
   setSpeedPercentage: 1
   setSpeedPercentageLerp: 0.2
   setSpeedMultiplier: 1
+  randomizeSpeed: 1
+  speedRandomization: {x: -0.1, y: 0.1}
   setSpeedMultiplierLerp: 0.2
   speedMultiplier: 0.6
   stopMovementWhenNotGrounded: 1
@@ -1960,7 +1962,7 @@ MonoBehaviour:
   _volume: 1
   _pitch: 1
   _reverbZoneMix: 1
-  _dopplerLevel: 1
+  _dopplerLevel: 0
   _spread: 0
   _volumeRolloff: 0
   _minDistance: 10

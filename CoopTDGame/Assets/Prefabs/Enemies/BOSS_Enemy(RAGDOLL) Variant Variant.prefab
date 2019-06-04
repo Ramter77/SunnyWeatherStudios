@@ -851,8 +851,8 @@ MonoBehaviour:
   _dopplerLevel: 1
   _spread: 0
   _volumeRolloff: 0
-  _minDistance: 10
-  _maxDistance: 50
+  _minDistance: 20
+  _maxDistance: 100
   OnlyPlayForClosestCamera: 0
 --- !u!1 &2078343133210196363
 GameObject:
@@ -2587,6 +2587,8 @@ MonoBehaviour:
   setSpeedPercentage: 1
   setSpeedPercentageLerp: 0.2
   setSpeedMultiplier: 1
+  randomizeSpeed: 1
+  speedRandomization: {x: -0.1, y: 0.1}
   setSpeedMultiplierLerp: 0.2
   speedMultiplier: 0.5
   stopMovementWhenNotGrounded: 1
@@ -2878,11 +2880,11 @@ MonoBehaviour:
   _volume: 1
   _pitch: 1
   _reverbZoneMix: 1
-  _dopplerLevel: 1
+  _dopplerLevel: 0
   _spread: 0
   _volumeRolloff: 0
   _minDistance: 10
-  _maxDistance: 500
+  _maxDistance: 50
   OnlyPlayForClosestCamera: 1
 --- !u!1 &7854632294711136870
 GameObject:
