@@ -388,6 +388,7 @@ namespace Assets.MultiAudioListener
                 MainMultiAudioListener.OnVirtualAudioListenerRemoved += VirtualAudioListenerRemoved;
 
                 //Play and start the play update
+                _safetyAudioSource.time = 0f;
                 _safetyAudioSource.Play();
                 bool hardwareChannelsLeft = _safetyAudioSource.isPlaying;
 
