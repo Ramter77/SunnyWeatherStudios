@@ -84,9 +84,12 @@ public class LifeAndStats : MonoBehaviour
             isEnemy = true;
         }
 
-        else if (gameObject.CompareTag("possibleTargets")) {
+        else if (gameObject.transform.GetChild(0).GetChild(0).gameObject.layer == 21) {
             isTower = true;
         }
+        /* else if (gameObject.CompareTag("possibleTargets")) {
+            isTower = true;
+        } */
     }
 
     void Update()
@@ -183,11 +186,14 @@ public class LifeAndStats : MonoBehaviour
                 AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.towerTakeDamage, true);
 
                 if (health <= 0) {
-                    gameObject.tag = "destroyedTarget";
+                    //gameObject.tag = "destroyedTarget";
 
+                    gameObject.tag = "Untagged";
                     if (destroyable) {
-                        Debug.Log("Fractured target");
+                        //Debug.Log("Fractured target");
                         fractureScript.Fracture(gameObject);
+
+                        health = maxhealth;
                     }
                 }
             }

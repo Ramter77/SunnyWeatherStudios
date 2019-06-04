@@ -621,6 +621,7 @@ GameObject:
   - component: {fileID: 6908837621891507621}
   - component: {fileID: 883817208930768769}
   - component: {fileID: 8610236037057259721}
+  - component: {fileID: 6847735531612260885}
   m_Layer: 2
   m_Name: AttackPoint
   m_TagString: Sphere
@@ -688,7 +689,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4483620904198097288}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 647cacea8a2ce674184783a31f87d2f8, type: 3}
   m_Name: 
@@ -712,6 +713,36 @@ MonoBehaviour:
     type: 3}
   destroyObject: 1
   debug: 0
+--- !u!114 &6847735531612260885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4483620904198097288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 0
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 0
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 5000
+  _maxDistance: 5000
+  OnlyPlayForClosestCamera: 1
 --- !u!1 &5672372611035123394
 GameObject:
   m_ObjectHideFlags: 0

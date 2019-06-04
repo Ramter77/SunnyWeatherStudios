@@ -24,27 +24,39 @@ public class WeaponDamage : MonoBehaviour {
     }
 
     private void OnTriggerEnter(Collider other)
-    { 
+    {
         if (isFriendly) {
             if (other.gameObject.tag == "Enemy" && other.gameObject != lastHitEnemy)
             {
-                _WeaponDamage(other.gameObject);
+                _WeaponDamage(other.gameObject, false);
             }
+            
         }
         else {
-            if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") {
-                _WeaponDamage(other.gameObject);
-            }
-            if(other.gameObject.tag == "Sphere")
+            if (other.gameObject.layer == 21)
             {
-                _WeaponDamage(other.gameObject);
+                _WeaponDamage(other.gameObject, true);
+            }
+            else if (other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") {
+                _WeaponDamage(other.gameObject, false);
+            }
+            else if (other.gameObject.tag == "Sphere")
+            {
+                _WeaponDamage(other.gameObject, false);
             }
         }
     }
 
-    void _WeaponDamage(GameObject other) {
+    void _WeaponDamage(GameObject other, bool toTower) {
         lastHitEnemy = other;
-        other.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
+
+        if (toTower) {
+            other.transform.parent.transform.parent.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
+        }
+        else
+        {
+            other.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
+        }
 
         if (!isProjectile) {
             AudioManager.Instance.PlaySound(audioSource, Sound.meleeImpact, true);

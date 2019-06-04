@@ -15,6 +15,12 @@ public class EnemyAnim : MonoBehaviour {
     [Tooltip ("Multiplies the speed of all animations by the speedMultiplier")]
     [SerializeField]
     private bool setSpeedMultiplier = true;
+    [Tooltip ("Check to randomize animations speeds depending on the randomizeSpeed min/max vector")]
+    [SerializeField]
+    private bool randomizeSpeed = true;
+    [Tooltip ("Check to ")]
+    [SerializeField]
+    private Vector2 speedRandomization = new Vector2(-0.1f, 0.1f);
     [Tooltip ("How long to lerp the speed multiplier")]
     [SerializeField]
     private float setSpeedMultiplierLerp = 0.2f;
@@ -59,6 +65,10 @@ public class EnemyAnim : MonoBehaviour {
         }
         if (injuredBlendLayerIndex == -1) {
             Debug.Log("Couldn't find 'InjuredBlend' layer");
+        }
+
+        if (randomizeSpeed) {
+            speedMultiplier = Random.Range(speedMultiplier+speedRandomization.x, speedMultiplier+speedRandomization.y);
         }
     }
 

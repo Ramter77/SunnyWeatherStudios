@@ -24,9 +24,8 @@ public class FractureObject : MonoBehaviour
     }
 
     public void Fracture(GameObject DestroyedObject) {
-        Instantiate(FracturedObject, DestroyedObject.transform.position, DestroyedObject.transform.rotation);
-
         if (destroyObject) {
+            Instantiate(FracturedObject, DestroyedObject.transform.position, DestroyedObject.transform.rotation);
             Destroy(DestroyedObject);
         }
         else
