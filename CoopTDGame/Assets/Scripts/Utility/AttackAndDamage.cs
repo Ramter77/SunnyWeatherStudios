@@ -20,6 +20,7 @@ public class AttackAndDamage : MonoBehaviour
     private BoxCollider weaponCollider;
     public Transform shootPoint = null;
     public GameObject rangedAttackProjectilePrefab = null;
+    public GameObject MuzzleObject;
 
     [Header("Damage Calculation")]
     public float targetDefense = 0f;
@@ -37,6 +38,10 @@ public class AttackAndDamage : MonoBehaviour
         enemyAnim = GetComponent<Animator>();
         basicEnemy = GetComponent<BasicEnemy>();
         defaultSpeed = basicEnemy.enemySpeed;
+        if(MuzzleObject != null)
+        {
+            MuzzleObject.SetActive(false);
+        }
 
         if (weapon) {
             weaponCollider = weapon.GetComponent<BoxCollider>();
@@ -91,6 +96,13 @@ public class AttackAndDamage : MonoBehaviour
             Vector3 targetRot = Target.transform.position - gameObject.transform.position;
             Vector3 aimOffset = new Vector3(0, 1, 0);
             Vector3 aimRotation = targetRot - aimOffset;
+
+            MuzzleObject.transform.position = shootPoint.position;
+            MuzzleObject.transform.rotation = Quaternion.LookRotation(aimRotation);
+            MuzzleObject.SetActive(true);
+            MuzzleObject.GetComponent<ParticleSystem>().Simulate(0.0f, true, true);
+            MuzzleObject.GetComponent<ParticleSystem>().Play();
+
             Instantiate(rangedAttackProjectilePrefab, shootPoint.position, Quaternion.LookRotation(aimRotation));
         }
     }
