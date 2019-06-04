@@ -107,8 +107,8 @@ public class Projectile : MonoBehaviour
 
 
         //!NOT NEEDED AFTER ALL????? First disable light just before destroying object to stop TLA _DEBUG_STACK_LEAK
-        lightSource = GetComponent<Light>();
-        StartCoroutine(DisableLight(destroyTime));
+        /* lightSource = GetComponent<Light>();
+        StartCoroutine(DisableLight(destroyTime)); */
 
         //Then destroy in destroyTime amout of seconds
         StartCoroutine(DestroyGO(destroyTime));
