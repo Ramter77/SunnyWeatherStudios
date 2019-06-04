@@ -929,7 +929,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1392987531311377586}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 852.42, y: 19, z: 856.94}
+  m_LocalPosition: {x: 904.5, y: 19, z: 901.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 6111724283878040847}
@@ -2380,7 +2380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3876389109919952240}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 166.15, y: 10.46, z: 511.65}
+  m_LocalPosition: {x: 104.2, y: 10.46, z: 487.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 229271689190543784}
@@ -3545,13 +3545,18 @@ MonoBehaviour:
   followRadius: 15
   stoppingRange: 3.5
   detectionRadius: 15
+  fleeDelay: 2
+  fleeRadius: 5
   scanDelay: 5
   minPreparationTimeForAttack: 1
   preparationTime: 0
   maxPreparationTimeForAttack: 5
   fleeRange: 3
+  fleeing: 0
+  isAttackingSphere: 0
   enabledAttack: 0
   isFallbackTarget: 1
+  audioSource: {fileID: 0}
   alwaysShowGizmos: 0
   opacityOfGizmos: 0.1
 --- !u!114 &1091908911746848482
@@ -3574,6 +3579,7 @@ MonoBehaviour:
   weapon: {fileID: 0}
   shootPoint: {fileID: 0}
   rangedAttackProjectilePrefab: {fileID: 0}
+  MuzzleObject: {fileID: 0}
   targetDefense: 0
 --- !u!54 &617527809
 Rigidbody:
@@ -3607,6 +3613,7 @@ MonoBehaviour:
   maxhealth: 90000
   defense: 20
   amountOfUnitsAttacking: 0
+  Soul: {fileID: 0}
   particleEffect: {fileID: 2266160152052906837, guid: 76b6c0581f619724487b267899a10536,
     type: 3}
   ParticleOnHitEffectYoffset: 1
@@ -4966,8 +4973,8 @@ MonoBehaviour:
   Spawners: []
   Enemies:
   - {fileID: 0}
-  maximumEnemies: 0
-  addedEnemiesPerWave: 100
+  maximumEnemies: 20
+  addedEnemiesPerWave: 10
   spawnedEnemies: 0
   enemiesInScene: 0
   Wave: 0
@@ -4978,7 +4985,7 @@ MonoBehaviour:
   annoucementMessageHolder: {fileID: 6814741793361337173}
   annoucementText: {fileID: 5862702689296514400}
   disableTime: 5
-  BossWave: 2
+  BossWave: 1
   BossEveryXRounds: 5
   startSpawningOnSceneStart: 0
 --- !u!1 &7382245385601226285
@@ -5292,7 +5299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7715853353194039205}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 795.1, y: 47, z: 101.7}
+  m_LocalPosition: {x: 855.1, y: 47, z: 97.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5589901507725706048}
