@@ -214,7 +214,13 @@ public class LifeAndStats : MonoBehaviour
             else if (isSphere)
             {
                 AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.sphereTakeDamage, false);
-                soulCounterIconAnim.Play();
+                if (soulCounterIconAnim) {
+                    soulCounterIconAnim.Play();
+                }
+                else
+                {
+                    Debug.Log("Can't find 'SoulCounter' tag");
+                }
                 SoulBackpack.Instance.ChangeTextColor(Color.red);                
 
                 if (health < 0)
