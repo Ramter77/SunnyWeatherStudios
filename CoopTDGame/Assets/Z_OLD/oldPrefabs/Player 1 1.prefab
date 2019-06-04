@@ -198,6 +198,7 @@ MonoBehaviour:
   maxhealth: 100
   defense: 20
   amountOfUnitsAttacking: 0
+  Soul: {fileID: 0}
   particleEffect: {fileID: 2712116678064869091, guid: 09eea307eba35884abc5cb2706e5619f,
     type: 3}
   ParticleOnHitEffectYoffset: 4
@@ -226,6 +227,8 @@ MonoBehaviour:
   allowJumpWhileMelee: 0
   restrictForwardJump: 0
   allowJumpWhileRanged: 0
+  FootstepTrigger1: {fileID: 0}
+  FootstepTrigger2: {fileID: 0}
 --- !u!114 &68345725
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -272,7 +275,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   TurnPlayerForward: 0
-  turn_Speed: 2
+  turn_Speed: 0
   groundCheckRadius: 1
   groundCheckHeight: 1.5
   groundCheckDistance: 2
@@ -453,7 +456,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512911581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 8, z: -8}
+  m_LocalPosition: {x: 1.4, y: 10, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 84167150}
@@ -540,12 +543,12 @@ MonoBehaviour:
   _inputX: 0
   _inputY: 0
   moveSpeed: 15
-  turnSpeed: 1.5
+  turnSpeed: 2.5
   turnSpeedMultiplier: 1
   turnsmoothing: 0.1
   tiltMax: 30
   tiltMin: 30
-  crosshairOffsetWiggle: 0.2
+  crosshairOffsetWiggle: 0.1
 --- !u!1 &1759869197
 GameObject:
   m_ObjectHideFlags: 0
@@ -580,7 +583,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1759869197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.25, y: -1.8499985, z: -4.789978}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 84167150}
@@ -608,7 +611,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.2
+  near clip plane: 5
   far clip plane: 5000
   field of view: 50
   orthographic: 0
@@ -838,12 +841,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistance: 1
-  maxDistance: 4
-  smooth: 10
-  dollyDir: {x: 0, y: 0, z: 0}
+  maxDistance: 10
+  smooth: 3
+  dollyDir: {x: 0, y: -0.4, z: -0.4}
   dollyDirAdjusted: {x: 0, y: 0, z: 0}
-  distance: 0
+  distance: 10
   isHitting: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2284848129
 --- !u!1 &7376618731371607262
 GameObject:
   m_ObjectHideFlags: 0

@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 1099153509272865660}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 70ac28f192b478a46b3ea5454f303b4d, type: 3}
-  m_Controller: {fileID: 9100000, guid: 10474c2064b368248b13e0d88f1b5eda, type: 2}
+  m_Controller: {fileID: 9100000, guid: 8b0dce7b2c69bd84892ac26fdca9d71c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -233,6 +233,7 @@ MonoBehaviour:
   maxhealth: 100
   defense: 20
   amountOfUnitsAttacking: 0
+  Soul: {fileID: 0}
   particleEffect: {fileID: 2712116678064869091, guid: 09eea307eba35884abc5cb2706e5619f,
     type: 3}
   ParticleOnHitEffectYoffset: 4
@@ -590,7 +591,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.2
+  near clip plane: 5
   far clip plane: 5000
   field of view: 50
   orthographic: 0
@@ -814,18 +815,21 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099153510804679943}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f6bd9d15dceea1449877433d214eed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minDistance: 1
-  maxDistance: 4
-  smooth: 10
-  dollyDir: {x: 0, y: 0, z: 0}
+  maxDistance: 10
+  smooth: 3
+  dollyDir: {x: 0, y: -0.4, z: -0.4}
   dollyDirAdjusted: {x: 0, y: 0, z: 0}
-  distance: 0
+  distance: 10
   isHitting: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 2284848129
 --- !u!1 &1099153510938151090
 GameObject:
   m_ObjectHideFlags: 0
@@ -876,7 +880,7 @@ MonoBehaviour:
   _inputX: 0
   _inputY: 0
   moveSpeed: 15
-  turnSpeed: 1.5
+  turnSpeed: 2.5
   turnSpeedMultiplier: 1
   turnsmoothing: 0.1
   tiltMax: 30
@@ -1003,15 +1007,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8134681642376037494}
-  m_LocalRotation: {x: 0.75608087, y: -0.004699904, z: -0.65444815, w: -0.0041496134}
-  m_LocalPosition: {x: 0.6, y: 0.053, z: 0.189}
-  m_LocalScale: {x: 100.0002, y: 100.00022, z: 100.00014}
+  m_LocalRotation: {x: 0.6591139, y: -0.38299355, z: -0.6429863, w: 0.07384748}
+  m_LocalPosition: {x: 0.625, y: -0.167, z: 0.289}
+  m_LocalScale: {x: 100.00009, y: 100.00006, z: 100.00011}
   m_Children:
   - {fileID: 8134681643513990670}
   - {fileID: 8134681641537571431}
   m_Father: {fileID: 8993159652280533094}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: -0.712, y: -98.243, z: -179.904}
+  m_LocalEulerAnglesHint: {x: -23.277, y: -100.172005, z: -139.233}
 --- !u!33 &8134681642376037501
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -1144,15 +1148,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8134681642390761370}
-  m_LocalRotation: {x: -0.031986974, y: -0.05645937, z: 0.6903737, w: 0.7205368}
-  m_LocalPosition: {x: -0.365, y: 0.061, z: 0.085}
+  m_LocalRotation: {x: -0.122777544, y: -0.14324214, z: 0.67770594, w: 0.7107194}
+  m_LocalPosition: {x: -0.335, y: 0.092, z: -0.002}
   m_LocalScale: {x: 30.085745, y: 394.7454, z: 30.08581}
   m_Children:
   - {fileID: 8134681643567070123}
   - {fileID: 8134681642863497071}
   m_Father: {fileID: 8993159652280533094}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 1.8260001, y: -7.215, z: 87.435005}
+  m_LocalEulerAnglesHint: {x: 1.125, y: -21.721, z: 87.060005}
 --- !u!33 &8134681642390761377
 MeshFilter:
   m_ObjectHideFlags: 0

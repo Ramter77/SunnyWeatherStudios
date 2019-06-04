@@ -275,6 +275,7 @@ public class InputManager : Singleton<InputManager>
         }
         else
         {
+            //! Run0 = Input.GetButton(_Player0._Run);
             Run0 = Input.GetButton(_Player0._Run);
         }
         Jump0 = Input.GetButtonDown(_Player0._Jump);
@@ -305,7 +306,8 @@ public class InputManager : Singleton<InputManager>
 
         Jump1 = Input.GetButtonDown(_Player1._Jump);
         MouseInput1 = new Vector2(Input.GetAxisRaw(_Player1._MouseInputX), Input.GetAxisRaw(_Player1._MouseInputY));
-        Run1 = Input.GetButton(_Player1._Run);
+        //! Run1 = Input.GetButton(_Player1._Run);
+        Run1 = (Input.GetButton(_Player1._Run) || Input.GetButton(_Player1._LB) || Input.GetButton(_Player1._RB)) ? true : false;
         Heal1 = Input.GetButtonDown(_Player1._Heal);
         Ultimate1 = Input.GetButtonDown(_Player1._Ultimate);
         Interact1 = Input.GetButtonDown(_Player1._Interact);
@@ -336,7 +338,9 @@ public class InputManager : Singleton<InputManager>
 
         Jump2 = Input.GetButtonDown(_Player2._Jump);
         MouseInput2 = new Vector2(Input.GetAxisRaw(_Player2._MouseInputX), Input.GetAxisRaw(_Player2._MouseInputY));
-        Run2 = Input.GetButton(_Player2._Run);
+        
+        //! Run2 = Input.GetButton(_Player2._Run);
+        Run2 = (Input.GetButton(_Player2._Run) || Input.GetButton(_Player2._LB) || Input.GetButton(_Player2._RB)) ? true : false;
         Heal2 = Input.GetButtonDown(_Player2._Heal);
         Ultimate2 = Input.GetButtonDown(_Player2._Ultimate);
         Interact2 = Input.GetButtonDown(_Player2._Interact);
