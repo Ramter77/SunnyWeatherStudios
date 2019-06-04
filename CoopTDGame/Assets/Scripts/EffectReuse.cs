@@ -13,17 +13,17 @@ public class EffectReuse : PoolObject
     {
         myParticleSystem = GetComponent<ParticleSystem>();
         _source = GetComponent<MultiAudioSource>();
-        if (_source != null)
+        /* if (_source != null)
         {
             if (explosionIndex == 0)
-                AudioManager.Instance.PlaySound(_source, Sound.towerDefaultImpact);
+                AudioManager.Instance.PlaySound(_source, Sound.towerDefaultImpact, false);
             if (explosionIndex == 1)
-                AudioManager.Instance.PlaySound(_source, Sound.towerFireImpact);
+                AudioManager.Instance.PlaySound(_source, Sound.towerFireImpact, false);
             if (explosionIndex == 2)
-                AudioManager.Instance.PlaySound(_source, Sound.towerIceImpact);
+                AudioManager.Instance.PlaySound(_source, Sound.towerIceImpact, false);
             if (explosionIndex == 3)
-                AudioManager.Instance.PlaySound(_source, Sound.towerBlastImpact);
-        }
+                AudioManager.Instance.PlaySound(_source, Sound.towerBlastImpact, false);
+        } */
     }
 
     public void PlaySound()
@@ -32,13 +32,13 @@ public class EffectReuse : PoolObject
         if (_source != null)
         {
             if (explosionIndex == 0)
-                AudioManager.Instance.PlaySound(_source, Sound.towerDefaultImpact);
+                AudioManager.Instance.PlaySound(_source, Sound.towerDefaultImpact, true);
             if (explosionIndex == 1)
-                AudioManager.Instance.PlaySound(_source, Sound.towerFireImpact);
+                AudioManager.Instance.PlaySound(_source, Sound.towerFireImpact, true);
             if (explosionIndex == 2)
-                AudioManager.Instance.PlaySound(_source, Sound.towerIceImpact);
+                AudioManager.Instance.PlaySound(_source, Sound.towerIceImpact, true);
             if (explosionIndex == 3)
-                AudioManager.Instance.PlaySound(_source, Sound.towerBlastImpact);
+                AudioManager.Instance.PlaySound(_source, Sound.towerBlastImpact, true);
         }
     }
 

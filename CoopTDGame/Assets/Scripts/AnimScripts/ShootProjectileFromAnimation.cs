@@ -40,10 +40,10 @@ public class ShootProjectileFromAnimation : StateMachineBehaviour
                 if (!playC.isMeleeAttacking) {
                     if (!playedSound) {
                         if (element == Element.Fire) {
-                            AudioManager.Instance.PlaySound(audioSource, Sound.towerFire);
+                            AudioManager.Instance.PlaySound(audioSource, Sound.towerFire, false);
                         }
                         else if (element == Element.Ice) {
-                            AudioManager.Instance.PlaySound(audioSource, Sound.towerIce);
+                            AudioManager.Instance.PlaySound(audioSource, Sound.towerIce, false);
                         }
                         playedSound = true;
                     }

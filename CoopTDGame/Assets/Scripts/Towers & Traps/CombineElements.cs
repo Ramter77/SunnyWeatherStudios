@@ -43,6 +43,7 @@ public class CombineElements : MonoBehaviour
     private BasicTower basicTowerScript;
     private ActivatePrefab activatePrefabScript;
     private MultiAudioSource audioSource;
+    private MultiAudioSource ownAudioSource;
     private bool isTrap, isTower;
     private bool fireActive, iceActive, blastActive;
 
@@ -65,6 +66,7 @@ public class CombineElements : MonoBehaviour
         }
 
         audioSource = holderTransform.GetComponent<MultiAudioSource>();
+        ownAudioSource = GetComponent<MultiAudioSource>();
         activatePrefabScript = holderTransform.GetComponent<ActivatePrefab>();
         crystalMeshRenderer = crystalObject.GetComponent<MeshRenderer>();
         meshRend = GetComponent<MeshRenderer>();
@@ -105,7 +107,7 @@ public class CombineElements : MonoBehaviour
                 trapIceVFX.SetActive(false);
                 trapBlastVFX.SetActive(true);
 
-                AudioManager.Instance.PlaySound(audioSource, Sound.trapBlast);
+                AudioManager.Instance.PlaySound(audioSource, Sound.trapBlast, false);
 
                 matArray[1] = blastMat;
             }
@@ -113,7 +115,7 @@ public class CombineElements : MonoBehaviour
                 trapDefaultVFX.SetActive(false);
                 trapFireVFX.SetActive(true);
 
-                AudioManager.Instance.PlaySound(audioSource, Sound.trapFire);
+                AudioManager.Instance.PlaySound(audioSource, Sound.trapFire, false);
             
                 matArray[1] = fireMat;
             }
@@ -121,7 +123,7 @@ public class CombineElements : MonoBehaviour
                 trapDefaultVFX.SetActive(false);
                 trapIceVFX.SetActive(true);
 
-                AudioManager.Instance.PlaySound(audioSource, Sound.trapIce);
+                AudioManager.Instance.PlaySound(audioSource, Sound.trapIce, false);
             
                 matArray[1] = iceMat;
             }
@@ -150,19 +152,19 @@ public class CombineElements : MonoBehaviour
             blastActive = true;
             crystalMeshRenderer.material = blastMat;
 
-            AudioManager.Instance.PlaySound(audioSource, Sound.playerCombineBuildingBlast);
+            AudioManager.Instance.PlaySound(ownAudioSource, Sound.playerCombineBuildingBlast, false);
         }
         else if (elem == Element.Fire) {
             fireActive = true;
             crystalMeshRenderer.material = fireMat;
 
-            AudioManager.Instance.PlaySound(audioSource, Sound.playerCombineBuildingFire);
+            AudioManager.Instance.PlaySound(ownAudioSource, Sound.playerCombineBuildingFire, false);
         }
         else if (elem == Element.Ice) {
             iceActive = true;
             crystalMeshRenderer.material = iceMat;
 
-            AudioManager.Instance.PlaySound(audioSource, Sound.playerCombineBuildingIce);
+            AudioManager.Instance.PlaySound(ownAudioSource, Sound.playerCombineBuildingIce, false);
         }
     }
 

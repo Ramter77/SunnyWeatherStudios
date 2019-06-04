@@ -292,6 +292,7 @@ MonoBehaviour:
   maxhealth: 100
   defense: 20
   amountOfUnitsAttacking: 0
+  Soul: {fileID: 0}
   particleEffect: {fileID: 1778350501494656303, guid: 15d393a3399c0214b9f7416b92e1ae76,
     type: 3}
   ParticleOnHitEffectYoffset: 11
@@ -421,6 +422,7 @@ MonoBehaviour:
   playFirstLowerAnim: 0
   riseVFX: {fileID: 238515445877518854}
   riseDuration: 3
+  trapDefaultVFX: {fileID: 0}
   disabledVFX: {fileID: 13018920001646016}
   enabledVFX: {fileID: 1083060925}
 --- !u!114 &7005909784473411341
@@ -472,6 +474,7 @@ GameObject:
   - component: {fileID: 636816299}
   - component: {fileID: 2308388528502104261}
   - component: {fileID: 7206247230682146756}
+  - component: {fileID: 1433479761371693872}
   m_Layer: 21
   m_Name: _tower
   m_TagString: Untagged
@@ -618,6 +621,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileTag: ElementProjectile
   towerCD: 40
+  trapDefaultVFX: {fileID: 0}
   trapFireVFX: {fileID: 0}
   trapIceVFX: {fileID: 0}
   trapBlastVFX: {fileID: 0}
@@ -668,6 +672,36 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.05, y: 0.03, z: 0.13}
   m_Center: {x: -0.002, y: 0.006117192, z: 0.03}
+--- !u!114 &1433479761371693872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725089659040535179}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioClip: {fileID: 0}
+  _output: {fileID: 0}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 0
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 50
+  _maxDistance: 100
+  OnlyPlayForClosestCamera: 0
 --- !u!1 &5281330852495207241
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +909,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2004167258}
     m_Modifications:
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_Name
+      value: Object Interactable Enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_Layer
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 490934, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -930,22 +980,6 @@ PrefabInstance:
     - target: {fileID: 490934, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_LocalScale.z
       value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_Name
-      value: Object Interactable Enabled
-      objectReference: {fileID: 0}
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_Layer
-      value: 21
-      objectReference: {fileID: 0}
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 124416, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 174594, guid: 9b95de169c5cf5b46b404f6f2bed4afb, type: 3}
       propertyPath: m_Layer

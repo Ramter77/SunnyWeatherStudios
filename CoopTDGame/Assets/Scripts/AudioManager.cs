@@ -9,13 +9,17 @@ public enum Sound { empty,
                     playerCombineBuildingIce, playerCombineBuildingBlast, playerTakeDamage,playerDeath, playerRevive,
                     playerPickupSoul, meleeImpact,
                     enemyMeleeAttack, enemyRangedAttack, enemyBossAttack, enemyTakeDamage, enemyRagdoll,
-                    towerTakeDamage, towerDefault, towerFire, towerIce, towerBlast, towerDefaultImpact, towerFireImpact, towerIceImpact, towerBlastImpact, trapDefault, trapFire, trapIce, trapBlast, 
+                    sphereTakeDamage, towerTakeDamage, towerDefault, towerFire, towerIce, towerBlast, towerDefaultImpact, towerFireImpact, towerIceImpact, towerBlastImpact, trapDefault, trapFire, trapIce, trapBlast, 
                     };
 public class AudioManager : Singleton<AudioManager>
 {
     [SerializeField]
     [Tooltip ("Stop any sound before playing the next one")]
     private bool stopSoundBeforeNext;
+    [SerializeField]
+    [Tooltip ("The range used to randomize pitch")]
+    private Vector2 pitchRandomization = new Vector2(-0.1f, 0.1f);
+
     [SerializeField] //hidden because it adds the component on start
     [Tooltip ("The first child of the object playing the sounds")]
     private MultiAudioSource soundAudioSource;
@@ -72,6 +76,7 @@ public class AudioManager : Singleton<AudioManager>
 
     [Header ("Towers & Traps")]
     [Space (15)]
+    public AudioClip[] sphereTakeDamage;
     public AudioClip[] towerTakeDamage;
     [Tooltip ("Order: Default, Fire, Ice, Blast")]
     public AudioClip[] towerProjectiles;
@@ -93,7 +98,7 @@ public class AudioManager : Singleton<AudioManager>
     /// </summary>
     /// <param name="_source">Use provided audio source or own audio source when passed null</param>
     /// <param name="_clip">Play provided _clip once</param>
-    public void PlaySound(MultiAudioSource _source, Sound sound) {
+    public void PlaySound(MultiAudioSource _source, Sound sound, bool randomizePitch) {
         //if (sound != null) {
             //Set audio source
             MultiAudioSource  _audioSource;
@@ -186,6 +191,9 @@ public class AudioManager : Singleton<AudioManager>
                 #endregion
 
                 #region Towers & Traps
+                case Sound.sphereTakeDamage:
+                    _clip = sphereTakeDamage[Random.Range(0, sphereTakeDamage.Length - 1)];
+                    break;
                 case Sound.towerTakeDamage:
                     _clip = towerTakeDamage[Random.Range(0, towerTakeDamage.Length - 1)];
                     break;
@@ -236,6 +244,10 @@ public class AudioManager : Singleton<AudioManager>
                 default:
                     _clip = null;
                     break;
+            }
+
+            if (randomizePitch) {
+                _audioSource.Pitch = Random.Range(_audioSource.Pitch+pitchRandomization.x, _audioSource.Pitch+pitchRandomization.y);
             }
 
             if (_clip != null) { 

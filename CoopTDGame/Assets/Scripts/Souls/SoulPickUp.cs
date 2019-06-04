@@ -24,7 +24,7 @@ public class SoulPickUp : MonoBehaviour
             pickedUp = true;
             SoulBackpack.Instance.sharedSoulAmount += soulValue;
 
-            AudioManager.Instance.PlaySound(null, Sound.playerPickupSoul);
+            AudioManager.Instance.PlaySound(null, Sound.playerPickupSoul, false);
 
             Destroy(gameObject);
         }

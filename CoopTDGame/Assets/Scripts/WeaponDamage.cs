@@ -47,7 +47,7 @@ public class WeaponDamage : MonoBehaviour {
         other.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
 
         if (!isProjectile) {
-            AudioManager.Instance.PlaySound(audioSource, Sound.meleeImpact);
+            AudioManager.Instance.PlaySound(audioSource, Sound.meleeImpact, true);
         }
 
         StartCoroutine(resetLastHitGO());

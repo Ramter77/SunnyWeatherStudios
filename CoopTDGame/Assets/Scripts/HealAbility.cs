@@ -187,7 +187,11 @@ public class HealAbility : MonoBehaviour
 
                 if (playerToHeal.GetComponent<LifeAndStats>().health <= 0)
                 {
-                    playerToHeal.GetComponent<LifeAndStats>().Revive();
+                    //playerToHeal.GetComponent<LifeAndStats>().Revive();
+
+                    playC.isDead = false;
+                    playerToHeal.GetComponent<LifeAndStats>().health = 100;
+                    playerAnim.SetBool("Dead", false);
                 }
                 else if (playerToHeal.GetComponent<LifeAndStats>().health > maxHealth - healAmount)
                 {

@@ -174,7 +174,7 @@ public class Ragdoll : MonoBehaviour
         statusEffectScript.resetOnRagdoll();
         //}
 
-        AudioManager.Instance.PlaySound(enemyScript.audioSource, Sound.enemyRagdoll);
+        AudioManager.Instance.PlaySound(enemyScript.audioSource, Sound.enemyRagdoll, true);
 
     }
 

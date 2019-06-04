@@ -180,7 +180,7 @@ public class LifeAndStats : MonoBehaviour
             }
 
             else if (isTower) {
-                AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.towerTakeDamage);
+                AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.towerTakeDamage, true);
 
                 if (health <= 0) {
                     gameObject.tag = "destroyedTarget";
@@ -194,7 +194,7 @@ public class LifeAndStats : MonoBehaviour
 
             else if (isSphere)
             {
-                AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.towerTakeDamage);
+                AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.sphereTakeDamage, false);
 
                 if (health < 0)
                 {
@@ -236,9 +236,9 @@ public class LifeAndStats : MonoBehaviour
     }
 
     public void Revive() {
-        playC.isDead = false;
+        /* playC.isDead = false;
         health = 100;
-        anim.SetBool("Dead", false);
+        anim.SetBool("Dead", false); */
     }
 
     void reduceHealthCooldown()

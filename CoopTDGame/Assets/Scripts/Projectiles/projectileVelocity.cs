@@ -41,7 +41,7 @@ public class projectileVelocity : MonoBehaviour
 
         if (playSoundOnStart) {
             if (sound != Sound.empty) {
-                AudioManager.Instance.PlaySound(audioSource, sound);
+                AudioManager.Instance.PlaySound(audioSource, sound, false);
             }
         }
     }

@@ -14,6 +14,8 @@ public class PlaySoundOnAnimation : StateMachineBehaviour
     private bool isEnemy;
     [SerializeField] 
     private float delay = 0f;
+    [SerializeField]
+    private bool randomizePitch;
 
 
     private bool played;
@@ -39,13 +41,13 @@ public class PlaySoundOnAnimation : StateMachineBehaviour
             if (stateInfo.normalizedTime > delay) {
                 if (isPlayer) {
                     if (playC != null){
-                        AudioManager.Instance.PlaySound(playC.playerAudioSource, sound);
+                        AudioManager.Instance.PlaySound(playC.playerAudioSource, sound, randomizePitch);
                         played = true;
                     }
                 }
                 else
                 {
-                    AudioManager.Instance.PlaySound(audioSource, sound);
+                    AudioManager.Instance.PlaySound(audioSource, sound, randomizePitch);
                     played = true;
                 }
             }  
