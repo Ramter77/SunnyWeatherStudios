@@ -49,9 +49,17 @@ public class SoulBackpack : Singleton<SoulBackpack>
     public void reduceSoulsByCost(int cost)
     {
         sphere.GetComponent<LifeAndStats>().health -= cost;
-        soulBackpackText.color = usageColor;
+
+        ChangeTextColor(usageColor);
+        /* soulBackpackText.color = usageColor;
+        StartCoroutine(resetColor()); */
+    }
+
+    public void ChangeTextColor(Color color) {
+        soulBackpackText.color = color;
         StartCoroutine(resetColor());
     }
+
     IEnumerator resetColor()
     {
         yield return new WaitForSeconds(1f);

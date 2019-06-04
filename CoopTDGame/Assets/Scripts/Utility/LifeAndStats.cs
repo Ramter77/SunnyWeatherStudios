@@ -40,6 +40,8 @@ public class LifeAndStats : MonoBehaviour
 
     private bool isPlayer, isSphere, isTower, isEnemy;
 
+    public Animation soulCounterIconAnim;
+
 
     
     private bool _dead;
@@ -73,6 +75,11 @@ public class LifeAndStats : MonoBehaviour
             {
                 Debug.Log("GameOverScreen not assigned to sphere");
             }
+
+            if (soulCounterIconAnim == null) {
+                soulCounterIconAnim = GameObject.FindGameObjectWithTag("SoulCounter").GetComponent<Animation>();
+            }
+            //soulCounterIconAnim = GetComponent<Animation>();
         }
 
         else if (gameObject.CompareTag("Player") || gameObject.CompareTag("Player2"))
@@ -207,6 +214,8 @@ public class LifeAndStats : MonoBehaviour
             else if (isSphere)
             {
                 AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.sphereTakeDamage, false);
+                soulCounterIconAnim.Play();
+                SoulBackpack.Instance.ChangeTextColor(Color.red);                
 
                 if (health < 0)
                 {
