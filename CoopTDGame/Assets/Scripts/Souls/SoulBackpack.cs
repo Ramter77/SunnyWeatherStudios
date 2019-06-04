@@ -12,6 +12,8 @@ public class SoulBackpack : Singleton<SoulBackpack>
     public Color defaultColor;
     public Color usageColor;
 
+    public bool connectSoulsToSphere = true; 
+
     public KeyCode SoulHotkey;
 
     private void Start() {
@@ -33,12 +35,20 @@ public class SoulBackpack : Singleton<SoulBackpack>
         {
             sharedSoulAmount += 300;
         }
-    }
 
+        if(connectSoulsToSphere)
+        {
+            sharedSoulAmount = Mathf.RoundToInt(sphere.GetComponent<LifeAndStats>().health);
+        }
+    }
+    public void addSoulsToCounter(float amount)
+    {
+        sphere.GetComponent<LifeAndStats>().health += amount;
+    }
 
     public void reduceSoulsByCost(int cost)
     {
-        sharedSoulAmount -= cost;
+        sphere.GetComponent<LifeAndStats>().health -= cost;
         soulBackpackText.color = usageColor;
         StartCoroutine(resetColor());
     }

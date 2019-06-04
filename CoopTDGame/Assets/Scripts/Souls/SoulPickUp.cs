@@ -22,7 +22,7 @@ public class SoulPickUp : MonoBehaviour
         {
             Instantiate(particleEffect, transform.position, Quaternion.identity);
             pickedUp = true;
-            SoulBackpack.Instance.sharedSoulAmount += soulValue;
+            SoulBackpack.Instance.addSoulsToCounter(soulValue);
 
             AudioManager.Instance.PlaySound(null, Sound.playerPickupSoul, false);
 
