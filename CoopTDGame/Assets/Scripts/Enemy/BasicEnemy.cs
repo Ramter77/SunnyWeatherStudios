@@ -107,7 +107,6 @@ public class BasicEnemy : MonoBehaviour
         possibleTargets = new List<GameObject>();
         agent.speed = enemySpeed;
         fallbackSpeed = enemySpeed;
-        fleeDelay = 3f;
 
     }
 
@@ -364,8 +363,8 @@ public class BasicEnemy : MonoBehaviour
                                 agent.SetDestination(Target.transform.position);
                                 agent.isStopped = false;
                                 enemySpeed = fallbackSpeed;
-                                attackRange = 29f;
-                                stoppingRange = 24f;
+                                attackRange = 30f;
+                                stoppingRange = 25f;
                                 followRadius = 90f;
                                 detectionRadius = 80f;
                             }
