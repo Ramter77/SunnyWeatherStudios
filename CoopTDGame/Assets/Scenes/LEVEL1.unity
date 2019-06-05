@@ -660,7 +660,7 @@ GameObject:
   - component: {fileID: 13652363}
   - component: {fileID: 13652362}
   - component: {fileID: 13652361}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MenuCam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -674,7 +674,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13652358}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
   m_Name: 
@@ -691,7 +691,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13652358}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
   m_Name: 
@@ -699,7 +699,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 0}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 536870912
+    m_Bits: 256
   stopNaNPropagation: 0
   finalBlitToCameraTarget: 1
   antialiasingMode: 0
@@ -885,8 +885,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 13652358}
-  m_LocalRotation: {x: -0.0033928924, y: -0.81918615, z: 0.0048464322, w: -0.57349724}
-  m_LocalPosition: {x: 459.03, y: 45.19, z: 517.55}
+  m_LocalRotation: {x: 0.005976308, y: -0.8669073, z: -0.010399211, w: -0.49832517}
+  m_LocalPosition: {x: 485.66693, y: 42.053146, z: 528.3725}
   m_LocalScale: {x: 1.3000007, y: 1.3, z: 1.3000007}
   m_Children: []
   m_Father: {fileID: 0}
@@ -63484,6 +63484,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6847735531612260885, guid: 8b6237b3db08821448f330a044a1c41a,
+        type: 3}
+      propertyPath: _volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 95804815, guid: 8b6237b3db08821448f330a044a1c41a, type: 3}
       propertyPath: m_Name
       value: Soul_Sphere_V2_Complete
@@ -63557,11 +63562,6 @@ PrefabInstance:
       propertyPath: soulCounterIconAnim
       value: 
       objectReference: {fileID: 657982277}
-    - target: {fileID: 6847735531612260885, guid: 8b6237b3db08821448f330a044a1c41a,
-        type: 3}
-      propertyPath: _volume
-      value: 0.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b6237b3db08821448f330a044a1c41a, type: 3}
 --- !u!1001 &1697697393
@@ -80430,20 +80430,30 @@ PrefabInstance:
       propertyPath: m_TargetDisplay
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: _volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: _maxDistance
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 2819464313814937923, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 495.4
+      value: 511.7
       objectReference: {fileID: 0}
     - target: {fileID: 2819464313814937923, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 34.89
+      value: 32.1
       objectReference: {fileID: 0}
     - target: {fileID: 2819464313814937923, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 524.1
+      value: 529.4
       objectReference: {fileID: 0}
     - target: {fileID: 2819464313814937923, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
@@ -80578,7 +80588,7 @@ PrefabInstance:
     - target: {fileID: 2819464313814938040, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
       propertyPath: Player_
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2819464313814938040, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
@@ -80615,16 +80625,6 @@ PrefabInstance:
       propertyPath: maxVolume
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
-        type: 3}
-      propertyPath: _volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
-        type: 3}
-      propertyPath: _maxDistance
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f2ae9a8cc337b4c86c95033a9c639c, type: 3}
 --- !u!1001 &2909401852039946660
@@ -80642,17 +80642,17 @@ PrefabInstance:
     - target: {fileID: 1099153509272865677, guid: 53d796d825431984aa41ca9d31735679,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 487
+      value: 498.5
       objectReference: {fileID: 0}
     - target: {fileID: 1099153509272865677, guid: 53d796d825431984aa41ca9d31735679,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 34.23
+      value: 31.26
       objectReference: {fileID: 0}
     - target: {fileID: 1099153509272865677, guid: 53d796d825431984aa41ca9d31735679,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 489.8
+      value: 503.2
       objectReference: {fileID: 0}
     - target: {fileID: 1099153509272865677, guid: 53d796d825431984aa41ca9d31735679,
         type: 3}
@@ -80747,7 +80747,7 @@ PrefabInstance:
     - target: {fileID: 1099153509272865654, guid: 53d796d825431984aa41ca9d31735679,
         type: 3}
       propertyPath: Player_
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1099153509272865654, guid: 53d796d825431984aa41ca9d31735679,
         type: 3}
@@ -80777,6 +80777,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: _GAME
+      objectReference: {fileID: 0}
+    - target: {fileID: 7382245385601226285, guid: 267f19af63074424bb6baab78fadee3f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1887000262124391596, guid: 267f19af63074424bb6baab78fadee3f,
         type: 3}
@@ -81147,6 +81152,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6596991333842735619, guid: 267f19af63074424bb6baab78fadee3f,
+        type: 3}
+      propertyPath: m_PlayAutomatically
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2966020630070196273, guid: 267f19af63074424bb6baab78fadee3f,
         type: 3}
