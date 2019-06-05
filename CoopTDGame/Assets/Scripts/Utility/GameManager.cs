@@ -13,32 +13,36 @@ public class GameManager : Singleton<GameManager>
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (menuEnabled) {
-                menuEnabled = false;
-                MainMenu.SetActive(false);
-                menuCam.SetActive(false);
-                player1.SetActive(true);
-                player2.SetActive(true);
+                if (!MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted) {
+                    menuEnabled = false;
+                    MainMenu.SetActive(false);
+                    menuCam.SetActive(false);
+                    player1.SetActive(true);
+                    player2.SetActive(true);
 
-                MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = true;
+                    MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = true;
 
-                InputManager.Instance._MouseControl.LockMouse = false;
-                InputManager.Instance._MouseControl.hideCursor = false;
-                Time.timeScale = 1f;
+                    InputManager.Instance._MouseControl.LockMouse = false;
+                    InputManager.Instance._MouseControl.hideCursor = false;
+                    Time.timeScale = 1f;
+                }
             }
             else
             {
-                menuEnabled = true;
-                player1.SetActive(false);
-                player2.SetActive(false);
-                menuCam.SetActive(true);
-                MainMenu.SetActive(true);
-                UIcanvas.SetActive(false);
-                UIcanvas.SetActive(true);
-    MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = false;
-            
-                InputManager.Instance._MouseControl.LockMouse = true;
-                InputManager.Instance._MouseControl.hideCursor = true;
-                Time.timeScale = 0.01f;
+                if (MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted) {
+                    menuEnabled = true;
+                    player1.SetActive(false);
+                    player2.SetActive(false);
+                    menuCam.SetActive(true);
+                    MainMenu.SetActive(true);
+                    UIcanvas.SetActive(false);
+                    UIcanvas.SetActive(true);
+                    MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = false;
+                
+                    InputManager.Instance._MouseControl.LockMouse = true;
+                    InputManager.Instance._MouseControl.hideCursor = true;
+                    Time.timeScale = 0.01f;
+                }
             }
         }
     }
