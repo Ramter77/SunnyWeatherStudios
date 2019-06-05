@@ -44,8 +44,6 @@ public class GraphicSettings : MonoBehaviour
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
         resolutionDropdown.RefreshShownValue();
-
-        //SetResolution(currentResolutionIndex);
     }
 
     public void SetResolution(int resolutionIndex) {
