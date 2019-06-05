@@ -14,7 +14,6 @@ public class GameManager : Singleton<GameManager>
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (menuEnabled) {
                 menuEnabled = false;
-                UIcanvas.SetActive(false);
                 MainMenu.SetActive(false);
                 menuCam.SetActive(false);
                 player1.SetActive(true);
@@ -33,13 +32,12 @@ public class GameManager : Singleton<GameManager>
                 player2.SetActive(false);
                 menuCam.SetActive(true);
                 MainMenu.SetActive(true);
-                UIcanvas.SetActive(true);
                 
                 MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = false;
             
                 InputManager.Instance._MouseControl.LockMouse = true;
                 InputManager.Instance._MouseControl.hideCursor = true;
-                Time.timeScale = 0.01f;
+                //Time.timeScale = 0.01f;
             }
         }
     }
