@@ -37,6 +37,7 @@ public class MainMenu : MonoBehaviour
         {
             fadeImageAnim.SetTrigger("FadeOut");
             gameStarted = true;
+            Time.timeScale = 1f;
             LockCursor();
         }
     }

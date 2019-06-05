@@ -210,7 +210,7 @@ public class BasicEnemy : MonoBehaviour
         agent.isStopped = false;
         attackState = 1;
         enemySpeed = fallbackSpeed;
-        agent.SetDestination(Target.transform.position);
+        agent.destination = Target.transform.position;
     }
     
     void startRunningAway()
@@ -346,7 +346,6 @@ public class BasicEnemy : MonoBehaviour
         if(Target == null)
         {
             //Debug.Log("scanning");
-            StartCoroutine(ScanCycle());
             Collider[] col = Physics.OverlapSphere(transform.position, detectionRadius); // draw a sphere at desire point based on player pos + offset and desired radius of effect
             if (col.Length > 0)
             {
@@ -363,7 +362,7 @@ public class BasicEnemy : MonoBehaviour
                                 agent.SetDestination(Target.transform.position);
                                 agent.isStopped = false;
                                 enemySpeed = fallbackSpeed;
-                                attackRange = 30f;
+                                attackRange = 27f;
                                 stoppingRange = 25f;
                                 followRadius = 90f;
                                 detectionRadius = 80f;
@@ -398,6 +397,7 @@ public class BasicEnemy : MonoBehaviour
                     }
                 }
             }
+            StartCoroutine(ScanCycle());
         }
     }
 
@@ -414,6 +414,7 @@ public class BasicEnemy : MonoBehaviour
                     if (hit.tag == "possibleTargets" && hit.transform.parent.gameObject.transform.parent.GetComponent<LifeAndStats>().health > 0 && hit.transform.parent.gameObject.transform.parent.GetComponent<LifeAndStats>().amountOfUnitsAttacking < maxEnemiesSwarmingTower)
                         // if hit object has equal tag to possibleTarget tag
                     {
+                        Debug.Log("I see tower");
                         action = Random.Range(0, 100);
                         //Debug.Log("tower found");
                         if (checkedTarget == null)
@@ -421,15 +422,16 @@ public class BasicEnemy : MonoBehaviour
                             if (action <= decisionLimit) // if decisionmaking percentage is lower than the limit, decide to do this
                             {
                                 //Debug.Log(hit.transform.parent.gameObject);          
-                                //Debug.Log("I will rather go for a tower");
-                                checkedTarget = hit.transform.parent.transform.parent.gameObject;
+                                Debug.Log("I will rather go for a tower");
+                                checkedTarget = hit.transform.parent.gameObject.transform.parent.gameObject;
                                 NavMeshPath path = new NavMeshPath();
-                                agent.CalculatePath(checkedTarget.transform.position, path);
+                                agent.CalculatePath(hit.transform.parent.gameObject.transform.parent.gameObject.transform.position, path);
                                 if (path.status != NavMeshPathStatus.PathPartial) // checks if path is reachable
                                 {
-                                    agent.destination = checkedTarget.transform.position;
-                                    Target = checkedTarget;
+                                    agent.SetDestination(checkedTarget.transform.position);
+                                    Target = hit.transform.parent.gameObject.transform.parent.gameObject;
                                     hit.transform.parent.transform.parent.GetComponent<LifeAndStats>().amountOfUnitsAttacking += 1;
+                                    Debug.Log("Lets go here");
                                 }
                                 else
                                 {
@@ -498,26 +500,25 @@ public class BasicEnemy : MonoBehaviour
         {
             if (!Target)
             {
-                
+                Handles.color = new Color(0, 1.0f, 0, opacityOfGizmos);
+                Handles.DrawSolidDisc(transform.position, Vector3.down, detectionRadius);
+                Handles.color = new Color(1.0f, 0, 0, opacityOfGizmos);
+                Handles.DrawSolidDisc(transform.position, Vector3.down, followRadius);
+                Handles.color = new Color(0, 0, 1.0f, opacityOfGizmos);
+                Handles.DrawSolidDisc(transform.position, Vector3.down, attackRange);
+                Gizmos.color = new Color(0.2f, 0.2f, 0.2f, opacityOfGizmos);
+                Handles.DrawSolidDisc(transform.position, Vector3.down, stoppingRange);
+                Gizmos.color = new Color(0.7f, 0.7f, 0.5f, opacityOfGizmos);
+                Handles.DrawSolidDisc(transform.position, Vector3.down, fleeRadius);
             }
-            Handles.color = new Color(0, 1.0f, 0, opacityOfGizmos);
-            Handles.DrawSolidDisc(transform.position, Vector3.down, detectionRadius);
-            Handles.color = new Color(1.0f, 0, 0, opacityOfGizmos);
-            Handles.DrawSolidDisc(transform.position, Vector3.down, followRadius);
-            Handles.color = new Color(0, 0, 1.0f, opacityOfGizmos);
-            Handles.DrawSolidDisc(transform.position, Vector3.down, attackRange);
-            Gizmos.color = new Color(0.2f, 0.2f, 0.2f, opacityOfGizmos);
-            Handles.DrawSolidDisc(transform.position, Vector3.down, stoppingRange);
-            Gizmos.color = new Color(0.7f, 0.7f, 0.5f, opacityOfGizmos);
-            Handles.DrawSolidDisc(transform.position, Vector3.down, fleeRadius);
             Handles.color = new Color(0, 1.0f, 0, 0.05f);
             Handles.DrawSolidDisc(transform.position, Vector3.down, detectionRadius);
-            //float dashSize = 5f;
-            /*if (Target)
+            float dashSize = 5f;
+            if (Target)
             {
                 Handles.color = new Color(1f, 0, 0, 1f);
                 Handles.DrawDottedLine(transform.position, Target.transform.position, dashSize);
-            }*/
+            }
         }
         
     }

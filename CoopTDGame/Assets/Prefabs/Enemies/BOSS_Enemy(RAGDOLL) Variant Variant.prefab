@@ -2620,12 +2620,12 @@ MonoBehaviour:
   maxEnemiesSwarmingPlayer: 5
   maxEnemiesSwarmingTower: 8
   enemySpeed: 0.1
-  attackRange: 18
-  followRadius: 50
-  stoppingRange: 10
-  detectionRadius: 45
+  attackRange: 20
+  followRadius: 70
+  stoppingRange: 12
+  detectionRadius: 60
   fleeDelay: 2
-  fleeRadius: 5
+  fleeRadius: 1
   scanDelay: 1
   minPreparationTimeForAttack: 4
   preparationTime: 0
@@ -2686,6 +2686,7 @@ MonoBehaviour:
   destroyable: 0
   invincible: 0
   GameOverScreen: {fileID: 0}
+  soulCounterIconAnim: {fileID: 0}
 --- !u!195 &1148712456391214809
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3680,16 +3681,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 137196, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
     - target: {fileID: 170370, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 5327823291965960981, guid: 4b1275c68da762a469aec97c97f0b473,
-        type: 3}
+    - target: {fileID: 137196, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
@@ -3703,7 +3699,7 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 1923516457761927116, guid: 4b1275c68da762a469aec97c97f0b473,
+    - target: {fileID: 5327823291965960981, guid: 4b1275c68da762a469aec97c97f0b473,
         type: 3}
       propertyPath: m_Layer
       value: 15
@@ -3713,12 +3709,17 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 5238867656513313589, guid: 4b1275c68da762a469aec97c97f0b473,
+    - target: {fileID: 1923516457761927116, guid: 4b1275c68da762a469aec97c97f0b473,
         type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 7592895641729061550, guid: 4b1275c68da762a469aec97c97f0b473,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5238867656513313589, guid: 4b1275c68da762a469aec97c97f0b473,
         type: 3}
       propertyPath: m_Layer
       value: 15
@@ -3844,12 +3845,12 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.75
       objectReference: {fileID: 0}
-    - target: {fileID: 9012829207309500873, guid: cca93549278b2174f85a8fe0bfdb8125,
+    - target: {fileID: 5080922144313066625, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
       propertyPath: m_Layer
       value: 15
       objectReference: {fileID: 0}
-    - target: {fileID: 5080922144313066625, guid: cca93549278b2174f85a8fe0bfdb8125,
+    - target: {fileID: 9012829207309500873, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
       propertyPath: m_Layer
       value: 15

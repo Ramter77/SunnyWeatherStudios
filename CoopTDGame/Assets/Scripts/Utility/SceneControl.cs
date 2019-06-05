@@ -9,15 +9,25 @@ public class SceneControl : Singleton<SceneControl>
     [Tooltip("HotKey to reset current scene")]
     [SerializeField]
     private KeyCode resetHotkey = KeyCode.P;
+    public GameObject MainMenu;
     #endregion
 
     void Update()
     {
         ResetScene();
-        QuitGame();
+        /*
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            MainMenu.SetActive(true);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.None;
+            Time.timeScale = 0.01f;
+        }*/
 
-        #region DEBUG switch scene with buttons
-        if (Input.GetKeyDown(KeyCode.H))
+
+            #region DEBUG switch scene with buttons
+            if (Input.GetKeyDown(KeyCode.H))
         {
             SceneManager.LoadScene(0);
         }
@@ -36,14 +46,7 @@ public class SceneControl : Singleton<SceneControl>
         #endregion
     }
 
-    #region Quit Game
-    private void QuitGame()
-    {
-        if (Input.GetKey(KeyCode.Escape)) {
-            Application.Quit();
-        }
-    }
-    #endregion
+
 
     #region Reset Scene
     private void ResetScene() {
