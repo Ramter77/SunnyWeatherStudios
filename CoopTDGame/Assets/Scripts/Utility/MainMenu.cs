@@ -44,7 +44,9 @@ public class MainMenu : MonoBehaviour
 
     public void EnablePlayers() {
         _Player1.GetComponent<PlayerController>().SetAlive();
+        _Player1.SetActive(true);
         _Player2.GetComponent<PlayerController>().SetAlive();
+        _Player2.SetActive(true);
     }
 
     public void InGameSpawn()
