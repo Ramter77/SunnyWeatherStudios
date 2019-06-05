@@ -34,7 +34,7 @@ public class AudioManager : Singleton<AudioManager>
     private AudioClip menuMusicAudioClip;
     [SerializeField]
     [Tooltip ("Ingame music clip (looping)")]
-    private AudioClip ingameMusicAudioClip;
+    public AudioClip ingameMusicAudioClip;
     
 
     [Header("Movement Sounds")]

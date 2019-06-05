@@ -63557,6 +63557,11 @@ PrefabInstance:
       propertyPath: soulCounterIconAnim
       value: 
       objectReference: {fileID: 657982277}
+    - target: {fileID: 6847735531612260885, guid: 8b6237b3db08821448f330a044a1c41a,
+        type: 3}
+      propertyPath: _volume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b6237b3db08821448f330a044a1c41a, type: 3}
 --- !u!1001 &1697697393
@@ -80380,23 +80385,11 @@ PrefabInstance:
       propertyPath: OnlyPlayForClosestCamera
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3785148092310920731, guid: bd8d990b7ca185547ac6ce483afb9a97,
+    - target: {fileID: 806816560449707382, guid: bd8d990b7ca185547ac6ce483afb9a97,
         type: 3}
-      propertyPath: OnlyPlayForClosestCamera
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 230509602, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
-      propertyPath: stopSoundBeforeNext
+      propertyPath: _volumeRolloff
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 230509602, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
-      propertyPath: menuMusicAudioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: e7608e0a56b7ef949867c62645189327, type: 3}
-    - target: {fileID: 230509602, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
-      propertyPath: ingameMusicAudioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: e7608e0a56b7ef949867c62645189327, type: 3}
     - target: {fileID: 5611146664278077940, guid: bd8d990b7ca185547ac6ce483afb9a97,
         type: 3}
       propertyPath: enableFlyCam
@@ -80436,16 +80429,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetDisplay
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
-        type: 3}
-      propertyPath: _volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
-        type: 3}
-      propertyPath: _maxDistance
-      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2819464313814937923, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
@@ -80631,6 +80614,16 @@ PrefabInstance:
         type: 3}
       propertyPath: maxVolume
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: _volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: _maxDistance
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f2ae9a8cc337b4c86c95033a9c639c, type: 3}
