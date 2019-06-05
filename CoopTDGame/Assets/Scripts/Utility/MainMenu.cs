@@ -67,7 +67,7 @@ public class MainMenu : MonoBehaviour
 
     public void LockCursor()
     {
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        InputManager.Instance._MouseControl.LockMouse = true;
+        InputManager.Instance._MouseControl.hideCursor = true;
     }
 }
