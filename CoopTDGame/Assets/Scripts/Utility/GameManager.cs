@@ -20,7 +20,7 @@ public class GameManager : Singleton<GameManager>
                 player1.SetActive(true);
                 player2.SetActive(true);
 
-                MainMenu.GetComponent<MainMenu>().gameStarted = true;
+                MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = true;
 
                 InputManager.Instance._MouseControl.LockMouse = false;
                 InputManager.Instance._MouseControl.hideCursor = false;
@@ -35,7 +35,7 @@ public class GameManager : Singleton<GameManager>
                 MainMenu.SetActive(true);
                 UIcanvas.SetActive(true);
                 
-                MainMenu.GetComponent<MainMenu>().gameStarted = false;
+                MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = false;
             
                 InputManager.Instance._MouseControl.LockMouse = true;
                 InputManager.Instance._MouseControl.hideCursor = true;
