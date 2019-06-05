@@ -63484,11 +63484,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6847735531612260885, guid: 8b6237b3db08821448f330a044a1c41a,
-        type: 3}
-      propertyPath: _volume
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 95804815, guid: 8b6237b3db08821448f330a044a1c41a, type: 3}
       propertyPath: m_Name
       value: Soul_Sphere_V2_Complete
@@ -63562,6 +63557,11 @@ PrefabInstance:
       propertyPath: soulCounterIconAnim
       value: 
       objectReference: {fileID: 657982277}
+    - target: {fileID: 6847735531612260885, guid: 8b6237b3db08821448f330a044a1c41a,
+        type: 3}
+      propertyPath: _volume
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b6237b3db08821448f330a044a1c41a, type: 3}
 --- !u!1001 &1697697393
@@ -80441,7 +80441,7 @@ PrefabInstance:
         type: 3}
       propertyPath: UIcanvas
       value: 
-      objectReference: {fileID: 2099101823}
+      objectReference: {fileID: 2914137444569391668}
     - target: {fileID: 2331339089537376779, guid: bd8d990b7ca185547ac6ce483afb9a97,
         type: 3}
       propertyPath: MainMenu
@@ -80471,16 +80471,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TargetDisplay
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
-        type: 3}
-      propertyPath: _volume
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
-        type: 3}
-      propertyPath: _maxDistance
-      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2819464313814937923, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
@@ -80666,6 +80656,16 @@ PrefabInstance:
         type: 3}
       propertyPath: maxVolume
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: _volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7756540272327707484, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: _maxDistance
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2819464313814938045, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
         type: 3}
@@ -81140,6 +81140,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7125071379954181155, guid: 267f19af63074424bb6baab78fadee3f,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2914137444569391668, guid: 267f19af63074424bb6baab78fadee3f,
         type: 3}
       propertyPath: m_IsActive
@@ -81359,6 +81364,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2966020630070196284, guid: 267f19af63074424bb6baab78fadee3f,
+        type: 3}
+      propertyPath: m_BlockingMask.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2966020630070196285, guid: 267f19af63074424bb6baab78fadee3f,
         type: 3}

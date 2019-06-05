@@ -32,12 +32,13 @@ public class GameManager : Singleton<GameManager>
                 player2.SetActive(false);
                 menuCam.SetActive(true);
                 MainMenu.SetActive(true);
-                
-                MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = false;
+                UIcanvas.SetActive(false);
+                UIcanvas.SetActive(true);
+    MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = false;
             
                 InputManager.Instance._MouseControl.LockMouse = true;
                 InputManager.Instance._MouseControl.hideCursor = true;
-                //Time.timeScale = 0.01f;
+                Time.timeScale = 0.01f;
             }
         }
     }
