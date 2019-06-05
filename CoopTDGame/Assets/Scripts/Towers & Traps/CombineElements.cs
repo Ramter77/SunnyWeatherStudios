@@ -87,23 +87,31 @@ public class CombineElements : MonoBehaviour
 
     public void TryCombine(GameObject go) {
         //only when already activated
-        /* if (isTower) {
+        if (isTower) {
             if (activatePrefabScript.towerActive) {
-                CombineHandler(go);
+                if (go.GetComponent<EffectHandler>() != null)
+                {
+                    int otherProjectileElementIndex = go.GetComponent<EffectHandler>().effectIndex;
+                    _CombineElements(otherProjectileElementIndex);
+                }
             }
         }
         else if (isTrap) {
             if (activatePrefabScript.trapActive) {
-                CombineHandler(go);
+                if (go.GetComponent<EffectHandler>() != null)
+                {
+                    int otherProjectileElementIndex = go.GetComponent<EffectHandler>().effectIndex;
+                    _CombineElements(otherProjectileElementIndex);
+                }
             }
-        } */
+        }
         //CombineHandler(go);
 
-        if (go.GetComponent<EffectHandler>() != null)
+        /* if (go.GetComponent<EffectHandler>() != null)
         {
             int otherProjectileElementIndex = go.GetComponent<EffectHandler>().effectIndex;
             _CombineElements(otherProjectileElementIndex);
-        }
+        } */
     }
 
     private void CombineHandler(GameObject go) {

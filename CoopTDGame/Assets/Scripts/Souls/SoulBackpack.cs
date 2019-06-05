@@ -36,9 +36,11 @@ public class SoulBackpack : Singleton<SoulBackpack>
             sharedSoulAmount += 300;
         }
 
-        if(connectSoulsToSphere)
+        if (connectSoulsToSphere)
         {
-            sharedSoulAmount = Mathf.RoundToInt(sphere.GetComponent<LifeAndStats>().health);
+            if (sphere != null) {
+                sharedSoulAmount = Mathf.RoundToInt(sphere.GetComponent<LifeAndStats>().health);
+            }
         }
     }
     public void addSoulsToCounter(float amount)
