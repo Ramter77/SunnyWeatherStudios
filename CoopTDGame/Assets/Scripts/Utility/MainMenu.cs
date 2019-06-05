@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
 
     public Image fadeOutImage;
     [Tooltip("This Image should be in the MainUI Canvas and should overlay all other UI Elements")]private Animator fadeImageAnim;
-    private bool gameStarted = false;
+    public bool gameStarted = false;
 
     void Start()
     {

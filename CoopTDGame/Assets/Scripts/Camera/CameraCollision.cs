@@ -61,7 +61,11 @@ public class CameraCollision : MonoBehaviour
     }
 
     private void OnDrawGizmos() {
-        Debug.DrawLine(transform.parent.transform.parent.position, desiredCameraPos, Color.red, 1f);
+        //Debug.DrawLine(transform.parent.transform.parent.position, desiredCameraPos, Color.red, 1f);
+
+
+
+        
         //Debug.DrawLine(desiredCameraPos, transform.parent.transform.parent.transform.parent.transform.parent.transform.position, Color.red, 1f);
         //Debug.DrawRay(transform.position, Vector3.back * 10f, Color.red, 1f);
     }
