@@ -198,23 +198,24 @@ public class CombineElements : MonoBehaviour
     }
 
     void _CombineElements(int element) {
-        if (element == 1) {
-            if (iceActive) {
-                Combine(Element.Blast);
+        if (!blastActive) {
+            if (element == 1) {
+                if (iceActive) {
+                    Combine(Element.Blast);
+                }
+                else
+                {
+                    Combine(Element.Fire);
+                }
             }
-            else
-            {
-                Combine(Element.Fire);
-            }
-            //Combine(Element.Fire);
-        }
-        else if (element == 2) {
-            if (fireActive) {
-                Combine(Element.Blast);
-            }
-            else
-            {
-                Combine(Element.Ice);
+            else if (element == 2) {
+                if (fireActive) {
+                    Combine(Element.Blast);
+                }
+                else
+                {
+                    Combine(Element.Ice);
+                }
             }
         }
 

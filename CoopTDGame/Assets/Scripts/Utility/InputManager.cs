@@ -157,11 +157,23 @@ public class InputManager : Singleton<InputManager>
     #endregion
     #endregion
     
-    /// <summary>
-    /// Awake is called when the script instance is being loaded.
-    /// </summary>
-    private void Awake()
+    public void LockMouse(bool locked) {
+        Cursor.visible = !locked;
+
+        if (locked) {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else { 
+            Cursor.lockState = CursorLockMode.None;
+        }
+
+        /* InputManager.Instance._MouseControl.LockMouse = locked;
+        InputManager.Instance._MouseControl.hideCursor = locked; */
+    }
+    private void MouseHandler()
     {
+
+        //if (Input.GetKeyDown(KeyCode.Escape)) {
         #region Lock Mouse & Hide Cursor
         if (_MouseControl.hideCursor) {
             Cursor.visible = false;
@@ -246,7 +258,7 @@ public class InputManager : Singleton<InputManager>
          
  
          
- 
+        //MouseHandler();
          
 
 
@@ -324,6 +336,7 @@ public class InputManager : Singleton<InputManager>
             //Convert fire float to bool
             Ranged2 = ((Input.GetAxisRaw(_Player2._Ranged)) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
             Melee2 = ((Input.GetAxisRaw(_Player2._Melee)) > _ControllerControl.ControllerTriggerAxisLimit) ? true : false;
+            
             /* Fire12 = Input.GetAxis(_Player2._Ranged2);
             Fire22 = Input.GetAxis(_Player2._Melee2); */
         }

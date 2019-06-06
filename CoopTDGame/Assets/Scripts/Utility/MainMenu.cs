@@ -22,8 +22,7 @@ public class MainMenu : MonoBehaviour
     {
         fadeImageAnim = fadeOutImage.GetComponent<Animator>();
 
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        InputManager.Instance.LockMouse(false);
     }
 
     private void Update() {
@@ -38,7 +37,10 @@ public class MainMenu : MonoBehaviour
             fadeImageAnim.SetTrigger("FadeOut");
             gameStarted = true;
             Time.timeScale = 1f;
-            LockCursor();
+            //GameManager.Instance.LockMouse(true);
+            //LockCursor();
+
+            InputManager.Instance.LockMouse(true);
         }
     }
 
@@ -67,9 +69,9 @@ public class MainMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void LockCursor()
+    /* public void LockCursor()
     {
         InputManager.Instance._MouseControl.LockMouse = true;
         InputManager.Instance._MouseControl.hideCursor = true;
-    }
+    } */
 }
