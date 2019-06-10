@@ -80,7 +80,7 @@ public class CombineElements : MonoBehaviour
             if (towerDuration < 0.0f) {
                 
                 startTowerCD = false;
-                //_SwitchBack();
+                _SwitchBack();
             }
         }
     }
@@ -251,7 +251,7 @@ public class CombineElements : MonoBehaviour
         if (isTrap) {
             //disable all vfx
             if (trapDefaultVFX) {
-                trapDefaultVFX.SetActive(true);
+                trapDefaultVFX.SetActive(false);
             }
             if (trapFireVFX) {
                 trapFireVFX.SetActive(false);

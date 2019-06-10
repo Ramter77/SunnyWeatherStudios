@@ -17,7 +17,7 @@ public class ElementManager : Singleton<ElementManager>
     [Tooltip("Product of the reaction")]
     public CombinationElement productElement;
 
-    [Tooltip("used to pick the corrosponding reaction element")]
+    [Tooltip("Used to pick the corrosponding reaction element")]
     [SerializeField] private int reactionIndex = 0;
 
     public void combineElement(Element firstElement, Element secondElement)

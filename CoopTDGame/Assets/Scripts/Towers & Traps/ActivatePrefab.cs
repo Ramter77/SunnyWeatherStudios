@@ -45,10 +45,10 @@ public class ActivatePrefab : MonoBehaviour
 
     [Space (10)]
 
+    /* [SerializeField]
+    private GameObject disabledVFX; */
     [SerializeField]
-    private GameObject disabledVFX;
-    [SerializeField]
-    private GameObject enabledVFX;
+    private GameObject activateVFX;
     
 
     void Start()
@@ -209,8 +209,7 @@ public class ActivatePrefab : MonoBehaviour
     void _RiseTower() {
         if (!towerActive) {
             towerActive = true;
-            enabledVFX.SetActive(true);
-            disabledVFX.SetActive(false);
+            activateVFX.SetActive(false);
             RiseVFX();
 
             activationCollider.enabled = false;
@@ -233,8 +232,7 @@ public class ActivatePrefab : MonoBehaviour
             startTowerCD = false;
 
             towerActive = false;
-            enabledVFX.SetActive(false);
-            disabledVFX.SetActive(true);
+            activateVFX.SetActive(true);
 
             activationCollider.enabled = true;
 
@@ -264,8 +262,7 @@ public class ActivatePrefab : MonoBehaviour
     void _RiseTrap() {
         if (!trapActive) {
             trapActive = true;
-            enabledVFX.SetActive(true);
-            disabledVFX.SetActive(false);
+            activateVFX.SetActive(false);
             RiseVFX();
 
             activationCollider.enabled = false;
@@ -280,8 +277,7 @@ public class ActivatePrefab : MonoBehaviour
         startTrapCD = false;
 
         trapActive = false;
-        enabledVFX.SetActive(false);
-        disabledVFX.SetActive(true);
+        activateVFX.SetActive(true);
 
         trapDefaultVFX.SetActive(false);
 

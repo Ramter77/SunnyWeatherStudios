@@ -4647,7 +4647,7 @@ GameObject:
   - component: {fileID: 19887274}
   - component: {fileID: 19958516}
   m_Layer: 0
-  m_Name: Object Interactable Enabled
+  m_Name: Object Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18767,6 +18767,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 490934}
     m_Modifications:
+    - target: {fileID: 194664, guid: f4ee46380c4b7d04fa62d89e6d9d310c, type: 3}
+      propertyPath: m_Name
+      value: Object Interactable Rays
+      objectReference: {fileID: 0}
     - target: {fileID: 440818, guid: f4ee46380c4b7d04fa62d89e6d9d310c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.03
@@ -18810,10 +18814,6 @@ PrefabInstance:
     - target: {fileID: 440818, guid: f4ee46380c4b7d04fa62d89e6d9d310c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 194664, guid: f4ee46380c4b7d04fa62d89e6d9d310c, type: 3}
-      propertyPath: m_Name
-      value: Object Interactable Rays
       objectReference: {fileID: 0}
     - target: {fileID: 19862414, guid: f4ee46380c4b7d04fa62d89e6d9d310c, type: 3}
       propertyPath: InitialModule.startColor.maxColor.a

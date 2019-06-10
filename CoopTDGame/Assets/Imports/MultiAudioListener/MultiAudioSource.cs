@@ -36,6 +36,7 @@ namespace Assets.MultiAudioListener
     {
         #region AudioSourceProperties
 
+        public float spatialBlend = 1.0f;
         //Properties from the normal audiosource
 
         [SerializeField] private AudioClip _audioClip = null;
@@ -572,6 +573,7 @@ namespace Assets.MultiAudioListener
                     _safetyAudioSource.timeSamples = correctTimesamples;
                     foreach (var subAudioSource in _subAudioSources)
                     {
+                        subAudioSource.Value.timeSamples = 0;
                         subAudioSource.Value.timeSamples = correctTimesamples;
                     }
                 }
@@ -659,7 +661,8 @@ namespace Assets.MultiAudioListener
             audioSource.timeSamples = timeSamples;
 
             //All audio should be fully 3d
-            audioSource.spatialBlend = 1.0f;
+
+            audioSource.spatialBlend = spatialBlend;
             return audioSource;
         }
 

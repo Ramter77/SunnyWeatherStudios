@@ -28,7 +28,7 @@ public class FlyCamera : MonoBehaviour {
             }
             else
             {
-                canvas.renderMode = RenderMode.ScreenSpaceOverlay;;
+                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
             }
         }
         else
