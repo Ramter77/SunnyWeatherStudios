@@ -131,13 +131,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 113481993458745524, guid: 1145971759cf4554183ec2c4d65d44eb,
     type: 3}
+  muzzleGO: {fileID: 157556, guid: f217d1d708cdaf14e8cfa730ff75126e, type: 3}
   projectileSpeed: 20
   projectileCost: 10
   rangedAttackCooldown: 5
   projectileOrigin: {fileID: 1466782552}
   mask:
     serializedVersion: 2
-    m_Bits: 2147499319
+    m_Bits: 3492871185
   fallbackDistance: 100
   rangedAbilityUiImageOn: {fileID: 0}
   rangedAbilityUiImageOff: {fileID: 0}
@@ -208,6 +209,7 @@ MonoBehaviour:
   destroyable: 0
   invincible: 0
   GameOverScreen: {fileID: 0}
+  soulCounterIconAnim: {fileID: 0}
 --- !u!114 &68345726
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -893,6 +895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spatialBlend: 1
   _audioClip: {fileID: 0}
   _output: {fileID: 0}
   _mute: 0

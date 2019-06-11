@@ -166,13 +166,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 113481993458745524, guid: 1145971759cf4554183ec2c4d65d44eb,
     type: 3}
+  muzzleGO: {fileID: 0}
   projectileSpeed: 90
   projectileCost: 1
   rangedAttackCooldown: 3
   projectileOrigin: {fileID: 1099153510629033810}
   mask:
     serializedVersion: 2
-    m_Bits: 2953895441
+    m_Bits: 2955992593
   fallbackDistance: 100
   rangedAbilityUiImageOn: {fileID: 0}
   rangedAbilityUiImageOff: {fileID: 0}
@@ -411,6 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spatialBlend: 1
   _audioClip: {fileID: 0}
   _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
   _mute: 0
@@ -930,6 +932,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spatialBlend: 1
   _audioClip: {fileID: 0}
   _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
   _mute: 0
@@ -1103,6 +1106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spatialBlend: 1
   _audioClip: {fileID: 0}
   _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
   _mute: 0
@@ -1244,6 +1248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spatialBlend: 1
   _audioClip: {fileID: 0}
   _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
   _mute: 0
@@ -3926,6 +3931,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 13530378, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 418100, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.011
@@ -3981,10 +3990,6 @@ PrefabInstance:
     - target: {fileID: 418100, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
       propertyPath: m_LocalScale.z
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 13530378, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
@@ -4084,6 +4089,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 13530378, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 418100, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.041
@@ -4139,10 +4148,6 @@ PrefabInstance:
     - target: {fileID: 418100, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
       propertyPath: m_LocalScale.z
       value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 13530378, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd86812b446fae5448db0d3fc4d7b6f4, type: 3}

@@ -11,6 +11,8 @@ public class RangedAttack : MonoBehaviour
     [Tooltip("Projectile to throw")]
     [SerializeField]
     private GameObject projectile;
+    [SerializeField]
+    private GameObject muzzleGO;
     private Rigidbody projectileRB;
 
     [Tooltip("Speed of projectile")]
@@ -51,29 +53,7 @@ public class RangedAttack : MonoBehaviour
 
     void Start() {
         playC = GetComponent<PlayerController>();
-        /*   
-        if (AudioManager.Instance.towerProjectiles.Length > 0) {
-            if (playC.Element ==  Element.Fire) {
-                _audioClip = AudioManager.Instance.towerProjectiles[1];
-            }
-            else if (playC.Element ==  Element.Ice) {
-                _audioClip = AudioManager.Instance.towerProjectiles[2];
-            }
-        }
-        */
-
         playerAnim = GetComponent<Animator>();
-        
-        /* string tag = "MainCamera";
-        if (playC.Player_ == 2)
-        {
-            tag = "MainCamera2";
-        }
-        Debug.Log("Finding " + tag + " tag");
-        MainCamera = GameObject.FindGameObjectWithTag(tag).GetComponent<Camera>(); */
-        //if(gameObject.GetComponentInChildren<FreeCameraLook>().GetComponentInChildren<Camera>())
-        //MainCamera = gameObject.GetComponentInChildren<FreeCameraLook>().GetComponentInChildren<Camera>();
-
         MainCamera = playC.MainCameraTransform.GetComponent<Camera>();
 
         //Get own colliders
@@ -157,11 +137,6 @@ public class RangedAttack : MonoBehaviour
     }
 
     private void IgnoreCollisionSelf(Collider col) {
-        //!OLD  Ignore collisions with owner
-        /* if (rb.GetComponent<SphereCollider>()) {
-            Physics.IgnoreCollision(myCollider, rb.GetComponent<SphereCollider>());
-        } */
-
         foreach (Collider _col in ownColliders) {
             Physics.IgnoreCollision(_col, col);
         }
@@ -210,13 +185,14 @@ public class RangedAttack : MonoBehaviour
         //Create projectile
         Rigidbody _projectileRB = Instantiate(projectileRB, projectileOrigin.position, projectileOrigin.rotation);
 
+        //Spawn muzzle prefab
+        GameObject MUZZLE = Instantiate(muzzleGO, projectileOrigin.position, projectileOrigin.rotation);
+
         //Add force
         _projectileRB.AddForce(direction * projectileSpeed, ForceMode.Impulse);
 
         //Ignore collisions with owner
         IgnoreCollisionSelf(projectileRB.GetComponent<Collider>());
-
-        //AudioManager.Instance.PlaySound(playC.playerAudioSource, _audioClip);
     }
     #endregion
 }

@@ -6,6 +6,7 @@ public class FlyCamera : MonoBehaviour {
     [Header ("Mouse/WASD to move, space to ascend, left shift to speed up")]
     public bool disableUI;
     public bool disablePlayers;
+    public bool disableMenuCam;
     public float speed = 1.0f;
     public float ySpeedMultiplier = 0.5f;
     public float fastSpeed = 2.0f;
@@ -39,6 +40,10 @@ public class FlyCamera : MonoBehaviour {
         if (disablePlayers) {
             GameObject.FindGameObjectWithTag("Player").SetActive(false);
             GameObject.FindGameObjectWithTag("Player2").SetActive(false);
+        }
+
+        if (disableMenuCam) {
+            GameObject.Find("MenuCam").SetActive(false);
         }
     }
 

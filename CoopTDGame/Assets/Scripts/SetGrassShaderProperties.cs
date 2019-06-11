@@ -43,7 +43,22 @@ public class SetGrassShaderProperties : MonoBehaviour
     [SerializeField]
     private float _GrassWindStrength = 2f;
     
+    void Start()
+    {
+        if (SetGrassShaderPropertiesOnStart) {
+            _SetGrassShaderProperties();
+        }
+    }
+
+    void Update()
+    {
+        if (!SetGrassShaderPropertiesOnStart) {
+            _SetGrassShaderProperties();
+        }
+    }
+
     void _SetGrassShaderProperties() {
+        //Set billboarding distance of all grass for both players at start 
         Shader.SetGlobalFloat("_GrassBillboardingDistance", _GrassBillboardingDistance);
 
         Shader.SetGlobalFloat("_GrassAlphaClip", _GrassAlphaClip);
