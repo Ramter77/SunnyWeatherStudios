@@ -338,7 +338,7 @@ RectTransform:
   m_GameObject: {fileID: 375032102531995344}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -69.99055}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.1}
+  m_LocalScale: {x: 0.075, y: 0.075, z: 0.1}
   m_Children: []
   m_Father: {fileID: 6364079454349619377}
   m_RootOrder: 1
@@ -1502,7 +1502,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7028302, b: 0.7028302, a: 0.78431374}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -3940,7 +3940,7 @@ RectTransform:
   m_GameObject: {fileID: 5474625933706953791}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -69.99054}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.1}
+  m_LocalScale: {x: 0.2, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 7216109565199972595}
   m_RootOrder: 1
@@ -3948,7 +3948,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000061035156, y: 0}
-  m_SizeDelta: {x: 7683.1, y: 1168.1}
+  m_SizeDelta: {x: 8893.5, y: 1352.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &414040171369792675
 CanvasRenderer:
@@ -3991,7 +3991,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 1
+  m_Text: 
 --- !u!1 &5526113990633302352
 GameObject:
   m_ObjectHideFlags: 0
@@ -5908,6 +5908,9 @@ MonoBehaviour:
   timeBetweenCheck: 2
   annoucementMessageHolder: {fileID: 6814741793361337173}
   annoucementText: {fileID: 5862702689296514400}
+  waveTextHolder: {fileID: 4278617051775726768}
+  waveText: {fileID: 8117551962024977583}
+  permanentlyShowWaveIndex: 1
   disableTime: 5
   BossWave: 1
   BossEveryXRounds: 5
@@ -7315,11 +7318,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4420654051724674466}
     m_Modifications:
-    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
-        type: 3}
-      propertyPath: m_Name
-      value: CostText
-      objectReference: {fileID: 0}
     - target: {fileID: 5744929536753061156, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7425,6 +7423,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
+        type: 3}
+      propertyPath: m_Name
+      value: CostText
+      objectReference: {fileID: 0}
     - target: {fileID: 7388219572011797574, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}
       propertyPath: m_Text
@@ -7445,11 +7448,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1864054317402751170}
     m_Modifications:
-    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
-        type: 3}
-      propertyPath: m_Name
-      value: CostText (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5744929536753061156, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7565,6 +7563,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.10000001
       objectReference: {fileID: 0}
+    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
+        type: 3}
+      propertyPath: m_Name
+      value: CostText (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 7388219572011797574, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}
       propertyPath: m_Text
@@ -7585,16 +7588,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6839601693666808344}
     m_Modifications:
-    - target: {fileID: 1824963868581777720, guid: 845a333d64b01564487d654fd72bf761,
-        type: 3}
-      propertyPath: m_Name
-      value: New Canvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 1824963868581777720, guid: 845a333d64b01564487d654fd72bf761,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1824963868581777718, guid: 845a333d64b01564487d654fd72bf761,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7715,6 +7708,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1824963868581777720, guid: 845a333d64b01564487d654fd72bf761,
+        type: 3}
+      propertyPath: m_Name
+      value: New Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 1824963868581777720, guid: 845a333d64b01564487d654fd72bf761,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1824963868581777717, guid: 845a333d64b01564487d654fd72bf761,
         type: 3}
       propertyPath: m_Enabled
@@ -7820,11 +7823,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6006733074404123358}
     m_Modifications:
-    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
-        type: 3}
-      propertyPath: m_Name
-      value: CostText (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 5744929536753061156, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7940,6 +7938,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
+        type: 3}
+      propertyPath: m_Name
+      value: CostText (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 7388219572011797574, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}
       propertyPath: m_Text
@@ -7960,11 +7963,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4821463520270043169}
     m_Modifications:
-    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
-        type: 3}
-      propertyPath: m_Name
-      value: CostText (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5744929536753061156, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8080,6 +8078,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
+        type: 3}
+      propertyPath: m_Name
+      value: CostText (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 7388219572011797574, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}
       propertyPath: m_Text
@@ -8100,11 +8103,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 562943431396474955}
     m_Modifications:
-    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
-        type: 3}
-      propertyPath: m_Name
-      value: CostText (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 5744929536753061156, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8220,6 +8218,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.08
       objectReference: {fileID: 0}
+    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
+        type: 3}
+      propertyPath: m_Name
+      value: CostText (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 7388219572011797574, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}
       propertyPath: m_Text
@@ -8240,11 +8243,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6672061301072438282}
     m_Modifications:
-    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
-        type: 3}
-      propertyPath: m_Name
-      value: CostText
-      objectReference: {fileID: 0}
     - target: {fileID: 5744929536753061156, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8359,6 +8357,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 6930537293039388277, guid: 1459b0c2675882c4eb0b6fc97937bba3,
+        type: 3}
+      propertyPath: m_Name
+      value: CostText
       objectReference: {fileID: 0}
     - target: {fileID: 7388219572011797574, guid: 1459b0c2675882c4eb0b6fc97937bba3,
         type: 3}

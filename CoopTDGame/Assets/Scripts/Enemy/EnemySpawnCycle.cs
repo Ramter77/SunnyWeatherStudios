@@ -43,6 +43,9 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
 
     public GameObject annoucementMessageHolder;
     public Text annoucementText;
+    public GameObject waveTextHolder;
+    public Text waveText;
+    public bool permanentlyShowWaveIndex = true;
     public float disableTime = 5f;
     public int BossWave;
     public int BossEveryXRounds = 5;
@@ -63,6 +66,8 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
             disableAnnoucement();
         }
         Wave = 1;
+        waveTextHolder.SetActive(true);
+        waveText.text = ("Wave " + Wave);
     }
 
     // Update is called once per frame
@@ -163,7 +168,18 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
         annoucementMessageHolder.SetActive(true);
         annoucementText.text = ("Wave " + Wave + " approaching");
         disableAnnoucement();
+        waveTextHolder.SetActive(true);
+        waveText.text = ("Wave " + Wave);
+        if(permanentlyShowWaveIndex == false)
+        {
+            StartCoroutine(disableWaveText());
+        }
         startNewWave();
+    }
+    IEnumerator disableWaveText()
+    {
+        yield return new WaitForSeconds(10);
+        waveTextHolder.SetActive(false);
     }
 
     IEnumerator checkWaveStatusCooldown()
