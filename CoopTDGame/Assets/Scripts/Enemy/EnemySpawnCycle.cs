@@ -62,7 +62,7 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
         if(startSpawningOnSceneStart)
         {
             startNewWave();
-            annoucementText.text = ("The game starts now! You need to defend the Sphere!");
+            annoucementText.text = ("Defend the sphere!");
             disableAnnoucement();
         }
         Wave = 1;
