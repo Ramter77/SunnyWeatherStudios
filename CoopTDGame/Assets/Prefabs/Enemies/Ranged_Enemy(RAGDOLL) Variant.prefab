@@ -1698,8 +1698,8 @@ MonoBehaviour:
   action: 0
   decisionLimit: 100
   detectedTarget: 0
-  maxEnemiesSwarmingPlayer: 5
-  maxEnemiesSwarmingTower: 8
+  maxEnemiesSwarmingPlayer: 7
+  maxEnemiesSwarmingTower: 10
   enemySpeed: 0.1
   attackRange: 55
   followRadius: 80
@@ -2683,21 +2683,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1199130653960296274}
     m_Modifications:
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy on Slow
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5953861532791573198, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2767,6 +2752,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy on Slow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3540249742271492023, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
