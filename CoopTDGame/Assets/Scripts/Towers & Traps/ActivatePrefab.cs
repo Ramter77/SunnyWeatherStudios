@@ -217,6 +217,7 @@ public class ActivatePrefab : MonoBehaviour
             anim.clip = riseTower;
             anim.Play();
             startTowerCD = true;
+            GetComponent<LifeAndStats>().health = GetComponent<LifeAndStats>().maxhealth;
 
             GetComponent<BasicTower>().activated = true;
             GetComponent<BasicTower>().startAiming();

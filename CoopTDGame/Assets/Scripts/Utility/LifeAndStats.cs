@@ -206,7 +206,7 @@ public class LifeAndStats : MonoBehaviour
                         //Debug.Log("Fractured target");
                         fractureScript.Fracture(gameObject);
 
-                        health = maxhealth;
+                        //health = maxhealth;
                     }
                 }
             }
