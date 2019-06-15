@@ -40,14 +40,14 @@ public class ElementInteractor : MonoBehaviour
                         {
                             Destroy(other.gameObject);
                         }
-                        if (transform.parent)
+                        /* if (transform.parent)
                         {
                             Destroy(transform.parent.gameObject);
                         }
                         else
                         {
                             Destroy(gameObject);
-                        }
+                        } */
                     }
                 }
             }

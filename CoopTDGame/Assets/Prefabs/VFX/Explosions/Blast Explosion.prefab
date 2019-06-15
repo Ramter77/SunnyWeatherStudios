@@ -14,9 +14,8 @@ GameObject:
   - component: {fileID: 2670713409646461528}
   - component: {fileID: 26634026197291010}
   - component: {fileID: 1836772957134276083}
-  - component: {fileID: 4519301815525348686}
   - component: {fileID: 5485108290111525223}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Blast Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4695,8 +4694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a912cf65d2217724b96d596cfb1edca0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageRadius: 4
-  damage: 50
+  damageRadius: 3
+  damage: 200
 --- !u!135 &1836772957134276083
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4710,19 +4709,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &4519301815525348686
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 147226}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.1, y: 0.1, z: 0.1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &5485108290111525223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4735,6 +4721,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spatialBlend: 1
   _audioClip: {fileID: 0}
   _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
   _mute: 0
@@ -4764,7 +4751,7 @@ GameObject:
   - component: {fileID: 479352}
   - component: {fileID: 19895174}
   - component: {fileID: 19912992}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Charge Orbs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9426,7 +9413,7 @@ GameObject:
   - component: {fileID: 721520282}
   - component: {fileID: 707284530}
   - component: {fileID: 708199754}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Charge Moons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14137,7 +14124,7 @@ GameObject:
   - component: {fileID: 721535480}
   - component: {fileID: 707295284}
   - component: {fileID: 707317258}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18841,7 +18828,7 @@ GameObject:
   - component: {fileID: 721421290}
   - component: {fileID: 707372086}
   - component: {fileID: 707321210}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Nova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23561,7 +23548,7 @@ GameObject:
   - component: {fileID: 2138548352}
   - component: {fileID: 2120095886}
   - component: {fileID: 2118165962}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Dust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -28263,7 +28250,7 @@ GameObject:
   - component: {fileID: 2138487050}
   - component: {fileID: 2120147554}
   - component: {fileID: 2118163334}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Long
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32965,7 +32952,7 @@ GameObject:
   - component: {fileID: 1416821908}
   - component: {fileID: 2120151118}
   - component: {fileID: 2120210870}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Small Explosion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37672,7 +37659,7 @@ GameObject:
   - component: {fileID: 2138494442}
   - component: {fileID: 2120152488}
   - component: {fileID: 2120217114}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: MagicVertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42374,7 +42361,7 @@ GameObject:
   - component: {fileID: 2138509162}
   - component: {fileID: 2120129168}
   - component: {fileID: 2118169436}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Nova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47076,7 +47063,7 @@ GameObject:
   - component: {fileID: 8446757525529025147}
   - component: {fileID: 141120059312105243}
   - component: {fileID: 1097119927531340636}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: 'Orb '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
