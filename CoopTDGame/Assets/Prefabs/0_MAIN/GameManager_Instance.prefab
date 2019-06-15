@@ -57,6 +57,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cbf43102bfc374a93f7b942915d238, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UIcanvas: {fileID: 0}
+  MainMenu: {fileID: 0}
+  menuCam: {fileID: 0}
+  player1: {fileID: 0}
+  player2: {fileID: 0}
 --- !u!114 &6669502109914906010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -173,6 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetHotkey: 112
+  MainMenu: {fileID: 0}
 --- !u!114 &6009582045929630236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,8 +419,8 @@ MonoBehaviour:
   trapVFX:
   - {fileID: 8300000, guid: 936f8c53f236d1341af9da830cf5f467, type: 3}
   - {fileID: 8300000, guid: 87dabe7fe53fa004385f381f5fd080c9, type: 3}
-  - {fileID: 8300000, guid: 936f8c53f236d1341af9da830cf5f467, type: 3}
-  - {fileID: 8300000, guid: 936f8c53f236d1341af9da830cf5f467, type: 3}
+  - {fileID: 8300000, guid: 9942faf0dda4b80489aa494cd838732f, type: 3}
+  - {fileID: 8300000, guid: de2950398a05fb14785ca233d046b011, type: 3}
 --- !u!114 &806816560449707382
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spatialBlend: 1
   _audioClip: {fileID: 0}
   _output: {fileID: 24300002, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
   _mute: 0
@@ -457,6 +464,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spatialBlend: 1
   _audioClip: {fileID: 0}
   _output: {fileID: 243760987354318332, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
   _mute: 0
