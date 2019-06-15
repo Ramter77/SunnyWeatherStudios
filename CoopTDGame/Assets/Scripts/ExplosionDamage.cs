@@ -21,9 +21,11 @@ public class ExplosionDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+        
+        if (other.gameObject.tag == "Enemy")
         {
-            if(other.GetComponent<LifeAndStats>() != null)
+            Debug.Log("tag: " + other.gameObject.tag);
+            if (other.GetComponent<LifeAndStats>() != null)
             {
                 other.GetComponent<LifeAndStats>().TakeDamage(damage);
             }
