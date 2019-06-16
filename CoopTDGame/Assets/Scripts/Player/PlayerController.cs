@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     public bool isGrounded;
     public bool isJumping;
     public bool isDead;
+    public bool isPaused;
     #endregion
 
     
@@ -97,21 +98,21 @@ public class PlayerController : MonoBehaviour
     }
 
     private void Update() {
-        if (!isDead) {
+        if (!isDead && !isPaused) {
             //Turn Player forward
             if (TurnPlayerForward) {
                 SmoothLookForward();
             }
-        }
 
-        //Check if isGrounded
-        CheckGround();
+            //Check if isGrounded
+            CheckGround();
 
-        //Move player towards slope
-        if (movePlayerTowardSlope) {
-            if (OnSlope())
-            {
-                charController.Move(Vector3.down * charController.height / 2 * slopeForce * Time.deltaTime);
+            //Move player towards slope
+            if (movePlayerTowardSlope) {
+                if (OnSlope())
+                {
+                    charController.Move(Vector3.down * charController.height / 2 * slopeForce * Time.deltaTime);
+                }
             }
         }
     }
@@ -213,7 +214,8 @@ public class PlayerController : MonoBehaviour
     }
 
     public void SetAlive() {
-        isDead = false;
+        isPaused = false;
+        //isDead = false;
         MainCameraTransform.parent.transform.parent.transform.parent.gameObject.SetActive(true);
     }
 }

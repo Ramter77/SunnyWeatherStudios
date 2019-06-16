@@ -278,6 +278,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293488f44201be6428c40ebf241459c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: 2
   Player_: 2
   Element: 1
   debugMode: 1
@@ -304,7 +305,8 @@ MonoBehaviour:
   isRangedAttacking: 0
   isGrounded: 1
   isJumping: 0
-  isDead: 1
+  isDead: 0
+  isPaused: 1
 --- !u!114 &7023255781223283234
 MonoBehaviour:
   m_ObjectHideFlags: 0

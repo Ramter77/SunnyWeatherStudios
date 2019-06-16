@@ -72,7 +72,7 @@ public class RangedAttack : MonoBehaviour
             rangedAbilityCooldownImage.fillAmount += 1 / rangedAttackCooldown * Time.deltaTime;
         }
 
-        if (!playC.isDead) {
+        if (!playC.isDead && !playC.isPaused) {
             //* Player 0 input */
             if (playC.Player_ == 0)
             {
@@ -102,7 +102,7 @@ public class RangedAttack : MonoBehaviour
 
             if (_input)
             {
-                if (!playC.isRangedAttacking && !playC.isMeleeAttacking && !playC.isCasting && playC.isGrounded && !playC.isJumping)
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting && playC.isGrounded && !playC.isJumping)
                 {
                     rangedRechargeSpeed = Time.time + rangedAttackCooldown;
                     if (rangedAbilityCooldownImage != null)
@@ -151,7 +151,7 @@ public class RangedAttack : MonoBehaviour
     /// </summary>
     /// <param name="_projectile">Change projectile to this parameter</param>
     public void ChangeProjectileTo(GameObject _projectile) {
-        Debug.Log("Changed projectile to: " + _projectile);
+        //Debug.Log("Changed projectile to: " + _projectile);
         Rigidbody _projectileRB = _projectile.GetComponent<Rigidbody>();
 
         projectileRB = _projectileRB;

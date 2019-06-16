@@ -437,7 +437,7 @@ Transform:
   m_LocalPosition: {x: 0.3175846, y: 21.646555, z: -0.7525005}
   m_LocalScale: {x: 1.3415738, y: 1.3415738, z: 1.3415738}
   m_Children:
-  - {fileID: 5973827711281555524}
+  - {fileID: 319741486239824862}
   m_Father: {fileID: 95804816}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -735,14 +735,14 @@ MonoBehaviour:
   _playOnAwake: 0
   _loop: 0
   _priority: 128
-  _volume: 1
+  _volume: 0.5
   _pitch: 1
   _reverbZoneMix: 1
   _dopplerLevel: 0
   _spread: 0
-  _volumeRolloff: 0
-  _minDistance: 10
-  _maxDistance: 500
+  _volumeRolloff: 2
+  _minDistance: 5000
+  _maxDistance: 5000
   OnlyPlayForClosestCamera: 1
 --- !u!1001 &319741486239823984
 PrefabInstance:
@@ -813,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
---- !u!4 &5973827711281555524 stripped
+--- !u!4 &319741486239824862 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6235444339675615284, guid: 64939b98e667ad149bf021bcfb315738,
     type: 3}

@@ -58,7 +58,7 @@ public class PlayerClassOne : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!playC.isDead) {
+        if (!playC.isDead && !playC.isPaused) {
             if (ultimateAbilityCooldownImage != null)
             {
                 ultimateAbilityCooldownImage.fillAmount += 1 / ultimateAbilityCooldown * Time.deltaTime;
@@ -99,7 +99,8 @@ public class PlayerClassOne : MonoBehaviour
             if (_ultimateInput)
             //if (Input.GetKeyDown(ultimateAbilityHotkey))
             {
-                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting/*  && !playC.isJumping */ && !playC.isDead) {
+                //if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting/*  && !playC.isJumping */ && !playC.isDead) {
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting) {
                     ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
                     ultimateAbility();
                     ultimateAbilityCooldownImage.fillAmount = 0;

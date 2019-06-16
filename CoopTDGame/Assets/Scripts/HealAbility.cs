@@ -84,7 +84,7 @@ public class HealAbility : MonoBehaviour
         else
             Debug.Log("No HealAbilityCooldownImage");
 
-        if (!playC.isDead) {
+        if (!playC.isDead && !playC.isPaused) {
             //* Player 0 input */
             if (playC.Player_ == 0)
             {
@@ -119,7 +119,8 @@ public class HealAbility : MonoBehaviour
             if (_healInput) //{
             //if (Input.GetKeyDown(healAbilityHotkey))
             {
-                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting && playC.isGrounded/*  && !playC.isJumping */ && !playC.isDead)
+                //if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting && playC.isGrounded/*  && !playC.isJumping */ && !playC.isDead)
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting && playC.isGrounded && !playC.isJumping)
                 {
                     playC.isCasting = true;
                     //playC.isRangedAttacking = true;

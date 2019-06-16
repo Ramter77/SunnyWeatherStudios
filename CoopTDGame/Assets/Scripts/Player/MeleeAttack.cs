@@ -25,7 +25,7 @@ public class MeleeAttack : MonoBehaviour
 
     void Update()
     {
-        if (!playC.isDead) {
+        if (!playC.isDead && !playC.isPaused) {
             //* Player 0 input */
             if (playC.Player_ == 0)
             {

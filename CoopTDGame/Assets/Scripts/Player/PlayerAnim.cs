@@ -72,7 +72,7 @@ public class PlayerAnim : MonoBehaviour
     }
     void Update()
     {
-        if (!playC.isDead) {
+        if (!playC.isDead && !playC.isPaused) {
             #region Get Input
             if (playC.Player_ == 0) {
                 _verticalInput = InputManager.Instance.Vertical0;
@@ -152,9 +152,9 @@ public class PlayerAnim : MonoBehaviour
             }
 
             #region Jumping
-            if (/* !playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && */ !playC.isJumping) {
+            //if (/* !playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && */ !playC.isJumping) {
                 if (!allowJumpWhileMelee && !allowJumpWhileRanged) {
-                    if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting) {
+                    if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting && playC.isGrounded && !playC.isJumping) {
                         allowJump = true;
                     }
                 }
@@ -164,13 +164,15 @@ public class PlayerAnim : MonoBehaviour
                 }
 
                 else if (allowJumpWhileMelee) {
-                    if (!playC.isRangedAttacking) {
+                    if (!playC.isRangedAttacking && !playC.isCasting && playC.isGrounded && !playC.isJumping) {
+                    //if (!playC.isRangedAttacking) {
                         allowJump = true;
                     }
                 }
 
                 else if (allowJumpWhileRanged) {
-                    if (!playC.isMeleeAttacking) {
+                    if (!playC.isMeleeAttacking && !playC.isCasting && playC.isGrounded && !playC.isJumping) {
+                    //if (!playC.isMeleeAttacking) {
                         allowJump = true;
                     }
                 }
@@ -193,7 +195,7 @@ public class PlayerAnim : MonoBehaviour
                     }
                 }
                 
-            }
+            //}
             #endregion
         }
         else {

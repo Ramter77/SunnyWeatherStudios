@@ -127,40 +127,45 @@ public class ActivatePrefab : MonoBehaviour
         //Debug.Log("Colliding with " + other.tag);
         if (other.CompareTag("Player") || other.CompareTag("Player2")) {
             playC = other.GetComponent<PlayerController>();
-            //* Player 0 input */
-            if (playC.Player_ == 0)
-            {
-                _input = InputManager.Instance.Interact0;
-            }
 
-            //* Player 1 input */
-            else if (playC.Player_ == 1)
-            {
-                _input = InputManager.Instance.Interact1;
-            }
+            if (!playC.isDead && !playC.isPaused) {
+                //* Player 0 input */
+                if (playC.Player_ == 0)
+                {
+                    _input = InputManager.Instance.Interact0;
+                }
 
-            //*Player 2 input */
-            else if (playC.Player_ == 2) {
-                _input = InputManager.Instance.Interact2;
+                //* Player 1 input */
+                else if (playC.Player_ == 1)
+                {
+                    _input = InputManager.Instance.Interact1;
+                }
+
+                //*Player 2 input */
+                else if (playC.Player_ == 2) {
+                    _input = InputManager.Instance.Interact2;
+                }
             }
 
             if (_input) {
-                if (isTower) {
-                    _RiseTower();
-                }
-                else
-                {
-                    //It's a Trap
-                    _RiseTrap();
-                }
-                other.GetComponent<PlayerClassOne>().risePrefab();
-                if (other.CompareTag("Player"))
-                {
-                    PlayerInteraction.Instance.Player_1InRange = false;
-                }
-                if (other.CompareTag("Player2"))
-                {
-                    PlayerInteraction.Instance.Player_2InRange = false;
+                if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting && playC.isGrounded && !playC.isJumping) {
+                    if (isTower) {
+                        _RiseTower();
+                    }
+                    else
+                    {
+                        //It's a Trap
+                        _RiseTrap();
+                    }
+                    other.GetComponent<PlayerClassOne>().risePrefab();
+                    if (other.CompareTag("Player"))
+                    {
+                        PlayerInteraction.Instance.Player_1InRange = false;
+                    }
+                    if (other.CompareTag("Player2"))
+                    {
+                        PlayerInteraction.Instance.Player_2InRange = false;
+                    }
                 }
             }
         }
@@ -265,7 +270,7 @@ public class ActivatePrefab : MonoBehaviour
     void _RiseTrap() {
         if (!trapActive) {
             GameAnalytics.Instance.PlayerRise(playC.Player, isTower);
-            
+
             trapActive = true;
             activateVFX.SetActive(false);
             RiseVFX();
