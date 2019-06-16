@@ -5,25 +5,11 @@ using UnityEngine.Analytics;
 
 public class GameAnalytics : Singleton<GameAnalytics>
 {
-    #region Player1
-    [System.Serializable]
-    public class Player1 {
-        public int playerDeath, playerRevive;
-        public int playerJump, playerRangedAttack, playerMeleeAttack, playerHeal, playerUltimate, playerRiseTrap, playerRiseTower;
-    }
-    [SerializeField] public Player1 _Player1;
-    #endregion
+    public int player1Death, player1Revive;
+    public int player1Jump, player1RangedAttack, player1MeleeAttack, player1Heal, player1Ultimate, player1RiseTrap, player1RiseTower;
 
-    #region Player2
-    [System.Serializable]
-    public class Player2 {
-        public int playerDeath, playerRevive;
-        public int playerJump, playerRangedAttack, playerMeleeAttack, playerHeal, playerUltimate, playerRiseTrap, playerRiseTower;
-    }
-    [SerializeField] public Player2 _Player2;
-    #endregion
-
-    
+    public int player2Death, player2Revive;
+    public int player2Jump, player2RangedAttack, player2MeleeAttack, player2Heal, player2Ultimate, player2RiseTrap, player2RiseTower;
 
 
     public int trapCombinationFire, trapCombinationIce, trapCombinationBlast, towerCombinationFire, towerCombinationIce, towerCombinationBlast;
@@ -42,119 +28,119 @@ public class GameAnalytics : Singleton<GameAnalytics>
 
     public void PlayerDeath(int player) {
         if (player == 1) {
-            _Player1.playerDeath++;
+            player1Death++;
 
-            TriggerCustomEvent("Player1 Death", "Player", player, "Deaths", _Player1.playerDeath);
+            TriggerCustomEvent("Player1 Death", "Player", player, "Deaths", player1Death);
         }
         else if (player == 2) {
-            _Player2.playerDeath++;
+            player2Death++;
 
-            TriggerCustomEvent("Player2 Death", "Player", player, "Deaths", _Player2.playerDeath);
+            TriggerCustomEvent("Player2 Death", "Player", player, "Deaths", player2Death);
         }
     }
 
     public void PlayerRevive(int player) {
         if (player == 1) {
-            _Player1.playerRevive++;
+            player1Revive++;
 
-            TriggerCustomEvent("Player1 Revive", "Player", player, "Revives", _Player1.playerRevive);
+            TriggerCustomEvent("Player1 Revive", "Player", player, "Revives", player1Revive);
         }
         else if (player == 2) {
-            _Player2.playerRevive++;
+            player2Revive++;
 
-            TriggerCustomEvent("Player2 Revive", "Player", player, "Revives", _Player2.playerRevive);
+            TriggerCustomEvent("Player2 Revive", "Player", player, "Revives", player2Revive);
         }
     }
 
     public void PlayerJump(int player) {
         if (player == 1) {
-            _Player1.playerJump++;
+            player1Jump++;
 
-            TriggerCustomEvent("Player1 Jump", "Player", player, "Jumps", _Player1.playerJump);
+            TriggerCustomEvent("Player1 Jump", "Player", player, "Jumps", player1Jump);
         }
         else if (player == 2) {
-            _Player2.playerJump++;
+            player2Jump++;
 
-            TriggerCustomEvent("Player2 Jump", "Player", player, "Jumps", _Player2.playerJump);
+            TriggerCustomEvent("Player2 Jump", "Player", player, "Jumps", player2Jump);
         }
     }
 
     public void PlayerRangedAttack(int player) {
         if (player == 1) {
-            _Player1.playerRangedAttack++;
+            player1RangedAttack++;
 
-            TriggerCustomEvent("Player1 Ranged Attack", "Player", player, "Ranged Attacks", _Player1.playerRangedAttack);
+            TriggerCustomEvent("Player1 Ranged Attack", "Player", player, "Ranged Attacks", player1RangedAttack);
         }
         else if (player == 2) {
-            _Player2.playerRangedAttack++;
+            player2RangedAttack++;
 
-            TriggerCustomEvent("Player2 Ranged Attack", "Player", player, "Ranged Attacks", _Player2.playerRangedAttack);
+            TriggerCustomEvent("Player2 Ranged Attack", "Player", player, "Ranged Attacks", player2RangedAttack);
         }
     }
 
     public void PlayerMeleeAttack(int player) {
         if (player == 1) {
-            _Player1.playerMeleeAttack++;
+            player1MeleeAttack++;
 
-            TriggerCustomEvent("Player1 Melee Attack", "Player", player, "Melee Attacks", _Player1.playerMeleeAttack);
+            TriggerCustomEvent("Player1 Melee Attack", "Player", player, "Melee Attacks", player1MeleeAttack);
         }
         else if (player == 2) {
-            _Player2.playerMeleeAttack++;
+            player2MeleeAttack++;
 
-            TriggerCustomEvent("Player2 Melee Attack", "Player", player, "Melee Attacks", _Player2.playerMeleeAttack);
+            TriggerCustomEvent("Player2 Melee Attack", "Player", player, "Melee Attacks", player2MeleeAttack);
         }
     }
 
     public void PlayerHeal(int player) {
         if (player == 1) {
-            _Player1.playerHeal++;
+            player1Heal++;
 
-            TriggerCustomEvent("Player1 Heal", "Player", player, "Heals", _Player1.playerHeal);
+            TriggerCustomEvent("Player1 Heal", "Player", player, "Heals", player1Heal);
         }
         else if (player == 2) {
-            _Player2.playerHeal++;
+            player2Heal++;
 
-            TriggerCustomEvent("Player2 Heal", "Player", player, "Heals", _Player2.playerHeal);
+            TriggerCustomEvent("Player2 Heal", "Player", player, "Heals", player2Heal);
         }
     }
 
     public void PlayerUltimate(int player) {
         if (player == 1) {
-            _Player1.playerHeal++;
+            player1Heal++;
 
-            TriggerCustomEvent("Player1 Ultimate", "Player", player, "Ultimates", _Player1.playerHeal);
+            TriggerCustomEvent("Player1 Ultimate", "Player", player, "Ultimates", player1Heal);
         }
         else if (player == 2) {
-            _Player2.playerHeal++;
+            player2Heal++;
 
-            TriggerCustomEvent("Player2 Ultimate", "Player", player, "Ultimates", _Player2.playerHeal);
+            TriggerCustomEvent("Player2 Ultimate", "Player", player, "Ultimates", player2Heal);
         }
     }
 
     public void PlayerRise(int player, bool isTower) {
         if (!isTower) {
             if (player == 1) {
-                _Player1.playerRiseTrap++;
+                player1RiseTrap++;
 
-                TriggerCustomEvent("Player1 Rise Trap", "Player", player, "Rise Traps", _Player1.playerRiseTrap);
+                TriggerCustomEvent("Player1 Rise Trap", "Player", player, "Rise Traps", player1RiseTrap);
             }
             else if (player == 2) {
-                _Player2.playerRiseTrap++;
+                player2RiseTrap++;
 
-                TriggerCustomEvent("Player2 Rise Trap", "Player", player, "Rise Traps", _Player2.playerRiseTrap);
+                TriggerCustomEvent("Player2 Rise Trap", "Player", player, "Rise Traps", player2RiseTrap);
             }
         }
         else
         {
             if (player == 1) {
-                _Player1.playerRiseTower++;
+                player1RiseTower++;
 
-                TriggerCustomEvent("Player1 Rise Tower", "Player", player, "Rise Towers", _Player1.playerRiseTower);
+                TriggerCustomEvent("Player1 Rise Tower", "Player", player, "Rise Towers", player1RiseTower);
             }
             else if (player == 2) {
-                _Player2.playerRiseTower++;
+                player2RiseTower++;
 
-                TriggerCustomEvent("Player2 Rise Tower", "Player", player, "Rise Towers", _Player2.playerRiseTower);
+                TriggerCustomEvent("Player2 Rise Tower", "Player", player, "Rise Towers", player2RiseTower);
             }
         }
     }
@@ -300,32 +286,32 @@ public class GameAnalytics : Singleton<GameAnalytics>
     /// <summary>
     /// Awake is called when the script instance is being loaded.
     /// </summary>
-    void Awake()
+    void Start()
     {
         Reset();
     }
 
     void Reset()
     {
-        _Player1.playerDeath = 0;
-        _Player1.playerRevive = 0;
-        _Player1.playerJump = 0;
-        _Player1.playerRangedAttack = 0;
-        _Player1.playerMeleeAttack = 0;
-        _Player1.playerHeal = 0;
-        _Player1.playerUltimate = 0;
-        _Player1.playerRiseTrap = 0;
-        _Player1.playerRiseTower = 0;
+        player1Death = 0;
+        player1Revive = 0;
+        player1Jump = 0;
+        player1RangedAttack = 0;
+        player1MeleeAttack = 0;
+        player1Heal = 0;
+        player1Ultimate = 0;
+        player1RiseTrap = 0;
+        player1RiseTower = 0;
 
-        _Player2.playerDeath = 0;
-        _Player2.playerRevive = 0;
-        _Player2.playerJump = 0;
-        _Player2.playerRangedAttack = 0;
-        _Player2.playerMeleeAttack = 0;
-        _Player2.playerHeal = 0;
-        _Player2.playerUltimate = 0;
-        _Player2.playerRiseTrap = 0;
-        _Player2.playerRiseTower = 0;
+        player2Death = 0;
+        player2Revive = 0;
+        player2Jump = 0;
+        player2RangedAttack = 0;
+        player2MeleeAttack = 0;
+        player2Heal = 0;
+        player2Ultimate = 0;
+        player2RiseTrap = 0;
+        player2RiseTower = 0;
 
         trapCombinationFire = 0;
         trapCombinationIce = 0;

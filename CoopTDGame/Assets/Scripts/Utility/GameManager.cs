@@ -7,6 +7,7 @@ public class GameManager : Singleton<GameManager>
     public GameObject UIcanvas;
     public GameObject MainMenu;
     public GameObject menuCam;
+    [HideInInspector]
     public GameObject player1, player2;
     private bool menuEnabled;
 
@@ -18,14 +19,14 @@ public class GameManager : Singleton<GameManager>
                 menuEnabled = false;
                 MainMenu.SetActive(false);
                 menuCam.SetActive(false);
-                player1.SetActive(true);
-                player2.SetActive(true);
+                /* player1.SetActive(true);
+                player2.SetActive(true); */
                 if (!MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted) {
                     menuEnabled = false;
                     MainMenu.SetActive(false);
                     menuCam.SetActive(false);
-                    player1.SetActive(true);
-                    player2.SetActive(true);
+                    /* player1.SetActive(true);
+                    player2.SetActive(true); */
 
                 MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = true;
                     MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = true;
@@ -45,8 +46,8 @@ public class GameManager : Singleton<GameManager>
             else
             {
                 menuEnabled = true;
-                player1.SetActive(false);
-                player2.SetActive(false);
+                /* player1.SetActive(false);
+                player2.SetActive(false); */
                 menuCam.SetActive(true);
                 MainMenu.SetActive(true);
                 UIcanvas.SetActive(false);
@@ -60,8 +61,8 @@ public class GameManager : Singleton<GameManager>
                 
                 if (MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted) {
                     menuEnabled = true;
-                    player1.SetActive(false);
-                    player2.SetActive(false);
+                    /* player1.SetActive(false);
+                    player2.SetActive(false); */
                     menuCam.SetActive(true);
                     MainMenu.SetActive(true);
                     UIcanvas.SetActive(false);

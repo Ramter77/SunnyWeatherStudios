@@ -74,7 +74,7 @@ public class FreeCameraLook : Pivot {
 
 		HandleRotationMovement();
 
-        if (playC.isDead) {
+        if (playC.isDead && !playC.isPaused) {
             RotateTransformRoot = false;
         }
         else
@@ -97,13 +97,16 @@ public class FreeCameraLook : Pivot {
             _inputX = InputManager.Instance.MouseInput0.x;
             _inputY = InputManager.Instance.MouseInput0.y;
         }
-        else if (playC.Player_ == 1) {
-            _inputX = InputManager.Instance.MouseInput1.x;
-            _inputY = InputManager.Instance.MouseInput1.y;
-        }
-        else if (playC.Player_ == 2) {
-            _inputX = InputManager.Instance.MouseInput2.x;
-            _inputY = InputManager.Instance.MouseInput2.y;
+
+        if (!playC.isDead && !playC.isPaused) {
+            if (playC.Player_ == 1) {
+                _inputX = InputManager.Instance.MouseInput1.x;
+                _inputY = InputManager.Instance.MouseInput1.y;
+            }
+            else if (playC.Player_ == 2) {
+                _inputX = InputManager.Instance.MouseInput2.x;
+                _inputY = InputManager.Instance.MouseInput2.y;
+            }
         }
 
         //float x = InputManager.Instance.MouseInput.x + offsetX;
