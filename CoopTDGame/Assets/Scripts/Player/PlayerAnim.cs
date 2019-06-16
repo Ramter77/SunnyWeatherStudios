@@ -216,6 +216,8 @@ public class PlayerAnim : MonoBehaviour
             if (!playC.isRangedAttacking) {
                 playC.isJumping = true;
 
+                GameAnalytics.Instance.PlayerJump(playC.Player);
+
                 //AudioManager.Instance.PlaySound(playC.playerAudioSource, Sound.playerJump);
 
 

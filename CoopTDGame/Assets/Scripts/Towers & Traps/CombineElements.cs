@@ -195,6 +195,9 @@ public class CombineElements : MonoBehaviour
 
             AudioManager.Instance.PlaySound(ownAudioSource, Sound.playerCombineBuildingIce, false);
         }
+
+
+        GameAnalytics.Instance.PrefabCombination(elem, isTower);
     }
 
     void _CombineElements(int element) {

@@ -8,6 +8,8 @@ using Assets.MultiAudioListener;
 public class PlayerController : MonoBehaviour
 {
     #region Variables
+    public int Player = 1;
+
     [Header ("Player")]
     [Tooltip ("Player_0 = Mouse, Player_1 = Controller 1, Player_2 = Controller 2")]
     public int Player_ = 1;

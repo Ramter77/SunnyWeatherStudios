@@ -189,18 +189,24 @@ public class HealAbility : MonoBehaviour
                 {
                     //playerToHeal.GetComponent<LifeAndStats>().Revive();
 
+                    GameAnalytics.Instance.PlayerRevive(playC.Player);
+
                     playerToHeal.GetComponent<PlayerController>().isDead = false;
                     playerToHeal.GetComponent<LifeAndStats>().health = 100;
                     playerToHeal.GetComponent<Animator>().SetBool("Dead", false);
                 }
                 else if (playerToHeal.GetComponent<LifeAndStats>().health > maxHealth - healAmount)
                 {
+                    GameAnalytics.Instance.PlayerHeal(playC.Player);
+
                     healAmount = maxHealth - playerToHeal.GetComponent<LifeAndStats>().health;
                     playerToHeal.GetComponent<LifeAndStats>().healHealth(healAmount);
                     healAmount = fallbackHealAmount;
                 }
                 else if (playerToHeal.GetComponent<LifeAndStats>().health <= 75)
                 {
+                    GameAnalytics.Instance.PlayerHeal(playC.Player);
+
                     playerToHeal.GetComponent<LifeAndStats>().healHealth(healAmount);
                     healAmount = fallbackHealAmount;
                 }

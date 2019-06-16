@@ -87,6 +87,8 @@ public class MeleeAttack : MonoBehaviour
         if (UltimateWeaponTriggerCollider != null) {
             UltimateWeaponTriggerCollider.enabled = true;
         }
+
+        GameAnalytics.Instance.PlayerMeleeAttack(playC.Player);
     }
     
     #region Reset melee CD from the melee animations

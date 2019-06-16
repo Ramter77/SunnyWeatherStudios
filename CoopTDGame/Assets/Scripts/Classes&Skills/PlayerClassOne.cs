@@ -138,6 +138,8 @@ public class PlayerClassOne : MonoBehaviour
         weaponGameobject.SetActive(false);
 
         AudioManager.Instance.PlaySound(playC.playerAudioSource, Sound.playerUltimate, false);
+
+        GameAnalytics.Instance.PlayerUltimate(playC.Player);
     }
 
     IEnumerator disableUltimate()

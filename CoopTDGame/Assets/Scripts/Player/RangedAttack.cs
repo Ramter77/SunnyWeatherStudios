@@ -163,6 +163,8 @@ public class RangedAttack : MonoBehaviour
     /// </summary>
     public void ShootActiveProjectile()
     {
+        GameAnalytics.Instance.PlayerRangedAttack(playC.Player);
+
         //Raycast from screen center
         Ray ray = MainCamera.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         RaycastHit hit;

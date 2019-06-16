@@ -16,6 +16,17 @@ public class ElementInteractor : MonoBehaviour
 
     private Vector3 otherPos = Vector3.zero;
 
+    private BasicEnemy basicEnemyScript;
+
+    /// <summary>
+    /// Start is called on the frame when a script is enabled just before
+    /// any of the Update methods is called the first time.
+    /// </summary>
+    void Start()
+    {
+        basicEnemyScript = GetComponent<BasicEnemy>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (allowInteraction) {
@@ -25,9 +36,14 @@ public class ElementInteractor : MonoBehaviour
                 {
                     Element otherProjectileElement;
                     otherProjectileElement = other.GetComponent<ElementInteractor>().elementType;
-                    Debug.Log(other.gameObject.name + other.GetComponent<ElementInteractor>().elementType);
+                    //Debug.Log(other.gameObject.name + other.GetComponent<ElementInteractor>().elementType);
+
+                    
                     if (otherProjectileElement != elementType)
                     {
+                        //If the element is different it will result in a blast
+                        GameAnalytics.Instance.EnemyCombination(Element.Blast, basicEnemyScript.enemyType);
+
                         otherPos = other.transform.position;
                         ElementManager.Instance.requestingInteractor = this.gameObject;
                         ElementManager.Instance.combineElement(elementType, otherProjectileElement);
@@ -48,6 +64,11 @@ public class ElementInteractor : MonoBehaviour
                         {
                             Destroy(gameObject);
                         } */
+                    }
+                    else
+                    {
+                        //Else just send the other projectiles element
+                        GameAnalytics.Instance.EnemyCombination(otherProjectileElement, basicEnemyScript.enemyType);
                     }
                 }
             }

@@ -208,6 +208,8 @@ public class ActivatePrefab : MonoBehaviour
 
     void _RiseTower() {
         if (!towerActive) {
+            GameAnalytics.Instance.PlayerRise(playC.Player, isTower);
+
             towerActive = true;
             activateVFX.SetActive(false);
             RiseVFX();
@@ -262,6 +264,8 @@ public class ActivatePrefab : MonoBehaviour
 
     void _RiseTrap() {
         if (!trapActive) {
+            GameAnalytics.Instance.PlayerRise(playC.Player, isTower);
+            
             trapActive = true;
             activateVFX.SetActive(false);
             RiseVFX();

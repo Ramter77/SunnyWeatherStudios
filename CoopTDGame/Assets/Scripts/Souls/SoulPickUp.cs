@@ -20,6 +20,8 @@ public class SoulPickUp : MonoBehaviour
     {
         if ((other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") && pickedUp == false)
         {
+            GameAnalytics.Instance.SoulsPickedUp();
+
             Instantiate(particleEffect, transform.position, Quaternion.identity);
             pickedUp = true;
             SoulBackpack.Instance.addSoulsToCounter(soulValue);

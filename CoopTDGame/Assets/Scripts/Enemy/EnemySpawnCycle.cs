@@ -127,6 +127,8 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
 
     public void startNewWave()
     {
+        GameAnalytics.Instance.WaveReached();
+
         maximumEnemies += addedEnemiesPerWave;
         spawnedEnemies = 0;
         //Debug.Log("Cycle: NewWave");

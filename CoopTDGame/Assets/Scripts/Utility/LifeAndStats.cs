@@ -45,7 +45,6 @@ public class LifeAndStats : MonoBehaviour
 
     
     private bool _dead;
-    
 
     void Start()
     {
@@ -165,6 +164,8 @@ public class LifeAndStats : MonoBehaviour
                         playC.isDead = true;
 
                         anim.SetBool("Dead", true);
+
+                        GameAnalytics.Instance.PlayerDeath(playC.Player);
                     }
                     else
                     {
@@ -182,6 +183,8 @@ public class LifeAndStats : MonoBehaviour
 
                 if (!_dead) {
                     if (health <= 0) {
+                        GameAnalytics.Instance.EnemyDeath();
+
                         if (basicEnemyScript.Target != null && basicEnemyScript.Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking > 0)
                         {
                             basicEnemyScript.Target.GetComponent<LifeAndStats>().amountOfUnitsAttacking -= 1;
