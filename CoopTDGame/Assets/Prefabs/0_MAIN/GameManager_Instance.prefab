@@ -352,12 +352,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stopSoundBeforeNext: 0
-  pitchRandomization: {x: -0.1, y: 0.1}
+  pitchRandomization: {x: -0.3, y: 0.3}
   soundAudioSource: {fileID: 806816560449707382}
   musicAudioSource: {fileID: 3785148092310920731}
   playMenuMusicOnStart: 1
-  menuMusicAudioClip: {fileID: 8300000, guid: e7608e0a56b7ef949867c62645189327, type: 3}
-  ingameMusicAudioClip: {fileID: 8300000, guid: 7b62fc76f0bee04478dd47f2eb83a67e,
+  menuMusicAudioClip: {fileID: 8300000, guid: 7b62fc76f0bee04478dd47f2eb83a67e, type: 3}
+  ingameMusicAudioClip: {fileID: 8300000, guid: e7608e0a56b7ef949867c62645189327,
     type: 3}
   playerJump:
   - {fileID: 8300000, guid: 6e4a6f71df58d3b4ab698cbd3547ba4e, type: 3}
@@ -383,7 +383,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 34b5e1f6080d73046a1dc8a082ee32a7, type: 3}
   - {fileID: 8300000, guid: 3e158111607960048a3a8af278883326, type: 3}
   - {fileID: 8300000, guid: 1b795c39bf326d740aff7b14be33d4ab, type: 3}
-  - {fileID: 8300000, guid: 1b795c39bf326d740aff7b14be33d4ab, type: 3}
   playerDeath:
   - {fileID: 8300000, guid: 477066ceadb5485419857c4189b5bdda, type: 3}
   playerRevive:
@@ -403,7 +402,7 @@ MonoBehaviour:
   enemyRagdoll:
   - {fileID: 8300000, guid: f6a727434d9be4f4ea793ef4e913c6cd, type: 3}
   sphereTakeDamage:
-  - {fileID: 8300000, guid: 28157770cad3ed24787dbf23ab9eee5b, type: 3}
+  - {fileID: 8300000, guid: 8716a24a4e0d92742bd140a7cf88d6d4, type: 3}
   towerTakeDamage:
   - {fileID: 8300000, guid: f9ad490769784af408cd4c561de4f4b7, type: 3}
   towerProjectiles:
@@ -433,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spatialBlend: 1
+  spatialBlend: 0
   _audioClip: {fileID: 0}
   _output: {fileID: 24300002, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
   _mute: 0
@@ -464,7 +463,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spatialBlend: 1
+  spatialBlend: 0
   _audioClip: {fileID: 0}
   _output: {fileID: 243760987354318332, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
   _mute: 0

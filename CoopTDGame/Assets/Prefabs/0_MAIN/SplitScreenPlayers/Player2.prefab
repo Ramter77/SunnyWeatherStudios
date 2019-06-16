@@ -166,7 +166,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 113481993458745524, guid: 1145971759cf4554183ec2c4d65d44eb,
     type: 3}
-  muzzleGO: {fileID: 0}
+  muzzleGO: {fileID: 193574, guid: 5c2bdcf6f0badc34f9f192b0995e4a79, type: 3}
   projectileSpeed: 90
   projectileCost: 1
   rangedAttackCooldown: 3
@@ -257,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec8fd5701eda5524595c29045e2be017, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  axisDamping: 0.15
+  axisDamping: 0.2
   buttonDamping: 0.5
   enableWeaponColliderOnJump: 0
   toggleRunning: 0
@@ -366,7 +366,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ikActive: 1
   rotation: 0
-  showMarkers: 1
+  showMarkers: 0
   LeftFoot: {fileID: 8993159652280533028}
   RightFoot: {fileID: 8993159652280533096}
   footOffset: 0.6
@@ -495,7 +495,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099153509432294615}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4, y: 10, z: -5}
+  m_LocalPosition: {x: 1.5, y: 10, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1099153509254946276}

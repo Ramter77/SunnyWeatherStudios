@@ -557,7 +557,7 @@ Transform:
   m_GameObject: {fileID: 1103324306}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.5, z: 1}
   m_Children: []
   m_Father: {fileID: 95804816}
   m_RootOrder: 4
@@ -587,7 +587,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 42b93eab304597e44b010914dbfe9999, type: 2}
+  - {fileID: 2100000, guid: 728a17955868eba4e85ddd72a6545a84, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -655,7 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  maxhealth: 100
+  maxhealth: 1000
   defense: 20
   amountOfUnitsAttacking: 0
   Soul: {fileID: 0}
@@ -668,6 +668,7 @@ MonoBehaviour:
   destroyable: 1
   invincible: 0
   GameOverScreen: {fileID: 0}
+  soulCounterIconAnim: {fileID: 0}
 --- !u!135 &6908837621891507621
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -724,6 +725,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spatialBlend: 0
   _audioClip: {fileID: 0}
   _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
   _mute: 0
@@ -809,16 +811,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5741194767500274721, guid: 64939b98e667ad149bf021bcfb315738,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 930883824683485866, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
-    - {fileID: 5741194767500274721, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
-    - {fileID: 872368737610779846, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
-    - {fileID: 8159448332185939298, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
 --- !u!4 &5973827711281555524 stripped
 Transform:

@@ -81,14 +81,14 @@ public class PlayerAnim : MonoBehaviour
                 _jumpInput = InputManager.Instance.Jump0;
             }
 
-            else if (playC.Player_ == 1) {
+            if (playC.Player_ == 1) {
                 _verticalInput = InputManager.Instance.Vertical1;
                 _horizontalInput = InputManager.Instance.Horizontal1;
                 _runInput = InputManager.Instance.Run1;
                 _jumpInput = InputManager.Instance.Jump1;
             }
 
-            else if (playC.Player_ == 2) {
+            if (playC.Player_ == 2) {
                 _verticalInput = InputManager.Instance.Vertical2;
                 _horizontalInput = InputManager.Instance.Horizontal2;
                 _runInput = InputManager.Instance.Run2;

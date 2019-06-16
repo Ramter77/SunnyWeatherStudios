@@ -277,7 +277,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   TurnPlayerForward: 0
-  turn_Speed: 90
+  turn_Speed: 0
   groundCheckRadius: 1
   groundCheckHeight: 1.5
   groundCheckDistance: 2
@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ikActive: 0
   rotation: 0
-  showMarkers: 1
+  showMarkers: 0
   LeftFoot: {fileID: 0}
   RightFoot: {fileID: 0}
   footOffset: 0.4
@@ -381,9 +381,9 @@ MonoBehaviour:
   characterRigidbody: {fileID: 0}
   characterController: {fileID: 0}
   audioSource: {fileID: 0}
-  minVolume: 0.1
-  maxVolume: 0.2
-  debugMode: 1
+  minVolume: 0.8
+  maxVolume: 1
+  debugMode: 0
   groundCheckHeight: 1
   groundCheckRadius: 1
   groundCheckDistance: 0.5
@@ -458,7 +458,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 512911581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4, y: 10, z: -5}
+  m_LocalPosition: {x: 1.5, y: 10, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 84167150}
