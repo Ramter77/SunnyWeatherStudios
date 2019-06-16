@@ -124,10 +124,37 @@ public class LifeAndStats : MonoBehaviour
     public void TakeDamage(float dmg) {
         if (!invincible) {
             Invincible();
-
-            health -= dmg;
             ParticleOnHitEffect(ParticleOnHitEffectYoffset);
 
+            if (isSphere) {
+                health -= 1;
+
+                AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.sphereTakeDamage, false);
+                if (soulCounterIconAnim) {
+                    soulCounterIconAnim.Play();
+                }
+                else
+                {
+                    Debug.Log("Can't find 'SoulCounter' tag");
+                }
+                SoulBackpack.Instance.ChangeTextColor(Color.red);                
+
+                if (health < 0)
+                {
+                    Debug.Log("Fractured SPHERE");
+                    if (destroyable) {
+                        fractureScript.Fracture(gameObject.transform.parent.gameObject);
+
+                        GameOverScreen.SetActive(true);
+                        StartCoroutine(restartgame());
+                    }
+                }
+            }
+            else
+            {
+                health -= dmg;
+            }
+            
             if (isPlayer)
             { 
                 //AudioManager.Instance.PlaySound(playC.playerAudioSource, Sound.playerTakeDamage);
@@ -207,30 +234,6 @@ public class LifeAndStats : MonoBehaviour
                         fractureScript.Fracture(gameObject);
 
                         //health = maxhealth;
-                    }
-                }
-            }
-
-            else if (isSphere)
-            {
-                AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.sphereTakeDamage, false);
-                if (soulCounterIconAnim) {
-                    soulCounterIconAnim.Play();
-                }
-                else
-                {
-                    Debug.Log("Can't find 'SoulCounter' tag");
-                }
-                SoulBackpack.Instance.ChangeTextColor(Color.red);                
-
-                if (health < 0)
-                {
-                    Debug.Log("Fractured SPHERE");
-                    if (destroyable) {
-                        fractureScript.Fracture(gameObject.transform.parent.gameObject);
-
-                        GameOverScreen.SetActive(true);
-                        StartCoroutine(restartgame());
                     }
                 }
             }
