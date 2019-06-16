@@ -52,10 +52,12 @@ public class GameManager : Singleton<GameManager>
                 UIcanvas.SetActive(false);
                 UIcanvas.SetActive(true);
                 MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted = false;
-            
+                
+
                 //InputManager.Instance._MouseControl.LockMouse = true;
                 //InputManager.Instance._MouseControl.hideCursor = true;
                 Time.timeScale = 0.01f;
+                
                 if (MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted) {
                     menuEnabled = true;
                     player1.SetActive(false);
@@ -71,8 +73,12 @@ public class GameManager : Singleton<GameManager>
                     Time.timeScale = 0.01f;
 
                     //LockMouse(false);
-                    InputManager.Instance.LockMouse(false);
+                    
+                    
                 }
+                //Cursor.lockState = CursorLockMode.None;
+                //Cursor.visible = true;
+                InputManager.Instance.LockMouse(false);
             }
         }
     }
