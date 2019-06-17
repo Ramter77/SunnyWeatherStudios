@@ -49,7 +49,8 @@ public class ActivatePrefab : MonoBehaviour
     private GameObject disabledVFX; */
     [SerializeField]
     private GameObject activateVFX;
-    
+    private bool player1inRange;
+    private bool player2inRange;
 
     void Start()
     {
@@ -99,10 +100,12 @@ public class ActivatePrefab : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerInteraction.Instance.Player_1InRange = true;
+            player1inRange = true;
         }
         if (other.CompareTag("Player2"))
         {
             PlayerInteraction.Instance.Player_2InRange = true;
+            player2inRange = true;
         }
     }
 
@@ -111,10 +114,12 @@ public class ActivatePrefab : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerInteraction.Instance.Player_1InRange = false;
+            player1inRange = false;
         }
         if (other.CompareTag("Player2"))
         {
             PlayerInteraction.Instance.Player_2InRange = false;
+            player2inRange = false;
         }
     }
 
@@ -161,10 +166,12 @@ public class ActivatePrefab : MonoBehaviour
                     if (other.CompareTag("Player"))
                     {
                         PlayerInteraction.Instance.Player_1InRange = false;
+                        player1inRange = false;
                     }
                     if (other.CompareTag("Player2"))
                     {
                         PlayerInteraction.Instance.Player_2InRange = false;
+                        player2inRange = false;
                     }
                 }
             }
@@ -229,6 +236,17 @@ public class ActivatePrefab : MonoBehaviour
             GetComponent<BasicTower>().activated = true;
             GetComponent<BasicTower>().startAiming();
             meshChild.gameObject.tag = "possibleTargets";
+
+            if(player1inRange)
+            {
+                PlayerInteraction.Instance.Player_1InRange = false;
+                player1inRange = false;
+            }
+            if(player2inRange)
+            {
+                PlayerInteraction.Instance.Player_2InRange = false;
+                player2inRange = false;
+            }
         }
     }
 
@@ -279,6 +297,17 @@ public class ActivatePrefab : MonoBehaviour
             anim.clip = riseTrap;
             anim.Play();
             startTrapCD = true;
+
+            if (player1inRange)
+            {
+                PlayerInteraction.Instance.Player_1InRange = false;
+                player1inRange = false;
+            }
+            if (player2inRange)
+            {
+                PlayerInteraction.Instance.Player_2InRange = false;
+                player2inRange = false;
+            }
         }
     }
 
