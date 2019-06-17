@@ -59,10 +59,10 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
         Spawners = GameObject.FindGameObjectsWithTag("Spawner");
         Enemies = GameObject.FindGameObjectsWithTag("Enemy");
         fallbackCheckTime = timeBetweenCheck;
-        if(startSpawningOnSceneStart)
+        annoucementText.text = ("Defend the sphere!");
+        if (startSpawningOnSceneStart)
         {
             startNewWave();
-            annoucementText.text = ("Defend the sphere!");
             disableAnnoucement();
         }
         Wave = 1;
