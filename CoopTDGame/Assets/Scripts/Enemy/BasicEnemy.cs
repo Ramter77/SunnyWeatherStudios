@@ -359,8 +359,12 @@ public class BasicEnemy : MonoBehaviour
                             if (enemyType == 0)
                             {
                                 isAttackingSphere = true;
-                                agent.SetDestination(Target.transform.position);
-                                agent.isStopped = false;
+
+                                //! Added null check
+                                if (agent != null) {
+                                    agent.SetDestination(Target.transform.position);
+                                    agent.isStopped = false;
+                                }
                                 enemySpeed = fallbackSpeed;
                                 attackRange = 27f;
                                 stoppingRange = 25f;
