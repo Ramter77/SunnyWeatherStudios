@@ -45,6 +45,17 @@ public class MainMenu : MonoBehaviour
         }
     }
 
+    public void resumeGame()
+    {
+        if (gameStarted == false)
+        {
+            gameStarted = true;
+            Time.timeScale = 1f;
+            InputManager.Instance.LockMouse(true);
+            InGameSpawn();
+        }
+    }
+
     public void EnablePlayers() {
         _Player1.GetComponent<PlayerController>().SetAlive();
         _Player1.SetActive(true);
