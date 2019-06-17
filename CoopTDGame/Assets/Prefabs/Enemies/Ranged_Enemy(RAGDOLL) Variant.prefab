@@ -821,7 +821,7 @@ Transform:
   m_Children:
   - {fileID: 8799108588036197058}
   m_Father: {fileID: 136312818886564752}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4628504208344388471
 GameObject:
@@ -1441,7 +1441,7 @@ Transform:
   m_LocalScale: {x: 4.836786, y: 4.621719, z: 83.41358}
   m_Children: []
   m_Father: {fileID: 136312818886564752}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: -90}
 --- !u!33 &2694565046072694614
 MeshFilter:
@@ -1629,8 +1629,8 @@ Transform:
   m_Children:
   - {fileID: 290578951825418545}
   - {fileID: 941289498803653446}
-  - {fileID: 5079376812023208744}
   - {fileID: 2525650712355128975}
+  - {fileID: 5079376812023208744}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1862,6 +1862,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 941289498803653446}
   ragdollOnStart: 0
+  icon: {fileID: 6804764868369134604}
   disableAllCollidersInstantly: 1
 --- !u!114 &9047936977814403537
 MonoBehaviour:
@@ -2664,15 +2665,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b1275c68da762a469aec97c97f0b473, type: 3}
---- !u!1 &3838137063079553805 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 115116, guid: 4b1275c68da762a469aec97c97f0b473,
-    type: 3}
-  m_PrefabInstance: {fileID: 3838137063079668385}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3838137063079210131 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 460338, guid: 4b1275c68da762a469aec97c97f0b473,
+    type: 3}
+  m_PrefabInstance: {fileID: 3838137063079668385}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &3838137063079553805 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 115116, guid: 4b1275c68da762a469aec97c97f0b473,
     type: 3}
   m_PrefabInstance: {fileID: 3838137063079668385}
   m_PrefabAsset: {fileID: 0}

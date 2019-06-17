@@ -24,6 +24,8 @@ public class Ragdoll : MonoBehaviour
     private NavMeshAgent agent;
     private Rigidbody rb;
 
+    public GameObject icon;
+
 
 
     Transform[] allChildren;
@@ -124,10 +126,14 @@ public class Ragdoll : MonoBehaviour
             _rb.isKinematic = false;
 
 
+
+        //Disable icon over head
+        icon.SetActive(false);
+
         //Disable attack indicator
-        if (transform.childCount > 1) {
+        /* if (transform.childCount > 1) {
             transform.GetChild(2).gameObject.SetActive(false);
-        }
+        } */
         //Destroy(transform.GetChild(2).gameObject);
 
         if (disableAllCollidersInstantly) {

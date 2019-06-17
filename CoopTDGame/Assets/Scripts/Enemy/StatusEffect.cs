@@ -171,9 +171,9 @@ public class StatusEffect : MonoBehaviour
 
         //Destroy after dissolveDelay time when completely dissolved
         if (weaponRenderer != null) {
-            Destroy(weaponRenderer.gameObject, dissolveDelay + 0.1f);
+            Destroy(weaponRenderer.gameObject, dissolveDelay);
         }
-        Destroy(gameObject, dissolveDelay + 0.1f);
+        Destroy(gameObject, dissolveDelay);
     }
 
     private IEnumerator Burn(bool isActive) {

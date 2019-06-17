@@ -2591,7 +2591,7 @@ MonoBehaviour:
   randomizeSpeed: 1
   speedRandomization: {x: -0.1, y: 0.1}
   setSpeedMultiplierLerp: 0.2
-  speedMultiplier: 0.5
+  speedMultiplier: 0.8
   stopMovementWhenNotGrounded: 1
   setInjuredLayerWeight: 1
   maxInjuredLayerWeigth: 1
@@ -2781,6 +2781,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rig: {fileID: 5034261100650163307}
   ragdollOnStart: 0
+  icon: {fileID: 8946802435608414131}
   disableAllCollidersInstantly: 1
 --- !u!114 &8569038970804014565
 MonoBehaviour:
@@ -3747,6 +3748,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2008543640593032038}
     m_Modifications:
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_Name
+      value: Enemy on Slow
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_Layer
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5953861532791573198, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3817,21 +3833,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_Name
-      value: Enemy on Slow
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_Layer
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3540249742271492023, guid: cca93549278b2174f85a8fe0bfdb8125,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -3878,6 +3879,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8443496819697461670}
     m_Modifications:
+    - target: {fileID: 100000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
+      propertyPath: m_Name
+      value: enemy_boss_twohanded_mace
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.000007458031
@@ -3933,10 +3938,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
       propertyPath: m_LocalScale.z
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
-      propertyPath: m_Name
-      value: enemy_boss_twohanded_mace
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
       propertyPath: m_Materials.Array.data[0]
