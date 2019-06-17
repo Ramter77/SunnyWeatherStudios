@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.466548, g: 0.19583203, b: 0.5649283, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -80411,6 +80411,14 @@ PrefabInstance:
       propertyPath: sphereTakeDamage.Array.data[0]
       value: 
       objectReference: {fileID: 8300000, guid: 8716a24a4e0d92742bd140a7cf88d6d4, type: 3}
+    - target: {fileID: 230509602, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
+      propertyPath: pitchRandomization.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 230509602, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
+      propertyPath: pitchRandomization.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
 --- !u!1 &2819464313287289560 stripped

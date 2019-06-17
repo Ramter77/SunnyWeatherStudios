@@ -169,7 +169,9 @@ public class LifeAndStats : MonoBehaviour
                     }
                     else
                     {
-                        anim.SetTrigger("TakeDamage");
+                        if (basicEnemyScript.enemyType != 2) {
+                            anim.SetTrigger("TakeDamage");
+                        }
                     }
                 }
             }
