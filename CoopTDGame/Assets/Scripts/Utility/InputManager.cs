@@ -31,7 +31,7 @@ public class InputManager : Singleton<InputManager>
     #region SET
     #region Player
     [System.Serializable]
-    private class Player0 {  //MOUSE PLAYER
+    public class Player0 {  //MOUSE PLAYER
         [Tooltip ("Enable if controls are setup for a controller")]
         public bool useController;
         public string _Vertical = "Vertical0";
@@ -48,12 +48,12 @@ public class InputManager : Singleton<InputManager>
         public string _LB = "LB0";
         public string _RB = "RB0";
     }
-    [SerializeField] private Player0 _Player0;
+    [SerializeField] public Player0 _Player0;
     #endregion
 
     #region Player 1
     [System.Serializable]
-    private class Player1 {
+    public class Player1 {
         [Tooltip ("Enable if controls are setup for a controller")]
         public bool useController;
         public string _Vertical = "Vertical1";
@@ -70,12 +70,12 @@ public class InputManager : Singleton<InputManager>
         public string _LB = "LB1";
         public string _RB = "RB1";       
     }
-    [SerializeField] private Player1 _Player1;
+    [SerializeField] public Player1 _Player1;
     #endregion
     
     #region Player 2
     [System.Serializable]
-    private class Player2 {
+    public class Player2 {
         [Tooltip ("Enable if controls are setup for a controller")]
         public bool useController;
         public string _Vertical = "Vertical2";
@@ -93,7 +93,7 @@ public class InputManager : Singleton<InputManager>
         public string _RB = "RB2";
         
     }
-    [SerializeField] private Player2 _Player2;
+    [SerializeField] public Player2 _Player2;
     #endregion
     #endregion
 

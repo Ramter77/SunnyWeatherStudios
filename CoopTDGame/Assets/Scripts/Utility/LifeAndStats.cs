@@ -160,7 +160,7 @@ public class LifeAndStats : MonoBehaviour
 
                 if (!playC.isDead) {
                     if (health <= 0) {
-                        Debug.Log(playC.gameObject.name + " is dead");
+                        //Debug.Log(playC.gameObject.name + " is dead");
                         playC.isDead = true;
 
                         anim.SetBool("Dead", true);

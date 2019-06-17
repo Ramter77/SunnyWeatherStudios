@@ -18,17 +18,19 @@ public class SoulPickUp : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if ((other.gameObject.tag == "Player" || other.gameObject.tag == "Player2") && pickedUp == false)
-        {
-            GameAnalytics.Instance.SoulsPickedUp();
+        if (pickedUp == false) {
+            if ((other.gameObject.tag == "Player" || other.gameObject.tag == "Player2"))
+            {
+                GameAnalytics.Instance.SoulsPickedUp();
 
-            Instantiate(particleEffect, transform.position, Quaternion.identity);
-            pickedUp = true;
-            SoulBackpack.Instance.addSoulsToCounter(soulValue);
+                Instantiate(particleEffect, transform.position, Quaternion.identity);
+                pickedUp = true;
+                SoulBackpack.Instance.addSoulsToCounter(soulValue);
 
-            AudioManager.Instance.PlaySound(null, Sound.playerPickupSoul, false);
+                AudioManager.Instance.PlaySound(null, Sound.playerPickupSoul, false);
 
-            Destroy(gameObject);
+                Destroy(gameObject);
+            }
         }
     }
 }

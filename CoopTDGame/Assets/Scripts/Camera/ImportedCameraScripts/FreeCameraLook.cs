@@ -108,6 +108,11 @@ public class FreeCameraLook : Pivot {
                 _inputY = InputManager.Instance.MouseInput2.y;
             }
         }
+        else
+        {
+            _inputX = 0;
+            _inputY = 0;
+        }
 
         //float x = InputManager.Instance.MouseInput.x + offsetX;
         //Input.GetAxis("Mouse X") + offsetX;

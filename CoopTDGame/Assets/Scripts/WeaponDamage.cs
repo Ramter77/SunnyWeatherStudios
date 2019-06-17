@@ -51,15 +51,25 @@ public class WeaponDamage : MonoBehaviour {
         lastHitEnemy = other;
 
         if (toTower) {
-            other.transform.parent.transform.parent.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
+            if (other.transform.parent != null) {
+                if (other.transform.parent.transform.parent != null) {
+                    if (other.transform.parent.transform.parent.GetComponent<LifeAndStats>() != null) {
+                        other.transform.parent.transform.parent.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
+                    }
+                }
+            }
         }
         else
         {
-            other.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
+            if (other.GetComponent<LifeAndStats>() != null) {
+                other.GetComponent<LifeAndStats>().TakeDamage(attackDamage);
+            }
         }
 
         if (!isProjectile) {
-            AudioManager.Instance.PlaySound(audioSource, Sound.meleeImpact, true);
+            if (audioSource != null) {
+                AudioManager.Instance.PlaySound(audioSource, Sound.meleeImpact, true);
+            }
         }
 
         StartCoroutine(resetLastHitGO());

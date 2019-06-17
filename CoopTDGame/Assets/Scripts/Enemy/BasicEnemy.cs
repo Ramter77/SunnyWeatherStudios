@@ -414,7 +414,7 @@ public class BasicEnemy : MonoBehaviour
                     if (hit.tag == "possibleTargets" && hit.transform.parent.gameObject.transform.parent.GetComponent<LifeAndStats>().health > 0 && hit.transform.parent.gameObject.transform.parent.GetComponent<LifeAndStats>().amountOfUnitsAttacking < maxEnemiesSwarmingTower)
                         // if hit object has equal tag to possibleTarget tag
                     {
-                        Debug.Log("I see tower");
+                        //Debug.Log("I see tower");
                         action = Random.Range(0, 100);
                         //Debug.Log("tower found");
                         if (checkedTarget == null)
@@ -422,7 +422,7 @@ public class BasicEnemy : MonoBehaviour
                             if (action <= decisionLimit) // if decisionmaking percentage is lower than the limit, decide to do this
                             {
                                 //Debug.Log(hit.transform.parent.gameObject);          
-                                Debug.Log("I will rather go for a tower");
+                                //Debug.Log("I will rather go for a tower");
                                 checkedTarget = hit.transform.parent.gameObject.transform.parent.gameObject;
                                 NavMeshPath path = new NavMeshPath();
                                 agent.CalculatePath(hit.transform.parent.gameObject.transform.parent.gameObject.transform.position, path);
@@ -431,11 +431,11 @@ public class BasicEnemy : MonoBehaviour
                                     agent.SetDestination(checkedTarget.transform.position);
                                     Target = hit.transform.parent.gameObject.transform.parent.gameObject;
                                     hit.transform.parent.transform.parent.GetComponent<LifeAndStats>().amountOfUnitsAttacking += 1;
-                                    Debug.Log("Lets go here");
+                                    //Debug.Log("Lets go here");
                                 }
                                 else
                                 {
-                                    Debug.Log("AI: Target is unreachable");
+                                    //Debug.Log("AI: Target is unreachable");
                                     checkedTarget = null;
                                 }
                             }

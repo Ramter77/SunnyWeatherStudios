@@ -233,7 +233,7 @@ public class ActivatePrefab : MonoBehaviour
     }
 
     public void _LowerTower() {
-        Debug.Log("LOWERING : " + towerActive);
+        //Debug.Log("LOWERING : " + towerActive);
 
         if (towerActive) {
             towerDuration = maxTowerDuration;
