@@ -128,7 +128,12 @@ public class LifeAndStats : MonoBehaviour
             if (isSphere) {
                 health -= 1;
 
+
+
+                //! UGLY
+                AudioManager.Instance.randomizeVolume = false;
                 AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.sphereTakeDamage, false);
+                AudioManager.Instance.randomizeVolume = true;
                 if (soulCounterIconAnim) {
                     soulCounterIconAnim.Play();
                 }

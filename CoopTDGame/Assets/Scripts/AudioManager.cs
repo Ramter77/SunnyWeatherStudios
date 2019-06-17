@@ -17,9 +17,9 @@ public class AudioManager : Singleton<AudioManager>
     [Tooltip ("Stop any sound before playing the next one")]
     private bool stopSoundBeforeNext;
 
-    [SerializeField]
+    //[SerializeField]
     [Tooltip ("The range used to randomize pitch")]
-    private bool randomizeVolume;
+    public bool randomizeVolume;
     [SerializeField]
     [Tooltip ("The range used to randomize volume")]
     private Vector2 volumeRandomization = new Vector2(-0.1f, 0.1f);
