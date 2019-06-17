@@ -663,7 +663,7 @@ namespace Assets.MultiAudioListener
 
             //All audio should be fully 3d
 
-            audioSource.spatialBlend = 1;
+            audioSource.spatialBlend = spatialBlend;
             return audioSource;
         }
 
