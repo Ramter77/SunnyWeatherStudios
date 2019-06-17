@@ -235,11 +235,11 @@ public class BasicEnemy : MonoBehaviour
         fleeing = true;
         wasFleeing = true;
         agent.isStopped = false;
-        enemySpeed = fallbackSpeed;
+        //enemySpeed = fallbackSpeed;
         int zRot = Random.Range(-45, 45);
         Vector3 offset = new Vector3(0, 0, zRot);
-        transform.rotation = Quaternion.LookRotation((transform.position - targetPos.position) + offset);
-        Vector3 runTo = transform.position + transform.forward * fleeRange;
+        //transform.rotation = Quaternion.LookRotation((transform.position - targetPos.position) + offset);
+        Vector3 runTo = transform.position + (-1*transform.forward) * fleeRange;
         NavMeshHit hit;
 #pragma warning disable CS0618 // Typ oder Element ist veraltet
         NavMesh.SamplePosition(runTo, out hit, 20, areaMask: 1 << NavMesh.GetNavMeshLayerFromName("Walkable"));
