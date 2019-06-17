@@ -85,7 +85,7 @@ public class HealAbility : MonoBehaviour
         else
             Debug.Log("No HealAbilityCooldownImage");
 
-        if (!playC.isDead && !playC.isPaused) {
+        if (/* !playC.isDead &&  */!playC.isPaused) {
             //* Player 0 input */
             if (playC.Player_ == 0)
             {
