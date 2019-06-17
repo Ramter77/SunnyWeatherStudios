@@ -16,7 +16,7 @@ public class FractureObject : MonoBehaviour
     void Update()
     {
         if (debug) {
-            if (Input.GetKeyDown(KeyCode.U)) {
+            if (Input.GetKeyDown(KeyCode.L)) {
                 Instantiate(FracturedObject, transform.position, transform.rotation);
                 Destroy(gameObject);
             }

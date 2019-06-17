@@ -13,7 +13,7 @@ public class GameManager : Singleton<GameManager>
 
 
     
-        private void Update() {
+    private void Update() {
         if (Input.GetKeyDown(KeyCode.Escape)) {
             if (menuEnabled) {
                 menuEnabled = false;
@@ -82,6 +82,7 @@ public class GameManager : Singleton<GameManager>
                 InputManager.Instance.LockMouse(false);
             }
         }
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
     }
 
     private void Awake() {

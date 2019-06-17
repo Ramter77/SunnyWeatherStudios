@@ -16,6 +16,13 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField]
     [Tooltip ("Stop any sound before playing the next one")]
     private bool stopSoundBeforeNext;
+
+    [SerializeField]
+    [Tooltip ("The range used to randomize pitch")]
+    private bool randomizeVolume;
+    [SerializeField]
+    [Tooltip ("The range used to randomize volume")]
+    private Vector2 volumeRandomization = new Vector2(-0.1f, 0.1f);
     [SerializeField]
     [Tooltip ("The range used to randomize pitch")]
     private Vector2 pitchRandomization = new Vector2(-0.1f, 0.1f);
@@ -245,6 +252,10 @@ public class AudioManager : Singleton<AudioManager>
                 default:
                     _clip = null;
                     break;
+            }
+
+            if (randomizeVolume) {
+                _audioSource.Volume = Random.Range(_audioSource.Volume+volumeRandomization.x, _audioSource.Volume+volumeRandomization.y);
             }
 
             if (randomizePitch) {

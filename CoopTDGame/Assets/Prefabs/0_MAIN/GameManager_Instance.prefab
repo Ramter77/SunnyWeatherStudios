@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 806816560449707382}
   - component: {fileID: 3785148092310920731}
   - component: {fileID: 5611146664278077940}
+  - component: {fileID: 767710365639782612}
+  - component: {fileID: 767710365639782613}
   m_Layer: 0
   m_Name: GameManager_Instance
   m_TagString: Untagged
@@ -352,6 +354,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stopSoundBeforeNext: 0
+  randomizeVolume: 1
+  volumeRandomization: {x: -0.1, y: 0.1}
   pitchRandomization: {x: -0.15, y: 0.15}
   soundAudioSource: {fileID: 806816560449707382}
   musicAudioSource: {fileID: 3785148092310920731}
@@ -455,7 +459,7 @@ MonoBehaviour:
   _reverbZoneMix: 1
   _dopplerLevel: 0
   _spread: 0
-  _volumeRolloff: 0
+  _volumeRolloff: 2
   _minDistance: 5000
   _maxDistance: 5000
   OnlyPlayForClosestCamera: 1
@@ -505,3 +509,64 @@ MonoBehaviour:
   use2Displays: 0
   enableFlyCam: 0
   FlyCam: {fileID: 0}
+--- !u!114 &767710365639782612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256656428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce09cc18e17520f4ab4cdf934bb1945e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &767710365639782613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256656428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad26e2c81f0b554a8b537df6dc08c43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player1Death: 0
+  player1Revive: 0
+  player1Jump: 0
+  player1RangedAttack: 0
+  player1MeleeAttack: 0
+  player1Heal: 0
+  player1Ultimate: 0
+  player1RiseTrap: 0
+  player1RiseTower: 0
+  player2Death: 0
+  player2Revive: 0
+  player2Jump: 0
+  player2RangedAttack: 0
+  player2MeleeAttack: 0
+  player2Heal: 0
+  player2Ultimate: 0
+  player2RiseTrap: 0
+  player2RiseTower: 0
+  trapCombinationFire: 0
+  trapCombinationIce: 0
+  trapCombinationBlast: 0
+  towerCombinationFire: 0
+  towerCombinationIce: 0
+  towerCombinationBlast: 0
+  meleeEnemyCombinationFire: 0
+  meleeEnemyCombinationIce: 0
+  meleeEnemyCombinationBlast: 0
+  rangedEnemyCombinationFire: 0
+  rangedEnemyCombinationIce: 0
+  rangedEnemyCombinationBlast: 0
+  bossEnemyCombinationFire: 0
+  bossEnemyCombinationIce: 0
+  bossEnemyCombinationBlast: 0
+  enemyDeath: 0
+  soulsPickedUp: 0
+  soulsUsed: 0
+  waveReached: 0

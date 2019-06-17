@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: ec40933d1f539f24496c2d09d8b33151
-  m_OcclusionCullingData: {fileID: 36300000, guid: 29d75c0d5558b00469a339f2fd814c6f,
+  m_SceneGUID: 0ec45d1597c0ee64c91ff9c0ce634ad1
+  m_OcclusionCullingData: {fileID: 36300000, guid: cf7470f56d1d8db4b997005ff8923c63,
     type: 2}
 --- !u!104 &2
 RenderSettings:
@@ -77370,6 +77370,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1083065643, guid: 3bdf005378f23f8489d3c135d5d7428b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083022511, guid: 3bdf005378f23f8489d3c135d5d7428b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bdf005378f23f8489d3c135d5d7428b, type: 3}
 --- !u!4 &2065298649 stripped
@@ -80401,73 +80409,6 @@ PrefabInstance:
       objectReference: {fileID: 728362807}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
---- !u!1 &767710365639782611 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 256656428, guid: bd8d990b7ca185547ac6ce483afb9a97,
-    type: 3}
-  m_PrefabInstance: {fileID: 767710365639782610}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &767710365639782612
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767710365639782611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce09cc18e17520f4ab4cdf934bb1945e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &767710365639782613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 767710365639782611}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aad26e2c81f0b554a8b537df6dc08c43, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player1Death: 0
-  player1Revive: 0
-  player1Jump: 0
-  player1RangedAttack: 0
-  player1MeleeAttack: 0
-  player1Heal: 0
-  player1Ultimate: 0
-  player1RiseTrap: 0
-  player1RiseTower: 0
-  player2Death: 0
-  player2Revive: 0
-  player2Jump: 0
-  player2RangedAttack: 0
-  player2MeleeAttack: 0
-  player2Heal: 0
-  player2Ultimate: 0
-  player2RiseTrap: 0
-  player2RiseTower: 0
-  trapCombinationFire: 0
-  trapCombinationIce: 0
-  trapCombinationBlast: 0
-  towerCombinationFire: 0
-  towerCombinationIce: 0
-  towerCombinationBlast: 0
-  meleeEnemyCombinationFire: 0
-  meleeEnemyCombinationIce: 0
-  meleeEnemyCombinationBlast: 0
-  rangedEnemyCombinationFire: 0
-  rangedEnemyCombinationIce: 0
-  rangedEnemyCombinationBlast: 0
-  bossEnemyCombinationFire: 0
-  bossEnemyCombinationIce: 0
-  bossEnemyCombinationBlast: 0
-  enemyDeath: 0
-  soulsPickedUp: 0
-  soulsUsed: 0
-  waveReached: 0
 --- !u!1 &2819464313287289560 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1099153509272865660, guid: 53d796d825431984aa41ca9d31735679,
