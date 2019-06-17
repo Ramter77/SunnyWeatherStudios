@@ -71,7 +71,6 @@ public class MainMenu : MonoBehaviour
 
         EnablePlayers();
         AudioManager.Instance.PlayMusic(AudioManager.Instance.ingameMusicAudioClip);
-        EnemySpawnCycle.Instance.annoucementText.text = ("The game starts now! You need to defend the Sphere!");
         EnemySpawnCycle.Instance.disableAnnoucement();
         EnemySpawnCycle.Instance.startNewWave();
     }

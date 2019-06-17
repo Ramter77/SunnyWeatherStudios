@@ -59,7 +59,7 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
         Spawners = GameObject.FindGameObjectsWithTag("Spawner");
         Enemies = GameObject.FindGameObjectsWithTag("Enemy");
         fallbackCheckTime = timeBetweenCheck;
-        annoucementText.text = ("Defend the sphere!");
+        annoucementText.text = ("DEFEND THE SPHERE!");
         if (startSpawningOnSceneStart)
         {
             startNewWave();
@@ -145,6 +145,9 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
             int a;
             a = Random.Range(0, Spawners.Length);
             Spawners[a].GetComponent<EnemySpawner>().spawnBoss();
+            annoucementMessageHolder.SetActive(true);
+            annoucementText.text = ("A BOSS IS APPROACHING");
+            disableAnnoucement();
         }
         else
         {
@@ -168,10 +171,10 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
         yield return new WaitForSeconds(timeBetweenWave);
         Wave += 1;
         annoucementMessageHolder.SetActive(true);
-        annoucementText.text = ("Wave " + Wave + " approaching");
+        annoucementText.text = ("WAVE " + Wave + " APPROACHING");
         disableAnnoucement();
         waveTextHolder.SetActive(true);
-        waveText.text = ("Wave " + Wave);
+        waveText.text = ("WAVE " + Wave);
         if(permanentlyShowWaveIndex == false)
         {
             StartCoroutine(disableWaveText());

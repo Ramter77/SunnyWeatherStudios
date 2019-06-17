@@ -1068,7 +1068,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 8, y: 0}
   m_SizeDelta: {x: 0, y: 0.000061035156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5949848680856508915
@@ -1092,8 +1092,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.13817193, b: 0.13817193, a: 0.8235294}
-  m_RaycastTarget: 1
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8627451}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1457,7 +1457,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1824963868276034924
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2359,8 +2359,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0.000030517578}
-  m_SizeDelta: {x: 0, y: 0.00012207031}
+  m_AnchoredPosition: {x: 8, y: 0}
+  m_SizeDelta: {x: 0, y: 0.000061035156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &765307131153625768
 CanvasRenderer:
@@ -2383,8 +2383,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.13817193, b: 0.13817193, a: 0.8235294}
-  m_RaycastTarget: 1
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8627451}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3773,14 +3773,13 @@ GameObject:
   m_Component:
   - component: {fileID: 3638202369967065043}
   - component: {fileID: 6621695561296038761}
-  - component: {fileID: 4908376387998279838}
   m_Layer: 5
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3638202369967065043
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3815,35 +3814,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5107909970476405577}
   m_CullTransparentMesh: 0
---- !u!114 &4908376387998279838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5107909970476405577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.13817193, b: 0.13817193, a: 0.8235294}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
-      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
 --- !u!1 &5121179600330665470
 GameObject:
   m_ObjectHideFlags: 0
@@ -5979,8 +5949,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: 0.000030517578}
-  m_SizeDelta: {x: 0, y: 0.00012207031}
+  m_AnchoredPosition: {x: 8, y: 0}
+  m_SizeDelta: {x: 0, y: 0.000061035156}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6675415029320476633
 CanvasRenderer:
@@ -6003,8 +5973,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.13817193, b: 0.13817193, a: 0.8235294}
-  m_RaycastTarget: 1
+  m_Color: {r: 0, g: 0, b: 0, a: 0.8627451}
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -6166,6 +6136,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6736566767591625707}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6281,11 +6256,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.3
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_Text
@@ -6323,6 +6293,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7924658979779290666}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6443,11 +6418,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_Text
@@ -6473,6 +6443,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9074813895517553036}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6588,11 +6563,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_FontData.m_Alignment
@@ -6630,6 +6600,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3268619127263374522}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6744,11 +6719,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
       objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
@@ -6910,6 +6880,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2419839622755311008}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7024,11 +6999,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.39999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
       objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
@@ -7055,6 +7025,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 55762065990636264}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7170,11 +7145,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.35
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_FontData.m_Alignment
@@ -7200,6 +7170,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2572456195282509609}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7315,11 +7290,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_FontData.m_Alignment
@@ -7357,6 +7327,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1247073991008885129}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7472,11 +7447,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_FontData.m_Alignment
@@ -7502,6 +7472,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5877107026286052121}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7607,11 +7582,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_FontData.m_Alignment
@@ -7637,6 +7607,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7690962415972119396}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7751,11 +7726,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
       objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
@@ -7919,6 +7889,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2951521407740117280}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8034,11 +8009,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_Color.a
@@ -8074,6 +8044,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4516304018538074603}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8189,16 +8169,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_FontData.m_Alignment
@@ -8224,6 +8194,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9142128838444465583}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8344,11 +8319,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.6753924
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_FontData.m_Alignment
@@ -8379,6 +8349,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4651534406150019713}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8494,11 +8469,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.4
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_Text
@@ -8524,6 +8494,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5012883271202443122}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8628,11 +8603,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
       objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
@@ -8791,6 +8761,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6868694593895167699}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8905,11 +8880,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.49999997
-      objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder (1)
       objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
@@ -8936,6 +8906,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2563949367306895237}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9051,11 +9026,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
-      objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_Text
@@ -9081,6 +9051,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 678606991164340389}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9195,11 +9170,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
       objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
@@ -9231,6 +9201,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7857099599782289618}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: Options_Text_Holder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9336,11 +9311,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: Options_Text_Holder
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cce65b2bc05d6a7468bea245fc3a8b75, type: 3}
 --- !u!224 &1896161932529095469 stripped
@@ -9356,6 +9326,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1481220452419053372}
     m_Modifications:
+    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
+        type: 3}
+      propertyPath: m_Name
+      value: ButtonTextHolder
+      objectReference: {fileID: 0}
     - target: {fileID: 7599206840691688727, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9470,11 +9445,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2695364856618423212, guid: cce65b2bc05d6a7468bea245fc3a8b75,
-        type: 3}
-      propertyPath: m_Name
-      value: ButtonTextHolder
       objectReference: {fileID: 0}
     - target: {fileID: 6193822783666679663, guid: cce65b2bc05d6a7468bea245fc3a8b75,
         type: 3}
