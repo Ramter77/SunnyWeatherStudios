@@ -9,6 +9,9 @@ public class FadeImage : MonoBehaviour
     public void prepareGameToPlay()
     {
         if(MenuCanvas != null)
-        MenuCanvas.GetComponent<MainMenu>().InGameSpawn();
+        {
+            MenuCanvas.GetComponent<MainMenu>().InGameSpawn();
+            gameObject.SetActive(false);
+        }
     }
 }

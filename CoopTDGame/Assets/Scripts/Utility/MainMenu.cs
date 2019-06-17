@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
     public GameObject MainMenuHolder;
     public GameObject InGameUiHolder;
 
-    public Image fadeOutImage;
+    public GameObject fadeOutImage;
     [Tooltip("This Image should be in the MainUI Canvas and should overlay all other UI Elements")]private Animator fadeImageAnim;
     public bool gameStarted = false;
 
@@ -34,6 +34,7 @@ public class MainMenu : MonoBehaviour
     {
         if (gameStarted == false)
         {
+            fadeOutImage.SetActive(true);
             fadeImageAnim.SetTrigger("FadeOut");
             gameStarted = true;
             Time.timeScale = 1f;
@@ -67,6 +68,11 @@ public class MainMenu : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void restartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     /* public void LockCursor()
