@@ -8,7 +8,7 @@ public class SoulBackpack : Singleton<SoulBackpack>
     public int sharedSoulAmount;
     public Text soulBackpackText; // displays the amount of shared souls in the ui
     private GameObject sphere;
-
+    private LifeAndStats lifeAndStatsScript;
     public Color defaultColor;
     public Color usageColor;
 
@@ -23,6 +23,8 @@ public class SoulBackpack : Singleton<SoulBackpack>
             soulBackpackText = soulBackpackTextParent.GetComponentInChildren<Text>();
         }
         sphere = GameObject.FindGameObjectWithTag("Sphere");
+
+        lifeAndStatsScript = sphere.GetComponent<LifeAndStats>();
     }
 
     private void Update()
@@ -50,7 +52,8 @@ public class SoulBackpack : Singleton<SoulBackpack>
 
     public void reduceSoulsByCost(int cost)
     {
-        sphere.GetComponent<LifeAndStats>().health -= cost;
+        lifeAndStatsScript.health -= (float)cost;
+
         GameAnalytics.Instance.SoulsUsed(cost);
 
         ChangeTextColor(usageColor);

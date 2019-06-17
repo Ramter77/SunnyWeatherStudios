@@ -19,11 +19,11 @@ public class GameAnalytics : Singleton<GameAnalytics>
     public int waveReached;
 
     void TriggerCustomEvent(string eventName, string param1, int _param1, string param2, int _param2) {
-        Analytics.CustomEvent(eventName, new Dictionary<string, object>
+        /* Analytics.CustomEvent(eventName, new Dictionary<string, object>
         {
             { param1, _param1 },
             { param2, _param2 }
-        });
+        }); */
     }
 
     public void PlayerDeath(int player) {
@@ -157,12 +157,12 @@ public class GameAnalytics : Singleton<GameAnalytics>
                 trapCombinationBlast++;
             }
         
-            Analytics.CustomEvent("Combination with Trap", new Dictionary<string, object>
+            /* Analytics.CustomEvent("Combination with Trap", new Dictionary<string, object>
             {
                 { "Fire Combinations", trapCombinationFire },
                 { "Ice Combinations", trapCombinationIce },
                 { "Blast Combinations", trapCombinationBlast }
-            });
+            }); */
         }
         else {
             if (element == Element.Fire) {
@@ -175,12 +175,12 @@ public class GameAnalytics : Singleton<GameAnalytics>
                 towerCombinationBlast++;
             }
         
-            Analytics.CustomEvent("Combination with Tower", new Dictionary<string, object>
+            /* Analytics.CustomEvent("Combination with Tower", new Dictionary<string, object>
             {
                 { "Fire Combinations", towerCombinationFire },
                 { "Ice Combinations", towerCombinationIce },
                 { "Blast Combinations", towerCombinationBlast }
-            });
+            }); */
         }
     }
 
@@ -197,12 +197,12 @@ public class GameAnalytics : Singleton<GameAnalytics>
                 meleeEnemyCombinationBlast++;
             }
         
-            Analytics.CustomEvent("Combination with Melee Enemy", new Dictionary<string, object>
+            /* Analytics.CustomEvent("Combination with Melee Enemy", new Dictionary<string, object>
             {
                 { "Fire Combinations", meleeEnemyCombinationFire },
                 { "Ice Combinations", meleeEnemyCombinationIce },
                 { "Blast Combinations", meleeEnemyCombinationBlast }
-            });
+            }); */
         }
         //Ranged enemy
         else if (enemyType == 1) {
@@ -216,12 +216,12 @@ public class GameAnalytics : Singleton<GameAnalytics>
                 rangedEnemyCombinationBlast++;
             }
         
-            Analytics.CustomEvent("Combination with Ranged Enemy", new Dictionary<string, object>
+            /* Analytics.CustomEvent("Combination with Ranged Enemy", new Dictionary<string, object>
             {
                 { "Fire Combinations", rangedEnemyCombinationFire },
                 { "Ice Combinations", rangedEnemyCombinationIce },
                 { "Blast Combinations", rangedEnemyCombinationBlast }
-            });
+            }); */
         }
         //Boss enemy
         else if (enemyType == 0) {
@@ -235,49 +235,49 @@ public class GameAnalytics : Singleton<GameAnalytics>
                 bossEnemyCombinationBlast++;
             }
         
-            Analytics.CustomEvent("Combination with Boss Enemy", new Dictionary<string, object>
+            /* Analytics.CustomEvent("Combination with Boss Enemy", new Dictionary<string, object>
             {
                 { "Fire Combinations", bossEnemyCombinationFire },
                 { "Ice Combinations", bossEnemyCombinationIce },
                 { "Blast Combinations", bossEnemyCombinationBlast }
-            });
+            }); */
         }
     }
 
     public void EnemyDeath() {
         enemyDeath++;
 
-        Analytics.CustomEvent("Enemy Death", new Dictionary<string, object>
+        /* Analytics.CustomEvent("Enemy Death", new Dictionary<string, object>
         {
             { "Deaths", enemyDeath }
-        });
+        }); */
     }
 
     public void SoulsPickedUp() {
         soulsPickedUp++;
 
-        Analytics.CustomEvent("Souls Picked Up", new Dictionary<string, object>
+        /* Analytics.CustomEvent("Souls Picked Up", new Dictionary<string, object>
         {
             { "Souls", soulsPickedUp }
-        });
+        }); */
     }
 
     public void SoulsUsed(int souls) {
         soulsUsed += souls;
 
-        Analytics.CustomEvent("Souls Used", new Dictionary<string, object>
+        /* Analytics.CustomEvent("Souls Used", new Dictionary<string, object>
         {
             { "Souls", soulsUsed }
-        });
+        }); */
     }
 
     public void WaveReached() {
         waveReached ++;
 
-        Analytics.CustomEvent("Wave Reached", new Dictionary<string, object>
+        /* Analytics.CustomEvent("Wave Reached", new Dictionary<string, object>
         {
             { "Wave", waveReached }
-        });
+        }); */
     }
 
 

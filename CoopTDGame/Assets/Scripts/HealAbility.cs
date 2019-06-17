@@ -42,6 +42,7 @@ public class HealAbility : MonoBehaviour
     private PlayerController playC;
     private LifeAndStats lifeAndStatsScript;
     private bool _healInput;
+    private bool isUpdated;
     #endregion
 
 
@@ -109,6 +110,7 @@ public class HealAbility : MonoBehaviour
         {
             if(healAbilityUiImageOff != null && healAbilityUiImageOn != null)
             {
+                isUpdated = false;
                 healAbilityUiImageOn.enabled = true;
                 healAbilityUiImageOff.enabled = false;
             }
@@ -141,10 +143,14 @@ public class HealAbility : MonoBehaviour
         }
         else
         {
+            //Debug.Log("CRASH?");
             if (healAbilityUiImageOff != null && healAbilityUiImageOn != null)
             {
-                healAbilityUiImageOn.enabled = false;
-                healAbilityUiImageOff.enabled = true;
+                if (!isUpdated) {
+                    isUpdated = true;
+                    healAbilityUiImageOn.enabled = false;
+                    healAbilityUiImageOff.enabled = true;
+                }
             }
             else
                 Debug.Log("No HealAbilityImage & No HealAbilityOffImage");

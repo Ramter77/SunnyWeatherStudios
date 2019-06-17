@@ -573,8 +573,9 @@ namespace Assets.MultiAudioListener
                     _safetyAudioSource.timeSamples = correctTimesamples;
                     foreach (var subAudioSource in _subAudioSources)
                     {
-                        subAudioSource.Value.timeSamples = 0;
-                        subAudioSource.Value.timeSamples = correctTimesamples;
+                        if (correctTimesamples < 1) {
+                            subAudioSource.Value.timeSamples = correctTimesamples;
+                        }
                     }
                 }
 
@@ -662,7 +663,7 @@ namespace Assets.MultiAudioListener
 
             //All audio should be fully 3d
 
-            audioSource.spatialBlend = spatialBlend;
+            audioSource.spatialBlend = 1;
             return audioSource;
         }
 

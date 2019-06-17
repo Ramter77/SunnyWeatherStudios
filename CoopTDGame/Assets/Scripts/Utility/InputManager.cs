@@ -156,6 +156,10 @@ public class InputManager : Singleton<InputManager>
     public string        _strButtonIdentifier;  
     #endregion
     #endregion
+
+
+
+    private int frames = 0;
     
     public void LockMouse(bool locked) {
         Cursor.visible = !locked;
@@ -191,8 +195,29 @@ public class InputManager : Singleton<InputManager>
         #endregion
     }
 
+    void ControllerDebug() {
+        int playerSetback = 0;
+        for (int i = 0; i < Input.GetJoystickNames().Length; i++)
+        {
+            if (Input.GetJoystickNames()[i] == "")
+            {
+                playerSetback++;
+            }
+            else //character creation
+            {
+                int realI = i - playerSetback;
+                //GameObject curr = Instantiate(chars[0], startPosses[realI].position, Quaternion.identity);
+                //curr.GetComponent<MovePlayer>().id = (realI + 1);
+                //curr.GetComponent<MovePlayer>().prefix = "P" + (realI + 1).ToString() + "_";
+            }
+        }
+    }
+
     void Start() {
-        Debug.Log("---------CONTROLS---------");
+        Input.ResetInputAxes();
+
+
+        /* Debug.Log("---------CONTROLS---------");
         Debug.Log("Mouse present: " + Input.mousePresent);
         Debug.Log("Controllers: ");
         string[] JoystickNames = Input.GetJoystickNames();
@@ -201,7 +226,27 @@ public class InputManager : Singleton<InputManager>
             Debug.Log(str);
         }
         
-        Debug.Log("--------------------------");
+        Debug.Log("--------------------------"); */
+    }
+
+    /// <summary>
+    /// This function is called every fixed framerate frame, if the MonoBehaviour is enabled.
+    /// </summary>
+    void FixedUpdate()
+    {
+        /* frames++;
+        if (frames % 240 == 0) {
+            Debug.Log("---------CONTROLS---------");
+            //Debug.Log("Mouse present: " + Input.mousePresent);
+            Debug.Log("Controllers: ");
+            string[] JoystickNames = Input.GetJoystickNames();
+            
+            foreach (string str in JoystickNames) {
+                Debug.Log(str);
+            }
+            
+            Debug.Log("--------------------------");
+        } */
     }
 
     /* public bool ButtonIsPressed()

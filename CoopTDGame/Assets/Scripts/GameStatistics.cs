@@ -15,7 +15,7 @@ public class GameStatistics : MonoBehaviour
 
 
 
-    private void Awake()
+    private void Start()
     {
         WaveCountText.text = ("" + GameAnalytics.Instance.waveReached);
         KillCountText.text = ("" + GameAnalytics.Instance.enemyDeath);

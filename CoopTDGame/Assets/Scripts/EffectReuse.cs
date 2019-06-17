@@ -29,16 +29,19 @@ public class EffectReuse : PoolObject
     public void PlaySound()
     {
         _source = GetComponent<MultiAudioSource>();
-        if (_source != null)
-        {
-            if (explosionIndex == 0)
-                AudioManager.Instance.PlaySound(_source, Sound.towerDefaultImpact, true);
-            if (explosionIndex == 1)
-                AudioManager.Instance.PlaySound(_source, Sound.towerFireImpact, true);
-            if (explosionIndex == 2)
-                AudioManager.Instance.PlaySound(_source, Sound.towerIceImpact, true);
-            if (explosionIndex == 3)
-                AudioManager.Instance.PlaySound(_source, Sound.towerBlastImpact, true);
+        if (_source != null) {
+            if (_source.gameObject.activeSelf)
+            //if (_source != null)
+            {
+                if (explosionIndex == 0)
+                    AudioManager.Instance.PlaySound(_source, Sound.towerDefaultImpact, true);
+                if (explosionIndex == 1)
+                    AudioManager.Instance.PlaySound(_source, Sound.towerFireImpact, true);
+                if (explosionIndex == 2)
+                    AudioManager.Instance.PlaySound(_source, Sound.towerIceImpact, true);
+                if (explosionIndex == 3)
+                    AudioManager.Instance.PlaySound(_source, Sound.towerBlastImpact, true);
+            }
         }
     }
 
