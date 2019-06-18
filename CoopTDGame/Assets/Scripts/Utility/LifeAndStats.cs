@@ -126,7 +126,7 @@ public class LifeAndStats : MonoBehaviour
             ParticleOnHitEffect(ParticleOnHitEffectYoffset);
 
             if (isSphere) {
-                health -= 1;
+                health -= 3;
 
 
 
