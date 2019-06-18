@@ -49,6 +49,8 @@ public class PlayerClassOne : MonoBehaviour
         ultimateRechargeSpeed = ultimateAbilityCooldown;
         if (ultimateAbilityCooldownImage != null)
         {
+            ultimateAbilityUiImageOn.enabled = false;
+            ultimateAbilityUiImageOff.enabled = true;
             ultimateAbilityCooldownImage.fillAmount = 0;
         }
         else
