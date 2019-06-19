@@ -17,13 +17,16 @@ public class ExplosionManager : Singleton<ExplosionManager>
     [Tooltip("Effect for blast projectiles")]
     public GameObject blastballExplosion;
 
+    public GameObject defaultTowerExplosion;
+
     // Start is called before the first frame update
     void Start()
     {
-        PoolManager.instance.CreatePool(enemyHitExplosion, 3);
-        PoolManager.instance.CreatePool(fireballExplosion, 3);
-        PoolManager.instance.CreatePool(iceballExplosion, 3);
-        PoolManager.instance.CreatePool(blastballExplosion, 3);
+        PoolManager.instance.CreatePool(enemyHitExplosion, 10);
+        PoolManager.instance.CreatePool(fireballExplosion, 10);
+        PoolManager.instance.CreatePool(iceballExplosion, 10);
+        PoolManager.instance.CreatePool(blastballExplosion, 10);
+        PoolManager.instance.CreatePool(defaultTowerExplosion, 10);
     }
 
     public void displayEffect(int explosionIndex, Vector3 explosionPos, Quaternion rotation)
@@ -35,6 +38,8 @@ public class ExplosionManager : Singleton<ExplosionManager>
         else if (explosionIndex == 2)
             PoolManager.instance.ReuseObject(iceballExplosion, explosionPos, rotation);
         else if (explosionIndex == 3)
-            PoolManager.instance.ReuseObject(blastballExplosion, explosionPos, rotation);
+            PoolManager.instance.ReuseObject(blastballExplosion, explosionPos, Quaternion.Euler(90,0,0));
+        else if (explosionIndex == 4)
+            PoolManager.instance.ReuseObject(defaultTowerExplosion, explosionPos, Quaternion.Euler(-90,0,0));
     }
 }

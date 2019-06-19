@@ -25,7 +25,9 @@ public class EffectHandler : MonoBehaviour
         else if (usedElement == Element.Ice)
             effectIndex = 2;
         else if (usedElement == Element.Blast)
-            effectIndex = 3;    
+            effectIndex = 3;
+        else if (usedElement == Element.defaultTower)
+            effectIndex = 4;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -44,13 +46,15 @@ public class EffectHandler : MonoBehaviour
     }
 
 
+
+
     private void OnCollisionEnter(Collision collision)
     {
         if (exploded == false)
         {
             Vector3 offset = new Vector3(0, 1, 0);
             Vector3 spawnPoint = transform.position + offset;
-            ExplosionManager.Instance.displayEffect(effectIndex, spawnPoint, Quaternion.Euler(90f,0f,0f));
+            ExplosionManager.Instance.displayEffect(effectIndex, spawnPoint, Quaternion.identity);
             exploded = true;
         }
     }

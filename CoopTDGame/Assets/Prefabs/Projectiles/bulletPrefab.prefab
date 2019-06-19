@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 3074725652997519177}
   - component: {fileID: 6989037714004348741}
   - component: {fileID: 2378085882458654094}
+  - component: {fileID: 7992391461026642280}
   m_Layer: 22
   m_Name: bulletPrefab
   m_TagString: Untagged
@@ -178,6 +179,20 @@ MonoBehaviour:
   _minDistance: 5
   _maxDistance: 50
   OnlyPlayForClosestCamera: 1
+--- !u!114 &7992391461026642280
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 455592500324762051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd7c12723014fd48bf7ccfd78ec8c34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  usedElement: 4
+  effectIndex: 4
 --- !u!1001 &4063062980428861295
 PrefabInstance:
   m_ObjectHideFlags: 0
