@@ -96,6 +96,13 @@ public class PlayerAnim : MonoBehaviour
             }
             #endregion
         }
+        else
+        {
+            _verticalInput = 0;
+            _horizontalInput = 0;
+            _runInput = false;
+            _jumpInput = false;
+        }
 
         #region Set Input
         #region Axis based animation

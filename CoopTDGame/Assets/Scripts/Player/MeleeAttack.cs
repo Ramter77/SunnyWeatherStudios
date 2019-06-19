@@ -46,6 +46,10 @@ public class MeleeAttack : MonoBehaviour
                 _runInput = InputManager.Instance.Run2;
             }
         }
+        else
+        {
+            _input = false;
+        }
 
         #region Input
         if (_input) {

@@ -101,6 +101,10 @@ public class RangedAttack : MonoBehaviour
                 _input = InputManager.Instance.Ranged2;
             }
         }
+        else
+        {
+            _input = false;
+        }
 
         #region Input
         if (Time.time > rangedRechargeSpeed && SoulBackpack.Instance.sharedSoulAmount >= projectileCost)

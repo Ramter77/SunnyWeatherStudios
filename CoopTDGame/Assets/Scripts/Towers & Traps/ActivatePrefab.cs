@@ -151,6 +151,10 @@ public class ActivatePrefab : MonoBehaviour
                     _input = InputManager.Instance.Interact2;
                 }
             }
+            else
+            {
+                _input = false;
+            }
 
             if (_input) {
                 if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting && playC.isGrounded && !playC.isJumping) {

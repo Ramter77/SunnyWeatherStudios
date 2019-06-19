@@ -98,6 +98,10 @@ public class PlayerClassOne : MonoBehaviour
                 _ultimateInput = InputManager.Instance.Ultimate2;
             }
         }
+        else
+        {
+            _ultimateInput = false;
+        }
 
         #region Input / Abilities
         //If cooldown is low enough: shoot

@@ -116,6 +116,11 @@ public class HealAbility : MonoBehaviour
                 _healInput = InputManager.Instance.Heal2;
             }
         }
+        else
+        {
+            _healInput = false;
+        }
+
 
         #region HealInput/Call
         if (Time.time > healAbilityRechardgeSpeed && SoulBackpack.Instance.sharedSoulAmount >= healAbilityCost)

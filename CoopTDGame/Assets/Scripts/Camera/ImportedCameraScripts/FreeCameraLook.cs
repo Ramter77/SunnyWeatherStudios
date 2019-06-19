@@ -98,7 +98,7 @@ public class FreeCameraLook : Pivot {
             _inputY = InputManager.Instance.MouseInput0.y;
         }
 
-        if (!playC.isDead && !playC.isPaused) {
+        if (!playC.isPaused) {
             if (playC.Player_ == 1) {
                 _inputX = InputManager.Instance.MouseInput1.x;
                 _inputY = InputManager.Instance.MouseInput1.y;
