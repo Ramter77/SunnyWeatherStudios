@@ -74,6 +74,11 @@ public class StatusEffect : MonoBehaviour
     private BasicEnemy basicEnemyScript;
     private bool allowReset = true;
     Coroutine FreezeCoroutineReset;
+
+    private float defaultMultipliedSpeedPercentage;
+    private float defaultSpeed;
+    private float defaultMoveSpeedMultiplier;
+    
     
 
     void Start()
@@ -103,6 +108,10 @@ public class StatusEffect : MonoBehaviour
         /* if (blastOnStart) {
             BlastCoroutine();
         } */
+
+        //defaultMultipliedSpeedPercentage = enemyAnim.speedMultiplier
+        defaultSpeed = basicEnemyScript.enemySpeed;
+        defaultMoveSpeedMultiplier = enemyAnim.speedMultiplier;
     }
 
     void Update() {
@@ -239,6 +248,12 @@ public class StatusEffect : MonoBehaviour
             StartCoroutine(Freeze(false));
 
             appliedDot = false;
+        }
+        else
+        {
+            multipliedSpeedPercentage = basicEnemyScript.enemySpeed / defaultMoveSpeedMultiplier;
+            agent.speed = defaultSpeed;
+            enemyAnim.speedMultiplier /= moveSpeedMultiplier;
         }
 
         setInteraction(Element.NoElement, false);

@@ -667,6 +667,7 @@ MonoBehaviour:
   dissolveOnDeath: 0
   destroyable: 1
   invincible: 0
+  invinciblityDuration: 0.3
   GameOverScreen: {fileID: 0}
   soulCounterIconAnim: {fileID: 0}
 --- !u!135 &6908837621891507621
@@ -729,13 +730,13 @@ MonoBehaviour:
   _audioClip: {fileID: 0}
   _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
   _mute: 0
-  _bypassEffects: 0
-  _bypassListenerEffects: 0
-  _bypassReverbZone: 0
+  _bypassEffects: 1
+  _bypassListenerEffects: 1
+  _bypassReverbZone: 1
   _playOnAwake: 0
   _loop: 0
   _priority: 128
-  _volume: 0.5
+  _volume: 0.25
   _pitch: 1
   _reverbZoneMix: 1
   _dopplerLevel: 0
@@ -811,12 +812,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 930883824683485866, guid: 64939b98e667ad149bf021bcfb315738,
-        type: 3}
-      propertyPath: m_TimeOut
-      value: 1e+12
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 930883824683485866, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
+    - {fileID: 5741194767500274721, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
+    - {fileID: 872368737610779846, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
+    - {fileID: 8159448332185939298, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
 --- !u!4 &5973827711281555524 stripped
 Transform:

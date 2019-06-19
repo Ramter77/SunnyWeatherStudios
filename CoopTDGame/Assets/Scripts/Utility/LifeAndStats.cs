@@ -27,7 +27,7 @@ public class LifeAndStats : MonoBehaviour
     public bool dissolveOnDeath;
     public bool destroyable;
     public bool invincible = false;
-    private float invinciblityDuration = 0.3f;
+    public float invinciblityDuration = 0.3f;
 
     private PlayerController playC;
     private Animator anim;
@@ -143,7 +143,7 @@ public class LifeAndStats : MonoBehaviour
                 }
                 SoulBackpack.Instance.ChangeTextColor(Color.red);                
 
-                if (health < 0)
+                if (health <= 0)
                 {
                     Debug.Log("Fractured SPHERE");
                     if (destroyable) {
@@ -286,7 +286,7 @@ public class LifeAndStats : MonoBehaviour
         healCooldown -= Time.deltaTime;
     }
 
-    void Invincible() {
+    public void Invincible() {
         invincible = true;
 
         StartCoroutine(stopInvincible(invinciblityDuration));
