@@ -65,6 +65,17 @@ public class RangedAttack : MonoBehaviour
         }
     }
 
+    public void startCooldown()
+    {
+        rangedRechargeSpeed = Time.time + rangedAttackCooldown;
+        if (rangedAbilityCooldownImage != null)
+        {
+            rangedAbilityUiImageOff.enabled = true;
+            rangedAbilityUiImageOn.enabled = false;
+            rangedAbilityCooldownImage.fillAmount = 0;
+        }
+    }
+
     void Update()
     {
         if (rangedAbilityCooldownImage != null)

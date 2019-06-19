@@ -69,6 +69,18 @@ public class HealAbility : MonoBehaviour
             healAbilityCooldownImage.fillAmount = 0;
         else
             Debug.Log("No HealAbilityCooldownImage");
+
+    }
+
+    public void startCooldown()
+    {
+        healAbilityRechardgeSpeed = Time.time + healAbilityCooldown;
+
+
+        if (healAbilityCooldownImage)
+            healAbilityCooldownImage.fillAmount = 0;
+        else
+            Debug.Log("No HealAbilityCooldownImage");
     }
 
     // Update is called once per frame

@@ -42,6 +42,14 @@ public class MainMenu : MonoBehaviour
             //LockCursor();
 
             InputManager.Instance.LockMouse(true);
+
+            _Player1.GetComponent<PlayerClassOne>().startCooldown();
+            _Player1.GetComponent<HealAbility>().startCooldown();
+            _Player1.GetComponent<RangedAttack>().startCooldown();
+
+            _Player2.GetComponent<PlayerClassOne>().startCooldown();
+            _Player2.GetComponent<HealAbility>().startCooldown();
+            _Player2.GetComponent<RangedAttack>().startCooldown();
         }
     }
 
@@ -59,6 +67,8 @@ public class MainMenu : MonoBehaviour
     public void EnablePlayers() {
         _Player1.GetComponent<PlayerController>().SetAlive();
         _Player1.SetActive(true);
+
+
         _Player2.GetComponent<PlayerController>().SetAlive();
         _Player2.SetActive(true);
     }

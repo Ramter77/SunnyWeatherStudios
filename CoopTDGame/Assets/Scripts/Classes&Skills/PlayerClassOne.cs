@@ -57,6 +57,19 @@ public class PlayerClassOne : MonoBehaviour
             Debug.Log("No Ult CooldownImage");
     }
 
+    public void startCooldown()
+    {
+        ultimateRechargeSpeed = Time.time + ultimateAbilityCooldown;
+        if (ultimateAbilityCooldownImage != null)
+        {
+            ultimateAbilityUiImageOn.enabled = false;
+            ultimateAbilityUiImageOff.enabled = true;
+            ultimateAbilityCooldownImage.fillAmount = 0;
+        }
+        else
+            Debug.Log("No Ult CooldownImage");
+    }
+
     // Update is called once per frame
     void Update()
     {
