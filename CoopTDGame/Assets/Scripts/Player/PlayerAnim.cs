@@ -72,7 +72,7 @@ public class PlayerAnim : MonoBehaviour
     }
     void Update()
     {
-        if (!playC.isDead && !playC.isPaused) {
+        if (!playC.isDead && !playC.isPaused && !playC.isJumping) {
             #region Get Input
             if (playC.Player_ == 0) {
                 _verticalInput = InputManager.Instance.Vertical0;
@@ -98,10 +98,10 @@ public class PlayerAnim : MonoBehaviour
         }
         else
         {
-            _verticalInput = 0;
-            _horizontalInput = 0;
-            _runInput = false;
-            _jumpInput = false;
+            /* _verticalInput = 0;
+            _horizontalInput = 0; */
+            /* _runInput = false;
+            _jumpInput = false; */
         }
 
         #region Set Input
@@ -159,7 +159,7 @@ public class PlayerAnim : MonoBehaviour
             }
 
             #region Jumping
-            //if (/* !playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && */ !playC.isJumping) {
+            if (/* !playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isInBuildMode && */ !playC.isJumping) {
                 if (!allowJumpWhileMelee && !allowJumpWhileRanged) {
                     if (!playC.isMeleeAttacking && !playC.isRangedAttacking && !playC.isCasting && playC.isGrounded && !playC.isJumping) {
                         allowJump = true;
@@ -202,7 +202,7 @@ public class PlayerAnim : MonoBehaviour
                     }
                 }
                 
-            //}
+            }
             #endregion
         }
         else {

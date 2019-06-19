@@ -35,7 +35,7 @@ public class SoulBackpack : Singleton<SoulBackpack>
 
         if (Input.GetKeyDown(SoulHotkey))
         {
-            sharedSoulAmount += 300;
+            lifeAndStatsScript.health += 300;
         }
 
         if (connectSoulsToSphere)

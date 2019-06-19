@@ -663,7 +663,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000063486004, y: 0.9822408, z: 0.12260266}
+  m_ConnectedAnchor: {x: -0.0000006348637, y: 0.98224103, z: 0.12260269}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -852,8 +852,8 @@ MonoBehaviour:
   _dopplerLevel: 1
   _spread: 0
   _volumeRolloff: 0
-  _minDistance: 20
-  _maxDistance: 100
+  _minDistance: 10
+  _maxDistance: 50
   OnlyPlayForClosestCamera: 1
 --- !u!1 &2078343133210196363
 GameObject:
@@ -1743,7 +1743,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000006348705, y: 0.19079107, z: -0.025784696}
+  m_ConnectedAnchor: {x: -0.0000006348637, y: 0.19079089, z: -0.025784696}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2178,7 +2178,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000001264736, y: 0.2810341, z: 0.00000022351742}
+  m_ConnectedAnchor: {x: -0.0000012144446, y: 0.2810341, z: 0.00000047683716}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -2334,7 +2334,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.1510479, y: -0.10602264, z: -0.018100157}
+  m_ConnectedAnchor: {x: -0.1510479, y: -0.10602252, z: -0.018100157}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -2686,6 +2686,7 @@ MonoBehaviour:
   dissolveOnDeath: 1
   destroyable: 0
   invincible: 0
+  invinciblityDuration: 0.3
   GameOverScreen: {fileID: 0}
   soulCounterIconAnim: {fileID: 0}
 --- !u!195 &1148712456391214809
@@ -3879,6 +3880,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8443496819697461670}
     m_Modifications:
+    - target: {fileID: 100000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
+      propertyPath: m_Name
+      value: enemy_boss_twohanded_mace
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.000007458031
@@ -3934,10 +3939,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
       propertyPath: m_LocalScale.z
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
-      propertyPath: m_Name
-      value: enemy_boss_twohanded_mace
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 055f48303e859b54e9e1d29f1fb336be, type: 3}
       propertyPath: m_Materials.Array.data[0]

@@ -272,6 +272,9 @@ public class AudioManager : Singleton<AudioManager>
                 //Set clip
                 _audioSource.AudioClip = _clip;
 
+                Mathf.Clamp01(_audioSource.Volume);
+                Mathf.Clamp01(_audioSource.Pitch);
+
                 //Play once
                 _audioSource.Play();
             }

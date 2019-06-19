@@ -131,10 +131,10 @@ public class LifeAndStats : MonoBehaviour
 
 
                 //! UGLY
-                //AudioManager.Instance.randomizeVolume = false;
+                AudioManager.Instance.randomizeVolume = false;
                 AudioManager.Instance.StopSound(gameObject.GetComponent<MultiAudioSource>());
                 AudioManager.Instance.PlaySound(gameObject.GetComponent<MultiAudioSource>(), Sound.sphereTakeDamage, false);
-                //AudioManager.Instance.randomizeVolume = true;
+                AudioManager.Instance.randomizeVolume = true;
                 if (soulCounterIconAnim) {
                     soulCounterIconAnim.Play();
                 }

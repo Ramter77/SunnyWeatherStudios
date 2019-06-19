@@ -65,10 +65,11 @@ public class StatusEffect : MonoBehaviour
     //FREEZING
     [SerializeField]
     private bool freezing = false;
-    private bool appliedDot = false;
+    //private bool appliedDot = false;
     [SerializeField]
     private float moveSpeedMultiplier = 0.7f;
     private float multipliedSpeedPercentage;
+    private float multipliedSpeedMultiplier;
     private NavMeshAgent agent;
     private EnemyAnim enemyAnim;
     private BasicEnemy basicEnemyScript;
@@ -123,15 +124,23 @@ public class StatusEffect : MonoBehaviour
         }
         #endregion */
 
-        if (burning)
-        {
-            BurnEnemy();
 
-            if (freezing && !appliedDot)
+        if (freezing)
+        {
+            SlowMovement();
+
+            if (burning)
             {
-                SlowMovement(freezing);
-                appliedDot = true;
+                BurnEnemy();
             }
+
+            /* if (!appliedDot) {
+                appliedDot = true;
+            } */
+        }
+        else
+        {
+            ResetSlow();
         }
     }
 
@@ -220,19 +229,18 @@ public class StatusEffect : MonoBehaviour
         }
     }
 
-    private void SlowMovement(bool toggle)
-    {
-        if (toggle) {
-            multipliedSpeedPercentage = basicEnemyScript.enemySpeed * moveSpeedMultiplier;
-            agent.speed = multipliedSpeedPercentage;
-            enemyAnim.speedMultiplier *= moveSpeedMultiplier;
-        }
-        else
-        {
-            multipliedSpeedPercentage = basicEnemyScript.enemySpeed / moveSpeedMultiplier;
-            agent.speed = multipliedSpeedPercentage;
-            enemyAnim.speedMultiplier /= moveSpeedMultiplier;
-        }
+    private void SlowMovement()
+    { 
+        multipliedSpeedPercentage = defaultSpeed * moveSpeedMultiplier;
+        agent.speed = multipliedSpeedPercentage;
+
+        multipliedSpeedMultiplier = defaultMoveSpeedMultiplier * moveSpeedMultiplier;
+        enemyAnim.speedMultiplier = multipliedSpeedMultiplier;
+    }
+
+    private void ResetSlow() {
+        agent.speed = defaultSpeed;
+        enemyAnim.speedMultiplier = defaultMoveSpeedMultiplier;
     }
 
     public IEnumerator resetDot()
@@ -247,11 +255,11 @@ public class StatusEffect : MonoBehaviour
         if (freezing) {
             StartCoroutine(Freeze(false));
 
-            appliedDot = false;
+            /* appliedDot = false; */
         }
-        else
+        else if (!burning)
         {
-            multipliedSpeedPercentage = basicEnemyScript.enemySpeed / defaultMoveSpeedMultiplier;
+            //multipliedSpeedPercentage = basicEnemyScript.enemySpeed / defaultMoveSpeedMultiplier;
             agent.speed = defaultSpeed;
             enemyAnim.speedMultiplier /= moveSpeedMultiplier;
         }

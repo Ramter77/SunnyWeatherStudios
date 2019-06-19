@@ -6377,7 +6377,7 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 3
   m_TerrainData: {fileID: 15600000, guid: 4089c0ae32ce1014284f1c8c1c2ed2c6, type: 2}
-  m_TreeDistance: 125
+  m_TreeDistance: 200
   m_TreeBillboardDistance: 2000
   m_TreeCrossFadeLength: 0
   m_TreeMaximumFullLODCount: 0
@@ -63464,6 +63464,11 @@ PrefabInstance:
       propertyPath: soulCounterIconAnim
       value: 
       objectReference: {fileID: 657982277}
+    - target: {fileID: 2098343734937172128, guid: 8b6237b3db08821448f330a044a1c41a,
+        type: 3}
+      propertyPath: invincible
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b6237b3db08821448f330a044a1c41a, type: 3}
 --- !u!1001 &1697697393
@@ -80350,6 +80355,10 @@ PrefabInstance:
       propertyPath: pitchRandomization.y
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 230509602, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
+      propertyPath: stopSoundBeforeNext
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd8d990b7ca185547ac6ce483afb9a97, type: 3}
 --- !u!1 &2819464313287289560 stripped
@@ -80485,6 +80494,51 @@ PrefabInstance:
       propertyPath: otherPlayer
       value: 
       objectReference: {fileID: 2819464313287289560}
+    - target: {fileID: 2819464313705907738, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464313705907738, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464312394078155, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: minDistance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464312394078155, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: maxDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464312394078155, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: dollyDir.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464312394078155, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: dollyDir.z
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464312394078155, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: distance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464312394078155, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: isHitting
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2819464312394078155, guid: 38f2ae9a8cc337b4c86c95033a9c639c,
+        type: 3}
+      propertyPath: smooth
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f2ae9a8cc337b4c86c95033a9c639c, type: 3}
 --- !u!1001 &2909401852039946660
@@ -80613,6 +80667,46 @@ PrefabInstance:
         type: 3}
       propertyPath: Player_
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099153509432294612, guid: 53d796d825431984aa41ca9d31735679,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099153509432294612, guid: 53d796d825431984aa41ca9d31735679,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099153510804679941, guid: 53d796d825431984aa41ca9d31735679,
+        type: 3}
+      propertyPath: minDistance
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099153510804679941, guid: 53d796d825431984aa41ca9d31735679,
+        type: 3}
+      propertyPath: maxDistance
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099153510804679941, guid: 53d796d825431984aa41ca9d31735679,
+        type: 3}
+      propertyPath: smooth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099153510804679941, guid: 53d796d825431984aa41ca9d31735679,
+        type: 3}
+      propertyPath: dollyDir.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099153510804679941, guid: 53d796d825431984aa41ca9d31735679,
+        type: 3}
+      propertyPath: dollyDir.z
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1099153510804679941, guid: 53d796d825431984aa41ca9d31735679,
+        type: 3}
+      propertyPath: distance
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 53d796d825431984aa41ca9d31735679, type: 3}
