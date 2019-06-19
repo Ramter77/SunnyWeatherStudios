@@ -278,7 +278,7 @@ public class BasicEnemy : MonoBehaviour
         agent.isStopped = false;
         attackState = 0;
         detectedTarget = false;
-        attackRange = defaultAttackRange;
+        //attackRange = defaultAttackRange;
         enemySpeed = fallbackSpeed;
         WalkToSphere();
     }
@@ -290,9 +290,11 @@ public class BasicEnemy : MonoBehaviour
     {
         if (!isFallbackTarget) {
             enemyAnim.SetBool("Charge", true);
+        }
+        if(Target != Sphere)
+        {
             attackRange = increasedAttackRange;
         }
-
         enemySpeed = 0f;
         preparationTime -= Time.deltaTime;  
         if(preparationTime <= 0)
@@ -303,12 +305,12 @@ public class BasicEnemy : MonoBehaviour
             if(enemyType == 0 || (enemyType == 2 && Target != Sphere))
             {
                 attacknDmgScript.performAttack("melee");
-                attackRange = defaultAttackRange;
+                if(Target != Sphere)
+                    attackRange = defaultAttackRange;
             }
             else if(enemyType == 2 && Target == Sphere)
             {
                 attacknDmgScript.performAttack("sphereAttack");
-                attackRange = defaultAttackRange;
             }
             if(enemyType == 1)
             {
