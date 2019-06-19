@@ -390,6 +390,9 @@ namespace Assets.MultiAudioListener
 
                 //Play and start the play update
                 _safetyAudioSource.time = 0f;
+                Mathf.Clamp01(_safetyAudioSource.time);
+                Mathf.Clamp01(_safetyAudioSource.volume);
+                Mathf.Clamp01(_safetyAudioSource.pitch);
                 _safetyAudioSource.Play();
                 bool hardwareChannelsLeft = _safetyAudioSource.isPlaying;
 
@@ -410,10 +413,16 @@ namespace Assets.MultiAudioListener
             {
                 _safetyAudioSource.time = 0f;
                 //The sound was still playing so we let is play again from start
+                Mathf.Clamp01(_safetyAudioSource.time);
+                Mathf.Clamp01(_safetyAudioSource.volume);
+                Mathf.Clamp01(_safetyAudioSource.pitch);
                 _safetyAudioSource.Play();
                 foreach (var audioSource in _subAudioSources)
                 {
                     audioSource.Value.time = 0f;
+                    Mathf.Clamp01(_safetyAudioSource.time);
+                    Mathf.Clamp01(_safetyAudioSource.volume);
+                    Mathf.Clamp01(_safetyAudioSource.pitch);
                     audioSource.Value.Play();
                 }
             }
@@ -507,6 +516,9 @@ namespace Assets.MultiAudioListener
                     tryToRebootTimer += RebootTime;
                     if (!_safetyAudioSource.isPlaying)
                     {
+                        Mathf.Clamp01(_safetyAudioSource.time);
+                        Mathf.Clamp01(_safetyAudioSource.volume);
+                        Mathf.Clamp01(_safetyAudioSource.pitch);
                         _safetyAudioSource.Play();
                         safetyWasRebooted = true;
                         if (!_safetyAudioSource.isPlaying) hardwareChannelsLeft = false;
@@ -530,6 +542,9 @@ namespace Assets.MultiAudioListener
                             distanceClosestAudio = distance;
                             if (!closestAudio.isPlaying)
                             {
+                                Mathf.Clamp01(_safetyAudioSource.time);
+                                Mathf.Clamp01(_safetyAudioSource.volume);
+                                Mathf.Clamp01(_safetyAudioSource.pitch);
                                 closestAudio.Play();
                             }
                         }
@@ -550,6 +565,9 @@ namespace Assets.MultiAudioListener
                         else if(hardwareChannelsLeft)
                         {
                             //Reboot the culled audio
+                            Mathf.Clamp01(_safetyAudioSource.time);
+                            Mathf.Clamp01(_safetyAudioSource.volume);
+                            Mathf.Clamp01(_safetyAudioSource.pitch);
                             subAudioSource.Value.Play();
                             subAudioSource.Value.timeSamples = _safetyAudioSource.timeSamples;
 

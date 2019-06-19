@@ -100,6 +100,12 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
+    public void StopSound(MultiAudioSource _source) {
+        if (_source != null) {
+            _source.Stop();
+        }
+    }
+
     /// <summary>
     /// Switch the clip of the audio source to the provided one and play it on the passed audio source
     /// or on it's own when it's null
