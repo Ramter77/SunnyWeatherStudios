@@ -19,7 +19,7 @@ public class GameStatistics : MonoBehaviour
     {
         WaveCountText.text = ("" + GameAnalytics.Instance.waveReached);
         KillCountText.text = ("" + GameAnalytics.Instance.enemyDeath);
-        int combinedRevives = GameAnalytics.Instance.player2Revive + GameAnalytics.Instance.player2Revive;
+        int combinedRevives = GameAnalytics.Instance.player1Revive + GameAnalytics.Instance.player2Revive;
         RevivesCountText.text = ("" + combinedRevives);
         SoulsUsedCountText.text = ("" + GameAnalytics.Instance.soulsUsed);
         SoulsPickedUpCountText.text = ("" + GameAnalytics.Instance.soulsPickedUp);
