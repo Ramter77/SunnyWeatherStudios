@@ -285,7 +285,7 @@ public class BasicEnemy : MonoBehaviour
         agent.isStopped = false;
         attackState = 0;
         detectedTarget = false;
-        //attackRange = defaultAttackRange;
+        attackRange = defaultAttackRange;
         enemySpeed = fallbackSpeed;
         WalkToSphere();
     }
