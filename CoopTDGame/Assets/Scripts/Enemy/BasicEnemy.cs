@@ -49,6 +49,8 @@ public class BasicEnemy : MonoBehaviour
     [Space(10)]
     [Tooltip("Attack range of the enemies")]
     public float attackRange = 5f;
+    private float defaultAttackRange = 5f;
+    private float increasedAttackRange = 7f;
 
     [Tooltip("the radius that the enemy can follow the target")]
     [SerializeField] private float followRadius = 15f;
@@ -107,7 +109,8 @@ public class BasicEnemy : MonoBehaviour
         possibleTargets = new List<GameObject>();
         agent.speed = enemySpeed;
         fallbackSpeed = enemySpeed;
-
+        defaultAttackRange = attackRange;
+        increasedAttackRange = attackRange + (attackRange * 0.1f);
     }
 
     void Update()
@@ -275,6 +278,7 @@ public class BasicEnemy : MonoBehaviour
         agent.isStopped = false;
         attackState = 0;
         detectedTarget = false;
+        attackRange = defaultAttackRange;
         enemySpeed = fallbackSpeed;
         WalkToSphere();
     }
@@ -286,6 +290,7 @@ public class BasicEnemy : MonoBehaviour
     {
         if (!isFallbackTarget) {
             enemyAnim.SetBool("Charge", true);
+            attackRange = increasedAttackRange;
         }
 
         enemySpeed = 0f;
@@ -298,14 +303,17 @@ public class BasicEnemy : MonoBehaviour
             if(enemyType == 0 || (enemyType == 2 && Target != Sphere))
             {
                 attacknDmgScript.performAttack("melee");
+                attackRange = defaultAttackRange;
             }
             else if(enemyType == 2 && Target == Sphere)
             {
                 attacknDmgScript.performAttack("sphereAttack");
+                attackRange = defaultAttackRange;
             }
             if(enemyType == 1)
             {
                 attacknDmgScript.performAttack("range");
+                attackRange = defaultAttackRange;
             }
 
 
