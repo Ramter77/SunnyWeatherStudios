@@ -110,7 +110,14 @@ public class BasicEnemy : MonoBehaviour
         agent.speed = enemySpeed;
         fallbackSpeed = enemySpeed;
         defaultAttackRange = attackRange;
-        increasedAttackRange = attackRange + (attackRange * 0.1f);
+        if(enemyType == 2)
+        {
+            increasedAttackRange = attackRange + (attackRange * 0.3f);
+        }
+        else
+        {
+            increasedAttackRange = attackRange + (attackRange * 0.1f);
+        }
     }
 
     void Update()
