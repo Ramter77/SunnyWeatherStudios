@@ -120,7 +120,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 859408466335762434}
   serializedVersion: 2
-  m_Mass: 1.6874999
+  m_Mass: 0.08437499
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -229,7 +229,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 922726752584618607}
   serializedVersion: 2
-  m_Mass: 2.5312498
+  m_Mass: 0.12656249
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -538,7 +538,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3823316160986525214}
   serializedVersion: 2
-  m_Mass: 2.5312498
+  m_Mass: 0.12656249
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -647,7 +647,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3824035928152889463}
   serializedVersion: 2
-  m_Mass: 1.6874999
+  m_Mass: 0.08437499
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -817,6 +817,7 @@ GameObject:
   - component: {fileID: 1451853684395516301}
   - component: {fileID: 7443440148969964985}
   - component: {fileID: 3116285544776166989}
+  - component: {fileID: 2491012044418000193}
   m_Layer: 12
   m_Name: Melee_Enemy(RAGDOLL) Variant
   m_TagString: Enemy
@@ -1047,7 +1048,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4877375369907795597}
   serializedVersion: 2
-  m_Mass: 1
+  m_Mass: 0.001
   m_Drag: 0
   m_AngularDrag: 0
   m_UseGravity: 0
@@ -1083,7 +1084,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eae87521ecd6f440ac4bb1368c0d150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  multiplier: 0.9
+  multiplier: 0.1
 --- !u!114 &8200832496550525416
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1176,8 +1177,20 @@ MonoBehaviour:
   _spread: 0
   _volumeRolloff: 0
   _minDistance: 10
-  _maxDistance: 25
+  _maxDistance: 50
   OnlyPlayForClosestCamera: 1
+--- !u!114 &2491012044418000193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4877375369907795597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a66497b8eb1d9459e1f99c6a9beb65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5004688083444084199
 GameObject:
   m_ObjectHideFlags: 0
@@ -1235,7 +1248,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5004688083444084199}
   serializedVersion: 2
-  m_Mass: 4.21875
+  m_Mass: 0.2109375
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1532,7 +1545,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5572279288599786223}
   serializedVersion: 2
-  m_Mass: 2.5312498
+  m_Mass: 0.12656249
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1795,7 +1808,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6769366484163630600}
   serializedVersion: 2
-  m_Mass: 1.6874999
+  m_Mass: 0.08437499
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -1904,7 +1917,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6882127402521742037}
   serializedVersion: 2
-  m_Mass: 1.6874999
+  m_Mass: 0.08437499
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -2043,7 +2056,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7166473782268471886}
   serializedVersion: 2
-  m_Mass: 4.21875
+  m_Mass: 0.2109375
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -2152,7 +2165,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7210492989968380533}
   serializedVersion: 2
-  m_Mass: 1.6874999
+  m_Mass: 0.08437499
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -2415,7 +2428,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8956006158937542232}
   serializedVersion: 2
-  m_Mass: 2.5312498
+  m_Mass: 0.12656249
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1

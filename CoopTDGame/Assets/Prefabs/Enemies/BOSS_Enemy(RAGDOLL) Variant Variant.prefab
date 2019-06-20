@@ -708,8 +708,8 @@ GameObject:
   - component: {fileID: 8443496819697461670}
   - component: {fileID: 8422606732797297032}
   - component: {fileID: 6388688469099229979}
-  - component: {fileID: 3255070068988302758}
   - component: {fileID: 481606394628153116}
+  - component: {fileID: 2915328836455355983}
   - component: {fileID: 1627866098281028475}
   - component: {fileID: 3365644211137119013}
   m_Layer: 15
@@ -779,22 +779,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!54 &3255070068988302758
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1848924434285836558}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &481606394628153116
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -804,10 +788,23 @@ BoxCollider:
   m_GameObject: {fileID: 1848924434285836558}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 0.108186446, y: 0.48697045, z: 0.8025033}
   m_Center: {x: 0.000010700726, y: 0.39089805, z: -0.7305968}
+--- !u!65 &2915328836455355983
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1848924434285836558}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.042765245, y: 0.03404552, z: 0.08}
+  m_Center: {x: 0.000000115937624, y: -0.0018918636, z: 0.01}
 --- !u!114 &1627866098281028475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -815,7 +812,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848924434285836558}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
   m_Name: 
@@ -831,7 +828,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1848924434285836558}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
   m_Name: 
@@ -1902,6 +1899,82 @@ Transform:
   m_Father: {fileID: 8176040593482326273}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &6176637357571816693
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565955342547096442}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &5104698027483218263
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565955342547096442}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.042765245, y: 0.03404552, z: 0.08}
+  m_Center: {x: 0.000000115937624, y: -0.0018918636, z: 0.01}
+--- !u!114 &1773285188398261002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565955342547096442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6a90f2fbdbadfa48a19104741df64da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFriendly: 0
+  isProjectile: 0
+  attackDamage: 20
+  resetLastHitGOdelay: 0.25
+--- !u!114 &2414202589185814237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565955342547096442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30730f5b1648246419d62c222708fa80, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spatialBlend: 1
+  _audioClip: {fileID: 0}
+  _output: {fileID: 243373504964958608, guid: 5c2ee1ea748a8c54397b521c91d0e17a, type: 2}
+  _mute: 0
+  _bypassEffects: 0
+  _bypassListenerEffects: 0
+  _bypassReverbZone: 0
+  _playOnAwake: 0
+  _loop: 0
+  _priority: 128
+  _volume: 1
+  _pitch: 1
+  _reverbZoneMix: 1
+  _dopplerLevel: 1
+  _spread: 0
+  _volumeRolloff: 0
+  _minDistance: 10
+  _maxDistance: 50
+  OnlyPlayForClosestCamera: 1
 --- !u!1 &5851761334306515618
 GameObject:
   m_ObjectHideFlags: 0
@@ -2530,6 +2603,7 @@ GameObject:
   - component: {fileID: 4284886048309605563}
   - component: {fileID: 5196192394093367439}
   - component: {fileID: 9098164850566310971}
+  - component: {fileID: 394571489646839340}
   m_Layer: 12
   m_Name: BOSS_Enemy(RAGDOLL) Variant Variant
   m_TagString: Enemy
@@ -2591,7 +2665,7 @@ MonoBehaviour:
   randomizeSpeed: 1
   speedRandomization: {x: -0.05, y: 0.05}
   setSpeedMultiplierLerp: 0.2
-  speedMultiplier: 0.7
+  speedMultiplier: 0.65
   stopMovementWhenNotGrounded: 1
   setInjuredLayerWeight: 1
   maxInjuredLayerWeigth: 0.5
@@ -2656,7 +2730,7 @@ MonoBehaviour:
   damageDelay: 0
   Target: {fileID: 0}
   enableAttack: 1
-  weapon: {fileID: 1848924434285836558}
+  weapon: {fileID: 5565955342547096442}
   shootPoint: {fileID: 0}
   rangedAttackProjectilePrefab: {fileID: 0}
   MuzzleObject: {fileID: 0}
@@ -2673,14 +2747,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96b3f0b9ede1df9438b6c311604cf4b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 850
-  maxhealth: 850
+  health: 1500
+  maxhealth: 1500
   defense: 10
   amountOfUnitsAttacking: 0
   Soul: {fileID: 6235444339675615289, guid: 64939b98e667ad149bf021bcfb315738, type: 3}
   particleEffect: {fileID: 2266160152052906837, guid: 76b6c0581f619724487b267899a10536,
     type: 3}
-  ParticleOnHitEffectYoffset: 6
+  ParticleOnHitEffectYoffset: 11
   particleSpawnLocation: {fileID: 0}
   ragdollOnDeath: 1
   dissolveOnDeath: 1
@@ -2891,6 +2965,18 @@ MonoBehaviour:
   _minDistance: 10
   _maxDistance: 50
   OnlyPlayForClosestCamera: 1
+--- !u!114 &394571489646839340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7854021692760138683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86a66497b8eb1d9459e1f99c6a9beb65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7854632294711136870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3861,15 +3947,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cca93549278b2174f85a8fe0bfdb8125, type: 3}
---- !u!1 &8578159019892552895 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
-    type: 3}
-  m_PrefabInstance: {fileID: 5253275151957786046}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1893548611681384304 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5953861532791573198, guid: cca93549278b2174f85a8fe0bfdb8125,
+    type: 3}
+  m_PrefabInstance: {fileID: 5253275151957786046}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8578159019892552895 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4606302565160077569, guid: cca93549278b2174f85a8fe0bfdb8125,
     type: 3}
   m_PrefabInstance: {fileID: 5253275151957786046}
   m_PrefabAsset: {fileID: 0}
@@ -3953,6 +4039,12 @@ PrefabInstance:
 --- !u!4 &5565955342546931546 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 055f48303e859b54e9e1d29f1fb336be,
+    type: 3}
+  m_PrefabInstance: {fileID: 5565955342547064282}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5565955342547096442 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 055f48303e859b54e9e1d29f1fb336be,
     type: 3}
   m_PrefabInstance: {fileID: 5565955342547064282}
   m_PrefabAsset: {fileID: 0}
