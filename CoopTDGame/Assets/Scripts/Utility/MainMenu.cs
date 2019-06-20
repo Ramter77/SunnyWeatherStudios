@@ -72,7 +72,7 @@ public class MainMenu : MonoBehaviour
     }
 
     IEnumerator DisableStartSlowMotion() {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         Time.timeScale = 1f;
     }
 
