@@ -51,6 +51,9 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
     public int BossEveryXRounds = 5;
     public bool startSpawningOnSceneStart = false;
 
+
+    public bool add1Boss = true;
+    private int addedBosses = 0;
     #endregion
 
     // Start is called before the first frame update
@@ -68,12 +71,8 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
         Wave = 1;
         waveTextHolder.SetActive(true);
         waveText.text = ("Wave " + Wave);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        addedBosses = 0;
     }
 
 
@@ -140,11 +139,37 @@ public class EnemySpawnCycle : Singleton<EnemySpawnCycle>
     public void endWave()
     {
        
-        if(Wave == BossWave)
+        if (Wave == BossWave)
         {
             int a;
             a = Random.Range(0, Spawners.Length);
-            Spawners[a].GetComponent<EnemySpawner>().spawnBoss();
+
+            if (add1Boss) {
+                addedBosses ++;
+                if (addedBosses == 1) {
+                    Spawners[1].GetComponent<EnemySpawner>().spawnBoss();
+                }
+                else if (addedBosses == 2)
+                {
+                    Spawners[1].GetComponent<EnemySpawner>().spawnBoss();
+                    Spawners[2].GetComponent<EnemySpawner>().spawnBoss();
+                }
+                else if (addedBosses == 2)
+                {
+                    Spawners[0].GetComponent<EnemySpawner>().spawnBoss();
+                    Spawners[1].GetComponent<EnemySpawner>().spawnBoss();
+                    Spawners[2].GetComponent<EnemySpawner>().spawnBoss();
+                }
+                else
+                {
+                    Spawners[a].GetComponent<EnemySpawner>().spawnBoss();
+                }
+            }
+            else
+            {
+                Spawners[a].GetComponent<EnemySpawner>().spawnBoss();
+            }
+            
             annoucementMessageHolder.SetActive(true);
             annoucementText.text = ("A BOSS IS APPROACHING");
             disableAnnoucement();
