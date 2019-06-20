@@ -58,8 +58,10 @@ public class FreeCameraLook : Pivot {
 		pivot = cam.parent.parent; //take the correct pivot
 
 
-        playC = transform.root.GetComponent<PlayerController>();
+        playC = transform.parent.gameObject.GetComponent<PlayerController>();
 	}
+
+
 
     protected override void Start()
     {
@@ -72,6 +74,7 @@ public class FreeCameraLook : Pivot {
 	{
 		base.Update();
 
+        
 		HandleRotationMovement();
 
         if (playC.isDead && !playC.isPaused) {
@@ -82,6 +85,18 @@ public class FreeCameraLook : Pivot {
             RotateTransformRoot = true;
         }
 	}
+
+    public void StartingCameraAngle() {
+        if (transform.parent.gameObject.GetComponent<PlayerController>().Player == 1) {
+            lookAngle = 140;
+            tiltAngle = -15;
+        }
+        else if (transform.parent.gameObject.GetComponent<PlayerController>().Player == 2)
+        {
+            lookAngle = 91;
+            tiltAngle = -15;
+        }
+    }
 
 	protected override void Follow (float deltaTime)
 	{
@@ -134,11 +149,13 @@ public class FreeCameraLook : Pivot {
         }
 
 		lookAngle += smoothX * turnSpeed;
+ 
+        if (!playC.isPaused || !playC.isDead) {
+            transform.rotation = Quaternion.Euler(0f, lookAngle, 0);
 
-		transform.rotation = Quaternion.Euler(0f, lookAngle, 0);
-
-        if (RotateTransformRoot) {
-            target.rotation = Quaternion.Euler(0f, lookAngle, 0);
+            if (RotateTransformRoot) {
+                target.rotation = Quaternion.Euler(0f, lookAngle, 0);
+            }
         }
 
         //* Rotate player along camera */

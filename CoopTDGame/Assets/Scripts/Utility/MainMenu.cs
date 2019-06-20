@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -37,20 +38,42 @@ public class MainMenu : MonoBehaviour
             fadeOutImage.SetActive(true);
             fadeImageAnim.SetTrigger("FadeOut");
             gameStarted = true;
-            Time.timeScale = 1f;
+            
             //GameManager.Instance.LockMouse(true);
             //LockCursor();
 
             InputManager.Instance.LockMouse(true);
 
+
+            _Player1.GetComponent<PlayerController>().MainCameraTransform.parent.transform.parent.transform.parent.gameObject.GetComponent<FreeCameraLook>().StartingCameraAngle();
+            
+            _Player2.GetComponent<PlayerController>().MainCameraTransform.parent.transform.parent.transform.parent.gameObject.GetComponent<FreeCameraLook>().StartingCameraAngle();
+            
+
             _Player1.GetComponent<PlayerClassOne>().startCooldown();
             _Player1.GetComponent<HealAbility>().startCooldown();
             _Player1.GetComponent<RangedAttack>().startCooldown();
+            //_Player1.GetComponent<PlayerController>().MainCameraTransform.parent.transform.parent.transform.parent.gameObject.GetComponent<FreeCameraLook>().StartingCameraAngle();
 
             _Player2.GetComponent<PlayerClassOne>().startCooldown();
             _Player2.GetComponent<HealAbility>().startCooldown();
             _Player2.GetComponent<RangedAttack>().startCooldown();
+            //_Player2.GetComponent<PlayerController>().MainCameraTransform.parent.transform.parent.transform.parent.gameObject.GetComponent<FreeCameraLook>().StartingCameraAngle();
+
+            Time.timeScale = 1f;
+            
+            
         }
+    }
+
+    public void StartingSlowMotion() {
+        Time.timeScale = 0.3f;
+        StartCoroutine(DisableStartSlowMotion());
+    }
+
+    IEnumerator DisableStartSlowMotion() {
+        yield return new WaitForSeconds(2f);
+        Time.timeScale = 1f;
     }
 
     public void resumeGame()
@@ -68,13 +91,19 @@ public class MainMenu : MonoBehaviour
         _Player1.GetComponent<PlayerController>().SetAlive();
         _Player1.SetActive(true);
 
+        //_Player1.GetComponent<PlayerController>().MainCameraTransform.parent.transform.parent.transform.parent.gameObject.GetComponent<FreeCameraLook>().StartingCameraAngle();
+
 
         _Player2.GetComponent<PlayerController>().SetAlive();
         _Player2.SetActive(true);
+
+        //_Player2.GetComponent<PlayerController>().MainCameraTransform.parent.transform.parent.transform.parent.gameObject.GetComponent<FreeCameraLook>().StartingCameraAngle();
     }
 
     public void InGameSpawn()
     {
+        
+
         MenuCam.SetActive(false);
         MainMenuHolder.SetActive(false);
         InGameUiHolder.SetActive(true);
