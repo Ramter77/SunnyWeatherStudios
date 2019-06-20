@@ -57,7 +57,7 @@ public class GameManager : Singleton<GameManager>
 
                 //InputManager.Instance._MouseControl.LockMouse = true;
                 //InputManager.Instance._MouseControl.hideCursor = true;
-                Time.timeScale = 0.01f;
+                Time.timeScale = 0f;
                 
                 if (MainMenu.transform.parent.GetComponent<MainMenu>().gameStarted) {
                     menuEnabled = true;
@@ -71,7 +71,7 @@ public class GameManager : Singleton<GameManager>
                 
                     //InputManager.Instance._MouseControl.LockMouse = true;
                     //InputManager.Instance._MouseControl.hideCursor = true;
-                    Time.timeScale = 0.01f;
+                    Time.timeScale = 0f;
 
                     //LockMouse(false);
                     
@@ -86,7 +86,7 @@ public class GameManager : Singleton<GameManager>
     }
 
     private void Awake() {
-        InputManager.Instance.LockMouse(false);
+        //InputManager.Instance.LockMouse(false);
     //LockMouse(false);
             //DontDestroyOnLoad(this.gameObject);
     }
